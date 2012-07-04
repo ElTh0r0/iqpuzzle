@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CIQPuzzle</class>
+ <widget class="QMainWindow" name="CIQPuzzle">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string notr="true">iQPuzzle</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="iqpuzzle_resources.qrc">
+    <normaloff>:/iqpuzzle_64x64.png</normaloff>:/iqpuzzle_64x64.png</iconset>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedKingdom"/>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuGame">
+    <property name="title">
+     <string>&amp;Game</string>
+    </property>
+    <addaction name="action_NewGame"/>
+    <addaction name="separator"/>
+    <addaction name="action_Quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_Controls"/>
+    <addaction name="action_Info"/>
+   </widget>
+   <addaction name="menuGame"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <action name="action_NewGame">
+   <property name="text">
+    <string>&amp;New game</string>
+   </property>
+  </action>
+  <action name="action_Quit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="action_Controls">
+   <property name="text">
+    <string>&amp;Controls</string>
+   </property>
+  </action>
+  <action name="action_Info">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="iqpuzzle_resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
