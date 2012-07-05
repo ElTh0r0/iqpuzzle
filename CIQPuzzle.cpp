@@ -216,7 +216,7 @@ void CIQPuzzle::setupBlocks()
         }
 
         // Create new block
-        m_listBlocks.append( new CBlock(tmpPolygon, m_nGridSize, tmpColor, i, tmpPoint) );
+        m_listBlocks.append( new CBlock(tmpPolygon, m_nGridSize, tmpColor, i, &m_listBlocks, tmpPoint) );
         m_pConfig->endGroup();
     }
 

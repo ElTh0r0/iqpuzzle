@@ -27,12 +27,14 @@ CBlock::CBlock( QPolygonF shape,
                 unsigned short nScale,
                 QColor color,
                 unsigned short nID,
+                QList<CBlock *> *pListBlocks,
                 QPointF posTopLeft ) :
     m_PolyShape( shape ),
     m_nGridScale( nScale ),
     m_nAlpha( 100 ),
     m_bgColor( color ),
     m_nCurrentInst (nID ),
+    m_pListBlocks( pListBlocks ),
     m_pointTopLeft( posTopLeft * nScale )
 {
     qDebug() << "Creating BLOCK" << m_nCurrentInst;
@@ -66,7 +68,6 @@ void CBlock::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
 
     if( m_bPressed )
     {
-        //this->setZValue();
         m_bgColor.setAlpha( m_nAlpha );
         brush.setColor( m_bgColor );
     }
@@ -89,6 +90,13 @@ void CBlock::mousePressEvent( QGraphicsSceneMouseEvent *p_Event )
 {
     if( p_Event->button() == Qt::LeftButton ) {
         m_bPressed = true;
+
+        // Bring current block to foreground and update Z values
+        for( int i = 0; i < m_pListBlocks->size(); i++ )
+        {
+            (*m_pListBlocks)[i]->setNewZValue(-1);
+        }
+        this->setZValue( m_pListBlocks->size() + 1 );
     }
     else if ( p_Event->button() == Qt::RightButton )
     {
@@ -142,6 +150,33 @@ void CBlock::mouseReleaseEvent( QGraphicsSceneMouseEvent *p_Event )
         this->setPos( this->snapToGrid(this->pos()) );
     }
 
+
+    // Check for collisions
+    QList<QGraphicsItem *> collidingGraphItems = this->collidingItems();
+    QList<QGraphicsItem *> collidingGraphBlocks;
+    QList<CBlock *> collidingBlocks;
+
+    // Filter colliding objects for CBlocks
+    foreach(QGraphicsItem* gi, collidingGraphItems)
+    {
+        if( gi->type() == this->Type )
+            collidingGraphBlocks.append(gi);
+    }
+
+    // Cast GraphItems list to CBlock list
+    foreach (QGraphicsItem *pG, collidingGraphBlocks)
+    {
+        collidingBlocks << qgraphicsitem_cast<CBlock*>( pG );
+    }
+
+    // Print collisions
+    qDebug() << "BLOCK" << m_nCurrentInst << "collides with:";
+    foreach (CBlock *pB, collidingBlocks)
+    {
+        qDebug() << pB->getIndex();
+    }
+
+
     update();
     QGraphicsItem::mouseReleaseEvent( p_Event );
 
@@ -156,4 +191,35 @@ QPointF CBlock::snapToGrid( const QPointF point ) const
     int x = qRound(point.x() / m_nGridScale) * m_nGridScale;
     int y = qRound(point.y() / m_nGridScale) * m_nGridScale;
     return QPointF(x, y);
+}
+
+// -----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
+
+void CBlock::setNewZValue( short nZ)
+{
+    if ( nZ < 0)
+    {
+        if ( this->zValue() > 0 )
+            this->setZValue( this->zValue() -1 );
+        else
+            this->setZValue( 0 );
+    }
+    else
+    {
+        this->setZValue( nZ );
+    }
+}
+
+// -----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
+
+int CBlock::type() const
+{
+    // Enable the use of qgraphicsitem_cast with this item.
+    return Type;
+}
+
+unsigned short CBlock::getIndex(){
+    return m_nCurrentInst;
 }

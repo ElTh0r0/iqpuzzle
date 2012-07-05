@@ -33,16 +33,22 @@
 class CBlock : public QGraphicsItem
 {
 public:
-    CBlock( QPolygonF shape, unsigned short nScale, QColor color,
-            unsigned short nID, QPointF posTopLeft = QPoint(0,0) );
+    CBlock( QPolygonF shape, unsigned short nScale, QColor color, unsigned short nID,
+            QList<CBlock *> *pListBlocks, QPointF posTopLeft = QPoint(0,0) );
 
     QRectF boundingRect() const;
     void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0 );
+
+    void setNewZValue( short nZ );
+    unsigned short getIndex();
+    enum { Type = UserType + 1 };
 
 protected:
     void mousePressEvent( QGraphicsSceneMouseEvent *p_Event );
     void mouseReleaseEvent( QGraphicsSceneMouseEvent *p_Event );
     void wheelEvent( QGraphicsSceneWheelEvent *p_Event );
+
+    int type() const;
 
 private:
 
@@ -53,6 +59,7 @@ private:
     const unsigned short m_nAlpha;
     QColor m_bgColor;
     unsigned short m_nCurrentInst;
+    QList<CBlock *> *m_pListBlocks;
     short m_nRotation;
 
     QPointF m_pointTopLeft;
