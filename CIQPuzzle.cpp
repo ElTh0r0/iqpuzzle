@@ -44,7 +44,14 @@ CIQPuzzle::CIQPuzzle(  QApplication *pApp, QWidget *pParent ) :
     m_pUi->setupUi(this);
 
     this->setupMenu();
+
+    // Create board
+    m_pGraphView = new QGraphicsView( this );
+    this->setCentralWidget( m_pGraphView );
+    m_pScene = new QGraphicsScene( this );
+    m_pGraphView->setScene( m_pScene );
     this->setupBoard();
+
     this->startNewGame();
 
     qDebug() << "Leave" << Q_FUNC_INFO;
@@ -74,6 +81,14 @@ void CIQPuzzle::setupMenu()
     connect( m_pUi->action_Quit, SIGNAL(triggered()),
              this, SLOT(close()) );
 
+    // Zoom in/out
+    m_pUi->action_ZoomIn->setShortcut( QKeySequence::ZoomIn );
+    connect( m_pUi->action_ZoomIn, SIGNAL(triggered()),
+             this, SLOT(zoomIn()) );
+    m_pUi->action_ZoomOut->setShortcut( QKeySequence::ZoomOut );
+    connect( m_pUi->action_ZoomOut, SIGNAL(triggered()),
+             this, SLOT(zoomOut()) );
+
     // Controls info
     m_pUi->action_Controls->setShortcut( QKeySequence::HelpContents );
     connect( m_pUi->action_Controls, SIGNAL(triggered()),
@@ -100,11 +115,6 @@ void CIQPuzzle::setupBoard()
     this->setMinimumSize( WinSize );
     // this->setMaximumSize( WinSize );
 
-    // Create board
-    m_pGraphView = new QGraphicsView( this );
-    this->setCentralWidget( m_pGraphView );
-    m_pScene = new QGraphicsScene( this );
-    m_pGraphView->setScene( m_pScene );
     QRectF rectBoard( QPoint(0,0), QSizeF(m_BoardSize.width()*m_nGridSize,
                                           m_BoardSize.height()*m_nGridSize) );
     m_pScene->addRect( rectBoard );
@@ -240,6 +250,50 @@ void CIQPuzzle::startNewGame()
     // Insert blocks on board again
     foreach( CBlock *pB, m_listBlocks )
         m_pScene->addItem( pB );
+}
+
+// -----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
+
+void CIQPuzzle::zoomIn()
+{
+    m_nGridSize += 5;
+    doZoom();
+}
+
+void CIQPuzzle::zoomOut()
+{
+    if( m_nGridSize > 9 )
+        m_nGridSize -= 5;
+    else
+        m_nGridSize = 5;
+
+    doZoom();
+}
+
+void CIQPuzzle::doZoom()
+{
+    // Get all QGraphicItems in scene
+    QList<QGraphicsItem *> list = m_pScene->items();
+    QList<QGraphicsItem *> list2;
+
+    // Filter out blocks from object list
+    foreach(QGraphicsItem* gi, list)
+    {
+        if( gi->type() != CBlock::Type )
+            list2.append(gi);
+    }
+    // Remove everything except blocks
+    qDeleteAll( list2 );
+
+    // Rescale blocks
+    foreach( CBlock *pB, m_listBlocks )
+    {
+        pB->rescaleBlock( m_nGridSize );
+    }
+
+    // Create board again
+    this->setupBoard();
 }
 
 // -----------------------------------------------------------------------------------------------

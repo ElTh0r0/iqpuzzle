@@ -51,7 +51,15 @@
     <addaction name="action_Controls"/>
     <addaction name="action_Info"/>
    </widget>
+   <widget class="QMenu" name="menu_Settings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="action_ZoomIn"/>
+    <addaction name="action_ZoomOut"/>
+   </widget>
    <addaction name="menuGame"/>
+   <addaction name="menu_Settings"/>
    <addaction name="menu_Help"/>
   </widget>
   <action name="action_NewGame">
@@ -72,6 +80,16 @@
   <action name="action_Info">
    <property name="text">
     <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_ZoomIn">
+   <property name="text">
+    <string>Zoom &amp;In</string>
+   </property>
+  </action>
+  <action name="action_ZoomOut">
+   <property name="text">
+    <string>Zoom &amp;Out</string>
    </property>
   </action>
  </widget>

@@ -49,6 +49,9 @@ protected:
 
 private slots:
     void startNewGame();
+    void zoomIn();
+    void zoomOut();
+
     void showControlsBox();
     void showInfoBox();
 
@@ -56,6 +59,7 @@ private:
     void setupMenu();
     void setupBoard();
     void setupBlocks();
+    void doZoom();
 
     Ui::CIQPuzzle *m_pUi;
     QApplication *m_pApp;

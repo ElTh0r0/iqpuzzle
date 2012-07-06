@@ -43,9 +43,7 @@ CBlock::CBlock( QPolygonF shape,
     this->setFlag( ItemIsMovable );
 
     // Scale object
-    for( int i = 0; i < m_PolyShape.size(); i++ ) {
-        m_PolyShape[i] *= m_nGridScale;
-    }
+    this->setScale( m_nGridScale );
 
     // Move to start position
     this->setPos( m_pointTopLeft );
@@ -96,7 +94,7 @@ void CBlock::mousePressEvent( QGraphicsSceneMouseEvent *p_Event )
         {
             (*m_pListBlocks)[i]->setNewZValue(-1);
         }
-        this->setZValue( m_pListBlocks->size() + 1 );
+        this->setZValue( m_pListBlocks->size() + 2 );
     }
     else if ( p_Event->button() == Qt::RightButton )
     {
@@ -196,19 +194,30 @@ QPointF CBlock::snapToGrid( const QPointF point ) const
 // -----------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------
 
-void CBlock::setNewZValue( short nZ)
+void CBlock::setNewZValue( short nZ )
 {
     if ( nZ < 0)
     {
-        if ( this->zValue() > 0 )
+        if ( this->zValue() > 1 )
             this->setZValue( this->zValue() -1 );
         else
-            this->setZValue( 0 );
+            this->setZValue( 1 );
     }
     else
     {
         this->setZValue( nZ );
     }
+}
+
+// -----------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
+
+void CBlock::rescaleBlock( unsigned short nNewScale )
+{
+    QPointF tmpTopLeft = this->pos() / m_nGridScale * nNewScale;
+    this->setScale( nNewScale );
+    m_nGridScale = nNewScale;
+    this->setPos( this->snapToGrid(tmpTopLeft) );
 }
 
 // -----------------------------------------------------------------------------------------------

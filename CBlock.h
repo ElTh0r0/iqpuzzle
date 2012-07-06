@@ -40,6 +40,7 @@ public:
     void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0 );
 
     void setNewZValue( short nZ );
+    void rescaleBlock( unsigned short nNewScale );
     unsigned short getIndex();
     enum { Type = UserType + 1 };
 
