@@ -21,133 +21,118 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "CBlock.h"
+#include "./CBlock.h"
 
-CBlock::CBlock( QPolygonF shape,
-                unsigned short nScale,
-                QColor color,
-                unsigned short nID,
-                QList<CBlock *> *pListBlocks,
-                QPointF posTopLeft ) :
-    m_PolyShape( shape ),
-    m_nGridScale( nScale ),
-    m_nAlpha( 100 ),
-    m_bgColor( color ),
-    m_nCurrentInst (nID ),
-    m_pListBlocks( pListBlocks ),
-    m_pointTopLeft( posTopLeft * nScale )
-{
+CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
+                quint16 nID, QList<CBlock *> *pListBlocks,
+                QPointF posTopLeft)
+    : m_PolyShape(shape),
+      m_nGridScale(nScale),
+      m_nAlpha(100),
+      m_bgColor(color),
+      m_nCurrentInst(nID),
+      m_pListBlocks(pListBlocks),
+      m_pointTopLeft(posTopLeft * nScale) {
     qDebug() << "Creating BLOCK" << m_nCurrentInst;
 
     m_bPressed = false;
-    this->setFlag( ItemIsMovable );
+    this->setFlag(ItemIsMovable);
 
     // Scale object
-    this->setScale( m_nGridScale );
+    this->setScale(m_nGridScale);
 
     // Move to start position
-    this->setPos( m_pointTopLeft );
+    this->setPos(m_pointTopLeft);
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-QRectF CBlock::boundingRect() const
-{
+QRectF CBlock::boundingRect() const {
     return m_PolyShape.boundingRect();
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
+void CBlock::paint(QPainter *painter,
+                   const QStyleOptionGraphicsItem *option,
+                   QWidget *widget) {
     QBrush brush(m_bgColor);
 
-    if( m_bPressed )
-    {
-        m_bgColor.setAlpha( m_nAlpha );
-        brush.setColor( m_bgColor );
-    }
-    else
-    {
-        m_bgColor.setAlpha( 255 );
-        brush.setColor( m_bgColor );
+    if (m_bPressed) {
+        m_bgColor.setAlpha(m_nAlpha);
+        brush.setColor(m_bgColor);
+    } else {
+        m_bgColor.setAlpha(255);
+        brush.setColor(m_bgColor);
     }
 
     QPainterPath tmpPath;
-    tmpPath.addPolygon( m_PolyShape );
-    painter->fillPath( tmpPath, brush );
-    painter->drawPolygon( m_PolyShape );
+    tmpPath.addPolygon(m_PolyShape);
+    painter->fillPath(tmpPath, brush);
+    painter->drawPolygon(m_PolyShape);
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::mousePressEvent( QGraphicsSceneMouseEvent *p_Event )
-{
-    if( p_Event->button() == Qt::LeftButton ) {
+void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
+    if (p_Event->button() == Qt::LeftButton) {
         m_bPressed = true;
 
         // Bring current block to foreground and update Z values
-        for( int i = 0; i < m_pListBlocks->size(); i++ )
-        {
+        for (int i = 0; i < m_pListBlocks->size(); i++) {
             (*m_pListBlocks)[i]->setNewZValue(-1);
         }
-        this->setZValue( m_pListBlocks->size() + 2 );
-    }
-    else if ( p_Event->button() == Qt::RightButton )
-    {
-        this->setTransformOriginPoint( this->snapToGrid(this->boundingRect().center()) );
-        this->scale(-1,1);
+        this->setZValue(m_pListBlocks->size() + 2);
+    } else if (p_Event->button() == Qt::RightButton) {
+        this->setTransformOriginPoint(this->snapToGrid(this->boundingRect().center()));
+        this->scale(-1, 1);
     }
 
     update();
-    QGraphicsItem::mousePressEvent( p_Event );
+    QGraphicsItem::mousePressEvent(p_Event);
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::wheelEvent( QGraphicsSceneWheelEvent *p_Event )
-{
+void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
     // Vertical mouse wheel
-    if( p_Event->orientation() == Qt::Vertical )
-    {
+    if (p_Event->orientation() == Qt::Vertical) {
         // Set new origin for transformation
-        this->setTransformOriginPoint( this->snapToGrid(this->boundingRect().center()) );
+        this->setTransformOriginPoint(this->snapToGrid(this->boundingRect().center()));
 
-        if ( p_Event->delta() < 0 )
-        {
+        if (p_Event->delta() < 0) {
             m_nRotation = this->rotation() + 90;
-            if ( m_nRotation >= 360 )
+            if (m_nRotation >= 360) {
                 m_nRotation = 0;
-        }
-        else
-        {
+            }
+        } else {
             m_nRotation = this->rotation() - 90;
-            if ( m_nRotation < 0 )
+            if (m_nRotation < 0) {
                 m_nRotation = 270;
+            }
         }
 
-        this->setRotation( m_nRotation );
+        this->setRotation(m_nRotation);
     }
 
-    qDebug() << "Rotate BLOCK" << m_nCurrentInst << "  " << m_nRotation << "deg";
+    qDebug() << "Rotate BLOCK" << m_nCurrentInst << "  " <<
+                m_nRotation << "deg";
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::mouseReleaseEvent( QGraphicsSceneMouseEvent *p_Event )
-{
+void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
     m_bPressed = false;
 
-    if( p_Event->button() == Qt::LeftButton ) {
+    if (p_Event->button() == Qt::LeftButton) {
         // Snap block to grid
-        this->setPos( this->snapToGrid(this->pos()) );
+        this->setPos(this->snapToGrid(this->pos()));
     }
-
 
     // Check for collisions
     QList<QGraphicsItem *> collidingGraphItems = this->collidingItems();
@@ -155,80 +140,71 @@ void CBlock::mouseReleaseEvent( QGraphicsSceneMouseEvent *p_Event )
     QList<CBlock *> collidingBlocks;
 
     // Filter colliding objects for CBlocks
-    foreach(QGraphicsItem* gi, collidingGraphItems)
-    {
-        if( gi->type() == this->Type )
+    foreach (QGraphicsItem* gi, collidingGraphItems) {
+        if (gi->type() == this->Type) {
             collidingGraphBlocks.append(gi);
+        }
     }
 
     // Cast GraphItems list to CBlock list
-    foreach (QGraphicsItem *pG, collidingGraphBlocks)
-    {
-        collidingBlocks << qgraphicsitem_cast<CBlock*>( pG );
+    foreach (QGraphicsItem *pG, collidingGraphBlocks) {
+        collidingBlocks << qgraphicsitem_cast<CBlock*>(pG);
     }
 
     // Print collisions
     qDebug() << "BLOCK" << m_nCurrentInst << "collides with:";
-    foreach (CBlock *pB, collidingBlocks)
-    {
+    foreach (CBlock *pB, collidingBlocks) {
         qDebug() << pB->getIndex();
     }
 
-
     update();
-    QGraphicsItem::mouseReleaseEvent( p_Event );
+    QGraphicsItem::mouseReleaseEvent(p_Event);
 
     qDebug() << "Top Left BLOCK" << m_nCurrentInst << "  " << this->pos();
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-QPointF CBlock::snapToGrid( const QPointF point ) const
-{
+QPointF CBlock::snapToGrid(const QPointF point) const {
     int x = qRound(point.x() / m_nGridScale) * m_nGridScale;
     int y = qRound(point.y() / m_nGridScale) * m_nGridScale;
     return QPointF(x, y);
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::setNewZValue( short nZ )
-{
-    if ( nZ < 0)
-    {
-        if ( this->zValue() > 1 )
-            this->setZValue( this->zValue() -1 );
-        else
-            this->setZValue( 1 );
-    }
-    else
-    {
-        this->setZValue( nZ );
+void CBlock::setNewZValue(qint16 nZ) {
+    if (nZ < 0) {
+        if (this->zValue() > 1) {
+            this->setZValue(this->zValue() - 1);
+        } else {
+            this->setZValue(1);
+        }
+    } else {
+        this->setZValue(nZ);
     }
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-void CBlock::rescaleBlock( unsigned short nNewScale )
-{
+void CBlock::rescaleBlock(quint16 nNewScale) {
     QPointF tmpTopLeft = this->pos() / m_nGridScale * nNewScale;
-    this->setScale( nNewScale );
+    this->setScale(nNewScale);
     m_nGridScale = nNewScale;
-    this->setPos( this->snapToGrid(tmpTopLeft) );
+    this->setPos(this->snapToGrid(tmpTopLeft));
 }
 
-// -----------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-int CBlock::type() const
-{
+int CBlock::type() const {
     // Enable the use of qgraphicsitem_cast with this item.
     return Type;
 }
 
-unsigned short CBlock::getIndex(){
+quint16 CBlock::getIndex() {
     return m_nCurrentInst;
 }

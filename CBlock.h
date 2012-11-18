@@ -21,8 +21,8 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CBLOCK_H
-#define CBLOCK_H
+#ifndef _IQPUZZLE_CBLOCK_H_
+#define _IQPUZZLE_CBLOCK_H_
 
 #include <QPainter>
 #include <QGraphicsItem>
@@ -30,42 +30,42 @@
 #include <QGraphicsSceneWheelEvent>
 #include <QDebug>
 
-class CBlock : public QGraphicsItem
-{
-public:
-    CBlock( QPolygonF shape, unsigned short nScale, QColor color, unsigned short nID,
-            QList<CBlock *> *pListBlocks, QPointF posTopLeft = QPoint(0,0) );
+class CBlock : public QGraphicsItem {
+  public:
+    CBlock(QPolygonF shape, quint16 nScale, QColor color,
+           quint16 nID, QList<CBlock *> *pListBlocks,
+           QPointF posTopLeft = QPoint(0, 0));
 
     QRectF boundingRect() const;
-    void paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0 );
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+               QWidget *widget = 0);
 
-    void setNewZValue( short nZ );
-    void rescaleBlock( unsigned short nNewScale );
-    unsigned short getIndex();
+    void setNewZValue(qint16 nZ);
+    void rescaleBlock(quint16 nNewScale);
+    quint16 getIndex();
     enum { Type = UserType + 1 };
 
-protected:
-    void mousePressEvent( QGraphicsSceneMouseEvent *p_Event );
-    void mouseReleaseEvent( QGraphicsSceneMouseEvent *p_Event );
-    void wheelEvent( QGraphicsSceneWheelEvent *p_Event );
+  protected:
+    void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
+    void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
 
     int type() const;
 
-private:
-
-    QPointF snapToGrid( const QPointF point ) const;
+  private:
+    QPointF snapToGrid(const QPointF point) const;
 
     QPolygonF m_PolyShape;
-    unsigned short m_nGridScale;
-    const unsigned short m_nAlpha;
+    quint16 m_nGridScale;
+    const quint16 m_nAlpha;
     QColor m_bgColor;
-    unsigned short m_nCurrentInst;
+    quint16 m_nCurrentInst;
     QList<CBlock *> *m_pListBlocks;
-    short m_nRotation;
+    qint16 m_nRotation;
 
     QPointF m_pointTopLeft;
 
     bool m_bPressed;
 };
 
-#endif // CBLOCK_H
+#endif  // _IQPUZZLE_CBLOCK_H_

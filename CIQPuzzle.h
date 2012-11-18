@@ -21,14 +21,14 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CIQPUZZLE_H
-#define CIQPUZZLE_H
+#ifndef _IQPUZZLE_CIQPUZZLE_H_
+#define _IQPUZZLE_CIQPUZZLE_H_
 
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
 
-#include "CBlock.h"
+#include "./CBlock.h"
 
 #define sVERSION "0.1.0"
 
@@ -36,18 +36,17 @@ namespace Ui {
     class CIQPuzzle;
 }
 
-class CIQPuzzle : public QMainWindow
-{
+class CIQPuzzle : public QMainWindow {
     Q_OBJECT
-    
-public:
-    explicit CIQPuzzle(  QApplication *pApp, QWidget *pParent = 0 );
+
+  public:
+    explicit CIQPuzzle(QApplication *pApp, QWidget *pParent = 0);
     ~CIQPuzzle();
 
-protected:
-    void closeEvent( QCloseEvent *pEvent );
+  protected:
+    void closeEvent(QCloseEvent *pEvent);
 
-private slots:
+  private slots:
     void startNewGame();
     void zoomIn();
     void zoomOut();
@@ -55,7 +54,7 @@ private slots:
     void showControlsBox();
     void showInfoBox();
 
-private:
+  private:
     void setupMenu();
     void setupBoard();
     void setupBlocks();
@@ -67,10 +66,10 @@ private:
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
 
-    unsigned short m_nGridSize;
+    quint16 m_nGridSize;
     QSize m_BoardSize;
 
     QList<CBlock *> m_listBlocks;
 };
 
-#endif // CIQPUZZLE_H
+#endif  // _IQPUZZLE_CIQPUZZLE_H_

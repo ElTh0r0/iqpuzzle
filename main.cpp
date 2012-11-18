@@ -22,25 +22,24 @@
  */
 
 #include <QtGui/QApplication>
-#include "CIQPuzzle.h"
+#include "./CIQPuzzle.h"
 
-int main(int argc, char *argv[])
-{
-    Q_INIT_RESOURCE( iqpuzzle_resources );
+int main(int argc, char *argv[]) {
+    Q_INIT_RESOURCE(iqpuzzle_resources);
 
     QApplication app(argc, argv);
     app.setApplicationName("iQPuzzle");
     app.setApplicationVersion( sVERSION );
 
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName( "UTF-8" ) );
-    QTextCodec::setCodecForLocale( QTextCodec::codecForName("UTF-8") );
-    QTextCodec::setCodecForTr( QTextCodec::codecForName("UTF-8") );
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
 
     qDebug() << app.applicationName() << app.applicationVersion();
     qDebug() << "Compiled with Qt" << QT_VERSION_STR;
     qDebug() << "Qt runtime" <<  qVersion();
 
-    CIQPuzzle myIQPuzzle( &app );
+    CIQPuzzle myIQPuzzle(&app);
     myIQPuzzle.show();
     
     return app.exec();
