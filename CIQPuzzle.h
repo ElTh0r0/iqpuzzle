@@ -30,7 +30,7 @@
 
 #include "./CBlock.h"
 
-#define sVERSION "0.1.0"
+#define sVERSION "0.2.0"
 
 namespace Ui {
     class CIQPuzzle;

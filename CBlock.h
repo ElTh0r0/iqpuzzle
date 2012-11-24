@@ -37,12 +37,15 @@ class CBlock : public QGraphicsItem {
            QPointF posTopLeft = QPoint(0, 0));
 
     QRectF boundingRect() const;
+    QPainterPath shape() const;
+    QPolygonF getPolygon() const;
+    QPointF getPosition() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
 
     void setNewZValue(qint16 nZ);
     void rescaleBlock(quint16 nNewScale);
-    quint16 getIndex();
+    quint16 getIndex() const;
     enum { Type = UserType + 1 };
 
   protected:
@@ -56,6 +59,7 @@ class CBlock : public QGraphicsItem {
     QPointF snapToGrid(const QPointF point) const;
 
     QPolygonF m_PolyShape;
+    QGraphicsSimpleTextItem m_ItemNumberText;
     quint16 m_nGridScale;
     const quint16 m_nAlpha;
     QColor m_bgColor;
@@ -64,6 +68,7 @@ class CBlock : public QGraphicsItem {
     qint16 m_nRotation;
 
     QPointF m_pointTopLeft;
+    QPointF m_posBlockSelected;
 
     bool m_bPressed;
 };

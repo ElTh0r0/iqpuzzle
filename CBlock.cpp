@@ -23,9 +23,11 @@
 
 #include "./CBlock.h"
 
+extern bool bDEBUG;
+
 CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
-                quint16 nID, QList<CBlock *> *pListBlocks,
-                QPointF posTopLeft)
+               quint16 nID, QList<CBlock *> *pListBlocks,
+               QPointF posTopLeft)
     : m_PolyShape(shape),
       m_nGridScale(nScale),
       m_nAlpha(100),
@@ -33,7 +35,9 @@ CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
       m_nCurrentInst(nID),
       m_pListBlocks(pListBlocks),
       m_pointTopLeft(posTopLeft * nScale) {
-    qDebug() << "Creating BLOCK" << m_nCurrentInst;
+    qDebug() << "Creating BLOCK" << m_nCurrentInst <<
+                "\tPosition:" << m_pointTopLeft <<
+                "\tClosed shape:" << m_PolyShape.isClosed();
 
     m_bPressed = false;
     this->setFlag(ItemIsMovable);
@@ -52,12 +56,21 @@ QRectF CBlock::boundingRect() const {
     return m_PolyShape.boundingRect();
 }
 
+QPainterPath CBlock::shape() const {
+    QPainterPath path;
+    path.addPolygon(m_PolyShape);
+    return path;
+}
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CBlock::paint(QPainter *painter,
                    const QStyleOptionGraphicsItem *option,
                    QWidget *widget) {
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+
     QBrush brush(m_bgColor);
 
     if (m_bPressed) {
@@ -72,6 +85,14 @@ void CBlock::paint(QPainter *painter,
     tmpPath.addPolygon(m_PolyShape);
     painter->fillPath(tmpPath, brush);
     painter->drawPolygon(m_PolyShape);
+
+    // Adding block ID for debugging
+    if (bDEBUG) {
+        m_ItemNumberText.setFont(QFont("Arial", 1));
+        m_ItemNumberText.setText(QString::number(m_nCurrentInst));
+        m_ItemNumberText.setPos(0.2, -1.1);
+        m_ItemNumberText.setParentItem(this);
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -86,7 +107,10 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
             (*m_pListBlocks)[i]->setNewZValue(-1);
         }
         this->setZValue(m_pListBlocks->size() + 2);
+
+        m_posBlockSelected = this->pos();  // Save last position
     } else if (p_Event->button() == Qt::RightButton) {
+        this->prepareGeometryChange();
         this->setTransformOriginPoint(this->snapToGrid(this->boundingRect().center()));
         this->scale(-1, 1);
     }
@@ -116,6 +140,7 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
             }
         }
 
+        this->prepareGeometryChange();
         this->setRotation(m_nRotation);
     }
 
@@ -127,40 +152,62 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-    m_bPressed = false;
-
     if (p_Event->button() == Qt::LeftButton) {
-        // Snap block to grid
+        m_bPressed = false;
+        this->prepareGeometryChange();
+
         this->setPos(this->snapToGrid(this->pos()));
-    }
 
-    // Check for collisions
-    QList<QGraphicsItem *> collidingGraphItems = this->collidingItems();
-    QList<QGraphicsItem *> collidingGraphBlocks;
-    QList<CBlock *> collidingBlocks;
+        unsigned short nCnt = 0;
 
-    // Filter colliding objects for CBlocks
-    foreach (QGraphicsItem* gi, collidingGraphItems) {
-        if (gi->type() == this->Type) {
-            collidingGraphBlocks.append(gi);
+        /*
+        QList<QGraphicsItem *> collidingGraphItems = this->collidingItems();
+
+        // Filter colliding objects for CBlocks
+        foreach (QGraphicsItem* gi, collidingGraphItems) {
+            if (gi->type() == this->Type) {
+                QPainterPath test = this->shape().intersected(shape());
+
+                if (!test.isEmpty()) {
+                    nCnt++;
+                    qDebug() << test;
+                }
+            }
         }
+        */
+
+
+
+        QPolygonF thisPoly = m_PolyShape;
+        thisPoly.translate(this->pos());
+        QPolygonF collidingPoly;
+        QPolygonF tmpPoly;
+        foreach (CBlock *block, *m_pListBlocks) {
+            if (block->getIndex() != m_nCurrentInst) {
+                if (this->collidesWithItem(block))
+                {
+                    collidingPoly = block->getPolygon();
+                    collidingPoly.translate(block->getPosition());
+
+                    qDebug() << thisPoly << "\n" << collidingPoly;
+                    tmpPoly = thisPoly.intersected(collidingPoly);
+                    qDebug() << "Col:" << block->getIndex() << "  Interpoly:" <<
+                                tmpPoly <<
+                                "  Pos:" << tmpPoly.boundingRect().x() << "," <<
+                                tmpPoly.boundingRect().y();
+                    nCnt++;
+                }
+            }
+        }
+
+        qDebug() << "COLLISIONS:" << nCnt;
     }
 
-    // Cast GraphItems list to CBlock list
-    foreach (QGraphicsItem *pG, collidingGraphBlocks) {
-        collidingBlocks << qgraphicsitem_cast<CBlock*>(pG);
-    }
-
-    // Print collisions
-    qDebug() << "BLOCK" << m_nCurrentInst << "collides with:";
-    foreach (CBlock *pB, collidingBlocks) {
-        qDebug() << pB->getIndex();
-    }
 
     update();
     QGraphicsItem::mouseReleaseEvent(p_Event);
 
-    qDebug() << "Top Left BLOCK" << m_nCurrentInst << "  " << this->pos();
+    //qDebug() << "Top Left BLOCK" << m_nCurrentInst << "  " << this->pos();
 }
 
 // ---------------------------------------------------------------------------
@@ -191,6 +238,8 @@ void CBlock::setNewZValue(qint16 nZ) {
 // ---------------------------------------------------------------------------
 
 void CBlock::rescaleBlock(quint16 nNewScale) {
+    this->prepareGeometryChange();
+
     QPointF tmpTopLeft = this->pos() / m_nGridScale * nNewScale;
     this->setScale(nNewScale);
     m_nGridScale = nNewScale;
@@ -205,6 +254,15 @@ int CBlock::type() const {
     return Type;
 }
 
-quint16 CBlock::getIndex() {
+quint16 CBlock::getIndex() const {
     return m_nCurrentInst;
 }
+
+QPolygonF CBlock::getPolygon() const {
+    return m_PolyShape;
+}
+
+QPointF CBlock::getPosition() const {
+    return this->pos();
+}
+

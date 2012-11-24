@@ -24,11 +24,23 @@
 #include "./CIQPuzzle.h"
 #include "ui_CIQPuzzle.h"
 
+// Don't change this value! Use "--debug" command line option instead.
+bool bDEBUG = false;
+
 CIQPuzzle::CIQPuzzle(QApplication *pApp, QWidget *pParent)
     : QMainWindow(pParent),
       m_pUi(new Ui::CIQPuzzle),
       m_pApp(pApp) {
-    qDebug() << "Enter" << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
+
+    // Check for command line arguments
+    if (m_pApp->argc() >= 2)     {
+        QString sTmp = m_pApp->argv()[1];
+
+        if ("--debug" == sTmp) {
+            bDEBUG = true;
+        }
+    }
 
     // Init config file
     QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope,
@@ -44,30 +56,36 @@ CIQPuzzle::CIQPuzzle(QApplication *pApp, QWidget *pParent)
 
     this->setupMenu();
 
-    // Create board
+    // Setup scene
+    QString sTmpValue = m_pConfig->value("BGColor", "255,255,255").toString();
+    if (sTmpValue.count(',') < 2) {
+        sTmpValue = "255,255,255";
+    }
+    QStringList sListVector;
+    sListVector << sTmpValue.split(",");
+    QColor tmpColor;
+    if (sListVector.size() >= 3) {
+        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
+                        sListVector[1].trimmed().toShort(),
+                        sListVector[2].trimmed().toShort());
+    }
     m_pGraphView = new QGraphicsView(this);
     this->setCentralWidget(m_pGraphView);
     m_pScene = new QGraphicsScene(this);
+    m_pScene->setBackgroundBrush(QBrush(QColor(tmpColor)));
     m_pGraphView->setScene(m_pScene);
-    this->setupBoard();
 
     this->startNewGame();
-
-    qDebug() << "Leave" << Q_FUNC_INFO;
 }
 
 CIQPuzzle::~CIQPuzzle() {
-    if (m_pUi != NULL) {
-        delete m_pUi;
-    }
-    m_pUi = NULL;
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setupMenu() {
-    qDebug() << "Enter" << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
 
     // New game
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
@@ -95,15 +113,46 @@ void CIQPuzzle::setupMenu() {
     // About
     connect(m_pUi->action_Info, SIGNAL(triggered()),
             this, SLOT(showInfoBox()));
+}
 
-    qDebug() << "Leave" << Q_FUNC_INFO;
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::startNewGame() {
+    qDebug() << Q_FUNC_INFO;
+
+    // Clear all objects
+    m_pScene->clear();
+
+    // Create board and blocks
+    this->setupBoard();
+    this->setupBlocks();
+
+    // Insert blocks on board
+    foreach (CBlock *pB, m_listBlocks) {
+        m_pScene->addItem(pB);
+    }
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setupBoard() {
-    qDebug() << "Enter" << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
+
+    // Get color
+    QString sTmpValue = m_pConfig->value("FinalRectColor", "0,0,0").toString();
+    if (sTmpValue.count(',') < 2) {
+        sTmpValue = "0,0,0";
+    }
+    QStringList sListVector;
+    sListVector << sTmpValue.split(",");
+    QColor tmpColor;
+    if (sListVector.size() >= 3) {
+        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
+                        sListVector[1].trimmed().toShort(),
+                        sListVector[2].trimmed().toShort());
+    }
 
     // Set main window (fixed) size
     const QSize WinSize(m_BoardSize.width() * m_nGridSize + 10 * m_nGridSize,
@@ -114,33 +163,45 @@ void CIQPuzzle::setupBoard() {
 
     QRectF rectBoard(QPoint(0, 0), QSizeF(m_BoardSize.width()*m_nGridSize,
                                          m_BoardSize.height()*m_nGridSize));
-    m_pScene->addRect(rectBoard);
+    QPen tmpPen(tmpColor);
+    m_pScene->addRect(rectBoard, tmpPen);
     m_pGraphView->setSceneRect(rectBoard);
 
     // Draw grid
+    // Get color
+    sTmpValue = m_pConfig->value("GridColor", "220,220,220").toString();
+    if (sTmpValue.count(',') < 2) {
+        sTmpValue = "220,220,220";
+    }
+    sListVector.clear();
+    sListVector << sTmpValue.split(",");
+    if (sListVector.size() >= 3) {
+        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
+                        sListVector[1].trimmed().toShort(),
+                        sListVector[2].trimmed().toShort());
+    }
+
     QLineF lineGrid;
-    QPen gridPen(QColor(220, 220, 220));
+    tmpPen.setColor(tmpColor);
     // Horizontal
     for (int i = 1; i < m_BoardSize.height(); i++) {
         lineGrid.setLine(1, i*m_nGridSize,
                          m_BoardSize.width()*m_nGridSize-1, i*m_nGridSize);
-        m_pScene->addLine(lineGrid, gridPen);
+        m_pScene->addLine(lineGrid, tmpPen);
     }
     // Vertical
     for (int i = 1; i < m_BoardSize.width(); i++) {
         lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
                          m_BoardSize.height()*m_nGridSize-1);
-        m_pScene->addLine(lineGrid, gridPen);
+        m_pScene->addLine(lineGrid, tmpPen);
     }
-
-    qDebug() << "Leave" << Q_FUNC_INFO;
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setupBlocks() {
-    qDebug() << "Enter" << Q_FUNC_INFO;
+    qDebug() << Q_FUNC_INFO;
 
     QPolygonF tmpPolygon;
     QColor tmpColor;
@@ -218,27 +279,6 @@ void CIQPuzzle::setupBlocks() {
                                        tmpColor, i, &m_listBlocks, tmpPoint));
         m_pConfig->endGroup();
     }
-
-    qDebug() << "Leave" << Q_FUNC_INFO;
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CIQPuzzle::startNewGame() {
-    // Delete existing all existing QGraphicItems in scene
-    QList<QGraphicsItem *> list = m_pScene->items();
-    qDeleteAll(list);
-    m_listBlocks.clear();
-
-    // Create board and blocks
-    this->setupBoard();
-    this->setupBlocks();
-
-    // Insert blocks on board again
-    foreach (CBlock *pB, m_listBlocks) {
-        m_pScene->addItem(pB);
-    }
 }
 
 // ---------------------------------------------------------------------------
@@ -255,30 +295,31 @@ void CIQPuzzle::zoomOut() {
     } else {
         m_nGridSize = 5;
     }
-
     doZoom();
 }
 
-void CIQPuzzle::doZoom() {
-    // Get all QGraphicItems in scene
-    QList<QGraphicsItem *> list = m_pScene->items();
-    QList<QGraphicsItem *> list2;
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-    // Filter out blocks from object list
-    foreach (QGraphicsItem* gi, list) {
+void CIQPuzzle::doZoom() {
+    qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
+
+    // Get all QGraphicItems in scene
+    QList<QGraphicsItem *> objList = m_pScene->items();
+
+    // Remove objects from scene which are no blocks
+    foreach (QGraphicsItem* gi, objList) {
         if (gi->type() != CBlock::Type) {
-            list2.append(gi);
+            m_pScene->removeItem(gi);
         }
     }
-    // Remove everything except blocks
-    qDeleteAll(list2);
 
     // Rescale blocks
     foreach (CBlock *pB, m_listBlocks) {
         pB->rescaleBlock(m_nGridSize);
     }
 
-    // Create board again
+    // Draw resized board again
     this->setupBoard();
 }
 
@@ -321,9 +362,11 @@ void CIQPuzzle::showControlsBox() {
 
 void CIQPuzzle::showInfoBox() {
     QMessageBox::about(this, tr("About"),
-                       tr("<center><big><b>%1 %2</b></big><br/>"
+                       tr("<center>"
+                          "<big><b>%1 %2</b></big><br/>"
                           "A diverting I.Q. challenging puzzle<br/>"
-                          "<small>Copyright &copy; 2012 Thorsten Roth</small></center>")
+                          "<small>Copyright &copy; 2012 Thorsten Roth</small>"
+                          "</center>")
                        .arg(m_pApp->applicationName())
                        .arg(m_pApp->applicationVersion()));
 }
@@ -336,7 +379,8 @@ void CIQPuzzle::closeEvent(QCloseEvent *pEvent) {
     pEvent->accept();
 
     /*
-    int nRet = QMessageBox::question(this, tr("Quit") + " - " + m_pApp->applicationName(),
+    int nRet = QMessageBox::question(this, tr("Quit") + " - " +
+                                     m_pApp->applicationName(),
                                      tr("Do you really want to quit?"),
                                      QMessageBox::Yes | QMessageBox::No);
 
