@@ -364,8 +364,8 @@ void CIQPuzzle::showInfoBox() {
     QMessageBox::about(this, tr("About"),
                        tr("<center>"
                           "<big><b>%1 %2</b></big><br/>"
-                          "A diverting I.Q. challenging puzzle<br/>"
-                          "<small>Copyright &copy; 2012 Thorsten Roth</small>"
+                          "<small>A diverting I.Q. challenging pentomino puzzle</small>"
+                          "<br />Copyright &copy; 2012 Thorsten Roth"
                           "</center>")
                        .arg(m_pApp->applicationName())
                        .arg(m_pApp->applicationVersion()));

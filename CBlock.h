@@ -38,10 +38,10 @@ class CBlock : public QGraphicsItem {
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
-    QPolygonF getPolygon() const;
-    QPointF getPosition() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
+
+    QPolygonF getRealShape() const;
 
     void setNewZValue(qint16 nZ);
     void rescaleBlock(quint16 nNewScale);
@@ -58,7 +58,7 @@ class CBlock : public QGraphicsItem {
   private:
     QPointF snapToGrid(const QPointF point) const;
 
-    QPolygonF m_PolyShape;
+    QPolygonF m_BaseShape;
     QGraphicsSimpleTextItem m_ItemNumberText;
     quint16 m_nGridScale;
     const quint16 m_nAlpha;

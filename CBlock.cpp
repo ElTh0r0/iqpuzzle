@@ -28,7 +28,7 @@ extern bool bDEBUG;
 CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
                quint16 nID, QList<CBlock *> *pListBlocks,
                QPointF posTopLeft)
-    : m_PolyShape(shape),
+    : m_BaseShape(shape),
       m_nGridScale(nScale),
       m_nAlpha(100),
       m_bgColor(color),
@@ -37,7 +37,7 @@ CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
       m_pointTopLeft(posTopLeft * nScale) {
     qDebug() << "Creating BLOCK" << m_nCurrentInst <<
                 "\tPosition:" << m_pointTopLeft <<
-                "\tClosed shape:" << m_PolyShape.isClosed();
+                "\tClosed shape:" << m_BaseShape.isClosed();
 
     m_bPressed = false;
     this->setFlag(ItemIsMovable);
@@ -53,12 +53,12 @@ CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
 // ---------------------------------------------------------------------------
 
 QRectF CBlock::boundingRect() const {
-    return m_PolyShape.boundingRect();
+    return m_BaseShape.boundingRect();
 }
 
 QPainterPath CBlock::shape() const {
     QPainterPath path;
-    path.addPolygon(m_PolyShape);
+    path.addPolygon(m_BaseShape);
     return path;
 }
 
@@ -82,9 +82,9 @@ void CBlock::paint(QPainter *painter,
     }
 
     QPainterPath tmpPath;
-    tmpPath.addPolygon(m_PolyShape);
+    tmpPath.addPolygon(m_BaseShape);
     painter->fillPath(tmpPath, brush);
-    painter->drawPolygon(m_PolyShape);
+    painter->drawPolygon(m_BaseShape);
 
     // Adding block ID for debugging
     if (bDEBUG) {
@@ -160,42 +160,18 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 
         unsigned short nCnt = 0;
 
-        /*
-        QList<QGraphicsItem *> collidingGraphItems = this->collidingItems();
 
-        // Filter colliding objects for CBlocks
-        foreach (QGraphicsItem* gi, collidingGraphItems) {
-            if (gi->type() == this->Type) {
-                QPainterPath test = this->shape().intersected(shape());
-
-                if (!test.isEmpty()) {
-                    nCnt++;
-                    qDebug() << test;
-                }
-            }
-        }
-        */
-
-
-
-        QPolygonF thisPoly = m_PolyShape;
-        thisPoly.translate(this->pos());
-        QPolygonF collidingPoly;
-        QPolygonF tmpPoly;
+        QPolygonF intersectPoly;
         foreach (CBlock *block, *m_pListBlocks) {
             if (block->getIndex() != m_nCurrentInst) {
-                if (this->collidesWithItem(block))
-                {
-                    collidingPoly = block->getPolygon();
-                    collidingPoly.translate(block->getPosition());
-
-                    qDebug() << thisPoly << "\n" << collidingPoly;
-                    tmpPoly = thisPoly.intersected(collidingPoly);
-                    qDebug() << "Col:" << block->getIndex() << "  Interpoly:" <<
-                                tmpPoly <<
-                                "  Pos:" << tmpPoly.boundingRect().x() << "," <<
-                                tmpPoly.boundingRect().y();
-                    nCnt++;
+                if (this->collidesWithItem(block)) {
+                    intersectPoly = this->getRealShape().intersected(block->getRealShape());
+                    if (intersectPoly.boundingRect().size().height() >= m_nGridScale
+                            && intersectPoly.boundingRect().size().width() >= m_nGridScale) {
+                        qDebug() << intersectPoly;
+                        nCnt++;
+                        this->setPos(this->snapToGrid(m_posBlockSelected));
+                    }
                 }
             }
         }
@@ -258,11 +234,13 @@ quint16 CBlock::getIndex() const {
     return m_nCurrentInst;
 }
 
-QPolygonF CBlock::getPolygon() const {
-    return m_PolyShape;
-}
+QPolygonF CBlock::getRealShape() const {
+    QTransform tmpTransf;
+    QPolygonF tmpRealShape = QPolygonF(m_BaseShape);
 
-QPointF CBlock::getPosition() const {
-    return this->pos();
-}
+    tmpTransf = tmpTransf.scale(m_nGridScale, m_nGridScale);
+    tmpRealShape = tmpTransf.map(tmpRealShape);
+    tmpRealShape.translate(this->pos());
 
+    return tmpRealShape;
+}
