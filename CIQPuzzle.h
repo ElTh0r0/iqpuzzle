@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2014 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -21,16 +21,15 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IQPUZZLE_CIQPUZZLE_H_
-#define _IQPUZZLE_CIQPUZZLE_H_
+#ifndef IQPUZZLE_CIQPUZZLE_H_
+#define IQPUZZLE_CIQPUZZLE_H_
 
-#include <QMainWindow>
 #include <QtCore>
+#include <QGraphicsView>
 #include <QtGui>
+#include <QMainWindow>
 
 #include "./CBlock.h"
-
-#define sVERSION "0.2.0"
 
 namespace Ui {
     class CIQPuzzle;
@@ -40,7 +39,7 @@ class CIQPuzzle : public QMainWindow {
     Q_OBJECT
 
   public:
-    explicit CIQPuzzle(QApplication *pApp, QWidget *pParent = 0);
+    explicit CIQPuzzle(QWidget *pParent = 0);
     ~CIQPuzzle();
 
   protected:
@@ -61,7 +60,6 @@ class CIQPuzzle : public QMainWindow {
     void doZoom();
 
     Ui::CIQPuzzle *m_pUi;
-    QApplication *m_pApp;
     QSettings *m_pConfig;
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
@@ -72,4 +70,4 @@ class CIQPuzzle : public QMainWindow {
     QList<CBlock *> m_listBlocks;
 };
 
-#endif  // _IQPUZZLE_CIQPUZZLE_H_
+#endif  // IQPUZZLE_CIQPUZZLE_H_

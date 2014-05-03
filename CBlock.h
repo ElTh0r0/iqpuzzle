@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2014 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -21,14 +21,14 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _IQPUZZLE_CBLOCK_H_
-#define _IQPUZZLE_CBLOCK_H_
+#ifndef IQPUZZLE_CBLOCK_H_
+#define IQPUZZLE_CBLOCK_H_
 
-#include <QPainter>
+#include <QDebug>
 #include <QGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
-#include <QDebug>
+#include <QPainter>
 
 class CBlock : public QGraphicsItem {
   public:
@@ -38,10 +38,9 @@ class CBlock : public QGraphicsItem {
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
+    QPointF getPosition() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
-
-    QPolygonF getRealShape() const;
 
     void setNewZValue(qint16 nZ);
     void rescaleBlock(quint16 nNewScale);
@@ -58,7 +57,7 @@ class CBlock : public QGraphicsItem {
   private:
     QPointF snapToGrid(const QPointF point) const;
 
-    QPolygonF m_BaseShape;
+    QPolygonF m_PolyShape;
     QGraphicsSimpleTextItem m_ItemNumberText;
     quint16 m_nGridScale;
     const quint16 m_nAlpha;
@@ -73,4 +72,4 @@ class CBlock : public QGraphicsItem {
     bool m_bPressed;
 };
 
-#endif  // _IQPUZZLE_CBLOCK_H_
+#endif  // IQPUZZLE_CBLOCK_H_

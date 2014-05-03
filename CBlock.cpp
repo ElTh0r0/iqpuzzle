@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2014 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -28,7 +28,7 @@ extern bool bDEBUG;
 CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
                quint16 nID, QList<CBlock *> *pListBlocks,
                QPointF posTopLeft)
-    : m_BaseShape(shape),
+    : m_PolyShape(shape),
       m_nGridScale(nScale),
       m_nAlpha(100),
       m_bgColor(color),
@@ -36,8 +36,11 @@ CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
       m_pListBlocks(pListBlocks),
       m_pointTopLeft(posTopLeft * nScale) {
     qDebug() << "Creating BLOCK" << m_nCurrentInst <<
-                "\tPosition:" << m_pointTopLeft <<
-                "\tClosed shape:" << m_BaseShape.isClosed();
+                "\tPosition:" << m_pointTopLeft;
+
+    if (!m_PolyShape.isClosed()) {
+        qWarning() << "Shape" << m_nCurrentInst << "is not closed";
+    }
 
     m_bPressed = false;
     this->setFlag(ItemIsMovable);
@@ -53,12 +56,12 @@ CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
 // ---------------------------------------------------------------------------
 
 QRectF CBlock::boundingRect() const {
-    return m_BaseShape.boundingRect();
+    return m_PolyShape.boundingRect();
 }
 
 QPainterPath CBlock::shape() const {
     QPainterPath path;
-    path.addPolygon(m_BaseShape);
+    path.addPolygon(m_PolyShape);
     return path;
 }
 
@@ -72,6 +75,8 @@ void CBlock::paint(QPainter *painter,
     Q_UNUSED(widget);
 
     QBrush brush(m_bgColor);
+    QPen pen(QColor(Qt::black));
+    pen.setWidth(1/m_nGridScale);
 
     if (m_bPressed) {
         m_bgColor.setAlpha(m_nAlpha);
@@ -82,9 +87,10 @@ void CBlock::paint(QPainter *painter,
     }
 
     QPainterPath tmpPath;
-    tmpPath.addPolygon(m_BaseShape);
+    tmpPath.addPolygon(m_PolyShape);
     painter->fillPath(tmpPath, brush);
-    painter->drawPolygon(m_BaseShape);
+    painter->setPen(pen);
+    painter->drawPolygon(m_PolyShape);
 
     // Adding block ID for debugging
     if (bDEBUG) {
@@ -111,8 +117,7 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         m_posBlockSelected = this->pos();  // Save last position
     } else if (p_Event->button() == Qt::RightButton) {
         this->prepareGeometryChange();
-        this->setTransformOriginPoint(this->snapToGrid(this->boundingRect().center()));
-        this->scale(-1, 1);
+        this-> setTransform(QTransform::fromScale(-1, 1), true);
     }
 
     update();
@@ -125,9 +130,6 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
     // Vertical mouse wheel
     if (p_Event->orientation() == Qt::Vertical) {
-        // Set new origin for transformation
-        this->setTransformOriginPoint(this->snapToGrid(this->boundingRect().center()));
-
         if (p_Event->delta() < 0) {
             m_nRotation = this->rotation() + 90;
             if (m_nRotation >= 360) {
@@ -139,7 +141,6 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
                 m_nRotation = 270;
             }
         }
-
         this->prepareGeometryChange();
         this->setRotation(m_nRotation);
     }
@@ -158,20 +159,28 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 
         this->setPos(this->snapToGrid(this->pos()));
 
-        unsigned short nCnt = 0;
+        quint16 nCnt = 0;
 
-
-        QPolygonF intersectPoly;
+        QPainterPath thisPath = this->shape();
+        thisPath.translate(QPointF(this->pos().x() / m_nGridScale,
+                                  this->pos().y() / m_nGridScale));
+        QPainterPath collidingPath;
+        QPainterPath intersectedPath;
         foreach (CBlock *block, *m_pListBlocks) {
             if (block->getIndex() != m_nCurrentInst) {
                 if (this->collidesWithItem(block)) {
-                    intersectPoly = this->getRealShape().intersected(block->getRealShape());
-                    if (intersectPoly.boundingRect().size().height() >= m_nGridScale
-                            && intersectPoly.boundingRect().size().width() >= m_nGridScale) {
-                        qDebug() << intersectPoly;
-                        nCnt++;
-                        this->setPos(this->snapToGrid(m_posBlockSelected));
-                    }
+                    collidingPath = block->shape();
+                    collidingPath.translate(QPointF(block->pos().x() / m_nGridScale,
+                                                    block->pos().y() / m_nGridScale));
+
+                    // qDebug() << "SHAPE 1:" << tmpPath << "SHAPE 2:" << otherPath;
+                    intersectedPath = thisPath.intersected(collidingPath);
+
+                    qDebug() << "Col" << m_nCurrentInst << "with" << block->getIndex()
+                             << "Size" << intersectedPath.boundingRect().size();
+                    qDebug() << "Intersection:" << intersectedPath;
+
+                    nCnt++;
                 }
             }
         }
@@ -179,11 +188,8 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
         qDebug() << "COLLISIONS:" << nCnt;
     }
 
-
     update();
     QGraphicsItem::mouseReleaseEvent(p_Event);
-
-    //qDebug() << "Top Left BLOCK" << m_nCurrentInst << "  " << this->pos();
 }
 
 // ---------------------------------------------------------------------------
@@ -234,13 +240,6 @@ quint16 CBlock::getIndex() const {
     return m_nCurrentInst;
 }
 
-QPolygonF CBlock::getRealShape() const {
-    QTransform tmpTransf;
-    QPolygonF tmpRealShape = QPolygonF(m_BaseShape);
-
-    tmpTransf = tmpTransf.scale(m_nGridScale, m_nGridScale);
-    tmpRealShape = tmpTransf.map(tmpRealShape);
-    tmpRealShape.translate(this->pos());
-
-    return tmpRealShape;
+QPointF CBlock::getPosition() const {
+    return this->pos();
 }

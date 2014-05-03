@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2014 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -21,7 +21,9 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtGui/QApplication>
+#include <QApplication>
+
+#include <iostream>
 #include <fstream>
 
 #include "./CIQPuzzle.h"
@@ -31,18 +33,38 @@ std::ofstream logfile;
 void setupLogger(const QString &sDebugFilePath,
                  const QString &sAppName,
                  const QString &sVersion);
-void LoggingHandler(QtMsgType type, const char *sMsg);
+
+#if QT_VERSION >= 0x050000
+    void LoggingHandler(QtMsgType type,
+                        const QMessageLogContext &context,
+                        const QString &sMsg);
+#else
+    void LoggingHandler(QtMsgType type, const char *sMsg);
+#endif
+
+// Don't change this value! Use "--debug" command line option instead.
+bool bDEBUG = false;
 
 int main(int argc, char *argv[]) {
     Q_INIT_RESOURCE(iqpuzzle_resources);
 
     QApplication app(argc, argv);
-    app.setApplicationName("iQPuzzle");
-    app.setApplicationVersion(sVERSION);
+    app.setApplicationName(APP_NAME);
+    app.setApplicationVersion(APP_VERSION);
 
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
+    if (app.arguments().size() >= 2) {
+        if (app.arguments().contains("-v")
+                || app.arguments().contains("--version")) {
+            std::cout << app.arguments()[0].toStdString() << "\t v"
+                      << app.applicationVersion().toStdString() << std::endl;
+            exit(0);
+        } else if (app.arguments().contains("--debug")) {
+            qWarning() << "Debugging enabled!";
+            bDEBUG = true;
+        }
+    }
+
+    // TODO: Add translation
 
     /*
     const QString sDebugFile("Debug.log");
@@ -50,7 +72,7 @@ int main(int argc, char *argv[]) {
                 app.applicationName(), app.applicationVersion());
     */
 
-    CIQPuzzle myIQPuzzle(&app);
+    CIQPuzzle myIQPuzzle;
     myIQPuzzle.show();
     int nRet = app.exec();
 
@@ -71,36 +93,53 @@ void setupLogger(const QString &sDebugFilePath,
 
     // Create new file
     logfile.open(sDebugFilePath.toStdString().c_str(), std::ios::app);
+#if QT_VERSION >= 0x050000
+    qInstallMessageHandler(LoggingHandler);
+    // qInstallMessageHandler(0);
+#else
     qInstallMsgHandler(LoggingHandler);
+#endif
     qDebug() << sAppName << sVersion;
     qDebug() << "Compiled with Qt" << QT_VERSION_STR;
     qDebug() << "Qt runtime" <<  qVersion();
 }
 
 // ----------------------------------------------------------------------------
-// Source: http://www.developer.nokia.com/Community/Wiki/File_based_logging_in_Qt_for_debugging
+// ----------------------------------------------------------------------------
 
+#if QT_VERSION >= 0x050000
+void LoggingHandler(QtMsgType type,
+                    const QMessageLogContext &context,
+                    const QString &sMsg) {
+    QString sMsg2(sMsg);
+    QString sContext = sMsg + " (" +
+            QString(context.file) + ":" +
+            QString::number(context.line) + ", " +
+            QString(context.function) + ")";
+#else
 void LoggingHandler(QtMsgType type, const char *sMsg) {
+    QString sMsg2(sMsg);
+    QString sContext(sMsg);
+#endif
+    char* sTime(QTime::currentTime().toString().toLatin1().data());
+
     switch (type) {
-        case QtDebugMsg:
-            logfile << QTime::currentTime().toString().toAscii().data() <<
-                       " Debug: " << sMsg << "\n";
-            logfile.flush();
-            break;
-        case QtCriticalMsg:
-            logfile << QTime::currentTime().toString().toAscii().data() <<
-                       " Critical: " << sMsg << "\n";
-            logfile.flush();
-            break;
-        case QtWarningMsg:
-            logfile << QTime::currentTime().toString().toAscii().data() <<
-                       " Warning: " << sMsg << "\n";
-            logfile.flush();
-            break;
-        case QtFatalMsg:
-            logfile << QTime::currentTime().toString().toAscii().data() <<
-                       " Fatal: " << sMsg << "\n";
-            logfile.flush();
-            logfile.close();
+    case QtDebugMsg:
+        logfile << sTime << " Debug: " << sMsg2.toStdString().c_str() << "\n";
+        logfile.flush();
+        break;
+    case QtWarningMsg:
+        logfile << sTime << " Warning: " << sContext.toStdString().c_str() << "\n";
+        logfile.flush();
+        break;
+    case QtCriticalMsg:
+        logfile << sTime << " Critical: " << sContext.toStdString().c_str() << "\n";
+        logfile.flush();
+        break;
+    case QtFatalMsg:
+        logfile << sTime << " Fatal: " << sContext.toStdString().c_str() << "\n";
+        logfile.flush();
+        logfile.close();
+        abort();
     }
 }

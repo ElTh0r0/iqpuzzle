@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2014 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -21,32 +21,34 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QApplication>
+#include <QDialogButtonBox>
+#include <QGridLayout>
+#include <QLabel>
+#include <QMessageBox>
+
 #include "./CIQPuzzle.h"
 #include "ui_CIQPuzzle.h"
 
-// Don't change this value! Use "--debug" command line option instead.
-bool bDEBUG = false;
+extern bool bDEBUG;
 
-CIQPuzzle::CIQPuzzle(QApplication *pApp, QWidget *pParent)
+CIQPuzzle::CIQPuzzle(QWidget *pParent)
     : QMainWindow(pParent),
-      m_pUi(new Ui::CIQPuzzle),
-      m_pApp(pApp) {
+      m_pUi(new Ui::CIQPuzzle) {
     qDebug() << Q_FUNC_INFO;
 
-    // Check for command line arguments
-    if (m_pApp->argc() >= 2)     {
-        QString sTmp = m_pApp->argv()[1];
+    // TODO: Possibility for choosing level file via command line
+    // Check for command line arguments (check if debug is enabled!)
 
-        if ("--debug" == sTmp) {
-            bDEBUG = true;
-        }
-    }
-
+    // TODO: Create load dialog for choosing level
     // Init config file
     QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope,
-                       m_pApp->applicationDirPath());
+                       qApp->applicationDirPath());
     m_pConfig = new QSettings(QSettings::NativeFormat, QSettings::UserScope,
-                              m_pApp->applicationName());
+                              qApp->applicationName().toLower());
+    if (!QFile::exists(m_pConfig->fileName())) {
+        qFatal("Config file not found!");
+    }
 
     m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
     m_BoardSize.setWidth(m_pConfig->value("BoardWidth", 8).toUInt());
@@ -269,9 +271,7 @@ void CIQPuzzle::setupBlocks() {
             tmpPoint.setX(0);
             tmpPoint.setY(0);
 
-            /* ToDo:
-             * Set random rotation
-             */
+            // TODO: Set random rotation
         }
 
         // Create new block
@@ -328,7 +328,7 @@ void CIQPuzzle::doZoom() {
 
 void CIQPuzzle::showControlsBox() {
     QDialog dialog(this);
-    dialog.setWindowTitle(tr("Controls"));
+    dialog.setWindowTitle(trUtf8("Controls"));
 
     QGridLayout* layout = new QGridLayout(&dialog);
     layout->setMargin(12);
@@ -336,17 +336,17 @@ void CIQPuzzle::showControlsBox() {
     layout->setColumnMinimumWidth(1, 2);
     layout->setRowMinimumHeight(3, 12);
 
-    layout->addWidget(new QLabel(tr("<b>Move block:</b>"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("<b>Move block:</b>"), &dialog),
                       0, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(tr("Drag & drop with left mouse button"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("Drag & drop with left mouse button"), &dialog),
                       0, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(tr("<b>Rotate block:</b>"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("<b>Rotate block:</b>"), &dialog),
                       1, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(tr("Mousewheel up/down on block"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("Mousewheel up/down on block"), &dialog),
                       1, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(tr("<b>Flip block:</b>"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("<b>Flip block:</b>"), &dialog),
                       2, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(tr("Right click on block"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("Right click on block"), &dialog),
                       2, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
     QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
@@ -359,16 +359,19 @@ void CIQPuzzle::showControlsBox() {
 }
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 void CIQPuzzle::showInfoBox() {
-    QMessageBox::about(this, tr("About"),
-                       tr("<center>"
-                          "<big><b>%1 %2</b></big><br/>"
-                          "<small>A diverting I.Q. challenging pentomino puzzle</small>"
-                          "<br />Copyright &copy; 2012 Thorsten Roth"
-                          "</center>")
-                       .arg(m_pApp->applicationName())
-                       .arg(m_pApp->applicationVersion()));
+    QMessageBox::about(this, trUtf8("About"),
+                       trUtf8("<center>"
+                              "<big><b>%1 %2</b></big><br/>"
+                              "%3<br/>"
+                              "<small>%4</small>"
+                              "</center>")
+                       .arg(qApp->applicationName())
+                       .arg(qApp->applicationVersion())
+                       .arg(APP_DESC)
+                       .arg(APP_COPY));
 }
 
 // ---------------------------------------------------------------------------
@@ -379,9 +382,9 @@ void CIQPuzzle::closeEvent(QCloseEvent *pEvent) {
     pEvent->accept();
 
     /*
-    int nRet = QMessageBox::question(this, tr("Quit") + " - " +
-                                     m_pApp->applicationName(),
-                                     tr("Do you really want to quit?"),
+    int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +
+                                     qApp->applicationName(),
+                                     trUtf8("Do you really want to quit?"),
                                      QMessageBox::Yes | QMessageBox::No);
 
     if (QMessageBox::Yes == nRet) {
