@@ -58,13 +58,13 @@ class CBlock : public QGraphicsItem {
     QPointF snapToGrid(const QPointF point) const;
 
     QPolygonF m_PolyShape;
+    QTransform *m_pTransform;
     QGraphicsSimpleTextItem m_ItemNumberText;
     quint16 m_nGridScale;
     const quint16 m_nAlpha;
     QColor m_bgColor;
     quint16 m_nCurrentInst;
     QList<CBlock *> *m_pListBlocks;
-    qint16 m_nRotation;
 
     QPointF m_pointTopLeft;
     QPointF m_posBlockSelected;
