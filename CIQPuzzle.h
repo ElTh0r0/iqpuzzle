@@ -65,7 +65,7 @@ class CIQPuzzle : public QMainWindow {
     QGraphicsScene *m_pScene;
 
     quint16 m_nGridSize;
-    QSize m_BoardSize;
+    QPolygonF m_BoardPolygon;
 
     QList<CBlock *> m_listBlocks;
 };

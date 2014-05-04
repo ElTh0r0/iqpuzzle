@@ -1,12 +1,13 @@
 [General]
 GridSize=25
-BoardWidth=8
-BoardHeight=8
 BGColor="238, 238, 238"
-GridColor="136, 138, 133"
-FinalRectColor="46, 52, 54"
 NumOfBlocks=8
 
+[Board]
+Polygon="0,0 | 8,0 | 8,8 | 0,8 | 0,0"
+Color="255, 255, 255"
+BorderColor="46, 52, 54"
+GridColor="136, 138, 133"
 
 ##  X X
 ##  X X X
@@ -14,6 +15,7 @@ NumOfBlocks=8
 [Block1]
 Polygon="0,0 | 2,0 | 2,1 | 3,1 | 3,3 | 0,3 | 0,0"
 Color="164, 0, 0"
+BorderColor="0, 0, 0"
 StartPos="0,-4"
 
 ##  X X
@@ -23,6 +25,7 @@ StartPos="0,-4"
 [Block2]
 Polygon="0,0 | 2,0 | 2,4 | 0,4 | 0,0"
 Color="117, 80, 123"
+BorderColor="0, 0, 0"
 StartPos="-4,-4"
 
 ##  X X
@@ -31,6 +34,7 @@ StartPos="-4,-4"
 [Block3]
 Polygon="0,0 | 2,0 | 2,1 | 4,1 | 4,3 | 2,3 | 2,2 | 0,2 | 0,0"
 Color="52, 101, 164"
+BorderColor="0, 0, 0"
 StartPos="7,-4"
 
 ##  X X X
@@ -40,6 +44,7 @@ StartPos="7,-4"
 [Block4]
 Polygon="0,0 | 3,0 | 3,4 | 0,4 | 0,3 | 2,3 | 2,1 | 0,1 | 0,0"
 Color="115, 210, 22"
+BorderColor="0, 0, 0"
 StartPos="-4,1"
 
 ##  X X X
@@ -49,6 +54,7 @@ StartPos="-4,1"
 [Block5]
 Polygon="0,0 | 3,0 | 3,2 | 1,2 | 1,4 | 0,4 | 0,0"
 Color="233, 185, 110"
+BorderColor="0, 0, 0"
 StartPos="-4,7"
 
 ##  X X X X X
@@ -56,6 +62,7 @@ StartPos="-4,7"
 [Block6]
 Polygon="0,0 | 5,0 | 5,1 | 3,1 | 3,2 | 0,2 | 0,0"
 Color="143, 89, 2"
+BorderColor="0, 0, 0"
 StartPos="0,9"
 
 ##  X X
@@ -64,6 +71,7 @@ StartPos="0,9"
 [Block7]
 Polygon="0,0 | 2,0 | 2,1 | 4,1 | 4,2 | 2,2 | 2,3 | 0,3 | 0,0"
 Color="206, 92, 0"
+BorderColor="0, 0, 0"
 StartPos="7,9"
 
 ##  X
@@ -73,4 +81,5 @@ StartPos="7,9"
 [Block8]
 Polygon="0,0 | 1,0 | 1,1 | 3,1 | 3,2 | 3,3 | 1,3 | 1,4 | 0,4 | 0,0"
 Color="252, 175, 62"
+BorderColor="0, 0, 0"
 StartPos="9,4"

@@ -41,6 +41,7 @@ CIQPuzzle::CIQPuzzle(QWidget *pParent)
     // Check for command line arguments (check if debug is enabled!)
 
     // TODO: Create load dialog for choosing level
+    // TODO: Create board/level class. Read Polygon function etc.
     // Init config file
     QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope,
                        qApp->applicationDirPath());
@@ -49,10 +50,6 @@ CIQPuzzle::CIQPuzzle(QWidget *pParent)
     if (!QFile::exists(m_pConfig->fileName())) {
         qFatal("Config file not found!");
     }
-
-    m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
-    m_BoardSize.setWidth(m_pConfig->value("BoardWidth", 8).toUInt());
-    m_BoardSize.setHeight(m_pConfig->value("BoardHeight", 8).toUInt());
 
     m_pUi->setupUi(this);
 
@@ -126,6 +123,8 @@ void CIQPuzzle::startNewGame() {
     // Clear all objects
     m_pScene->clear();
 
+    m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
+
     // Create board and blocks
     this->setupBoard();
     this->setupBlocks();
@@ -143,11 +142,12 @@ void CIQPuzzle::setupBoard() {
     qDebug() << Q_FUNC_INFO;
 
     // Get color
-    QString sTmpValue = m_pConfig->value("FinalRectColor", "0,0,0").toString();
+    QString sTmpValue = m_pConfig->value("Board/BorderColor", "0,0,0").toString();
     if (sTmpValue.count(',') < 2) {
         sTmpValue = "0,0,0";
     }
     QStringList sListVector;
+    QStringList sListPoint;
     sListVector << sTmpValue.split(",");
     QColor tmpColor;
     if (sListVector.size() >= 3) {
@@ -156,22 +156,49 @@ void CIQPuzzle::setupBoard() {
                         sListVector[2].trimmed().toShort());
     }
 
+    // Get color
+    sTmpValue = m_pConfig->value("Board/Color", "238,238,238").toString();
+    if (sTmpValue.count(',') < 2) {
+        sTmpValue = "255,255,255";
+    }
+    sListVector.clear();
+    sListVector << sTmpValue.split(",");
+    QColor tmpColor2;
+    if (sListVector.size() >= 3) {
+        tmpColor2.setRgb(sListVector[0].trimmed().toShort(),
+                         sListVector[1].trimmed().toShort(),
+                         sListVector[2].trimmed().toShort());
+    }
+
+    sTmpValue = m_pConfig->value("Board/Polygon", "").toString();
+    // Get polygon
+    m_BoardPolygon.clear();
+    sListVector.clear();
+    sListVector << sTmpValue.split("|");
+    foreach (QString s, sListVector) {
+        sListPoint.clear();
+        sListPoint << s.split(",");
+        if (sListPoint.size() >= 2) {
+            m_BoardPolygon << QPointF(sListPoint[0].trimmed().toShort() * m_nGridSize,
+                                      sListPoint[1].trimmed().toShort() * m_nGridSize);
+        }
+    }
+
+    QPen tmpPen(tmpColor);
+    QBrush tmpBrush(tmpColor2);
+    m_pScene->addPolygon(m_BoardPolygon, tmpPen, tmpBrush);
+    m_pGraphView->setSceneRect(m_BoardPolygon.boundingRect());
+
     // Set main window (fixed) size
-    const QSize WinSize(m_BoardSize.width() * m_nGridSize + 10 * m_nGridSize,
-                        m_BoardSize.height() * m_nGridSize + 10 * m_nGridSize);
+    const QSize WinSize(m_BoardPolygon.boundingRect().width() * 2.5,
+                        m_BoardPolygon.boundingRect().height() * 2.5);
 
     this->setMinimumSize(WinSize);
     // this->setMaximumSize(WinSize);
 
-    QRectF rectBoard(QPoint(0, 0), QSizeF(m_BoardSize.width()*m_nGridSize,
-                                         m_BoardSize.height()*m_nGridSize));
-    QPen tmpPen(tmpColor);
-    m_pScene->addRect(rectBoard, tmpPen);
-    m_pGraphView->setSceneRect(rectBoard);
-
     // Draw grid
     // Get color
-    sTmpValue = m_pConfig->value("GridColor", "220,220,220").toString();
+    sTmpValue = m_pConfig->value("Board/GridColor", "220,220,220").toString();
     if (sTmpValue.count(',') < 2) {
         sTmpValue = "220,220,220";
     }
@@ -186,15 +213,15 @@ void CIQPuzzle::setupBoard() {
     QLineF lineGrid;
     tmpPen.setColor(tmpColor);
     // Horizontal
-    for (int i = 1; i < m_BoardSize.height(); i++) {
+    for (int i = 1; i < m_BoardPolygon.boundingRect().height() / m_nGridSize; i++) {
         lineGrid.setLine(1, i*m_nGridSize,
-                         m_BoardSize.width()*m_nGridSize-1, i*m_nGridSize);
+                         m_BoardPolygon.boundingRect().width()-1, i*m_nGridSize);
         m_pScene->addLine(lineGrid, tmpPen);
     }
     // Vertical
-    for (int i = 1; i < m_BoardSize.width(); i++) {
+    for (int i = 1; i < m_BoardPolygon.boundingRect().width() / m_nGridSize; i++) {
         lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
-                         m_BoardSize.height()*m_nGridSize-1);
+                         m_BoardPolygon.boundingRect().height()-1);
         m_pScene->addLine(lineGrid, tmpPen);
     }
 }
@@ -207,6 +234,7 @@ void CIQPuzzle::setupBlocks() {
 
     QPolygonF tmpPolygon;
     QColor tmpColor;
+    QColor tmpColor2;
     QPointF tmpPoint;
 
     QString sTmpValue;
@@ -255,6 +283,19 @@ void CIQPuzzle::setupBlocks() {
                             sListVector[2].trimmed().toShort());
         }
 
+        // Get border color
+        sTmpValue = m_pConfig->value("BorderColor", "0,0,0").toString();
+        if (sTmpValue.count(',') < 2) {
+            sTmpValue = "200,200,200";
+        }
+        sListVector.clear();
+        sListVector << sTmpValue.split(",");
+        if (sListVector.size() >= 3) {
+            tmpColor2.setRgb(sListVector[0].trimmed().toShort(),
+                             sListVector[1].trimmed().toShort(),
+                             sListVector[2].trimmed().toShort());
+        }
+
         // Get start position
         if (i != nStartBlock) {
             sTmpValue = m_pConfig->value("StartPos", "-4,-4").toString();
@@ -275,8 +316,8 @@ void CIQPuzzle::setupBlocks() {
         }
 
         // Create new block
-        m_listBlocks.append(new CBlock(tmpPolygon, m_nGridSize,
-                                       tmpColor, i, &m_listBlocks, tmpPoint));
+        m_listBlocks.append(new CBlock(i, tmpPolygon, tmpColor, tmpColor2,
+                                       m_nGridSize, &m_listBlocks, tmpPoint));
         m_pConfig->endGroup();
     }
 }

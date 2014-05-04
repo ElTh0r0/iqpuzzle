@@ -25,33 +25,31 @@
 
 extern bool bDEBUG;
 
-CBlock::CBlock(QPolygonF shape, quint16 nScale, QColor color,
-               quint16 nID, QList<CBlock *> *pListBlocks,
-               QPointF posTopLeft)
-    : m_PolyShape(shape),
-      m_nGridScale(nScale),
-      m_nAlpha(100),
-      m_bgColor(color),
-      m_nCurrentInst(nID),
+CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
+               quint16 nGrid, QList<CBlock *> *pListBlocks, QPointF posTopLeft)
+    : m_nID(nID),
+      m_PolyShape(shape),
+      m_bgBrush(bgcolor),
+      m_borderPen(border),
+      m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
-      m_pointTopLeft(posTopLeft * nScale),
-      m_bPressed(false){
+      m_bMousePressed(false) {
     if (bDEBUG) {
-        qDebug() << "Creating BLOCK" << m_nCurrentInst <<
-                    "\tPosition:" << m_pointTopLeft;
+        qDebug() << "Creating BLOCK" << m_nID <<
+                    "\tPosition:" << posTopLeft * m_nGrid;
     }
 
     if (!m_PolyShape.isClosed()) {
-        qWarning() << "Shape" << m_nCurrentInst << "is not closed";
+        qWarning() << "Shape" << m_nID << "is not closed";
     }
 
     m_pTransform = new QTransform();
     this->setFlag(ItemIsMovable);
 
     // Scale object
-    this->setScale(m_nGridScale);
+    this->setScale(m_nGrid);
     // Move to start position
-    this->setPos(m_pointTopLeft);
+    this->setPos(posTopLeft * m_nGrid);
 }
 
 // ---------------------------------------------------------------------------
@@ -76,28 +74,24 @@ void CBlock::paint(QPainter *painter,
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
-    QBrush brush(m_bgColor);
-    QPen pen(QColor(Qt::black));
-    pen.setWidth(1/m_nGridScale);
+    m_borderPen.setWidth(1/m_nGrid);
 
-    if (m_bPressed) {
-        m_bgColor.setAlpha(m_nAlpha);
-        brush.setColor(m_bgColor);
+    if (m_bMousePressed) {
+        painter->setOpacity(0.4);
     } else {
-        m_bgColor.setAlpha(255);
-        brush.setColor(m_bgColor);
+        painter->setOpacity(1);
     }
 
     QPainterPath tmpPath;
     tmpPath.addPolygon(m_PolyShape);
-    painter->fillPath(tmpPath, brush);
-    painter->setPen(pen);
+    painter->fillPath(tmpPath, m_bgBrush);
+    painter->setPen(m_borderPen);
     painter->drawPolygon(m_PolyShape);
 
     // Adding block ID for debugging
     if (bDEBUG) {
         m_ItemNumberText.setFont(QFont("Arial", 1));
-        m_ItemNumberText.setText(QString::number(m_nCurrentInst));
+        m_ItemNumberText.setText(QString::number(m_nID));
         m_ItemNumberText.setPos(0.2, -1.1);
         m_ItemNumberText.setParentItem(this);
     }
@@ -108,7 +102,7 @@ void CBlock::paint(QPainter *painter,
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
     if (p_Event->button() == Qt::LeftButton) {  // Move
-        m_bPressed = true;
+        m_bMousePressed = true;
 
         // Bring current block to foreground and update Z values
         for (int i = 0; i < m_pListBlocks->size(); i++) {
@@ -117,15 +111,15 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         this->setZValue(m_pListBlocks->size() + 2);
 
         m_posBlockSelected = this->pos();  // Save last position
-    } else if (p_Event->button() == Qt::RightButton) {  // Mirror
+    } else if (p_Event->button() == Qt::RightButton) {  // Flip
         this->prepareGeometryChange();
-        // qDebug() << "Before mirror:" << m_PolyShape;
+        // qDebug() << "Before flip:" << m_PolyShape;
         QTransform transform = QTransform::fromScale(-1, 1);
         m_PolyShape = transform.map(m_PolyShape);
-        //qDebug() << "After mirror:" << m_PolyShape;
+        //qDebug() << "After flip:" << m_PolyShape;
 
         if (bDEBUG) {
-            qDebug() << "Mirror BLOCK" << m_nCurrentInst;
+            qDebug() << "Flip BLOCK" << m_nID;
         }
     }
 
@@ -146,12 +140,13 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
         }
         this->prepareGeometryChange();
         // qDebug() << "Before rotation:" << m_PolyShape;
+        m_pTransform->reset();
         m_pTransform->rotate(nAngle);
         m_PolyShape = m_pTransform->map(m_PolyShape);
         // qDebug() << "After rotation:" << m_PolyShape;
 
         if (bDEBUG) {
-            qDebug() << "Rotate BLOCK" << m_nCurrentInst << " " << nAngle;
+            qDebug() << "Rotate BLOCK" << m_nID << " " << nAngle;
         }
     }
 }
@@ -162,30 +157,30 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
     // After moving a block, check for collision
     if (p_Event->button() == Qt::LeftButton) {
-        m_bPressed = false;
+        m_bMousePressed = false;
         this->prepareGeometryChange();
 
         this->setPos(this->snapToGrid(this->pos()));
 
         QPainterPath thisPath = this->shape();
-        thisPath.translate(QPointF(this->pos().x() / m_nGridScale,
-                                  this->pos().y() / m_nGridScale));
+        thisPath.translate(QPointF(this->pos().x() / m_nGrid,
+                                  this->pos().y() / m_nGrid));
         QPainterPath collidingPath;
         QPainterPath intersectedPath;
         foreach (CBlock *block, *m_pListBlocks) {
-            if (block->getIndex() != m_nCurrentInst
+            if (block->getIndex() != m_nID
                     && this->collidesWithItem(block)) {
                 collidingPath = block->shape();
-                collidingPath.translate(QPointF(block->pos().x() / m_nGridScale,
-                                                block->pos().y() / m_nGridScale));
+                collidingPath.translate(QPointF(block->pos().x() / m_nGrid,
+                                                block->pos().y() / m_nGrid));
                 intersectedPath = thisPath.intersected(collidingPath);
 
                 if (!intersectedPath.boundingRect().size().isEmpty()) {
                     // Reset position
-                    this->setPos(this->snapToGrid(m_posBlockSelected));
+                    //this->setPos(this->snapToGrid(m_posBlockSelected));
 
-                    // qDebug() << "SHAPE 1:" << thisPath << "SHAPE 2:" << collidingPath;
-                    qDebug() << "Col" << m_nCurrentInst << "with" << block->getIndex()
+                    qDebug() << "SHAPE 1:" << thisPath << "SHAPE 2:" << collidingPath;
+                    qDebug() << "Col" << m_nID << "with" << block->getIndex()
                              << "Size" << intersectedPath.boundingRect().size();
                     qDebug() << "Intersection:" << intersectedPath;
                 }
@@ -201,8 +196,8 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 QPointF CBlock::snapToGrid(const QPointF point) const {
-    int x = qRound(point.x() / m_nGridScale) * m_nGridScale;
-    int y = qRound(point.y() / m_nGridScale) * m_nGridScale;
+    int x = qRound(point.x() / m_nGrid) * m_nGrid;
+    int y = qRound(point.y() / m_nGrid) * m_nGrid;
     return QPointF(x, y);
 }
 
@@ -227,9 +222,9 @@ void CBlock::setNewZValue(qint16 nZ) {
 void CBlock::rescaleBlock(quint16 nNewScale) {
     this->prepareGeometryChange();
 
-    QPointF tmpTopLeft = this->pos() / m_nGridScale * nNewScale;
+    QPointF tmpTopLeft = this->pos() / m_nGrid * nNewScale;
     this->setScale(nNewScale);
-    m_nGridScale = nNewScale;
+    m_nGrid = nNewScale;
     this->setPos(this->snapToGrid(tmpTopLeft));
 }
 
@@ -242,7 +237,7 @@ int CBlock::type() const {
 }
 
 quint16 CBlock::getIndex() const {
-    return m_nCurrentInst;
+    return m_nID;
 }
 
 QPointF CBlock::getPosition() const {

@@ -32,8 +32,8 @@
 
 class CBlock : public QGraphicsItem {
   public:
-    CBlock(QPolygonF shape, quint16 nScale, QColor color,
-           quint16 nID, QList<CBlock *> *pListBlocks,
+    CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
+           quint16 nGrid, QList<CBlock *> *pListBlocks,
            QPointF posTopLeft = QPoint(0, 0));
 
     QRectF boundingRect() const;
@@ -51,25 +51,22 @@ class CBlock : public QGraphicsItem {
     void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
     void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
-
     int type() const;
 
   private:
     QPointF snapToGrid(const QPointF point) const;
 
+    const quint16 m_nID;
     QPolygonF m_PolyShape;
-    QTransform *m_pTransform;
-    QGraphicsSimpleTextItem m_ItemNumberText;
-    quint16 m_nGridScale;
-    const quint16 m_nAlpha;
-    QColor m_bgColor;
-    quint16 m_nCurrentInst;
+    QBrush m_bgBrush;
+    QPen m_borderPen;
+    quint16 m_nGrid;
     QList<CBlock *> *m_pListBlocks;
+    bool m_bMousePressed;
 
-    QPointF m_pointTopLeft;
+    QTransform *m_pTransform;
     QPointF m_posBlockSelected;
-
-    bool m_bPressed;
+    QGraphicsSimpleTextItem m_ItemNumberText;
 };
 
 #endif  // IQPUZZLE_CBLOCK_H_
