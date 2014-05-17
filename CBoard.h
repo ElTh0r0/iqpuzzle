@@ -1,5 +1,5 @@
 /**
- * \file CIQPuzzle.h
+ * \file CBoard.h
  *
  * \section LICENSE
  *
@@ -21,45 +21,45 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IQPUZZLE_CIQPUZZLE_H_
-#define IQPUZZLE_CIQPUZZLE_H_
+#ifndef IQPUZZLE_CBOARD_H_
+#define IQPUZZLE_CBOARD_H_
 
-#include <QtCore>
+#include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QtGui>
-#include <QMainWindow>
+#include <QPolygonF>
+#include <QSettings>
 
-#include "./CBoard.h"
+#include "./CBlock.h"
 
-namespace Ui {
-    class CIQPuzzle;
-}
-
-class CIQPuzzle : public QMainWindow {
+class CBoard : public QObject {
     Q_OBJECT
 
   public:
-    explicit CIQPuzzle(QWidget *pParent = 0);
-    ~CIQPuzzle();
+    CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
+           const QString &sBoardFile);
 
-  protected:
-    void closeEvent(QCloseEvent *pEvent);
+    bool setupBoard();
+    void setupBlocks();
+
+  signals:
+    void setWindowSize(const QSize size);
 
   public slots:
-    void setMinWindowSize(const QSize size);
-
-  private slots:
-    void startNewGame();
-    void showControlsBox();
-    void showInfoBox();
+    void zoomIn();
+    void zoomOut();
 
   private:
-    void setupMenu();
+    QColor getColor(const QString sKey);
+    QPolygonF getPolygon(const QString sKey, bool bScale = false);
+    QPointF getStartPosition(const QString sKey);
+    void doZoom();
 
-    Ui::CIQPuzzle *m_pUi;
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
-    CBoard *m_pBoard;
+    QSettings *m_pConfig;
+    QPolygonF m_BoardPoly;
+    QList<CBlock *> m_listBlocks;
+    quint16 m_nGridSize;
 };
 
-#endif  // IQPUZZLE_CIQPUZZLE_H_
+#endif  // IQPUZZLE_CBOARD_H_

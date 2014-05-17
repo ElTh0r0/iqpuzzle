@@ -49,7 +49,7 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
     // Scale object
     this->setScale(m_nGrid);
     // Move to start position
-    this->setPos(posTopLeft * m_nGrid);
+    this->moveBlockGrid(posTopLeft);
 }
 
 // ---------------------------------------------------------------------------
@@ -116,7 +116,7 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         // qDebug() << "Before flip:" << m_PolyShape;
         QTransform transform = QTransform::fromScale(-1, 1);
         m_PolyShape = transform.map(m_PolyShape);
-        //qDebug() << "After flip:" << m_PolyShape;
+        // qDebug() << "After flip:" << m_PolyShape;
 
         if (bDEBUG) {
             qDebug() << "Flip BLOCK" << m_nID;
@@ -175,11 +175,16 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
                                                 block->pos().y() / m_nGrid));
                 intersectedPath = thisPath.intersected(collidingPath);
 
+                // Path has to be simplified
+                // Otherwise paths with area = 0 might be found
+                intersectedPath = intersectedPath.simplified();
+
                 if (!intersectedPath.boundingRect().size().isEmpty()) {
                     // Reset position
-                    //this->setPos(this->snapToGrid(m_posBlockSelected));
+                    this->setPos(this->snapToGrid(m_posBlockSelected));
 
-                    qDebug() << "SHAPE 1:" << thisPath << "SHAPE 2:" << collidingPath;
+                    qDebug() << "SHAPE 1:" << thisPath
+                             << "SHAPE 2:" << collidingPath;
                     qDebug() << "Col" << m_nID << "with" << block->getIndex()
                              << "Size" << intersectedPath.boundingRect().size();
                     qDebug() << "Intersection:" << intersectedPath;
@@ -199,6 +204,13 @@ QPointF CBlock::snapToGrid(const QPointF point) const {
     int x = qRound(point.x() / m_nGrid) * m_nGrid;
     int y = qRound(point.y() / m_nGrid) * m_nGrid;
     return QPointF(x, y);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::moveBlockGrid(const QPointF pos) {
+    this->setPos(pos * m_nGrid);
 }
 
 // ---------------------------------------------------------------------------

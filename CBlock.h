@@ -42,6 +42,7 @@ class CBlock : public QGraphicsItem {
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
 
+    void moveBlockGrid(const QPointF pos);
     void setNewZValue(qint16 nZ);
     void rescaleBlock(quint16 nNewScale);
     quint16 getIndex() const;

@@ -23,6 +23,7 @@
 
 #include <QApplication>
 #include <QDialogButtonBox>
+#include <QFileDialog>
 #include <QGridLayout>
 #include <QLabel>
 #include <QMessageBox>
@@ -34,47 +35,21 @@ extern bool bDEBUG;
 
 CIQPuzzle::CIQPuzzle(QWidget *pParent)
     : QMainWindow(pParent),
-      m_pUi(new Ui::CIQPuzzle) {
+      m_pUi(new Ui::CIQPuzzle),
+      m_pBoard(NULL) {
     qDebug() << Q_FUNC_INFO;
+
+    m_pUi->setupUi(this);
+    this->setupMenu();
 
     // TODO: Possibility for choosing level file via command line
     // Check for command line arguments (check if debug is enabled!)
 
-    // TODO: Create load dialog for choosing level
-    // TODO: Create board/level class. Read Polygon function etc.
-    // Init config file
-    QSettings::setPath(QSettings::NativeFormat, QSettings::UserScope,
-                       qApp->applicationDirPath());
-    m_pConfig = new QSettings(QSettings::NativeFormat, QSettings::UserScope,
-                              qApp->applicationName().toLower());
-    if (!QFile::exists(m_pConfig->fileName())) {
-        qFatal("Config file not found!");
-    }
-
-    m_pUi->setupUi(this);
-
-    this->setupMenu();
-
-    // Setup scene
-    QString sTmpValue = m_pConfig->value("BGColor", "255,255,255").toString();
-    if (sTmpValue.count(',') < 2) {
-        sTmpValue = "255,255,255";
-    }
-    QStringList sListVector;
-    sListVector << sTmpValue.split(",");
-    QColor tmpColor;
-    if (sListVector.size() >= 3) {
-        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
-                        sListVector[1].trimmed().toShort(),
-                        sListVector[2].trimmed().toShort());
-    }
     m_pGraphView = new QGraphicsView(this);
     this->setCentralWidget(m_pGraphView);
     m_pScene = new QGraphicsScene(this);
-    m_pScene->setBackgroundBrush(QBrush(QColor(tmpColor)));
+    m_pScene->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
     m_pGraphView->setScene(m_pScene);
-
-    this->startNewGame();
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -98,11 +73,7 @@ void CIQPuzzle::setupMenu() {
 
     // Zoom in/out
     m_pUi->action_ZoomIn->setShortcut(QKeySequence::ZoomIn);
-    connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
-            this, SLOT(zoomIn()));
     m_pUi->action_ZoomOut->setShortcut(QKeySequence::ZoomOut);
-    connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
-            this, SLOT(zoomOut()));
 
     // Controls info
     m_pUi->action_Controls->setShortcut(QKeySequence::HelpContents);
@@ -120,248 +91,43 @@ void CIQPuzzle::setupMenu() {
 void CIQPuzzle::startNewGame() {
     qDebug() << Q_FUNC_INFO;
 
-    // Clear all objects
-    m_pScene->clear();
+    QString sBoardFile = QFileDialog::getOpenFileName(
+                this, trUtf8("Load board"),
+                qApp->applicationDirPath() + "/boards",
+                trUtf8("Board files (*.conf)"));
 
-    m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
+    if (!sBoardFile.isEmpty()) {
+        if (!QFile::exists(sBoardFile)) {
+            QMessageBox::warning(this, trUtf8("File not found"),
+                                 trUtf8("The chosen file does not exist."));
+            qWarning() << "Board file not found:" << sBoardFile;
+            return;
+        }
 
-    // Create board and blocks
-    this->setupBoard();
-    this->setupBlocks();
+        m_pScene->clear();  // Clear old objects
 
-    // Insert blocks on board
-    foreach (CBlock *pB, m_listBlocks) {
-        m_pScene->addItem(pB);
+        if (NULL != m_pBoard) {
+            delete m_pBoard;
+        }
+        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile);
+        connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
+                this, SLOT(setMinWindowSize(const QSize)));
+        connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
+                m_pBoard, SLOT(zoomIn()));
+        connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
+                m_pBoard, SLOT(zoomOut()));
+
+        if (m_pBoard->setupBoard()) {
+            m_pBoard->setupBlocks();
+        }
     }
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::setupBoard() {
-    qDebug() << Q_FUNC_INFO;
-
-    // Get color
-    QString sTmpValue = m_pConfig->value("Board/BorderColor", "0,0,0").toString();
-    if (sTmpValue.count(',') < 2) {
-        sTmpValue = "0,0,0";
-    }
-    QStringList sListVector;
-    QStringList sListPoint;
-    sListVector << sTmpValue.split(",");
-    QColor tmpColor;
-    if (sListVector.size() >= 3) {
-        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
-                        sListVector[1].trimmed().toShort(),
-                        sListVector[2].trimmed().toShort());
-    }
-
-    // Get color
-    sTmpValue = m_pConfig->value("Board/Color", "238,238,238").toString();
-    if (sTmpValue.count(',') < 2) {
-        sTmpValue = "255,255,255";
-    }
-    sListVector.clear();
-    sListVector << sTmpValue.split(",");
-    QColor tmpColor2;
-    if (sListVector.size() >= 3) {
-        tmpColor2.setRgb(sListVector[0].trimmed().toShort(),
-                         sListVector[1].trimmed().toShort(),
-                         sListVector[2].trimmed().toShort());
-    }
-
-    sTmpValue = m_pConfig->value("Board/Polygon", "").toString();
-    // Get polygon
-    m_BoardPolygon.clear();
-    sListVector.clear();
-    sListVector << sTmpValue.split("|");
-    foreach (QString s, sListVector) {
-        sListPoint.clear();
-        sListPoint << s.split(",");
-        if (sListPoint.size() >= 2) {
-            m_BoardPolygon << QPointF(sListPoint[0].trimmed().toShort() * m_nGridSize,
-                                      sListPoint[1].trimmed().toShort() * m_nGridSize);
-        }
-    }
-
-    QPen tmpPen(tmpColor);
-    QBrush tmpBrush(tmpColor2);
-    m_pScene->addPolygon(m_BoardPolygon, tmpPen, tmpBrush);
-    m_pGraphView->setSceneRect(m_BoardPolygon.boundingRect());
-
-    // Set main window (fixed) size
-    const QSize WinSize(m_BoardPolygon.boundingRect().width() * 2.5,
-                        m_BoardPolygon.boundingRect().height() * 2.5);
-
-    this->setMinimumSize(WinSize);
-    // this->setMaximumSize(WinSize);
-
-    // Draw grid
-    // Get color
-    sTmpValue = m_pConfig->value("Board/GridColor", "220,220,220").toString();
-    if (sTmpValue.count(',') < 2) {
-        sTmpValue = "220,220,220";
-    }
-    sListVector.clear();
-    sListVector << sTmpValue.split(",");
-    if (sListVector.size() >= 3) {
-        tmpColor.setRgb(sListVector[0].trimmed().toShort(),
-                        sListVector[1].trimmed().toShort(),
-                        sListVector[2].trimmed().toShort());
-    }
-
-    QLineF lineGrid;
-    tmpPen.setColor(tmpColor);
-    // Horizontal
-    for (int i = 1; i < m_BoardPolygon.boundingRect().height() / m_nGridSize; i++) {
-        lineGrid.setLine(1, i*m_nGridSize,
-                         m_BoardPolygon.boundingRect().width()-1, i*m_nGridSize);
-        m_pScene->addLine(lineGrid, tmpPen);
-    }
-    // Vertical
-    for (int i = 1; i < m_BoardPolygon.boundingRect().width() / m_nGridSize; i++) {
-        lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
-                         m_BoardPolygon.boundingRect().height()-1);
-        m_pScene->addLine(lineGrid, tmpPen);
-    }
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CIQPuzzle::setupBlocks() {
-    qDebug() << Q_FUNC_INFO;
-
-    QPolygonF tmpPolygon;
-    QColor tmpColor;
-    QColor tmpColor2;
-    QPointF tmpPoint;
-
-    QString sTmpValue;
-    QStringList sListVector;
-    QStringList sListPoint;
-
-    // Get number of blocks
-    unsigned int nNumOfBlocks = m_pConfig->value("NumOfBlocks", 0).toUInt();
-
-    QTime time = QTime::currentTime();
-    qsrand((uint)time.msec());
-    unsigned int nStartBlock = 0;
-    if (nNumOfBlocks != 0) {
-        nStartBlock = qrand() % ((nNumOfBlocks + 1) - 1) + 1;
-    }
-
-    m_listBlocks.clear();
-    // Get block properties
-    for (unsigned int i = 1; i <= nNumOfBlocks; i++) {
-        m_pConfig->beginGroup("Block" + QString::number(i));
-        sTmpValue = m_pConfig->value("Polygon", "").toString();
-
-        // Get polygon
-        sListVector.clear();
-        sListVector << sTmpValue.split("|");
-        tmpPolygon.clear();
-        foreach (QString s, sListVector) {
-            sListPoint.clear();
-            sListPoint << s.split(",");
-            if (sListPoint.size() >= 2) {
-                tmpPolygon << QPointF(sListPoint[0].trimmed().toShort(),
-                                      sListPoint[1].trimmed().toShort());
-            }
-        }
-
-        // Get color
-        sTmpValue = m_pConfig->value("Color", "0,0,0").toString();
-        if (sTmpValue.count(',') < 2) {
-            sTmpValue = "200,200,200";
-        }
-        sListVector.clear();
-        sListVector << sTmpValue.split(",");
-        if (sListVector.size() >= 3) {
-            tmpColor.setRgb(sListVector[0].trimmed().toShort(),
-                            sListVector[1].trimmed().toShort(),
-                            sListVector[2].trimmed().toShort());
-        }
-
-        // Get border color
-        sTmpValue = m_pConfig->value("BorderColor", "0,0,0").toString();
-        if (sTmpValue.count(',') < 2) {
-            sTmpValue = "200,200,200";
-        }
-        sListVector.clear();
-        sListVector << sTmpValue.split(",");
-        if (sListVector.size() >= 3) {
-            tmpColor2.setRgb(sListVector[0].trimmed().toShort(),
-                             sListVector[1].trimmed().toShort(),
-                             sListVector[2].trimmed().toShort());
-        }
-
-        // Get start position
-        if (i != nStartBlock) {
-            sTmpValue = m_pConfig->value("StartPos", "-4,-4").toString();
-            if (sTmpValue.count(',') != 1) {
-                sTmpValue = "-4,-4";
-            }
-            sListVector.clear();
-            sListVector << sTmpValue.split(",");
-            if (sListVector.size() >= 2) {
-                tmpPoint.setX(sListVector[0].trimmed().toInt());
-                tmpPoint.setY(sListVector[1].trimmed().toInt());
-            }
-        } else {  // This block is random start block
-            tmpPoint.setX(0);
-            tmpPoint.setY(0);
-
-            // TODO: Set random rotation
-        }
-
-        // Create new block
-        m_listBlocks.append(new CBlock(i, tmpPolygon, tmpColor, tmpColor2,
-                                       m_nGridSize, &m_listBlocks, tmpPoint));
-        m_pConfig->endGroup();
-    }
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CIQPuzzle::zoomIn() {
-    m_nGridSize += 5;
-    doZoom();
-}
-
-void CIQPuzzle::zoomOut() {
-    if (m_nGridSize > 9) {
-        m_nGridSize -= 5;
-    } else {
-        m_nGridSize = 5;
-    }
-    doZoom();
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CIQPuzzle::doZoom() {
-    qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
-
-    // Get all QGraphicItems in scene
-    QList<QGraphicsItem *> objList = m_pScene->items();
-
-    // Remove objects from scene which are no blocks
-    foreach (QGraphicsItem* gi, objList) {
-        if (gi->type() != CBlock::Type) {
-            m_pScene->removeItem(gi);
-        }
-    }
-
-    // Rescale blocks
-    foreach (CBlock *pB, m_listBlocks) {
-        pB->rescaleBlock(m_nGridSize);
-    }
-
-    // Draw resized board again
-    this->setupBoard();
+void CIQPuzzle::setMinWindowSize(const QSize size) {
+    this->setMinimumSize(size);
 }
 
 // ---------------------------------------------------------------------------
