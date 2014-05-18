@@ -47,3 +47,17 @@ HEADERS     += CIQPuzzle.h \
 FORMS       += CIQPuzzle.ui
 
 RESOURCES    = iqpuzzle_resources.qrc
+
+unix {
+    data.path = /usr/share/iqpuzzle
+    data.files += boards
+    desktop.path = /usr/share/applications
+    desktop.files += iqpuzzle.desktop
+    pixmap.path = /usr/share/pixmaps
+    pixmap.files += iqpuzzle_64x64.png
+    target.path = /usr/bin
+    INSTALLS += data \
+        desktop \
+        pixmap \
+        target
+}

@@ -24,7 +24,6 @@
 #ifndef IQPUZZLE_CBLOCK_H_
 #define IQPUZZLE_CBLOCK_H_
 
-#include <QDebug>
 #include <QGraphicsItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>

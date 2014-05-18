@@ -21,6 +21,8 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QDebug>
+
 #include "./CBlock.h"
 
 extern bool bDEBUG;
@@ -183,11 +185,13 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
                     // Reset position
                     this->setPos(this->snapToGrid(m_posBlockSelected));
 
-                    qDebug() << "SHAPE 1:" << thisPath
-                             << "SHAPE 2:" << collidingPath;
-                    qDebug() << "Col" << m_nID << "with" << block->getIndex()
-                             << "Size" << intersectedPath.boundingRect().size();
-                    qDebug() << "Intersection:" << intersectedPath;
+                    if (bDEBUG) {
+                        qDebug() << "SHAPE 1:" << thisPath
+                                 << "SHAPE 2:" << collidingPath;
+                        qDebug() << "Col" << m_nID << "with" << block->getIndex()
+                                 << "Size" << intersectedPath.boundingRect().size();
+                        qDebug() << "Intersection:" << intersectedPath;
+                    }
                 }
             }
         }

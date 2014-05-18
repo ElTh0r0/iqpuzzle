@@ -28,6 +28,8 @@
 
 #include "./CBoard.h"
 
+extern bool bDEBUG;
+
 CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
                const QString &sBoardFile)
     : m_pGraphView(pGraphView),
@@ -137,7 +139,9 @@ void CBoard::setupBlocks() {
 
     // Random start block
     nCount = qrand() % (nCount-1 + 1);
-    qDebug() << "Start BLOCK:" << nCount;
+    if (bDEBUG) {
+        qDebug() << "Start BLOCK:" << nCount;
+    }
     if (nCount < m_listBlocks.size()) {
         m_listBlocks[nCount]->moveBlockGrid(QPointF(0, 0));
         // TODO: Set random rotation
@@ -250,7 +254,9 @@ void CBoard::zoomOut() {
 // ---------------------------------------------------------------------------
 
 void CBoard::doZoom() {
-    qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
+    }
 
     // Get all QGraphicItems in scene
     QList<QGraphicsItem *> objList = m_pScene->items();

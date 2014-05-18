@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=iQPuzzle
+GenericName=Pentomino Puzzle
+Comment=A diverting I.Q. challenging pentomino puzzle
+Exec=iqpuzzle %U
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=iqpuzzle_64x64.png
+Categories=Game;
+Keywords=Puzzle;Pentomnio;IQ;
