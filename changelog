@@ -1,0 +1,27 @@
+iqpuzzle (0.2.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Load board via command line.
+  * Define color as hex.
+  * Added new board.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 18 May 2014 19:23:00 +0200
+
+iqpuzzle (0.1.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Load board file dialog.
+  * Added CBoard class.
+  * Minor collsion check correction.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 17 May 2014 22:00:51 +0200
+
+iqpuzzle (0.0.1-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Define board as polygon.
+  * Support for Qt 4 and Qt 5.
+  * Code reconstructions, rewritten collision detection.
+  * Initial changelog.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 04 May 2014 19:02:00 +0200

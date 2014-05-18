@@ -1,0 +1,20 @@
+Source: iqpuzzle
+Section: games
+Priority: extra
+Maintainer: Thorsten Roth <elthoro@gmx.de>
+Build-Depends: debhelper (>= 7.0.50~),
+         hardening-wrapper,
+         libqt4-dev,
+         qt4-qmake,
+         libqtgui4,
+         pkg-config
+Standards-Version: 3.9.4
+Homepage: https://launchpad.net/iqpuzzle
+Vcs-Bzr: https://code.launchpad.net/~elthoro/iqpuzzle/packaging
+Vcs-Browser: http://bazaar.launchpad.net/~elthoro/iqpuzzle/packaging
+
+Package: iqpuzzle
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: A diverting I.Q. challenging pentomino puzzle.
