@@ -52,16 +52,14 @@ int main(int argc, char *argv[]) {
     app.setApplicationName(APP_NAME);
     app.setApplicationVersion(APP_VERSION);
 
-    if (app.arguments().size() >= 2) {
-        if (app.arguments().contains("-v")
-                || app.arguments().contains("--version")) {
-            std::cout << app.arguments()[0].toStdString() << "\t v"
-                      << app.applicationVersion().toStdString() << std::endl;
-            exit(0);
-        } else if (app.arguments().contains("--debug")) {
-            qWarning() << "Debugging enabled!";
-            bDEBUG = true;
-        }
+    if (app.arguments().contains("-v")
+            || app.arguments().contains("--version")) {
+        std::cout << app.arguments()[0].toStdString() << "\t v"
+                  << app.applicationVersion().toStdString() << std::endl;
+        exit(0);
+    } else if (app.arguments().contains("--debug")) {
+        qWarning() << "Debugging enabled!";
+        bDEBUG = true;
     }
 
     // TODO: Add translation

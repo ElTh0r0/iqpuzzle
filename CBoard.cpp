@@ -155,20 +155,16 @@ void CBoard::setupBlocks() {
 // ---------------------------------------------------------------------------
 
 QColor CBoard::getColor(const QString sKey) {
-    QStringList sList;
     QString sValue = m_pConfig->value(sKey, "").toString();
-    QColor color(255, 0, 255);
+    QColor color("#FF00FF");
 
-    if (2 != sValue.count(',')) {
-        sValue = "0, 255, 255";
+    if (sValue.isEmpty()) {
+        sValue = "#00FFFF";
         qWarning() << "Set fallback color for key" << sKey;
     }
-    sList << sValue.split(",");
-    if (3 == sList.size()) {
-        color.setRgb(sList[0].trimmed().toShort(),
-                     sList[1].trimmed().toShort(),
-                     sList[2].trimmed().toShort());
-    } else {
+    color.setNamedColor(sValue);
+    if (!color.isValid()) {
+        color.setNamedColor("#FF00FF");
         qWarning() << "Found invalid color for key" << sKey;
     }
     return color;

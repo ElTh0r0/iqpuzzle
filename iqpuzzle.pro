@@ -17,7 +17,7 @@
 TEMPLATE     = app
 TARGET       = iqpuzzle
 
-VERSION      = 0.1.0
+VERSION      = 0.2.0
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2014 Thorsten Roth"

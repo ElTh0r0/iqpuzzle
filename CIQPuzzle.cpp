@@ -40,16 +40,24 @@ CIQPuzzle::CIQPuzzle(QWidget *pParent)
     qDebug() << Q_FUNC_INFO;
 
     m_pUi->setupUi(this);
+    this->setWindowTitle(qApp->applicationName());
     this->setupMenu();
-
-    // TODO: Possibility for choosing level file via command line
-    // Check for command line arguments (check if debug is enabled!)
 
     m_pGraphView = new QGraphicsView(this);
     this->setCentralWidget(m_pGraphView);
     m_pScene = new QGraphicsScene(this);
-    m_pScene->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
+    m_pScene->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
     m_pGraphView->setScene(m_pScene);
+
+    // Choose board via command line
+    if (qApp->arguments().size() > 1) {
+        foreach (QString s, qApp->arguments()) {
+            if (s.endsWith(".conf", Qt::CaseInsensitive)) {
+                this->startNewGame(s);
+                break;
+            }
+        }
+    }
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -65,6 +73,11 @@ void CIQPuzzle::setupMenu() {
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
     connect(m_pUi->action_NewGame, SIGNAL(triggered()),
             this, SLOT(startNewGame()));
+
+    // Restart game
+    m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
+    connect(m_pUi->action_RestartGame, SIGNAL(triggered()),
+            this, SLOT(restartGame()));
 
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
@@ -88,13 +101,15 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::startNewGame() {
+void CIQPuzzle::startNewGame(QString sBoardFile) {
     qDebug() << Q_FUNC_INFO;
 
-    QString sBoardFile = QFileDialog::getOpenFileName(
-                this, trUtf8("Load board"),
-                qApp->applicationDirPath() + "/boards",
-                trUtf8("Board files (*.conf)"));
+    if (sBoardFile.isEmpty()) {
+        sBoardFile = QFileDialog::getOpenFileName(
+                    this, trUtf8("Load board"),
+                    qApp->applicationDirPath() + "/boards",
+                    trUtf8("Board files (*.conf)"));
+    }
 
     if (!sBoardFile.isEmpty()) {
         if (!QFile::exists(sBoardFile)) {
@@ -104,6 +119,10 @@ void CIQPuzzle::startNewGame() {
             return;
         }
 
+        m_sBoardFile = sBoardFile;
+        m_pUi->action_RestartGame->setEnabled(true);
+        this->setWindowTitle(qApp->applicationName() + " - " +
+                             QFileInfo(m_sBoardFile).baseName());
         m_pScene->clear();  // Clear old objects
 
         if (NULL != m_pBoard) {
@@ -126,8 +145,16 @@ void CIQPuzzle::startNewGame() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+void CIQPuzzle::restartGame() {
+    this->startNewGame(m_sBoardFile);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
 void CIQPuzzle::setMinWindowSize(const QSize size) {
     this->setMinimumSize(size);
+    this->resize(size);
 }
 
 // ---------------------------------------------------------------------------

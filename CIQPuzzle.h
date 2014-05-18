@@ -49,7 +49,8 @@ class CIQPuzzle : public QMainWindow {
     void setMinWindowSize(const QSize size);
 
   private slots:
-    void startNewGame();
+    void startNewGame(QString sBoardFile = "");
+    void restartGame();
     void showControlsBox();
     void showInfoBox();
 
@@ -60,6 +61,7 @@ class CIQPuzzle : public QMainWindow {
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
     CBoard *m_pBoard;
+    QString m_sBoardFile;
 };
 
 #endif  // IQPUZZLE_CIQPUZZLE_H_

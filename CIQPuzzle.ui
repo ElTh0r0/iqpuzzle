@@ -41,6 +41,7 @@
      <string>&amp;Game</string>
     </property>
     <addaction name="action_NewGame"/>
+    <addaction name="action_RestartGame"/>
     <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
@@ -90,6 +91,14 @@
   <action name="action_ZoomOut">
    <property name="text">
     <string>Zoom &amp;Out</string>
+   </property>
+  </action>
+  <action name="action_RestartGame">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Restart game</string>
    </property>
   </action>
  </widget>
