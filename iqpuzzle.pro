@@ -57,12 +57,15 @@ win32 {
 unix {
     data.path = /usr/share/iqpuzzle
     data.files += boards
+    lang.path = /usr/share/iqpuzzle/lang
+    lang.files += lang/*.qm
     desktop.path = /usr/share/applications
     desktop.files += iqpuzzle.desktop
     pixmap.path = /usr/share/pixmaps
     pixmap.files += res/iqpuzzle_64x64.png
     target.path = /usr/bin
     INSTALLS += data \
+        lang \
         desktop \
         pixmap \
         target
