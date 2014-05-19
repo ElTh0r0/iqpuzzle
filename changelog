@@ -1,3 +1,13 @@
+iqpuzzle (0.3.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Added gui translation.
+  * Corrected block position after flip/rotate.
+  * Corrected board path.
+  * Added new board and possibility for barriers.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Mon, 19 May 2014 16:34:00 +0200
+
 iqpuzzle (0.2.0-0ubuntu1) saucy; urgency=low
 
   [ Thorsten Roth ]
