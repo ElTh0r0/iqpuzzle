@@ -138,6 +138,11 @@ Reduced grid to default.</source>
         <translation>Rechte Maustaste</translation>
     </message>
     <message>
+        <location filename="../CIQPuzzle.cpp" line="218"/>
+        <source>Licence: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</source>
+        <translation>Lizenz: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</translation>
+    </message>
+    <message>
         <location filename="../CIQPuzzle.cpp" line="189"/>
         <source>&lt;b&gt;Flip block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block spiegeln:&lt;/b&gt;</translation>

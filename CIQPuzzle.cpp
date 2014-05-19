@@ -208,12 +208,14 @@ void CIQPuzzle::showInfoBox() {
                        QString("<center>"
                                "<big><b>%1 %2</b></big><br/>"
                                "%3<br/>"
-                               "<small>%4</small>"
+                               "<small>%4</small><br/><br/>"
+                               "%5"
                                "</center>")
                        .arg(qApp->applicationName())
                        .arg(qApp->applicationVersion())
                        .arg(APP_DESC)
-                       .arg(APP_COPY));
+                       .arg(APP_COPY)
+                       .arg(trUtf8("Licence: <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">GNU General Public License Version 3</a>")));
 }
 
 // ---------------------------------------------------------------------------
