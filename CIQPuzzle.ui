@@ -20,7 +20,7 @@
    <string notr="true">iQPuzzle</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="iqpuzzle_resources.qrc">
+   <iconset resource="res/iqpuzzle_resources.qrc">
     <normaloff>:/iqpuzzle_64x64.png</normaloff>:/iqpuzzle_64x64.png</iconset>
   </property>
   <property name="locale">
@@ -104,7 +104,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="iqpuzzle_resources.qrc"/>
+  <include location="res/iqpuzzle_resources.qrc"/>
  </resources>
  <connections/>
 </ui>

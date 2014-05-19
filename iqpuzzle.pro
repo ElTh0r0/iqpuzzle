@@ -46,9 +46,13 @@ HEADERS     += CIQPuzzle.h \
 
 FORMS       += CIQPuzzle.ui
 
-RESOURCES    = iqpuzzle_resources.qrc
+RESOURCES    = res/iqpuzzle_resources.qrc
 
 TRANSLATIONS += lang/iqpuzzle_de.ts
+
+win32 {
+    RC_FILE = res/iqpuzzle.rc
+}
 
 unix {
     data.path = /usr/share/iqpuzzle
@@ -56,7 +60,7 @@ unix {
     desktop.path = /usr/share/applications
     desktop.files += iqpuzzle.desktop
     pixmap.path = /usr/share/pixmaps
-    pixmap.files += iqpuzzle_64x64.png
+    pixmap.files += res/iqpuzzle_64x64.png
     target.path = /usr/bin
     INSTALLS += data \
         desktop \
