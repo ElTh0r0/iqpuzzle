@@ -28,16 +28,21 @@
 extern bool bDEBUG;
 
 CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-               quint16 nGrid, QList<CBlock *> *pListBlocks, QPointF posTopLeft)
+               quint16 nGrid, QList<CBlock *> *pListBlocks, QPointF posTopLeft,
+               const bool bBarrier)
     : m_nID(nID),
       m_PolyShape(shape),
       m_bgBrush(bgcolor),
       m_borderPen(border),
       m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
+      m_bBarrier(bBarrier),
       m_bMousePressed(false) {
-    if (bDEBUG) {
+    if (bDEBUG && !m_bBarrier) {
         qDebug() << "Creating BLOCK" << m_nID <<
+                    "\tPosition:" << posTopLeft * m_nGrid;
+    } else if (bDEBUG && m_bBarrier) {
+        qDebug() << "Creating BARRIER" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
     }
 
@@ -46,7 +51,9 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
     }
 
     m_pTransform = new QTransform();
-    this->setFlag(ItemIsMovable);
+    if (!m_bBarrier) {
+        this->setFlag(ItemIsMovable);
+    }
 
     // Scale object
     this->setScale(m_nGrid);
@@ -78,7 +85,7 @@ void CBlock::paint(QPainter *painter,
 
     m_borderPen.setWidth(1/m_nGrid);
 
-    if (m_bMousePressed) {
+    if (m_bMousePressed && !m_bBarrier) {
         painter->setOpacity(0.4);
     } else {
         painter->setOpacity(1);
@@ -103,7 +110,7 @@ void CBlock::paint(QPainter *painter,
 // ---------------------------------------------------------------------------
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (p_Event->button() == Qt::LeftButton) {  // Move
+    if (p_Event->button() == Qt::LeftButton && !m_bBarrier) {  // Move
         m_bMousePressed = true;
 
         // Bring current block to foreground and update Z values
@@ -113,11 +120,12 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         this->setZValue(m_pListBlocks->size() + 2);
 
         m_posBlockSelected = this->pos();  // Save last position
-    } else if (p_Event->button() == Qt::RightButton) {  // Flip
+    } else if (p_Event->button() == Qt::RightButton && !m_bBarrier) {  // Flip
         this->prepareGeometryChange();
         // qDebug() << "Before flip:" << m_PolyShape;
         QTransform transform = QTransform::fromScale(-1, 1);
-        m_PolyShape = transform.map(m_PolyShape);
+        m_PolyShape = transform.map(m_PolyShape);  // Flip
+        m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
         // qDebug() << "After flip:" << m_PolyShape;
 
         if (bDEBUG) {
@@ -134,17 +142,24 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
     qint8 nAngle = 0;
-    if (p_Event->orientation() == Qt::Vertical) {  // Vertical mouse wheel
+    qint32 nTranslateX = 0;
+    qint32 nTranslateY = 0;
+    if (p_Event->orientation() == Qt::Vertical && !m_bBarrier) {  // Vertical
         if (p_Event->delta() < 0) {
             nAngle = 90;
+            nTranslateX = this->boundingRect().height();
+            nTranslateY = 0;
         } else {
             nAngle = -90;
+            nTranslateX = 0;
+            nTranslateY = this->boundingRect().width();
         }
         this->prepareGeometryChange();
         // qDebug() << "Before rotation:" << m_PolyShape;
         m_pTransform->reset();
         m_pTransform->rotate(nAngle);
-        m_PolyShape = m_pTransform->map(m_PolyShape);
+        m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
+        m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
         // qDebug() << "After rotation:" << m_PolyShape;
 
         if (bDEBUG) {
@@ -158,7 +173,7 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
     // After moving a block, check for collision
-    if (p_Event->button() == Qt::LeftButton) {
+    if (p_Event->button() == Qt::LeftButton && !m_bBarrier) {
         m_bMousePressed = false;
         this->prepareGeometryChange();
 

@@ -102,6 +102,7 @@ void CBoard::setupBlocks() {
 
     const unsigned char nMaxNumOfBlocks = 250;
     unsigned char nCount = 0;
+    unsigned char nStartBlock = 0;
     QPolygonF polygon;
     m_listBlocks.clear();
 
@@ -138,15 +139,41 @@ void CBoard::setupBlocks() {
     }
 
     // Random start block
-    nCount = qrand() % (nCount-1 + 1);
+    nStartBlock = qrand() % (nCount-1 + 1);
     if (bDEBUG) {
-        qDebug() << "Start BLOCK:" << nCount;
+        qDebug() << "Start BLOCK:" << nStartBlock;
     }
-    if (nCount < m_listBlocks.size()) {
-        m_listBlocks[nCount]->moveBlockGrid(QPointF(0, 0));
+    if (nStartBlock < m_listBlocks.size()) {
+        m_listBlocks[nStartBlock]->moveBlockGrid(QPointF(0, 0));
         // TODO: Set random rotation
     } else {
-        qWarning() << "Generated invalid start block:" << nCount;
+        qWarning() << "Generated invalid start block:" << nStartBlock;
+    }
+
+    // Get barriers
+    for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
+        if (!m_pConfig->contains("Barrier" + QString::number(i) + "/Polygon")) {
+            break;
+        }
+        m_pConfig->beginGroup("Barrier" + QString::number(i));
+
+        polygon = this->getPolygon("Polygon");
+        if (polygon.isEmpty()) {
+            m_pScene->clear();  // Clear all objects
+            qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
+            QMessageBox::warning(0, trUtf8("Warning"),
+                                 trUtf8("Polygon not valid:") + i);
+            return;
+        }
+
+        // Create new barrier
+        m_listBlocks.append(new CBlock(nCount + i, polygon,
+                                       this->getColor("Color"),
+                                       this->getColor("BorderColor"),
+                                       m_nGridSize, &m_listBlocks,
+                                       this->getStartPosition("StartPos"),
+                                       true));
+        m_pConfig->endGroup();
     }
 
     // Add blocks to board

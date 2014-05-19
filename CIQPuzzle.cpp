@@ -105,9 +105,17 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
     qDebug() << Q_FUNC_INFO;
 
     if (sBoardFile.isEmpty()) {
+        // No installation: Use app path
+        QString sPath = qApp->applicationDirPath() + "/boards";
+        // Path from normal installation
+        if (QFile::exists("/usr/share/" + qApp->applicationName().toLower()
+                          + "/boards") && !bDEBUG) {
+            sPath = "/usr/share/" + qApp->applicationName().toLower()
+                    + "/boards";
+        }
+
         sBoardFile = QFileDialog::getOpenFileName(
-                    this, trUtf8("Load board"),
-                    qApp->applicationDirPath() + "/boards",
+                    this, trUtf8("Load board"), sPath,
                     trUtf8("Board files (*.conf)"));
     }
 
@@ -214,7 +222,6 @@ void CIQPuzzle::showInfoBox() {
 // Close event (File -> Close or X)
 void CIQPuzzle::closeEvent(QCloseEvent *pEvent) {
     pEvent->accept();
-
     /*
     int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +
                                      qApp->applicationName(),

@@ -33,7 +33,8 @@ class CBlock : public QGraphicsItem {
   public:
     CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
            quint16 nGrid, QList<CBlock *> *pListBlocks,
-           QPointF posTopLeft = QPoint(0, 0));
+           QPointF posTopLeft = QPoint(0, 0),
+           const bool bBarrier = false);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
@@ -62,6 +63,7 @@ class CBlock : public QGraphicsItem {
     QPen m_borderPen;
     quint16 m_nGrid;
     QList<CBlock *> *m_pListBlocks;
+    bool m_bBarrier;
     bool m_bMousePressed;
 
     QTransform *m_pTransform;
