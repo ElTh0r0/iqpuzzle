@@ -48,6 +48,8 @@ FORMS       += CIQPuzzle.ui
 
 RESOURCES    = iqpuzzle_resources.qrc
 
+TRANSLATIONS += lang/iqpuzzle_de.ts
+
 unix {
     data.path = /usr/share/iqpuzzle
     data.files += boards

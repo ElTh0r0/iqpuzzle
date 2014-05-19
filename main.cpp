@@ -62,7 +62,41 @@ int main(int argc, char *argv[]) {
         bDEBUG = true;
     }
 
-    // TODO: Add translation
+    QTranslator qtTranslator;
+    QTranslator AppTranslator;
+    QString sLanguage(QLocale::system().name());
+    #ifdef Q_OS_UNIX
+    QByteArray lang = qgetenv("LANG");
+    if (!lang.isEmpty()) {
+        sLanguage = QLocale(lang).name();
+    }
+    #endif
+
+    // Setup gui translation (Qt)
+    if (!qtTranslator.load("qt_" + sLanguage,
+                           QLibraryInfo::location(
+                               QLibraryInfo::TranslationsPath))) {
+        // If it fails, search in application directory
+        if (!qtTranslator.load("qt_" + sLanguage, app.applicationDirPath()
+                               + "/lang")) {
+            qWarning() << "Could not load Qt translations:" << "qt_" + sLanguage;
+        }
+    }
+    app.installTranslator(&qtTranslator);
+
+    // Setup gui translation (app)
+    if (bDEBUG ||
+            !AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,
+                                "/usr/share/" + app.applicationName().toLower()
+                                + "/lang")) {
+        // If it fails, search in application directory
+        if (!AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,
+                                app.applicationDirPath() + "/lang")) {
+            qWarning() << "Could not load application translation:"
+                       << qAppName() + "_" + sLanguage;
+        }
+    }
+    app.installTranslator(&AppTranslator);
 
     /*
     const QString sDebugFile("Debug.log");

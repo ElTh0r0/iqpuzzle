@@ -184,11 +184,11 @@ void CIQPuzzle::showControlsBox() {
                       0, 2, Qt::AlignLeft | Qt::AlignVCenter);
     layout->addWidget(new QLabel(trUtf8("<b>Rotate block:</b>"), &dialog),
                       1, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("Mousewheel up/down on block"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("Vertical mousewheel"), &dialog),
                       1, 2, Qt::AlignLeft | Qt::AlignVCenter);
     layout->addWidget(new QLabel(trUtf8("<b>Flip block:</b>"), &dialog),
                       2, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("Right click on block"), &dialog),
+    layout->addWidget(new QLabel(trUtf8("Right mouse button"), &dialog),
                       2, 2, Qt::AlignLeft | Qt::AlignVCenter);
 
     QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
@@ -205,11 +205,11 @@ void CIQPuzzle::showControlsBox() {
 
 void CIQPuzzle::showInfoBox() {
     QMessageBox::about(this, trUtf8("About"),
-                       trUtf8("<center>"
-                              "<big><b>%1 %2</b></big><br/>"
-                              "%3<br/>"
-                              "<small>%4</small>"
-                              "</center>")
+                       QString("<center>"
+                               "<big><b>%1 %2</b></big><br/>"
+                               "%3<br/>"
+                               "<small>%4</small>"
+                               "</center>")
                        .arg(qApp->applicationName())
                        .arg(qApp->applicationVersion())
                        .arg(APP_DESC)
