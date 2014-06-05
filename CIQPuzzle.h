@@ -30,6 +30,7 @@
 #include <QMainWindow>
 
 #include "./CBoard.h"
+#include "./CBoardDialog.h"
 
 namespace Ui {
     class CIQPuzzle;
@@ -60,6 +61,7 @@ class CIQPuzzle : public QMainWindow {
     Ui::CIQPuzzle *m_pUi;
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
+    CBoardDialog *m_pBoardDialog;
     CBoard *m_pBoard;
     QString m_sBoardFile;
 };

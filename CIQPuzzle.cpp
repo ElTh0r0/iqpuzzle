@@ -36,6 +36,7 @@ extern bool bDEBUG;
 CIQPuzzle::CIQPuzzle(QWidget *pParent)
     : QMainWindow(pParent),
       m_pUi(new Ui::CIQPuzzle),
+      m_pBoardDialog(NULL),
       m_pBoard(NULL) {
     qDebug() << Q_FUNC_INFO;
 
@@ -114,9 +115,24 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
                     + "/boards";
         }
 
+        if (NULL != m_pBoardDialog) {
+            delete m_pBoardDialog;
+        }
+        m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"), sPath,
+                                          trUtf8("Board files (*.conf)"));
+        if (m_pBoardDialog->exec()) {
+            QStringList sListFiles;
+            sListFiles = m_pBoardDialog->selectedFiles();
+            if (sListFiles.size() >= 1) {
+                sBoardFile = sListFiles.first();
+            }
+        }
+
+        /*
         sBoardFile = QFileDialog::getOpenFileName(
                     this, trUtf8("Load board"), sPath,
                     trUtf8("Board files (*.conf)"));
+        */
     }
 
     if (!sBoardFile.isEmpty()) {
@@ -171,6 +187,8 @@ void CIQPuzzle::setMinWindowSize(const QSize size) {
 void CIQPuzzle::showControlsBox() {
     QDialog dialog(this);
     dialog.setWindowTitle(trUtf8("Controls"));
+    dialog.setWindowFlags(this->windowFlags()
+                          & ~Qt::WindowContextHelpButtonHint);
 
     QGridLayout* layout = new QGridLayout(&dialog);
     layout->setMargin(12);

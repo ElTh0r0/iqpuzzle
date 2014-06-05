@@ -103,6 +103,7 @@ void CBoard::setupBlocks() {
     const unsigned char nMaxNumOfBlocks = 250;
     unsigned char nCount = 0;
     unsigned char nStartBlock = 0;
+    bool bStartBlock(m_pConfig->value("Board/SetStartBlock", false).toBool());
     QPolygonF polygon;
     m_listBlocks.clear();
 
@@ -139,15 +140,17 @@ void CBoard::setupBlocks() {
     }
 
     // Random start block
-    nStartBlock = qrand() % (nCount-1 + 1);
-    if (bDEBUG) {
-        qDebug() << "Start BLOCK:" << nStartBlock;
-    }
-    if (nStartBlock < m_listBlocks.size()) {
-        m_listBlocks[nStartBlock]->moveBlockGrid(QPointF(0, 0));
-        // TODO: Set random rotation
-    } else {
-        qWarning() << "Generated invalid start block:" << nStartBlock;
+    if (bStartBlock) {
+        nStartBlock = qrand() % (nCount-1 + 1);
+        if (bDEBUG) {
+            qDebug() << "Start BLOCK:" << nStartBlock + 1;
+        }
+        if (nStartBlock < m_listBlocks.size()) {
+            m_listBlocks[nStartBlock]->moveBlockGrid(QPointF(0, 0));
+            // TODO: Set random rotation
+        } else {
+            qWarning() << "Generated invalid start block:" << nStartBlock;
+        }
     }
 
     // Get barriers
