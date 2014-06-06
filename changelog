@@ -1,3 +1,11 @@
+iqpuzzle (0.4.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Added preview to load board dialog.
+  * Added new boards.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Fri, 06 Jun 2014 14:57:00 +0200
+
 iqpuzzle (0.3.0-0ubuntu1) saucy; urgency=low
 
   [ Thorsten Roth ]
