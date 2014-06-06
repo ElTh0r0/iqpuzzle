@@ -30,6 +30,8 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
                            const QString &sDirectory, const QString &sFilter)
     : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
     this->setObjectName("BoardFileDialog");
+    // Needed for Windows, otherwise native dialog crashes while adapting layout
+    this->setOption(QFileDialog::DontUseNativeDialog, true);
     QVBoxLayout *boxlayout = new QVBoxLayout();
 
     m_pPreviewCaption = new QLabel(trUtf8("Preview:"), this);
