@@ -36,7 +36,7 @@ CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
       m_pScene(pScene) {
     m_pConfig = new QSettings(sBoardFile, QSettings::IniFormat);
 
-    m_pScene->setBackgroundBrush(QBrush(this->getColor("BGColor")));
+    m_pScene->setBackgroundBrush(QBrush(this->readColor("BGColor")));
     m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
     if (0 == m_nGridSize || m_nGridSize > 255) {
         qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
@@ -54,10 +54,12 @@ CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
 // ---------------------------------------------------------------------------
 
 bool CBoard::setupBoard() {
-    qDebug() << Q_FUNC_INFO;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO;
+    }
 
     m_BoardPoly.clear();
-    m_BoardPoly = this->getPolygon("Board/Polygon", true);
+    m_BoardPoly = this->readPolygon("Board/Polygon", true);
     if (m_BoardPoly.isEmpty()) {
         qWarning() << "BOARD POLYGON IS EMPTY!";
         QMessageBox::warning(0, trUtf8("Warning"),
@@ -66,14 +68,14 @@ bool CBoard::setupBoard() {
     }
 
     // Draw board
-    QPen pen(this->getColor("Board/BorderColor"));
-    QBrush brush(this->getColor("Board/Color"));
+    QPen pen(this->readColor("Board/BorderColor"));
+    QBrush brush(this->readColor("Board/Color"));
     m_pScene->addPolygon(m_BoardPoly, pen, brush);
     m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
 
     // Draw grid
     QLineF lineGrid;
-    pen.setColor(this->getColor("Board/GridColor"));
+    pen.setColor(this->readColor("Board/GridColor"));
     // Horizontal
     for (int i = 1; i < m_BoardPoly.boundingRect().height() / m_nGridSize; i++) {
         lineGrid.setLine(1, i*m_nGridSize,
@@ -98,41 +100,44 @@ bool CBoard::setupBoard() {
 // ---------------------------------------------------------------------------
 
 void CBoard::setupBlocks() {
-    qDebug() << Q_FUNC_INFO;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO;
+    }
 
     const unsigned char nMaxNumOfBlocks = 250;
-    unsigned char nCount = 0;
+    m_nNumOfBlocks = 0;
     unsigned char nStartBlock = 0;
     bool bStartBlock(m_pConfig->value("Board/SetStartBlock", false).toBool());
     QPolygonF polygon;
+    QString sPrefix("");
     m_listBlocks.clear();
 
     // Get blocks
     for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
-        if (!m_pConfig->contains("Block" + QString::number(i) + "/Polygon")) {
+        sPrefix = "Block" + QString::number(i);
+        if (!m_pConfig->contains(sPrefix + "/Polygon")) {
             break;
         }
+        m_nNumOfBlocks++;
 
-        nCount++;
-        m_pConfig->beginGroup("Block" + QString::number(i));
-
-        polygon = this->getPolygon("Polygon");
+        polygon = this->readPolygon(sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
             m_pScene->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
-                                 trUtf8("Polygon not valid:") + i);
+                                 trUtf8("Polygon not valid:\n") + sPrefix);
             return;
         }
 
         // Create new block
-        m_listBlocks.append(new CBlock(i, polygon, this->getColor("Color"),
-                                       this->getColor("BorderColor"),
+        m_listBlocks.append(new CBlock(i, polygon, this->readColor(sPrefix + "/Color"),
+                                       this->readColor(sPrefix + "/BorderColor"),
                                        m_nGridSize, &m_listBlocks,
-                                       this->getStartPosition("StartPos")));
-        m_pConfig->endGroup();
+                                       this->readStartPosition(sPrefix + "/StartPos")));
+        connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
+                this, SLOT(checkPuzzleSolved()));
     }
-    if (0 == nCount) {
+    if (0 == m_nNumOfBlocks) {
         qWarning() << "NO VALID BLOCKS FOUND.";
         QMessageBox::warning(0, trUtf8("Warning"),
                              trUtf8("Could not find valid blocks."));
@@ -141,7 +146,7 @@ void CBoard::setupBlocks() {
 
     // Random start block
     if (bStartBlock) {
-        nStartBlock = qrand() % (nCount-1 + 1);
+        nStartBlock = qrand() % (m_nNumOfBlocks-1 + 1);
         if (bDEBUG) {
             qDebug() << "Start BLOCK:" << nStartBlock + 1;
         }
@@ -155,28 +160,27 @@ void CBoard::setupBlocks() {
 
     // Get barriers
     for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
-        if (!m_pConfig->contains("Barrier" + QString::number(i) + "/Polygon")) {
+        sPrefix = "Barrier" + QString::number(i);
+        if (!m_pConfig->contains(sPrefix + "/Polygon")) {
             break;
         }
-        m_pConfig->beginGroup("Barrier" + QString::number(i));
 
-        polygon = this->getPolygon("Polygon");
+        polygon = this->readPolygon(sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
             m_pScene->clear();  // Clear all objects
-            qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
+            qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
-                                 trUtf8("Polygon not valid:") + i);
+                                 trUtf8("Polygon not valid:\n") + sPrefix);
             return;
         }
 
         // Create new barrier
-        m_listBlocks.append(new CBlock(nCount + i, polygon,
-                                       this->getColor("Color"),
-                                       this->getColor("BorderColor"),
+        m_listBlocks.append(new CBlock(m_nNumOfBlocks + i, polygon,
+                                       this->readColor(sPrefix + "/Color"),
+                                       this->readColor(sPrefix + "/BorderColor"),
                                        m_nGridSize, &m_listBlocks,
-                                       this->getStartPosition("StartPos"),
+                                       this->readStartPosition(sPrefix + "/StartPos"),
                                        true));
-        m_pConfig->endGroup();
     }
 
     // Add blocks to board
@@ -188,7 +192,7 @@ void CBoard::setupBlocks() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QColor CBoard::getColor(const QString sKey) {
+QColor CBoard::readColor(const QString sKey) {
     QString sValue = m_pConfig->value(sKey, "").toString();
     QColor color("#FF00FF");
 
@@ -207,7 +211,7 @@ QColor CBoard::getColor(const QString sKey) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPolygonF CBoard::getPolygon(const QString sKey, bool bScale) {
+QPolygonF CBoard::readPolygon(const QString sKey, bool bScale) {
     QStringList sList;
     QStringList sListPoint;
     QPolygonF polygon;
@@ -226,12 +230,12 @@ QPolygonF CBoard::getPolygon(const QString sKey, bool bScale) {
             polygon << QPointF(sListPoint[0].trimmed().toShort() * nScale,
                                sListPoint[1].trimmed().toShort() * nScale);
         } else {
-            qWarning() << "Found invalid polygon point for key" << sKey;
+            qWarning() << "Found invalid polygon point for" << sKey;
         }
     }
 
     if (!polygon.isClosed()) {
-        qWarning() << "BOARD POLYGON NOT CLOSED!";
+        qWarning() << "POLYGON NOT CLOSED:" << sKey;
         polygon.clear();
     }
     return polygon;
@@ -240,7 +244,7 @@ QPolygonF CBoard::getPolygon(const QString sKey, bool bScale) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF CBoard::getStartPosition(const QString sKey) {
+QPointF CBoard::readStartPosition(const QString sKey) {
     QStringList sList;
     QPointF point(4, -4);
     QString sValue = m_pConfig->value(sKey, "").toString();
@@ -257,6 +261,41 @@ QPointF CBoard::getStartPosition(const QString sKey) {
         qWarning() << "Found invalid start point for key" << sKey;
     }
     return point;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBoard::checkPuzzleSolved() {
+    QPainterPath boardPath;
+    QTransform transform;
+    transform /= m_nGridSize;
+    QPolygonF resizedPoly;
+    resizedPoly = transform.map(m_BoardPoly);
+    boardPath.addPolygon(resizedPoly);
+
+    QPainterPath unitedBlocks;
+    QPainterPath tempPath;
+
+    for (int i = 0; i < m_nNumOfBlocks; i++) {
+        tempPath = m_listBlocks[i]->shape();
+        tempPath.translate(QPointF(m_listBlocks[i]->pos().x() / m_nGridSize,
+                                    m_listBlocks[i]->pos().y() / m_nGridSize));
+        unitedBlocks += tempPath;
+    }
+    unitedBlocks = unitedBlocks.simplified();
+
+    if (bDEBUG) {
+        qDebug() << "United blocks:" << unitedBlocks;
+        qDebug() << "Board:" << boardPath;
+    }
+
+    tempPath = boardPath.subtracted(unitedBlocks);
+    if (tempPath.isEmpty()) {
+        QMessageBox::information(0, qApp->applicationName(),
+                                 trUtf8("Puzzle solved!"));
+        // m_pGraphView->setEnabled(false);
+    }
 }
 
 // ---------------------------------------------------------------------------

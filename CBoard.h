@@ -47,11 +47,12 @@ class CBoard : public QObject {
   public slots:
     void zoomIn();
     void zoomOut();
+    void checkPuzzleSolved();
 
   private:
-    QColor getColor(const QString sKey);
-    QPolygonF getPolygon(const QString sKey, bool bScale = false);
-    QPointF getStartPosition(const QString sKey);
+    QColor readColor(const QString sKey);
+    QPolygonF readPolygon(const QString sKey, bool bScale = false);
+    QPointF readStartPosition(const QString sKey);
     void doZoom();
 
     QGraphicsView *m_pGraphView;
@@ -59,6 +60,7 @@ class CBoard : public QObject {
     QSettings *m_pConfig;
     QPolygonF m_BoardPoly;
     QList<CBlock *> m_listBlocks;
+    unsigned char m_nNumOfBlocks;
     quint16 m_nGridSize;
 };
 

@@ -38,7 +38,9 @@ CIQPuzzle::CIQPuzzle(QWidget *pParent)
       m_pUi(new Ui::CIQPuzzle),
       m_pBoardDialog(NULL),
       m_pBoard(NULL) {
-    qDebug() << Q_FUNC_INFO;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO;
+    }
 
     m_pUi->setupUi(this);
     this->setWindowTitle(qApp->applicationName());
@@ -68,7 +70,9 @@ CIQPuzzle::~CIQPuzzle() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setupMenu() {
-    qDebug() << Q_FUNC_INFO;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO;
+    }
 
     // New game
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
@@ -103,7 +107,9 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::startNewGame(QString sBoardFile) {
-    qDebug() << Q_FUNC_INFO;
+    if (bDEBUG) {
+        qDebug() << Q_FUNC_INFO;
+    }
 
     if (sBoardFile.isEmpty()) {
         // No installation: Use app path

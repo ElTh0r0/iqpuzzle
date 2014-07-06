@@ -175,45 +175,58 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
     // After moving a block, check for collision
     if (p_Event->button() == Qt::LeftButton && !m_bBarrier) {
         m_bMousePressed = false;
-        this->prepareGeometryChange();
 
+        this->prepareGeometryChange();
         this->setPos(this->snapToGrid(this->pos()));
 
         QPainterPath thisPath = this->shape();
         thisPath.translate(QPointF(this->pos().x() / m_nGrid,
                                   this->pos().y() / m_nGrid));
-        QPainterPath collidingPath;
-        QPainterPath intersectedPath;
-        foreach (CBlock *block, *m_pListBlocks) {
-            if (block->getIndex() != m_nID
-                    && this->collidesWithItem(block)) {
-                collidingPath = block->shape();
-                collidingPath.translate(QPointF(block->pos().x() / m_nGrid,
-                                                block->pos().y() / m_nGrid));
-                intersectedPath = thisPath.intersected(collidingPath);
 
-                // Path has to be simplified
-                // Otherwise paths with area = 0 might be found
-                intersectedPath = intersectedPath.simplified();
-
-                if (!intersectedPath.boundingRect().size().isEmpty()) {
-                    // Reset position
-                    this->setPos(this->snapToGrid(m_posBlockSelected));
-
-                    if (bDEBUG) {
-                        qDebug() << "SHAPE 1:" << thisPath
-                                 << "SHAPE 2:" << collidingPath;
-                        qDebug() << "Col" << m_nID << "with" << block->getIndex()
-                                 << "Size" << intersectedPath.boundingRect().size();
-                        qDebug() << "Intersection:" << intersectedPath;
-                    }
-                }
-            }
+        if (this->checkCollision(thisPath)) {
+            // Reset position
+            this->setPos(this->snapToGrid(m_posBlockSelected));
+        } else {
+            // Check if puzzle is solved
+            emit checkPuzzleSolved();
         }
     }
 
     update();
     QGraphicsItem::mouseReleaseEvent(p_Event);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+bool CBlock::checkCollision(QPainterPath &thisPath) {
+    QPainterPath collidingPath;
+    QPainterPath intersectedPath;
+    foreach (CBlock *block, *m_pListBlocks) {
+        if (block->getIndex() != m_nID
+                && this->collidesWithItem(block)) {
+            collidingPath = block->shape();
+            collidingPath.translate(QPointF(block->pos().x() / m_nGrid,
+                                            block->pos().y() / m_nGrid));
+            intersectedPath = thisPath.intersected(collidingPath);
+
+            // Path has to be simplified
+            // Otherwise paths with area = 0 might be found
+            intersectedPath = intersectedPath.simplified();
+
+            if (!intersectedPath.boundingRect().size().isEmpty()) {
+                if (bDEBUG) {
+                    qDebug() << "SHAPE 1:" << thisPath
+                             << "SHAPE 2:" << collidingPath;
+                    qDebug() << "Col" << m_nID << "with" << block->getIndex()
+                             << "Size" << intersectedPath.boundingRect().size();
+                    qDebug() << "Intersection:" << intersectedPath;
+                }
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 // ---------------------------------------------------------------------------

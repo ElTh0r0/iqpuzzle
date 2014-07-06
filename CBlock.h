@@ -24,12 +24,14 @@
 #ifndef IQPUZZLE_CBLOCK_H_
 #define IQPUZZLE_CBLOCK_H_
 
-#include <QGraphicsItem>
+#include <QGraphicsObject>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QPainter>
 
-class CBlock : public QGraphicsItem {
+class CBlock : public QGraphicsObject {
+    Q_OBJECT
+
   public:
     CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
            quint16 nGrid, QList<CBlock *> *pListBlocks,
@@ -48,6 +50,9 @@ class CBlock : public QGraphicsItem {
     quint16 getIndex() const;
     enum { Type = UserType + 1 };
 
+  signals:
+    void checkPuzzleSolved();
+
   protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
@@ -55,6 +60,7 @@ class CBlock : public QGraphicsItem {
     int type() const;
 
   private:
+    bool checkCollision(QPainterPath &thisPath);
     QPointF snapToGrid(const QPointF point) const;
 
     const quint16 m_nID;

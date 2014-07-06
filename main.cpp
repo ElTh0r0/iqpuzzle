@@ -131,9 +131,11 @@ void setupLogger(const QString &sDebugFilePath,
 #else
     qInstallMsgHandler(LoggingHandler);
 #endif
-    qDebug() << sAppName << sVersion;
-    qDebug() << "Compiled with Qt" << QT_VERSION_STR;
-    qDebug() << "Qt runtime" <<  qVersion();
+    if (bDEBUG) {
+        qDebug() << sAppName << sVersion;
+        qDebug() << "Compiled with Qt" << QT_VERSION_STR;
+        qDebug() << "Qt runtime" <<  qVersion();
+    }
 }
 
 // ----------------------------------------------------------------------------
