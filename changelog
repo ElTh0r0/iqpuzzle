@@ -1,3 +1,11 @@
+iqpuzzle (0.5.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Automatic check, if puzzle is solved (LP: #1320957)
+  * Added new boards.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 06 Jul 2014 20:11:00 +0200
+
 iqpuzzle (0.4.0-0ubuntu1) saucy; urgency=low
 
   [ Thorsten Roth ]
