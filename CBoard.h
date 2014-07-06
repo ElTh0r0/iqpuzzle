@@ -60,7 +60,6 @@ class CBoard : public QObject {
     QSettings *m_pConfig;
     QPolygonF m_BoardPoly;
     QList<CBlock *> m_listBlocks;
-    unsigned char m_nNumOfBlocks;
     quint16 m_nGridSize;
 };
 

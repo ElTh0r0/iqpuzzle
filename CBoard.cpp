@@ -105,7 +105,7 @@ void CBoard::setupBlocks() {
     }
 
     const unsigned char nMaxNumOfBlocks = 250;
-    m_nNumOfBlocks = 0;
+    unsigned char nNumOfBlocks = 0;
     unsigned char nStartBlock = 0;
     bool bStartBlock(m_pConfig->value("Board/SetStartBlock", false).toBool());
     QPolygonF polygon;
@@ -118,7 +118,7 @@ void CBoard::setupBlocks() {
         if (!m_pConfig->contains(sPrefix + "/Polygon")) {
             break;
         }
-        m_nNumOfBlocks++;
+        nNumOfBlocks++;
 
         polygon = this->readPolygon(sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
@@ -137,7 +137,7 @@ void CBoard::setupBlocks() {
         connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
                 this, SLOT(checkPuzzleSolved()));
     }
-    if (0 == m_nNumOfBlocks) {
+    if (0 == nNumOfBlocks) {
         qWarning() << "NO VALID BLOCKS FOUND.";
         QMessageBox::warning(0, trUtf8("Warning"),
                              trUtf8("Could not find valid blocks."));
@@ -146,7 +146,7 @@ void CBoard::setupBlocks() {
 
     // Random start block
     if (bStartBlock) {
-        nStartBlock = qrand() % (m_nNumOfBlocks-1 + 1);
+        nStartBlock = qrand() % (nNumOfBlocks-1 + 1);
         if (bDEBUG) {
             qDebug() << "Start BLOCK:" << nStartBlock + 1;
         }
@@ -175,7 +175,7 @@ void CBoard::setupBlocks() {
         }
 
         // Create new barrier
-        m_listBlocks.append(new CBlock(m_nNumOfBlocks + i, polygon,
+        m_listBlocks.append(new CBlock(nNumOfBlocks + i, polygon,
                                        this->readColor(sPrefix + "/Color"),
                                        this->readColor(sPrefix + "/BorderColor"),
                                        m_nGridSize, &m_listBlocks,
@@ -277,10 +277,10 @@ void CBoard::checkPuzzleSolved() {
     QPainterPath unitedBlocks;
     QPainterPath tempPath;
 
-    for (int i = 0; i < m_nNumOfBlocks; i++) {
-        tempPath = m_listBlocks[i]->shape();
-        tempPath.translate(QPointF(m_listBlocks[i]->pos().x() / m_nGridSize,
-                                    m_listBlocks[i]->pos().y() / m_nGridSize));
+    foreach (CBlock *block, m_listBlocks) {
+        tempPath = block->shape();
+        tempPath.translate(QPointF(block->pos().x() / m_nGridSize,
+                                   block->pos().y() / m_nGridSize));
         unitedBlocks += tempPath;
     }
     unitedBlocks = unitedBlocks.simplified();
