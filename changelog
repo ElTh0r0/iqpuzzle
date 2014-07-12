@@ -1,3 +1,11 @@
+iqpuzzle (0.6.0-0ubuntu1) saucy; urgency=low
+
+  [ Thorsten Roth ]
+  * Added save/load game option (LP: #1338269)
+  * Added new boards.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 12 Jul 2014 23:18:00 +0200
+
 iqpuzzle (0.5.0-0ubuntu1) saucy; urgency=low
 
   [ Thorsten Roth ]
