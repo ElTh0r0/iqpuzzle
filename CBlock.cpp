@@ -38,10 +38,10 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
       m_pListBlocks(pListBlocks),
       m_bBarrier(bBarrier),
       m_bMousePressed(false) {
-    if (bDEBUG && !m_bBarrier) {
+    if (!m_bBarrier) {
         qDebug() << "Creating BLOCK" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
-    } else if (bDEBUG && m_bBarrier) {
+    } else if (m_bBarrier) {
         qDebug() << "Creating BARRIER" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
     }
@@ -122,15 +122,11 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         m_posBlockSelected = this->pos();  // Save last position
     } else if (p_Event->button() == Qt::RightButton && !m_bBarrier) {  // Flip
         this->prepareGeometryChange();
-        // qDebug() << "Before flip:" << m_PolyShape;
+        // qDebug() << "Before flip" << m_nID << "-" << m_PolyShape;
         QTransform transform = QTransform::fromScale(-1, 1);
         m_PolyShape = transform.map(m_PolyShape);  // Flip
         m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
         // qDebug() << "After flip:" << m_PolyShape;
-
-        if (bDEBUG) {
-            qDebug() << "Flip BLOCK" << m_nID;
-        }
     }
 
     update();
@@ -155,16 +151,12 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
             nTranslateY = this->boundingRect().width();
         }
         this->prepareGeometryChange();
-        // qDebug() << "Before rotation:" << m_PolyShape;
+        // qDebug() << "Before rotation" << m_nID << nAngle << "\n" << m_PolyShape;
         m_pTransform->reset();
         m_pTransform->rotate(nAngle);
         m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
         m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
         // qDebug() << "After rotation:" << m_PolyShape;
-
-        if (bDEBUG) {
-            qDebug() << "Rotate BLOCK" << m_nID << " " << nAngle;
-        }
     }
 }
 
@@ -215,13 +207,13 @@ bool CBlock::checkCollision(QPainterPath &thisPath) {
             intersectedPath = intersectedPath.simplified();
 
             if (!intersectedPath.boundingRect().size().isEmpty()) {
-                if (bDEBUG) {
-                    qDebug() << "SHAPE 1:" << thisPath
-                             << "SHAPE 2:" << collidingPath;
-                    qDebug() << "Col" << m_nID << "with" << block->getIndex()
-                             << "Size" << intersectedPath.boundingRect().size();
-                    qDebug() << "Intersection:" << intersectedPath;
-                }
+                /*
+                qDebug() << "SHAPE 1:" << thisPath
+                         << "SHAPE 2:" << collidingPath;
+                qDebug() << "Col" << m_nID << "with" << block->getIndex()
+                         << "Size" << intersectedPath.boundingRect().size();
+                qDebug() << "Intersection:" << intersectedPath;
+                */
                 return true;
             }
         }

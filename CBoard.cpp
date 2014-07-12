@@ -54,9 +54,7 @@ CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
 // ---------------------------------------------------------------------------
 
 bool CBoard::setupBoard() {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO;
-    }
+    qDebug() << Q_FUNC_INFO;
 
     m_BoardPoly.clear();
     m_BoardPoly = this->readPolygon("Board/Polygon", true);
@@ -100,9 +98,7 @@ bool CBoard::setupBoard() {
 // ---------------------------------------------------------------------------
 
 void CBoard::setupBlocks() {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO;
-    }
+    qDebug() << Q_FUNC_INFO;
 
     const unsigned char nMaxNumOfBlocks = 250;
     unsigned char nNumOfBlocks = 0;
@@ -147,12 +143,9 @@ void CBoard::setupBlocks() {
     // Random start block
     if (bStartBlock) {
         nStartBlock = qrand() % (nNumOfBlocks-1 + 1);
-        if (bDEBUG) {
-            qDebug() << "Start BLOCK:" << nStartBlock + 1;
-        }
+        qDebug() << "Start BLOCK:" << nStartBlock + 1;
         if (nStartBlock < m_listBlocks.size()) {
             m_listBlocks[nStartBlock]->moveBlockGrid(QPointF(0, 0));
-            // TODO: Set random rotation
         } else {
             qWarning() << "Generated invalid start block:" << nStartBlock;
         }
@@ -285,10 +278,8 @@ void CBoard::checkPuzzleSolved() {
     }
     unitedBlocks = unitedBlocks.simplified();
 
-    if (bDEBUG) {
-        qDebug() << "United blocks:" << unitedBlocks;
-        qDebug() << "Board:" << boardPath;
-    }
+    // qDebug() << "United blocks:" << unitedBlocks;
+    // qDebug() << "Board:" << boardPath;
 
     tempPath = boardPath.subtracted(unitedBlocks);
     if (tempPath.isEmpty()) {
@@ -323,9 +314,7 @@ void CBoard::zoomOut() {
 // ---------------------------------------------------------------------------
 
 void CBoard::doZoom() {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
-    }
+    qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
 
     // Get all QGraphicItems in scene
     QList<QGraphicsItem *> objList = m_pScene->items();

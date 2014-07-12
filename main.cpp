@@ -98,11 +98,27 @@ int main(int argc, char *argv[]) {
     }
     app.installTranslator(&AppTranslator);
 
-    /*
+#if QT_VERSION >= 0x050000
+    QStringList sListPaths = QStandardPaths::standardLocations(
+                QStandardPaths::DataLocation);
+    if (sListPaths.isEmpty()) {
+        qCritical() << "Error while getting data standard path.";
+        sListPaths << app.applicationDirPath();
+    }
+    const QDir userDataDir(sListPaths[0].toLower());
+#else
+    const QDir userDataDir(
+                QDesktopServices::storageLocation(
+                    QDesktopServices::DataLocation).toLower());
+#endif
+    // Create folder including possible parent directories (mkPATH)
+    if (!userDataDir.exists()) {
+        userDataDir.mkpath(userDataDir.absolutePath());
+    }
+
     const QString sDebugFile("Debug.log");
-    setupLogger(app.applicationDirPath() + "/" + sDebugFile,
+    setupLogger(userDataDir.absolutePath() + "/" + sDebugFile,
                 app.applicationName(), app.applicationVersion());
-    */
 
     CIQPuzzle myIQPuzzle;
     myIQPuzzle.show();
@@ -127,15 +143,13 @@ void setupLogger(const QString &sDebugFilePath,
     logfile.open(sDebugFilePath.toStdString().c_str(), std::ios::app);
 #if QT_VERSION >= 0x050000
     qInstallMessageHandler(LoggingHandler);
-    // qInstallMessageHandler(0);
 #else
     qInstallMsgHandler(LoggingHandler);
 #endif
-    if (bDEBUG) {
-        qDebug() << sAppName << sVersion;
-        qDebug() << "Compiled with Qt" << QT_VERSION_STR;
-        qDebug() << "Qt runtime" <<  qVersion();
-    }
+
+    qDebug() << sAppName << sVersion;
+    qDebug() << "Compiled with Qt" << QT_VERSION_STR;
+    qDebug() << "Qt runtime" <<  qVersion();
 }
 
 // ----------------------------------------------------------------------------

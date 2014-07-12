@@ -38,9 +38,7 @@ CIQPuzzle::CIQPuzzle(QWidget *pParent)
       m_pUi(new Ui::CIQPuzzle),
       m_pBoardDialog(NULL),
       m_pBoard(NULL) {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO;
-    }
+    qDebug() << Q_FUNC_INFO;
 
     m_pUi->setupUi(this);
     this->setWindowTitle(qApp->applicationName());
@@ -70,9 +68,7 @@ CIQPuzzle::~CIQPuzzle() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setupMenu() {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO;
-    }
+    qDebug() << Q_FUNC_INFO;
 
     // New game
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
@@ -107,9 +103,7 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::startNewGame(QString sBoardFile) {
-    if (bDEBUG) {
-        qDebug() << Q_FUNC_INFO;
-    }
+    qDebug() << Q_FUNC_INFO;
 
     if (sBoardFile.isEmpty()) {
         // No installation: Use app path
@@ -133,15 +127,10 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
                 sBoardFile = sListFiles.first();
             }
         }
-
-        /*
-        sBoardFile = QFileDialog::getOpenFileName(
-                    this, trUtf8("Load board"), sPath,
-                    trUtf8("Board files (*.conf)"));
-        */
     }
 
     if (!sBoardFile.isEmpty()) {
+        qDebug() << "Board:" << sBoardFile;
         if (!QFile::exists(sBoardFile)) {
             QMessageBox::warning(this, trUtf8("File not found"),
                                  trUtf8("The chosen file does not exist."));
