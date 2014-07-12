@@ -40,7 +40,7 @@ class CIQPuzzle : public QMainWindow {
     Q_OBJECT
 
   public:
-    explicit CIQPuzzle(QWidget *pParent = 0);
+    explicit CIQPuzzle(const QDir userDataDir, QWidget *pParent = 0);
     ~CIQPuzzle();
 
   protected:
@@ -50,8 +50,10 @@ class CIQPuzzle : public QMainWindow {
     void setMinWindowSize(const QSize size);
 
   private slots:
-    void startNewGame(QString sBoardFile = "");
+    void startNewGame(QString sBoardFile = "", QString sSavedGame = "");
     void restartGame();
+    void loadGame();
+    void saveGame();
     void showControlsBox();
     void showInfoBox();
 
@@ -64,6 +66,8 @@ class CIQPuzzle : public QMainWindow {
     CBoardDialog *m_pBoardDialog;
     CBoard *m_pBoard;
     QString m_sBoardFile;
+    QString m_sSavedGame;
+    QDir m_userDataDir;
 };
 
 #endif  // IQPUZZLE_CIQPUZZLE_H_

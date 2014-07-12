@@ -43,6 +43,9 @@
     <addaction name="action_NewGame"/>
     <addaction name="action_RestartGame"/>
     <addaction name="separator"/>
+    <addaction name="action_LoadGame"/>
+    <addaction name="action_SaveGame"/>
+    <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -99,6 +102,25 @@
    </property>
    <property name="text">
     <string>&amp;Restart game</string>
+   </property>
+  </action>
+  <action name="action_SaveGame">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Save game</string>
+   </property>
+   <property name="toolTip">
+    <string>Save game</string>
+   </property>
+  </action>
+  <action name="action_LoadGame">
+   <property name="text">
+    <string>&amp;Load game</string>
+   </property>
+   <property name="toolTip">
+    <string>Load game</string>
    </property>
   </action>
  </widget>

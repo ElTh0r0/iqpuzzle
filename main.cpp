@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
     setupLogger(userDataDir.absolutePath() + "/" + sDebugFile,
                 app.applicationName(), app.applicationVersion());
 
-    CIQPuzzle myIQPuzzle;
+    CIQPuzzle myIQPuzzle(userDataDir);
     myIQPuzzle.show();
     int nRet = app.exec();
 

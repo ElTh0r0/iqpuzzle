@@ -33,11 +33,13 @@
 
 extern bool bDEBUG;
 
-CIQPuzzle::CIQPuzzle(QWidget *pParent)
+CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
     : QMainWindow(pParent),
       m_pUi(new Ui::CIQPuzzle),
       m_pBoardDialog(NULL),
-      m_pBoard(NULL) {
+      m_pBoard(NULL),
+      m_sSavedGame(""),
+      m_userDataDir(userDataDir) {
     qDebug() << Q_FUNC_INFO;
 
     m_pUi->setupUi(this);
@@ -80,6 +82,15 @@ void CIQPuzzle::setupMenu() {
     connect(m_pUi->action_RestartGame, SIGNAL(triggered()),
             this, SLOT(restartGame()));
 
+    // Load game
+    m_pUi->action_LoadGame->setShortcut(QKeySequence::Open);
+    connect(m_pUi->action_LoadGame, SIGNAL(triggered()),
+            this, SLOT(loadGame()));
+    // Save game
+    m_pUi->action_SaveGame->setShortcut(QKeySequence::Save);
+    connect(m_pUi->action_SaveGame, SIGNAL(triggered()),
+            this, SLOT(saveGame()));
+
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
     connect(m_pUi->action_Quit, SIGNAL(triggered()),
@@ -102,7 +113,7 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::startNewGame(QString sBoardFile) {
+void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
     qDebug() << Q_FUNC_INFO;
 
     if (sBoardFile.isEmpty()) {
@@ -137,9 +148,22 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
             qWarning() << "Board file not found:" << sBoardFile;
             return;
         }
-
         m_sBoardFile = sBoardFile;
+
+        m_sSavedGame = "";
+        if (!sSavedGame.isEmpty()) {
+            qDebug() << "Saved game:" << sSavedGame;
+            if (!QFile::exists(sSavedGame)) {
+                QMessageBox::warning(this, trUtf8("File not found"),
+                                     trUtf8("The chosen file does not exist."));
+                qWarning() << "Saved game not found:" << sSavedGame;
+                return;
+            }
+            m_sSavedGame = sSavedGame;
+        }
+
         m_pUi->action_RestartGame->setEnabled(true);
+        m_pUi->action_SaveGame->setEnabled(true);
         this->setWindowTitle(qApp->applicationName() + " - " +
                              QFileInfo(m_sBoardFile).baseName());
         m_pScene->clear();  // Clear old objects
@@ -147,7 +171,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
         if (NULL != m_pBoard) {
             delete m_pBoard;
         }
-        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile);
+        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile, sSavedGame);
         connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
                 this, SLOT(setMinWindowSize(const QSize)));
         connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
@@ -165,7 +189,33 @@ void CIQPuzzle::startNewGame(QString sBoardFile) {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::restartGame() {
-    this->startNewGame(m_sBoardFile);
+    this->startNewGame(m_sBoardFile, m_sSavedGame);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::loadGame() {
+    QString sSaved = QFileDialog::getOpenFileName(this, tr("Load game"),
+                                                  m_userDataDir.absolutePath());
+    if (!sSaved.isEmpty()) {
+        QSettings tmpSet(sSaved, QSettings::IniFormat);
+        QString sBoard = tmpSet.value("BoardFile", "").toString();
+        if (!sBoard.isEmpty()) {
+            this->startNewGame(sBoard, sSaved);
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::saveGame() {
+    QString sFile = QFileDialog::getSaveFileName(this, tr("Save game"),
+                                                  m_userDataDir.absolutePath());
+    if (!sFile.isEmpty()) {
+        m_pBoard->saveGame(sFile);
+    }
 }
 
 // ---------------------------------------------------------------------------

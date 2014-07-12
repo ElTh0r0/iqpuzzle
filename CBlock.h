@@ -44,7 +44,7 @@ class CBlock : public QGraphicsObject {
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
 
-    void moveBlockGrid(const QPointF pos);
+    QPolygonF getPolygon() const;
     void setNewZValue(qint16 nZ);
     void rescaleBlock(quint16 nNewScale);
     quint16 getIndex() const;
@@ -60,6 +60,7 @@ class CBlock : public QGraphicsObject {
     int type() const;
 
   private:
+    void moveBlockGrid(const QPointF pos);
     bool checkCollision(QPainterPath &thisPath);
     QPointF snapToGrid(const QPointF point) const;
 

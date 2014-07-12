@@ -24,20 +24,25 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QMessageBox>
-#include <QTime>
 
 #include "./CBoard.h"
 
 extern bool bDEBUG;
 
 CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-               const QString &sBoardFile)
+               const QString &sBoardFile, const QString &sSavedGame)
     : m_pGraphView(pGraphView),
-      m_pScene(pScene) {
-    m_pConfig = new QSettings(sBoardFile, QSettings::IniFormat);
+      m_pScene(pScene),
+      m_sBoardFile(sBoardFile),
+      m_bSavedGame(false) {
+    m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
+    if (!sSavedGame.isEmpty()) {
+        m_bSavedGame = true;
+    }
+    m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
     m_pScene->setBackgroundBrush(QBrush(this->readColor("BGColor")));
-    m_nGridSize = m_pConfig->value("GridSize", 25).toUInt();
+    m_nGridSize = m_pBoardConf->value("GridSize", 25).toUInt();
     if (0 == m_nGridSize || m_nGridSize > 255) {
         qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
         m_nGridSize = 25;
@@ -45,9 +50,6 @@ CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
                              trUtf8("Board grid size not valid.\n"
                                     "Reduced grid to default."));
     }
-
-    QTime time = QTime::currentTime();
-    qsrand((uint)time.msec());
 }
 
 // ---------------------------------------------------------------------------
@@ -57,7 +59,7 @@ bool CBoard::setupBoard() {
     qDebug() << Q_FUNC_INFO;
 
     m_BoardPoly.clear();
-    m_BoardPoly = this->readPolygon("Board/Polygon", true);
+    m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
     if (m_BoardPoly.isEmpty()) {
         qWarning() << "BOARD POLYGON IS EMPTY!";
         QMessageBox::warning(0, trUtf8("Warning"),
@@ -101,22 +103,24 @@ void CBoard::setupBlocks() {
     qDebug() << Q_FUNC_INFO;
 
     const unsigned char nMaxNumOfBlocks = 250;
-    unsigned char nNumOfBlocks = 0;
-    unsigned char nStartBlock = 0;
-    bool bStartBlock(m_pConfig->value("Board/SetStartBlock", false).toBool());
+    m_nNumOfBlocks = 0;
     QPolygonF polygon;
     QString sPrefix("");
     m_listBlocks.clear();
+    QSettings *tmpSet = m_pBoardConf;
+    if (m_bSavedGame) {
+        tmpSet = m_pSavedConf;
+    }
 
     // Get blocks
     for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
         sPrefix = "Block" + QString::number(i);
-        if (!m_pConfig->contains(sPrefix + "/Polygon")) {
+        if (!tmpSet->contains(sPrefix + "/Polygon")) {
             break;
         }
-        nNumOfBlocks++;
+        m_nNumOfBlocks++;
 
-        polygon = this->readPolygon(sPrefix + "/Polygon");
+        polygon = this->readPolygon(tmpSet, sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
             m_pScene->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
@@ -129,36 +133,25 @@ void CBoard::setupBlocks() {
         m_listBlocks.append(new CBlock(i, polygon, this->readColor(sPrefix + "/Color"),
                                        this->readColor(sPrefix + "/BorderColor"),
                                        m_nGridSize, &m_listBlocks,
-                                       this->readStartPosition(sPrefix + "/StartPos")));
+                                       this->readStartPosition(tmpSet, sPrefix + "/StartPos")));
         connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
                 this, SLOT(checkPuzzleSolved()));
     }
-    if (0 == nNumOfBlocks) {
+    if (0 == m_nNumOfBlocks) {
         qWarning() << "NO VALID BLOCKS FOUND.";
         QMessageBox::warning(0, trUtf8("Warning"),
                              trUtf8("Could not find valid blocks."));
         return;
     }
 
-    // Random start block
-    if (bStartBlock) {
-        nStartBlock = qrand() % (nNumOfBlocks-1 + 1);
-        qDebug() << "Start BLOCK:" << nStartBlock + 1;
-        if (nStartBlock < m_listBlocks.size()) {
-            m_listBlocks[nStartBlock]->moveBlockGrid(QPointF(0, 0));
-        } else {
-            qWarning() << "Generated invalid start block:" << nStartBlock;
-        }
-    }
-
     // Get barriers
     for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
         sPrefix = "Barrier" + QString::number(i);
-        if (!m_pConfig->contains(sPrefix + "/Polygon")) {
+        if (!m_pBoardConf->contains(sPrefix + "/Polygon")) {
             break;
         }
 
-        polygon = this->readPolygon(sPrefix + "/Polygon");
+        polygon = this->readPolygon(m_pBoardConf, sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
             m_pScene->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
@@ -168,11 +161,11 @@ void CBoard::setupBlocks() {
         }
 
         // Create new barrier
-        m_listBlocks.append(new CBlock(nNumOfBlocks + i, polygon,
+        m_listBlocks.append(new CBlock(m_nNumOfBlocks + i, polygon,
                                        this->readColor(sPrefix + "/Color"),
                                        this->readColor(sPrefix + "/BorderColor"),
                                        m_nGridSize, &m_listBlocks,
-                                       this->readStartPosition(sPrefix + "/StartPos"),
+                                       this->readStartPosition(m_pBoardConf, sPrefix + "/StartPos"),
                                        true));
     }
 
@@ -186,7 +179,7 @@ void CBoard::setupBlocks() {
 // ---------------------------------------------------------------------------
 
 QColor CBoard::readColor(const QString sKey) {
-    QString sValue = m_pConfig->value(sKey, "").toString();
+    QString sValue = m_pBoardConf->value(sKey, "").toString();
     QColor color("#FF00FF");
 
     if (sValue.isEmpty()) {
@@ -204,11 +197,12 @@ QColor CBoard::readColor(const QString sKey) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPolygonF CBoard::readPolygon(const QString sKey, bool bScale) {
+QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
+                              bool bScale) {
     QStringList sList;
     QStringList sListPoint;
     QPolygonF polygon;
-    QString sValue = m_pConfig->value(sKey, "").toString();
+    QString sValue = tmpSet->value(sKey, "").toString();
 
     quint16 nScale = 1;
     if (bScale) {
@@ -237,10 +231,10 @@ QPolygonF CBoard::readPolygon(const QString sKey, bool bScale) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF CBoard::readStartPosition(const QString sKey) {
+QPointF CBoard::readStartPosition(const QSettings *tmpSet, const QString sKey) {
     QStringList sList;
     QPointF point(4, -4);
-    QString sValue = m_pConfig->value(sKey, "").toString();
+    QString sValue = tmpSet->value(sKey, "").toString();
 
     if (sValue.count(',') != 1) {
         sValue = "-4,-4";
@@ -333,4 +327,35 @@ void CBoard::doZoom() {
 
     // Draw resized board again
     this->setupBoard();
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBoard::saveGame(const QString &sSaveFile) {
+    QSettings saveConf(sSaveFile, QSettings::IniFormat);
+    QString sPrefix("");
+    QPolygonF poly;
+    QString sPoly;
+    QPointF pos;
+
+    saveConf.clear();
+    saveConf.setValue("BoardFile", m_sBoardFile);
+
+    for (int i = 0; i < m_nNumOfBlocks; i++) {
+        sPrefix = "Block" + QString::number(i + 1);
+        poly = m_listBlocks[i]->getPolygon();
+        sPoly.clear();
+        foreach (QPointF point, poly) {
+            sPoly += QString::number(point.x()) + "," +
+                     QString::number(point.y()) + " | ";
+        }
+        sPoly.remove(sPoly.length() - 3, sPoly.length());
+
+        saveConf.setValue(sPrefix + "/Polygon", sPoly);
+        pos = m_listBlocks[i]->getPosition();
+        saveConf.setValue(sPrefix + "/StartPos",
+                          QString::number(pos.x() / m_nGridSize) + "," +
+                          QString::number(pos.y() / m_nGridSize));
+    }
 }

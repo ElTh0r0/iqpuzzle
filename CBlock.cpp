@@ -268,7 +268,7 @@ void CBlock::rescaleBlock(quint16 nNewScale) {
 // ---------------------------------------------------------------------------
 
 int CBlock::type() const {
-    // Enable the use of qgraphicsitem_cast with this item.
+    // Enable the use of qgraphicsitem_cast with this item
     return Type;
 }
 
@@ -278,4 +278,8 @@ quint16 CBlock::getIndex() const {
 
 QPointF CBlock::getPosition() const {
     return this->pos();
+}
+
+QPolygonF CBlock::getPolygon() const {
+    return this->m_PolyShape;
 }

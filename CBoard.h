@@ -36,10 +36,11 @@ class CBoard : public QObject {
 
   public:
     CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-           const QString &sBoardFile);
+           const QString &sBoardFile, const QString &sSavedGame = "");
 
     bool setupBoard();
     void setupBlocks();
+    void saveGame(const QString &sSaveFile);
 
   signals:
     void setWindowSize(const QSize size);
@@ -51,15 +52,20 @@ class CBoard : public QObject {
 
   private:
     QColor readColor(const QString sKey);
-    QPolygonF readPolygon(const QString sKey, bool bScale = false);
-    QPointF readStartPosition(const QString sKey);
+    QPolygonF readPolygon(const QSettings *tmpSet, const QString sKey,
+                          bool bScale = false);
+    QPointF readStartPosition(const QSettings *tmpSet, const QString sKey);
     void doZoom();
 
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
-    QSettings *m_pConfig;
+    QSettings *m_pBoardConf;
+    QSettings *m_pSavedConf;
+    QString m_sBoardFile;
+    bool m_bSavedGame;
     QPolygonF m_BoardPoly;
     QList<CBlock *> m_listBlocks;
+    unsigned char m_nNumOfBlocks;
     quint16 m_nGridSize;
 };
 
