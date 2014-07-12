@@ -125,7 +125,7 @@ void CBoard::setupBlocks() {
             m_pScene->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
-                                 trUtf8("Polygon not valid:\n") + sPrefix);
+                                 trUtf8("Polygon not valid:") + "\n" + sPrefix);
             return;
         }
 
@@ -170,7 +170,7 @@ void CBoard::setupBlocks() {
             m_pScene->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
-                                 trUtf8("Polygon not valid:\n") + sPrefix);
+                                 trUtf8("Polygon not valid:") + "\n" + sPrefix);
             return;
         }
 

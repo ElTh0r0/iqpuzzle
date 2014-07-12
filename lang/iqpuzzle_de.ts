@@ -5,10 +5,10 @@
     <name>CBoard</name>
     <message>
         <location filename="../CBoard.cpp" line="44"/>
-        <location filename="../CBoard.cpp" line="63"/>
-        <location filename="../CBoard.cpp" line="123"/>
-        <location filename="../CBoard.cpp" line="137"/>
-        <location filename="../CBoard.cpp" line="167"/>
+        <location filename="../CBoard.cpp" line="65"/>
+        <location filename="../CBoard.cpp" line="127"/>
+        <location filename="../CBoard.cpp" line="142"/>
+        <location filename="../CBoard.cpp" line="172"/>
         <source>Warning</source>
         <translation>Warnung</translation>
     </message>
@@ -19,18 +19,23 @@ Reduced grid to default.</source>
         <translation>Spielfeld-Rastergröße ungültig. Reduziere Raster auf Defaultwert.</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="64"/>
+        <location filename="../CBoard.cpp" line="66"/>
         <source>Board polygon not valid.</source>
         <translation>Spielfeld-Polygon nicht gültig.</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="124"/>
-        <location filename="../CBoard.cpp" line="168"/>
+        <location filename="../CBoard.cpp" line="128"/>
+        <location filename="../CBoard.cpp" line="173"/>
         <source>Polygon not valid:</source>
-        <translation>Polygon nicht gültig:</translation>
+        <translation>Polygon ungültig:</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="138"/>
+        <location filename="../CBoard.cpp" line="296"/>
+        <source>Puzzle solved!</source>
+        <translation>Puzzle gelöst!</translation>
+    </message>
+    <message>
+        <location filename="../CBoard.cpp" line="143"/>
         <source>Could not find valid blocks.</source>
         <translation>Es konnten keine gültigen Blöcke gefunden werden.</translation>
     </message>
@@ -38,12 +43,12 @@ Reduced grid to default.</source>
 <context>
     <name>CBoardDialog</name>
     <message>
-        <location filename="../CBoardDialog.cpp" line="35"/>
+        <location filename="../CBoardDialog.cpp" line="37"/>
         <source>Preview:</source>
         <translation>Vorschau:</translation>
     </message>
     <message>
-        <location filename="../CBoardDialog.cpp" line="63"/>
+        <location filename="../CBoardDialog.cpp" line="65"/>
         <source>No preview available</source>
         <translation>Keine Vorschau verfügbar</translation>
     </message>
@@ -101,67 +106,67 @@ Reduced grid to default.</source>
         <translation>S&amp;piel neu starten</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="121"/>
+        <location filename="../CIQPuzzle.cpp" line="127"/>
         <source>Load board</source>
         <translation>Spiel laden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="122"/>
+        <location filename="../CIQPuzzle.cpp" line="128"/>
         <source>Board files (*.conf)</source>
         <translation>Spielfelder (*.conf)</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="140"/>
+        <location filename="../CIQPuzzle.cpp" line="146"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="141"/>
+        <location filename="../CIQPuzzle.cpp" line="147"/>
         <source>The chosen file does not exist.</source>
         <translation>Die ausgewählte Datei existiert nicht.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="189"/>
+        <location filename="../CIQPuzzle.cpp" line="195"/>
         <source>Controls</source>
         <translation>Steuerung</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="199"/>
+        <location filename="../CIQPuzzle.cpp" line="205"/>
         <source>&lt;b&gt;Move block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block bewegen:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="201"/>
+        <location filename="../CIQPuzzle.cpp" line="207"/>
         <source>Drag &amp; drop with left mouse button</source>
         <translation>Drag &amp; Drop mit der linken Maustaste</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="203"/>
+        <location filename="../CIQPuzzle.cpp" line="209"/>
         <source>&lt;b&gt;Rotate block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block drehen:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="205"/>
+        <location filename="../CIQPuzzle.cpp" line="211"/>
         <source>Vertical mousewheel</source>
         <translation>Vertikales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="209"/>
+        <location filename="../CIQPuzzle.cpp" line="215"/>
         <source>Right mouse button</source>
         <translation>Rechte Maustaste</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="236"/>
+        <location filename="../CIQPuzzle.cpp" line="242"/>
         <source>Licence: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</source>
         <translation>Lizenz: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="207"/>
+        <location filename="../CIQPuzzle.cpp" line="213"/>
         <source>&lt;b&gt;Flip block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block spiegeln:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="225"/>
+        <location filename="../CIQPuzzle.cpp" line="231"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
