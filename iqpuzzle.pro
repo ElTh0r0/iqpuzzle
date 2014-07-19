@@ -17,7 +17,7 @@
 TEMPLATE     = app
 TARGET       = iqpuzzle
 
-VERSION      = 0.6.0
+VERSION      = 0.7.0
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2014 Thorsten Roth"
@@ -57,18 +57,21 @@ win32 {
 }
 
 unix {
-    data.path = /usr/share/iqpuzzle
+    data.path = /usr/share/games/iqpuzzle
     data.files += boards
-    lang.path = /usr/share/iqpuzzle/lang
+    lang.path = /usr/share/games/iqpuzzle/lang
     lang.files += lang/*.qm
     desktop.path = /usr/share/applications
     desktop.files += iqpuzzle.desktop
     pixmap.path = /usr/share/pixmaps
     pixmap.files += res/iqpuzzle_64x64.png
-    target.path = /usr/bin
+    man.path = /usr/share
+    man.files += man
+    target.path = /usr/games
     INSTALLS += data \
         lang \
         desktop \
         pixmap \
+        man \
         target
 }
