@@ -40,10 +40,13 @@ class CBoard : public QObject {
 
     bool setupBoard();
     void setupBlocks();
-    void saveGame(const QString &sSaveFile);
+    void saveGame(const QString &sSaveFile, const QString &sTime,
+                  const QString &sMoves);
 
   signals:
     void setWindowSize(const QSize size);
+    void incrementMoves();
+    void solvedPuzzle();
 
   public slots:
     void zoomIn();

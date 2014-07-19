@@ -39,7 +39,12 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
       m_pBoardDialog(NULL),
       m_pBoard(NULL),
       m_sSavedGame(""),
-      m_userDataDir(userDataDir) {
+      m_userDataDir(userDataDir),
+      m_nMoves(0),
+      m_sSavedTime(""),
+      m_sSavedMoves(""),
+      m_Time(0, 0, 0),
+      m_bSolved(false) {
     qDebug() << Q_FUNC_INFO;
 
     m_pUi->setupUi(this);
@@ -51,6 +56,18 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
     m_pScene = new QGraphicsScene(this);
     m_pScene->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
     m_pGraphView->setScene(m_pScene);
+    m_pScenePaused = new QGraphicsScene(this);
+    m_pScenePaused->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
+    QFont font;
+    font.setPixelSize(20);
+    m_pTextPaused = m_pScenePaused->addText(trUtf8("Game paused"), font);
+
+    m_pTimer = new QTimer(this);
+    connect(m_pTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+    m_pStatusLabelTime = new QLabel(trUtf8("Time") + ": 00:00:00");
+    m_pStatusLabelMoves = new QLabel(trUtf8("Moves") + ": 0");
+    m_pUi->statusBar->addWidget(m_pStatusLabelTime);
+    m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
 
     // Choose board via command line
     if (qApp->arguments().size() > 1) {
@@ -61,6 +78,16 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
             }
         }
     }
+
+    // Start board_001 as default
+    QString sPath = qApp->applicationDirPath() + "/boards";
+    // Path from normal installation
+    if (QFile::exists("/usr/share/games/" + qApp->applicationName().toLower()
+                      + "/boards") && !bDEBUG) {
+        sPath = "/usr/share/games/" + qApp->applicationName().toLower()
+                + "/boards";
+    }
+    this->startNewGame(sPath + "/board_001.conf");
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -91,6 +118,15 @@ void CIQPuzzle::setupMenu() {
     connect(m_pUi->action_SaveGame, SIGNAL(triggered()),
             this, SLOT(saveGame()));
 
+    // Pause
+    m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
+    connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
+            this, SLOT(pauseGame(bool)));
+    // Highscore
+    m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
+    // connect(m_pUi->action_Highscore, SIGNAL(triggered()),
+    //         this, SLOT(showHighscore()));
+
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
     connect(m_pUi->action_Quit, SIGNAL(triggered()),
@@ -113,16 +149,17 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
+void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
+                             const QString sTime, const QString sMoves) {
     qDebug() << Q_FUNC_INFO;
 
     if (sBoardFile.isEmpty()) {
         // No installation: Use app path
         QString sPath = qApp->applicationDirPath() + "/boards";
         // Path from normal installation
-        if (QFile::exists("/usr/share/" + qApp->applicationName().toLower()
+        if (QFile::exists("/usr/share/games/" + qApp->applicationName().toLower()
                           + "/boards") && !bDEBUG) {
-            sPath = "/usr/share/" + qApp->applicationName().toLower()
+            sPath = "/usr/share/games/" + qApp->applicationName().toLower()
                     + "/boards";
         }
 
@@ -149,6 +186,10 @@ void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
             return;
         }
         m_sBoardFile = sBoardFile;
+        m_nMoves = 0;
+        m_pStatusLabelMoves->setText(trUtf8("Moves") + ": 0");
+        m_Time = m_Time.fromString("00:00:00", "hh:mm:ss");
+        m_pStatusLabelTime->setText(trUtf8("Time") + ": 00:00:00");
 
         m_sSavedGame = "";
         if (!sSavedGame.isEmpty()) {
@@ -159,6 +200,10 @@ void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
                 qWarning() << "Saved game not found:" << sSavedGame;
                 return;
             }
+            m_nMoves = QString(sMoves).toUInt();
+            m_pStatusLabelMoves->setText(trUtf8("Moves") + ": " + QString::number(m_nMoves));
+            m_Time = m_Time.fromString(sTime, "hh:mm:ss");
+            m_pStatusLabelTime->setText(trUtf8("Time") + ": " + sTime);
             m_sSavedGame = sSavedGame;
         }
 
@@ -178,9 +223,17 @@ void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
                 m_pBoard, SLOT(zoomIn()));
         connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
                 m_pBoard, SLOT(zoomOut()));
+        connect(m_pBoard, SIGNAL(incrementMoves()),
+                this, SLOT(incrementMoves()));
+        connect(m_pBoard, SIGNAL(solvedPuzzle()),
+                this, SLOT(solvedPuzzle()));
 
         if (m_pBoard->setupBoard()) {
             m_pBoard->setupBlocks();
+            m_pTimer->start(1000);
+            m_pUi->action_PauseGame->setChecked(false);
+            m_bSolved = false;
+            m_pGraphView->setScene(m_pScene);
         }
     }
 }
@@ -189,7 +242,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, QString sSavedGame) {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::restartGame() {
-    this->startNewGame(m_sBoardFile, m_sSavedGame);
+    this->startNewGame(m_sBoardFile, m_sSavedGame, m_sSavedTime, m_sSavedMoves);
 }
 
 // ---------------------------------------------------------------------------
@@ -202,7 +255,15 @@ void CIQPuzzle::loadGame() {
         QSettings tmpSet(sSaved, QSettings::IniFormat);
         QString sBoard = tmpSet.value("BoardFile", "").toString();
         if (!sBoard.isEmpty()) {
-            this->startNewGame(sBoard, sSaved);
+            QByteArray ba = tmpSet.value("NumOfMoves", "").toByteArray();
+            m_sSavedMoves = QByteArray::fromBase64(ba);
+            ba.clear();
+            ba = tmpSet.value("ElapsedTime", "").toByteArray();
+            m_sSavedTime = QByteArray::fromBase64(ba);
+            this->startNewGame(sBoard, sSaved, m_sSavedTime, m_sSavedMoves);
+        } else {
+            QMessageBox::warning(this, qApp->applicationName(),
+                                 trUtf8("Invalid saved puzzle."));
         }
     }
 }
@@ -214,7 +275,26 @@ void CIQPuzzle::saveGame() {
     QString sFile = QFileDialog::getSaveFileName(this, tr("Save game"),
                                                   m_userDataDir.absolutePath());
     if (!sFile.isEmpty()) {
-        m_pBoard->saveGame(sFile);
+        m_sSavedMoves = QString::number(m_nMoves);
+        m_sSavedTime = m_Time.toString("hh:mm:ss");
+        m_pBoard->saveGame(sFile, m_sSavedTime, m_sSavedMoves);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::pauseGame(bool bPaused) {
+    if (!m_bSolved) {
+        if (bPaused) {
+            m_pTimer->stop();
+            m_pGraphView->setEnabled(false);
+            m_pGraphView->setScene(m_pScenePaused);
+        } else {
+            m_pTimer->start();
+            m_pGraphView->setEnabled(true);
+            m_pGraphView->setScene(m_pScene);
+        }
     }
 }
 
@@ -224,6 +304,36 @@ void CIQPuzzle::saveGame() {
 void CIQPuzzle::setMinWindowSize(const QSize size) {
     this->setMinimumSize(size);
     this->resize(size);
+    m_pTextPaused->setX(size.width() / 2.5 / 2 - m_pTextPaused->boundingRect().width() / 2);
+    m_pTextPaused->setY(size.height() / 2.6 / 2 - m_pTextPaused->boundingRect().height() / 2);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::incrementMoves() {
+    m_nMoves++;
+    m_pStatusLabelMoves->setText(trUtf8("Moves") + ": " + QString::number(m_nMoves));
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::updateTimer() {
+    m_Time = m_Time.addSecs(1);
+    m_pStatusLabelTime->setText(trUtf8("Time") + ": " + m_Time.toString("hh:mm:ss"));
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::solvedPuzzle() {
+    m_pTimer->stop();
+    m_bSolved = true;
+    QMessageBox::information(this, qApp->applicationName(),
+                             trUtf8("Puzzle solved!\n\nMoves: %1\nTime: %2")
+                             .arg(QString::number(m_nMoves))
+                             .arg(m_Time.toString("hh:mm:ss")));
 }
 
 // ---------------------------------------------------------------------------

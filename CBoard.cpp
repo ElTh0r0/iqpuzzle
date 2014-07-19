@@ -21,6 +21,7 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QByteArray>
 #include <QCoreApplication>
 #include <QDebug>
 #include <QMessageBox>
@@ -91,7 +92,7 @@ bool CBoard::setupBoard() {
 
     // Set main window (fixed) size
     const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
-                        m_BoardPoly.boundingRect().height() * 2.5);
+                        m_BoardPoly.boundingRect().height() * 2.6);
     emit setWindowSize(WinSize);
     return true;
 }
@@ -136,6 +137,8 @@ void CBoard::setupBlocks() {
                                        this->readStartPosition(tmpSet, sPrefix + "/StartPos")));
         connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
                 this, SLOT(checkPuzzleSolved()));
+        connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
+                this, SIGNAL(incrementMoves()));
     }
     if (0 == m_nNumOfBlocks) {
         qWarning() << "NO VALID BLOCKS FOUND.";
@@ -173,6 +176,7 @@ void CBoard::setupBlocks() {
     foreach (CBlock *pB, m_listBlocks) {
         m_pScene->addItem(pB);
     }
+    m_pGraphView->setEnabled(true);
 }
 
 // ---------------------------------------------------------------------------
@@ -277,9 +281,8 @@ void CBoard::checkPuzzleSolved() {
 
     tempPath = boardPath.subtracted(unitedBlocks);
     if (tempPath.isEmpty()) {
-        QMessageBox::information(0, qApp->applicationName(),
-                                 trUtf8("Puzzle solved!"));
-        // m_pGraphView->setEnabled(false);
+        m_pGraphView->setEnabled(false);
+        emit solvedPuzzle();
     }
 }
 
@@ -332,8 +335,10 @@ void CBoard::doZoom() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::saveGame(const QString &sSaveFile) {
+void CBoard::saveGame(const QString &sSaveFile, const QString &sTime,
+                      const QString &sMoves) {
     QSettings saveConf(sSaveFile, QSettings::IniFormat);
+    QByteArray ba;
     QString sPrefix("");
     QPolygonF poly;
     QString sPoly;
@@ -341,6 +346,11 @@ void CBoard::saveGame(const QString &sSaveFile) {
 
     saveConf.clear();
     saveConf.setValue("BoardFile", m_sBoardFile);
+    ba.append(sTime);
+    saveConf.setValue("ElapsedTime", ba.toBase64());
+    ba.clear();
+    ba.append(sMoves);
+    saveConf.setValue("NumOfMoves", ba.toBase64());
 
     for (int i = 0; i < m_nNumOfBlocks; i++) {
         sPrefix = "Block" + QString::number(i + 1);

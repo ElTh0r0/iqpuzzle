@@ -46,6 +46,9 @@
     <addaction name="action_LoadGame"/>
     <addaction name="action_SaveGame"/>
     <addaction name="separator"/>
+    <addaction name="action_PauseGame"/>
+    <addaction name="action_Highscore"/>
+    <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -66,6 +69,7 @@
    <addaction name="menu_Settings"/>
    <addaction name="menu_Help"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="action_NewGame">
    <property name="text">
     <string>&amp;New game</string>
@@ -121,6 +125,22 @@
    </property>
    <property name="toolTip">
     <string>Load game</string>
+   </property>
+  </action>
+  <action name="action_PauseGame">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Pa&amp;use</string>
+   </property>
+  </action>
+  <action name="action_Highscore">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Highscore</string>
    </property>
   </action>
  </widget>

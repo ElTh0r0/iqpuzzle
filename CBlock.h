@@ -51,6 +51,7 @@ class CBlock : public QGraphicsObject {
     enum { Type = UserType + 1 };
 
   signals:
+    void incrementMoves();
     void checkPuzzleSolved();
 
   protected:

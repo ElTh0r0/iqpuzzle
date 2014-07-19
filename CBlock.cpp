@@ -175,6 +175,7 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
         thisPath.translate(QPointF(this->pos().x() / m_nGrid,
                                   this->pos().y() / m_nGrid));
 
+        emit incrementMoves();
         if (this->checkCollision(thisPath)) {
             // Reset position
             this->setPos(this->snapToGrid(m_posBlockSelected));

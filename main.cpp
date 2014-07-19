@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
     // Setup gui translation (app)
     if (bDEBUG ||
             !AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,
-                                "/usr/share/" + app.applicationName().toLower()
+                                "/usr/share/games/" + app.applicationName().toLower()
                                 + "/lang")) {
         // If it fails, search in application directory
         if (!AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,

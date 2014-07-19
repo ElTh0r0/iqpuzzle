@@ -25,8 +25,10 @@
 #define IQPUZZLE_CIQPUZZLE_H_
 
 #include <QtCore>
+#include <QGraphicsTextItem>
 #include <QGraphicsView>
 #include <QtGui>
+#include <QTimer>
 #include <QMainWindow>
 
 #include "./CBoard.h"
@@ -48,12 +50,17 @@ class CIQPuzzle : public QMainWindow {
 
   public slots:
     void setMinWindowSize(const QSize size);
+    void incrementMoves();
 
   private slots:
-    void startNewGame(QString sBoardFile = "", QString sSavedGame = "");
+    void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
+                      const QString sTime = "", const QString sMoves = "");
     void restartGame();
     void loadGame();
     void saveGame();
+    void pauseGame(bool bPaused);
+    void updateTimer();
+    void solvedPuzzle();
     void showControlsBox();
     void showInfoBox();
 
@@ -63,11 +70,21 @@ class CIQPuzzle : public QMainWindow {
     Ui::CIQPuzzle *m_pUi;
     QGraphicsView *m_pGraphView;
     QGraphicsScene *m_pScene;
+    QGraphicsScene *m_pScenePaused;
     CBoardDialog *m_pBoardDialog;
     CBoard *m_pBoard;
     QString m_sBoardFile;
     QString m_sSavedGame;
     QDir m_userDataDir;
+    QLabel *m_pStatusLabelTime;
+    QLabel *m_pStatusLabelMoves;
+    quint32 m_nMoves;
+    QString m_sSavedTime;
+    QString m_sSavedMoves;
+    QTime m_Time;
+    QTimer *m_pTimer;
+    QGraphicsTextItem *m_pTextPaused;
+    bool m_bSolved;
 };
 
 #endif  // IQPUZZLE_CIQPUZZLE_H_
