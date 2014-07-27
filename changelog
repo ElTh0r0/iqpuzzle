@@ -1,4 +1,13 @@
-iqpuzzle (0.6.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.7.0-0ubuntu1) trusty; urgency=low
+
+  [ Thorsten Roth ]
+  * Added timer and moves counter.
+  * Lintian fixes.
+  * Added new boards.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 27 Jul 2014 19:57:00 +0200
+
+iqpuzzle (0.6.0-0ubuntu1) trusty; urgency=low
 
   [ Thorsten Roth ]
   * Added save/load game option (LP: #1338269)
