@@ -49,6 +49,40 @@ Reduced grid to default.</source>
     </message>
 </context>
 <context>
+    <name>CHighscore</name>
+    <message>
+        <location filename="../CHighscore.cpp" line="55"/>
+        <location filename="../CHighscore.cpp" line="147"/>
+        <source>Highscore</source>
+        <translation>Bestenliste</translation>
+    </message>
+    <message>
+        <location filename="../CHighscore.cpp" line="63"/>
+        <source>&lt;b&gt;Position&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Rang&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../CHighscore.cpp" line="65"/>
+        <source>&lt;b&gt;Name&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Name&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../CHighscore.cpp" line="67"/>
+        <source>&lt;b&gt;Time&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Zeit&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../CHighscore.cpp" line="69"/>
+        <source>&lt;b&gt;Moves&lt;/b&gt;</source>
+        <translation>&lt;b&gt;Züge&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../CHighscore.cpp" line="148"/>
+        <source>Please insert your name for a new highscore:</source>
+        <translation>Bitte Namen für die Bestenliste eintragen:</translation>
+    </message>
+</context>
+<context>
     <name>CIQPuzzle</name>
     <message>
         <location filename="../CIQPuzzle.ui" line="41"/>
@@ -107,7 +141,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="119"/>
-        <location filename="../CIQPuzzle.cpp" line="273"/>
+        <location filename="../CIQPuzzle.cpp" line="281"/>
         <source>Save game</source>
         <translation>Spiel speichern</translation>
     </message>
@@ -118,7 +152,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="127"/>
-        <location filename="../CIQPuzzle.cpp" line="250"/>
+        <location filename="../CIQPuzzle.cpp" line="258"/>
         <source>Load game</source>
         <translation>Spiel laden</translation>
     </message>
@@ -128,39 +162,39 @@ Reduced grid to default.</source>
         <translation>Pa&amp;use</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="143"/>
+        <location filename="../CIQPuzzle.ui" line="140"/>
         <source>&amp;Highscore</source>
         <translation>&amp;Bestenliste anzeigen</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="168"/>
+        <location filename="../CIQPuzzle.cpp" line="175"/>
         <source>Load board</source>
         <translation>Spiel laden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="169"/>
+        <location filename="../CIQPuzzle.cpp" line="176"/>
         <source>Board files (*.conf)</source>
         <translation>Spielfelder (*.conf)</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="182"/>
-        <location filename="../CIQPuzzle.cpp" line="197"/>
+        <location filename="../CIQPuzzle.cpp" line="189"/>
+        <location filename="../CIQPuzzle.cpp" line="204"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="183"/>
-        <location filename="../CIQPuzzle.cpp" line="198"/>
+        <location filename="../CIQPuzzle.cpp" line="190"/>
+        <location filename="../CIQPuzzle.cpp" line="205"/>
         <source>The chosen file does not exist.</source>
         <translation>Die ausgewählte Datei existiert nicht.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="264"/>
+        <location filename="../CIQPuzzle.cpp" line="272"/>
         <source>Invalid saved puzzle.</source>
         <translation>Ungültiges gespeichertes Puzzle.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="329"/>
+        <location filename="../CIQPuzzle.cpp" line="341"/>
         <source>Puzzle solved!
 
 Moves: %1
@@ -171,68 +205,68 @@ Züge: %1
 Zeit: %2</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="339"/>
+        <location filename="../CIQPuzzle.cpp" line="361"/>
         <source>Controls</source>
         <translation>Steuerung</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="349"/>
+        <location filename="../CIQPuzzle.cpp" line="371"/>
         <source>&lt;b&gt;Move block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block bewegen:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="351"/>
+        <location filename="../CIQPuzzle.cpp" line="373"/>
         <source>Drag &amp; drop with left mouse button</source>
         <translation>Drag &amp; Drop mit der linken Maustaste</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="353"/>
+        <location filename="../CIQPuzzle.cpp" line="375"/>
         <source>&lt;b&gt;Rotate block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block drehen:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="355"/>
+        <location filename="../CIQPuzzle.cpp" line="377"/>
         <source>Vertical mousewheel</source>
         <translation>Vertikales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="359"/>
+        <location filename="../CIQPuzzle.cpp" line="381"/>
         <source>Right mouse button</source>
         <translation>Rechte Maustaste</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="386"/>
+        <location filename="../CIQPuzzle.cpp" line="408"/>
         <source>Licence: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</source>
         <translation>Lizenz: &lt;a href=&quot;http://www.gnu.org/licenses/gpl-3.0.html&quot;&gt;GNU General Public License Version 3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="357"/>
+        <location filename="../CIQPuzzle.cpp" line="379"/>
         <source>&lt;b&gt;Flip block:&lt;/b&gt;</source>
         <translation>&lt;b&gt;Block spiegeln:&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="62"/>
+        <location filename="../CIQPuzzle.cpp" line="64"/>
         <source>Game paused</source>
         <translation>Spiel pausiert</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="66"/>
-        <location filename="../CIQPuzzle.cpp" line="191"/>
-        <location filename="../CIQPuzzle.cpp" line="205"/>
-        <location filename="../CIQPuzzle.cpp" line="320"/>
+        <location filename="../CIQPuzzle.cpp" line="68"/>
+        <location filename="../CIQPuzzle.cpp" line="198"/>
+        <location filename="../CIQPuzzle.cpp" line="212"/>
+        <location filename="../CIQPuzzle.cpp" line="330"/>
         <source>Time</source>
         <translation>Zeit</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="67"/>
-        <location filename="../CIQPuzzle.cpp" line="189"/>
-        <location filename="../CIQPuzzle.cpp" line="203"/>
-        <location filename="../CIQPuzzle.cpp" line="312"/>
+        <location filename="../CIQPuzzle.cpp" line="69"/>
+        <location filename="../CIQPuzzle.cpp" line="196"/>
+        <location filename="../CIQPuzzle.cpp" line="210"/>
+        <location filename="../CIQPuzzle.cpp" line="322"/>
         <source>Moves</source>
         <translation>Züge</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="375"/>
+        <location filename="../CIQPuzzle.cpp" line="397"/>
         <source>About</source>
         <translation>Über</translation>
     </message>

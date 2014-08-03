@@ -1,5 +1,5 @@
 /**
- * \file CBlock.cpp
+ * \file CBlock.h
  *
  * \section LICENSE
  *

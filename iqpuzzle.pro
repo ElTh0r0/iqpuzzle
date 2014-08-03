@@ -17,7 +17,7 @@
 TEMPLATE     = app
 TARGET       = iqpuzzle
 
-VERSION      = 0.7.0
+VERSION      = 0.8.0
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2014 Thorsten Roth"
@@ -39,12 +39,14 @@ SOURCES     += main.cpp\
                CIQPuzzle.cpp \
                CBoard.cpp \
                CBlock.cpp \
-               CBoardDialog.cpp
+               CBoardDialog.cpp \
+               CHighscore.cpp
 
 HEADERS     += CIQPuzzle.h \
                CBoard.h \
                CBlock.h \
-               CBoardDialog.h
+               CBoardDialog.h \
+               CHighscore.h
 
 FORMS       += CIQPuzzle.ui
 

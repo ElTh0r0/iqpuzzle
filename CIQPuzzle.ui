@@ -136,9 +136,6 @@
    </property>
   </action>
   <action name="action_Highscore">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
    <property name="text">
     <string>&amp;Highscore</string>
    </property>

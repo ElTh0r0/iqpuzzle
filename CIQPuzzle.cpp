@@ -49,6 +49,7 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
 
     m_pUi->setupUi(this);
     this->setWindowTitle(qApp->applicationName());
+    m_pHighscore = new CHighscore();
     this->setupMenu();
 
     m_pGraphView = new QGraphicsView(this);
@@ -122,10 +123,15 @@ void CIQPuzzle::setupMenu() {
     m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
     connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
             this, SLOT(pauseGame(bool)));
+
     // Highscore
     m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
-    // connect(m_pUi->action_Highscore, SIGNAL(triggered()),
-    //         this, SLOT(showHighscore()));
+    connect(m_pUi->action_Highscore, SIGNAL(triggered()),
+            this, SLOT(showHighscore()));
+    connect(this, SIGNAL(showHighscore(QString)),
+            m_pHighscore, SLOT(showHighscore(QString)));
+    connect(this, SIGNAL(checkHighscore(QString, quint32, QTime)),
+            m_pHighscore, SLOT(checkHighscore(QString, quint32, QTime)));
 
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
@@ -328,12 +334,23 @@ void CIQPuzzle::updateTimer() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::solvedPuzzle() {
+    QFileInfo fi(m_sBoardFile);
     m_pTimer->stop();
     m_bSolved = true;
     QMessageBox::information(this, qApp->applicationName(),
                              trUtf8("Puzzle solved!\n\nMoves: %1\nTime: %2")
                              .arg(QString::number(m_nMoves))
                              .arg(m_Time.toString("hh:mm:ss")));
+
+    emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::showHighscore() {
+    QFileInfo fi(m_sBoardFile);
+    emit showHighscore(fi.baseName());
 }
 
 // ---------------------------------------------------------------------------
