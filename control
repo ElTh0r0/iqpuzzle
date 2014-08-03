@@ -17,4 +17,4 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends}
 Description: Challenging pentomino puzzle
-  iQPuzzle is a diverting and challenging pentomino puzzle.
+ iQPuzzle is a diverting and challenging pentomino puzzle.

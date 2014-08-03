@@ -1,6 +1,6 @@
 ?package(iqpuzzle):\
     needs="x11"\
-    section="Applications/Games/LogicGames"\
+    section="Games/Puzzles"\
     title="iQPuzzle"\
     longtitle="iQPuzzle - Challenging pentomino"\
     icon="/usr/share/pixmaps/iqpuzzle.xpm"\
