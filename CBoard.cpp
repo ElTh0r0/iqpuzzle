@@ -176,6 +176,12 @@ void CBoard::setupBlocks() {
     foreach (CBlock *pB, m_listBlocks) {
         m_pScene->addItem(pB);
     }
+
+    if (true == m_pBoardConf->value("NotAllPiecesNeeded", false).toBool()) {
+        QMessageBox::information(0, trUtf8("Hint"),
+                                 trUtf8("Not all pieces are needed for a solution!"));
+    }
+
     m_pGraphView->setEnabled(true);
 }
 

@@ -215,8 +215,17 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
 
         m_pUi->action_RestartGame->setEnabled(true);
         m_pUi->action_SaveGame->setEnabled(true);
+
+        QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
+        quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+        QString sSolutions(QString::number(nSolutions));
+        if ("0" == sSolutions) {
+            sSolutions = trUtf8("Unknown");
+        }
+
         this->setWindowTitle(qApp->applicationName() + " - " +
-                             QFileInfo(m_sBoardFile).baseName());
+                             QFileInfo(m_sBoardFile).baseName() +
+                             " (Solutions: " + sSolutions + ")");
         m_pScene->clear();  // Clear old objects
 
         if (NULL != m_pBoard) {

@@ -40,6 +40,7 @@ class CBoardDialog : public QFileDialog {
     void OnCurrentChanged(const QString &sPath);
 
   private:
+    QLabel *m_pSolutions;
     QLabel *m_pPreviewCaption;
     QLabel *m_pPreview;
 };

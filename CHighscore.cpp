@@ -120,7 +120,7 @@ void CHighscore::checkHighscore(QString sBoard, quint32 nMoves, QTime tTime) {
                  << "---" << nScoreMoves << "/" << tScoreTime.toString("hh:mm:ss");
         */
 
-        if (nMoves < nScoreMoves) {
+        if (nMoves < nScoreMoves || 0 == nScoreMoves) {
             this->insertHighscore(sBoard, i, nMoves, tTime);
             break;
         } else if (nMoves == nScoreMoves) {
