@@ -69,23 +69,23 @@ void CHighscore::showHighscore(QString sBoard) {
     layout->addWidget(new QLabel(trUtf8("<b>Moves</b>"), &dialog),
                       0, 3, Qt::AlignCenter | Qt::AlignVCenter);
 
-    for (int i = 1; i <= m_nMaxPos; i++) {
-        layout->addWidget(new QLabel("#" + QString::number(i), &dialog),
-                          i, 0, Qt::AlignCenter | Qt::AlignVCenter);
+    for (int nRow = 1; nRow <= m_nMaxPos; nRow++) {
+        layout->addWidget(new QLabel("#" + QString::number(nRow), &dialog),
+                          nRow, 0, Qt::AlignCenter | Qt::AlignVCenter);
 
-        sListTemp = readHighscore(sBoard, "Position" + QString::number(i));
+        sListTemp = readHighscore(sBoard, "Position" + QString::number(nRow));
 
-        for (int j = 0; j < sListTemp.size(); j++) {
-            if (j > 2) {
+        for (int nCol = 0; nCol < sListTemp.size(); nCol++) {
+            if (nCol > 2) {
                 break;
             }
-            if (0 == j) {
+            if (0 == nCol) {
                 Align = Qt::AlignLeft;
             } else {
                 Align = Qt::AlignCenter;
             }
-            layout->addWidget(new QLabel(sListTemp[j].trimmed(), &dialog),
-                              i, j + 1, Align | Qt::AlignVCenter);
+            layout->addWidget(new QLabel(sListTemp[nCol].trimmed(), &dialog),
+                              nRow, nCol + 1, Align | Qt::AlignVCenter);
         }
     }
 
@@ -93,7 +93,7 @@ void CHighscore::showHighscore(QString sBoard) {
                                                      Qt::Horizontal, &dialog);
     connect(buttons, SIGNAL(rejected()),
             &dialog, SLOT(reject()));
-    layout->addWidget(buttons, m_nMaxPos + 1, 0, 1, 3);
+    layout->addWidget(buttons, m_nMaxPos + 1, 0, 1, 4, Qt::AlignCenter);
 
     dialog.exec();
 }

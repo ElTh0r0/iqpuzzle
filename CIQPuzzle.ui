@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="res/iqpuzzle_resources.qrc">
-    <normaloff>:/iqpuzzle_64x64.png</normaloff>:/iqpuzzle_64x64.png</iconset>
+    <normaloff>:/images/iqpuzzle_64x64.png</normaloff>:/images/iqpuzzle_64x64.png</iconset>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedKingdom"/>

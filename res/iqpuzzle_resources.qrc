@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>iqpuzzle_64x64.png</file>
+        <file>images/iqpuzzle_64x64.png</file>
     </qresource>
 </RCC>

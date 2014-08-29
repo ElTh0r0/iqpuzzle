@@ -6,6 +6,6 @@ Exec=iqpuzzle %U
 Terminal=false
 Type=Application
 StartupNotify=true
-Icon=iqpuzzle_64x64.png
+Icon=iqpuzzle
 Categories=Game;LogicGame;
 Keywords=Puzzle;Pentomnio;IQ;
