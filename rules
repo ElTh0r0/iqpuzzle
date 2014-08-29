@@ -1,7 +1,4 @@
 #!/usr/bin/make -f
-export DH_VERBOSE=1
-
-export DEB_BUILD_HARDENING=1
 
 %:
 	dh $@ --parallel
