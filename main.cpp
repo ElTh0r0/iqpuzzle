@@ -183,23 +183,23 @@ void LoggingHandler(QtMsgType type, const char *sMsg) {
     QString sMsg2(sMsg);
     QString sContext(sMsg);
 #endif
-    char* sTime(QTime::currentTime().toString().toLatin1().data());
+    QString sTime(QTime::currentTime().toString());
 
     switch (type) {
     case QtDebugMsg:
-        out << sTime << " Debug: " << sMsg2.toStdString().c_str() << "\n";
+        out << sTime << " Debug: " << sMsg2 << "\n";
         out.flush();
         break;
     case QtWarningMsg:
-        out << sTime << " Warning: " << sContext.toStdString().c_str() << "\n";
+        out << sTime << " Warning: " << sContext << "\n";
         out.flush();
         break;
     case QtCriticalMsg:
-        out << sTime << " Critical: " << sContext.toStdString().c_str() << "\n";
+        out << sTime << " Critical: " << sContext << "\n";
         out.flush();
         break;
     case QtFatalMsg:
-        out << sTime << " Fatal: " << sContext.toStdString().c_str() << "\n";
+        out << sTime << " Fatal: " << sContext << "\n";
         out.flush();
         logfile.close();
         abort();

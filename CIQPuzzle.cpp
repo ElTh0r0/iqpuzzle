@@ -124,8 +124,8 @@ void CIQPuzzle::setupMenu() {
 
     // Pause
     m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
-    connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool bPaused)),
-            this, SLOT(pauseGame(bool bPaused)));
+    connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
+            this, SLOT(pauseGame(bool)));
 
     // Highscore
     m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
