@@ -177,7 +177,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
             delete m_pBoardDialog;
         }
         m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"), sPath,
-                                          trUtf8("Board files (*.conf)"));
+                                          trUtf8("Board files") + "(*.conf)");
         if (m_pBoardDialog->exec()) {
             QStringList sListFiles;
             sListFiles = m_pBoardDialog->selectedFiles();
@@ -229,8 +229,8 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
         }
 
         this->setWindowTitle(qApp->applicationName() + " - " +
-                             QFileInfo(m_sBoardFile).baseName() +
-                             " (Solutions: " + sSolutions + ")");
+                             QFileInfo(m_sBoardFile).baseName() + " ("
+                             + trUtf8("Solutions") + ": " + sSolutions + ")");
         m_pScene->clear();  // Clear old objects
 
         if (NULL != m_pBoard) {
@@ -356,9 +356,10 @@ void CIQPuzzle::solvedPuzzle() {
     m_pTimer->stop();
     m_bSolved = true;
     QMessageBox::information(this, qApp->applicationName(),
-                             trUtf8("Puzzle solved!\n\nMoves: %1\nTime: %2")
-                             .arg(QString::number(m_nMoves))
-                             .arg(m_Time.toString("hh:mm:ss")));
+                             trUtf8("Puzzle solved!") + "\n\n" +
+                             trUtf8("Moves") + ": " + QString::number(m_nMoves)
+                             + "\n" + trUtf8("Time") + ": "
+                             + m_Time.toString("hh:mm:ss"));
 
     emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
 }
@@ -386,17 +387,20 @@ void CIQPuzzle::showControlsBox() {
     layout->setColumnMinimumWidth(1, 2);
     layout->setRowMinimumHeight(3, 12);
 
-    layout->addWidget(new QLabel(trUtf8("<b>Move block:</b>"), &dialog),
+    layout->addWidget(new QLabel(
+                          "<b>" + trUtf8("Move block") + ":</b> ", &dialog),
                       0, 0, Qt::AlignRight | Qt::AlignVCenter);
     layout->addWidget(
                 new QLabel(
                     trUtf8("Drag & drop with left mouse button"), &dialog),
                       0, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("<b>Rotate block:</b>"), &dialog),
+    layout->addWidget(new QLabel(
+                          "<b>" + trUtf8("Rotate block") + ":</b> ", &dialog),
                       1, 0, Qt::AlignRight | Qt::AlignVCenter);
     layout->addWidget(new QLabel(trUtf8("Vertical mousewheel"), &dialog),
                       1, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("<b>Flip block:</b>"), &dialog),
+    layout->addWidget(new QLabel(
+                          "<b>" + trUtf8("Flip block") + ":</b> ", &dialog),
                       2, 0, Qt::AlignRight | Qt::AlignVCenter);
     layout->addWidget(new QLabel(trUtf8("Right mouse button"), &dialog),
                       2, 2, Qt::AlignLeft | Qt::AlignVCenter);
@@ -419,16 +423,18 @@ void CIQPuzzle::showInfoBox() {
                                "<big><b>%1 %2</b></big><br/>"
                                "%3<br/>"
                                "<small>%4</small><br/><br/>"
-                               "%5"
+                               "%5<br/>"
+                               "%6"
                                "</center>")
                        .arg(qApp->applicationName())
                        .arg(qApp->applicationVersion())
                        .arg(APP_DESC)
                        .arg(APP_COPY)
-                       .arg(trUtf8(
-                                "Licence: "
-                                "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-                                "GNU General Public License Version 3</a>")));
+                       .arg("URL: <a href=\"https://launchpad.net/iqpuzzle\">"
+                            "https://launchpad.net/iqpuzzle</a>")
+                       .arg(trUtf8("License") + ": "
+                            "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
+                            "GNU General Public License Version 3</a>"));
 }
 
 // ---------------------------------------------------------------------------

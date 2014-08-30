@@ -63,13 +63,13 @@ void CHighscore::showHighscore(const QString &sBoard) {
     layout->setMargin(10);
     layout->setSpacing(10);
 
-    layout->addWidget(new QLabel(trUtf8("<b>Position</b>"), &dialog),
+    layout->addWidget(new QLabel("<b>" + trUtf8("Position") + "</b>", &dialog),
                       0, 0, Qt::AlignCenter | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("<b>Name</b>"), &dialog),
+    layout->addWidget(new QLabel("<b>" + trUtf8("Name") + "</b>", &dialog),
                       0, 1, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("<b>Time</b>"), &dialog),
+    layout->addWidget(new QLabel("<b>" + trUtf8("Time") + "</b>", &dialog),
                       0, 2, Qt::AlignCenter | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("<b>Moves</b>"), &dialog),
+    layout->addWidget(new QLabel("<b>" + trUtf8("Moves") + "</b>", &dialog),
                       0, 3, Qt::AlignCenter | Qt::AlignVCenter);
 
     for (int nRow = 1; nRow <= m_nMaxPos; nRow++) {

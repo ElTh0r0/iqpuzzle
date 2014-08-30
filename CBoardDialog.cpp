@@ -38,8 +38,8 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
     this->setOption(QFileDialog::DontUseNativeDialog, true);
     QVBoxLayout *boxlayout = new QVBoxLayout();
 
-    m_pSolutions = new QLabel(trUtf8("Solutions:"), this);
-    m_pPreviewCaption = new QLabel(trUtf8("Preview:"), this);
+    m_pSolutions = new QLabel(trUtf8("Solutions") + ":", this);
+    m_pPreviewCaption = new QLabel(trUtf8("Preview") + ":", this);
     m_pPreview = new QLabel("", this);
     m_pPreview->setAlignment(Qt::AlignCenter);
     m_pPreview->setObjectName("labelPreview");
@@ -68,7 +68,7 @@ void CBoardDialog::OnCurrentChanged(const QString &sPath) {
     if ("0" == sSolutions) {
         sSolutions = trUtf8("Unknown");
     }
-    m_pSolutions->setText(trUtf8("Solutions: ") + sSolutions);
+    m_pSolutions->setText(trUtf8("Solutions") + ": " + sSolutions);
 
     QString sImage(sPath);
     sImage.replace(".conf", ".png");
