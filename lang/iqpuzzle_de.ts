@@ -48,12 +48,27 @@ Reduced grid to default.</source>
 <context>
     <name>CBoardDialog</name>
     <message>
-        <location filename="../CBoardDialog.cpp" line="37"/>
+        <location filename="../CBoardDialog.cpp" line="38"/>
+        <source>Solutions:</source>
+        <translation>Lösungen:</translation>
+    </message>
+    <message>
+        <location filename="../CBoardDialog.cpp" line="39"/>
         <source>Preview:</source>
         <translation>Vorschau:</translation>
     </message>
     <message>
-        <location filename="../CBoardDialog.cpp" line="65"/>
+        <location filename="../CBoardDialog.cpp" line="66"/>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <location filename="../CBoardDialog.cpp" line="68"/>
+        <source>Solutions: </source>
+        <translation>Lösungen:</translation>
+    </message>
+    <message>
+        <location filename="../CBoardDialog.cpp" line="75"/>
         <source>No preview available</source>
         <translation>Keine Vorschau verfügbar</translation>
     </message>
