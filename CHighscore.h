@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Class definition for highscore.
  */
 
 #ifndef IQPUZZLE_CHIGHSCORE_H_
@@ -28,6 +31,10 @@
 #include <QSettings>
 #include <QTime>
 
+/**
+ * \class CHighscore
+ * \brief Generating and showing highscore.
+ */
 class CHighscore : public QObject {
     Q_OBJECT
 

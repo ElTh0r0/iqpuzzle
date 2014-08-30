@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Main application generation (gui, object creation etc.).
  */
 
 #include <QApplication>

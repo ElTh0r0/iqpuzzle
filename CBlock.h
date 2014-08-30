@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Class definition for a block.
  */
 
 #ifndef IQPUZZLE_CBLOCK_H_
@@ -29,6 +32,10 @@
 #include <QGraphicsSceneWheelEvent>
 #include <QPainter>
 
+/**
+ * \class CBlock
+ * \brief Block handling (move, rotate, collision check).
+ */
 class CBlock : public QGraphicsObject {
     Q_OBJECT
 

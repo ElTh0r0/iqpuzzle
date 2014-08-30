@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Class definition main application.
  */
 
 #ifndef IQPUZZLE_CIQPUZZLE_H_
@@ -39,6 +42,10 @@ namespace Ui {
     class CIQPuzzle;
 }
 
+/**
+ * \class CIQPuzzle
+ * \brief Main application definition (gui, objects, etc.)
+ */
 class CIQPuzzle : public QMainWindow {
     Q_OBJECT
 

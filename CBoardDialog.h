@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Class definition for board loading dialog.
  */
 
 #ifndef IQPUZZLE_CBOARDDIALOG_H_
@@ -27,6 +30,10 @@
 #include <QFileDialog>
 #include <QLabel>
 
+/**
+ * \class CBoardDialog
+ * \brief Extended file dialog for showing a board preview.
+ */
 class CBoardDialog : public QFileDialog {
     Q_OBJECT
 

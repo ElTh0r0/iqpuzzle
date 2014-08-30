@@ -19,6 +19,15 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Main function, start application, loading translation.
+ */
+
+/** \mainpage
+ * \section Introduction
+ * iQPuzzle is a diverting I.Q. challenging pentomino puzzle.<br />
+ * Launchpad: https://launchpad.net/iqpuzzle
  */
 
 #include <QApplication>

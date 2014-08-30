@@ -19,6 +19,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * \section DESCRIPTION
+ * Class definition for a board.
  */
 
 #ifndef IQPUZZLE_CBOARD_H_
@@ -31,6 +34,10 @@
 
 #include "./CBlock.h"
 
+/**
+ * \class CBoard
+ * \brief Complete board generation, including block setup.
+ */
 class CBoard : public QObject {
     Q_OBJECT
 
