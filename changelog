@@ -1,3 +1,10 @@
+iqpuzzle (0.8.1-0ubuntu1) trusty; urgency=low
+
+  [ Thorsten Roth ]
+  * Fixed translations and XPM icon file.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 30 Aug 2014 18:26:00 +0200
+
 iqpuzzle (0.8.0-0ubuntu1) trusty; urgency=low
 
   [ Thorsten Roth ]
