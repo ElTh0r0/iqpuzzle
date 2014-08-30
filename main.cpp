@@ -22,13 +22,12 @@
  */
 
 #include <QApplication>
-
-#include <iostream>
-#include <fstream>
+#include <QTextStream>
 
 #include "./CIQPuzzle.h"
 
-std::ofstream logfile;
+QFile logfile;
+QTextStream out(&logfile);
 
 void setupLogger(const QString &sDebugFilePath,
                  const QString &sAppName,
@@ -54,8 +53,8 @@ int main(int argc, char *argv[]) {
 
     if (app.arguments().contains("-v")
             || app.arguments().contains("--version")) {
-        std::cout << app.arguments()[0].toStdString() << "\t v"
-                  << app.applicationVersion().toStdString() << std::endl;
+        qDebug() << app.arguments()[0] << "\t v"
+                 << app.applicationVersion() << "\n";
         exit(0);
     } else if (app.arguments().contains("--debug")) {
         qWarning() << "Debugging enabled!";
@@ -79,19 +78,21 @@ int main(int argc, char *argv[]) {
         // If it fails, search in application directory
         if (!qtTranslator.load("qt_" + sLanguage, app.applicationDirPath()
                                + "/lang")) {
-            qWarning() << "Could not load Qt translations:" << "qt_" + sLanguage;
+            qWarning() << "Couldn't load Qt translations:" << "qt_" + sLanguage;
         }
     }
     app.installTranslator(&qtTranslator);
 
     // Setup gui translation (app)
     if (bDEBUG ||
-            !AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,
-                                "/usr/share/games/" + app.applicationName().toLower()
-                                + "/lang")) {
+            !AppTranslator.load(
+                app.applicationName().toLower() + "_" + sLanguage,
+                "/usr/share/games/" + app.applicationName().toLower()
+                + "/lang")) {
         // If it fails, search in application directory
-        if (!AppTranslator.load(app.applicationName().toLower() + "_" + sLanguage,
-                                app.applicationDirPath() + "/lang")) {
+        if (!AppTranslator.load(
+                    app.applicationName().toLower() + "_" + sLanguage,
+                    app.applicationDirPath() + "/lang")) {
             qWarning() << "Could not load application translation:"
                        << qAppName() + "_" + sLanguage;
         }
@@ -140,12 +141,16 @@ void setupLogger(const QString &sDebugFilePath,
     }
 
     // Create new file
-    logfile.open(sDebugFilePath.toStdString().c_str(), std::ios::app);
+    logfile.setFileName(sDebugFilePath);
+    if (!logfile.open(QIODevice::WriteOnly)) {
+        qWarning() << "Couldn't create logging file: " << sDebugFilePath;
+    } else {
 #if QT_VERSION >= 0x050000
-    qInstallMessageHandler(LoggingHandler);
+        qInstallMessageHandler(LoggingHandler);
 #else
-    qInstallMsgHandler(LoggingHandler);
+        qInstallMsgHandler(LoggingHandler);
 #endif
+    }
 
     qDebug() << sAppName << sVersion;
     qDebug() << "Compiled with Qt" << QT_VERSION_STR;
@@ -173,20 +178,20 @@ void LoggingHandler(QtMsgType type, const char *sMsg) {
 
     switch (type) {
     case QtDebugMsg:
-        logfile << sTime << " Debug: " << sMsg2.toStdString().c_str() << "\n";
-        logfile.flush();
+        out << sTime << " Debug: " << sMsg2.toStdString().c_str() << "\n";
+        out.flush();
         break;
     case QtWarningMsg:
-        logfile << sTime << " Warning: " << sContext.toStdString().c_str() << "\n";
-        logfile.flush();
+        out << sTime << " Warning: " << sContext.toStdString().c_str() << "\n";
+        out.flush();
         break;
     case QtCriticalMsg:
-        logfile << sTime << " Critical: " << sContext.toStdString().c_str() << "\n";
-        logfile.flush();
+        out << sTime << " Critical: " << sContext.toStdString().c_str() << "\n";
+        out.flush();
         break;
     case QtFatalMsg:
-        logfile << sTime << " Fatal: " << sContext.toStdString().c_str() << "\n";
-        logfile.flush();
+        out << sTime << " Fatal: " << sContext.toStdString().c_str() << "\n";
+        out.flush();
         logfile.close();
         abort();
     }

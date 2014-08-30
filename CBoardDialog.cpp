@@ -47,7 +47,7 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
     boxlayout->addWidget(m_pPreview);
     boxlayout->addStretch();
     {
-        QGridLayout *layout = (QGridLayout*)this->layout();
+        QGridLayout *layout = reinterpret_cast<QGridLayout*>(this->layout());
         layout->addLayout(boxlayout, 1, 3, 3, 1);
     }
 

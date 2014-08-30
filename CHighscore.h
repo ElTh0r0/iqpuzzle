@@ -35,17 +35,18 @@ class CHighscore : public QObject {
     explicit CHighscore(QWidget *pParent = 0);
 
   public slots:
-    void showHighscore(QString sBoard);
-    void checkHighscore(QString sBoard, quint32 nMoves, QTime tTime);
+    void showHighscore(const QString &sBoard);
+    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                        const QTime &tTime);
 
   private:
-    QStringList readHighscore(QString &sBoard, QString sKey);
-    void insertHighscore(QString sBoard, quint8 nPosition,
-                         quint32 nMoves, QTime tTime);
+    QStringList readHighscore(const QString &sBoard, const QString &sKey);
+    void insertHighscore(const QString &sBoard, const quint8 &nPosition,
+                         const quint32 &nMoves, const QTime &tTime);
 
     QWidget *m_pParent;
     QSettings *m_pHighscore;
     const quint8 m_nMaxPos;
 };
 
-#endif //  IQPUZZLE_CHIGHSCORE_H_
+#endif  // IQPUZZLE_CHIGHSCORE_H_

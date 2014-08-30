@@ -121,8 +121,8 @@ void CIQPuzzle::setupMenu() {
 
     // Pause
     m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
-    connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
-            this, SLOT(pauseGame(bool)));
+    connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool bPaused)),
+            this, SLOT(pauseGame(bool bPaused)));
 
     // Highscore
     m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
@@ -163,7 +163,8 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
         // No installation: Use app path
         QString sPath = qApp->applicationDirPath() + "/boards";
         // Path from normal installation
-        if (QFile::exists("/usr/share/games/" + qApp->applicationName().toLower()
+        if (QFile::exists("/usr/share/games/"
+                          + qApp->applicationName().toLower()
                           + "/boards") && !bDEBUG) {
             sPath = "/usr/share/games/" + qApp->applicationName().toLower()
                     + "/boards";
@@ -207,7 +208,8 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
                 return;
             }
             m_nMoves = QString(sMoves).toUInt();
-            m_pStatusLabelMoves->setText(trUtf8("Moves") + ": " + QString::number(m_nMoves));
+            m_pStatusLabelMoves->setText(trUtf8("Moves") + ": "
+                                         + QString::number(m_nMoves));
             m_Time = m_Time.fromString(sTime, "hh:mm:ss");
             m_pStatusLabelTime->setText(trUtf8("Time") + ": " + sTime);
             m_sSavedGame = sSavedGame;
@@ -288,7 +290,7 @@ void CIQPuzzle::loadGame() {
 
 void CIQPuzzle::saveGame() {
     QString sFile = QFileDialog::getSaveFileName(this, tr("Save game"),
-                                                  m_userDataDir.absolutePath());
+                                                 m_userDataDir.absolutePath());
     if (!sFile.isEmpty()) {
         m_sSavedMoves = QString::number(m_nMoves);
         m_sSavedTime = m_Time.toString("hh:mm:ss");
@@ -299,7 +301,7 @@ void CIQPuzzle::saveGame() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::pauseGame(bool bPaused) {
+void CIQPuzzle::pauseGame(const bool bPaused) {
     if (!m_bSolved) {
         if (bPaused) {
             m_pTimer->stop();
@@ -319,8 +321,10 @@ void CIQPuzzle::pauseGame(bool bPaused) {
 void CIQPuzzle::setMinWindowSize(const QSize size) {
     this->setMinimumSize(size);
     this->resize(size);
-    m_pTextPaused->setX(size.width() / 2.5 / 2 - m_pTextPaused->boundingRect().width() / 2);
-    m_pTextPaused->setY(size.height() / 2.6 / 2 - m_pTextPaused->boundingRect().height() / 2);
+    m_pTextPaused->setX(
+                size.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
+    m_pTextPaused->setY(
+                size.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
 }
 
 // ---------------------------------------------------------------------------
@@ -328,7 +332,8 @@ void CIQPuzzle::setMinWindowSize(const QSize size) {
 
 void CIQPuzzle::incrementMoves() {
     m_nMoves++;
-    m_pStatusLabelMoves->setText(trUtf8("Moves") + ": " + QString::number(m_nMoves));
+    m_pStatusLabelMoves->setText(
+                trUtf8("Moves") + ": " + QString::number(m_nMoves));
 }
 
 // ---------------------------------------------------------------------------
@@ -336,7 +341,8 @@ void CIQPuzzle::incrementMoves() {
 
 void CIQPuzzle::updateTimer() {
     m_Time = m_Time.addSecs(1);
-    m_pStatusLabelTime->setText(trUtf8("Time") + ": " + m_Time.toString("hh:mm:ss"));
+    m_pStatusLabelTime->setText(
+                trUtf8("Time") + ": " + m_Time.toString("hh:mm:ss"));
 }
 
 // ---------------------------------------------------------------------------
@@ -379,7 +385,9 @@ void CIQPuzzle::showControlsBox() {
 
     layout->addWidget(new QLabel(trUtf8("<b>Move block:</b>"), &dialog),
                       0, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("Drag & drop with left mouse button"), &dialog),
+    layout->addWidget(
+                new QLabel(
+                    trUtf8("Drag & drop with left mouse button"), &dialog),
                       0, 2, Qt::AlignLeft | Qt::AlignVCenter);
     layout->addWidget(new QLabel(trUtf8("<b>Rotate block:</b>"), &dialog),
                       1, 0, Qt::AlignRight | Qt::AlignVCenter);
@@ -414,7 +422,10 @@ void CIQPuzzle::showInfoBox() {
                        .arg(qApp->applicationVersion())
                        .arg(APP_DESC)
                        .arg(APP_COPY)
-                       .arg(trUtf8("Licence: <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">GNU General Public License Version 3</a>")));
+                       .arg(trUtf8(
+                                "Licence: "
+                                "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
+                                "GNU General Public License Version 3</a>")));
 }
 
 // ---------------------------------------------------------------------------

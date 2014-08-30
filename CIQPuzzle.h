@@ -54,8 +54,9 @@ class CIQPuzzle : public QMainWindow {
     void incrementMoves();
 
   signals:
-    void showHighscore(QString sBoard);
-    void checkHighscore(QString sBoard, quint32 nMoves, QTime tTime);
+    void showHighscore(const QString &sBoard);
+    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                        const QTime &tTime);
 
   private slots:
     void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
@@ -63,7 +64,7 @@ class CIQPuzzle : public QMainWindow {
     void restartGame();
     void loadGame();
     void saveGame();
-    void pauseGame(bool bPaused);
+    void pauseGame(const bool bPaused);
     void updateTimer();
     void solvedPuzzle();
     void showHighscore();

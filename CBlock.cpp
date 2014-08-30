@@ -151,12 +151,12 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
             nTranslateY = this->boundingRect().width();
         }
         this->prepareGeometryChange();
-        // qDebug() << "Before rotation" << m_nID << nAngle << "\n" << m_PolyShape;
+        // qDebug() << "Before rot.:" << m_nID << nAngle << "\n" << m_PolyShape;
         m_pTransform->reset();
         m_pTransform->rotate(nAngle);
         m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
         m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
-        // qDebug() << "After rotation:" << m_PolyShape;
+        // qDebug() << "After rot.:" << m_PolyShape;
     }
 }
 
@@ -192,7 +192,7 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBlock::checkCollision(QPainterPath &thisPath) {
+bool CBlock::checkCollision(const QPainterPath thisPath) {
     QPainterPath collidingPath;
     QPainterPath intersectedPath;
     foreach (CBlock *block, *m_pListBlocks) {
@@ -241,7 +241,7 @@ void CBlock::moveBlockGrid(const QPointF pos) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::setNewZValue(qint16 nZ) {
+void CBlock::setNewZValue(const qint16 nZ) {
     if (nZ < 0) {
         if (this->zValue() > 1) {
             this->setZValue(this->zValue() - 1);
@@ -256,7 +256,7 @@ void CBlock::setNewZValue(qint16 nZ) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::rescaleBlock(quint16 nNewScale) {
+void CBlock::rescaleBlock(const quint16 nNewScale) {
     this->prepareGeometryChange();
 
     QPointF tmpTopLeft = this->pos() / m_nGrid * nNewScale;

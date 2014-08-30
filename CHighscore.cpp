@@ -29,7 +29,7 @@
 #include <QInputDialog>
 #include <QLabel>
 
-#include "CHighscore.h"
+#include "./CHighscore.h"
 
 CHighscore::CHighscore(QWidget *pParent)
     : m_pParent(pParent),
@@ -48,7 +48,7 @@ CHighscore::CHighscore(QWidget *pParent)
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CHighscore::showHighscore(QString sBoard) {
+void CHighscore::showHighscore(const QString &sBoard) {
     Qt::AlignmentFlag Align = Qt::AlignCenter;
     QStringList sListTemp;
     QDialog dialog(m_pParent);
@@ -101,7 +101,8 @@ void CHighscore::showHighscore(QString sBoard) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CHighscore::checkHighscore(QString sBoard, quint32 nMoves, QTime tTime) {
+void CHighscore::checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                                const QTime &tTime) {
     QStringList sListTemp;
     quint32 nScoreMoves(0);
     QTime tScoreTime(0, 0, 0);
@@ -116,8 +117,10 @@ void CHighscore::checkHighscore(QString sBoard, quint32 nMoves, QTime tTime) {
         tScoreTime = tScoreTime.fromString(sListTemp[1], "hh:mm:ss");
         nScoreMoves = sListTemp[2].toUInt();
         /*
-        qDebug() << "Check #" << i << nMoves << "/" << tTime.toString("hh:mm:ss")
-                 << "---" << nScoreMoves << "/" << tScoreTime.toString("hh:mm:ss");
+        qDebug() << "Check #" << i << nMoves << "/"
+                 << tTime.toString("hh:mm:ss")
+                 << "---" << nScoreMoves << "/"
+                 << tScoreTime.toString("hh:mm:ss");
         */
 
         if (nMoves < nScoreMoves || 0 == nScoreMoves) {
@@ -138,28 +141,32 @@ void CHighscore::checkHighscore(QString sBoard, quint32 nMoves, QTime tTime) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CHighscore::insertHighscore(QString sBoard, quint8 nPosition,
-                                 quint32 nMoves, QTime tTime) {
+void CHighscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
+                                 const quint32 &nMoves, const QTime &tTime) {
     if (nPosition <= m_nMaxPos) {
         QStringList sListEntries;
         QByteArray ba;
         bool bOk;
-        QString sName = QInputDialog::getText(m_pParent, trUtf8("Highscore"),
-                                             trUtf8("Please insert your name for a new highscore:"),
-                                             QLineEdit::Normal, "", &bOk);
+        QString sName = QInputDialog::getText(
+                    m_pParent, trUtf8("Highscore"),
+                    trUtf8("Please insert your name for a new highscore:"),
+                    QLineEdit::Normal, "", &bOk);
         if (true != bOk || sName.isEmpty()) {
             sName = "Guy Incognito";
         }
         sName.replace("|", " ");
 
         for (int i = 1; i <= m_nMaxPos; i++) {
-            sListEntries << m_pHighscore->value(sBoard + "/Position" + QString::number(i),
+            sListEntries << m_pHighscore->value(sBoard + "/Position"
+                                                + QString::number(i),
                                                 "fHw=").toString();
         }
-        ba.append(sName + "|" + tTime.toString("hh:mm:ss") + "|" + QString::number(nMoves));
+        ba.append(sName + "|" + tTime.toString("hh:mm:ss") + "|"
+                  + QString::number(nMoves));
         sListEntries.insert(nPosition - 1, ba.toBase64());
         for (int i = 0; i < m_nMaxPos; i++) {
-            m_pHighscore->setValue(sBoard + "/Position" + QString::number(i + 1),
+            m_pHighscore->setValue(sBoard + "/Position"
+                                   + QString::number(i + 1),
                                    sListEntries[i]);
         }
 
@@ -170,9 +177,11 @@ void CHighscore::insertHighscore(QString sBoard, quint8 nPosition,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QStringList CHighscore::readHighscore(QString &sBoard, QString sKey) {
+QStringList CHighscore::readHighscore(const QString &sBoard,
+                                      const QString &sKey) {
     QStringList sListTemp;
-    QByteArray ba = m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray();
+    QByteArray ba = m_pHighscore->value(sBoard + "/" + sKey,
+                                        "fHw=").toByteArray();
     QString sTemp = QByteArray::fromBase64(ba);
 
     sListTemp = sTemp.split("|");

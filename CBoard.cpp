@@ -78,13 +78,13 @@ bool CBoard::setupBoard() {
     QLineF lineGrid;
     pen.setColor(this->readColor("Board/GridColor"));
     // Horizontal
-    for (int i = 1; i < m_BoardPoly.boundingRect().height() / m_nGridSize; i++) {
+    for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
         lineGrid.setLine(1, i*m_nGridSize,
                          m_BoardPoly.boundingRect().width()-1, i*m_nGridSize);
         m_pScene->addLine(lineGrid, pen);
     }
     // Vertical
-    for (int i = 1; i < m_BoardPoly.boundingRect().width() / m_nGridSize; i++) {
+    for (int i = 1; i < m_BoardPoly.boundingRect().width()/m_nGridSize; i++) {
         lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
                          m_BoardPoly.boundingRect().height()-1);
         m_pScene->addLine(lineGrid, pen);
@@ -131,10 +131,12 @@ void CBoard::setupBlocks() {
         }
 
         // Create new block
-        m_listBlocks.append(new CBlock(i, polygon, this->readColor(sPrefix + "/Color"),
-                                       this->readColor(sPrefix + "/BorderColor"),
-                                       m_nGridSize, &m_listBlocks,
-                                       this->readStartPosition(tmpSet, sPrefix + "/StartPos")));
+        m_listBlocks.append(new CBlock(
+                                i, polygon, this->readColor(sPrefix + "/Color"),
+                                this->readColor(sPrefix + "/BorderColor"),
+                                m_nGridSize, &m_listBlocks,
+                                this->readStartPosition(
+                                    tmpSet, sPrefix + "/StartPos")));
         connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
                 this, SLOT(checkPuzzleSolved()));
         connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
@@ -164,12 +166,14 @@ void CBoard::setupBlocks() {
         }
 
         // Create new barrier
-        m_listBlocks.append(new CBlock(m_nNumOfBlocks + i, polygon,
-                                       this->readColor(sPrefix + "/Color"),
-                                       this->readColor(sPrefix + "/BorderColor"),
-                                       m_nGridSize, &m_listBlocks,
-                                       this->readStartPosition(m_pBoardConf, sPrefix + "/StartPos"),
-                                       true));
+        m_listBlocks.append(new CBlock(
+                                m_nNumOfBlocks + i, polygon,
+                                this->readColor(sPrefix + "/Color"),
+                                this->readColor(sPrefix + "/BorderColor"),
+                                m_nGridSize, &m_listBlocks,
+                                this->readStartPosition(m_pBoardConf,
+                                                        sPrefix + "/StartPos"),
+                                true));
     }
 
     // Add blocks to board
@@ -178,8 +182,9 @@ void CBoard::setupBlocks() {
     }
 
     if (true == m_pBoardConf->value("NotAllPiecesNeeded", false).toBool()) {
-        QMessageBox::information(0, trUtf8("Hint"),
-                                 trUtf8("Not all pieces are needed for a solution!"));
+        QMessageBox::information(
+                    0, trUtf8("Hint"),
+                    trUtf8("Not all pieces are needed for a solution!"));
     }
 
     m_pGraphView->setEnabled(true);
