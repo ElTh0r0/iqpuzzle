@@ -177,7 +177,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
             delete m_pBoardDialog;
         }
         m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"), sPath,
-                                          trUtf8("Board files") + "(*.conf)");
+                                          trUtf8("Board files") + " (*.conf)");
         if (m_pBoardDialog->exec()) {
             QStringList sListFiles;
             sListFiles = m_pBoardDialog->selectedFiles();

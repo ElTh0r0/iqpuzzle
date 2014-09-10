@@ -133,9 +133,6 @@ void CHighscore::checkHighscore(const QString &sBoard, const quint32 &nMoves,
             if (tTime < tScoreTime) {
                 this->insertHighscore(sBoard, i, nMoves, tTime);
                 break;
-            } else if (tTime >= tScoreTime) {
-                this->insertHighscore(sBoard, i+1, nMoves, tTime);
-                break;
             }
         }
     }

@@ -36,6 +36,7 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
     this->setObjectName("BoardFileDialog");
     // Needed for Windows, otherwise native dialog crashes while adapting layout
     this->setOption(QFileDialog::DontUseNativeDialog, true);
+    this->setViewMode(QFileDialog::List);
     QVBoxLayout *boxlayout = new QVBoxLayout();
 
     m_pSolutions = new QLabel(trUtf8("Solutions") + ":", this);
