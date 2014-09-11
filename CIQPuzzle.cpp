@@ -52,6 +52,18 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
 
     m_pUi->setupUi(this);
     this->setWindowTitle(qApp->applicationName());
+    {
+        QIcon fallback(":/images/hicolor/256x256/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/128x128/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/96x96/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/64x64/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/48x48/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/32x32/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/24x24/apps/iqpuzzle.png");
+        fallback.addFile(":/images/hicolor/16x16/apps/iqpuzzle.png");
+        this->setWindowIcon(QIcon::fromTheme("iqpuzzle", fallback));
+    }
+
     m_pHighscore = new CHighscore();
     this->setupMenu();
 
@@ -105,25 +117,30 @@ void CIQPuzzle::setupMenu() {
 
     // New game
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
+    m_pUi->action_NewGame->setIcon(QIcon::fromTheme ("document-new"));
     connect(m_pUi->action_NewGame, SIGNAL(triggered()),
             this, SLOT(startNewGame()));
 
     // Restart game
     m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
+    m_pUi->action_RestartGame->setIcon(QIcon::fromTheme ("view-refresh"));
     connect(m_pUi->action_RestartGame, SIGNAL(triggered()),
             this, SLOT(restartGame()));
 
     // Load game
     m_pUi->action_LoadGame->setShortcut(QKeySequence::Open);
+    m_pUi->action_LoadGame->setIcon(QIcon::fromTheme ("document-open"));
     connect(m_pUi->action_LoadGame, SIGNAL(triggered()),
             this, SLOT(loadGame()));
     // Save game
     m_pUi->action_SaveGame->setShortcut(QKeySequence::Save);
+    m_pUi->action_SaveGame->setIcon(QIcon::fromTheme ("document-save"));
     connect(m_pUi->action_SaveGame, SIGNAL(triggered()),
             this, SLOT(saveGame()));
 
     // Pause
     m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
+    m_pUi->action_PauseGame->setIcon(QIcon::fromTheme ("media-playback-pause"));
     connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
             this, SLOT(pauseGame(bool)));
 
@@ -138,19 +155,24 @@ void CIQPuzzle::setupMenu() {
 
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
+    m_pUi->action_Quit->setIcon(QIcon::fromTheme ("application-exit"));
     connect(m_pUi->action_Quit, SIGNAL(triggered()),
             this, SLOT(close()));
 
     // Zoom in/out
     m_pUi->action_ZoomIn->setShortcut(QKeySequence::ZoomIn);
+    m_pUi->action_ZoomIn->setIcon(QIcon::fromTheme ("zoom-in"));
     m_pUi->action_ZoomOut->setShortcut(QKeySequence::ZoomOut);
+    m_pUi->action_ZoomOut->setIcon(QIcon::fromTheme ("zoom-out"));
 
     // Controls info
     m_pUi->action_Controls->setShortcut(QKeySequence::HelpContents);
+    m_pUi->action_Controls->setIcon(QIcon::fromTheme ("help-contents"));
     connect(m_pUi->action_Controls, SIGNAL(triggered()),
             this, SLOT(showControlsBox()));
 
     // About
+    m_pUi->action_Info->setIcon(QIcon::fromTheme ("help-about"));
     connect(m_pUi->action_Info, SIGNAL(triggered()),
             this, SLOT(showInfoBox()));
 }

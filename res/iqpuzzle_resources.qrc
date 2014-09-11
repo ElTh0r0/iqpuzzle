@@ -1,5 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file>images/iqpuzzle_64x64.png</file>
+        <file>images/hicolor/16x16/apps/iqpuzzle.png</file>
+        <file>images/hicolor/24x24/apps/iqpuzzle.png</file>
+        <file>images/hicolor/32x32/apps/iqpuzzle.png</file>
+        <file>images/hicolor/48x48/apps/iqpuzzle.png</file>
+        <file>images/hicolor/64x64/apps/iqpuzzle.png</file>
+        <file>images/hicolor/96x96/apps/iqpuzzle.png</file>
+        <file>images/hicolor/128x128/apps/iqpuzzle.png</file>
+        <file>images/hicolor/256x256/apps/iqpuzzle.png</file>
     </qresource>
 </RCC>
