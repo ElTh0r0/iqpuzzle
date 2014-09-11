@@ -447,7 +447,8 @@ void CIQPuzzle::showInfoBox() {
                                "<small>%4</small><br/><br/>"
                                "%5<br/>"
                                "%6"
-                               "</center>")
+                               "</center><br />"
+                               "%7")
                        .arg(qApp->applicationName())
                        .arg(qApp->applicationVersion())
                        .arg(APP_DESC)
@@ -456,7 +457,10 @@ void CIQPuzzle::showInfoBox() {
                             "https://launchpad.net/iqpuzzle</a>")
                        .arg(trUtf8("License") + ": "
                             "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-                            "GNU General Public License Version 3</a>"));
+                            "GNU General Public License Version 3</a>")
+                       .arg("<i>" + trUtf8("Translations") + "</i><br />"
+                            "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+                            "&nbsp;&nbsp;- German: ElThoro"));
 }
 
 // ---------------------------------------------------------------------------

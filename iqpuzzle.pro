@@ -52,7 +52,8 @@ FORMS        += CIQPuzzle.ui
 
 RESOURCES     = res/iqpuzzle_resources.qrc
 
-TRANSLATIONS += lang/iqpuzzle_de.ts
+TRANSLATIONS += lang/iqpuzzle_bg.ts \
+                lang/iqpuzzle_de.ts
 
 win32 {
     RC_FILE   = res/iqpuzzle.rc
