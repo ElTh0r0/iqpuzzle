@@ -60,7 +60,6 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
                         << trUtf8("Verical wheel") << trUtf8("Horizontal wheel");
     m_listMouseButtons << Qt::XButton1 << Qt::XButton2
                        << (Qt::Vertical|m_nSHIFT) << (Qt::Horizontal|m_nSHIFT);
-    qDebug() << m_listMouseButtons;
     m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
     m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 

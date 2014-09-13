@@ -55,6 +55,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="action_ReportBug"/>
     <addaction name="action_Info"/>
    </widget>
    <widget class="QMenu" name="menu_Settings">
@@ -139,6 +140,11 @@
   <action name="action_Preferences">
    <property name="text">
     <string>Configure iQPuzzle...</string>
+   </property>
+  </action>
+  <action name="action_ReportBug">
+   <property name="text">
+    <string>Report &amp;bug</string>
    </property>
   </action>
  </widget>

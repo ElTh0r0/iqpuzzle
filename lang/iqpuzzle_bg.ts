@@ -116,75 +116,80 @@ Reduced grid to default.</source>
         <translation>Помощ</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="62"/>
+        <location filename="../CIQPuzzle.ui" line="63"/>
         <source>&amp;Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="76"/>
+        <location filename="../CIQPuzzle.ui" line="77"/>
         <source>&amp;New game</source>
         <translation>Нова игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="81"/>
+        <location filename="../CIQPuzzle.ui" line="82"/>
         <source>&amp;Quit</source>
         <translation>Край</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="86"/>
+        <location filename="../CIQPuzzle.ui" line="87"/>
         <source>&amp;About</source>
         <translation>Относно</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="91"/>
+        <location filename="../CIQPuzzle.ui" line="92"/>
         <source>Zoom &amp;In</source>
         <translation>Увеличение</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="96"/>
+        <location filename="../CIQPuzzle.ui" line="97"/>
         <source>Zoom &amp;Out</source>
         <translation>Намаление</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="104"/>
+        <location filename="../CIQPuzzle.ui" line="105"/>
         <source>&amp;Restart game</source>
         <translation>Рестарт на играта</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="112"/>
+        <location filename="../CIQPuzzle.ui" line="113"/>
         <source>&amp;Save game</source>
         <translation>Запис на играта</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="115"/>
-        <location filename="../CIQPuzzle.cpp" line="307"/>
+        <location filename="../CIQPuzzle.ui" line="116"/>
+        <location filename="../CIQPuzzle.cpp" line="311"/>
         <source>Save game</source>
         <translation>Запис на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="120"/>
+        <location filename="../CIQPuzzle.ui" line="121"/>
         <source>&amp;Load game</source>
         <translation>Зареждане на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="123"/>
-        <location filename="../CIQPuzzle.cpp" line="284"/>
+        <location filename="../CIQPuzzle.ui" line="124"/>
+        <location filename="../CIQPuzzle.cpp" line="288"/>
         <source>Load game</source>
         <translation>Зареждане на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="131"/>
+        <location filename="../CIQPuzzle.ui" line="132"/>
         <source>Pa&amp;use</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="136"/>
+        <location filename="../CIQPuzzle.ui" line="137"/>
         <source>&amp;Highscore</source>
         <translation>Резултати</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="141"/>
+        <location filename="../CIQPuzzle.ui" line="142"/>
         <source>Configure iQPuzzle...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CIQPuzzle.ui" line="147"/>
+        <source>Report &amp;bug</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -194,76 +199,76 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="84"/>
-        <location filename="../CIQPuzzle.cpp" line="213"/>
-        <location filename="../CIQPuzzle.cpp" line="228"/>
-        <location filename="../CIQPuzzle.cpp" line="360"/>
-        <location filename="../CIQPuzzle.cpp" line="373"/>
+        <location filename="../CIQPuzzle.cpp" line="217"/>
+        <location filename="../CIQPuzzle.cpp" line="232"/>
+        <location filename="../CIQPuzzle.cpp" line="364"/>
+        <location filename="../CIQPuzzle.cpp" line="377"/>
         <source>Time</source>
         <translation>Време</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="85"/>
-        <location filename="../CIQPuzzle.cpp" line="211"/>
-        <location filename="../CIQPuzzle.cpp" line="225"/>
-        <location filename="../CIQPuzzle.cpp" line="351"/>
-        <location filename="../CIQPuzzle.cpp" line="372"/>
+        <location filename="../CIQPuzzle.cpp" line="215"/>
+        <location filename="../CIQPuzzle.cpp" line="229"/>
+        <location filename="../CIQPuzzle.cpp" line="355"/>
+        <location filename="../CIQPuzzle.cpp" line="376"/>
         <source>Moves</source>
         <translation>Ходове</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="189"/>
+        <location filename="../CIQPuzzle.cpp" line="193"/>
         <source>Load board</source>
         <translation>Зареждане на дъска</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="191"/>
+        <location filename="../CIQPuzzle.cpp" line="195"/>
         <source>Board files</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="204"/>
-        <location filename="../CIQPuzzle.cpp" line="219"/>
+        <location filename="../CIQPuzzle.cpp" line="208"/>
+        <location filename="../CIQPuzzle.cpp" line="223"/>
         <source>File not found</source>
         <translation>Файлът не е намерен</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="205"/>
-        <location filename="../CIQPuzzle.cpp" line="220"/>
+        <location filename="../CIQPuzzle.cpp" line="209"/>
+        <location filename="../CIQPuzzle.cpp" line="224"/>
         <source>The chosen file does not exist.</source>
         <translation>Избраният файл не съществува.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="239"/>
+        <location filename="../CIQPuzzle.cpp" line="243"/>
         <source>Unknown</source>
         <translation>Непознат</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="244"/>
+        <location filename="../CIQPuzzle.cpp" line="248"/>
         <source>Solutions</source>
         <translation>Решения</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="298"/>
+        <location filename="../CIQPuzzle.cpp" line="302"/>
         <source>Invalid saved puzzle.</source>
         <translation>Неправилно запазен пъзъл.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="371"/>
+        <location filename="../CIQPuzzle.cpp" line="375"/>
         <source>Puzzle solved!</source>
         <translation>Пъзелът е решен!</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="391"/>
+        <location filename="../CIQPuzzle.cpp" line="427"/>
         <source>About</source>
         <translation>Относно</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="406"/>
+        <location filename="../CIQPuzzle.cpp" line="442"/>
         <source>License</source>
         <translation>Лиценз</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="409"/>
+        <location filename="../CIQPuzzle.cpp" line="445"/>
         <source>Translations</source>
         <translation>Преводи</translation>
     </message>

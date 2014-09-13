@@ -63,25 +63,31 @@ win32 {
 }
 
 unix {
-    data.path      = /usr/share/games/iqpuzzle
-    data.files    += data/boards
-    lang.path      = /usr/share/games/iqpuzzle/lang
-    lang.files    += lang/*.qm
-    desktop.path   = /usr/share/applications
-    desktop.files += data/iqpuzzle.desktop
-    pixmap.path    = /usr/share/pixmaps
-    pixmap.files  += res/images/iqpuzzle_64x64.png \
-                     res/images/iqpuzzle.xpm
-    icons.path     = /usr/share/icons
-    icons.files   += res/images/hicolor
-    man.path       = /usr/share
-    man.files     += man
-    target.path    = /usr/games
-    INSTALLS      += data \
-                     lang \
-                     desktop \
-                     pixmap \
-                     icons \
-                     man \
-                     target
+    data.path       = /usr/share/games/iqpuzzle
+    data.files     += data/boards
+    lang.path       = /usr/share/games/iqpuzzle/lang
+    lang.files     += lang/*.qm
+    desktop.path    = /usr/share/applications
+    desktop.files  += data/iqpuzzle.desktop
+    pixmap.path     = /usr/share/pixmaps
+    pixmap.files   += res/images/iqpuzzle_64x64.png \
+                      res/images/iqpuzzle.xpm
+    icons.path      = /usr/share/icons
+    icons.files    += res/images/hicolor
+    apportdb.path  += /etc/apport/crashdb.conf.d
+    apportdb.files += apport/iqpuzzle-crashdb.conf
+    apport.path    += /usr/share/apport/package-hooks
+    apport.files   += apport/source_iqpuzzle.py
+    man.path        = /usr/share
+    man.files      += man
+    target.path     = /usr/games
+    INSTALLS       += data \
+                      lang \
+                      desktop \
+                      pixmap \
+                      icons \
+                      apportdb \
+                      apport \
+                      man \
+                      target
 }
