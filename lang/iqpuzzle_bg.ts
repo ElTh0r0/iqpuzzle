@@ -116,191 +116,269 @@ Reduced grid to default.</source>
         <translation>Помощ</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="63"/>
+        <location filename="../CIQPuzzle.ui" line="62"/>
         <source>&amp;Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="75"/>
+        <location filename="../CIQPuzzle.ui" line="76"/>
         <source>&amp;New game</source>
         <translation>Нова игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="80"/>
+        <location filename="../CIQPuzzle.ui" line="81"/>
         <source>&amp;Quit</source>
         <translation>Край</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="85"/>
-        <source>&amp;Controls</source>
-        <translation>Управление</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.ui" line="90"/>
+        <location filename="../CIQPuzzle.ui" line="86"/>
         <source>&amp;About</source>
         <translation>Относно</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="95"/>
+        <location filename="../CIQPuzzle.ui" line="91"/>
         <source>Zoom &amp;In</source>
         <translation>Увеличение</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="100"/>
+        <location filename="../CIQPuzzle.ui" line="96"/>
         <source>Zoom &amp;Out</source>
         <translation>Намаление</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="108"/>
+        <location filename="../CIQPuzzle.ui" line="104"/>
         <source>&amp;Restart game</source>
         <translation>Рестарт на играта</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="116"/>
+        <location filename="../CIQPuzzle.ui" line="112"/>
         <source>&amp;Save game</source>
         <translation>Запис на играта</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="119"/>
-        <location filename="../CIQPuzzle.cpp" line="317"/>
+        <location filename="../CIQPuzzle.ui" line="115"/>
+        <location filename="../CIQPuzzle.cpp" line="307"/>
         <source>Save game</source>
         <translation>Запис на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="124"/>
+        <location filename="../CIQPuzzle.ui" line="120"/>
         <source>&amp;Load game</source>
         <translation>Зареждане на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="127"/>
-        <location filename="../CIQPuzzle.cpp" line="294"/>
+        <location filename="../CIQPuzzle.ui" line="123"/>
+        <location filename="../CIQPuzzle.cpp" line="284"/>
         <source>Load game</source>
         <translation>Зареждане на игра</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="135"/>
+        <location filename="../CIQPuzzle.ui" line="131"/>
         <source>Pa&amp;use</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.ui" line="140"/>
+        <location filename="../CIQPuzzle.ui" line="136"/>
         <source>&amp;Highscore</source>
         <translation>Резултати</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="79"/>
+        <location filename="../CIQPuzzle.ui" line="141"/>
+        <source>Configure iQPuzzle...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CIQPuzzle.cpp" line="80"/>
         <source>Game paused</source>
         <translation>Играта е на пауза</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="83"/>
-        <location filename="../CIQPuzzle.cpp" line="224"/>
-        <location filename="../CIQPuzzle.cpp" line="239"/>
-        <location filename="../CIQPuzzle.cpp" line="370"/>
-        <location filename="../CIQPuzzle.cpp" line="383"/>
+        <location filename="../CIQPuzzle.cpp" line="84"/>
+        <location filename="../CIQPuzzle.cpp" line="213"/>
+        <location filename="../CIQPuzzle.cpp" line="228"/>
+        <location filename="../CIQPuzzle.cpp" line="360"/>
+        <location filename="../CIQPuzzle.cpp" line="373"/>
         <source>Time</source>
         <translation>Време</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="84"/>
-        <location filename="../CIQPuzzle.cpp" line="222"/>
-        <location filename="../CIQPuzzle.cpp" line="236"/>
-        <location filename="../CIQPuzzle.cpp" line="361"/>
-        <location filename="../CIQPuzzle.cpp" line="382"/>
+        <location filename="../CIQPuzzle.cpp" line="85"/>
+        <location filename="../CIQPuzzle.cpp" line="211"/>
+        <location filename="../CIQPuzzle.cpp" line="225"/>
+        <location filename="../CIQPuzzle.cpp" line="351"/>
+        <location filename="../CIQPuzzle.cpp" line="372"/>
         <source>Moves</source>
         <translation>Ходове</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="201"/>
+        <location filename="../CIQPuzzle.cpp" line="189"/>
         <source>Load board</source>
         <translation>Зареждане на дъска</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="202"/>
+        <location filename="../CIQPuzzle.cpp" line="191"/>
         <source>Board files</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="215"/>
-        <location filename="../CIQPuzzle.cpp" line="230"/>
+        <location filename="../CIQPuzzle.cpp" line="204"/>
+        <location filename="../CIQPuzzle.cpp" line="219"/>
         <source>File not found</source>
         <translation>Файлът не е намерен</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="216"/>
-        <location filename="../CIQPuzzle.cpp" line="231"/>
+        <location filename="../CIQPuzzle.cpp" line="205"/>
+        <location filename="../CIQPuzzle.cpp" line="220"/>
         <source>The chosen file does not exist.</source>
         <translation>Избраният файл не съществува.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="250"/>
+        <location filename="../CIQPuzzle.cpp" line="239"/>
         <source>Unknown</source>
         <translation>Непознат</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="255"/>
+        <location filename="../CIQPuzzle.cpp" line="244"/>
         <source>Solutions</source>
         <translation>Решения</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="308"/>
+        <location filename="../CIQPuzzle.cpp" line="298"/>
         <source>Invalid saved puzzle.</source>
         <translation>Неправилно запазен пъзъл.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="381"/>
+        <location filename="../CIQPuzzle.cpp" line="371"/>
         <source>Puzzle solved!</source>
         <translation>Пъзелът е решен!</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="402"/>
-        <source>Controls</source>
-        <translation>Управление</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="413"/>
-        <source>Move block</source>
-        <translation>Преместване на блок</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="417"/>
-        <source>Drag &amp; drop with left mouse button</source>
-        <translation>Влачете и пуснете с левия бутон на мишката</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="420"/>
-        <source>Rotate block</source>
-        <translation>Завъртане на блок</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="422"/>
-        <source>Vertical mousewheel</source>
-        <translation>Колелцето на мишката</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="425"/>
-        <source>Flip block</source>
-        <translation>Огледално завъртане на блок</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="427"/>
-        <source>Right mouse button</source>
-        <translation>Десен бутон на мипката</translation>
-    </message>
-    <message>
-        <location filename="../CIQPuzzle.cpp" line="443"/>
+        <location filename="../CIQPuzzle.cpp" line="391"/>
         <source>About</source>
         <translation>Относно</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="458"/>
+        <location filename="../CIQPuzzle.cpp" line="406"/>
         <source>License</source>
         <translation>Лиценз</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="461"/>
+        <location filename="../CIQPuzzle.cpp" line="409"/>
         <source>Translations</source>
         <translation>Преводи</translation>
+    </message>
+</context>
+<context>
+    <name>CSettings</name>
+    <message>
+        <location filename="../CSettings.cpp" line="56"/>
+        <source>Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="56"/>
+        <source>Middle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="56"/>
+        <source>Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="59"/>
+        <source>First X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="59"/>
+        <source>Second X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="60"/>
+        <source>Verical wheel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="60"/>
+        <source>Horizontal wheel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="115"/>
+        <source>The game has to be restarted for applying the changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CSettingsDialog</name>
+    <message>
+        <location filename="../CSettings.ui" line="14"/>
+        <source>Preferences</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="32"/>
+        <source>Controls</source>
+        <translation type="unfinished">Управление</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="39"/>
+        <source>Mouse</source>
+        <translation>Мишката</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="49"/>
+        <source>Move block</source>
+        <translation>Преместване на блок</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="59"/>
+        <location filename="../CSettings.ui" line="128"/>
+        <source>Rotate block</source>
+        <translation>Завъртане на блок</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="69"/>
+        <location filename="../CSettings.ui" line="135"/>
+        <source>Flip block</source>
+        <translation>Огледално завъртане на блок</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="86"/>
+        <source>Keyboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="93"/>
+        <source>Select block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="100"/>
+        <source>Move left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="107"/>
+        <source>Move up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="114"/>
+        <source>Move right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="121"/>
+        <source>Move down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.ui" line="170"/>
+        <source>GUI language</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

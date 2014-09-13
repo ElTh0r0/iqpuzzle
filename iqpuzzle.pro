@@ -40,15 +40,18 @@ SOURCES      += main.cpp\
                 CBoard.cpp \
                 CBlock.cpp \
                 CBoardDialog.cpp \
-                CHighscore.cpp
+                CHighscore.cpp \
+                CSettings.cpp
 
 HEADERS      += CIQPuzzle.h \
                 CBoard.h \
                 CBlock.h \
                 CBoardDialog.h \
-                CHighscore.h
+                CHighscore.h \
+                CSettings.h
 
-FORMS        += CIQPuzzle.ui
+FORMS        += CIQPuzzle.ui \
+                CSettings.ui
 
 RESOURCES     = res/iqpuzzle_resources.qrc
 

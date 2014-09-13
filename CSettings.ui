@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CSettingsDialog</class>
+ <widget class="QDialog" name="CSettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>453</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedKingdom"/>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="lblControls">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Controls</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QRadioButton" name="radioMouseControls">
+     <property name="text">
+      <string>Mouse</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="lblMoveBlock">
+     <property name="text">
+      <string>Move block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="cbMoveBlockMouse"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="lblRotateBlock">
+     <property name="text">
+      <string>Rotate block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="cbRotateBlockMouse"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="lblFlipBlock">
+     <property name="text">
+      <string>Flip block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="cbFlipBlockMouse"/>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
+    <widget class="QRadioButton" name="radioKeyboardControls">
+     <property name="text">
+      <string>Keyboard</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="lblSelectBlock">
+     <property name="text">
+      <string>Select block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="lblMoveLeft">
+     <property name="text">
+      <string>Move left</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="lblMoveUp">
+     <property name="text">
+      <string>Move up</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="lblMoveRight">
+     <property name="text">
+      <string>Move right</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="lblMoveDown">
+     <property name="text">
+      <string>Move down</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="lblRotateBlockKey">
+     <property name="text">
+      <string>Rotate block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QLabel" name="lblFlipBlockKey">
+     <property name="text">
+      <string>Flip block</string>
+     </property>
+    </widget>
+   </item>
+   <item row="14" column="0" colspan="2">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="leSelectBlockKey"/>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="leMoveLeftKey"/>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="leMoveUpKey"/>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLineEdit" name="leMoveRightKey"/>
+   </item>
+   <item row="11" column="1">
+    <widget class="QLineEdit" name="leMoveDownKey"/>
+   </item>
+   <item row="12" column="1">
+    <widget class="QLineEdit" name="leRotateBlockKey"/>
+   </item>
+   <item row="13" column="1">
+    <widget class="QLineEdit" name="leFlipBlockKey"/>
+   </item>
+   <item row="15" column="0">
+    <widget class="QLabel" name="lblGuiLang">
+     <property name="text">
+      <string>GUI language</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1">
+    <widget class="QComboBox" name="cbGuiLanguage"/>
+   </item>
+   <item row="16" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>CSettingsDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>291</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>249</x>
+     <y>226</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

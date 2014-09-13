@@ -32,6 +32,8 @@
 #include <QGraphicsSceneWheelEvent>
 #include <QPainter>
 
+#include "./CSettings.h"
+
 /**
  * \class CBlock
  * \brief Block handling (move, rotate, collision check).
@@ -41,7 +43,7 @@ class CBlock : public QGraphicsObject {
 
   public:
     CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-           quint16 nGrid, QList<CBlock *> *pListBlocks,
+           quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
            QPointF posTopLeft = QPoint(0, 0),
            const bool bBarrier = false);
 
@@ -63,6 +65,7 @@ class CBlock : public QGraphicsObject {
 
   protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
     void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
     int type() const;
@@ -72,17 +75,23 @@ class CBlock : public QGraphicsObject {
     bool checkCollision(const QPainterPath thisPath);
     QPointF snapToGrid(const QPointF point) const;
 
+    void moveBlock(const bool bRelease = false);
+    void rotateBlock(const int nDelta = -1);
+    void flipBlock();
+
     const quint16 m_nID;
     QPolygonF m_PolyShape;
     QBrush m_bgBrush;
     QPen m_borderPen;
     quint16 m_nGrid;
     QList<CBlock *> *m_pListBlocks;
+    CSettings *m_pSettings;
     bool m_bBarrier;
-    bool m_bMousePressed;
+    bool m_bSelected;
 
     QTransform *m_pTransform;
     QPointF m_posBlockSelected;
+    QPointF m_posMouseSelected;
     QGraphicsSimpleTextItem m_ItemNumberText;
 };
 

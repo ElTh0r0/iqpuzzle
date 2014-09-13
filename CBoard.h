@@ -43,7 +43,8 @@ class CBoard : public QObject {
 
   public:
     CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-           const QString &sBoardFile, const QString &sSavedGame = "");
+           const QString &sBoardFile, CSettings *pSettings,
+           const QString &sSavedGame = "");
 
     bool setupBoard();
     void setupBlocks();
@@ -72,6 +73,7 @@ class CBoard : public QObject {
     QSettings *m_pBoardConf;
     QSettings *m_pSavedConf;
     QString m_sBoardFile;
+    CSettings *m_pSettings;
     bool m_bSavedGame;
     QPolygonF m_BoardPoly;
     QList<CBlock *> m_listBlocks;

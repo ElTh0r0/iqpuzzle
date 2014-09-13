@@ -38,6 +38,7 @@
 QFile logfile;
 QTextStream out(&logfile);
 
+QString getLanguage(const QString &sSharePath);
 void setupLogger(const QString &sDebugFilePath,
                  const QString &sAppName,
                  const QString &sVersion);
@@ -50,9 +51,6 @@ void setupLogger(const QString &sDebugFilePath,
     void LoggingHandler(QtMsgType type, const char *sMsg);
 #endif
 
-// Don't change this value! Use "--debug" command line option instead.
-bool bDEBUG = false;
-
 int main(int argc, char *argv[]) {
     Q_INIT_RESOURCE(iqpuzzle_resources);
 
@@ -62,51 +60,43 @@ int main(int argc, char *argv[]) {
 
     if (app.arguments().contains("-v")
             || app.arguments().contains("--version")) {
-        qDebug() << app.arguments()[0] << "\t v"
+        qDebug() << app.arguments()[0] << "\t"
                  << app.applicationVersion() << "\n";
         exit(0);
-    } else if (app.arguments().contains("--debug")) {
-        qWarning() << "Debugging enabled!";
-        bDEBUG = true;
     }
 
+    // Default share data path (Windows and debugging)
+    QString sSharePath = app.applicationDirPath();
+    // Standard installation path (Linux)
+    QDir tmpDir(app.applicationDirPath() + "/../share/games/"
+                + app.applicationName().toLower());
+    if (!app.arguments().contains("--debug") && tmpDir.exists()) {
+        sSharePath = app.applicationDirPath() + "/../share/games/"
+                       + app.applicationName().toLower();
+    }
+
+    const QString sLang(getLanguage(sSharePath));
     QTranslator qtTranslator;
     QTranslator AppTranslator;
-    QString sLanguage(QLocale::system().name());
-    #ifdef Q_OS_UNIX
-    QByteArray lang = qgetenv("LANG");
-    if (!lang.isEmpty()) {
-        sLanguage = QLocale(lang).name();
-    }
-    #endif
 
     // Setup gui translation (Qt)
-    if (!qtTranslator.load("qt_" + sLanguage,
-                           QLibraryInfo::location(
-                               QLibraryInfo::TranslationsPath))) {
-        // If it fails, search in application directory
-        if (!qtTranslator.load("qt_" + sLanguage, app.applicationDirPath()
-                               + "/lang")) {
-            qWarning() << "Couldn't load Qt translations:" << "qt_" + sLanguage;
+        if (!qtTranslator.load("qt_" + sLang,
+                               QLibraryInfo::location(
+                                   QLibraryInfo::TranslationsPath))) {
+            // If it fails, search in application directory
+            if (!qtTranslator.load("qt_" + sLang, sSharePath + "/lang")) {
+                qWarning() << "Could not load Qt translations:" << "qt_" + sLang;
+            }
         }
-    }
-    app.installTranslator(&qtTranslator);
+        app.installTranslator(&qtTranslator);
 
-    // Setup gui translation (app)
-    if (bDEBUG ||
-            !AppTranslator.load(
-                app.applicationName().toLower() + "_" + sLanguage,
-                "/usr/share/games/" + app.applicationName().toLower()
-                + "/lang")) {
-        // If it fails, search in application directory
-        if (!AppTranslator.load(
-                    app.applicationName().toLower() + "_" + sLanguage,
-                    app.applicationDirPath() + "/lang")) {
+        // Setup gui translation (app)
+        if (!AppTranslator.load(app.applicationName().toLower() + "_" + sLang,
+                                sSharePath + "/lang")) {
             qWarning() << "Could not load application translation:"
-                       << qAppName() + "_" + sLanguage;
+                       << qAppName() + "_" + sLang;
         }
-    }
-    app.installTranslator(&AppTranslator);
+        app.installTranslator(&AppTranslator);
 
 #if QT_VERSION >= 0x050000
     QStringList sListPaths = QStandardPaths::standardLocations(
@@ -130,7 +120,7 @@ int main(int argc, char *argv[]) {
     setupLogger(userDataDir.absolutePath() + "/" + sDebugFile,
                 app.applicationName(), app.applicationVersion());
 
-    CIQPuzzle myIQPuzzle(userDataDir);
+    CIQPuzzle myIQPuzzle(userDataDir, sSharePath);
     myIQPuzzle.show();
     int nRet = app.exec();
 
@@ -204,4 +194,34 @@ void LoggingHandler(QtMsgType type, const char *sMsg) {
         logfile.close();
         abort();
     }
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+QString getLanguage(const QString &sSharePath) {
+#if defined _WIN32
+    QSettings settings(QSettings::IniFormat, QSettings::UserScope,
+                       qAppName().toLower(), qAppName().toLower());
+#else
+    QSettings settings(QSettings::NativeFormat, QSettings::UserScope,
+                       qApp->applicationName().toLower(),
+                       qApp->applicationName().toLower());
+#endif
+
+    QString sLang = settings.value("GuiLanguage", "auto").toString();
+    if ("auto" == sLang) {
+        #ifdef Q_OS_UNIX
+        QByteArray lang = qgetenv("LANG");
+        if (!lang.isEmpty()) {
+            return QLocale(lang).name();
+        }
+        #endif
+        return QLocale::system().name();
+    } else if (!QFile(sSharePath + "/lang/"
+                      + qAppName() + "_" + sLang + ".qm").exists()) {
+        settings.setValue("GuiLanguage", "en");
+        return "en";
+    }
+    return sLang;
 }

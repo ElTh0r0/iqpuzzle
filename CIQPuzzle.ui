@@ -55,7 +55,6 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_Controls"/>
     <addaction name="action_Info"/>
    </widget>
    <widget class="QMenu" name="menu_Settings">
@@ -64,6 +63,8 @@
     </property>
     <addaction name="action_ZoomIn"/>
     <addaction name="action_ZoomOut"/>
+    <addaction name="separator"/>
+    <addaction name="action_Preferences"/>
    </widget>
    <addaction name="menuGame"/>
    <addaction name="menu_Settings"/>
@@ -78,11 +79,6 @@
   <action name="action_Quit">
    <property name="text">
     <string>&amp;Quit</string>
-   </property>
-  </action>
-  <action name="action_Controls">
-   <property name="text">
-    <string>&amp;Controls</string>
    </property>
   </action>
   <action name="action_Info">
@@ -138,6 +134,11 @@
   <action name="action_Highscore">
    <property name="text">
     <string>&amp;Highscore</string>
+   </property>
+  </action>
+  <action name="action_Preferences">
+   <property name="text">
+    <string>Configure iQPuzzle...</string>
    </property>
   </action>
  </widget>

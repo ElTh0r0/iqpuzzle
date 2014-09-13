@@ -34,15 +34,15 @@
 #include "./CIQPuzzle.h"
 #include "ui_CIQPuzzle.h"
 
-extern bool bDEBUG;
-
-CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
+CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
+                     QWidget *pParent)
     : QMainWindow(pParent),
       m_pUi(new Ui::CIQPuzzle),
       m_pBoardDialog(NULL),
       m_pBoard(NULL),
       m_sSavedGame(""),
       m_userDataDir(userDataDir),
+      m_sSharePath(sharePath.absolutePath()),
       m_nMoves(0),
       m_sSavedTime(""),
       m_sSavedMoves(""),
@@ -65,6 +65,7 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
     }
 
     m_pHighscore = new CHighscore();
+    m_pSettings = new CSettings(m_sSharePath, this);
     this->setupMenu();
 
     m_pGraphView = new QGraphicsView(this);
@@ -96,14 +97,12 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, QWidget *pParent)
     }
 
     // Start board_001 as default
-    QString sPath = qApp->applicationDirPath() + "/boards";
-    // Path from normal installation
-    if (QFile::exists("/usr/share/games/" + qApp->applicationName().toLower()
-                      + "/boards") && !bDEBUG) {
-        sPath = "/usr/share/games/" + qApp->applicationName().toLower()
-                + "/boards";
+    if (QFile::exists(m_sSharePath + "/boards")) {
+        this->startNewGame(m_sSharePath + "/boards/board_001.conf");
+    } else {
+        qWarning() << "Games share path does not exist" << m_sSharePath;
     }
-    this->startNewGame(sPath + "/board_001.conf");
+
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -117,30 +116,30 @@ void CIQPuzzle::setupMenu() {
 
     // New game
     m_pUi->action_NewGame->setShortcut(QKeySequence::New);
-    m_pUi->action_NewGame->setIcon(QIcon::fromTheme ("document-new"));
+    m_pUi->action_NewGame->setIcon(QIcon::fromTheme("document-new"));
     connect(m_pUi->action_NewGame, SIGNAL(triggered()),
             this, SLOT(startNewGame()));
 
     // Restart game
     m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
-    m_pUi->action_RestartGame->setIcon(QIcon::fromTheme ("view-refresh"));
+    m_pUi->action_RestartGame->setIcon(QIcon::fromTheme("view-refresh"));
     connect(m_pUi->action_RestartGame, SIGNAL(triggered()),
             this, SLOT(restartGame()));
 
     // Load game
     m_pUi->action_LoadGame->setShortcut(QKeySequence::Open);
-    m_pUi->action_LoadGame->setIcon(QIcon::fromTheme ("document-open"));
+    m_pUi->action_LoadGame->setIcon(QIcon::fromTheme("document-open"));
     connect(m_pUi->action_LoadGame, SIGNAL(triggered()),
             this, SLOT(loadGame()));
     // Save game
     m_pUi->action_SaveGame->setShortcut(QKeySequence::Save);
-    m_pUi->action_SaveGame->setIcon(QIcon::fromTheme ("document-save"));
+    m_pUi->action_SaveGame->setIcon(QIcon::fromTheme("document-save"));
     connect(m_pUi->action_SaveGame, SIGNAL(triggered()),
             this, SLOT(saveGame()));
 
     // Pause
     m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
-    m_pUi->action_PauseGame->setIcon(QIcon::fromTheme ("media-playback-pause"));
+    m_pUi->action_PauseGame->setIcon(QIcon::fromTheme("media-playback-pause"));
     connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
             this, SLOT(pauseGame(bool)));
 
@@ -155,24 +154,23 @@ void CIQPuzzle::setupMenu() {
 
     // Exit game
     m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
-    m_pUi->action_Quit->setIcon(QIcon::fromTheme ("application-exit"));
+    m_pUi->action_Quit->setIcon(QIcon::fromTheme("application-exit"));
     connect(m_pUi->action_Quit, SIGNAL(triggered()),
             this, SLOT(close()));
 
     // Zoom in/out
     m_pUi->action_ZoomIn->setShortcut(QKeySequence::ZoomIn);
-    m_pUi->action_ZoomIn->setIcon(QIcon::fromTheme ("zoom-in"));
+    m_pUi->action_ZoomIn->setIcon(QIcon::fromTheme("zoom-in"));
     m_pUi->action_ZoomOut->setShortcut(QKeySequence::ZoomOut);
-    m_pUi->action_ZoomOut->setIcon(QIcon::fromTheme ("zoom-out"));
+    m_pUi->action_ZoomOut->setIcon(QIcon::fromTheme("zoom-out"));
 
-    // Controls info
-    m_pUi->action_Controls->setShortcut(QKeySequence::HelpContents);
-    m_pUi->action_Controls->setIcon(QIcon::fromTheme ("help-contents"));
-    connect(m_pUi->action_Controls, SIGNAL(triggered()),
-            this, SLOT(showControlsBox()));
+    // Settings
+    m_pUi->action_Preferences->setIcon(QIcon::fromTheme("preferences-system"));
+    connect(m_pUi->action_Preferences, SIGNAL(triggered()),
+            m_pSettings, SLOT(show()));
 
     // About
-    m_pUi->action_Info->setIcon(QIcon::fromTheme ("help-about"));
+    m_pUi->action_Info->setIcon(QIcon::fromTheme("help-about"));
     connect(m_pUi->action_Info, SIGNAL(triggered()),
             this, SLOT(showInfoBox()));
 }
@@ -185,20 +183,11 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
     qDebug() << Q_FUNC_INFO;
 
     if (sBoardFile.isEmpty()) {
-        // No installation: Use app path
-        QString sPath = qApp->applicationDirPath() + "/boards";
-        // Path from normal installation
-        if (QFile::exists("/usr/share/games/"
-                          + qApp->applicationName().toLower()
-                          + "/boards") && !bDEBUG) {
-            sPath = "/usr/share/games/" + qApp->applicationName().toLower()
-                    + "/boards";
-        }
-
         if (NULL != m_pBoardDialog) {
             delete m_pBoardDialog;
         }
-        m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"), sPath,
+        m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"),
+                                          m_sSharePath + "/boards",
                                           trUtf8("Board files") + " (*.conf)");
         if (m_pBoardDialog->exec()) {
             QStringList sListFiles;
@@ -258,7 +247,8 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
         if (NULL != m_pBoard) {
             delete m_pBoard;
         }
-        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile, sSavedGame);
+        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile,
+                              m_pSettings, sSavedGame);
         connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
                 this, SLOT(setMinWindowSize(const QSize)));
         connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
@@ -392,48 +382,6 @@ void CIQPuzzle::solvedPuzzle() {
 void CIQPuzzle::showHighscore() {
     QFileInfo fi(m_sBoardFile);
     emit showHighscore(fi.baseName());
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CIQPuzzle::showControlsBox() {
-    QDialog dialog(this);
-    dialog.setWindowTitle(trUtf8("Controls"));
-    dialog.setWindowFlags(this->windowFlags()
-                          & ~Qt::WindowContextHelpButtonHint);
-
-    QGridLayout* layout = new QGridLayout(&dialog);
-    layout->setMargin(12);
-    layout->setSpacing(0);
-    layout->setColumnMinimumWidth(1, 2);
-    layout->setRowMinimumHeight(3, 12);
-
-    layout->addWidget(new QLabel(
-                          "<b>" + trUtf8("Move block") + ":</b> ", &dialog),
-                      0, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(
-                new QLabel(
-                    trUtf8("Drag & drop with left mouse button"), &dialog),
-                      0, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(
-                          "<b>" + trUtf8("Rotate block") + ":</b> ", &dialog),
-                      1, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("Vertical mousewheel"), &dialog),
-                      1, 2, Qt::AlignLeft | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(
-                          "<b>" + trUtf8("Flip block") + ":</b> ", &dialog),
-                      2, 0, Qt::AlignRight | Qt::AlignVCenter);
-    layout->addWidget(new QLabel(trUtf8("Right mouse button"), &dialog),
-                      2, 2, Qt::AlignLeft | Qt::AlignVCenter);
-
-    QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
-                                                     Qt::Horizontal, &dialog);
-    connect(buttons, SIGNAL(rejected()),
-            &dialog, SLOT(reject()));
-    layout->addWidget(buttons, 4, 0, 1, 3);
-
-    dialog.exec();
 }
 
 // ---------------------------------------------------------------------------

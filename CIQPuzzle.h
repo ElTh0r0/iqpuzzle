@@ -37,6 +37,7 @@
 #include "./CBoard.h"
 #include "./CBoardDialog.h"
 #include "./CHighscore.h"
+#include "./CSettings.h"
 
 namespace Ui {
     class CIQPuzzle;
@@ -50,7 +51,8 @@ class CIQPuzzle : public QMainWindow {
     Q_OBJECT
 
   public:
-    explicit CIQPuzzle(const QDir userDataDir, QWidget *pParent = 0);
+    explicit CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
+                       QWidget *pParent = 0);
     ~CIQPuzzle();
 
   protected:
@@ -75,7 +77,6 @@ class CIQPuzzle : public QMainWindow {
     void updateTimer();
     void solvedPuzzle();
     void showHighscore();
-    void showControlsBox();
     void showInfoBox();
 
   private:
@@ -90,6 +91,7 @@ class CIQPuzzle : public QMainWindow {
     QString m_sBoardFile;
     QString m_sSavedGame;
     QDir m_userDataDir;
+    QString m_sSharePath;
     QLabel *m_pStatusLabelTime;
     QLabel *m_pStatusLabelMoves;
     quint32 m_nMoves;
@@ -100,6 +102,7 @@ class CIQPuzzle : public QMainWindow {
     QGraphicsTextItem *m_pTextPaused;
     bool m_bSolved;
     CHighscore *m_pHighscore;
+    CSettings *m_pSettings;
 };
 
 #endif  // IQPUZZLE_CIQPUZZLE_H_

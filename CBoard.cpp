@@ -31,13 +31,13 @@
 
 #include "./CBoard.h"
 
-extern bool bDEBUG;
-
 CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-               const QString &sBoardFile, const QString &sSavedGame)
+               const QString &sBoardFile, CSettings *pSettings,
+               const QString &sSavedGame)
     : m_pGraphView(pGraphView),
       m_pScene(pScene),
       m_sBoardFile(sBoardFile),
+      m_pSettings(pSettings),
       m_bSavedGame(false) {
     m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
     if (!sSavedGame.isEmpty()) {
@@ -137,7 +137,7 @@ void CBoard::setupBlocks() {
         m_listBlocks.append(new CBlock(
                                 i, polygon, this->readColor(sPrefix + "/Color"),
                                 this->readColor(sPrefix + "/BorderColor"),
-                                m_nGridSize, &m_listBlocks,
+                                m_nGridSize, &m_listBlocks, m_pSettings,
                                 this->readStartPosition(
                                     tmpSet, sPrefix + "/StartPos")));
         connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
@@ -173,7 +173,7 @@ void CBoard::setupBlocks() {
                                 m_nNumOfBlocks + i, polygon,
                                 this->readColor(sPrefix + "/Color"),
                                 this->readColor(sPrefix + "/BorderColor"),
-                                m_nGridSize, &m_listBlocks,
+                                m_nGridSize, &m_listBlocks, m_pSettings,
                                 this->readStartPosition(m_pBoardConf,
                                                         sPrefix + "/StartPos"),
                                 true));

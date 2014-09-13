@@ -28,24 +28,23 @@
 
 #include "./CBlock.h"
 
-extern bool bDEBUG;
-
 CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-               quint16 nGrid, QList<CBlock *> *pListBlocks, QPointF posTopLeft,
-               const bool bBarrier)
+               quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
+               QPointF posTopLeft, const bool bBarrier)
     : m_nID(nID),
       m_PolyShape(shape),
       m_bgBrush(bgcolor),
       m_borderPen(border),
       m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
+      m_pSettings(pSettings),
       m_bBarrier(bBarrier),
-      m_bMousePressed(false) {
-    if (!m_bBarrier) {
-        qDebug() << "Creating BLOCK" << m_nID <<
-                    "\tPosition:" << posTopLeft * m_nGrid;
-    } else if (m_bBarrier) {
+      m_bSelected(false) {
+    if (bBarrier) {
         qDebug() << "Creating BARRIER" << m_nID <<
+                    "\tPosition:" << posTopLeft * m_nGrid;
+    } else {
+        qDebug() << "Creating BLOCK" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
     }
 
@@ -54,7 +53,12 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
     }
 
     m_pTransform = new QTransform();
-    if (!m_bBarrier) {
+    if (bBarrier) {
+        this->setAcceptedMouseButtons(0);
+        this->setAcceptTouchEvents(false);
+    } else if (!m_pSettings->getUseMouse()) {
+        this->setAcceptedMouseButtons(0);
+    } else {
         this->setFlag(ItemIsMovable);
     }
 
@@ -88,7 +92,7 @@ void CBlock::paint(QPainter *painter,
 
     m_borderPen.setWidth(1/m_nGrid);
 
-    if (m_bMousePressed && !m_bBarrier) {
+    if (m_bSelected && !m_bBarrier) {
         painter->setOpacity(0.4);
     } else {
         painter->setOpacity(1);
@@ -100,21 +104,102 @@ void CBlock::paint(QPainter *painter,
     painter->setPen(m_borderPen);
     painter->drawPolygon(m_PolyShape);
 
+    /*
     // Adding block ID for debugging
-    if (bDEBUG) {
-        m_ItemNumberText.setFont(QFont("Arial", 1));
-        m_ItemNumberText.setText(QString::number(m_nID));
-        m_ItemNumberText.setPos(0.2, -1.1);
-        m_ItemNumberText.setParentItem(this);
-    }
+    m_ItemNumberText.setFont(QFont("Arial", 1));
+    m_ItemNumberText.setText(QString::number(m_nID));
+    m_ItemNumberText.setPos(0.2, -1.1);
+    m_ItemNumberText.setParentItem(this);
+    */
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (p_Event->button() == Qt::LeftButton && !m_bBarrier) {  // Move
-        m_bMousePressed = true;
+    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+        if (nIndex >= 0) {
+            switch(nIndex) {
+            case 0:
+                m_posMouseSelected = p_Event->pos();
+                m_posMouseSelected = QPointF(m_posMouseSelected.x() * m_nGrid,
+                                             m_posMouseSelected.y() * m_nGrid);
+                this->moveBlock();
+                update();
+                break;
+            case 1:
+                this->rotateBlock();
+                update();
+                break;
+            case 2:
+                this->flipBlock();
+                update();
+                break;
+            default:
+                qWarning() << "Unexpected mouse press control:" << nIndex;
+            }
+        }
+    }
+    QGraphicsItem::mousePressEvent(p_Event);
+}
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
+    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->buttons()));
+        if (0 == nIndex) {
+            this->setPos(p_Event->scenePos() - m_posMouseSelected);
+            update();
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
+    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+        if (0 == nIndex) {
+            this->moveBlock(true);
+            update();
+        }
+    }
+    QGraphicsItem::mouseReleaseEvent(p_Event);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
+    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+        qint8 nIndex(m_pSettings->getMouseControls().indexOf(
+                         (p_Event->orientation() | m_pSettings->getShift())));
+        if (nIndex >= 0) {
+            switch(nIndex) {
+            case 1:
+                this->rotateBlock(p_Event->delta());
+                update();
+                break;
+            case 2:
+                this->flipBlock();
+                update();
+                break;
+            default:
+                qWarning() << "Unexpected mouse wheel control:" << nIndex;
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::moveBlock(const bool bRelease) {
+    if (!bRelease) {
+        m_bSelected = true;
 
         // Bring current block to foreground and update Z values
         for (int i = 0; i < m_pListBlocks->size(); i++) {
@@ -123,60 +208,15 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
         this->setZValue(m_pListBlocks->size() + 2);
 
         m_posBlockSelected = this->pos();  // Save last position
-    } else if (p_Event->button() == Qt::RightButton && !m_bBarrier) {  // Flip
-        this->prepareGeometryChange();
-        // qDebug() << "Before flip" << m_nID << "-" << m_PolyShape;
-        QTransform transform = QTransform::fromScale(-1, 1);
-        m_PolyShape = transform.map(m_PolyShape);  // Flip
-        m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
-        // qDebug() << "After flip:" << m_PolyShape;
-    }
-
-    update();
-    QGraphicsItem::mousePressEvent(p_Event);
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
-    qint8 nAngle = 0;
-    qint32 nTranslateX = 0;
-    qint32 nTranslateY = 0;
-    if (p_Event->orientation() == Qt::Vertical && !m_bBarrier) {  // Vertical
-        if (p_Event->delta() < 0) {
-            nAngle = 90;
-            nTranslateX = this->boundingRect().height();
-            nTranslateY = 0;
-        } else {
-            nAngle = -90;
-            nTranslateX = 0;
-            nTranslateY = this->boundingRect().width();
-        }
-        this->prepareGeometryChange();
-        // qDebug() << "Before rot.:" << m_nID << nAngle << "\n" << m_PolyShape;
-        m_pTransform->reset();
-        m_pTransform->rotate(nAngle);
-        m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
-        m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
-        // qDebug() << "After rot.:" << m_PolyShape;
-    }
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-    // After moving a block, check for collision
-    if (p_Event->button() == Qt::LeftButton && !m_bBarrier) {
-        m_bMousePressed = false;
+    } else {
+        m_bSelected = false;
 
         this->prepareGeometryChange();
         this->setPos(this->snapToGrid(this->pos()));
 
         QPainterPath thisPath = this->shape();
         thisPath.translate(QPointF(this->pos().x() / m_nGrid,
-                                  this->pos().y() / m_nGrid));
+                                   this->pos().y() / m_nGrid));
 
         emit incrementMoves();
         if (this->checkCollision(thisPath)) {
@@ -187,9 +227,43 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
             emit checkPuzzleSolved();
         }
     }
+}
 
-    update();
-    QGraphicsItem::mouseReleaseEvent(p_Event);
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::rotateBlock(const int nDelta) {
+    qint8 nAngle = 0;
+    qint32 nTranslateX = 0;
+    qint32 nTranslateY = 0;
+    if (nDelta < 0) {
+        nAngle = 90;
+        nTranslateX = this->boundingRect().height();
+        nTranslateY = 0;
+    } else {
+        nAngle = -90;
+        nTranslateX = 0;
+        nTranslateY = this->boundingRect().width();
+    }
+    this->prepareGeometryChange();
+    // qDebug() << "Before rot.:" << m_nID << nAngle << "\n" << m_PolyShape;
+    m_pTransform->reset();
+    m_pTransform->rotate(nAngle);
+    m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
+    m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
+    // qDebug() << "After rot.:" << m_PolyShape;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::flipBlock() {
+    this->prepareGeometryChange();
+    // qDebug() << "Before flip" << m_nID << "-" << m_PolyShape;
+    QTransform transform = QTransform::fromScale(-1, 1);
+    m_PolyShape = transform.map(m_PolyShape);  // Flip
+    m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
+    // qDebug() << "After flip:" << m_PolyShape;
 }
 
 // ---------------------------------------------------------------------------
