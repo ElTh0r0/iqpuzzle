@@ -31,21 +31,21 @@
 
 #include "./CBoard.h"
 
-CBoard::CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-               const QString &sBoardFile, CSettings *pSettings,
-               const QString &sSavedGame)
+CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
+               CSettings *pSettings, const QString &sSavedGame)
     : m_pGraphView(pGraphView),
-      m_pScene(pScene),
       m_sBoardFile(sBoardFile),
       m_pSettings(pSettings),
       m_bSavedGame(false) {
+    this->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
+
     m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
     if (!sSavedGame.isEmpty()) {
         m_bSavedGame = true;
     }
     m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
-    m_pScene->setBackgroundBrush(QBrush(this->readColor("BGColor")));
+    this->setBackgroundBrush(QBrush(this->readColor("BGColor")));
     m_nGridSize = m_pBoardConf->value("GridSize", 25).toUInt();
     if (0 == m_nGridSize || m_nGridSize > 255) {
         qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
@@ -74,7 +74,7 @@ bool CBoard::setupBoard() {
     // Draw board
     QPen pen(this->readColor("Board/BorderColor"));
     QBrush brush(this->readColor("Board/Color"));
-    m_pScene->addPolygon(m_BoardPoly, pen, brush);
+    this->addPolygon(m_BoardPoly, pen, brush);
     m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
 
     // Draw grid
@@ -84,13 +84,13 @@ bool CBoard::setupBoard() {
     for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
         lineGrid.setLine(1, i*m_nGridSize,
                          m_BoardPoly.boundingRect().width()-1, i*m_nGridSize);
-        m_pScene->addLine(lineGrid, pen);
+        this->addLine(lineGrid, pen);
     }
     // Vertical
     for (int i = 1; i < m_BoardPoly.boundingRect().width()/m_nGridSize; i++) {
         lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
                          m_BoardPoly.boundingRect().height()-1);
-        m_pScene->addLine(lineGrid, pen);
+        this->addLine(lineGrid, pen);
     }
 
     // Set main window (fixed) size
@@ -126,7 +126,7 @@ void CBoard::setupBlocks() {
 
         polygon = this->readPolygon(tmpSet, sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
-            m_pScene->clear();  // Clear all objects
+            this->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
                                  trUtf8("Polygon not valid:") + "\n" + sPrefix);
@@ -161,7 +161,7 @@ void CBoard::setupBlocks() {
 
         polygon = this->readPolygon(m_pBoardConf, sPrefix + "/Polygon");
         if (polygon.isEmpty()) {
-            m_pScene->clear();  // Clear all objects
+            this->clear();  // Clear all objects
             qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
             QMessageBox::warning(0, trUtf8("Warning"),
                                  trUtf8("Polygon not valid:") + "\n" + sPrefix);
@@ -175,13 +175,13 @@ void CBoard::setupBlocks() {
                                 this->readColor(sPrefix + "/BorderColor"),
                                 m_nGridSize, &m_listBlocks, m_pSettings,
                                 this->readStartPosition(m_pBoardConf,
-                                                        sPrefix + "/StartPos"),
+                                                        sPrefix + "/StartPos") * m_nGridSize,
                                 true));
     }
 
     // Add blocks to board
     foreach (CBlock *pB, m_listBlocks) {
-        m_pScene->addItem(pB);
+        this->addItem(pB);
     }
 
     if (true == m_pBoardConf->value("NotAllPiecesNeeded", false).toBool()) {
@@ -328,12 +328,12 @@ void CBoard::doZoom() {
     qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
 
     // Get all QGraphicItems in scene
-    QList<QGraphicsItem *> objList = m_pScene->items();
+    QList<QGraphicsItem *> objList = this->items();
 
     // Remove objects from scene which are no blocks
     foreach (QGraphicsItem* gi, objList) {
         if (gi->type() != CBlock::Type) {
-            m_pScene->removeItem(gi);
+            this->removeItem(gi);
         }
     }
 

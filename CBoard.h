@@ -28,6 +28,8 @@
 #define IQPUZZLE_CBOARD_H_
 
 #include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneWheelEvent>
 #include <QGraphicsView>
 #include <QPolygonF>
 #include <QSettings>
@@ -38,13 +40,12 @@
  * \class CBoard
  * \brief Complete board generation, including block setup.
  */
-class CBoard : public QObject {
+class CBoard : public QGraphicsScene {
     Q_OBJECT
 
   public:
-    CBoard(QGraphicsView *pGraphView, QGraphicsScene *pScene,
-           const QString &sBoardFile, CSettings *pSettings,
-           const QString &sSavedGame = "");
+    CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
+           CSettings *pSettings, const QString &sSavedGame = "");
 
     bool setupBoard();
     void setupBlocks();
@@ -69,7 +70,6 @@ class CBoard : public QObject {
     void doZoom();
 
     QGraphicsView *m_pGraphView;
-    QGraphicsScene *m_pScene;
     QSettings *m_pBoardConf;
     QSettings *m_pSavedConf;
     QString m_sBoardFile;

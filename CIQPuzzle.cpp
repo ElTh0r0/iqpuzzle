@@ -70,9 +70,6 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
 
     m_pGraphView = new QGraphicsView(this);
     this->setCentralWidget(m_pGraphView);
-    m_pScene = new QGraphicsScene(this);
-    m_pScene->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
-    m_pGraphView->setScene(m_pScene);
     m_pScenePaused = new QGraphicsScene(this);
     m_pScenePaused->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
     QFont font;
@@ -102,7 +99,6 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
     } else {
         qWarning() << "Games share path does not exist" << m_sSharePath;
     }
-
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -246,12 +242,11 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
         this->setWindowTitle(qApp->applicationName() + " - " +
                              QFileInfo(m_sBoardFile).baseName() + " ("
                              + trUtf8("Solutions") + ": " + sSolutions + ")");
-        m_pScene->clear();  // Clear old objects
 
         if (NULL != m_pBoard) {
             delete m_pBoard;
         }
-        m_pBoard = new CBoard(m_pGraphView, m_pScene, sBoardFile,
+        m_pBoard = new CBoard(m_pGraphView, sBoardFile,
                               m_pSettings, sSavedGame);
         connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
                 this, SLOT(setMinWindowSize(const QSize)));
@@ -269,7 +264,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
             m_pTimer->start(1000);
             m_pUi->action_PauseGame->setChecked(false);
             m_bSolved = false;
-            m_pGraphView->setScene(m_pScene);
+            m_pGraphView->setScene(m_pBoard);
         }
     }
 }
@@ -329,7 +324,7 @@ void CIQPuzzle::pauseGame(const bool bPaused) {
         } else {
             m_pTimer->start();
             m_pGraphView->setEnabled(true);
-            m_pGraphView->setScene(m_pScene);
+            m_pGraphView->setScene(m_pBoard);
         }
     }
 }

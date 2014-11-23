@@ -85,7 +85,6 @@ class CIQPuzzle : public QMainWindow {
 
     Ui::CIQPuzzle *m_pUi;
     QGraphicsView *m_pGraphView;
-    QGraphicsScene *m_pScene;
     QGraphicsScene *m_pScenePaused;
     CBoardDialog *m_pBoardDialog;
     CBoard *m_pBoard;
