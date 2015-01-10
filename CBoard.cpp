@@ -175,7 +175,7 @@ void CBoard::setupBlocks() {
                                 this->readColor(sPrefix + "/BorderColor"),
                                 m_nGridSize, &m_listBlocks, m_pSettings,
                                 this->readStartPosition(m_pBoardConf,
-                                                        sPrefix + "/StartPos") * m_nGridSize,
+                                                        sPrefix + "/StartPos"),
                                 true));
     }
 
