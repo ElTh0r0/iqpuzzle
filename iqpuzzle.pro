@@ -1,5 +1,5 @@
 #  This file is part of iQPuzzle.
-#  Copyright (C) 2012-2014 Thorsten Roth
+#  Copyright (C) 2012-2015 Thorsten Roth
 #
 #  iQPuzzle is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ TARGET        = iqpuzzle
 VERSION       = 0.9.0
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
-QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2014 Thorsten Roth"
+QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2015 Thorsten Roth"
 
 DEFINES      += APP_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\" \
                 APP_VERSION=\"\\\"$$VERSION\\\"\" \
