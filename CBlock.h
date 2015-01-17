@@ -86,8 +86,7 @@ class CBlock : public QGraphicsObject {
     quint16 m_nGrid;
     QList<CBlock *> *m_pListBlocks;
     CSettings *m_pSettings;
-    bool m_bBarrier;
-    bool m_bSelected;
+    bool m_bActive;
 
     QTransform *m_pTransform;
     QPointF m_posBlockSelected;

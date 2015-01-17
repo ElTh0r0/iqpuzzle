@@ -38,29 +38,34 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
       m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
       m_pSettings(pSettings),
-      m_bBarrier(bBarrier),
-      m_bSelected(false) {
-    if (bBarrier) {
-        qDebug() << "Creating BARRIER" << m_nID <<
-                    "\tPosition:" << posTopLeft * m_nGrid;
-    } else {
-        qDebug() << "Creating BLOCK" << m_nID <<
-                    "\tPosition:" << posTopLeft * m_nGrid;
-    }
-
+      m_bActive (false) {
     if (!m_PolyShape.isClosed()) {
         qWarning() << "Shape" << m_nID << "is not closed";
     }
 
-    m_pTransform = new QTransform();
-    if (bBarrier) {
+    if (!bBarrier) {
+        qDebug() << "Creating BLOCK" << m_nID <<
+                    "\tPosition:" << posTopLeft * m_nGrid;
+
+        // If NOT drag and drop or if keyboard is used
+        // this->setFlag(ItemIsSelectable);
+        // this->setSelected(false);
+
+        if (!m_pSettings->getUseMouse()) {
+            this->setAcceptedMouseButtons(0);
+        } else {
+            this->setFlag(ItemIsMovable);
+        }
+    } else {
+        qDebug() << "Creating BARRIER" << m_nID <<
+                    "\tPosition:" << posTopLeft * m_nGrid;
+
         this->setAcceptedMouseButtons(0);
         this->setAcceptTouchEvents(false);
-    } else if (!m_pSettings->getUseMouse()) {
-        this->setAcceptedMouseButtons(0);
-    } else {
-        this->setFlag(ItemIsMovable);
+        this->setEnabled(false);
     }
+
+    m_pTransform = new QTransform();
 
     // Scale object
     this->setScale(m_nGrid);
@@ -92,7 +97,7 @@ void CBlock::paint(QPainter *painter,
 
     m_borderPen.setWidth(1/m_nGrid);
 
-    if (m_bSelected && !m_bBarrier) {
+    if (m_bActive) {  // Barries are ignored (not enabled)
         painter->setOpacity(0.4);
     } else {
         painter->setOpacity(1);
@@ -117,7 +122,7 @@ void CBlock::paint(QPainter *painter,
 // ---------------------------------------------------------------------------
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+    if (m_pSettings->getUseMouse()) {
         qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
         if (nIndex >= 0) {
             switch(nIndex) {
@@ -147,7 +152,7 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+    if (m_pSettings->getUseMouse()) {
         qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->buttons()));
         if (0 == nIndex) {
             this->setPos(p_Event->scenePos() - m_posMouseSelected);
@@ -160,7 +165,7 @@ void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+    if (m_pSettings->getUseMouse()) {
         qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
         if (0 == nIndex) {
             this->moveBlock(true);
@@ -174,7 +179,7 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
-    if (!m_bBarrier && m_pSettings->getUseMouse()) {
+    if (m_pSettings->getUseMouse()) {
         qint8 nIndex(m_pSettings->getMouseControls().indexOf(
                          (p_Event->orientation() | m_pSettings->getShift())));
         if (nIndex >= 0) {
@@ -199,7 +204,7 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 
 void CBlock::moveBlock(const bool bRelease) {
     if (!bRelease) {
-        m_bSelected = true;
+        m_bActive = true;
 
         // Bring current block to foreground and update Z values
         for (int i = 0; i < m_pListBlocks->size(); i++) {
@@ -209,7 +214,7 @@ void CBlock::moveBlock(const bool bRelease) {
 
         m_posBlockSelected = this->pos();  // Save last position
     } else {
-        m_bSelected = false;
+        m_bActive = false;
 
         this->prepareGeometryChange();
         this->setPos(this->snapToGrid(this->pos()));

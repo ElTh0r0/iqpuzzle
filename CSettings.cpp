@@ -63,7 +63,7 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
     m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
     m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
-    // TODO: Add keyboard cpntrols
+    // TODO: Add keyboard controls
     m_pUi->radioKeyboardControls->setEnabled(false);
 
     connect(m_pUi->radioMouseControls, SIGNAL(toggled(bool)),
