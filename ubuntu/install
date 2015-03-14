@@ -1,0 +1,2 @@
+apport/iqpuzzle-crashdb.conf /etc/apport/crashdb.conf.d
+apport/source_iqpuzzle.py /usr/share/apport/package-hooks
