@@ -387,32 +387,7 @@ void CIQPuzzle::showHighscore() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::reportBug() {
-    // Ubuntu: Using Apport, if needed files exist
-    if (QFile::exists("/usr/bin/ubuntu-bug")
-            && QFile::exists("/etc/apport/crashdb.conf.d/iqpuzzle-crashdb.conf")
-            && QFile::exists(qApp->applicationDirPath()
-                             + "/../share/apport/package-hooks/source_iqpuzzle.py")) {
-        // Start apport
-        QProcess procApport;
-        procApport.start("ubuntu-bug",
-                         QStringList() << qApp->applicationName().toLower());
-
-        if (!procApport.waitForStarted()) {
-            QMessageBox::critical(this, qApp->applicationName(),
-                                  "Error while starting Apport.");
-            qCritical() << "Error while starting Apport - waitForStarted()";
-            return;
-        }
-        if (!procApport.waitForFinished()) {
-            QMessageBox::critical(this, qApp->applicationName(),
-                                  "Error while executing Apport.");
-            qCritical() << "Error while executing Apport - waitForFinished()";
-            return;
-        }
-    } else {
-        // Not Ubuntu or apport files not found: Load Launchpad bug tracker
-        QDesktopServices::openUrl(QUrl("https://bugs.launchpad.net/iqpuzzle"));
-    }
+    QDesktopServices::openUrl(QUrl("https://bugs.launchpad.net/iqpuzzle"));
 }
 
 // ----------------------------------------------------------------------------
