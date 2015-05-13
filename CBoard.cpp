@@ -184,7 +184,9 @@ void CBoard::setupBlocks() {
         this->addItem(pB);
     }
 
-    if (true == m_pBoardConf->value("NotAllPiecesNeeded", false).toBool()) {
+    m_bNotAllPiecesNeeded = m_pBoardConf->value("NotAllPiecesNeeded",
+                                                false).toBool();
+    if (m_bNotAllPiecesNeeded) {
         QMessageBox::information(
                     0, trUtf8("Hint"),
                     trUtf8("Not all pieces are needed for a solution!"));
@@ -287,6 +289,13 @@ void CBoard::checkPuzzleSolved() {
         tempPath.translate(QPointF(block->pos().x() / m_nGridSize,
                                    block->pos().y() / m_nGridSize));
         unitedBlocks += tempPath;
+
+        if (tempPath.intersects(boardPath) && m_bNotAllPiecesNeeded) {
+            tempPath = tempPath.subtracted(boardPath);
+            if (!tempPath.isEmpty()) {
+                return;
+            }
+        }
     }
     unitedBlocks = unitedBlocks.simplified();
 

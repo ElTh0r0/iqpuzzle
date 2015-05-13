@@ -79,6 +79,7 @@ class CBoard : public QGraphicsScene {
     QList<CBlock *> m_listBlocks;
     unsigned char m_nNumOfBlocks;
     quint16 m_nGridSize;
+    bool m_bNotAllPiecesNeeded;
 };
 
 #endif  // IQPUZZLE_CBOARD_H_
