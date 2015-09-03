@@ -263,6 +263,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
             m_pBoard->setupBlocks();
             m_pTimer->start(1000);
             m_pUi->action_PauseGame->setChecked(false);
+            m_pUi->action_SaveGame->setEnabled(true);
             m_bSolved = false;
             m_pGraphView->setScene(m_pBoard);
         }
@@ -372,6 +373,7 @@ void CIQPuzzle::solvedPuzzle() {
                              + "\n" + trUtf8("Time") + ": "
                              + m_Time.toString("hh:mm:ss"));
 
+    m_pUi->action_SaveGame->setEnabled(false);
     emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
 }
 
