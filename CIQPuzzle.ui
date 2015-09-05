@@ -41,6 +41,7 @@
      <string>&amp;Game</string>
     </property>
     <addaction name="action_NewGame"/>
+    <addaction name="action_RandomGame"/>
     <addaction name="action_RestartGame"/>
     <addaction name="separator"/>
     <addaction name="action_LoadGame"/>
@@ -74,7 +75,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_NewGame">
    <property name="text">
-    <string>&amp;New game</string>
+    <string>Choose &amp;new game</string>
    </property>
   </action>
   <action name="action_Quit">
@@ -145,6 +146,11 @@
   <action name="action_ReportBug">
    <property name="text">
     <string>Report &amp;bug</string>
+   </property>
+  </action>
+  <action name="action_RandomGame">
+   <property name="text">
+    <string>R&amp;andom game</string>
    </property>
   </action>
  </widget>

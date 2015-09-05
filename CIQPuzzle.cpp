@@ -99,6 +99,10 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
     } else {
         qWarning() << "Games share path does not exist" << m_sSharePath;
     }
+
+    // Seed random number generator
+    QTime time = QTime::currentTime();
+    qsrand((uint)time.msec());
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -115,6 +119,12 @@ void CIQPuzzle::setupMenu() {
     m_pUi->action_NewGame->setIcon(QIcon::fromTheme("document-new"));
     connect(m_pUi->action_NewGame, SIGNAL(triggered()),
             this, SLOT(startNewGame()));
+
+    // Random game
+    m_pUi->action_RandomGame->setShortcut(Qt::CTRL + Qt::Key_R);
+    m_pUi->action_RandomGame->setIcon(QIcon::fromTheme("media-playlist-shuffle"));
+    connect(m_pUi->action_RandomGame, SIGNAL(triggered()),
+            this, SLOT(randomGame()));
 
     // Restart game
     m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
@@ -266,6 +276,33 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
             m_pUi->action_SaveGame->setEnabled(true);
             m_bSolved = false;
             m_pGraphView->setScene(m_pBoard);
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::randomGame() {
+    qDebug() << Q_FUNC_INFO;
+    if (!QFile::exists(m_sSharePath + "/boards")) {
+        qWarning() << "Games share path does not exist" << m_sSharePath;
+        QMessageBox::warning(this, "Folder not found",
+                             "Games share path does not exist!");
+        return;
+    } else {
+        QStringList slistBoards;
+        QDir boardsDir(m_sSharePath + "/boards");
+        QFileInfoList fiListFiles = boardsDir.entryInfoList(
+                    QDir::NoDotAndDotDot | QDir::Files);
+        foreach (QFileInfo fi, fiListFiles) {
+            if ("conf" == fi.suffix()) {
+                slistBoards << fi.fileName();
+            }
+        }
+        int nRand = qrand() % slistBoards.size();
+        if (nRand >= 0 && nRand < slistBoards.size()) {
+            this->startNewGame(m_sSharePath + "/boards/" + slistBoards[nRand]);
         }
     }
 }
