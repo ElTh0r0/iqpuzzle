@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2015 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2016 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -147,10 +147,16 @@ void CHighscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
         QStringList sListEntries;
         QByteArray ba;
         bool bOk;
-        QString sName = QInputDialog::getText(
+        QString sName("");
+        sName = qgetenv("USER");  // Try to get user name in Linux
+        if (sName.isEmpty()) {
+            sName = qgetenv("USERNAME");  // Try to get user name in Windows
+        }
+
+        sName = QInputDialog::getText(
                     m_pParent, trUtf8("Highscore"),
                     trUtf8("Please insert your name for a new highscore:"),
-                    QLineEdit::Normal, "", &bOk);
+                    QLineEdit::Normal, sName, &bOk);
         if (true != bOk || sName.isEmpty()) {
             sName = "Guy Incognito";
         }

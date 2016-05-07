@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="bg_BG">
+<TS version="2.1" language="bg_BG">
 <context>
     <name>CBoard</name>
     <message>
@@ -73,7 +73,7 @@ Reduced grid to default.</source>
     <name>CHighscore</name>
     <message>
         <location filename="../CHighscore.cpp" line="58"/>
-        <location filename="../CHighscore.cpp" line="151"/>
+        <location filename="../CHighscore.cpp" line="157"/>
         <source>Highscore</source>
         <translation>Резултати</translation>
     </message>
@@ -98,7 +98,7 @@ Reduced grid to default.</source>
         <translation>Ходове</translation>
     </message>
     <message>
-        <location filename="../CHighscore.cpp" line="152"/>
+        <location filename="../CHighscore.cpp" line="158"/>
         <source>Please insert your name for a new highscore:</source>
         <translation>Моля, въведете името си за нов резултат:</translation>
     </message>
@@ -316,7 +316,7 @@ Reduced grid to default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="114"/>
+        <location filename="../CSettings.cpp" line="102"/>
         <source>The game has to be restarted for applying the changes.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -330,63 +330,26 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CSettings.ui" line="32"/>
-        <source>Controls</source>
-        <translation type="unfinished">Управление</translation>
+        <source>Mouse controls</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="39"/>
-        <source>Mouse</source>
-        <translation>Мишката</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="49"/>
         <source>Move block</source>
         <translation>Преместване на блок</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="59"/>
-        <location filename="../CSettings.ui" line="128"/>
+        <location filename="../CSettings.ui" line="49"/>
         <source>Rotate block</source>
         <translation>Завъртане на блок</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="69"/>
-        <location filename="../CSettings.ui" line="135"/>
+        <location filename="../CSettings.ui" line="59"/>
         <source>Flip block</source>
         <translation>Огледално завъртане на блок</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="86"/>
-        <source>Keyboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="93"/>
-        <source>Select block</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="100"/>
-        <source>Move left</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="107"/>
-        <source>Move up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="114"/>
-        <source>Move right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="121"/>
-        <source>Move down</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="170"/>
+        <location filename="../CSettings.ui" line="76"/>
         <source>GUI language</source>
         <translation type="unfinished"></translation>
     </message>

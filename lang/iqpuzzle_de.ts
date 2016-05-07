@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.1" language="de_DE">
 <context>
     <name>CBoard</name>
     <message>
@@ -73,7 +73,7 @@ Reduced grid to default.</source>
     <name>CHighscore</name>
     <message>
         <location filename="../CHighscore.cpp" line="58"/>
-        <location filename="../CHighscore.cpp" line="151"/>
+        <location filename="../CHighscore.cpp" line="157"/>
         <source>Highscore</source>
         <translation>Bestenliste</translation>
     </message>
@@ -98,7 +98,7 @@ Reduced grid to default.</source>
         <translation>Züge</translation>
     </message>
     <message>
-        <location filename="../CHighscore.cpp" line="152"/>
+        <location filename="../CHighscore.cpp" line="158"/>
         <source>Please insert your name for a new highscore:</source>
         <translation>Bitte Namen für die Bestenliste eintragen:</translation>
     </message>
@@ -316,7 +316,7 @@ Reduced grid to default.</source>
         <translation>Horizontales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="114"/>
+        <location filename="../CSettings.cpp" line="102"/>
         <source>The game has to be restarted for applying the changes.</source>
         <translation>Das Spiel muss neu gestartet werden, um die Änderungen zu übernehmen.</translation>
     </message>
@@ -330,63 +330,26 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CSettings.ui" line="32"/>
-        <source>Controls</source>
-        <translation>Steuerung</translation>
+        <source>Mouse controls</source>
+        <translation>Maustasten</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="39"/>
-        <source>Mouse</source>
-        <translation>Maus</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="49"/>
         <source>Move block</source>
         <translation>Block bewegen</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="59"/>
-        <location filename="../CSettings.ui" line="128"/>
+        <location filename="../CSettings.ui" line="49"/>
         <source>Rotate block</source>
         <translation>Block drehen</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="69"/>
-        <location filename="../CSettings.ui" line="135"/>
+        <location filename="../CSettings.ui" line="59"/>
         <source>Flip block</source>
         <translation>Block spiegeln</translation>
     </message>
     <message>
-        <location filename="../CSettings.ui" line="86"/>
-        <source>Keyboard</source>
-        <translation>Tastatur</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="93"/>
-        <source>Select block</source>
-        <translation>Block auswählen</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="100"/>
-        <source>Move left</source>
-        <translation>Nach links bewegen</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="107"/>
-        <source>Move up</source>
-        <translation>Nach oben bewegen</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="114"/>
-        <source>Move right</source>
-        <translation>Nach rechts bewegen</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="121"/>
-        <source>Move down</source>
-        <translation>Nach unten bewegen</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.ui" line="170"/>
+        <location filename="../CSettings.ui" line="76"/>
         <source>GUI language</source>
         <translation>Gui Sprache</translation>
     </message>

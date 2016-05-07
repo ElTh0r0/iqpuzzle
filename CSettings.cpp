@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2015 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2016 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -63,13 +63,6 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
     m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
     m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
-    // TODO: Add keyboard controls
-    m_pUi->radioKeyboardControls->setEnabled(false);
-
-    connect(m_pUi->radioMouseControls, SIGNAL(toggled(bool)),
-            this, SLOT(changedControls()));
-    connect(m_pUi->radioKeyboardControls, SIGNAL(toggled(bool)),
-            this, SLOT(changedControls()));
     connect(m_pUi->buttonBox, SIGNAL(accepted()),
             this, SLOT(accept()));
 
@@ -93,21 +86,16 @@ void CSettings::accept() {
     m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
     m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
 
-    m_bMouseControl = m_pUi->radioMouseControls->isChecked();
     m_listMouseControls[0] = m_listMouseButtons[m_pUi->cbMoveBlockMouse->currentIndex()];
     m_listMouseControls[1] = m_listMouseButtons[m_pUi->cbRotateBlockMouse->currentIndex()];
     m_listMouseControls[2] = m_listMouseButtons[m_pUi->cbFlipBlockMouse->currentIndex()];
     m_pSettings->beginGroup("MouseControls");
-    m_pSettings->setValue("Enabled", m_bMouseControl);
     m_pSettings->setValue("MoveBlock", m_listMouseControls[0]);
     m_pSettings->setValue("RotateBlock", m_listMouseControls[1]);
     m_pSettings->setValue("FlipBlock", m_listMouseControls[2]);
+    m_pSettings->remove("Enabled");
     m_pSettings->endGroup();
-
-    m_bKeyboardControl = m_pUi->radioKeyboardControls->isChecked();
-    m_pSettings->beginGroup("KeyboardControls");
-    m_pSettings->setValue("Enabled", m_bKeyboardControl);
-    m_pSettings->endGroup();
+    m_pSettings->remove("KeyboardControls");  // Won't support keyboard in future
 
     if (sOldGuiLang != m_sGuiLanguage) {
         QMessageBox::information(0, this->windowTitle(),
@@ -146,8 +134,6 @@ void CSettings::readSettings() {
     m_listMouseControls.clear();
     m_listMouseControls << 0 << 0 << 0;
     m_pSettings->beginGroup("MouseControls");
-    m_bMouseControl = m_pSettings->value("Enabled", true).toBool();
-    m_pUi->radioMouseControls->setChecked(m_bMouseControl);
     m_listMouseControls[0] = m_pSettings->value("MoveBlock",
                                                 Qt::LeftButton).toUInt();
     m_listMouseControls[1] = m_pSettings->value("RotateBlock",
@@ -161,71 +147,10 @@ void CSettings::readSettings() {
     m_pUi->cbFlipBlockMouse->setCurrentIndex(
                 m_listMouseButtons.indexOf(m_listMouseControls[2]));
     m_pSettings->endGroup();
-
-    m_pSettings->beginGroup("KeyboardControls");
-    m_bKeyboardControl = m_pSettings->value("Enabled", false).toBool();
-    m_pUi->radioKeyboardControls->setChecked(m_bKeyboardControl);
-    m_pSettings->endGroup();
-    this->changedControls();
 }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
-
-void CSettings::changedControls() {
-    if (m_pUi->radioMouseControls->isChecked()) {
-        m_pUi->lblMoveBlock->setEnabled(true);
-        m_pUi->cbMoveBlockMouse->setEnabled(true);
-        m_pUi->lblRotateBlock->setEnabled(true);
-        m_pUi->cbRotateBlockMouse->setEnabled(true);
-        m_pUi->lblFlipBlock->setEnabled(true);
-        m_pUi->cbFlipBlockMouse->setEnabled(true);
-
-        m_pUi->lblSelectBlock->setEnabled(false);
-        m_pUi->leSelectBlockKey->setEnabled(false);
-        m_pUi->lblMoveLeft->setEnabled(false);
-        m_pUi->leMoveLeftKey->setEnabled(false);
-        m_pUi->lblMoveUp->setEnabled(false);
-        m_pUi->leMoveUpKey->setEnabled(false);
-        m_pUi->lblMoveRight->setEnabled(false);
-        m_pUi->leMoveRightKey->setEnabled(false);
-        m_pUi->lblMoveDown->setEnabled(false);
-        m_pUi->leMoveDownKey->setEnabled(false);
-        m_pUi->lblRotateBlockKey->setEnabled(false);
-        m_pUi->leRotateBlockKey->setEnabled(false);
-        m_pUi->lblFlipBlockKey->setEnabled(false);
-        m_pUi->leFlipBlockKey->setEnabled(false);
-    } else if (m_pUi->radioKeyboardControls->isChecked()) {
-        m_pUi->lblMoveBlock->setEnabled(false);
-        m_pUi->cbMoveBlockMouse->setEnabled(false);
-        m_pUi->lblRotateBlock->setEnabled(false);
-        m_pUi->cbRotateBlockMouse->setEnabled(false);
-        m_pUi->lblFlipBlock->setEnabled(false);
-        m_pUi->cbFlipBlockMouse->setEnabled(false);
-
-        m_pUi->lblSelectBlock->setEnabled(true);
-        m_pUi->leSelectBlockKey->setEnabled(true);
-        m_pUi->lblMoveLeft->setEnabled(true);
-        m_pUi->leMoveLeftKey->setEnabled(true);
-        m_pUi->lblMoveUp->setEnabled(true);
-        m_pUi->leMoveUpKey->setEnabled(true);
-        m_pUi->lblMoveRight->setEnabled(true);
-        m_pUi->leMoveRightKey->setEnabled(true);
-        m_pUi->lblMoveDown->setEnabled(true);
-        m_pUi->leMoveDownKey->setEnabled(true);
-        m_pUi->lblRotateBlockKey->setEnabled(true);
-        m_pUi->leRotateBlockKey->setEnabled(true);
-        m_pUi->lblFlipBlockKey->setEnabled(true);
-        m_pUi->leFlipBlockKey->setEnabled(true);
-    }
-}
-
-// ----------------------------------------------------------------------------
-// ----------------------------------------------------------------------------
-
-bool CSettings::getUseMouse() const {
-    return m_bMouseControl;
-}
 
 quint8 CSettings::getShift() const {
     return m_nSHIFT;
@@ -233,8 +158,4 @@ quint8 CSettings::getShift() const {
 
 QList<quint8> CSettings::getMouseControls() const {
     return m_listMouseControls;
-}
-
-bool CSettings::getUseKeyboard() const {
-    return m_bKeyboardControl;
 }

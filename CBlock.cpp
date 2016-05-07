@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2015 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2016 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -38,7 +38,7 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
       m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
       m_pSettings(pSettings),
-      m_bActive (false) {
+      m_bActive(false) {
     if (!m_PolyShape.isClosed()) {
         qWarning() << "Shape" << m_nID << "is not closed";
     }
@@ -46,16 +46,7 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
     if (!bBarrier) {
         qDebug() << "Creating BLOCK" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
-
-        // If NOT drag and drop or if keyboard is used
-        // this->setFlag(ItemIsSelectable);
-        // this->setSelected(false);
-
-        if (!m_pSettings->getUseMouse()) {
-            this->setAcceptedMouseButtons(0);
-        } else {
-            this->setFlag(ItemIsMovable);
-        }
+        this->setFlag(ItemIsMovable);
     } else {
         qDebug() << "Creating BARRIER" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
@@ -122,42 +113,40 @@ void CBlock::paint(QPainter *painter,
 // ---------------------------------------------------------------------------
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (m_pSettings->getUseMouse()) {
-        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
-        if (nIndex >= 0) {
-            switch(nIndex) {
-            case 0:
-                m_posMouseSelected = p_Event->pos();
-                m_posMouseSelected = QPointF(m_posMouseSelected.x() * m_nGrid,
-                                             m_posMouseSelected.y() * m_nGrid);
-                this->moveBlock();
-                update();
-                break;
-            case 1:
-                this->rotateBlock();
-                update();
-                break;
-            case 2:
-                this->flipBlock();
-                update();
-                break;
-            default:
-                qWarning() << "Unexpected mouse press control:" << nIndex;
-            }
+    qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+    if (nIndex >= 0) {
+        switch (nIndex) {
+        case 0:
+            m_posMouseSelected = p_Event->pos();
+            m_posMouseSelected = QPointF(m_posMouseSelected.x() * m_nGrid,
+                                         m_posMouseSelected.y() * m_nGrid);
+            this->moveBlock();
+            update();
+            break;
+        case 1:
+            this->rotateBlock();
+            update();
+            break;
+        case 2:
+            this->flipBlock();
+            update();
+            break;
+        default:
+            qWarning() << "Unexpected mouse press control:" << nIndex;
         }
     }
+
     QGraphicsItem::mousePressEvent(p_Event);
 }
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (m_pSettings->getUseMouse()) {
-        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->buttons()));
-        if (0 == nIndex) {
-            this->setPos(p_Event->scenePos() - m_posMouseSelected);
-            update();
-        }
+    qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->buttons()));
+    if (0 == nIndex) {
+        this->setPos(p_Event->scenePos() - m_posMouseSelected);
+        update();
     }
 }
 
@@ -165,13 +154,12 @@ void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-    if (m_pSettings->getUseMouse()) {
-        qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
-        if (0 == nIndex) {
-            this->moveBlock(true);
-            update();
-        }
+    qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+    if (0 == nIndex) {
+        this->moveBlock(true);
+        update();
     }
+
     QGraphicsItem::mouseReleaseEvent(p_Event);
 }
 
@@ -179,22 +167,20 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
-    if (m_pSettings->getUseMouse()) {
-        qint8 nIndex(m_pSettings->getMouseControls().indexOf(
-                         (p_Event->orientation() | m_pSettings->getShift())));
-        if (nIndex >= 0) {
-            switch(nIndex) {
-            case 1:
-                this->rotateBlock(p_Event->delta());
-                update();
-                break;
-            case 2:
-                this->flipBlock();
-                update();
-                break;
-            default:
-                qWarning() << "Unexpected mouse wheel control:" << nIndex;
-            }
+    qint8 nIndex(m_pSettings->getMouseControls().indexOf(
+                     (p_Event->orientation() | m_pSettings->getShift())));
+    if (nIndex >= 0) {
+        switch (nIndex) {
+        case 1:
+            this->rotateBlock(p_Event->delta());
+            update();
+            break;
+        case 2:
+            this->flipBlock();
+            update();
+            break;
+        default:
+            qWarning() << "Unexpected mouse wheel control:" << nIndex;
         }
     }
 }

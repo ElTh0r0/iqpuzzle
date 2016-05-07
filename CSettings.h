@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2015 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2016 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -47,16 +47,11 @@ class CSettings : public QDialog {
     explicit CSettings(const QString &sSharePath, QWidget *pParent = 0);
     virtual ~CSettings();
 
-    bool getUseMouse() const;
     QList<quint8> getMouseControls() const;
     quint8 getShift() const;
-    bool getUseKeyboard() const;
 
   public slots:
     void accept();
-
-  private slots:
-    void changedControls();
 
   private:
     void readSettings();
@@ -67,12 +62,10 @@ class CSettings : public QDialog {
 
     QString m_sSharePath;
     QString m_sGuiLanguage;
-    bool m_bMouseControl;
     const quint8 m_nSHIFT;
     QStringList m_sListMouseButtons;
     QList<quint8> m_listMouseButtons;
     QList<quint8> m_listMouseControls;
-    bool m_bKeyboardControl;
 };
 
 #endif  // IQPUZZLE_CSETTINGS_H_
