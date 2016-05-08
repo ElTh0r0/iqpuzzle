@@ -294,9 +294,20 @@ void CIQPuzzle::randomGame() {
         QStringList slistBoards;
         QDir boardsDir(m_sSharePath + "/boards");
         QFileInfoList fiListFiles = boardsDir.entryInfoList(
-                    QDir::NoDotAndDotDot | QDir::Files);
+                    QDir::NoDotAndDotDot | QDir::Files | QDir::Dirs);
         foreach (QFileInfo fi, fiListFiles) {
-            if ("conf" == fi.suffix()) {
+            if (fi.isDir()) {  // Check only one sub folder level
+                QDir boardsDir2(boardsDir.absolutePath() + "/" + fi.fileName());
+                QFileInfoList fiListFiles2 = boardsDir2.entryInfoList(
+                            QDir::NoDotAndDotDot | QDir::Files);
+                foreach (QFileInfo fi2, fiListFiles2) {
+                    if ("conf" == fi2.suffix()) {
+                        // qDebug() << fi.fileName() + "/" + fi2.baseName();
+                        slistBoards << fi.fileName() + "/" + fi2.fileName();
+                    }
+                }
+            } else if ("conf" == fi.suffix()) {
+                // qDebug() << fi.baseName();
                 slistBoards << fi.fileName();
             }
         }
