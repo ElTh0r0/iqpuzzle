@@ -168,7 +168,7 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
     qint8 nIndex(m_pSettings->getMouseControls().indexOf(
-                     (p_Event->orientation() | m_pSettings->getShift())));
+                     (quint8(p_Event->orientation()) | m_pSettings->getShift())));
     if (nIndex >= 0) {
         switch (nIndex) {
         case 1:

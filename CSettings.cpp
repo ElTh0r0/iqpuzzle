@@ -59,7 +59,8 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
     m_sListMouseButtons << trUtf8("First X") << trUtf8("Second X")
                         << trUtf8("Verical wheel") << trUtf8("Horizontal wheel");
     m_listMouseButtons << Qt::XButton1 << Qt::XButton2
-                       << (Qt::Vertical|m_nSHIFT) << (Qt::Horizontal|m_nSHIFT);
+                       << (quint8(Qt::Vertical)|m_nSHIFT)
+                       << (quint8(Qt::Horizontal)|m_nSHIFT);
     m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
     m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
@@ -137,7 +138,7 @@ void CSettings::readSettings() {
     m_listMouseControls[0] = m_pSettings->value("MoveBlock",
                                                 Qt::LeftButton).toUInt();
     m_listMouseControls[1] = m_pSettings->value("RotateBlock",
-                                                quint8(Qt::Vertical | m_nSHIFT)).toUInt();
+                                                (quint8(Qt::Vertical) | m_nSHIFT)).toUInt();
     m_listMouseControls[2] = m_pSettings->value("FlipBlock",
                                                 Qt::RightButton).toUInt();
     m_pUi->cbMoveBlockMouse->setCurrentIndex(
