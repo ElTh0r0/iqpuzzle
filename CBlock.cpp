@@ -47,6 +47,7 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
         qDebug() << "Creating BLOCK" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
         this->setFlag(ItemIsMovable);
+        m_CollTexture.load(":/images/collision_texture.png");
     } else {
         qDebug() << "Creating BARRIER" << m_nID <<
                     "\tPosition:" << posTopLeft * m_nGrid;
@@ -113,6 +114,8 @@ void CBlock::paint(QPainter *painter,
 // ---------------------------------------------------------------------------
 
 void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
+    this->resetBrushStyle();
+
     qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
     if (nIndex >= 0) {
         switch (nIndex) {
@@ -167,6 +170,8 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
+    this->resetBrushStyle();
+
     qint8 nIndex(m_pSettings->getMouseControls().indexOf(
                      (quint8(p_Event->orientation()) | m_pSettings->getShift())));
     if (nIndex >= 0) {
@@ -213,6 +218,7 @@ void CBlock::moveBlock(const bool bRelease) {
         if (this->checkCollision(thisPath)) {
             // Reset position
             this->setPos(this->snapToGrid(m_posBlockSelected));
+            this->checkBlockIntersection();
         } else {
             // Check if puzzle is solved
             emit checkPuzzleSolved();
@@ -243,6 +249,8 @@ void CBlock::rotateBlock(const int nDelta) {
     m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
     m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
     // qDebug() << "After rot.:" << m_PolyShape;
+
+    this->checkBlockIntersection();
 }
 
 // ---------------------------------------------------------------------------
@@ -255,6 +263,39 @@ void CBlock::flipBlock() {
     m_PolyShape = transform.map(m_PolyShape);  // Flip
     m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
     // qDebug() << "After flip:" << m_PolyShape;
+
+    this->checkBlockIntersection();
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::checkBlockIntersection() {
+    QPainterPath thisPath = this->shape();
+    thisPath.translate(QPointF(this->pos().x() / m_nGrid,
+                               this->pos().y() / m_nGrid));
+
+    if (this->checkCollision(thisPath)) {
+        m_bgBrush.setTexture(m_CollTexture);
+        m_bgBrush.setStyle(Qt::TexturePattern);
+        for (int i = 0; i < m_pListBlocks->size(); i++) {
+            (*m_pListBlocks)[i]->setNewZValue(-1);
+        }
+        this->setZValue(m_pListBlocks->size() + 2);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBlock::resetBrushStyle() const {
+    foreach (CBlock *block, *m_pListBlocks) {
+        block->setBrushStyle(Qt::SolidPattern);
+    }
+}
+
+void CBlock::setBrushStyle(Qt::BrushStyle style) {
+    m_bgBrush.setStyle(style);
 }
 
 // ---------------------------------------------------------------------------

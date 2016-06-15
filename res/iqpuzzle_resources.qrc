@@ -9,5 +9,6 @@
         <file>images/hicolor/96x96/apps/iqpuzzle.png</file>
         <file>images/hicolor/128x128/apps/iqpuzzle.png</file>
         <file>images/hicolor/256x256/apps/iqpuzzle.png</file>
+        <file>images/collision_texture.png</file>
     </qresource>
 </RCC>

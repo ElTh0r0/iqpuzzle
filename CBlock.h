@@ -52,6 +52,7 @@ class CBlock : public QGraphicsObject {
     QPointF getPosition() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = 0);
+    void setBrushStyle(Qt::BrushStyle style);
 
     QPolygonF getPolygon() const;
     void setNewZValue(const qint16 nZ);
@@ -73,7 +74,9 @@ class CBlock : public QGraphicsObject {
   private:
     void moveBlockGrid(const QPointF pos);
     bool checkCollision(const QPainterPath thisPath);
+    void checkBlockIntersection();
     QPointF snapToGrid(const QPointF point) const;
+    void resetBrushStyle() const;
 
     void moveBlock(const bool bRelease = false);
     void rotateBlock(const int nDelta = -1);
@@ -87,6 +90,7 @@ class CBlock : public QGraphicsObject {
     QList<CBlock *> *m_pListBlocks;
     CSettings *m_pSettings;
     bool m_bActive;
+    QPixmap m_CollTexture;
 
     QTransform *m_pTransform;
     QPointF m_posBlockSelected;
