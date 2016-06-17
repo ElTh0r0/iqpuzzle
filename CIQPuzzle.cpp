@@ -382,7 +382,7 @@ void CIQPuzzle::pauseGame(const bool bPaused) {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setMinWindowSize(const QSize size) {
-    this->setMinimumSize(size);
+    // this->setMinimumSize(size);  // fixed size
     this->resize(size);
     m_pTextPaused->setX(
                 size.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);

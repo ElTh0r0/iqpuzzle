@@ -93,7 +93,7 @@ bool CBoard::setupBoard() {
         this->addLine(lineGrid, pen);
     }
 
-    // Set main window (fixed) size
+    // Set main window size
     const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
                         m_BoardPoly.boundingRect().height() * 2.6);
     emit setWindowSize(WinSize);
