@@ -15,7 +15,12 @@
 #  along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
 
 TEMPLATE      = app
-TARGET        = iqpuzzle
+
+unix: !macx {
+       TARGET = iqpuzzle
+} else {
+       TARGET = iQPuzzle
+}
 
 VERSION       = 0.10.0
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
@@ -54,13 +59,10 @@ FORMS        += CIQPuzzle.ui \
                 CSettings.ui
 
 RESOURCES     = res/iqpuzzle_resources.qrc
+win32:RC_FILE = res/iqpuzzle.rc
 
 TRANSLATIONS += lang/iqpuzzle_bg.ts \
                 lang/iqpuzzle_de.ts
-
-win32 {
-    RC_FILE   = res/iqpuzzle.rc
-}
 
 unix {
     data.path       = /usr/share/games/iqpuzzle
