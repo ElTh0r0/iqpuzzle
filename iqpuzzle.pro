@@ -76,10 +76,6 @@ unix {
                       res/images/iqpuzzle.xpm
     icons.path      = /usr/share/icons
     icons.files    += res/images/hicolor
-    apportdb.path  += /etc/apport/crashdb.conf.d
-    apportdb.files += apport/iqpuzzle-crashdb.conf
-    apport.path    += /usr/share/apport/package-hooks
-    apport.files   += apport/source_iqpuzzle.py
     man.path        = /usr/share
     man.files      += man
     target.path     = /usr/games
@@ -88,8 +84,6 @@ unix {
                       desktop \
                       pixmap \
                       icons \
-                      apportdb \
-                      apport \
                       man \
                       target
 }
