@@ -68,10 +68,10 @@ int main(int argc, char *argv[]) {
     // Default share data path (Windows and debugging)
     QString sSharePath = app.applicationDirPath();
     // Standard installation path (Linux)
-    QDir tmpDir(app.applicationDirPath() + "/../share/games/"
+    QDir tmpDir(app.applicationDirPath() + "/../share/"
                 + app.applicationName().toLower());
     if (!app.arguments().contains("--debug") && tmpDir.exists()) {
-        sSharePath = app.applicationDirPath() + "/../share/games/"
+        sSharePath = app.applicationDirPath() + "/../share/"
                        + app.applicationName().toLower();
     }
 

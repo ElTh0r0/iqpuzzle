@@ -64,26 +64,40 @@ win32:RC_FILE = res/iqpuzzle.rc
 TRANSLATIONS += lang/iqpuzzle_bg.ts \
                 lang/iqpuzzle_de.ts
 
-unix {
-    data.path       = /usr/share/games/iqpuzzle
+unix: !macx {
+    isEmpty(PREFIX) {
+        PREFIX = /usr/local
+    }
+    isEmpty(BINDIR) {
+        BINDIR = bin
+    }
+
+    target.path     = $$PREFIX/$$BINDIR/
+
+    data.path       = $$PREFIX/share/iqpuzzle
     data.files     += data/boards
-    lang.path       = /usr/share/games/iqpuzzle/lang
+
+    lang.path       = $$PREFIX/share/iqpuzzle/lang
     lang.files     += lang/*.qm
-    desktop.path    = /usr/share/applications
+
+    desktop.path    = $$PREFIX/share/applications
     desktop.files  += data/iqpuzzle.desktop
-    pixmap.path     = /usr/share/pixmaps
+
+    pixmap.path     = $$PREFIX/share/pixmaps
     pixmap.files   += res/images/iqpuzzle_64x64.png \
                       res/images/iqpuzzle.xpm
-    icons.path      = /usr/share/icons
+
+    icons.path      = $$PREFIX/share/icons
     icons.files    += res/images/hicolor
-    man.path        = /usr/share
+
+    man.path        = $$PREFIX/share
     man.files      += man
-    target.path     = /usr/games
-    INSTALLS       += data \
+
+    INSTALLS       += target \
+                      data \
                       lang \
                       desktop \
                       pixmap \
                       icons \
-                      man \
-                      target
+                      man
 }
