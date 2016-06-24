@@ -8,7 +8,7 @@ inherit eutils kde4-base qt4-r2 games
 
 DESCRIPTION="A diverting I.Q. challenging pentomino puzzle"
 HOMEPAGE="http://opendesktop.org/content/show.php/iQPuzzle?content=166797"
-SRC_URI="https://launchpad.net/iqpuzzle/0.9/${PV}/+download/${P}-src.tar.gz"
+SRC_URI="https://launchpad.net/iqpuzzle/0.10/${PV}/+download/${P}-src.tar.gz"
 
 LICENSE="GPL"
 SLOT="4"

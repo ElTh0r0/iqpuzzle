@@ -1,0 +1,77 @@
+-------------------------------------------------------------------
+Fri Jun 24 16:58:00 UTC 2015 - elthoro@gmx.de 0.10.0
+
+- Start random game.
+- Guess user name for highscore.
+- Many new boards.
+- Install into /usr/bin instead of /usr/games
+- Bug fixes: Disable save when game solved. MSVC compiler issue.
+
+-------------------------------------------------------------------
+Wed May 13 23:47:00 UTC 2015 - elthoro@gmx.de 0.9.0
+
+- Added settings dialog; mouse buttons (LP: #1365568); GUI lang
+- Added Bulgarian translation (thanks to bogo1966)
+- Bug fixes.
+- Added new boards.
+
+-------------------------------------------------------------------
+Fri Aug 29 19:52:00 UTC 2014 - elthoro@gmx.de 0.8.0
+
+- Added highscore.
+- Added new boards.
+
+-------------------------------------------------------------------
+Sun Jul 27 19:57:00 UTC 2014 - elthoro@gmx.de 0.7.0
+
+- Added timer and moves counter.
+- Lintian fixes.
+- Added new boards.
+
+-------------------------------------------------------------------
+Sat Jul 12 23:18:00 UTC 2014 - elthoro@gmx.de 0.6.0
+
+- Added save/load game option (LP: #1338269)
+- Added new boards.
+
+-------------------------------------------------------------------
+Sun Jul 06 20:11:00 UTC 2014 - elthoro@gmx.de 0.5.0
+
+- Automatic check, if puzzle is solved (LP: #1320957)
+- Added new boards.
+
+-------------------------------------------------------------------
+Fri Jun 06 14:57:00 UTC 2014 - elthoro@gmx.de 0.4.0
+
+- Added preview to load board dialog.
+- Added new boards.
+
+-------------------------------------------------------------------
+Mon May 19 16:34:00 UTC 2014 - elthoro@gmx.de 0.3.0
+
+- Added gui translation.
+- Corrected block position after flip/rotate.
+- Corrected board path.
+- Added new board and possibility for barriers.
+
+-------------------------------------------------------------------
+Sun May 18 19:23:00 UTC 2014 - elthoro@gmx.de 0.2.0
+
+- Load board via command line.
+- Define color as hex.
+- Added new board.
+
+-------------------------------------------------------------------
+Sat May 17 22:00:51 UTC 2014 - elthoro@gmx.de 0.1.0
+
+- Load board file dialog.
+- Added CBoard class.
+- Minor collsion check correction.
+
+-------------------------------------------------------------------
+Sun May 04 19:02:00 UTC 2014 - elthoro@gmx.de 0.0.1
+
+- Define board as polygon.
+- Support for Qt 4 and Qt 5.
+- Code reconstructions, rewritten collision detection.
+- Initial changelog.

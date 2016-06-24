@@ -1,7 +1,18 @@
+iqpuzzle (0.10.0-0ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Start random game.
+  * Guess user name for highscore.
+  * Many new boards.
+  * Install into /usr/bin instead of /usr/games
+  * Bugfix: Disable save when game solved. MSVC compiler issue.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Fri, 24 Jun 2016 16:58:00 +0200
+
 iqpuzzle (0.9.0-0ubuntu1) trusty; urgency=low
 
   [ Thorsten Roth ]
-  * Added settings dialog; mouse buttons; GUI language.
+  * Added settings dialog; mouse buttons (LP: #1365568); GUI language.
   * Added Bulgarian translation (thanks to bogo1966)
   * Bug fix: Highscore
   * Bug fix: Wrongly solved, if piece intersects board and not all pcs needed.
