@@ -57,7 +57,7 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
     m_listMouseButtons << Qt::LeftButton << Qt::MidButton << Qt::RightButton;
     m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
     m_sListMouseButtons << trUtf8("First X") << trUtf8("Second X")
-                        << trUtf8("Verical wheel") << trUtf8("Horizontal wheel");
+                        << trUtf8("Vertical wheel") << trUtf8("Horizontal wheel");
     m_listMouseButtons << Qt::XButton1 << Qt::XButton2
                        << (quint8(Qt::Vertical)|m_nSHIFT)
                        << (quint8(Qt::Horizontal)|m_nSHIFT);
