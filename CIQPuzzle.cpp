@@ -93,9 +93,9 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
         }
     }
 
-    // Start board_001 as default
-    if (QFile::exists(m_sSharePath + "/boards")) {
-        this->startNewGame(m_sSharePath + "/boards/board_001.conf");
+    // Start rectangle_001 as default
+    if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
+        this->startNewGame(m_sSharePath + "/boards/rectangles/rectangle_001.conf");
     } else {
         qWarning() << "Games share path does not exist" << m_sSharePath;
     }
