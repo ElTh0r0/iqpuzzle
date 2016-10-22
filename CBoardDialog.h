@@ -35,21 +35,21 @@
  * \brief Extended file dialog for showing a board preview.
  */
 class CBoardDialog : public QFileDialog {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit CBoardDialog(QWidget *pParent = 0,
-                          const QString &sCaption = QString(),
-                          const QString &sDirectory = QString(),
-                          const QString &sFilter = QString());
+ public:
+  explicit CBoardDialog(QWidget *pParent = 0,
+                        const QString &sCaption = QString(),
+                        const QString &sDirectory = QString(),
+                        const QString &sFilter = QString());
 
-  protected slots:
-    void OnCurrentChanged(const QString &sPath);
+ protected slots:
+  void OnCurrentChanged(const QString &sPath);
 
-  private:
-    QLabel *m_pSolutions;
-    QLabel *m_pPreviewCaption;
-    QLabel *m_pPreview;
+ private:
+  QLabel *m_pSolutions;
+  QLabel *m_pPreviewCaption;
+  QLabel *m_pPreview;
 };
 
 #endif  // IQPUZZLE_CBOARDDIALOG_H_

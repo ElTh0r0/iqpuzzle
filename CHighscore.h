@@ -36,24 +36,24 @@
  * \brief Generating and showing highscore.
  */
 class CHighscore : public QObject {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit CHighscore(QWidget *pParent = 0);
+ public:
+  explicit CHighscore(QWidget *pParent = 0);
 
-  public slots:
-    void showHighscore(const QString &sBoard);
-    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                        const QTime &tTime);
+ public slots:
+  void showHighscore(const QString &sBoard);
+  void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                      const QTime &tTime);
 
-  private:
-    QStringList readHighscore(const QString &sBoard, const QString &sKey);
-    void insertHighscore(const QString &sBoard, const quint8 &nPosition,
-                         const quint32 &nMoves, const QTime &tTime);
+ private:
+  QStringList readHighscore(const QString &sBoard, const QString &sKey);
+  void insertHighscore(const QString &sBoard, const quint8 &nPosition,
+                       const quint32 &nMoves, const QTime &tTime);
 
-    QWidget *m_pParent;
-    QSettings *m_pHighscore;
-    const quint8 m_nMaxPos;
+  QWidget *m_pParent;
+  QSettings *m_pHighscore;
+  const quint8 m_nMaxPos;
 };
 
 #endif  // IQPUZZLE_CHIGHSCORE_H_

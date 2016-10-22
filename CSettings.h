@@ -33,7 +33,7 @@
 #include "./CSettings.h"
 
 namespace Ui {
-    class CSettingsDialog;
+class CSettingsDialog;
 }
 
 /**
@@ -41,31 +41,31 @@ namespace Ui {
  * \brief Settings dialog.
  */
 class CSettings : public QDialog {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit CSettings(const QString &sSharePath, QWidget *pParent = 0);
-    virtual ~CSettings();
+ public:
+  explicit CSettings(const QString &sSharePath, QWidget *pParent = 0);
+  virtual ~CSettings();
 
-    QList<quint8> getMouseControls() const;
-    quint8 getShift() const;
+  QList<quint8> getMouseControls() const;
+  quint8 getShift() const;
 
-  public slots:
-    void accept();
+ public slots:
+  void accept();
 
-  private:
-    void readSettings();
+ private:
+  void readSettings();
 
-    QWidget *m_pParent;
-    Ui::CSettingsDialog *m_pUi;
-    QSettings *m_pSettings;
+  QWidget *m_pParent;
+  Ui::CSettingsDialog *m_pUi;
+  QSettings *m_pSettings;
 
-    QString m_sSharePath;
-    QString m_sGuiLanguage;
-    const quint8 m_nSHIFT;
-    QStringList m_sListMouseButtons;
-    QList<quint8> m_listMouseButtons;
-    QList<quint8> m_listMouseControls;
+  QString m_sSharePath;
+  QString m_sGuiLanguage;
+  const quint8 m_nSHIFT;
+  QStringList m_sListMouseButtons;
+  QList<quint8> m_listMouseButtons;
+  QList<quint8> m_listMouseControls;
 };
 
 #endif  // IQPUZZLE_CSETTINGS_H_

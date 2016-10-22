@@ -32,56 +32,56 @@
 
 CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
                            const QString &sDirectory, const QString &sFilter)
-    : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
-    this->setObjectName("BoardFileDialog");
-    // Needed for Windows, otherwise native dialog crashes while adapting layout
-    this->setOption(QFileDialog::DontUseNativeDialog, true);
-    this->setViewMode(QFileDialog::List);
-    QVBoxLayout *boxlayout = new QVBoxLayout();
+  : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
+  this->setObjectName("BoardFileDialog");
+  // Needed for Windows, otherwise native dialog crashes while adapting layout
+  this->setOption(QFileDialog::DontUseNativeDialog, true);
+  this->setViewMode(QFileDialog::List);
+  QVBoxLayout *boxlayout = new QVBoxLayout();
 
-    m_pSolutions = new QLabel(trUtf8("Solutions") + ":", this);
-    m_pPreviewCaption = new QLabel(trUtf8("Preview") + ":", this);
-    m_pPreview = new QLabel("", this);
-    m_pPreview->setAlignment(Qt::AlignCenter);
-    m_pPreview->setObjectName("labelPreview");
-    m_pPreview->resize(150, 150);
+  m_pSolutions = new QLabel(trUtf8("Solutions") + ":", this);
+  m_pPreviewCaption = new QLabel(trUtf8("Preview") + ":", this);
+  m_pPreview = new QLabel("", this);
+  m_pPreview->setAlignment(Qt::AlignCenter);
+  m_pPreview->setObjectName("labelPreview");
+  m_pPreview->resize(150, 150);
 
-    boxlayout->addWidget(m_pSolutions);
-    boxlayout->addWidget(m_pPreviewCaption);
-    boxlayout->addWidget(m_pPreview);
-    boxlayout->addStretch();
-    {
-        QGridLayout *layout = reinterpret_cast<QGridLayout*>(this->layout());
-        layout->addLayout(boxlayout, 1, 3, 3, 1);
-    }
+  boxlayout->addWidget(m_pSolutions);
+  boxlayout->addWidget(m_pPreviewCaption);
+  boxlayout->addWidget(m_pPreview);
+  boxlayout->addStretch();
+  {
+    QGridLayout *layout = reinterpret_cast<QGridLayout*>(this->layout());
+    layout->addLayout(boxlayout, 1, 3, 3, 1);
+  }
 
-    connect(this, SIGNAL(currentChanged(const QString&)),
-            this, SLOT(OnCurrentChanged(const QString&)));
+  connect(this, SIGNAL(currentChanged(const QString&)),
+          this, SLOT(OnCurrentChanged(const QString&)));
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 void CBoardDialog::OnCurrentChanged(const QString &sPath) {
-    QSettings tmpSet(sPath, QSettings::IniFormat);
-    quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
-    QString sSolutions(QString::number(nSolutions));
-    if ("0" == sSolutions) {
-        sSolutions = trUtf8("Unknown");
-    }
-    m_pSolutions->setText(trUtf8("Solutions") + ": " + sSolutions);
+  QSettings tmpSet(sPath, QSettings::IniFormat);
+  quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+  QString sSolutions(QString::number(nSolutions));
+  if ("0" == sSolutions) {
+    sSolutions = trUtf8("Unknown");
+  }
+  m_pSolutions->setText(trUtf8("Solutions") + ": " + sSolutions);
 
-    QString sImage(sPath);
-    sImage.replace(".conf", ".png");
-    // qDebug() << "Preview image:" << sImage;
-    QPixmap pixmap = QPixmap(sImage);
-    if (pixmap.isNull()) {
-        m_pPreview->setText("\n" + trUtf8("No preview available"));
-    } else {
-        m_pPreview->resize(200, 200);
-        m_pPreview->setPixmap(pixmap.scaled(m_pPreview->width(),
-                                            m_pPreview->height(),
-                                            Qt::KeepAspectRatio,
-                                            Qt::SmoothTransformation));
-    }
+  QString sImage(sPath);
+  sImage.replace(".conf", ".png");
+  // qDebug() << "Preview image:" << sImage;
+  QPixmap pixmap = QPixmap(sImage);
+  if (pixmap.isNull()) {
+    m_pPreview->setText("\n" + trUtf8("No preview available"));
+  } else {
+    m_pPreview->resize(200, 200);
+    m_pPreview->setPixmap(pixmap.scaled(m_pPreview->width(),
+                                        m_pPreview->height(),
+                                        Qt::KeepAspectRatio,
+                                        Qt::SmoothTransformation));
+  }
 }

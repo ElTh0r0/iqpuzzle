@@ -40,7 +40,7 @@
 #include "./CSettings.h"
 
 namespace Ui {
-    class CIQPuzzle;
+class CIQPuzzle;
 }
 
 /**
@@ -48,62 +48,62 @@ namespace Ui {
  * \brief Main application definition (gui, objects, etc.)
  */
 class CIQPuzzle : public QMainWindow {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    explicit CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
-                       QWidget *pParent = 0);
-    ~CIQPuzzle();
+ public:
+  explicit CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
+                     QWidget *pParent = 0);
+  ~CIQPuzzle();
 
-  protected:
-    void closeEvent(QCloseEvent *pEvent);
+ protected:
+  void closeEvent(QCloseEvent *pEvent);
 
-  public slots:
-    void setMinWindowSize(const QSize size);
-    void incrementMoves();
+ public slots:
+  void setMinWindowSize(const QSize size);
+  void incrementMoves();
 
-  signals:
-    void showHighscore(const QString &sBoard);
-    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                        const QTime &tTime);
+ signals:
+  void showHighscore(const QString &sBoard);
+  void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                      const QTime &tTime);
 
-  private slots:
-    void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
-                      const QString sTime = "", const QString sMoves = "");
-    void randomGame();
-    void restartGame();
-    void loadGame();
-    void saveGame();
-    void pauseGame(const bool bPaused);
-    void updateTimer();
-    void solvedPuzzle();
-    void showHighscore();
-    void reportBug();
-    void showInfoBox();
+ private slots:
+  void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
+                    const QString sTime = "", const QString sMoves = "");
+  void randomGame();
+  void restartGame();
+  void loadGame();
+  void saveGame();
+  void pauseGame(const bool bPaused);
+  void updateTimer();
+  void solvedPuzzle();
+  void showHighscore();
+  void reportBug();
+  void showInfoBox();
 
-  private:
-    void setupMenu();
+ private:
+  void setupMenu();
 
-    Ui::CIQPuzzle *m_pUi;
-    QGraphicsView *m_pGraphView;
-    QGraphicsScene *m_pScenePaused;
-    CBoardDialog *m_pBoardDialog;
-    CBoard *m_pBoard;
-    QString m_sBoardFile;
-    QString m_sSavedGame;
-    QDir m_userDataDir;
-    QString m_sSharePath;
-    QLabel *m_pStatusLabelTime;
-    QLabel *m_pStatusLabelMoves;
-    quint32 m_nMoves;
-    QString m_sSavedTime;
-    QString m_sSavedMoves;
-    QTime m_Time;
-    QTimer *m_pTimer;
-    QGraphicsTextItem *m_pTextPaused;
-    bool m_bSolved;
-    CHighscore *m_pHighscore;
-    CSettings *m_pSettings;
+  Ui::CIQPuzzle *m_pUi;
+  QGraphicsView *m_pGraphView;
+  QGraphicsScene *m_pScenePaused;
+  CBoardDialog *m_pBoardDialog;
+  CBoard *m_pBoard;
+  QString m_sBoardFile;
+  QString m_sSavedGame;
+  QDir m_userDataDir;
+  QString m_sSharePath;
+  QLabel *m_pStatusLabelTime;
+  QLabel *m_pStatusLabelMoves;
+  quint32 m_nMoves;
+  QString m_sSavedTime;
+  QString m_sSavedMoves;
+  QTime m_Time;
+  QTimer *m_pTimer;
+  QGraphicsTextItem *m_pTextPaused;
+  bool m_bSolved;
+  CHighscore *m_pHighscore;
+  CSettings *m_pSettings;
 };
 
 #endif  // IQPUZZLE_CIQPUZZLE_H_

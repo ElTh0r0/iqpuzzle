@@ -39,63 +39,62 @@
  * \brief Block handling (move, rotate, collision check).
  */
 class CBlock : public QGraphicsObject {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-           quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
-           QPointF posTopLeft = QPoint(0, 0),
-           const bool bBarrier = false);
+ public:
+  CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
+         quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
+         QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
 
-    QRectF boundingRect() const;
-    QPainterPath shape() const;
-    QPointF getPosition() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
-    void setBrushStyle(Qt::BrushStyle style);
+  QRectF boundingRect() const;
+  QPainterPath shape() const;
+  QPointF getPosition() const;
+  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+             QWidget *widget = 0);
+  void setBrushStyle(Qt::BrushStyle style);
 
-    QPolygonF getPolygon() const;
-    void setNewZValue(const qint16 nZ);
-    void rescaleBlock(const quint16 nNewScale);
-    quint16 getIndex() const;
-    enum { Type = UserType + 1 };
+  QPolygonF getPolygon() const;
+  void setNewZValue(const qint16 nZ);
+  void rescaleBlock(const quint16 nNewScale);
+  quint16 getIndex() const;
+  enum { Type = UserType + 1 };
 
-  signals:
-    void incrementMoves();
-    void checkPuzzleSolved();
+ signals:
+  void incrementMoves();
+  void checkPuzzleSolved();
 
-  protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
-    void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
-    int type() const;
+ protected:
+  void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
+  void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
+  void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
+  void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
+  int type() const;
 
-  private:
-    void moveBlockGrid(const QPointF pos);
-    bool checkCollision(const QPainterPath thisPath);
-    void checkBlockIntersection();
-    QPointF snapToGrid(const QPointF point) const;
-    void resetBrushStyle() const;
+ private:
+  void moveBlockGrid(const QPointF pos);
+  bool checkCollision(const QPainterPath thisPath);
+  void checkBlockIntersection();
+  QPointF snapToGrid(const QPointF point) const;
+  void resetBrushStyle() const;
 
-    void moveBlock(const bool bRelease = false);
-    void rotateBlock(const int nDelta = -1);
-    void flipBlock();
+  void moveBlock(const bool bRelease = false);
+  void rotateBlock(const int nDelta = -1);
+  void flipBlock();
 
-    const quint16 m_nID;
-    QPolygonF m_PolyShape;
-    QBrush m_bgBrush;
-    QPen m_borderPen;
-    quint16 m_nGrid;
-    QList<CBlock *> *m_pListBlocks;
-    CSettings *m_pSettings;
-    bool m_bActive;
-    QPixmap m_CollTexture;
+  const quint16 m_nID;
+  QPolygonF m_PolyShape;
+  QBrush m_bgBrush;
+  QPen m_borderPen;
+  quint16 m_nGrid;
+  QList<CBlock *> *m_pListBlocks;
+  CSettings *m_pSettings;
+  bool m_bActive;
+  QPixmap m_CollTexture;
 
-    QTransform *m_pTransform;
-    QPointF m_posBlockSelected;
-    QPointF m_posMouseSelected;
-    QGraphicsSimpleTextItem m_ItemNumberText;
+  QTransform *m_pTransform;
+  QPointF m_posBlockSelected;
+  QPointF m_posMouseSelected;
+  QGraphicsSimpleTextItem m_ItemNumberText;
 };
 
 #endif  // IQPUZZLE_CBLOCK_H_
