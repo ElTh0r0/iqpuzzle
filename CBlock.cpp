@@ -29,8 +29,8 @@
 #include "./CBlock.h"
 
 CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-               quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
-               QPointF posTopLeft, const bool bBarrier)
+               quint16 nGrid, QList<CBlock *> *pListBlocks,
+               CSettings *pSettings, QPointF posTopLeft, const bool bBarrier)
     : m_nID(nID),
       m_PolyShape(shape),
       m_bgBrush(bgcolor),
@@ -44,13 +44,13 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
     }
 
     if (!bBarrier) {
-        qDebug() << "Creating BLOCK" << m_nID <<
-                    "\tPosition:" << posTopLeft * m_nGrid;
+        // qDebug() << "Creating BLOCK" << m_nID <<
+        //             "\tPosition:" << posTopLeft * m_nGrid;
         this->setFlag(ItemIsMovable);
         m_CollTexture.load(":/images/collision_texture.png");
     } else {
-        qDebug() << "Creating BARRIER" << m_nID <<
-                    "\tPosition:" << posTopLeft * m_nGrid;
+        // qDebug() << "Creating BARRIER" << m_nID <<
+        //             "\tPosition:" << posTopLeft * m_nGrid;
 
         this->setAcceptedMouseButtons(0);
         this->setAcceptTouchEvents(false);

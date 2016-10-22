@@ -27,6 +27,7 @@
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QFile>
 #include <QMessageBox>
 
 #include "./CBoard.h"
@@ -366,6 +367,7 @@ void CBoard::saveGame(const QString &sSaveFile, const QString &sTime,
     QPolygonF poly;
     QString sPoly;
     QPointF pos;
+    QString sDebug("");
 
     saveConf.clear();
     saveConf.setValue("BoardFile", m_sBoardFile);
@@ -390,5 +392,18 @@ void CBoard::saveGame(const QString &sSaveFile, const QString &sTime,
         saveConf.setValue(sPrefix + "/StartPos",
                           QString::number(pos.x() / m_nGridSize) + "," +
                           QString::number(pos.y() / m_nGridSize));
+
+        if (sSaveFile.endsWith("S0LV3D.debug")) {
+            sDebug += "[" + sPrefix + "]\n";
+            sDebug += "Polygon=\"" + sPoly + "\"\n";
+            sDebug += "StartPos=\"" + QString::number(pos.x() / m_nGridSize) +
+                      "," + QString::number(pos.y() / m_nGridSize) + "\"\n";
+        }
+    }
+
+    if (sSaveFile.endsWith("S0LV3D.debug")) {
+        ba.clear();
+        ba.append(sDebug);
+        qDebug().noquote() << "SOLVED\n" + m_sBoardFile + "\n" + ba.toBase64();
     }
 }

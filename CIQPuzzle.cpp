@@ -420,8 +420,13 @@ void CIQPuzzle::solvedPuzzle() {
                              trUtf8("Moves") + ": " + QString::number(m_nMoves)
                              + "\n" + trUtf8("Time") + ": "
                              + m_Time.toString("hh:mm:ss"));
-
     m_pUi->action_SaveGame->setEnabled(false);
+
+    // Save won game state for debugging
+    m_pBoard->saveGame(m_userDataDir.absolutePath() + "/S0LV3D.debug",
+                       "55:55:55", "10000");
+    QFile::remove(m_userDataDir.absolutePath() + "/S0LV3D.debug");
+
     emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
 }
 
