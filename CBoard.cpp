@@ -284,16 +284,30 @@ void CBoard::checkPuzzleSolved() {
 
   QPainterPath unitedBlocks;
   QPainterPath tempPath;
+  QPointF pos;
 
   foreach (CBlock *block, m_listBlocks) {
+    pos = QPointF(block->pos().x() / m_nGridSize,
+                  block->pos().y() / m_nGridSize);
+
+    // Check, if block is outside the board
+    if (!m_bNotAllPiecesNeeded) {
+      if (pos.x() < 0 || pos.y() < 0 ||
+          pos.x() >= resizedPoly.boundingRect().width() ||
+          pos.y() >= resizedPoly.boundingRect().height()) {
+          return;
+      }
+    }
+
     tempPath = block->shape();
-    tempPath.translate(QPointF(block->pos().x() / m_nGridSize,
-                               block->pos().y() / m_nGridSize));
+    tempPath.translate(pos);
     unitedBlocks += tempPath;
 
+    // Check, if block intersects board
     if (tempPath.intersects(boardPath) && m_bNotAllPiecesNeeded) {
       tempPath = tempPath.subtracted(boardPath);
       if (!tempPath.isEmpty()) {
+        // TODO: not all pieces needed and one piece touches board outline.
         return;
       }
     }
