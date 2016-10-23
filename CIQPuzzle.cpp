@@ -466,12 +466,14 @@ void CIQPuzzle::showInfoBox() {
                      .arg(APP_COPY)
                      .arg("URL: <a href=\"https://launchpad.net/iqpuzzle\">"
                           "https://launchpad.net/iqpuzzle</a>")
-                     .arg(trUtf8("License") + ": "
-                                              "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-                                              "GNU General Public License Version 3</a>")
-                     .arg("<i>" + trUtf8("Translations") + "</i><br />"
-                                                           "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
-                                                           "&nbsp;&nbsp;- German: ElThoro"));
+                     .arg(trUtf8("License") +
+                          ": "
+                          "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
+                          "GNU General Public License Version 3</a>")
+                     .arg("<i>" + trUtf8("Translations") +
+                          "</i><br />"
+                          "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+                          "&nbsp;&nbsp;- German: ElThoro"));
 }
 
 // ---------------------------------------------------------------------------
