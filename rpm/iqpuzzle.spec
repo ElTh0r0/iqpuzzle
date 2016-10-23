@@ -70,7 +70,7 @@ cat > .qmake.cache <<EOF
 QMAKE_CXXFLAGS += %{optflags}
 EOF
 %if 0%{?fedora} >= 19
-qmake-qt5 PREFIX=%{_prefix}
+%{qmake_qt5} PREFIX=%{_prefix}
 %else
 qmake-qt4 PREFIX=%{_prefix}
 %endif
