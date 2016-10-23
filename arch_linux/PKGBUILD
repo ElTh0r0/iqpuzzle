@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=iqpuzzle
-pkgver=0.10.0
-_mainver=0.10
+pkgver=1.0.0
+_mainver=1.0
 pkgrel=1
 pkgdesc='iQPuzzle is a diverting and challenging pentomino puzzle.'
 arch=('i686' 'x86_64')

@@ -1,11 +1,13 @@
 -------------------------------------------------------------------
-Fri Jun 24 16:58:00 UTC 2015 - elthoro@gmx.de 0.10.0
+Sun Oct 23 15:36:00 UTC 2016 - elthoro@gmx.de 1.0.0
 
 - Start random game.
 - Guess user name for highscore.
 - Many new boards.
 - Install into /usr/bin instead of /usr/games
-- Bug fixes: Disable save when game solved. MSVC compiler issue.
+- Simple collision check after rotation/flip.
+- Removed fixed window size.
+- Bugfix: Disable save when game solved. MSVC compiler issue.
 
 -------------------------------------------------------------------
 Wed May 13 23:47:00 UTC 2015 - elthoro@gmx.de 0.9.0

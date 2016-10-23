@@ -1,13 +1,15 @@
-iqpuzzle (0.10.0-0ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.0-0ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]
   * Start random game.
   * Guess user name for highscore.
   * Many new boards.
   * Install into /usr/bin instead of /usr/games
+  * Simple collision check after rotation/flip.
+  * Removed fixed window size.
   * Bugfix: Disable save when game solved. MSVC compiler issue.
 
- -- Thorsten Roth <elthoro@gmx.de>  Fri, 24 Jun 2016 16:58:00 +0200
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 23 Oct 2016 15:36:00 +0200
 
 iqpuzzle (0.9.0-0ubuntu1) trusty; urgency=low
 
