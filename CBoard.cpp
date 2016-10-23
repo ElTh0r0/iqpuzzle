@@ -423,6 +423,7 @@ void CBoard::saveGame(const QString &sSaveFile, const QString &sTime,
   if (sSaveFile.endsWith("S0LV3D.debug")) {
     ba.clear();
     ba.append(sDebug);
-    qDebug().noquote() << "SOLVED\n" + m_sBoardFile + "\n" + ba.toBase64();
+    qDebug() << "SOLVED" << m_sBoardFile;
+    qDebug() << ba.toBase64();
   }
 }
