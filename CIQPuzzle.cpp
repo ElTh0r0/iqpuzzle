@@ -239,9 +239,6 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
       m_sSavedGame = sSavedGame;
     }
 
-    m_pUi->action_RestartGame->setEnabled(true);
-    m_pUi->action_SaveGame->setEnabled(true);
-
     QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
     quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
     QString sSolutions(QString::number(nSolutions));
@@ -272,8 +269,10 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
     if (m_pBoard->setupBoard()) {
       m_pBoard->setupBlocks();
       m_pTimer->start(1000);
+      m_pUi->action_PauseGame->setEnabled(true);
       m_pUi->action_PauseGame->setChecked(false);
       m_pUi->action_SaveGame->setEnabled(true);
+      m_pUi->action_RestartGame->setEnabled(true);
       m_bSolved = false;
       m_pGraphView->setScene(m_pBoard);
     }
@@ -422,6 +421,8 @@ void CIQPuzzle::solvedPuzzle() {
                            trUtf8("Moves") + ": " + QString::number(m_nMoves)
                            + "\n" + trUtf8("Time") + ": "
                            + m_Time.toString("hh:mm:ss"));
+  m_pUi->action_PauseGame->setEnabled(false);
+  m_pUi->action_PauseGame->setChecked(false);
   m_pUi->action_SaveGame->setEnabled(false);
 
   // Save won game state for debugging
