@@ -101,6 +101,15 @@ void CSettings::accept() {
   m_pSettings->endGroup();
   m_pSettings->remove("KeyboardControls");  // Won't support keyboard in future
 
+  if (m_listMouseControls[0] == m_listMouseControls[1] ||
+      m_listMouseControls[0] == m_listMouseControls[2] ||
+      m_listMouseControls[1] == m_listMouseControls[2]) {
+    QMessageBox::warning(0, this->windowTitle(),
+                             trUtf8("Please change your settings. Same mouse "
+                                    "button is used for several actions."));
+    return;
+  }
+
   if (sOldGuiLang != m_sGuiLanguage) {
     QMessageBox::information(0, this->windowTitle(),
                              trUtf8("The game has to be restarted for "

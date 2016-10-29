@@ -316,7 +316,12 @@ Reduced grid to default.</source>
         <translation>Vertikales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="106"/>
+        <location filename="../CSettings.cpp" line="108"/>
+        <source>Please change your settings. Same mouse button is used for several actions.</source>
+        <translation>Bitte ändern Sie Ihre Einstellungen. Die gleiche Maustaste wurde für mehrere Aktionen gewählt.</translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="115"/>
         <source>The game has to be restarted for applying the changes.</source>
         <translation>Das Spiel muss neu gestartet werden, um die Änderungen zu übernehmen.</translation>
     </message>

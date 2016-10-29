@@ -316,7 +316,12 @@ Reduced grid to default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="106"/>
+        <location filename="../CSettings.cpp" line="108"/>
+        <source>Please change your settings. Same mouse button is used for several actions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CSettings.cpp" line="115"/>
         <source>The game has to be restarted for applying the changes.</source>
         <translation type="unfinished"></translation>
     </message>
