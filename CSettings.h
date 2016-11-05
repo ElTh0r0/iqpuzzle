@@ -52,6 +52,7 @@ class CSettings : public QDialog {
 
  public slots:
   void accept();
+  void reject();
 
  private:
   void readSettings();

@@ -66,6 +66,8 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
 
   connect(m_pUi->buttonBox, SIGNAL(accepted()),
           this, SLOT(accept()));
+  connect(m_pUi->buttonBox, SIGNAL(rejected()),
+          this, SLOT(accept()));
 
   this->readSettings();
 }
@@ -87,12 +89,33 @@ void CSettings::accept() {
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
   m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
 
-  m_listMouseControls[0] =
-      m_listMouseButtons[m_pUi->cbMoveBlockMouse->currentIndex()];
-  m_listMouseControls[1] =
-      m_listMouseButtons[m_pUi->cbRotateBlockMouse->currentIndex()];
-  m_listMouseControls[2] =
-      m_listMouseButtons[m_pUi->cbFlipBlockMouse->currentIndex()];
+  if (sOldGuiLang != m_sGuiLanguage) {
+    QMessageBox::information(0, this->windowTitle(),
+                             trUtf8("The game has to be restarted for "
+                                    "applying the changes."));
+  }
+
+  QList<quint8> tmp_listMouseControls;
+  tmp_listMouseControls << m_listMouseButtons[
+                           m_pUi->cbMoveBlockMouse->currentIndex()];
+  tmp_listMouseControls << m_listMouseButtons[
+                           m_pUi->cbRotateBlockMouse->currentIndex()];
+  tmp_listMouseControls << m_listMouseButtons[
+                           m_pUi->cbFlipBlockMouse->currentIndex()];
+
+  if (tmp_listMouseControls[0] == tmp_listMouseControls[1] ||
+      tmp_listMouseControls[0] == tmp_listMouseControls[2] ||
+      tmp_listMouseControls[1] == tmp_listMouseControls[2]) {
+    QMessageBox::warning(0, this->windowTitle(),
+                             trUtf8("Please change your settings. Same mouse "
+                                    "button is used for several actions."));
+    return;
+  } else {
+    m_listMouseControls[0] = tmp_listMouseControls[0];
+    m_listMouseControls[1] = tmp_listMouseControls[1];
+    m_listMouseControls[2] = tmp_listMouseControls[2];
+  }
+
   m_pSettings->beginGroup("MouseControls");
   m_pSettings->setValue("MoveBlock", m_listMouseControls[0]);
   m_pSettings->setValue("RotateBlock", m_listMouseControls[1]);
@@ -101,22 +124,15 @@ void CSettings::accept() {
   m_pSettings->endGroup();
   m_pSettings->remove("KeyboardControls");  // Won't support keyboard in future
 
-  if (m_listMouseControls[0] == m_listMouseControls[1] ||
-      m_listMouseControls[0] == m_listMouseControls[2] ||
-      m_listMouseControls[1] == m_listMouseControls[2]) {
-    QMessageBox::warning(0, this->windowTitle(),
-                             trUtf8("Please change your settings. Same mouse "
-                                    "button is used for several actions."));
-    return;
-  }
-
-  if (sOldGuiLang != m_sGuiLanguage) {
-    QMessageBox::information(0, this->windowTitle(),
-                             trUtf8("The game has to be restarted for "
-                                    "applying the changes."));
-  }
-
   QDialog::accept();
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+void CSettings::reject() {
+  this->readSettings();
+  QDialog::reject();
 }
 
 // ----------------------------------------------------------------------------
