@@ -151,6 +151,7 @@ void CSettings::readSettings() {
       sListGuiLanguages << fi.baseName().remove(qAppName().toLower() + "_");
     }
   }
+  m_pUi->cbGuiLanguage->clear();
   m_pUi->cbGuiLanguage->addItems(sListGuiLanguages);
   if (-1 != m_pUi->cbGuiLanguage->findText(m_sGuiLanguage)) {
     m_pUi->cbGuiLanguage->setCurrentIndex(
