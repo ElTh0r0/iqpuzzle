@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 05 15:17:00 UTC 2016 - elthoro@gmx.de 1.0.1
+
+- Added resources for OS/2; thanks to Gianfilippo!
+- Improved settings dialog (check for using button multiple times)
+
+-------------------------------------------------------------------
 Sun Oct 23 15:36:00 UTC 2016 - elthoro@gmx.de 1.0.0
 
 - Start random game.

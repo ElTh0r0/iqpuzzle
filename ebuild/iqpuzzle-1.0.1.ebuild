@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${P}-src
 
 src_prepare() {
-	sed -i -e 's|usr/games|usr/games/bin|' ${PN}.pro || die
+	sed -i -e 's|usr/games|usr/bin|' ${PN}.pro || die
 	#qt4-r2_src_prepare
 }
 

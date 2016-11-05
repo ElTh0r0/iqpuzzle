@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.0.0
+Version:        1.0.1
 Release:        1
 License:        GPL-3.0+
 URL:            https://launchpad.net/iqpuzzle

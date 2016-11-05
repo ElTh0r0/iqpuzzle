@@ -1,3 +1,11 @@
+iqpuzzle (1.0.1-0ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Added resources for OS/2; thanks to Gianfilippo!
+  * Improved settings dialog (check for using button multiple times)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 05 Nov 2016 15:17:00 +0200
+
 iqpuzzle (1.0.0-0ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]

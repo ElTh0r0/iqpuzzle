@@ -4,4 +4,4 @@
     title="iQPuzzle"\
     longtitle="iQPuzzle - Challenging pentomino"\
     icon="/usr/share/pixmaps/iqpuzzle.xpm"\
-    command="/usr/games/iqpuzzle"
+    command="/usr/bin/iqpuzzle"
