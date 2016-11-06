@@ -8,7 +8,7 @@ Build-Depends:
    qt4-qmake,
    libqtgui4,
    pkg-config,
-   hardening-wrapper
+   dpkg-dev (>= 1.16.1.1)
 Standards-Version: 3.9.8
 Homepage: https://launchpad.net/iqpuzzle
 Vcs-Bzr: https://code.launchpad.net/~elthoro/iqpuzzle/packaging
