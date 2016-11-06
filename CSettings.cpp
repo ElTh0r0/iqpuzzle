@@ -33,7 +33,6 @@
 
 CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
   : QDialog(pParent),
-    m_sSharePath(sSharePath),
     m_nSHIFT(0xF0) {
   qDebug() << "Calling" << Q_FUNC_INFO;
 
@@ -64,6 +63,19 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
+  QStringList sListGuiLanguages;
+  sListGuiLanguages << "auto" << "en";
+  QDir appDir(sSharePath + "/lang");
+  QFileInfoList fiListFiles = appDir.entryInfoList(
+                                QDir::NoDotAndDotDot | QDir::Files);
+  foreach (QFileInfo fi, fiListFiles) {
+    if ("qm" == fi.suffix() &&
+        fi.baseName().startsWith(qAppName().toLower() + "_")) {
+      sListGuiLanguages << fi.baseName().remove(qAppName().toLower() + "_");
+    }
+  }
+  m_pUi->cbGuiLanguage->addItems(sListGuiLanguages);
+
   connect(m_pUi->buttonBox, SIGNAL(accepted()),
           this, SLOT(accept()));
   connect(m_pUi->buttonBox, SIGNAL(rejected()),
@@ -85,16 +97,6 @@ CSettings::~CSettings() {
 void CSettings::accept() {
   qDebug() << "Calling" << Q_FUNC_INFO;
 
-  QString sOldGuiLang = m_sGuiLanguage;
-  m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
-  m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
-
-  if (sOldGuiLang != m_sGuiLanguage) {
-    QMessageBox::information(0, this->windowTitle(),
-                             trUtf8("The game has to be restarted for "
-                                    "applying the changes."));
-  }
-
   QList<quint8> tmp_listMouseControls;
   tmp_listMouseControls << m_listMouseButtons[
                            m_pUi->cbMoveBlockMouse->currentIndex()];
@@ -114,6 +116,16 @@ void CSettings::accept() {
     m_listMouseControls[0] = tmp_listMouseControls[0];
     m_listMouseControls[1] = tmp_listMouseControls[1];
     m_listMouseControls[2] = tmp_listMouseControls[2];
+  }
+
+  QString sOldGuiLang = m_sGuiLanguage;
+  m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
+  m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
+
+  if (sOldGuiLang != m_sGuiLanguage) {
+    QMessageBox::information(0, this->windowTitle(),
+                             trUtf8("The game has to be restarted for "
+                                    "applying the changes."));
   }
 
   m_pSettings->beginGroup("MouseControls");
@@ -140,19 +152,6 @@ void CSettings::reject() {
 
 void CSettings::readSettings() {
   m_sGuiLanguage = m_pSettings->value("GuiLanguage", "auto").toString();
-  QStringList sListGuiLanguages;
-  sListGuiLanguages << "auto" << "en";
-  QDir appDir(m_sSharePath + "/lang");
-  QFileInfoList fiListFiles = appDir.entryInfoList(
-                                QDir::NoDotAndDotDot | QDir::Files);
-  foreach (QFileInfo fi, fiListFiles) {
-    if ("qm" == fi.suffix() &&
-        fi.baseName().startsWith(qAppName().toLower() + "_")) {
-      sListGuiLanguages << fi.baseName().remove(qAppName().toLower() + "_");
-    }
-  }
-  m_pUi->cbGuiLanguage->clear();
-  m_pUi->cbGuiLanguage->addItems(sListGuiLanguages);
   if (-1 != m_pUi->cbGuiLanguage->findText(m_sGuiLanguage)) {
     m_pUi->cbGuiLanguage->setCurrentIndex(
           m_pUi->cbGuiLanguage->findText(m_sGuiLanguage));

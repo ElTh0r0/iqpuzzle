@@ -61,7 +61,6 @@ class CSettings : public QDialog {
   Ui::CSettingsDialog *m_pUi;
   QSettings *m_pSettings;
 
-  QString m_sSharePath;
   QString m_sGuiLanguage;
   const quint8 m_nSHIFT;
   QStringList m_sListMouseButtons;
