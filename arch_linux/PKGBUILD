@@ -9,7 +9,7 @@ url='https://launchpad.net/iqpuzzle/'
 license=('GPL3')
 depends=('qt5-base')
 source=("https://launchpad.net/iqpuzzle/$_mainver/$pkgver/+download/iqpuzzle-$pkgver-src.tar.gz")
-md5sums=('0dd5576d1e4a54cacc376347911aa533')
+md5sums=('f83048dfda29ee5d7d691ce0985e9c22')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-src"

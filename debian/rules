@@ -1,4 +1,5 @@
 #!/usr/bin/make -f
+#export DH_VERBOSE=1
 
 # Enable hardening-wrapper
 export DEB_BUILD_HARDENING=1
