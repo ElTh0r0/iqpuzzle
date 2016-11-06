@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
 
+# Enable hardening-wrapper
+export DEB_BUILD_HARDENING=1
+
 %:
 	dh $@ --parallel
+
+override_dh_auto_configure:
+	dh_auto_configure -- BINDIR=games

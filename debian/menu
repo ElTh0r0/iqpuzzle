@@ -1,7 +1,0 @@
-?package(iqpuzzle):\
-    needs="x11"\
-    section="Games/Puzzles"\
-    title="iQPuzzle"\
-    longtitle="iQPuzzle - Challenging pentomino"\
-    icon="/usr/share/pixmaps/iqpuzzle.xpm"\
-    command="/usr/bin/iqpuzzle"

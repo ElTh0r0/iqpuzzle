@@ -1,3 +1,10 @@
+iqpuzzle (1.0.2-0ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Lintian packaging fixes.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 06 Nov 2016 13:49:00 +0200
+
 iqpuzzle (1.0.1-0ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]

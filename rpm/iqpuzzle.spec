@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.0.1
+Version:        1.0.2
 Release:        1
 License:        GPL-3.0+
 URL:            https://launchpad.net/iqpuzzle
@@ -56,7 +56,9 @@ BuildRequires:  update-desktop-files
 #--------------------------------------------------------------------
 
 %description
-iQPuzzle is a diverting and challenging pentomino puzzle.
+iQPuzzle is a diverting and challenging puzzle. Pentominos are used
+as puzzle pieces and 195 different board shapes are available, which
+have to be filled with them.
 
 %prep
 %setup -q -n %{name}-%{version}-src

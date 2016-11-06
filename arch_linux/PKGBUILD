@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=iqpuzzle
-pkgver=1.0.1
+pkgver=1.0.2
 _mainver=1.0
 pkgrel=1
 pkgdesc='iQPuzzle is a diverting and challenging pentomino puzzle.'
@@ -9,7 +9,7 @@ url='https://launchpad.net/iqpuzzle/'
 license=('GPL3')
 depends=('qt5-base')
 source=("https://launchpad.net/iqpuzzle/$_mainver/$pkgver/+download/iqpuzzle-$pkgver-src.tar.gz")
-md5sums=('cc2c8b6890b1d8e402b1333b1f6d2517')
+md5sums=('0dd5576d1e4a54cacc376347911aa533')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-src"
