@@ -8,3 +8,4 @@ TryExec=iqpuzzle
 Exec=iqpuzzle %f
 Terminal=false
 Categories=Game;LogicGame;
+Keywords=Puzzle;Pentomnio;IQ;
