@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.1" language="nl_NL">
 <context>
     <name>CBoard</name>
     <message>
@@ -10,7 +10,7 @@
         <location filename="../CBoard.cpp" line="151"/>
         <location filename="../CBoard.cpp" line="167"/>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation>Waarschuwing</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="55"/>
@@ -21,28 +21,28 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CBoard.cpp" line="71"/>
         <source>Board polygon not valid.</source>
-        <translation>Spielfeld-Polygon nicht gültig.</translation>
+        <translation>Spel Polygon niet geldig.</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="133"/>
         <location filename="../CBoard.cpp" line="168"/>
         <source>Polygon not valid:</source>
-        <translation>Polygon ungültig:</translation>
+        <translation>Polygon niet geldig:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="152"/>
         <source>Could not find valid blocks.</source>
-        <translation>Es konnten keine gültigen Blöcke gefunden werden.</translation>
+        <translation>Kan geen ongeldige blokken vinden.</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="192"/>
         <source>Hint</source>
-        <translation>Hinweis</translation>
+        <translation>Tips</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="193"/>
         <source>Not all pieces are needed for a solution!</source>
-        <translation>Nicht alle Teile werden für eine Lösung benötigt!</translation>
+        <translation>Niet alle stukken zijn nodig voor de oplossing!</translation>
     </message>
 </context>
 <context>
@@ -51,22 +51,22 @@ Reduced grid to default.</source>
         <location filename="../CBoardDialog.cpp" line="42"/>
         <location filename="../CBoardDialog.cpp" line="72"/>
         <source>Solutions</source>
-        <translation>Lösungen</translation>
+        <translation>Oplossingen</translation>
     </message>
     <message>
         <location filename="../CBoardDialog.cpp" line="43"/>
         <source>Preview</source>
-        <translation>Vorschau</translation>
+        <translation>Voorbeeld</translation>
     </message>
     <message>
         <location filename="../CBoardDialog.cpp" line="70"/>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation>Onbekent</translation>
     </message>
     <message>
         <location filename="../CBoardDialog.cpp" line="79"/>
         <source>No preview available</source>
-        <translation>Keine Vorschau verfügbar</translation>
+        <translation>Geen voorbeeld beschikbaar</translation>
     </message>
 </context>
 <context>
@@ -75,32 +75,32 @@ Reduced grid to default.</source>
         <location filename="../CHighscore.cpp" line="58"/>
         <location filename="../CHighscore.cpp" line="157"/>
         <source>Highscore</source>
-        <translation>Bestenliste</translation>
+        <translation>Hoogste score</translation>
     </message>
     <message>
         <location filename="../CHighscore.cpp" line="66"/>
         <source>Position</source>
-        <translation>Rang</translation>
+        <translation>Positie</translation>
     </message>
     <message>
         <location filename="../CHighscore.cpp" line="68"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <location filename="../CHighscore.cpp" line="70"/>
         <source>Time</source>
-        <translation>Zeit</translation>
+        <translation>Tijd</translation>
     </message>
     <message>
         <location filename="../CHighscore.cpp" line="72"/>
         <source>Moves</source>
-        <translation>Züge</translation>
+        <translation>Verplaats</translation>
     </message>
     <message>
         <location filename="../CHighscore.cpp" line="158"/>
         <source>Please insert your name for a new highscore:</source>
-        <translation>Bitte Namen für die Bestenliste eintragen:</translation>
+        <translation>Naam invullen voor nieuwe hoogste score:</translation>
     </message>
 </context>
 <context>
@@ -108,126 +108,126 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CIQPuzzle.ui" line="41"/>
         <source>&amp;Game</source>
-        <translation>&amp;Spiel</translation>
+        <translation>&amp;Spel</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="57"/>
         <source>&amp;Help</source>
-        <translation>&amp;Hilfe</translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="64"/>
         <source>&amp;Settings</source>
-        <translation>&amp;Einstellungen</translation>
+        <translation>&amp;Instellingen</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="78"/>
         <source>Choose &amp;new game</source>
-        <translation>&amp;Neues Spiel wählen</translation>
+        <translation>Kies &amp;nieuw Spel</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="83"/>
         <source>&amp;Quit</source>
-        <translation>B&amp;eenden</translation>
+        <translation>Sl&amp;uiten</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="88"/>
         <source>&amp;About</source>
-        <translation>&amp;Über</translation>
+        <translation>&amp;Over</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="93"/>
         <source>Zoom &amp;In</source>
-        <translation>Ver&amp;größern</translation>
+        <translation>Ver&amp;groten</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="98"/>
         <source>Zoom &amp;Out</source>
-        <translation>Ver&amp;kleinern</translation>
+        <translation>Ver&amp;kleinen</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="106"/>
         <source>&amp;Restart game</source>
-        <translation>S&amp;piel neu starten</translation>
+        <translation>S&amp;pel herstarten</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="114"/>
         <source>&amp;Save game</source>
-        <translation>Spiel &amp;speichern</translation>
+        <translation>Spel &amp;opslaan</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="117"/>
         <location filename="../CIQPuzzle.cpp" line="356"/>
         <source>Save game</source>
-        <translation>Spiel speichern</translation>
+        <translation>Spel opslaan</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="122"/>
         <source>&amp;Load game</source>
-        <translation>Spiel &amp;laden</translation>
+        <translation>Spel &amp;laden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="125"/>
         <location filename="../CIQPuzzle.cpp" line="333"/>
         <source>Load game</source>
-        <translation>Spiel laden</translation>
+        <translation>Spel laden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="136"/>
         <source>Pa&amp;use</source>
-        <translation>Pa&amp;use</translation>
+        <translation>Pa&amp;uze</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="141"/>
         <source>&amp;Highscore</source>
-        <translation>&amp;Bestenliste anzeigen</translation>
+        <translation>&amp;Hoogste score</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="146"/>
         <source>&amp;Configure iQPuzzle...</source>
-        <translation>iQPuzzle &amp;einrichten...</translation>
+        <translation>iQPuzzle &amp;instellen...</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="151"/>
         <source>Report &amp;bug</source>
-        <translation>&amp;Fehler melden</translation>
+        <translation>&amp;Rapporteer fouten</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="156"/>
         <source>R&amp;andom game</source>
-        <translation>&amp;Zufälliges Spiel</translation>
+        <translation>&amp;Willekeurig spel</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="199"/>
         <source>Load board</source>
-        <translation>Spiel laden</translation>
+        <translation>Spel laden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="214"/>
         <location filename="../CIQPuzzle.cpp" line="229"/>
         <source>File not found</source>
-        <translation>Datei nicht gefunden</translation>
+        <translation>Bestand niet gevonden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="215"/>
         <location filename="../CIQPuzzle.cpp" line="230"/>
         <source>The chosen file does not exist.</source>
-        <translation>Die ausgewählte Datei existiert nicht.</translation>
+        <translation>Het gekozen bestand bestaat niet.</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="246"/>
         <source>Unknown</source>
-        <translation>Unbekannt</translation>
+        <translation>Onbekent</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="347"/>
         <source>Invalid saved puzzle.</source>
-        <translation>Ungültiges gespeichertes Puzzle.</translation>
+        <translation>Ongeldig opgeslagen Puzzle.</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="77"/>
         <source>Game paused</source>
-        <translation>Spiel pausiert</translation>
+        <translation>Spel gepauzeerd</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="81"/>
@@ -236,7 +236,7 @@ Reduced grid to default.</source>
         <location filename="../CIQPuzzle.cpp" line="409"/>
         <location filename="../CIQPuzzle.cpp" line="422"/>
         <source>Time</source>
-        <translation>Zeit</translation>
+        <translation>Tijd</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="82"/>
@@ -245,37 +245,37 @@ Reduced grid to default.</source>
         <location filename="../CIQPuzzle.cpp" line="400"/>
         <location filename="../CIQPuzzle.cpp" line="421"/>
         <source>Moves</source>
-        <translation>Züge</translation>
+        <translation>Verplaats</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="201"/>
         <source>Board files</source>
-        <translation>Spielfelder</translation>
+        <translation>Spel bestanden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="251"/>
         <source>Solutions</source>
-        <translation>Lösungen</translation>
+        <translation>Oplossingen</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="420"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle gelöst!</translation>
+        <translation>Puzzle opgelost!</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="455"/>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>Over</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="470"/>
         <source>License</source>
-        <translation>Lizenz</translation>
+        <translation>Licentie</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="474"/>
         <source>Translations</source>
-        <translation>Übersetzungen</translation>
+        <translation>Vertaling</translation>
     </message>
 </context>
 <context>
@@ -288,7 +288,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.cpp" line="55"/>
         <source>Middle</source>
-        <translation>Mittlere</translation>
+        <translation>Midden</translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="55"/>
@@ -298,32 +298,32 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.cpp" line="58"/>
         <source>First X</source>
-        <translation>First X</translation>
+        <translation>Eerste X</translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="58"/>
         <source>Second X</source>
-        <translation>Second X</translation>
+        <translation>Tweede X</translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="59"/>
         <source>Horizontal wheel</source>
-        <translation>Horizontales Mausrad</translation>
+        <translation>Horizontale Muiswiel</translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="59"/>
         <source>Vertical wheel</source>
-        <translation>Vertikales Mausrad</translation>
+        <translation>Vertikale Muiswiel</translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="112"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation>Bitte ändern Sie Ihre Einstellungen. Die gleiche Maustaste wurde für mehrere Aktionen gewählt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../CSettings.cpp" line="127"/>
         <source>The game has to be restarted for applying the changes.</source>
-        <translation>Das Spiel muss neu gestartet werden, um die Änderungen zu übernehmen.</translation>
+        <translation>Het spel moet opnieuw worden gestart om de veranderingen te activeren.</translation>
     </message>
 </context>
 <context>
@@ -331,32 +331,32 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.ui" line="14"/>
         <source>Preferences</source>
-        <translation>Einstellungen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="32"/>
         <source>Mouse controls</source>
-        <translation>Maustasten</translation>
+        <translation>Muis instellingen</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="39"/>
         <source>Move block</source>
-        <translation>Block bewegen</translation>
+        <translation>Blok verplaatsen</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="49"/>
         <source>Rotate block</source>
-        <translation>Block drehen</translation>
+        <translation>Blok draaien</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="59"/>
         <source>Flip block</source>
-        <translation>Block spiegeln</translation>
+        <translation>Blok omdraaien</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="76"/>
         <source>GUI language</source>
-        <translation>Gui Sprache</translation>
+        <translation>Gui Taal</translation>
     </message>
 </context>
 </TS>

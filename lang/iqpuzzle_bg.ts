@@ -281,47 +281,47 @@ Reduced grid to default.</source>
 <context>
     <name>CSettings</name>
     <message>
-        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="55"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="55"/>
         <source>Middle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="55"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="58"/>
         <source>First X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="58"/>
         <source>Second X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="60"/>
+        <location filename="../CSettings.cpp" line="59"/>
         <source>Horizontal wheel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="60"/>
+        <location filename="../CSettings.cpp" line="59"/>
         <source>Vertical wheel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="108"/>
+        <location filename="../CSettings.cpp" line="112"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="115"/>
+        <location filename="../CSettings.cpp" line="127"/>
         <source>The game has to be restarted for applying the changes.</source>
         <translation type="unfinished"></translation>
     </message>

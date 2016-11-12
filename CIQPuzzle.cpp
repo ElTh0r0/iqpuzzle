@@ -474,6 +474,7 @@ void CIQPuzzle::showInfoBox() {
                      .arg("<i>" + trUtf8("Translations") +
                           "</i><br />"
                           "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+                          "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
                           "&nbsp;&nbsp;- German: ElThoro"));
 }
 

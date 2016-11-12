@@ -22,7 +22,7 @@ unix: !macx {
        TARGET = iQPuzzle
 }
 
-VERSION       = 1.0.2
+VERSION       = 1.0.3
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2016 Thorsten Roth"
@@ -63,7 +63,8 @@ win32:RC_FILE = res/iqpuzzle.rc
 os2:RC_FILE   = res/iqpuzzle_os2.rc
 
 TRANSLATIONS += lang/iqpuzzle_bg.ts \
-                lang/iqpuzzle_de.ts
+                lang/iqpuzzle_de.ts \
+                lang/iqpuzzle_nl.ts
 
 unix: !macx {
     isEmpty(PREFIX) {

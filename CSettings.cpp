@@ -79,7 +79,7 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
   connect(m_pUi->buttonBox, SIGNAL(accepted()),
           this, SLOT(accept()));
   connect(m_pUi->buttonBox, SIGNAL(rejected()),
-          this, SLOT(accept()));
+          this, SLOT(reject()));
 
   this->readSettings();
 }
