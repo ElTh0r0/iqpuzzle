@@ -372,6 +372,9 @@ void CBlock::rescaleBlock(const quint16 nNewScale) {
   this->setScale(nNewScale);
   m_nGrid = nNewScale;
   this->setPos(this->snapToGrid(tmpTopLeft));
+
+  // Increase Z value, otherwise board might be in foreground until block is moved
+  this->setNewZValue(this->zValue() + 1);
 }
 
 // ---------------------------------------------------------------------------

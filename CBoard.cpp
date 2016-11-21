@@ -366,13 +366,13 @@ void CBoard::doZoom() {
     }
   }
 
+  // Draw resized board again
+  this->setupBoard();
+
   // Rescale blocks
   foreach (CBlock *pB, m_listBlocks) {
     pB->rescaleBlock(m_nGridSize);
   }
-
-  // Draw resized board again
-  this->setupBoard();
 }
 
 // ---------------------------------------------------------------------------
