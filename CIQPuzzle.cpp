@@ -84,25 +84,35 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
   m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
 
   // Choose board via command line
+  QString sStartBoard("");
   if (qApp->arguments().size() > 1) {
-    foreach (QString s, qApp->arguments()) {
-      if (s.endsWith(".conf", Qt::CaseInsensitive)) {
-        this->startNewGame(s);
-        break;
+    foreach (QString sBoard, qApp->arguments()) {
+      if (sBoard.endsWith(".conf", Qt::CaseInsensitive)) {
+        if (QFile::exists(sBoard)) {
+          sStartBoard = sBoard;
+          break;
+        } else {
+          qWarning() << "Specified board not found:" << sBoard;
+          break;
+        }
       }
     }
   }
 
   // Start rectangle_001 as default
-  if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
-    this->startNewGame(m_sSharePath + "/boards/rectangles/rectangle_001.conf");
-  } else {
-    qWarning() << "Games share path does not exist" << m_sSharePath;
+  if (sStartBoard.isEmpty()) {
+    if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
+      sStartBoard = m_sSharePath + "/boards/rectangles/rectangle_001.conf";
+    } else {
+      qWarning() << "Games share path does not exist:" << m_sSharePath;
+    }
   }
 
   // Seed random number generator
   QTime time = QTime::currentTime();
   qsrand((uint)time.msec());
+
+  this->startNewGame(sStartBoard);
 }
 
 CIQPuzzle::~CIQPuzzle() {
