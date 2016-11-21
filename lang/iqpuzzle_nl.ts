@@ -5,10 +5,13 @@
     <name>CBoard</name>
     <message>
         <location filename="../CBoard.cpp" line="54"/>
-        <location filename="../CBoard.cpp" line="70"/>
-        <location filename="../CBoard.cpp" line="132"/>
-        <location filename="../CBoard.cpp" line="151"/>
-        <location filename="../CBoard.cpp" line="167"/>
+        <location filename="../CBoard.cpp" line="86"/>
+        <location filename="../CBoard.cpp" line="171"/>
+        <location filename="../CBoard.cpp" line="191"/>
+        <location filename="../CBoard.cpp" line="217"/>
+        <location filename="../CBoard.cpp" line="246"/>
+        <location filename="../CBoard.cpp" line="254"/>
+        <location filename="../CBoard.cpp" line="359"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
@@ -19,28 +22,43 @@ Reduced grid to default.</source>
         <translation>Spielfeld-Rastergröße ungültig. Reduziere Raster auf Defaultwert.</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="71"/>
+        <location filename="../CBoard.cpp" line="87"/>
         <source>Board polygon not valid.</source>
         <translation>Spel Polygon niet geldig.</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="133"/>
-        <location filename="../CBoard.cpp" line="168"/>
+        <location filename="../CBoard.cpp" line="172"/>
+        <location filename="../CBoard.cpp" line="218"/>
         <source>Polygon not valid:</source>
         <translation>Polygon niet geldig:</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="152"/>
+        <location filename="../CBoard.cpp" line="192"/>
         <source>Could not find valid blocks.</source>
         <translation>Kan geen ongeldige blokken vinden.</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="192"/>
+        <location filename="../CBoard.cpp" line="247"/>
+        <source>No color defined - using fallback:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CBoard.cpp" line="255"/>
+        <source>Invalid color defined - using fallback:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CBoard.cpp" line="360"/>
+        <source>Invalid start position - using fallback:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CBoard.cpp" line="139"/>
         <source>Hint</source>
         <translation>Tips</translation>
     </message>
     <message>
-        <location filename="../CBoard.cpp" line="193"/>
+        <location filename="../CBoard.cpp" line="140"/>
         <source>Not all pieces are needed for a solution!</source>
         <translation>Niet alle stukken zijn nodig voor de oplossing!</translation>
     </message>
@@ -157,7 +175,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="117"/>
-        <location filename="../CIQPuzzle.cpp" line="356"/>
+        <location filename="../CIQPuzzle.cpp" line="385"/>
         <source>Save game</source>
         <translation>Spel opslaan</translation>
     </message>
@@ -168,7 +186,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="125"/>
-        <location filename="../CIQPuzzle.cpp" line="333"/>
+        <location filename="../CIQPuzzle.cpp" line="362"/>
         <source>Load game</source>
         <translation>Spel laden</translation>
     </message>
@@ -198,29 +216,29 @@ Reduced grid to default.</source>
         <translation>&amp;Willekeurig spel</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="199"/>
+        <location filename="../CIQPuzzle.cpp" line="264"/>
         <source>Load board</source>
         <translation>Spel laden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="214"/>
-        <location filename="../CIQPuzzle.cpp" line="229"/>
+        <location filename="../CIQPuzzle.cpp" line="225"/>
         <source>File not found</source>
         <translation>Bestand niet gevonden</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="215"/>
-        <location filename="../CIQPuzzle.cpp" line="230"/>
+        <location filename="../CIQPuzzle.cpp" line="226"/>
         <source>The chosen file does not exist.</source>
         <translation>Het gekozen bestand bestaat niet.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="246"/>
+        <location filename="../CIQPuzzle.cpp" line="247"/>
         <source>Unknown</source>
         <translation>Onbekent</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="347"/>
+        <location filename="../CIQPuzzle.cpp" line="376"/>
         <source>Invalid saved puzzle.</source>
         <translation>Ongeldig opgeslagen Puzzle.</translation>
     </message>
@@ -231,49 +249,49 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="81"/>
-        <location filename="../CIQPuzzle.cpp" line="223"/>
-        <location filename="../CIQPuzzle.cpp" line="238"/>
-        <location filename="../CIQPuzzle.cpp" line="409"/>
-        <location filename="../CIQPuzzle.cpp" line="422"/>
+        <location filename="../CIQPuzzle.cpp" line="234"/>
+        <location filename="../CIQPuzzle.cpp" line="240"/>
+        <location filename="../CIQPuzzle.cpp" line="438"/>
+        <location filename="../CIQPuzzle.cpp" line="451"/>
         <source>Time</source>
         <translation>Tijd</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="82"/>
-        <location filename="../CIQPuzzle.cpp" line="221"/>
-        <location filename="../CIQPuzzle.cpp" line="235"/>
-        <location filename="../CIQPuzzle.cpp" line="400"/>
-        <location filename="../CIQPuzzle.cpp" line="421"/>
+        <location filename="../CIQPuzzle.cpp" line="231"/>
+        <location filename="../CIQPuzzle.cpp" line="238"/>
+        <location filename="../CIQPuzzle.cpp" line="429"/>
+        <location filename="../CIQPuzzle.cpp" line="450"/>
         <source>Moves</source>
         <translation>Verplaats</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="201"/>
+        <location filename="../CIQPuzzle.cpp" line="266"/>
         <source>Board files</source>
         <translation>Spel bestanden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="251"/>
+        <location filename="../CIQPuzzle.cpp" line="252"/>
         <source>Solutions</source>
         <translation>Oplossingen</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="420"/>
+        <location filename="../CIQPuzzle.cpp" line="449"/>
         <source>Puzzle solved!</source>
         <translation>Puzzle opgelost!</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="455"/>
+        <location filename="../CIQPuzzle.cpp" line="484"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="470"/>
+        <location filename="../CIQPuzzle.cpp" line="499"/>
         <source>License</source>
         <translation>Licentie</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="474"/>
+        <location filename="../CIQPuzzle.cpp" line="503"/>
         <source>Translations</source>
         <translation>Vertaling</translation>
     </message>

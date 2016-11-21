@@ -47,7 +47,7 @@ CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
   m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
   this->setBackgroundBrush(QBrush(this->readColor("BGColor")));
-  m_nGridSize = m_pBoardConf->value("GridSize", 25).toUInt();
+  m_nGridSize = m_pBoardConf->value("GridSize", 0).toUInt();
   if (0 == m_nGridSize || m_nGridSize > 255) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
     m_nGridSize = 25;
@@ -63,6 +63,22 @@ CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
 bool CBoard::setupBoard() {
   qDebug() << Q_FUNC_INFO;
 
+  if (!this->drawBoard()) {
+    return false;
+  }
+  this->drawGrid();
+
+  // Set main window size
+  const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
+                      m_BoardPoly.boundingRect().height() * 2.6);
+  emit setWindowSize(WinSize);
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+bool CBoard::drawBoard() {
   m_BoardPoly.clear();
   m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
   if (m_BoardPoly.isEmpty()) {
@@ -72,15 +88,21 @@ bool CBoard::setupBoard() {
     return false;
   }
 
-  // Draw board
   QPen pen(this->readColor("Board/BorderColor"));
   QBrush brush(this->readColor("Board/Color"));
   this->addPolygon(m_BoardPoly, pen, brush);
   m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
 
-  // Draw grid
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CBoard::drawGrid() {
   QLineF lineGrid;
-  pen.setColor(this->readColor("Board/GridColor"));
+  QPen pen(this->readColor("Board/GridColor"));
+
   // Horizontal
   for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
     lineGrid.setLine(1, i*m_nGridSize,
@@ -93,12 +115,6 @@ bool CBoard::setupBoard() {
                      m_BoardPoly.boundingRect().height()-1);
     this->addLine(lineGrid, pen);
   }
-
-  // Set main window size
-  const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
-                      m_BoardPoly.boundingRect().height() * 2.6);
-  emit setWindowSize(WinSize);
-  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -106,18 +122,41 @@ bool CBoard::setupBoard() {
 
 void CBoard::setupBlocks() {
   qDebug() << Q_FUNC_INFO;
-
-  const unsigned char nMaxNumOfBlocks = 250;
   m_nNumOfBlocks = 0;
+  m_listBlocks.clear();
+
+  if (this->createBlocks() &&
+      this->createBarriers()) {
+    // Add blocks to board
+    foreach (CBlock *pB, m_listBlocks) {
+      this->addItem(pB);
+    }
+
+    m_bNotAllPiecesNeeded = m_pBoardConf->value("NotAllPiecesNeeded",
+                                                false).toBool();
+    if (m_bNotAllPiecesNeeded) {
+      QMessageBox::information(
+            0, trUtf8("Hint"),
+            trUtf8("Not all pieces are needed for a solution!"));
+    }
+
+    m_pGraphView->setEnabled(true);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+bool CBoard::createBlocks() {
+  const unsigned char nMaxNumOfBlocks = 250;
   QPolygonF polygon;
   QString sPrefix("");
-  m_listBlocks.clear();
+
   QSettings *tmpSet = m_pBoardConf;
   if (m_bSavedGame) {
     tmpSet = m_pSavedConf;
   }
 
-  // Get blocks
   for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
     sPrefix = "Block" + QString::number(i);
     if (!tmpSet->contains(sPrefix + "/Polygon")) {
@@ -131,7 +170,7 @@ void CBoard::setupBlocks() {
       qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
       QMessageBox::warning(0, trUtf8("Warning"),
                            trUtf8("Polygon not valid:") + "\n" + sPrefix);
-      return;
+      return false;
     }
 
     // Create new block
@@ -146,14 +185,25 @@ void CBoard::setupBlocks() {
     connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
             this, SIGNAL(incrementMoves()));
   }
+
   if (0 == m_nNumOfBlocks) {
     qWarning() << "NO VALID BLOCKS FOUND.";
     QMessageBox::warning(0, trUtf8("Warning"),
                          trUtf8("Could not find valid blocks."));
-    return;
+    return false;
   }
 
-  // Get barriers
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+bool CBoard::createBarriers() {
+  const unsigned char nMaxNumOfBlocks = 250;
+  QPolygonF polygon;
+  QString sPrefix("");
+
   for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
     sPrefix = "Barrier" + QString::number(i);
     if (!m_pBoardConf->contains(sPrefix + "/Polygon")) {
@@ -166,7 +216,7 @@ void CBoard::setupBlocks() {
       qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
       QMessageBox::warning(0, trUtf8("Warning"),
                            trUtf8("Polygon not valid:") + "\n" + sPrefix);
-      return;
+      return false;
     }
 
     // Create new barrier
@@ -180,20 +230,7 @@ void CBoard::setupBlocks() {
                           true));
   }
 
-  // Add blocks to board
-  foreach (CBlock *pB, m_listBlocks) {
-    this->addItem(pB);
-  }
-
-  m_bNotAllPiecesNeeded = m_pBoardConf->value("NotAllPiecesNeeded",
-                                              false).toBool();
-  if (m_bNotAllPiecesNeeded) {
-    QMessageBox::information(
-          0, trUtf8("Hint"),
-          trUtf8("Not all pieces are needed for a solution!"));
-  }
-
-  m_pGraphView->setEnabled(true);
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -206,11 +243,17 @@ QColor CBoard::readColor(const QString sKey) {
   if (sValue.isEmpty()) {
     sValue = "#00FFFF";
     qWarning() << "Set fallback color for key" << sKey;
+    QMessageBox::warning(0, trUtf8("Warning"),
+                         trUtf8("No color defined - using fallback:") +
+                         "\n" + sKey);
   }
   color.setNamedColor(sValue);
   if (!color.isValid()) {
     color.setNamedColor("#FF00FF");
     qWarning() << "Found invalid color for key" << sKey;
+    QMessageBox::warning(0, trUtf8("Warning"),
+                         trUtf8("Invalid color defined - using fallback:") +
+                         "\n" + sKey);
   }
   return color;
 }
@@ -224,12 +267,12 @@ QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
   QStringList sListPoint;
   QPolygonF polygon;
   QString sValue = tmpSet->value(sKey, "").toString();
-
   quint16 nScale = 1;
   if (bScale) {
     nScale = m_nGridSize;
   }
 
+  this->checkOrthogonality(QPointF(-99999, -99999));
   sList << sValue.split("|");
   foreach (QString s, sList) {
     sListPoint.clear();
@@ -237,13 +280,21 @@ QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
     if (2 == sListPoint.size()) {
       polygon << QPointF(sListPoint[0].trimmed().toShort() * nScale,
           sListPoint[1].trimmed().toShort() * nScale);
+
+      if (!this->checkOrthogonality(polygon.last())) {
+        qWarning() << "Polygon not orthogonal" << sKey;
+        polygon.clear();
+        break;
+      }
     } else {
       qWarning() << "Found invalid polygon point for" << sKey;
+      polygon.clear();
+      break;
     }
   }
 
   if (!polygon.isClosed()) {
-    qWarning() << "POLYGON NOT CLOSED:" << sKey;
+    qWarning() << "Polygon not closed:" << sKey;
     polygon.clear();
   }
   return polygon;
@@ -252,21 +303,62 @@ QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+bool CBoard::checkOrthogonality(QPointF point) {
+  static QList<QPointF> listPoints;
+  static quint16 nCnt;
+
+  if (QPointF(-99999, -99999) == point) {  // Reset
+    listPoints.clear();
+    nCnt = 0;
+    return true;
+  } else {
+    nCnt++;
+    listPoints.push_back(point);
+    if (listPoints.size() > 2) {
+      if ((listPoints[0].x() == listPoints[1].x() &&
+          listPoints[1].y() == listPoints[2].y()) ||
+          (listPoints[0].y() == listPoints[1].y() &&
+           listPoints[1].x() == listPoints[2].x())) {
+        listPoints.removeFirst();
+        return true;
+      }
+    } else if (listPoints.size() <= 2) {
+      return true;
+    }
+  }
+
+  qWarning() << "Wrong point #" << nCnt;
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
 QPointF CBoard::readStartPosition(const QSettings *tmpSet, const QString sKey) {
   QStringList sList;
-  QPointF point(4, -4);
+  QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();
+  bool bOk1(true);
+  bool bOk2(true);
 
   if (sValue.count(',') != 1) {
-    sValue = "-4,-4";
-    qWarning() << "Set fallback start position for key" << sKey;
+    sValue = "-1,-1";
+    bOk1 = false;
   }
+
   sList << sValue.split(",");
-  if (2 == sList.size()) {
-    point.setX(sList[0].trimmed().toInt());
-    point.setY(sList[1].trimmed().toInt());
+  if (2 == sList.size() && bOk1) {
+    point.setX(sList[0].trimmed().toInt(&bOk1, 10));
+    point.setY(sList[1].trimmed().toInt(&bOk2, 10));
   } else {
+    bOk1 = false;
+  }
+
+  if (!bOk1 || !bOk2) {
     qWarning() << "Found invalid start point for key" << sKey;
+    QMessageBox::warning(0, trUtf8("Warning"),
+                         trUtf8("Invalid start position - using fallback:") +
+                         "\n" + sKey);
   }
   return point;
 }

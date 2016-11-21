@@ -70,6 +70,8 @@ class CIQPuzzle : public QMainWindow {
  private slots:
   void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
                     const QString sTime = "", const QString sMoves = "");
+  QString chooseBoard();
+  void createBoard();
   void randomGame();
   void restartGame();
   void loadGame();

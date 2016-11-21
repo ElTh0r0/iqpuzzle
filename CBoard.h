@@ -63,9 +63,14 @@ class CBoard : public QGraphicsScene {
   void checkPuzzleSolved();
 
  private:
+  bool drawBoard();
+  void drawGrid();
+  bool createBlocks();
+  bool createBarriers();
   QColor readColor(const QString sKey);
   QPolygonF readPolygon(const QSettings *tmpSet, const QString sKey,
                         bool bScale = false);
+  bool checkOrthogonality(QPointF point);
   QPointF readStartPosition(const QSettings *tmpSet, const QString sKey);
   void doZoom();
 

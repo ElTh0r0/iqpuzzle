@@ -203,89 +203,108 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
   qDebug() << Q_FUNC_INFO;
 
   if (sBoardFile.isEmpty()) {
-    if (NULL != m_pBoardDialog) {
-      delete m_pBoardDialog;
-    }
-    m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"),
-                                      m_sSharePath + "/boards",
-                                      trUtf8("Board files") + " (*.conf)");
-    if (m_pBoardDialog->exec()) {
-      QStringList sListFiles;
-      sListFiles = m_pBoardDialog->selectedFiles();
-      if (sListFiles.size() >= 1) {
-        sBoardFile = sListFiles.first();
-      }
+    sBoardFile = this->chooseBoard();
+    if (sBoardFile.isEmpty()) {
+      return;
     }
   }
 
-  if (!sBoardFile.isEmpty()) {
-    qDebug() << "Board:" << sBoardFile;
-    if (!QFile::exists(sBoardFile)) {
+  qDebug() << "Board:" << sBoardFile;
+  if (!QFile::exists(sBoardFile)) {
+    QMessageBox::warning(this, trUtf8("File not found"),
+                         trUtf8("The chosen file does not exist."));
+    qWarning() << "Board file not found:" << sBoardFile;
+    return;
+  }
+  m_sBoardFile = sBoardFile;
+  m_sSavedGame = "";
+
+  if (!sSavedGame.isEmpty()) {
+    qDebug() << "Saved game:" << sSavedGame;
+    if (!QFile::exists(sSavedGame)) {
       QMessageBox::warning(this, trUtf8("File not found"),
                            trUtf8("The chosen file does not exist."));
-      qWarning() << "Board file not found:" << sBoardFile;
+      qWarning() << "Saved game not found:" << sSavedGame;
       return;
     }
-    m_sBoardFile = sBoardFile;
+    m_nMoves = QString(sMoves).toUInt();
+    m_pStatusLabelMoves->setText(trUtf8("Moves") + ": "
+                                 + QString::number(m_nMoves));
+    m_Time = m_Time.fromString(sTime, "hh:mm:ss");
+    m_pStatusLabelTime->setText(trUtf8("Time") + ": " + sTime);
+    m_sSavedGame = sSavedGame;
+  } else {
     m_nMoves = 0;
     m_pStatusLabelMoves->setText(trUtf8("Moves") + ": 0");
     m_Time = m_Time.fromString("00:00:00", "hh:mm:ss");
     m_pStatusLabelTime->setText(trUtf8("Time") + ": 00:00:00");
+  }
 
-    m_sSavedGame = "";
-    if (!sSavedGame.isEmpty()) {
-      qDebug() << "Saved game:" << sSavedGame;
-      if (!QFile::exists(sSavedGame)) {
-        QMessageBox::warning(this, trUtf8("File not found"),
-                             trUtf8("The chosen file does not exist."));
-        qWarning() << "Saved game not found:" << sSavedGame;
-        return;
-      }
-      m_nMoves = QString(sMoves).toUInt();
-      m_pStatusLabelMoves->setText(trUtf8("Moves") + ": "
-                                   + QString::number(m_nMoves));
-      m_Time = m_Time.fromString(sTime, "hh:mm:ss");
-      m_pStatusLabelTime->setText(trUtf8("Time") + ": " + sTime);
-      m_sSavedGame = sSavedGame;
+  QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
+  quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+  QString sSolutions(QString::number(nSolutions));
+  if ("0" == sSolutions) {
+    sSolutions = trUtf8("Unknown");
+  }
+
+  this->setWindowTitle(qApp->applicationName() + " - " +
+                       QFileInfo(m_sBoardFile).baseName() + " ("
+                       + trUtf8("Solutions") + ": " + sSolutions + ")");
+
+  this->createBoard();
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+QString CIQPuzzle::chooseBoard() {
+  if (NULL != m_pBoardDialog) {
+    delete m_pBoardDialog;
+  }
+  m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"),
+                                    m_sSharePath + "/boards",
+                                    trUtf8("Board files") + " (*.conf)");
+
+  if (m_pBoardDialog->exec()) {
+    QStringList sListFiles;
+    sListFiles = m_pBoardDialog->selectedFiles();
+    if (sListFiles.size() >= 1) {
+      return sListFiles.first();
     }
+  }
 
-    QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
-    quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
-    QString sSolutions(QString::number(nSolutions));
-    if ("0" == sSolutions) {
-      sSolutions = trUtf8("Unknown");
-    }
+  return "";
+}
 
-    this->setWindowTitle(qApp->applicationName() + " - " +
-                         QFileInfo(m_sBoardFile).baseName() + " ("
-                         + trUtf8("Solutions") + ": " + sSolutions + ")");
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-    if (NULL != m_pBoard) {
-      delete m_pBoard;
-    }
-    m_pBoard = new CBoard(m_pGraphView, sBoardFile,
-                          m_pSettings, sSavedGame);
-    connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
-            this, SLOT(setMinWindowSize(const QSize)));
-    connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
-            m_pBoard, SLOT(zoomIn()));
-    connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
-            m_pBoard, SLOT(zoomOut()));
-    connect(m_pBoard, SIGNAL(incrementMoves()),
-            this, SLOT(incrementMoves()));
-    connect(m_pBoard, SIGNAL(solvedPuzzle()),
-            this, SLOT(solvedPuzzle()));
+void CIQPuzzle::createBoard() {
+  if (NULL != m_pBoard) {
+    delete m_pBoard;
+  }
+  m_pBoard = new CBoard(m_pGraphView, m_sBoardFile,
+                        m_pSettings, m_sSavedGame);
+  connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
+          this, SLOT(setMinWindowSize(const QSize)));
+  connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
+          m_pBoard, SLOT(zoomIn()));
+  connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
+          m_pBoard, SLOT(zoomOut()));
+  connect(m_pBoard, SIGNAL(incrementMoves()),
+          this, SLOT(incrementMoves()));
+  connect(m_pBoard, SIGNAL(solvedPuzzle()),
+          this, SLOT(solvedPuzzle()));
 
-    if (m_pBoard->setupBoard()) {
-      m_pBoard->setupBlocks();
-      m_pTimer->start(1000);
-      m_pUi->action_PauseGame->setEnabled(true);
-      m_pUi->action_PauseGame->setChecked(false);
-      m_pUi->action_SaveGame->setEnabled(true);
-      m_pUi->action_RestartGame->setEnabled(true);
-      m_bSolved = false;
-      m_pGraphView->setScene(m_pBoard);
-    }
+  if (m_pBoard->setupBoard()) {
+    m_pBoard->setupBlocks();
+    m_pTimer->start(1000);
+    m_pUi->action_PauseGame->setEnabled(true);
+    m_pUi->action_PauseGame->setChecked(false);
+    m_pUi->action_SaveGame->setEnabled(true);
+    m_pUi->action_RestartGame->setEnabled(true);
+    m_bSolved = false;
+    m_pGraphView->setScene(m_pBoard);
   }
 }
 
