@@ -49,10 +49,15 @@ class CSettings : public QDialog {
 
   QList<quint8> getMouseControls() const;
   quint8 getShift() const;
+  QString getLanguage();
+
+ signals:
+  void changeLang(const QString &sLang);
 
  public slots:
   void accept();
   void reject();
+  void updateUiLang();
 
  private:
   void readSettings();
@@ -62,6 +67,7 @@ class CSettings : public QDialog {
   QSettings *m_pSettings;
 
   QString m_sGuiLanguage;
+  QString m_sSharePath;
   const quint8 m_nSHIFT;
   QStringList m_sListMouseButtons;
   QList<quint8> m_listMouseButtons;

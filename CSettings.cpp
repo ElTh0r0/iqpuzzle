@@ -33,6 +33,7 @@
 
 CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
   : QDialog(pParent),
+    m_sSharePath(sSharePath),
     m_nSHIFT(0xF0) {
   qDebug() << "Calling" << Q_FUNC_INFO;
 
@@ -65,7 +66,7 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
 
   QStringList sListGuiLanguages;
   sListGuiLanguages << "auto" << "en";
-  QDir appDir(sSharePath + "/lang");
+  QDir appDir(m_sSharePath + "/lang");
   QFileInfoList fiListFiles = appDir.entryInfoList(
                                 QDir::NoDotAndDotDot | QDir::Files);
   foreach (QFileInfo fi, fiListFiles) {
@@ -121,11 +122,8 @@ void CSettings::accept() {
   QString sOldGuiLang = m_sGuiLanguage;
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
   m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
-
   if (sOldGuiLang != m_sGuiLanguage) {
-    QMessageBox::information(0, this->windowTitle(),
-                             trUtf8("The game has to be restarted for "
-                                    "applying the changes."));
+    emit changeLang(this->getLanguage());
   }
 
   m_pSettings->beginGroup("MouseControls");
@@ -187,6 +185,57 @@ quint8 CSettings::getShift() const {
   return m_nSHIFT;
 }
 
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 QList<quint8> CSettings::getMouseControls() const {
   return m_listMouseControls;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+void CSettings::updateUiLang() {
+  m_pUi->retranslateUi(this);
+
+  m_sListMouseButtons.clear();
+  m_sListMouseButtons << trUtf8("Left") << trUtf8("Middle") << trUtf8("Right");
+  m_pUi->cbMoveBlockMouse->clear();
+  m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
+
+  m_sListMouseButtons << trUtf8("First X") << trUtf8("Second X")
+                      << trUtf8("Vertical wheel") << trUtf8("Horizontal wheel");
+  m_pUi->cbRotateBlockMouse->clear();
+  m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
+  m_pUi->cbFlipBlockMouse->clear();
+  m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
+
+  m_pUi->cbMoveBlockMouse->setCurrentIndex(
+        m_listMouseButtons.indexOf(m_listMouseControls[0]));
+  m_pUi->cbRotateBlockMouse->setCurrentIndex(
+        m_listMouseButtons.indexOf(m_listMouseControls[1]));
+  m_pUi->cbFlipBlockMouse->setCurrentIndex(
+        m_listMouseButtons.indexOf(m_listMouseControls[2]));
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+QString CSettings::getLanguage() {
+  if ("auto" == m_sGuiLanguage) {
+#ifdef Q_OS_UNIX
+    QByteArray lang = qgetenv("LANG");
+    if (!lang.isEmpty()) {
+      return QLocale(lang).name();
+    }
+#endif
+    return QLocale::system().name();
+  } else if (!QFile(m_sSharePath + "/lang/" +
+                    qApp->applicationName().toLower() +
+                    "_" + m_sGuiLanguage + ".qm").exists()) {
+    m_sGuiLanguage = "en";
+    m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
+    return m_sGuiLanguage;
+  }
+  return m_sGuiLanguage;
 }

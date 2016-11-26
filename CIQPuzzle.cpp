@@ -38,6 +38,7 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
                      QWidget *pParent)
   : QMainWindow(pParent),
     m_pUi(new Ui::CIQPuzzle),
+    m_sCurrLang(""),
     m_pBoardDialog(NULL),
     m_pBoard(NULL),
     m_sSavedGame(""),
@@ -66,6 +67,11 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
 
   m_pHighscore = new CHighscore();
   m_pSettings = new CSettings(m_sSharePath, this);
+  connect (m_pSettings, SIGNAL(changeLang(QString)),
+           this, SLOT(loadLanguage(QString)));
+  connect (this, SIGNAL(updateUiLang()),
+           m_pSettings, SLOT(updateUiLang()));
+  this->loadLanguage(m_pSettings->getLanguage());
   this->setupMenu();
 
   m_pGraphView = new QGraphicsView(this);
@@ -240,6 +246,11 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
     m_pStatusLabelTime->setText(trUtf8("Time") + ": 00:00:00");
   }
 
+  this->setGameTitle();
+  this->createBoard();
+}
+
+void CIQPuzzle::setGameTitle() {
   QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
   quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
   QString sSolutions(QString::number(nSolutions));
@@ -250,8 +261,6 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
   this->setWindowTitle(qApp->applicationName() + " - " +
                        QFileInfo(m_sBoardFile).baseName() + " ("
                        + trUtf8("Solutions") + ": " + sSolutions + ")");
-
-  this->createBoard();
 }
 
 // ---------------------------------------------------------------------------
@@ -412,12 +421,16 @@ void CIQPuzzle::pauseGame(const bool bPaused) {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::setMinWindowSize(const QSize size) {
-  // this->setMinimumSize(size);  // fixed size
-  this->resize(size);
+  static QSize size2(100, 100);
+  if (!size.isEmpty()) {
+    size2 = size;
+  }
+
+  this->resize(size2);
   m_pTextPaused->setX(
-        size.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
+        size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
   m_pTextPaused->setY(
-        size.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+        size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
 }
 
 // ---------------------------------------------------------------------------
@@ -460,6 +473,42 @@ void CIQPuzzle::solvedPuzzle() {
   QFile::remove(m_userDataDir.absolutePath() + "/S0LV3D.debug");
 
   emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+void CIQPuzzle::loadLanguage(const QString &sLang) {
+  if (m_sCurrLang != sLang) {
+    m_sCurrLang = sLang;
+    if (!this->switchTranslator(m_translatorQt, "qt_" + sLang,
+                                QLibraryInfo::location(
+                                  QLibraryInfo::TranslationsPath))) {
+      this->switchTranslator(m_translatorQt, "qt_" + sLang,
+                             m_sSharePath + "/lang");
+    }
+
+    this->switchTranslator(m_translator,
+                           qApp->applicationName().toLower() + "_" + sLang,
+                           m_sSharePath + "/lang");
+  }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+bool CIQPuzzle::switchTranslator(QTranslator &translator,
+                                 const QString &sFile, const QString &sPath) {
+  qApp->removeTranslator(&translator);
+  if (translator.load(sFile, sPath)) {
+    qApp->installTranslator(&translator);
+  } else {
+    if (!sFile.endsWith("_en")) {  // EN is build in translation -> no file
+      qWarning() << "Could not find translation" << sFile << "in" << sPath;
+    }
+    return false;
+  }
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -505,6 +554,29 @@ void CIQPuzzle::showInfoBox() {
                           "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
                           "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
                           "&nbsp;&nbsp;- German: ElThoro"));
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void CIQPuzzle::changeEvent(QEvent *pEvent) {
+  if (0 != pEvent) {
+    if (QEvent::LanguageChange == pEvent->type()) {
+      m_pUi->retranslateUi(this);
+      this->setGameTitle();
+
+      m_pScenePaused->removeItem(m_pTextPaused);
+      QFont font;
+      font.setPixelSize(20);
+      m_pTextPaused = m_pScenePaused->addText(trUtf8("Game paused"), font);
+      this->setMinWindowSize();
+
+      m_pStatusLabelMoves->setText(
+            trUtf8("Moves") + ": " + QString::number(m_nMoves));
+      emit updateUiLang();
+    }
+  }
+  QMainWindow::changeEvent(pEvent);
 }
 
 // ---------------------------------------------------------------------------

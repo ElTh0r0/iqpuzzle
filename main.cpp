@@ -38,7 +38,6 @@
 QFile logfile;
 QTextStream out(&logfile);
 
-QString getLanguage(const QString &sSharePath);
 void setupLogger(const QString &sDebugFilePath,
                  const QString &sAppName,
                  const QString &sVersion);
@@ -53,7 +52,6 @@ void LoggingHandler(QtMsgType type, const char *sMsg);
 
 int main(int argc, char *argv[]) {
   Q_INIT_RESOURCE(iqpuzzle_resources);
-
   QApplication app(argc, argv);
   app.setApplicationName(APP_NAME);
   app.setApplicationVersion(APP_VERSION);
@@ -74,29 +72,6 @@ int main(int argc, char *argv[]) {
     sSharePath = app.applicationDirPath() + "/../share/"
                  + app.applicationName().toLower();
   }
-
-  const QString sLang(getLanguage(sSharePath));
-  QTranslator qtTranslator;
-  QTranslator AppTranslator;
-
-  // Setup gui translation (Qt)
-  if (!qtTranslator.load("qt_" + sLang,
-                         QLibraryInfo::location(
-                           QLibraryInfo::TranslationsPath))) {
-    // If it fails, search in application directory
-    if (!qtTranslator.load("qt_" + sLang, sSharePath + "/lang")) {
-      qWarning() << "Could not load Qt translations:" << "qt_" + sLang;
-    }
-  }
-  app.installTranslator(&qtTranslator);
-
-  // Setup gui translation (app)
-  if (!AppTranslator.load(app.applicationName().toLower() + "_" + sLang,
-                          sSharePath + "/lang")) {
-    qWarning() << "Could not load application translation:"
-               << qAppName() + "_" + sLang;
-  }
-  app.installTranslator(&AppTranslator);
 
 #if QT_VERSION >= 0x050000
   QStringList sListPaths = QStandardPaths::standardLocations(
@@ -199,34 +174,4 @@ void LoggingHandler(QtMsgType type, const char *sMsg) {
       out.flush();
       break;
   }
-}
-
-// ----------------------------------------------------------------------------
-// ----------------------------------------------------------------------------
-
-QString getLanguage(const QString &sSharePath) {
-#if defined _WIN32
-  QSettings settings(QSettings::IniFormat, QSettings::UserScope,
-                     qAppName().toLower(), qAppName().toLower());
-#else
-  QSettings settings(QSettings::NativeFormat, QSettings::UserScope,
-                     qApp->applicationName().toLower(),
-                     qApp->applicationName().toLower());
-#endif
-
-  QString sLang = settings.value("GuiLanguage", "auto").toString();
-  if ("auto" == sLang) {
-#ifdef Q_OS_UNIX
-    QByteArray lang = qgetenv("LANG");
-    if (!lang.isEmpty()) {
-      return QLocale(lang).name();
-    }
-#endif
-    return QLocale::system().name();
-  } else if (!QFile(sSharePath + "/lang/"
-                    + qAppName() + "_" + sLang + ".qm").exists()) {
-    settings.setValue("GuiLanguage", "en");
-    return "en";
-  }
-  return sLang;
 }

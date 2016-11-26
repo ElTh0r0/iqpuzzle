@@ -56,18 +56,21 @@ class CIQPuzzle : public QMainWindow {
   ~CIQPuzzle();
 
  protected:
+  void changeEvent(QEvent *pEvent);
   void closeEvent(QCloseEvent *pEvent);
 
  public slots:
-  void setMinWindowSize(const QSize size);
+  void setMinWindowSize(const QSize size = QSize());
   void incrementMoves();
 
  signals:
+  void updateUiLang();
   void showHighscore(const QString &sBoard);
   void checkHighscore(const QString &sBoard, const quint32 &nMoves,
                       const QTime &tTime);
 
  private slots:
+  void loadLanguage(const QString &sLang);
   void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
                     const QString sTime = "", const QString sMoves = "");
   QString chooseBoard();
@@ -84,9 +87,15 @@ class CIQPuzzle : public QMainWindow {
   void showInfoBox();
 
  private:
+  bool switchTranslator(QTranslator &translator, const QString &sFile,
+                        const QString &sPath);
   void setupMenu();
+  void setGameTitle();
 
   Ui::CIQPuzzle *m_pUi;
+  QTranslator m_translator;  // App translations
+  QTranslator m_translatorQt;  // Qt translations
+  QString m_sCurrLang;
   QGraphicsView *m_pGraphView;
   QGraphicsScene *m_pScenePaused;
   CBoardDialog *m_pBoardDialog;
