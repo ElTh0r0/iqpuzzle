@@ -1,3 +1,14 @@
+iqpuzzle (1.0.3-1ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Added Dutch translation (thanks to Elbert)
+  * Fixed: Starting board from command line.
+  * Fixed: Bring blocks to foreground during rescale.
+  * Improved board file validation.
+  * Change gui language without restarting the game.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Mon, 02 Jan 2017 16:57:00 +0200
+
 iqpuzzle (1.0.2-1ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]

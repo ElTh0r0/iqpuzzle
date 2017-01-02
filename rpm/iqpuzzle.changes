@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 02 16:57:00 UTC 2017 - elthoro@gmx.de 1.0.3
+
+- Added Dutch translation (thanks to Elbert)
+- Fixed: Starting board from command line.
+- Fixed: Bring blocks to foreground during rescale.
+- Improved board file validation.
+- Change gui language without restarting the game.
+
+-------------------------------------------------------------------
 Sun Nov 06 13:49:00 UTC 2016 - elthoro@gmx.de 1.0.2
 
 - Lintian packaging fixes.
