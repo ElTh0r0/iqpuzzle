@@ -74,32 +74,32 @@ unix: !macx {
         BINDIR = bin
     }
 
-    target.path     = $$PREFIX/$$BINDIR/
+    target.path    = $$PREFIX/$$BINDIR/
 
-    data.path       = $$PREFIX/share/iqpuzzle
-    data.files     += data/boards
+    data.path      = $$PREFIX/share/iqpuzzle
+    data.files    += data/boards
 
-    lang.path       = $$PREFIX/share/iqpuzzle/lang
-    lang.files     += lang/*.qm
+    lang.path      = $$PREFIX/share/iqpuzzle/lang
+    lang.files    += lang/*.qm
 
-    desktop.path    = $$PREFIX/share/applications
-    desktop.files  += data/iqpuzzle.desktop
+    desktop.path   = $$PREFIX/share/applications
+    desktop.files += data/iqpuzzle.desktop
 
-    pixmap.path     = $$PREFIX/share/pixmaps
-    pixmap.files   += res/images/iqpuzzle_64x64.png \
-                      res/images/iqpuzzle.xpm
+    pixmap.path    = $$PREFIX/share/pixmaps
+    pixmap.files  += res/images/iqpuzzle_64x64.png \
+                     res/images/iqpuzzle.xpm
 
-    icons.path      = $$PREFIX/share/icons
-    icons.files    += res/images/hicolor
+    icons.path     = $$PREFIX/share/icons
+    icons.files   += res/images/hicolor
 
-    man.path        = $$PREFIX/share
-    man.files      += man
+    man.path       = $$PREFIX/share
+    man.files     += man
 
-    INSTALLS       += target \
-                      data \
-                      lang \
-                      desktop \
-                      pixmap \
-                      icons \
-                      man
+    INSTALLS      += target \
+                     data \
+                     lang \
+                     desktop \
+                     pixmap \
+                     icons \
+                     man
 }

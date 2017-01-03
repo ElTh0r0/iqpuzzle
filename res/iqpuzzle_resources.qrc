@@ -10,5 +10,15 @@
         <file>images/hicolor/128x128/apps/iqpuzzle.png</file>
         <file>images/hicolor/256x256/apps/iqpuzzle.png</file>
         <file>images/collision_texture.png</file>
+        <file>images/menu/document-new.png</file>
+        <file>images/menu/document-open.png</file>
+        <file>images/menu/document-save.png</file>
+        <file>images/menu/help-browser.png</file>
+        <file>images/menu/list-add.png</file>
+        <file>images/menu/list-remove.png</file>
+        <file>images/menu/media-playback-pause.png</file>
+        <file>images/menu/preferences-system.png</file>
+        <file>images/menu/system-log-out.png</file>
+        <file>images/menu/view-refresh.png</file>
     </qresource>
 </RCC>
