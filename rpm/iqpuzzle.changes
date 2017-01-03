@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jan 03 22:23:00 UTC 2017 - elthoro@gmx.de 1.0.4
+
+- Fixed invalid board polygons.
+- Added fallback menu icons.
+
+-------------------------------------------------------------------
 Mon Jan 02 16:57:00 UTC 2017 - elthoro@gmx.de 1.0.3
 
 - Added Dutch translation (thanks to Elbert)

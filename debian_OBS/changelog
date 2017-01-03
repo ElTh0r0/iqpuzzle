@@ -1,4 +1,4 @@
-iqpuzzle (1.0.4-0ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.4-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Fixed invalid board polygons.
@@ -6,7 +6,7 @@ iqpuzzle (1.0.4-0ubuntu1) xenial; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Tue, 03 Jan 2017 22:23:00 +0200
 
-iqpuzzle (1.0.3-1ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.3-1) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added Dutch translation (thanks to Elbert)
@@ -17,14 +17,14 @@ iqpuzzle (1.0.3-1ubuntu1) xenial; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Mon, 02 Jan 2017 16:57:00 +0200
 
-iqpuzzle (1.0.2-1ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.2-1) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Lintian packaging fixes.
 
  -- Thorsten Roth <elthoro@gmx.de>  Sun, 06 Nov 2016 13:49:00 +0200
 
-iqpuzzle (1.0.1-0ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.1-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added resources for OS/2; thanks to Gianfilippo!
@@ -32,7 +32,7 @@ iqpuzzle (1.0.1-0ubuntu1) xenial; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 05 Nov 2016 15:17:00 +0200
 
-iqpuzzle (1.0.0-0ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Start random game.
@@ -45,7 +45,7 @@ iqpuzzle (1.0.0-0ubuntu1) xenial; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sun, 23 Oct 2016 15:36:00 +0200
 
-iqpuzzle (0.9.0-0ubuntu1) trusty; urgency=low
+iqpuzzle (0.9.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added settings dialog; mouse buttons (LP: #1365568); GUI language.
@@ -56,14 +56,14 @@ iqpuzzle (0.9.0-0ubuntu1) trusty; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Wed, 13 May 2015 23:47:00 +0200
 
-iqpuzzle (0.8.1-0ubuntu1) trusty; urgency=low
+iqpuzzle (0.8.1-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Fixed translations and XPM icon file.
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 30 Aug 2014 18:26:00 +0200
 
-iqpuzzle (0.8.0-0ubuntu1) trusty; urgency=low
+iqpuzzle (0.8.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added highscore.
@@ -71,7 +71,7 @@ iqpuzzle (0.8.0-0ubuntu1) trusty; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Fri, 29 Aug 2014 19:52:00 +0200
 
-iqpuzzle (0.7.0-0ubuntu1) trusty; urgency=low
+iqpuzzle (0.7.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added timer and moves counter.
@@ -80,7 +80,7 @@ iqpuzzle (0.7.0-0ubuntu1) trusty; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sun, 27 Jul 2014 19:57:00 +0200
 
-iqpuzzle (0.6.0-0ubuntu1) trusty; urgency=low
+iqpuzzle (0.6.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added save/load game option (LP: #1338269)
@@ -88,7 +88,7 @@ iqpuzzle (0.6.0-0ubuntu1) trusty; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 12 Jul 2014 23:18:00 +0200
 
-iqpuzzle (0.5.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.5.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Automatic check, if puzzle is solved (LP: #1320957)
@@ -96,7 +96,7 @@ iqpuzzle (0.5.0-0ubuntu1) saucy; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sun, 06 Jul 2014 20:11:00 +0200
 
-iqpuzzle (0.4.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.4.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added preview to load board dialog.
@@ -104,7 +104,7 @@ iqpuzzle (0.4.0-0ubuntu1) saucy; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Fri, 06 Jun 2014 14:57:00 +0200
 
-iqpuzzle (0.3.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.3.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Added gui translation.
@@ -114,7 +114,7 @@ iqpuzzle (0.3.0-0ubuntu1) saucy; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Mon, 19 May 2014 16:34:00 +0200
 
-iqpuzzle (0.2.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.2.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Load board via command line.
@@ -123,7 +123,7 @@ iqpuzzle (0.2.0-0ubuntu1) saucy; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sun, 18 May 2014 19:23:00 +0200
 
-iqpuzzle (0.1.0-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.1.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Load board file dialog.
@@ -132,7 +132,7 @@ iqpuzzle (0.1.0-0ubuntu1) saucy; urgency=low
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 17 May 2014 22:00:51 +0200
 
-iqpuzzle (0.0.1-0ubuntu1) saucy; urgency=low
+iqpuzzle (0.0.1-0) unstable; urgency=low
 
   [ Thorsten Roth ]
   * Define board as polygon.
