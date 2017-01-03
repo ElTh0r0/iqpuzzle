@@ -175,7 +175,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="117"/>
-        <location filename="../CIQPuzzle.cpp" line="385"/>
+        <location filename="../CIQPuzzle.cpp" line="414"/>
         <source>Save game</source>
         <translation>Spiel speichern</translation>
     </message>
@@ -186,7 +186,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="125"/>
-        <location filename="../CIQPuzzle.cpp" line="362"/>
+        <location filename="../CIQPuzzle.cpp" line="391"/>
         <source>Load game</source>
         <translation>Spiel laden</translation>
     </message>
@@ -216,82 +216,89 @@ Reduced grid to default.</source>
         <translation>&amp;Zufälliges Spiel</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="264"/>
+        <location filename="../CIQPuzzle.cpp" line="293"/>
         <source>Load board</source>
         <translation>Spiel laden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="214"/>
-        <location filename="../CIQPuzzle.cpp" line="225"/>
+        <location filename="../CIQPuzzle.cpp" line="240"/>
+        <location filename="../CIQPuzzle.cpp" line="251"/>
         <source>File not found</source>
         <translation>Datei nicht gefunden</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="215"/>
-        <location filename="../CIQPuzzle.cpp" line="226"/>
+        <location filename="../CIQPuzzle.cpp" line="241"/>
+        <location filename="../CIQPuzzle.cpp" line="252"/>
         <source>The chosen file does not exist.</source>
         <translation>Die ausgewählte Datei existiert nicht.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="247"/>
+        <location filename="../CIQPuzzle.cpp" line="278"/>
         <source>Unknown</source>
         <translation>Unbekannt</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="376"/>
+        <location filename="../CIQPuzzle.cpp" line="405"/>
         <source>Invalid saved puzzle.</source>
         <translation>Ungültiges gespeichertes Puzzle.</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="77"/>
+        <location filename="../CIQPuzzle.cpp" line="83"/>
+        <location filename="../CIQPuzzle.cpp" line="595"/>
         <source>Game paused</source>
         <translation>Spiel pausiert</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="81"/>
-        <location filename="../CIQPuzzle.cpp" line="234"/>
-        <location filename="../CIQPuzzle.cpp" line="240"/>
-        <location filename="../CIQPuzzle.cpp" line="438"/>
-        <location filename="../CIQPuzzle.cpp" line="451"/>
+        <location filename="../CIQPuzzle.cpp" line="87"/>
+        <location filename="../CIQPuzzle.cpp" line="260"/>
+        <location filename="../CIQPuzzle.cpp" line="266"/>
+        <location filename="../CIQPuzzle.cpp" line="471"/>
+        <location filename="../CIQPuzzle.cpp" line="484"/>
         <source>Time</source>
         <translation>Zeit</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="82"/>
-        <location filename="../CIQPuzzle.cpp" line="231"/>
-        <location filename="../CIQPuzzle.cpp" line="238"/>
-        <location filename="../CIQPuzzle.cpp" line="429"/>
-        <location filename="../CIQPuzzle.cpp" line="450"/>
+        <location filename="../CIQPuzzle.cpp" line="88"/>
+        <location filename="../CIQPuzzle.cpp" line="257"/>
+        <location filename="../CIQPuzzle.cpp" line="264"/>
+        <location filename="../CIQPuzzle.cpp" line="462"/>
+        <location filename="../CIQPuzzle.cpp" line="483"/>
+        <location filename="../CIQPuzzle.cpp" line="599"/>
         <source>Moves</source>
         <translation>Züge</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="266"/>
+        <location filename="../CIQPuzzle.cpp" line="295"/>
         <source>Board files</source>
         <translation>Spielfelder</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="252"/>
+        <location filename="../CIQPuzzle.cpp" line="283"/>
         <source>Solutions</source>
         <translation>Lösungen</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="449"/>
+        <location filename="../CIQPuzzle.cpp" line="482"/>
         <source>Puzzle solved!</source>
         <translation>Puzzle gelöst!</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="484"/>
+        <location filename="../CIQPuzzle.cpp" line="553"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="499"/>
+        <location filename="../CIQPuzzle.cpp" line="569"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../CIQPuzzle.cpp" line="503"/>
+        <location filename="../CIQPuzzle.cpp" line="573"/>
+        <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
+        <translation>Diese Anwendung verwendet Symbole aus dem &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango Projekt&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <location filename="../CIQPuzzle.cpp" line="576"/>
         <source>Translations</source>
         <translation>Übersetzungen</translation>
     </message>
@@ -299,49 +306,51 @@ Reduced grid to default.</source>
 <context>
     <name>CSettings</name>
     <message>
-        <location filename="../CSettings.cpp" line="55"/>
+        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="202"/>
         <source>Left</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="55"/>
+        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="202"/>
         <source>Middle</source>
         <translation>Mittlere</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="55"/>
+        <location filename="../CSettings.cpp" line="56"/>
+        <location filename="../CSettings.cpp" line="202"/>
         <source>Right</source>
         <translation>Rechts</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="58"/>
+        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="206"/>
         <source>First X</source>
         <translation>First X</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="58"/>
+        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="206"/>
         <source>Second X</source>
         <translation>Second X</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="60"/>
+        <location filename="../CSettings.cpp" line="207"/>
         <source>Horizontal wheel</source>
         <translation>Horizontales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="59"/>
+        <location filename="../CSettings.cpp" line="60"/>
+        <location filename="../CSettings.cpp" line="207"/>
         <source>Vertical wheel</source>
         <translation>Vertikales Mausrad</translation>
     </message>
     <message>
-        <location filename="../CSettings.cpp" line="112"/>
+        <location filename="../CSettings.cpp" line="113"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>Bitte ändern Sie Ihre Einstellungen. Die gleiche Maustaste wurde für mehrere Aktionen gewählt.</translation>
-    </message>
-    <message>
-        <location filename="../CSettings.cpp" line="127"/>
-        <source>The game has to be restarted for applying the changes.</source>
-        <translation>Das Spiel muss neu gestartet werden, um die Änderungen zu übernehmen.</translation>
     </message>
 </context>
 <context>

@@ -552,13 +552,14 @@ void CIQPuzzle::reportBug() {
 void CIQPuzzle::showInfoBox() {
   QMessageBox::about(this, trUtf8("About"),
                      QString("<center>"
-                             "<big><b>%1 %2</b></big><br/>"
-                             "%3<br/>"
-                             "<small>%4</small><br/><br/>"
-                             "%5<br/>"
-                             "%6"
+                             "<big><b>%1 %2</b></big><br />"
+                             "%3<br />"
+                             "<small>%4</small><br /><br />"
+                             "%5<br />"
+                             "%6<br />"
+                             "<small>%7</small>"
                              "</center><br />"
-                             "%7")
+                             "%8")
                      .arg(qApp->applicationName())
                      .arg(qApp->applicationVersion())
                      .arg(APP_DESC)
@@ -569,6 +570,9 @@ void CIQPuzzle::showInfoBox() {
                           ": "
                           "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
                           "GNU General Public License Version 3</a>")
+                     .arg(trUtf8("This application uses icons from "
+                                 "<a href=\"http://tango.freedesktop.org\">"
+                                 "Tango project</a>."))
                      .arg("<i>" + trUtf8("Translations") +
                           "</i><br />"
                           "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
