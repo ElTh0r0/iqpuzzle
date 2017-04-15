@@ -1,2 +1,2 @@
 # iqpuzzle-packaging
-Packaging files for StackAndConquer
+Packaging files for iQPuzzle
