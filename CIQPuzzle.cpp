@@ -543,7 +543,7 @@ void CIQPuzzle::showHighscore() {
 // ---------------------------------------------------------------------------
 
 void CIQPuzzle::reportBug() {
-  QDesktopServices::openUrl(QUrl("https://bugs.launchpad.net/iqpuzzle"));
+  QDesktopServices::openUrl(QUrl("https://github.com/ElTh0r0/iqpuzzle/issues"));
 }
 
 // ----------------------------------------------------------------------------
@@ -564,8 +564,8 @@ void CIQPuzzle::showInfoBox() {
                      .arg(qApp->applicationVersion())
                      .arg(APP_DESC)
                      .arg(APP_COPY)
-                     .arg("URL: <a href=\"https://launchpad.net/iqpuzzle\">"
-                          "https://launchpad.net/iqpuzzle</a>")
+                     .arg("URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
+                          "https://github.com/ElTh0r0/iqpuzzle</a>")
                      .arg(trUtf8("License") +
                           ": "
                           "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"

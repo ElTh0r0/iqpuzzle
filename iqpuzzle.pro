@@ -22,7 +22,7 @@ unix: !macx {
        TARGET = iQPuzzle
 }
 
-VERSION       = 1.0.4
+VERSION       = 1.0.5
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2017 Thorsten Roth"

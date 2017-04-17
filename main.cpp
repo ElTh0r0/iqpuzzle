@@ -27,7 +27,7 @@
 /** \mainpage
  * \section Introduction
  * iQPuzzle is a diverting I.Q. challenging pentomino puzzle.<br />
- * Launchpad: https://launchpad.net/iqpuzzle
+ * GitHub: https://github.com/ElTh0r0/iqpuzzle
  */
 
 #include <QApplication>
