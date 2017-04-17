@@ -18,11 +18,11 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.0.4
+Version:        1.0.5
 Release:        1
 License:        GPL-3.0+
-URL:            https://launchpad.net/iqpuzzle
-Source:         %{name}-%{version}-src.tar.gz
+URL:            https://github.com/ElTh0r0/iqpuzzle
+Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
 
 # Fedora, RHEL, or CentOS
@@ -61,7 +61,7 @@ as puzzle pieces and 195 different board shapes are available, which
 have to be filled with them.
 
 %prep
-%setup -q -n %{name}-%{version}-src
+%setup -q -n %{name}-%{version}
 
 # Fedora, RHEL, or CentOS
 #--------------------------------------------------------------------
