@@ -11,8 +11,8 @@ Build-Depends:
    dpkg-dev (>= 1.16.1.1)
 Standards-Version: 3.9.8
 Homepage: https://github.com/ElTh0r0/iqpuzzle
-Vcs-Git: https://github.com/ElTh0r0/iqpuzzle-packaging.git
-Vcs-Browser: https://github.com/ElTh0r0/iqpuzzle-packaging/
+Vcs-Git: https://github.com/ElTh0r0/iqpuzzle.git
+Vcs-Browser: https://github.com/ElTh0r0/iqpuzzle-packaging/tree/packaging
 
 Package: iqpuzzle
 Architecture: any
