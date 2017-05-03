@@ -1,9 +1,9 @@
-iqpuzzle (1.0.5-0ubuntu1) xenial; urgency=low
+iqpuzzle (1.0.5-0ubuntu2) xenial; urgency=low
 
   [ Thorsten Roth ]
   * Moved project to GitHub (exchanged URLs).
 
- -- Thorsten Roth <elthoro@gmx.de>  Mon, 17 Apr 2017 19:45:00 +0200
+ -- Thorsten Roth <elthoro@gmx.de>  Wed, 03 May 2017 15:51:00 +0200
 
 iqpuzzle (1.0.4-0ubuntu1) xenial; urgency=low
 
