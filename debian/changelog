@@ -1,3 +1,10 @@
+iqpuzzle (1.0.6-0ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Updated Dutch translation (thanks to Elbert).
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 06 May 2017 17:42:00 +0200
+
 iqpuzzle (1.0.5-0ubuntu2) xenial; urgency=low
 
   [ Thorsten Roth ]
