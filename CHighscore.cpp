@@ -120,11 +120,9 @@ void CHighscore::checkHighscore(const QString &sBoard, const quint32 &nMoves,
     tScoreTime = tScoreTime.fromString(sListTemp[1], "hh:mm:ss");
     nScoreMoves = sListTemp[2].toUInt();
     /*
-        qDebug() << "Check #" << i << nMoves << "/"
-                 << tTime.toString("hh:mm:ss")
-                 << "---" << nScoreMoves << "/"
-                 << tScoreTime.toString("hh:mm:ss");
-        */
+    qDebug() << "Check #" << i << nMoves << "/" << tTime.toString("hh:mm:ss")
+             << "---" << nScoreMoves << "/" << tScoreTime.toString("hh:mm:ss");
+    */
 
     if (nMoves < nScoreMoves || 0 == nScoreMoves) {
       this->insertHighscore(sBoard, i, nMoves, tTime);

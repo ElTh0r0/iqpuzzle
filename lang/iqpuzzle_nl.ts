@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<TS version="2.0" language="nl_NL">
 <context>
     <name>CBoard</name>
     <message>
@@ -40,17 +40,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CBoard.cpp" line="247"/>
         <source>No color defined - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen kleur gedefinieerd - gebruik terugval:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="255"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verkeerde kleur gedefinieerd - gebruik terugval:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="360"/>
         <source>Invalid start position - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verkeerde begin positie - gebruik terugval:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="139"/>
@@ -295,7 +295,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CIQPuzzle.cpp" line="573"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Iqpuzzle gebruikt icons van &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango project&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="576"/>
@@ -350,7 +350,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.cpp" line="113"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verander je instellingen. Dezelfde muisknop wordt gebruikt voor meerdere acties.</translation>
     </message>
 </context>
 <context>

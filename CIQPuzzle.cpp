@@ -270,6 +270,9 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
   this->createBoard();
 }
 
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
 void CIQPuzzle::setGameTitle() {
   QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
   quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
@@ -610,15 +613,15 @@ void CIQPuzzle::changeEvent(QEvent *pEvent) {
 void CIQPuzzle::closeEvent(QCloseEvent *pEvent) {
   pEvent->accept();
   /*
-    int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +
-                                     qApp->applicationName(),
-                                     trUtf8("Do you really want to quit?"),
-                                     QMessageBox::Yes | QMessageBox::No);
+  int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +
+                                   qApp->applicationName(),
+                                   trUtf8("Do you really want to quit?"),
+                                   QMessageBox::Yes | QMessageBox::No);
 
-    if (QMessageBox::Yes == nRet) {
-        pEvent->accept();
-    } else {
-        pEvent->ignore();
-    }
-    */
+  if (QMessageBox::Yes == nRet) {
+    pEvent->accept();
+  } else {
+    pEvent->ignore();
+  }
+  */
 }

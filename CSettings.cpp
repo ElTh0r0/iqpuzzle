@@ -132,7 +132,6 @@ void CSettings::accept() {
   m_pSettings->setValue("FlipBlock", m_listMouseControls[2]);
   m_pSettings->remove("Enabled");
   m_pSettings->endGroup();
-  m_pSettings->remove("KeyboardControls");  // Won't support keyboard in future
 
   QDialog::accept();
 }

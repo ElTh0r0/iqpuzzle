@@ -56,8 +56,8 @@ int main(int argc, char *argv[]) {
   app.setApplicationName(APP_NAME);
   app.setApplicationVersion(APP_VERSION);
 
-  if (app.arguments().contains("-v")
-      || app.arguments().contains("--version")) {
+  if (app.arguments().contains("-v") ||
+      app.arguments().contains("--version")) {
     qDebug() << app.arguments()[0] << "\t"
                                    << app.applicationVersion() << "\n";
     exit(0);

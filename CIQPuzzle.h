@@ -102,8 +102,8 @@ class CIQPuzzle : public QMainWindow {
   CBoard *m_pBoard;
   QString m_sBoardFile;
   QString m_sSavedGame;
-  QDir m_userDataDir;
-  QString m_sSharePath;
+  const QDir m_userDataDir;
+  const QString m_sSharePath;
   QLabel *m_pStatusLabelTime;
   QLabel *m_pStatusLabelMoves;
   quint32 m_nMoves;

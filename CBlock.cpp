@@ -51,7 +51,6 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
   } else {
     // qDebug() << "Creating BARRIER" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;
-
     this->setAcceptedMouseButtons(0);
     this->setAcceptTouchEvents(false);
     this->setEnabled(false);
@@ -318,12 +317,11 @@ bool CBlock::checkCollision(const QPainterPath thisPath) {
 
       if (!intersectedPath.boundingRect().size().isEmpty()) {
         /*
-                qDebug() << "SHAPE 1:" << thisPath
-                         << "SHAPE 2:" << collidingPath;
-                qDebug() << "Col" << m_nID << "with" << block->getIndex()
-                         << "Size" << intersectedPath.boundingRect().size();
-                qDebug() << "Intersection:" << intersectedPath;
-                */
+        qDebug() << "SHAPE 1:" << thisPath << "SHAPE 2:" << collidingPath;
+        qDebug() << "Col" << m_nID << "with" << block->getIndex()
+                 << "Size" << intersectedPath.boundingRect().size();
+        qDebug() << "Intersection:" << intersectedPath;
+        */
         return true;
       }
     }
