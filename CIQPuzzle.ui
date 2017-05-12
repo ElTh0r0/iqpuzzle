@@ -74,26 +74,51 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_NewGame">
+   <property name="icon">
+    <iconset theme="document-new">
+     <normalon>:/images/menu/document-new.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Choose &amp;new game</string>
    </property>
   </action>
   <action name="action_Quit">
+   <property name="icon">
+    <iconset theme="application-exit">
+     <normalon>:/images/menu/system-log-out.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Quit</string>
    </property>
   </action>
   <action name="action_Info">
+   <property name="icon">
+    <iconset theme="help-about">
+     <normalon>:/images/menu/help-browser.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;About</string>
    </property>
   </action>
   <action name="action_ZoomIn">
+   <property name="icon">
+    <iconset theme="zoom-in">
+     <normalon>:/images/menu/list-add.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Zoom &amp;In</string>
    </property>
   </action>
   <action name="action_ZoomOut">
+   <property name="icon">
+    <iconset theme="zoom-out">
+     <normalon>:/images/menu/list-remove.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Zoom &amp;Out</string>
    </property>
@@ -101,6 +126,11 @@
   <action name="action_RestartGame">
    <property name="enabled">
     <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="view-refresh">
+     <normalon>:/images/menu/view-refresh.png</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>&amp;Restart game</string>
@@ -110,6 +140,11 @@
    <property name="enabled">
     <bool>false</bool>
    </property>
+   <property name="icon">
+    <iconset theme="document-save">
+     <normalon>:/images/menu/document-save.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Save game</string>
    </property>
@@ -118,6 +153,11 @@
    </property>
   </action>
   <action name="action_LoadGame">
+   <property name="icon">
+    <iconset theme="document-open">
+     <normalon>:/images/menu/document-open.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Load game</string>
    </property>
@@ -132,6 +172,11 @@
    <property name="enabled">
     <bool>false</bool>
    </property>
+   <property name="icon">
+    <iconset theme="media-playback-pause">
+     <normalon>:/images/menu/media-playback-pause.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>Pa&amp;use</string>
    </property>
@@ -142,6 +187,11 @@
    </property>
   </action>
   <action name="action_Preferences">
+   <property name="icon">
+    <iconset theme="preferences-system">
+     <normalon>:/images/menu/preferences-system.png</normalon>
+    </iconset>
+   </property>
    <property name="text">
     <string>&amp;Configure iQPuzzle...</string>
    </property>
@@ -152,6 +202,9 @@
    </property>
   </action>
   <action name="action_RandomGame">
+   <property name="icon">
+    <iconset theme="media-playlist-shuffle"/>
+   </property>
    <property name="text">
     <string>R&amp;andom game</string>
    </property>

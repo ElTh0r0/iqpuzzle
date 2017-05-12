@@ -145,8 +145,7 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
-  qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->buttons()));
-  if (0 == nIndex) {
+  if (0 == m_pSettings->getMouseControls().indexOf(p_Event->buttons())) {
     this->setPos(p_Event->scenePos() - m_posMouseSelected);
     update();
   }
@@ -156,8 +155,7 @@ void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-  qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
-  if (0 == nIndex) {
+  if (0 == m_pSettings->getMouseControls().indexOf(p_Event->button())) {
     this->moveBlock(true);
     update();
   }
@@ -229,9 +227,10 @@ void CBlock::moveBlock(const bool bRelease) {
 // ---------------------------------------------------------------------------
 
 void CBlock::rotateBlock(const int nDelta) {
-  qint8 nAngle = 0;
-  qint32 nTranslateX = 0;
-  qint32 nTranslateY = 0;
+  qint8 nAngle(0);
+  qint32 nTranslateX(0);
+  qint32 nTranslateY(0);
+
   if (nDelta < 0) {
     nAngle = 90;
     nTranslateX = this->boundingRect().height();
@@ -333,9 +332,8 @@ bool CBlock::checkCollision(const QPainterPath thisPath) {
 // ---------------------------------------------------------------------------
 
 QPointF CBlock::snapToGrid(const QPointF point) const {
-  int x = qRound(point.x() / m_nGrid) * m_nGrid;
-  int y = qRound(point.y() / m_nGrid) * m_nGrid;
-  return QPointF(x, y);
+  return QPointF(qRound(point.x() / m_nGrid) * m_nGrid,   // x
+                 qRound(point.y() / m_nGrid) * m_nGrid);  // y
 }
 
 // ---------------------------------------------------------------------------

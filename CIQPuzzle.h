@@ -83,7 +83,7 @@ class CIQPuzzle : public QMainWindow {
   void updateTimer();
   void solvedPuzzle();
   void showHighscore();
-  void reportBug();
+  void reportBug() const;
   void showInfoBox();
 
  private:

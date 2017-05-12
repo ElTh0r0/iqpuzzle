@@ -47,7 +47,7 @@ class CHighscore : public QObject {
                       const QTime &tTime);
 
  private:
-  QStringList readHighscore(const QString &sBoard, const QString &sKey);
+  QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
   void insertHighscore(const QString &sBoard, const quint8 &nPosition,
                        const quint32 &nMoves, const QTime &tTime);
 

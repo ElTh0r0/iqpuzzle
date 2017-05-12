@@ -148,7 +148,7 @@ void CBoard::setupBlocks() {
 // ---------------------------------------------------------------------------
 
 bool CBoard::createBlocks() {
-  const unsigned char nMaxNumOfBlocks = 250;
+  const unsigned char nMaxNumOfBlocks(250);
   QPolygonF polygon;
   QString sPrefix("");
 
@@ -200,7 +200,7 @@ bool CBoard::createBlocks() {
 // ---------------------------------------------------------------------------
 
 bool CBoard::createBarriers() {
-  const unsigned char nMaxNumOfBlocks = 250;
+  const unsigned char nMaxNumOfBlocks(250);
   QPolygonF polygon;
   QString sPrefix("");
 
@@ -236,7 +236,7 @@ bool CBoard::createBarriers() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QColor CBoard::readColor(const QString sKey) {
+QColor CBoard::readColor(const QString sKey) const {
   QString sValue = m_pBoardConf->value(sKey, "").toString();
   QColor color("#FF00FF");
 
@@ -262,12 +262,12 @@ QColor CBoard::readColor(const QString sKey) {
 // ---------------------------------------------------------------------------
 
 QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
-                              bool bScale) {
+                              const bool bScale) {
   QStringList sList;
   QStringList sListPoint;
   QPolygonF polygon;
-  QString sValue = tmpSet->value(sKey, "").toString();
-  quint16 nScale = 1;
+  QString sValue(tmpSet->value(sKey, "").toString());
+  quint16 nScale(1);
   if (bScale) {
     nScale = m_nGridSize;
   }
@@ -303,7 +303,7 @@ QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::checkOrthogonality(QPointF point) {
+bool CBoard::checkOrthogonality(QPointF point) const {
   static QList<QPointF> listPoints;
   static quint16 nCnt;
 
@@ -334,7 +334,8 @@ bool CBoard::checkOrthogonality(QPointF point) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF CBoard::readStartPosition(const QSettings *tmpSet, const QString sKey) {
+QPointF CBoard::readStartPosition(const QSettings *tmpSet,
+                                  const QString sKey) const {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();

@@ -64,7 +64,7 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
 
 void CBoardDialog::OnCurrentChanged(const QString &sPath) {
   QSettings tmpSet(sPath, QSettings::IniFormat);
-  quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+  quint32 nSolutions(tmpSet.value("PossibleSolutions", 0).toUInt());
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = trUtf8("Unknown");

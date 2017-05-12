@@ -76,7 +76,7 @@ void CHighscore::showHighscore(const QString &sBoard) {
     layout->addWidget(new QLabel("#" + QString::number(nRow), &dialog),
                       nRow, 0, Qt::AlignCenter | Qt::AlignVCenter);
 
-    sListTemp = readHighscore(sBoard, "Position" + QString::number(nRow));
+    sListTemp = this->readHighscore(sBoard, "Position" + QString::number(nRow));
 
     for (int nCol = 0; nCol < sListTemp.size(); nCol++) {
       if (nCol > 2) {
@@ -144,7 +144,7 @@ void CHighscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
   if (nPosition <= m_nMaxPos) {
     QStringList sListEntries;
     QByteArray ba;
-    bool bOk;
+    bool bOk(false);
     QString sName("");
     sName = qgetenv("USER");  // Try to get user name in Linux
     if (sName.isEmpty()) {
@@ -182,11 +182,10 @@ void CHighscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
 // ---------------------------------------------------------------------------
 
 QStringList CHighscore::readHighscore(const QString &sBoard,
-                                      const QString &sKey) {
+                                      const QString &sKey) const {
   QStringList sListTemp;
-  QByteArray ba = m_pHighscore->value(sBoard + "/" + sKey,
-                                      "fHw=").toByteArray();
-  QString sTemp = QByteArray::fromBase64(ba);
+  QByteArray ba(m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray());
+  QString sTemp(QByteArray::fromBase64(ba));
 
   sListTemp = sTemp.split("|");
 
