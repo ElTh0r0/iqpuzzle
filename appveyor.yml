@@ -1,15 +1,18 @@
 environment:
   QTDIR: C:\Qt\5.8\mingw53_32
+  MINGW_DIR: C:\Qt\Tools\mingw530_32
 
 install:
-  - set PATH=%QTDIR%\bin;%PATH%
+  - set PATH=%QTDIR%\bin;%MINGW_DIR%\bin;%PATH%
+
+configuration: Release
 
 before_build:
   - qmake iqpuzzle.pro
 
-configuration:
-  - Release
-  
+build_script:
+  - mingw32-make
+
 after_build:
   - mkdir deploy
   - copy release\iQPuzzle.exe deploy\iQPuzzle.exe
