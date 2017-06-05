@@ -1,22 +1,20 @@
 environment:
   QTDIR: C:\Qt\5.8\mingw53_32
-  MINGW_DIR: C:\Qt\Tools\mingw530_32 
 
 install:
-  - set PATH=%QTDIR%\bin;%MINGW_DIR%\bin;%PATH%
-  
-configuration: Release
+  - set PATH=%QTDIR%\bin;%PATH%
 
 before_build:
   - qmake iqpuzzle.pro
 
-build_script:
-  - mingw32-make
-
+configuration:
+  - Release
+  
 after_build:
-  - windeployqt iQPuzzle.exe
-  - 7z a iqpuzzle.zip *
+  - mkdir deploy
+  - copy release\iQPuzzle.exe deploy\iQPuzzle.exe
+  - windeployqt --release --no-translations --no-angle --no-opengl-sw deploy/iQPuzzle.exe
+  - 7z a iqpuzzle.zip .\deploy\*
 
 artifacts:
   - path: iqpuzzle.zip
-    name: iQPuzzle
