@@ -1,3 +1,5 @@
+version: '1.0.6'
+
 environment:
   QTDIR: C:\Qt\5.8\mingw53_32
   MINGW_DIR: C:\Qt\Tools\mingw530_32
@@ -14,10 +16,10 @@ build_script:
   - mingw32-make
 
 after_build:
-  - mkdir deploy
-  - copy release\iQPuzzle.exe deploy\iQPuzzle.exe
-  - windeployqt --release --no-translations --no-angle --no-opengl-sw deploy/iQPuzzle.exe
-  - 7z a iqpuzzle.zip .\deploy\*
+  - mkdir iQPuzzle-%version%
+  - copy release\iQPuzzle.exe iQPuzzle-%version%\iQPuzzle.exe
+  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle-%version%/iQPuzzle.exe
+  - 7z a iQPuzzle-%version%-Windows.zip .\iQPuzzle-%version%\
 
 artifacts:
-  - path: iqpuzzle.zip
+  - path: iQPuzzle-$(version)-Windows.zip
