@@ -17,10 +17,10 @@ build_script:
   - mingw32-make
 
 after_build:
-  - mkdir iQPuzzle-$(APPVERSION)
-  - copy release\iQPuzzle.exe iQPuzzle-$(APPVERSION)\iQPuzzle.exe
-  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle-$(APPVERSION)/iQPuzzle.exe
-  - 7z a iQPuzzle-$(APPVERSION)-Windows.zip .\iQPuzzle-$(APPVERSION)\
+  - mkdir iQPuzzle-%APPVERSION%
+  - copy release\iQPuzzle.exe iQPuzzle-%APPVERSION%\iQPuzzle.exe
+  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle-%APPVERSION%/iQPuzzle.exe
+  - 7z a iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip .\iQPuzzle-%APPVERSION%\
 
 artifacts:
   - path: iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip
