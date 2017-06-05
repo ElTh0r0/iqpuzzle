@@ -17,7 +17,7 @@ configuration: Release
 
 before_build:
   - qmake iqpuzzle.pro
-  - lrelease lang/*.ts
+  - lrelease lang\*.ts
 
 build_script:
   - '%PRO_MAKE%'
@@ -26,7 +26,7 @@ after_build:
   - mkdir iQPuzzle\lang
   - mkdir iQPuzzle\boards
   - copy release\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
-  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle/iQPuzzle.exe
+  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle\iQPuzzle.exe
   - copy COPYING iQPuzzle\
   - copy README.md iQPuzzle\
   - copy lang\*.qm iQPuzzle\lang\
