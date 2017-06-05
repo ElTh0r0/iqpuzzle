@@ -17,7 +17,7 @@ configuration: Release
 
 before_build:
   - qmake iqpuzzle.pro
-  - lrelease lang\*.ts
+  - lrelease iqpuzzle.pro
 
 build_script:
   - '%PRO_MAKE%'
