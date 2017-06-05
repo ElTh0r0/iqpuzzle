@@ -25,7 +25,7 @@ after_build:
   - copy README.md iQPuzzle\
   - copy lang\*.qm iQPuzzle\lang\
   - xcopy /i /e /s data\boards\* iqPuzzle\boards\
-  - 7z a iQPuzzle-%version%-Windows.zip .\iQPuzzle\
+  - 7z a iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows.zip .\iQPuzzle\
 
 artifacts:
-  - path: iQPuzzle-$(version)-Windows.zip
+  - path: iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows.zip
