@@ -18,12 +18,13 @@ build_script:
 
 after_build:
   - mkdir iQPuzzle\lang
+  - mkdir iQPuzzle\boards
   - copy release\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
   - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle/iQPuzzle.exe
   - copy COPYING iQPuzzle\
   - copy README.md iQPuzzle\
   - copy lang\*.qm iQPuzzle\lang\
-  - copy data\boards iqPuzzle\
+  - xcopy /i /e /s data\boards\* iqPuzzle\boards\
   - 7z a iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip .\iQPuzzle\
 
 artifacts:
