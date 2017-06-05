@@ -1,9 +1,8 @@
+version: '1.0.6-{build}'
+
 environment:
-  APPVERSION: 1.0.6
   QTDIR: C:\Qt\5.8\mingw53_32
   MINGW_DIR: C:\Qt\Tools\mingw530_32
-
-version: '$(APPVERSION)-{build}'
   
 install:
   - set PATH=%QTDIR%\bin;%MINGW_DIR%\bin;%PATH%
@@ -12,15 +11,20 @@ configuration: Release
 
 before_build:
   - qmake iqpuzzle.pro
+  - lrelease lang/*.ts
 
 build_script:
   - mingw32-make
 
 after_build:
-  - mkdir iQPuzzle-%APPVERSION%
-  - copy release\iQPuzzle.exe iQPuzzle-%APPVERSION%\iQPuzzle.exe
-  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle-%APPVERSION%/iQPuzzle.exe
-  - 7z a iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip .\iQPuzzle-%APPVERSION%\
+  - mkdir iQPuzzle\lang
+  - copy release\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
+  - windeployqt --release --no-translations --no-angle --no-opengl-sw iQPuzzle/iQPuzzle.exe
+  - copy COPYING iQPuzzle\
+  - copy README.md iQPuzzle\
+  - copy lang\*.qm iQPuzzle\lang\
+  - copy data\boards iqPuzzle\
+  - 7z a iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip .\iQPuzzle\
 
 artifacts:
   - path: iQPuzzle-$(APPVEYOR_BUILD_VERSION)-Windows.zip
