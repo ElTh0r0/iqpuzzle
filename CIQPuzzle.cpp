@@ -549,6 +549,7 @@ void CIQPuzzle::showInfoBox() {
                           "</i><br />"
                           "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
                           "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
+                          "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
                           "&nbsp;&nbsp;- German: ElThoro"));
 }
 
