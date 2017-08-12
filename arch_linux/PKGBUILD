@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Roth <elthoro@gmx.de>
 pkgname=iqpuzzle
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='iQPuzzle is a diverting and challenging pentomino puzzle.'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/ElTh0r0/iqpuzzle/'
 license=('GPL3')
 depends=('qt5-base')
 source=("$pkgname-$pkgver.tar.gz")
-md5sums=('eb152ad4a7e50b02e06d1f77eba8428d')
+md5sums=('71ed55bf3c1ca4b97d0a36bc4a5e8edd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

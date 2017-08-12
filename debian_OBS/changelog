@@ -1,3 +1,10 @@
+iqpuzzle (1.0.7-0) unstable; urgency=low
+
+  [ Thorsten Roth ]
+  * Added French translation (thanks to kiarn and mothsART).
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 12 Aug 2017 17:46:00 +0200
+
 iqpuzzle (1.0.6-0) unstable; urgency=low
 
   [ Thorsten Roth ]
