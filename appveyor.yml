@@ -3,11 +3,11 @@ version: '1.0.7-{build}'
 environment:
   matrix:
     - BUILD: mingw32 
-      QTDIR: C:\Qt\5.8\mingw53_32
+      QTDIR: C:\Qt\5.9.1\mingw53_32
       MINGW_DIR: C:\Qt\Tools\mingw530_32
       PRO_MAKE: mingw32-make
     - BUILD: msvc2015_64
-      QTDIR: C:\Qt\5.8\msvc2015_64
+      QTDIR: C:\Qt\5.9.1\msvc2015_64
       PRO_MAKE: nmake
   
 install:
@@ -31,7 +31,7 @@ after_build:
   - copy COPYING iQPuzzle\
   - copy README.md iQPuzzle\
   - copy lang\*.qm iQPuzzle\lang\
-  - xcopy /i /e /s data\boards\* iqPuzzle\boards\
+  - xcopy /i /e /s data\boards\* iQPuzzle\boards\
   - 7z a iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows_%BUILD%.zip .\iQPuzzle\
 
 artifacts:
