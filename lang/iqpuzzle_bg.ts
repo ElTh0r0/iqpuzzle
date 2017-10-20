@@ -40,17 +40,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CBoard.cpp" line="247"/>
         <source>No color defined - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Не е определен цвят - използвайки резервно копие:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="255"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Невалиден дефиниран цвят - използвайки резервно копие:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="360"/>
         <source>Invalid start position - using fallback:</source>
-        <translation type="unfinished"></translation>
+        <translation>Невалидна начална позиция - използвайки резервно копие:</translation>
     </message>
     <message>
         <location filename="../CBoard.cpp" line="139"/>
@@ -141,7 +141,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CIQPuzzle.ui" line="78"/>
         <source>Choose &amp;new game</source>
-        <translation type="unfinished"></translation>
+        <translation>Изберете ниво</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="83"/>
@@ -203,17 +203,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CIQPuzzle.ui" line="146"/>
         <source>&amp;Configure iQPuzzle...</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки на играта</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="151"/>
         <source>Report &amp;bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Отчетете бъг</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.ui" line="156"/>
         <source>R&amp;andom game</source>
-        <translation type="unfinished"></translation>
+        <translation>Случайна игра</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="83"/>
@@ -295,7 +295,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CIQPuzzle.cpp" line="573"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Това приложение използва икони от &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../CIQPuzzle.cpp" line="576"/>
@@ -350,7 +350,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.cpp" line="113"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Моля, променете настройките си. Същият бутон на мишката се използва за няколко действия.</translation>
     </message>
 </context>
 <context>
@@ -358,12 +358,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.ui" line="14"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="32"/>
         <source>Mouse controls</source>
-        <translation type="unfinished"></translation>
+        <translation>Управление на мишката</translation>
     </message>
     <message>
         <location filename="../CSettings.ui" line="39"/>
@@ -383,7 +383,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../CSettings.ui" line="76"/>
         <source>GUI language</source>
-        <translation type="unfinished"></translation>
+        <translation>Език</translation>
     </message>
 </context>
 </TS>
