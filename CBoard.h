@@ -48,7 +48,7 @@ class CBoard : public QGraphicsScene {
          CSettings *pSettings, const QString &sSavedGame = "");
 
   bool setupBoard();
-  void setupBlocks();
+  bool setupBlocks();
   void saveGame(const QString &sSaveFile, const QString &sTime,
                 const QString &sMoves);
 
@@ -63,7 +63,7 @@ class CBoard : public QGraphicsScene {
   void checkPuzzleSolved();
 
  private:
-  bool drawBoard();
+  void drawBoard();
   void drawGrid();
   bool createBlocks();
   bool createBarriers();
@@ -86,6 +86,7 @@ class CBoard : public QGraphicsScene {
   unsigned char m_nNumOfBlocks;
   quint16 m_nGridSize;
   bool m_bNotAllPiecesNeeded;
+  bool m_bFreestyle;
 };
 
 #endif  // IQPUZZLE_CBOARD_H_

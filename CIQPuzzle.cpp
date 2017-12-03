@@ -298,9 +298,17 @@ void CIQPuzzle::createBoard() {
           this, SLOT(solvedPuzzle()));
 
   if (m_pBoard->setupBoard()) {
-    m_pBoard->setupBlocks();
-    m_pTimer->start(1000);
-    m_pUi->action_PauseGame->setEnabled(true);
+    bool bFreestyle = m_pBoard->setupBlocks();
+    if (bFreestyle) {
+      m_pTimer->stop();
+      m_pUi->action_PauseGame->setEnabled(false);
+      m_pUi->action_Highscore->setEnabled(false);
+    } else {
+      m_pTimer->start(1000);
+      m_pUi->action_PauseGame->setEnabled(true);
+      m_pUi->action_Highscore->setEnabled(true);
+    }
+
     m_pUi->action_PauseGame->setChecked(false);
     m_pUi->action_SaveGame->setEnabled(true);
     m_pUi->action_RestartGame->setEnabled(true);
@@ -316,37 +324,53 @@ void CIQPuzzle::randomGame() {
   qDebug() << Q_FUNC_INFO;
   if (!QFile::exists(m_sSharePath + "/boards")) {
     qWarning() << "Games share path does not exist" << m_sSharePath;
-    QMessageBox::warning(this, "Folder not found",
+    QMessageBox::warning(this, qApp->applicationName(),
                          "Games share path does not exist!");
     return;
-  } else {
-    QStringList slistBoards;
-    QDir boardsDir(m_sSharePath + "/boards");
-    QFileInfoList fiListFiles = boardsDir.entryInfoList(
-                                  QDir::NoDotAndDotDot |
-                                  QDir::Files |
-                                  QDir::Dirs);
-    foreach (QFileInfo fi, fiListFiles) {
-      if (fi.isDir()) {  // Check only one sub folder level
-        QDir boardsDir2(boardsDir.absolutePath() + "/" + fi.fileName());
-        QFileInfoList fiListFiles2 = boardsDir2.entryInfoList(
-                                       QDir::NoDotAndDotDot | QDir::Files);
-        foreach (QFileInfo fi2, fiListFiles2) {
-          if ("conf" == fi2.suffix()) {
-            // qDebug() << fi.fileName() + "/" + fi2.baseName();
-            slistBoards << fi.fileName() + "/" + fi2.fileName();
-          }
-        }
-      } else if ("conf" == fi.suffix()) {
-        // qDebug() << fi.baseName();
-        slistBoards << fi.fileName();
-      }
-    }
+  }
+
+  static QStringList slistBoards(this->generateFileList());
+  if (!slistBoards.isEmpty()) {
     int nRand = qrand() % slistBoards.size();
     if (nRand >= 0 && nRand < slistBoards.size()) {
       this->startNewGame(m_sSharePath + "/boards/" + slistBoards[nRand]);
     }
+  } else {
+    qWarning() << "Game file list is emtpy!";
+    QMessageBox::warning(this, qApp->applicationName(),
+                         "No game files found!");
   }
+}
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+QStringList CIQPuzzle::generateFileList() {
+  QStringList slistBoards;
+  QDir boardsDir(m_sSharePath + "/boards");
+  QFileInfoList fiListFiles = boardsDir.entryInfoList(
+                                QDir::NoDotAndDotDot |
+                                QDir::Files |
+                                QDir::Dirs);
+
+  foreach (QFileInfo fi, fiListFiles) {
+    if (fi.isDir() &&
+        !fi.fileName().startsWith("freestyle")) {  // Check only one subfolder
+      QDir boardsDir2(boardsDir.absolutePath() + "/" + fi.fileName());
+      QFileInfoList fiListFiles2 = boardsDir2.entryInfoList(
+                                     QDir::NoDotAndDotDot | QDir::Files);
+      foreach (QFileInfo fi2, fiListFiles2) {
+        if ("conf" == fi2.suffix()) {
+          // qDebug() << fi.fileName() + "/" + fi2.baseName();
+          slistBoards << fi.fileName() + "/" + fi2.fileName();
+        }
+      }
+    } else if ("conf" == fi.suffix() &&
+               !fi.fileName().startsWith("freestyle")) {
+      // qDebug() << fi.baseName();
+      slistBoards << fi.fileName();
+    }
+  }
+  return slistBoards;
 }
 
 // ---------------------------------------------------------------------------

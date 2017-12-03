@@ -91,6 +91,7 @@ class CIQPuzzle : public QMainWindow {
                         const QString &sPath);
   void setupMenu();
   void setGameTitle();
+  QStringList generateFileList();
 
   Ui::CIQPuzzle *m_pUi;
   QTranslator m_translator;  // App translations

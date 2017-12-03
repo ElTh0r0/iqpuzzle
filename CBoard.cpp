@@ -62,11 +62,21 @@ CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
 
 bool CBoard::setupBoard() {
   qDebug() << Q_FUNC_INFO;
+  m_bFreestyle = m_pBoardConf->value("Freestyle", false).toBool();
 
-  if (!this->drawBoard()) {
+  m_BoardPoly.clear();
+  m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
+  if (m_BoardPoly.isEmpty()) {
+    qWarning() << "BOARD POLYGON IS EMPTY!";
+    QMessageBox::warning(0, trUtf8("Warning"),
+                         trUtf8("Board polygon not valid."));
     return false;
   }
-  this->drawGrid();
+
+  if (!m_bFreestyle) {
+    this->drawBoard();
+    this->drawGrid();
+  }
 
   // Set main window size
   const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
@@ -78,22 +88,11 @@ bool CBoard::setupBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::drawBoard() {
-  m_BoardPoly.clear();
-  m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
-  if (m_BoardPoly.isEmpty()) {
-    qWarning() << "BOARD POLYGON IS EMPTY!";
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Board polygon not valid."));
-    return false;
-  }
-
+void CBoard::drawBoard() {
   QPen pen(this->readColor("Board/BorderColor"));
   QBrush brush(this->readColor("Board/Color"));
   this->addPolygon(m_BoardPoly, pen, brush);
   m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
-
-  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -120,7 +119,7 @@ void CBoard::drawGrid() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::setupBlocks() {
+bool CBoard::setupBlocks() {
   qDebug() << Q_FUNC_INFO;
   m_nNumOfBlocks = 0;
   m_listBlocks.clear();
@@ -142,6 +141,7 @@ void CBoard::setupBlocks() {
 
     m_pGraphView->setEnabled(true);
   }
+  return m_bFreestyle;
 }
 
 // ---------------------------------------------------------------------------
@@ -180,10 +180,12 @@ bool CBoard::createBlocks() {
                           m_nGridSize, &m_listBlocks, m_pSettings,
                           this->readStartPosition(
                             tmpSet, sPrefix + "/StartPos")));
-    connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
-            this, SLOT(checkPuzzleSolved()));
-    connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
-            this, SIGNAL(incrementMoves()));
+    if (!m_bFreestyle) {
+      connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
+              this, SLOT(checkPuzzleSolved()));
+      connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
+              this, SIGNAL(incrementMoves()));
+    }
   }
 
   if (0 == m_nNumOfBlocks) {
