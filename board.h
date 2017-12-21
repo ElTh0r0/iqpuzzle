@@ -1,5 +1,5 @@
 /**
- * \file CBoard.h
+ * \file board.h
  *
  * \section LICENSE
  *
@@ -24,8 +24,8 @@
  * Class definition for a board.
  */
 
-#ifndef IQPUZZLE_CBOARD_H_
-#define IQPUZZLE_CBOARD_H_
+#ifndef IQPUZZLE_BOARD_H_
+#define IQPUZZLE_BOARD_H_
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -34,18 +34,18 @@
 #include <QPolygonF>
 #include <QSettings>
 
-#include "./CBlock.h"
+#include "./block.h"
 
 /**
- * \class CBoard
+ * \class Board
  * \brief Complete board generation, including block setup.
  */
-class CBoard : public QGraphicsScene {
+class Board : public QGraphicsScene {
   Q_OBJECT
 
  public:
-  CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
-         CSettings *pSettings, const QString &sSavedGame = "");
+  Board(QGraphicsView *pGraphView, const QString &sBoardFile,
+        Settings *pSettings, const QString &sSavedGame = "");
 
   bool setupBoard();
   bool setupBlocks();
@@ -79,14 +79,14 @@ class CBoard : public QGraphicsScene {
   QSettings *m_pBoardConf;
   QSettings *m_pSavedConf;
   QString m_sBoardFile;
-  CSettings *m_pSettings;
+  Settings *m_pSettings;
   bool m_bSavedGame;
   QPolygonF m_BoardPoly;
-  QList<CBlock *> m_listBlocks;
+  QList<Block *> m_listBlocks;
   unsigned char m_nNumOfBlocks;
   quint16 m_nGridSize;
   bool m_bNotAllPiecesNeeded;
   bool m_bFreestyle;
 };
 
-#endif  // IQPUZZLE_CBOARD_H_
+#endif  // IQPUZZLE_BOARD_H_

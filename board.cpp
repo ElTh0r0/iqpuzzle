@@ -1,5 +1,5 @@
 /**
- * \file CBoard.cpp
+ * \file board.cpp
  *
  * \section LICENSE
  *
@@ -30,10 +30,10 @@
 #include <QFile>
 #include <QMessageBox>
 
-#include "./CBoard.h"
+#include "./board.h"
 
-CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
-               CSettings *pSettings, const QString &sSavedGame)
+Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
+             Settings *pSettings, const QString &sSavedGame)
   : m_pGraphView(pGraphView),
     m_sBoardFile(sBoardFile),
     m_pSettings(pSettings),
@@ -60,7 +60,7 @@ CBoard::CBoard(QGraphicsView *pGraphView, const QString &sBoardFile,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::setupBoard() {
+bool Board::setupBoard() {
   qDebug() << Q_FUNC_INFO;
   m_bFreestyle = m_pBoardConf->value("Freestyle", false).toBool();
 
@@ -88,7 +88,7 @@ bool CBoard::setupBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::drawBoard() {
+void Board::drawBoard() {
   QPen pen(this->readColor("Board/BorderColor"));
   QBrush brush(this->readColor("Board/Color"));
   this->addPolygon(m_BoardPoly, pen, brush);
@@ -98,7 +98,7 @@ void CBoard::drawBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::drawGrid() {
+void Board::drawGrid() {
   QLineF lineGrid;
   QPen pen(this->readColor("Board/GridColor"));
 
@@ -119,7 +119,7 @@ void CBoard::drawGrid() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::setupBlocks() {
+bool Board::setupBlocks() {
   qDebug() << Q_FUNC_INFO;
   m_nNumOfBlocks = 0;
   m_listBlocks.clear();
@@ -127,7 +127,7 @@ bool CBoard::setupBlocks() {
   if (this->createBlocks() &&
       this->createBarriers()) {
     // Add blocks to board
-    foreach (CBlock *pB, m_listBlocks) {
+    foreach (Block *pB, m_listBlocks) {
       this->addItem(pB);
     }
 
@@ -147,7 +147,7 @@ bool CBoard::setupBlocks() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::createBlocks() {
+bool Board::createBlocks() {
   const unsigned char nMaxNumOfBlocks(250);
   QPolygonF polygon;
   QString sPrefix("");
@@ -174,7 +174,7 @@ bool CBoard::createBlocks() {
     }
 
     // Create new block
-    m_listBlocks.append(new CBlock(
+    m_listBlocks.append(new Block(
                           i, polygon, this->readColor(sPrefix + "/Color"),
                           this->readColor(sPrefix + "/BorderColor"),
                           m_nGridSize, &m_listBlocks, m_pSettings,
@@ -201,7 +201,7 @@ bool CBoard::createBlocks() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::createBarriers() {
+bool Board::createBarriers() {
   const unsigned char nMaxNumOfBlocks(250);
   QPolygonF polygon;
   QString sPrefix("");
@@ -222,7 +222,7 @@ bool CBoard::createBarriers() {
     }
 
     // Create new barrier
-    m_listBlocks.append(new CBlock(
+    m_listBlocks.append(new Block(
                           m_nNumOfBlocks + i, polygon,
                           this->readColor(sPrefix + "/Color"),
                           this->readColor(sPrefix + "/BorderColor"),
@@ -238,7 +238,7 @@ bool CBoard::createBarriers() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QColor CBoard::readColor(const QString sKey) const {
+QColor Board::readColor(const QString sKey) const {
   QString sValue = m_pBoardConf->value(sKey, "").toString();
   QColor color("#FF00FF");
 
@@ -263,8 +263,8 @@ QColor CBoard::readColor(const QString sKey) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
-                              const bool bScale) {
+QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString sKey,
+                             const bool bScale) {
   QStringList sList;
   QStringList sListPoint;
   QPolygonF polygon;
@@ -305,7 +305,7 @@ QPolygonF CBoard::readPolygon(const QSettings *tmpSet, const QString sKey,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBoard::checkOrthogonality(QPointF point) const {
+bool Board::checkOrthogonality(QPointF point) const {
   static QList<QPointF> listPoints;
   static quint16 nCnt;
 
@@ -336,8 +336,8 @@ bool CBoard::checkOrthogonality(QPointF point) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF CBoard::readStartPosition(const QSettings *tmpSet,
-                                  const QString sKey) const {
+QPointF Board::readStartPosition(const QSettings *tmpSet,
+                                 const QString sKey) const {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();
@@ -369,7 +369,7 @@ QPointF CBoard::readStartPosition(const QSettings *tmpSet,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::checkPuzzleSolved() {
+void Board::checkPuzzleSolved() {
   QPainterPath boardPath;
   QTransform transform;
   transform /= m_nGridSize;
@@ -382,7 +382,7 @@ void CBoard::checkPuzzleSolved() {
   QPainterPath tempPath2;
   QPointF pos;
 
-  foreach (CBlock *block, m_listBlocks) {
+  foreach (Block *block, m_listBlocks) {
     pos = QPointF(block->pos().x() / m_nGridSize,
                   block->pos().y() / m_nGridSize);
 
@@ -427,7 +427,7 @@ void CBoard::checkPuzzleSolved() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::zoomIn() {
+void Board::zoomIn() {
   if (m_nGridSize <= 250) {
     m_nGridSize += 5;
   } else {
@@ -436,7 +436,7 @@ void CBoard::zoomIn() {
   this->doZoom();
 }
 
-void CBoard::zoomOut() {
+void Board::zoomOut() {
   if (m_nGridSize > 9) {
     m_nGridSize -= 5;
   } else {
@@ -448,7 +448,7 @@ void CBoard::zoomOut() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::doZoom() {
+void Board::doZoom() {
   qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
 
   // Get all QGraphicItems in scene
@@ -456,7 +456,7 @@ void CBoard::doZoom() {
 
   // Remove objects from scene which are no blocks
   foreach (QGraphicsItem *gi, objList) {
-    if (gi->type() != CBlock::Type) {
+    if (gi->type() != Block::Type) {
       this->removeItem(gi);
     }
   }
@@ -465,7 +465,7 @@ void CBoard::doZoom() {
   this->setupBoard();
 
   // Rescale blocks
-  foreach (CBlock *pB, m_listBlocks) {
+  foreach (Block *pB, m_listBlocks) {
     pB->rescaleBlock(m_nGridSize);
   }
 }
@@ -473,8 +473,8 @@ void CBoard::doZoom() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoard::saveGame(const QString &sSaveFile, const QString &sTime,
-                      const QString &sMoves) {
+void Board::saveGame(const QString &sSaveFile, const QString &sTime,
+                     const QString &sMoves) {
   QSettings saveConf(sSaveFile, QSettings::IniFormat);
   QByteArray ba;
   QString sPrefix("");

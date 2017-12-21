@@ -31,13 +31,13 @@
 #include <QLabel>
 #include <QMessageBox>
 
-#include "./CIQPuzzle.h"
-#include "ui_CIQPuzzle.h"
+#include "./iqpuzzle.h"
+#include "ui_iqpuzzle.h"
 
-CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
-                     QWidget *pParent)
+IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
+                   QWidget *pParent)
   : QMainWindow(pParent),
-    m_pUi(new Ui::CIQPuzzle),
+    m_pUi(new Ui::IQPuzzle),
     m_sCurrLang(""),
     m_pBoardDialog(NULL),
     m_pBoard(NULL),
@@ -65,8 +65,8 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
     this->setWindowIcon(QIcon::fromTheme("iqpuzzle", fallback));
   }
 
-  m_pHighscore = new CHighscore();
-  m_pSettings = new CSettings(m_sSharePath, this);
+  m_pHighscore = new Highscore();
+  m_pSettings = new Settings(m_sSharePath, this);
   connect (m_pSettings, SIGNAL(changeLang(QString)),
            this, SLOT(loadLanguage(QString)));
   connect (this, SIGNAL(updateUiLang()),
@@ -132,15 +132,13 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
   }
 }
 
-CIQPuzzle::~CIQPuzzle() {
+IQPuzzle::~IQPuzzle() {
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::setupMenu() {
-  qDebug() << Q_FUNC_INFO;
-
+void IQPuzzle::setupMenu() {
   // New game
   m_pUi->action_NewGame->setShortcut(QKeySequence::New);
   connect(m_pUi->action_NewGame, SIGNAL(triggered()),
@@ -204,8 +202,8 @@ void CIQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
-                             const QString sTime, const QString sMoves) {
+void IQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
+                            const QString sTime, const QString sMoves) {
   qDebug() << Q_FUNC_INFO;
 
   if (sBoardFile.isEmpty()) {
@@ -253,7 +251,7 @@ void CIQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::setGameTitle() {
+void IQPuzzle::setGameTitle() {
   QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
   quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
   QString sSolutions(QString::number(nSolutions));
@@ -269,13 +267,13 @@ void CIQPuzzle::setGameTitle() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QString CIQPuzzle::chooseBoard() {
+QString IQPuzzle::chooseBoard() {
   if (NULL != m_pBoardDialog) {
     delete m_pBoardDialog;
   }
-  m_pBoardDialog = new CBoardDialog(this, trUtf8("Load board"),
-                                    m_sSharePath + "/boards",
-                                    trUtf8("Board files") + " (*.conf)");
+  m_pBoardDialog = new BoardDialog(this, trUtf8("Load board"),
+                                   m_sSharePath + "/boards",
+                                   trUtf8("Board files") + " (*.conf)");
 
   if (m_pBoardDialog->exec()) {
     QStringList sListFiles;
@@ -291,12 +289,11 @@ QString CIQPuzzle::chooseBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::createBoard() {
+void IQPuzzle::createBoard() {
   if (NULL != m_pBoard) {
     delete m_pBoard;
   }
-  m_pBoard = new CBoard(m_pGraphView, m_sBoardFile,
-                        m_pSettings, m_sSavedGame);
+  m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings, m_sSavedGame);
   connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
           this, SLOT(setMinWindowSize(const QSize)));
   connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
@@ -331,7 +328,7 @@ void CIQPuzzle::createBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::randomGame() {
+void IQPuzzle::randomGame() {
   qDebug() << Q_FUNC_INFO;
   if (!QFile::exists(m_sSharePath + "/boards")) {
     qWarning() << "Games share path does not exist" << m_sSharePath;
@@ -355,7 +352,7 @@ void CIQPuzzle::randomGame() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QStringList CIQPuzzle::generateFileList() {
+QStringList IQPuzzle::generateFileList() {
   QStringList slistBoards;
   QDir boardsDir(m_sSharePath + "/boards");
   QFileInfoList fiListFiles = boardsDir.entryInfoList(
@@ -387,14 +384,14 @@ QStringList CIQPuzzle::generateFileList() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::restartGame() {
+void IQPuzzle::restartGame() {
   this->startNewGame(m_sBoardFile, m_sSavedGame, m_sSavedTime, m_sSavedMoves);
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::loadGame(QString sSaveFile) {
+void IQPuzzle::loadGame(QString sSaveFile) {
   if (sSaveFile.isEmpty()) {
     sSaveFile = QFileDialog::getOpenFileName(this, trUtf8("Load game"),
                                              m_userDataDir.absolutePath(),
@@ -421,7 +418,7 @@ void CIQPuzzle::loadGame(QString sSaveFile) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::saveGame() {
+void IQPuzzle::saveGame() {
   QString sFile = QFileDialog::getSaveFileName(this, trUtf8("Save game"),
                                                m_userDataDir.absolutePath(),
                                                trUtf8("Save games") + "(*.iqsav)");
@@ -435,7 +432,7 @@ void CIQPuzzle::saveGame() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::pauseGame(const bool bPaused) {
+void IQPuzzle::pauseGame(const bool bPaused) {
   if (!m_bSolved) {
     if (bPaused) {
       m_pTimer->stop();
@@ -452,7 +449,7 @@ void CIQPuzzle::pauseGame(const bool bPaused) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::setMinWindowSize(const QSize size) {
+void IQPuzzle::setMinWindowSize(const QSize size) {
   static QSize size2(100, 100);
   if (!size.isEmpty()) {
     size2 = size;
@@ -468,7 +465,7 @@ void CIQPuzzle::setMinWindowSize(const QSize size) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::incrementMoves() {
+void IQPuzzle::incrementMoves() {
   m_nMoves++;
   m_pStatusLabelMoves->setText(
         trUtf8("Moves") + ": " + QString::number(m_nMoves));
@@ -477,7 +474,7 @@ void CIQPuzzle::incrementMoves() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::updateTimer() {
+void IQPuzzle::updateTimer() {
   m_Time = m_Time.addSecs(1);
   m_pStatusLabelTime->setText(
         trUtf8("Time") + ": " + m_Time.toString("hh:mm:ss"));
@@ -486,7 +483,7 @@ void CIQPuzzle::updateTimer() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::solvedPuzzle() {
+void IQPuzzle::solvedPuzzle() {
   QFileInfo fi(m_sBoardFile);
   m_pTimer->stop();
   m_bSolved = true;
@@ -510,7 +507,7 @@ void CIQPuzzle::solvedPuzzle() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CIQPuzzle::loadLanguage(const QString &sLang) {
+void IQPuzzle::loadLanguage(const QString &sLang) {
   if (m_sCurrLang != sLang) {
     m_sCurrLang = sLang;
     if (!this->switchTranslator(m_translatorQt, "qt_" + sLang,
@@ -529,8 +526,8 @@ void CIQPuzzle::loadLanguage(const QString &sLang) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CIQPuzzle::switchTranslator(QTranslator &translator,
-                                 const QString &sFile, const QString &sPath) {
+bool IQPuzzle::switchTranslator(QTranslator &translator,
+                                const QString &sFile, const QString &sPath) {
   qApp->removeTranslator(&translator);
   if (translator.load(sFile, sPath)) {
     qApp->installTranslator(&translator);
@@ -546,7 +543,7 @@ bool CIQPuzzle::switchTranslator(QTranslator &translator,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::showHighscore() {
+void IQPuzzle::showHighscore() {
   QFileInfo fi(m_sBoardFile);
   emit showHighscore(fi.baseName());
 }
@@ -554,14 +551,14 @@ void CIQPuzzle::showHighscore() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::reportBug() const {
+void IQPuzzle::reportBug() const {
   QDesktopServices::openUrl(QUrl("https://github.com/ElTh0r0/iqpuzzle/issues"));
 }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CIQPuzzle::showInfoBox() {
+void IQPuzzle::showInfoBox() {
   QMessageBox::about(this, trUtf8("About"),
                      QString("<center>"
                              "<big><b>%1 %2</b></big><br />"
@@ -596,7 +593,7 @@ void CIQPuzzle::showInfoBox() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::changeEvent(QEvent *pEvent) {
+void IQPuzzle::changeEvent(QEvent *pEvent) {
   if (0 != pEvent) {
     if (QEvent::LanguageChange == pEvent->type()) {
       m_pUi->retranslateUi(this);
@@ -620,7 +617,7 @@ void CIQPuzzle::changeEvent(QEvent *pEvent) {
 // ---------------------------------------------------------------------------
 
 // Close event (File -> Close or X)
-void CIQPuzzle::closeEvent(QCloseEvent *pEvent) {
+void IQPuzzle::closeEvent(QCloseEvent *pEvent) {
   pEvent->accept();
   /*
   int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +

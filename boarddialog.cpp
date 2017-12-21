@@ -1,5 +1,5 @@
 /**
- * \file CBoardDialog.cpp
+ * \file boarddialog.cpp
  *
  * \section LICENSE
  *
@@ -28,10 +28,10 @@
 #include <QSettings>
 #include <QVBoxLayout>
 
-#include "./CBoardDialog.h"
+#include "./boarddialog.h"
 
-CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
-                           const QString &sDirectory, const QString &sFilter)
+BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
+                         const QString &sDirectory, const QString &sFilter)
   : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
   this->setObjectName("BoardFileDialog");
   // Needed for Windows, otherwise native dialog crashes while adapting layout
@@ -62,7 +62,7 @@ CBoardDialog::CBoardDialog(QWidget *pParent, const QString &sCaption,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBoardDialog::OnCurrentChanged(const QString &sPath) {
+void BoardDialog::OnCurrentChanged(const QString &sPath) {
   QSettings tmpSet(sPath, QSettings::IniFormat);
   quint32 nSolutions(tmpSet.value("PossibleSolutions", 0).toUInt());
   QString sSolutions(QString::number(nSolutions));

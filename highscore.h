@@ -1,5 +1,5 @@
 /**
- * \file CSettings.h
+ * \file highscore.h
  *
  * \section LICENSE
  *
@@ -21,57 +21,39 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
- * Class definition for settings.
+ * Class definition for highscore.
  */
 
-#ifndef IQPUZZLE_CSETTINGS_H_
-#define IQPUZZLE_CSETTINGS_H_
+#ifndef IQPUZZLE_HIGHSCORE_H_
+#define IQPUZZLE_HIGHSCORE_H_
 
-#include <QDialog>
+#include <QObject>
 #include <QSettings>
-
-#include "./CSettings.h"
-
-namespace Ui {
-class CSettingsDialog;
-}
+#include <QTime>
 
 /**
- * \class CSettings
- * \brief Settings dialog.
+ * \class Highscore
+ * \brief Generating and showing highscore.
  */
-class CSettings : public QDialog {
+class Highscore : public QObject {
   Q_OBJECT
 
  public:
-  explicit CSettings(const QString &sSharePath, QWidget *pParent = 0);
-  virtual ~CSettings();
-
-  QList<quint8> getMouseControls() const;
-  quint8 getShift() const;
-  QString getLanguage();
-
- signals:
-  void changeLang(const QString &sLang);
+  explicit Highscore(QWidget *pParent = 0);
 
  public slots:
-  void accept();
-  void reject();
-  void updateUiLang();
+  void showHighscore(const QString &sBoard);
+  void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                      const QTime &tTime);
 
  private:
-  void readSettings();
+  QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
+  void insertHighscore(const QString &sBoard, const quint8 &nPosition,
+                       const quint32 &nMoves, const QTime &tTime);
 
   QWidget *m_pParent;
-  Ui::CSettingsDialog *m_pUi;
-  QSettings *m_pSettings;
-
-  QString m_sGuiLanguage;
-  const QString m_sSharePath;
-  const quint8 m_nSHIFT;
-  QStringList m_sListMouseButtons;
-  QList<quint8> m_listMouseButtons;
-  QList<quint8> m_listMouseControls;
+  QSettings *m_pHighscore;
+  const quint8 m_nMAXPOS;
 };
 
-#endif  // IQPUZZLE_CSETTINGS_H_
+#endif  // IQPUZZLE_HIGHSCORE_H_

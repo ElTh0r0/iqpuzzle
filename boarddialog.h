@@ -1,5 +1,5 @@
 /**
- * \file CHighscore.h
+ * \file boarddialog.h
  *
  * \section LICENSE
  *
@@ -21,39 +21,35 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
- * Class definition for highscore.
+ * Class definition for board loading dialog.
  */
 
-#ifndef IQPUZZLE_CHIGHSCORE_H_
-#define IQPUZZLE_CHIGHSCORE_H_
+#ifndef IQPUZZLE_BOARDDIALOG_H_
+#define IQPUZZLE_BOARDDIALOG_H_
 
-#include <QObject>
-#include <QSettings>
-#include <QTime>
+#include <QFileDialog>
+#include <QLabel>
 
 /**
- * \class CHighscore
- * \brief Generating and showing highscore.
+ * \class BoardDialog
+ * \brief Extended file dialog for showing a board preview.
  */
-class CHighscore : public QObject {
+class BoardDialog : public QFileDialog {
   Q_OBJECT
 
  public:
-  explicit CHighscore(QWidget *pParent = 0);
+  explicit BoardDialog(QWidget *pParent = 0,
+                       const QString &sCaption = QString(),
+                       const QString &sDirectory = QString(),
+                       const QString &sFilter = QString());
 
- public slots:
-  void showHighscore(const QString &sBoard);
-  void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                      const QTime &tTime);
+ protected slots:
+  void OnCurrentChanged(const QString &sPath);
 
  private:
-  QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
-  void insertHighscore(const QString &sBoard, const quint8 &nPosition,
-                       const quint32 &nMoves, const QTime &tTime);
-
-  QWidget *m_pParent;
-  QSettings *m_pHighscore;
-  const quint8 m_nMaxPos;
+  QLabel *m_pSolutions;
+  QLabel *m_pPreviewCaption;
+  QLabel *m_pPreview;
 };
 
-#endif  // IQPUZZLE_CHIGHSCORE_H_
+#endif  // IQPUZZLE_BOARDDIALOG_H_

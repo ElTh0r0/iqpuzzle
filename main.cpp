@@ -33,7 +33,7 @@
 #include <QApplication>
 #include <QTextStream>
 
-#include "./CIQPuzzle.h"
+#include "./iqpuzzle.h"
 
 QFile logfile;
 QTextStream out(&logfile);
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
   setupLogger(userDataDir.absolutePath() + "/" + sDebugFile,
               app.applicationName(), app.applicationVersion());
 
-  CIQPuzzle myIQPuzzle(userDataDir, sSharePath);
+  IQPuzzle myIQPuzzle(userDataDir, sSharePath);
   myIQPuzzle.show();
   int nRet = app.exec();
 

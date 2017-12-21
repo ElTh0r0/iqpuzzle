@@ -1,5 +1,5 @@
 /**
- * \file CBlock.h
+ * \file block.h
  *
  * \section LICENSE
  *
@@ -24,27 +24,27 @@
  * Class definition for a block.
  */
 
-#ifndef IQPUZZLE_CBLOCK_H_
-#define IQPUZZLE_CBLOCK_H_
+#ifndef IQPUZZLE_BLOCK_H_
+#define IQPUZZLE_BLOCK_H_
 
 #include <QGraphicsObject>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QPainter>
 
-#include "./CSettings.h"
+#include "./settings.h"
 
 /**
- * \class CBlock
+ * \class Block
  * \brief Block handling (move, rotate, collision check).
  */
-class CBlock : public QGraphicsObject {
+class Block : public QGraphicsObject {
   Q_OBJECT
 
  public:
-  CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-         quint16 nGrid, QList<CBlock *> *pListBlocks, CSettings *pSettings,
-         QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
+  Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
+        quint16 nGrid, QList<Block *> *pListBlocks, Settings *pSettings,
+        QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
 
   QRectF boundingRect() const;
   QPainterPath shape() const;
@@ -86,8 +86,8 @@ class CBlock : public QGraphicsObject {
   QBrush m_bgBrush;
   QPen m_borderPen;
   quint16 m_nGrid;
-  QList<CBlock *> *m_pListBlocks;
-  CSettings *m_pSettings;
+  QList<Block *> *m_pListBlocks;
+  Settings *m_pSettings;
   bool m_bActive;
   QPixmap m_CollTexture;
 
@@ -97,4 +97,4 @@ class CBlock : public QGraphicsObject {
   QGraphicsSimpleTextItem m_ItemNumberText;
 };
 
-#endif  // IQPUZZLE_CBLOCK_H_
+#endif  // IQPUZZLE_BLOCK_H_

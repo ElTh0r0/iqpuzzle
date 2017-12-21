@@ -1,5 +1,5 @@
 /**
- * \file CIQPuzzle.h
+ * \file iqpuzzle.h
  *
  * \section LICENSE
  *
@@ -24,8 +24,8 @@
  * Class definition main application.
  */
 
-#ifndef IQPUZZLE_CIQPUZZLE_H_
-#define IQPUZZLE_CIQPUZZLE_H_
+#ifndef IQPUZZLE_IQPUZZLE_H_
+#define IQPUZZLE_IQPUZZLE_H_
 
 #include <QtCore>
 #include <QGraphicsTextItem>
@@ -34,26 +34,26 @@
 #include <QTimer>
 #include <QMainWindow>
 
-#include "./CBoard.h"
-#include "./CBoardDialog.h"
-#include "./CHighscore.h"
-#include "./CSettings.h"
+#include "./board.h"
+#include "./boarddialog.h"
+#include "./highscore.h"
+#include "./settings.h"
 
 namespace Ui {
-class CIQPuzzle;
+class IQPuzzle;
 }
 
 /**
- * \class CIQPuzzle
+ * \class IQPuzzle
  * \brief Main application definition (gui, objects, etc.)
  */
-class CIQPuzzle : public QMainWindow {
+class IQPuzzle : public QMainWindow {
   Q_OBJECT
 
  public:
-  explicit CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
-                     QWidget *pParent = 0);
-  ~CIQPuzzle();
+  explicit IQPuzzle(const QDir userDataDir, const QDir &sharePath,
+                    QWidget *pParent = 0);
+  ~IQPuzzle();
 
  protected:
   void changeEvent(QEvent *pEvent);
@@ -93,14 +93,14 @@ class CIQPuzzle : public QMainWindow {
   void setGameTitle();
   QStringList generateFileList();
 
-  Ui::CIQPuzzle *m_pUi;
+  Ui::IQPuzzle *m_pUi;
   QTranslator m_translator;  // App translations
   QTranslator m_translatorQt;  // Qt translations
   QString m_sCurrLang;
   QGraphicsView *m_pGraphView;
   QGraphicsScene *m_pScenePaused;
-  CBoardDialog *m_pBoardDialog;
-  CBoard *m_pBoard;
+  BoardDialog *m_pBoardDialog;
+  Board *m_pBoard;
   QString m_sBoardFile;
   QString m_sSavedGame;
   const QDir m_userDataDir;
@@ -114,8 +114,8 @@ class CIQPuzzle : public QMainWindow {
   QTimer *m_pTimer;
   QGraphicsTextItem *m_pTextPaused;
   bool m_bSolved;
-  CHighscore *m_pHighscore;
-  CSettings *m_pSettings;
+  Highscore *m_pHighscore;
+  Settings *m_pSettings;
 };
 
-#endif  // IQPUZZLE_CIQPUZZLE_H_
+#endif  // IQPUZZLE_IQPUZZLE_H_

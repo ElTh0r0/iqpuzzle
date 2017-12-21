@@ -1,5 +1,5 @@
 /**
- * \file CBlock.cpp
+ * \file block.cpp
  *
  * \section LICENSE
  *
@@ -26,11 +26,11 @@
 
 #include <QDebug>
 
-#include "./CBlock.h"
+#include "./block.h"
 
-CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-               quint16 nGrid, QList<CBlock *> *pListBlocks,
-               CSettings *pSettings, QPointF posTopLeft, const bool bBarrier)
+Block::Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
+             quint16 nGrid, QList<Block *> *pListBlocks,
+             Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
   : m_nID(nID),
     m_PolyShape(shape),
     m_bgBrush(bgcolor),
@@ -67,11 +67,11 @@ CBlock::CBlock(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QRectF CBlock::boundingRect() const {
+QRectF Block::boundingRect() const {
   return m_PolyShape.boundingRect();
 }
 
-QPainterPath CBlock::shape() const {
+QPainterPath Block::shape() const {
   QPainterPath path;
   path.addPolygon(m_PolyShape);
   return path;
@@ -80,9 +80,9 @@ QPainterPath CBlock::shape() const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::paint(QPainter *painter,
-                   const QStyleOptionGraphicsItem *option,
-                   QWidget *widget) {
+void Block::paint(QPainter *painter,
+                  const QStyleOptionGraphicsItem *option,
+                  QWidget *widget) {
   Q_UNUSED(option);
   Q_UNUSED(widget);
 
@@ -112,7 +112,7 @@ void CBlock::paint(QPainter *painter,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
+void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
   this->resetBrushStyle();
 
   qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
@@ -144,7 +144,7 @@ void CBlock::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
+void Block::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
   if (0 == m_pSettings->getMouseControls().indexOf(p_Event->buttons())) {
     this->setPos(p_Event->scenePos() - m_posMouseSelected);
     update();
@@ -154,7 +154,7 @@ void CBlock::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
+void Block::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
   if (0 == m_pSettings->getMouseControls().indexOf(p_Event->button())) {
     this->moveBlock(true);
     update();
@@ -166,7 +166,7 @@ void CBlock::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
+void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
   qint8 nIndex(m_pSettings->getMouseControls().indexOf(
@@ -190,7 +190,7 @@ void CBlock::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::moveBlock(const bool bRelease) {
+void Block::moveBlock(const bool bRelease) {
   if (!bRelease) {
     m_bActive = true;
 
@@ -226,7 +226,7 @@ void CBlock::moveBlock(const bool bRelease) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::rotateBlock(const int nDelta) {
+void Block::rotateBlock(const int nDelta) {
   qint8 nAngle(0);
   qint32 nTranslateX(0);
   qint32 nTranslateY(0);
@@ -254,7 +254,7 @@ void CBlock::rotateBlock(const int nDelta) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::flipBlock() {
+void Block::flipBlock() {
   this->prepareGeometryChange();
   // qDebug() << "Before flip" << m_nID << "-" << m_PolyShape;
   QTransform transform = QTransform::fromScale(-1, 1);
@@ -268,7 +268,7 @@ void CBlock::flipBlock() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::checkBlockIntersection() {
+void Block::checkBlockIntersection() {
   QPainterPath thisPath = this->shape();
   thisPath.translate(QPointF(this->pos().x() / m_nGrid,
                              this->pos().y() / m_nGrid));
@@ -286,23 +286,23 @@ void CBlock::checkBlockIntersection() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::resetBrushStyle() const {
-  foreach (CBlock *block, *m_pListBlocks) {
+void Block::resetBrushStyle() const {
+  foreach (Block *block, *m_pListBlocks) {
     block->setBrushStyle(Qt::SolidPattern);
   }
 }
 
-void CBlock::setBrushStyle(Qt::BrushStyle style) {
+void Block::setBrushStyle(Qt::BrushStyle style) {
   m_bgBrush.setStyle(style);
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool CBlock::checkCollision(const QPainterPath thisPath) {
+bool Block::checkCollision(const QPainterPath thisPath) {
   QPainterPath collidingPath;
   QPainterPath intersectedPath;
-  foreach (CBlock *block, *m_pListBlocks) {
+  foreach (Block *block, *m_pListBlocks) {
     if (block->getIndex() != m_nID
         && this->collidesWithItem(block)) {
       collidingPath = block->shape();
@@ -331,7 +331,7 @@ bool CBlock::checkCollision(const QPainterPath thisPath) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF CBlock::snapToGrid(const QPointF point) const {
+QPointF Block::snapToGrid(const QPointF point) const {
   return QPointF(qRound(point.x() / m_nGrid) * m_nGrid,   // x
                  qRound(point.y() / m_nGrid) * m_nGrid);  // y
 }
@@ -339,14 +339,14 @@ QPointF CBlock::snapToGrid(const QPointF point) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::moveBlockGrid(const QPointF pos) {
+void Block::moveBlockGrid(const QPointF pos) {
   this->setPos(pos * m_nGrid);
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::setNewZValue(const qint16 nZ) {
+void Block::setNewZValue(const qint16 nZ) {
   if (nZ < 0) {
     if (this->zValue() > 1) {
       this->setZValue(this->zValue() - 1);
@@ -361,7 +361,7 @@ void CBlock::setNewZValue(const qint16 nZ) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CBlock::rescaleBlock(const quint16 nNewScale) {
+void Block::rescaleBlock(const quint16 nNewScale) {
   this->prepareGeometryChange();
 
   QPointF tmpTopLeft = this->pos() / m_nGrid * nNewScale;
@@ -376,19 +376,19 @@ void CBlock::rescaleBlock(const quint16 nNewScale) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-int CBlock::type() const {
+int Block::type() const {
   // Enable the use of qgraphicsitem_cast with this item
   return Type;
 }
 
-quint16 CBlock::getIndex() const {
+quint16 Block::getIndex() const {
   return m_nID;
 }
 
-QPointF CBlock::getPosition() const {
+QPointF Block::getPosition() const {
   return this->pos();
 }
 
-QPolygonF CBlock::getPolygon() const {
+QPolygonF Block::getPolygon() const {
   return this->m_PolyShape;
 }

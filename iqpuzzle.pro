@@ -41,25 +41,25 @@ QT           += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES      += main.cpp\
-                CIQPuzzle.cpp \
-                CBoard.cpp \
-                CBlock.cpp \
-                CBoardDialog.cpp \
-                CHighscore.cpp \
-                CSettings.cpp
+                iqpuzzle.cpp \
+                board.cpp \
+                block.cpp \
+                boarddialog.cpp \
+                highscore.cpp \
+                settings.cpp
 
-HEADERS      += CIQPuzzle.h \
-                CBoard.h \
-                CBlock.h \
-                CBoardDialog.h \
-                CHighscore.h \
-                CSettings.h
+HEADERS      += iqpuzzle.h \
+                board.h \
+                block.h \
+                boarddialog.h \
+                highscore.h \
+                settings.h
 
-FORMS        += CIQPuzzle.ui \
-                CSettings.ui
+FORMS        += iqpuzzle.ui \
+                settings.ui
 
 RESOURCES     = res/iqpuzzle_resources.qrc
-win32:RC_FILE = res/iqpuzzle.rc
+win32:RC_FILE = res/iqpuzzle_win.rc
 os2:RC_FILE   = res/iqpuzzle_os2.rc
 
 TRANSLATIONS += lang/iqpuzzle_bg.ts \

@@ -1,5 +1,5 @@
 /**
- * \file CSettings.cpp
+ * \file settings.cpp
  *
  * \section LICENSE
  *
@@ -28,16 +28,16 @@
 #include <QDir>
 #include <QMessageBox>
 
-#include "./CSettings.h"
-#include "ui_CSettings.h"
+#include "./settings.h"
+#include "ui_settings.h"
 
-CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
+Settings::Settings(const QString &sSharePath, QWidget *pParent)
   : QDialog(pParent),
     m_sSharePath(sSharePath),
     m_nSHIFT(0xF0) {
-  qDebug() << "Calling" << Q_FUNC_INFO;
+  qDebug() << Q_FUNC_INFO;
 
-  m_pUi = new Ui::CSettingsDialog();
+  m_pUi = new Ui::SettingsDialog();
   m_pUi->setupUi(this);
   this->setWindowFlags(this->windowFlags()
                        & ~Qt::WindowContextHelpButtonHint);
@@ -85,7 +85,7 @@ CSettings::CSettings(const QString &sSharePath, QWidget *pParent)
   this->readSettings();
 }
 
-CSettings::~CSettings() {
+Settings::~Settings() {
   if (m_pUi) {
     delete m_pUi;
     m_pUi = NULL;
@@ -95,8 +95,8 @@ CSettings::~CSettings() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CSettings::accept() {
-  qDebug() << "Calling" << Q_FUNC_INFO;
+void Settings::accept() {
+  qDebug() << Q_FUNC_INFO;
 
   QList<quint8> tmp_listMouseControls;
   tmp_listMouseControls << m_listMouseButtons[
@@ -139,7 +139,7 @@ void CSettings::accept() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CSettings::reject() {
+void Settings::reject() {
   this->readSettings();
   QDialog::reject();
 }
@@ -147,7 +147,7 @@ void CSettings::reject() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CSettings::readSettings() {
+void Settings::readSettings() {
   m_sGuiLanguage = m_pSettings->value("GuiLanguage", "auto").toString();
   if (-1 != m_pUi->cbGuiLanguage->findText(m_sGuiLanguage)) {
     m_pUi->cbGuiLanguage->setCurrentIndex(
@@ -180,21 +180,21 @@ void CSettings::readSettings() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-quint8 CSettings::getShift() const {
+quint8 Settings::getShift() const {
   return m_nSHIFT;
 }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-QList<quint8> CSettings::getMouseControls() const {
+QList<quint8> Settings::getMouseControls() const {
   return m_listMouseControls;
 }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void CSettings::updateUiLang() {
+void Settings::updateUiLang() {
   m_pUi->retranslateUi(this);
 
   m_sListMouseButtons.clear();
@@ -220,7 +220,7 @@ void CSettings::updateUiLang() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-QString CSettings::getLanguage() {
+QString Settings::getLanguage() {
   if ("auto" == m_sGuiLanguage) {
 #ifdef Q_OS_UNIX
     QByteArray lang = qgetenv("LANG");

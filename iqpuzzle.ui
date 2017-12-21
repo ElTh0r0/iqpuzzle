@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CIQPuzzle</class>
- <widget class="QMainWindow" name="CIQPuzzle">
+ <class>IQPuzzle</class>
+ <widget class="QMainWindow" name="IQPuzzle">
   <property name="geometry">
    <rect>
     <x>0</x>
