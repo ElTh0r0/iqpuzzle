@@ -89,8 +89,13 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
   m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
 
+  // Seed random number generator
+  QTime time = QTime::currentTime();
+  qsrand((uint)time.msec());
+
   // Choose board via command line
   QString sStartBoard("");
+  QString sLoadBoard("");
   if (qApp->arguments().size() > 1) {
     foreach (QString sBoard, qApp->arguments()) {
       if (sBoard.endsWith(".conf", Qt::CaseInsensitive)) {
@@ -101,24 +106,30 @@ CIQPuzzle::CIQPuzzle(const QDir userDataDir, const QDir &sharePath,
           qWarning() << "Specified board not found:" << sBoard;
           break;
         }
+      } else if (sBoard.endsWith(".iqsav", Qt::CaseInsensitive)) {
+        if (QFile::exists(sBoard)) {
+          sLoadBoard = sBoard;
+          break;
+        } else {
+          qWarning() << "Specified save game not found:" << sBoard;
+          break;
+        }
       }
     }
   }
 
-  // Start rectangle_001 as default
-  if (sStartBoard.isEmpty()) {
-    if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
-      sStartBoard = m_sSharePath + "/boards/rectangles/rectangle_001.conf";
-    } else {
-      qWarning() << "Games share path does not exist:" << m_sSharePath;
+  if (!sLoadBoard.isEmpty()) {
+      this->loadGame(sLoadBoard);
+  } else {
+    if (sStartBoard.isEmpty()) {  // Start rectangle_001 as default
+      if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
+        sStartBoard = m_sSharePath + "/boards/rectangles/rectangle_001.conf";
+      } else {
+        qWarning() << "Games share path does not exist:" << m_sSharePath;
+      }
     }
+    this->startNewGame(sStartBoard);
   }
-
-  // Seed random number generator
-  QTime time = QTime::currentTime();
-  qsrand((uint)time.msec());
-
-  this->startNewGame(sStartBoard);
 }
 
 CIQPuzzle::~CIQPuzzle() {
@@ -383,11 +394,15 @@ void CIQPuzzle::restartGame() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void CIQPuzzle::loadGame() {
-  QString sSaved = QFileDialog::getOpenFileName(this, trUtf8("Load game"),
-                                                m_userDataDir.absolutePath());
-  if (!sSaved.isEmpty()) {
-    QSettings tmpSet(sSaved, QSettings::IniFormat);
+void CIQPuzzle::loadGame(QString sSaveFile) {
+  if (sSaveFile.isEmpty()) {
+    sSaveFile = QFileDialog::getOpenFileName(this, trUtf8("Load game"),
+                                             m_userDataDir.absolutePath(),
+                                             trUtf8("Save games") + "(*.iqsav)");
+  }
+
+  if (!sSaveFile.isEmpty()) {
+    QSettings tmpSet(sSaveFile, QSettings::IniFormat);
     QString sBoard(tmpSet.value("BoardFile", "").toString());
     if (!sBoard.isEmpty()) {
       QByteArray ba(tmpSet.value("NumOfMoves", "").toByteArray());
@@ -395,7 +410,7 @@ void CIQPuzzle::loadGame() {
       ba.clear();
       ba = tmpSet.value("ElapsedTime", "").toByteArray();
       m_sSavedTime = QByteArray::fromBase64(ba);
-      this->startNewGame(sBoard, sSaved, m_sSavedTime, m_sSavedMoves);
+      this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
     } else {
       QMessageBox::warning(this, qApp->applicationName(),
                            trUtf8("Invalid saved puzzle."));
@@ -408,7 +423,8 @@ void CIQPuzzle::loadGame() {
 
 void CIQPuzzle::saveGame() {
   QString sFile = QFileDialog::getSaveFileName(this, trUtf8("Save game"),
-                                               m_userDataDir.absolutePath());
+                                               m_userDataDir.absolutePath(),
+                                               trUtf8("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
     m_sSavedMoves = QString::number(m_nMoves);
     m_sSavedTime = m_Time.toString("hh:mm:ss");

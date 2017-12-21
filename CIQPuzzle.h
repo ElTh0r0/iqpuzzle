@@ -77,7 +77,7 @@ class CIQPuzzle : public QMainWindow {
   void createBoard();
   void randomGame();
   void restartGame();
-  void loadGame();
+  void loadGame(QString sSaveFile = "");
   void saveGame();
   void pauseGame(const bool bPaused);
   void updateTimer();
