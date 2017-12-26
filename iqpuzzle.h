@@ -75,7 +75,7 @@ class IQPuzzle : public QMainWindow {
                     const QString sTime = "", const QString sMoves = "");
   QString chooseBoard();
   void createBoard();
-  void randomGame();
+  void randomGame(const int nChoice);
   void restartGame();
   void loadGame(QString sSaveFile = "");
   void saveGame();
@@ -91,7 +91,7 @@ class IQPuzzle : public QMainWindow {
                         const QString &sPath);
   void setupMenu();
   void setGameTitle();
-  QStringList generateFileList();
+  void generateFileLists();
 
   Ui::IQPuzzle *m_pUi;
   QTranslator m_translator;  // App translations
@@ -116,6 +116,17 @@ class IQPuzzle : public QMainWindow {
   bool m_bSolved;
   Highscore *m_pHighscore;
   Settings *m_pSettings;
+
+  QSignalMapper *m_pSigMapRandom;
+  QList<QStringList *> m_sListFiles;
+  QStringList m_sListAll;
+  QStringList m_sListAllUnsolved;
+  QStringList m_sListEasy;
+  QStringList m_sListEasyUnsolved;
+  QStringList m_sListMedium;
+  QStringList m_sListMediumUnsolved;
+  QStringList m_sListHard;
+  QStringList m_sListHardUnsolved;
 };
 
 #endif  // IQPUZZLE_IQPUZZLE_H_

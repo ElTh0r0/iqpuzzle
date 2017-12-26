@@ -158,6 +158,11 @@ void Settings::readSettings() {
   }
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
 
+  m_nEasy = m_pSettings->value("ThresholdEasy", 200).toUInt();
+  if (0 == m_nEasy) m_nEasy = 200;
+  m_nHard = m_pSettings->value("ThresholdHard", 10).toUInt();
+  if (0 == m_nHard) m_nHard = 10;
+
   m_listMouseControls.clear();
   m_listMouseControls << 0 << 0 << 0;
   m_pSettings->beginGroup("MouseControls");
@@ -184,11 +189,16 @@ quint8 Settings::getShift() const {
   return m_nSHIFT;
 }
 
-// ----------------------------------------------------------------------------
-// ----------------------------------------------------------------------------
-
 QList<quint8> Settings::getMouseControls() const {
   return m_listMouseControls;
+}
+
+quint16 Settings::getEasy() const {
+  return m_nEasy;
+}
+
+quint16 Settings::getHard() const {
+  return m_nHard;
 }
 
 // ----------------------------------------------------------------------------

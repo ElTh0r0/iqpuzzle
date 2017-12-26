@@ -92,6 +92,7 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
   // Seed random number generator
   QTime time = QTime::currentTime();
   qsrand((uint)time.msec());
+  this->generateFileLists();
 
   // Choose board via command line
   QString sStartBoard("");
@@ -104,6 +105,8 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
           break;
         } else {
           qWarning() << "Specified board not found:" << sBoard;
+          QMessageBox::warning(this, trUtf8("File not found"),
+                               trUtf8("The chosen file does not exist."));
           break;
         }
       } else if (sBoard.endsWith(".iqsav", Qt::CaseInsensitive)) {
@@ -112,6 +115,8 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
           break;
         } else {
           qWarning() << "Specified save game not found:" << sBoard;
+          QMessageBox::warning(this, trUtf8("File not found"),
+                               trUtf8("The chosen file does not exist."));
           break;
         }
       }
@@ -126,6 +131,8 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
         sStartBoard = m_sSharePath + "/boards/rectangles/rectangle_001.conf";
       } else {
         qWarning() << "Games share path does not exist:" << m_sSharePath;
+        QMessageBox::warning(this, qApp->applicationName(),
+                             trUtf8("Games share path does not exist!"));
       }
     }
     this->startNewGame(sStartBoard);
@@ -145,9 +152,41 @@ void IQPuzzle::setupMenu() {
           this, SLOT(startNewGame()));
 
   // Random game
-  m_pUi->action_RandomGame->setShortcut(Qt::CTRL + Qt::Key_R);
-  connect(m_pUi->action_RandomGame, SIGNAL(triggered()),
-          this, SLOT(randomGame()));
+  m_pSigMapRandom = new QSignalMapper(this);
+  m_pUi->actionAll->setShortcut(Qt::CTRL + Qt::Key_1);
+  m_pSigMapRandom->setMapping(m_pUi->actionAll, 1);
+  connect(m_pUi->actionAll, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionEasy->setShortcut(Qt::CTRL + Qt::Key_2);
+  m_pSigMapRandom->setMapping(m_pUi->actionEasy, 2);
+  connect(m_pUi->actionEasy, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionMedium->setShortcut(Qt::CTRL + Qt::Key_3);
+  m_pSigMapRandom->setMapping(m_pUi->actionMedium, 3);
+  connect(m_pUi->actionMedium, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionHard->setShortcut(Qt::CTRL + Qt::Key_4);
+  m_pSigMapRandom->setMapping(m_pUi->actionHard, 4);
+  connect(m_pUi->actionHard, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionAllUnsolved->setShortcut(Qt::CTRL + Qt::Key_5);
+  m_pSigMapRandom->setMapping(m_pUi->actionAllUnsolved, 5);
+  connect(m_pUi->actionAllUnsolved, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionEasyUnsolved->setShortcut(Qt::CTRL + Qt::Key_6);
+  m_pSigMapRandom->setMapping(m_pUi->actionEasyUnsolved, 6);
+  connect(m_pUi->actionEasyUnsolved, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionMediumUnsolved->setShortcut(Qt::CTRL + Qt::Key_7);
+  m_pSigMapRandom->setMapping(m_pUi->actionMediumUnsolved, 7);
+  connect(m_pUi->actionMediumUnsolved, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  m_pUi->actionHardUnsolved->setShortcut(Qt::CTRL + Qt::Key_8);
+  m_pSigMapRandom->setMapping(m_pUi->actionHardUnsolved, 8);
+  connect(m_pUi->actionHardUnsolved, SIGNAL(triggered()),
+          m_pSigMapRandom, SLOT(map()));
+  connect(m_pSigMapRandom, SIGNAL(mapped(int)),
+          this, SLOT(randomGame(int)));
 
   // Restart game
   m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
@@ -204,8 +243,6 @@ void IQPuzzle::setupMenu() {
 
 void IQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
                             const QString sTime, const QString sMoves) {
-  qDebug() << Q_FUNC_INFO;
-
   if (sBoardFile.isEmpty()) {
     sBoardFile = this->chooseBoard();
     if (sBoardFile.isEmpty()) {
@@ -328,37 +365,47 @@ void IQPuzzle::createBoard() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void IQPuzzle::randomGame() {
-  qDebug() << Q_FUNC_INFO;
-  if (!QFile::exists(m_sSharePath + "/boards")) {
-    qWarning() << "Games share path does not exist" << m_sSharePath;
-    QMessageBox::warning(this, qApp->applicationName(),
-                         "Games share path does not exist!");
-    return;
-  }
+void IQPuzzle::randomGame(const int nChoice) {
+  qDebug() << "Random game:" << nChoice;
 
-  static QStringList slistBoards(this->generateFileList());
-  if (!slistBoards.isEmpty()) {
-    int nRand = qrand() % slistBoards.size();
-    if (nRand >= 0 && nRand < slistBoards.size()) {
-      this->startNewGame(m_sSharePath + "/boards/" + slistBoards[nRand]);
+  if (nChoice > 0 && nChoice <= m_sListFiles.size()) {
+    if (!m_sListFiles[nChoice-1]->isEmpty()) {
+      int nRand = qrand() % m_sListFiles[nChoice-1]->size();
+      if (nRand >= 0 && nRand < m_sListFiles[nChoice-1]->size()) {
+        this->startNewGame(m_sSharePath + "/boards/" +
+                           m_sListFiles[nChoice-1]->at(nRand));
+      }
+    } else {
+      qWarning() << "Game file list is emtpy!";
+      QMessageBox::warning(this, qApp->applicationName(),
+                           trUtf8("No boards available!"));
     }
   } else {
-    qWarning() << "Game file list is emtpy!";
-    QMessageBox::warning(this, qApp->applicationName(),
-                         "No game files found!");
+    qWarning() << "Invalid random choice:" << nChoice;
   }
 }
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QStringList IQPuzzle::generateFileList() {
-  QStringList slistBoards;
+void IQPuzzle::generateFileLists() {
   QDir boardsDir(m_sSharePath + "/boards");
   QFileInfoList fiListFiles = boardsDir.entryInfoList(
                                 QDir::NoDotAndDotDot |
                                 QDir::Files |
                                 QDir::Dirs);
+#if defined _WIN32
+  QSettings tmpScore(QSettings::IniFormat, QSettings::UserScope,
+                     qApp->applicationName().toLower(), "Highscore");
+#else
+  QSettings tmpScore(QSettings::NativeFormat, QSettings::UserScope,
+                     qApp->applicationName().toLower(), "Highscore");
+#endif
+  QString sName("");
+  bool bSolved(false);
+  quint32 nSolutions(0);
+  quint16 nEasy(m_pSettings->getEasy());
+  quint16 nHard(m_pSettings->getHard());
 
   foreach (QFileInfo fi, fiListFiles) {
     if (fi.isDir() &&
@@ -368,17 +415,62 @@ QStringList IQPuzzle::generateFileList() {
                                      QDir::NoDotAndDotDot | QDir::Files);
       foreach (QFileInfo fi2, fiListFiles2) {
         if ("conf" == fi2.suffix()) {
+          sName = fi.fileName() + "/" + fi2.fileName();
+          QSettings tmpSet(m_sSharePath + "/boards/" + sName, QSettings::IniFormat);
+          nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+          bSolved = tmpScore.childGroups().contains(fi2.baseName());
+
           // qDebug() << fi.fileName() + "/" + fi2.baseName();
-          slistBoards << fi.fileName() + "/" + fi2.fileName();
+          m_sListAll << sName;
+          if (!bSolved) m_sListAllUnsolved << sName;
+          if (nSolutions >= nEasy) {
+            m_sListEasy << sName;
+            if (!bSolved) m_sListEasyUnsolved << sName;
+          } else if ((nHard < nSolutions) &&  (nSolutions < nEasy)) {
+            m_sListMedium << sName;
+            if (!bSolved) m_sListMediumUnsolved << sName;
+          } else if ((0 < nSolutions) && (nSolutions <= nHard)) {
+            m_sListHard << sName;
+            if (!bSolved) m_sListHardUnsolved << sName;
+          }
         }
       }
     } else if ("conf" == fi.suffix() &&
                !fi.fileName().startsWith("freestyle")) {
+      sName = fi.fileName();
+      QSettings tmpSet(m_sSharePath + "/boards/" + sName, QSettings::IniFormat);
+      nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+      bSolved = tmpScore.childGroups().contains(fi.baseName());
+
       // qDebug() << fi.baseName();
-      slistBoards << fi.fileName();
+      m_sListAll << sName;
+      if (!bSolved) m_sListAllUnsolved << sName;
+      if (nSolutions >= nEasy) {
+        m_sListEasy << sName;
+        if (!bSolved) m_sListEasyUnsolved << sName;
+      } else if ((nHard < nSolutions) &&  (nSolutions < nEasy)) {
+        m_sListMedium << sName;
+        if (!bSolved) m_sListMediumUnsolved << sName;
+      } else if ((0 < nSolutions) && (nSolutions <= nHard)) {
+        m_sListHard << sName;
+        if (!bSolved) m_sListHardUnsolved << sName;
+      }
     }
   }
-  return slistBoards;
+
+  m_sListFiles << &m_sListAll << &m_sListEasy << &m_sListMedium <<
+                  &m_sListHard << &m_sListAllUnsolved << &m_sListEasyUnsolved <<
+                  &m_sListMediumUnsolved << &m_sListHardUnsolved;
+
+  qDebug() << "Threshold easy:" << nEasy << " Threshold hard:" << nHard;
+  qDebug() << "All:" << m_sListAll.size() <<
+              "- unsolved:" << m_sListAllUnsolved.size();
+  qDebug() << "Easy:" << m_sListEasy.size() <<
+              "- unsolved:" << m_sListEasyUnsolved.size();
+  qDebug() << "Medium:" << m_sListMedium.size() <<
+              "- unsolved:" << m_sListMediumUnsolved.size();
+  qDebug() << "Hard:" << m_sListHard.size() <<
+              "- unsolved:" << m_sListHardUnsolved.size();
 }
 
 // ---------------------------------------------------------------------------
@@ -500,8 +592,15 @@ void IQPuzzle::solvedPuzzle() {
   m_pBoard->saveGame(m_userDataDir.absolutePath() + "/S0LV3D.debug",
                      "55:55:55", "10000");
   QFile::remove(m_userDataDir.absolutePath() + "/S0LV3D.debug");
-
   emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
+
+  // Update "unsolved lists" for random games
+  QString sBoard(m_sBoardFile);
+  sBoard = sBoard.remove(m_sSharePath + "/boards/");
+  m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));
+  m_sListEasyUnsolved.removeAt(m_sListEasyUnsolved.indexOf(sBoard));
+  m_sListMediumUnsolved.removeAt(m_sListMediumUnsolved.indexOf(sBoard));
+  m_sListHardUnsolved.removeAt(m_sListHardUnsolved.indexOf(sBoard));
 }
 
 // ----------------------------------------------------------------------------
