@@ -331,8 +331,8 @@ void IQPuzzle::createBoard() {
     delete m_pBoard;
   }
   m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings, m_sSavedGame);
-  connect(m_pBoard, SIGNAL(setWindowSize(const QSize)),
-          this, SLOT(setMinWindowSize(const QSize)));
+  connect(m_pBoard, SIGNAL(setWindowSize(const QSize, const bool)),
+          this, SLOT(setMinWindowSize(const QSize, const bool)));
   connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
           m_pBoard, SLOT(zoomIn()));
   connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
@@ -541,17 +541,24 @@ void IQPuzzle::pauseGame(const bool bPaused) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void IQPuzzle::setMinWindowSize(const QSize size) {
+void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
   static QSize size2(100, 100);
   if (!size.isEmpty()) {
     size2 = size;
   }
 
-  this->resize(size2);
-  m_pTextPaused->setX(
-        size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
-  m_pTextPaused->setY(
-        size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+  if (this->size().width() < size2.width() ||
+      this->size().height() < size2.height()) {
+    this->showNormal();
+    this->resize(size2);
+    m_pTextPaused->setX(
+          size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
+    m_pTextPaused->setY(
+          size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+  }
+  if (bFreestyle) {
+    m_pGraphView->centerOn(100,70);
+  }
 }
 
 // ---------------------------------------------------------------------------

@@ -53,7 +53,7 @@ class Board : public QGraphicsScene {
                 const QString &sMoves);
 
  signals:
-  void setWindowSize(const QSize size);
+  void setWindowSize(const QSize size, const bool bFreestyle);
   void incrementMoves();
   void solvedPuzzle();
 

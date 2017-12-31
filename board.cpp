@@ -76,12 +76,20 @@ bool Board::setupBoard() {
   if (!m_bFreestyle) {
     this->drawBoard();
     this->drawGrid();
+    m_pGraphView->setDragMode(QGraphicsView::NoDrag);
+    m_pGraphView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    m_pGraphView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+  } else {
+    m_pGraphView->setDragMode(QGraphicsView::ScrollHandDrag);
+    m_pGraphView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_pGraphView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    m_pGraphView->setSceneRect(QRect(-1000, -1000, 3000, 3000));
   }
 
   // Set main window size
   const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
                       m_BoardPoly.boundingRect().height() * 2.6);
-  emit setWindowSize(WinSize);
+  emit setWindowSize(WinSize, m_bFreestyle);
   return true;
 }
 

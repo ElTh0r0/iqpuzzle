@@ -60,7 +60,8 @@ class IQPuzzle : public QMainWindow {
   void closeEvent(QCloseEvent *pEvent);
 
  public slots:
-  void setMinWindowSize(const QSize size = QSize());
+  void setMinWindowSize(const QSize size = QSize(),
+                        const bool bFreestyle = false);
   void incrementMoves();
 
  signals:
