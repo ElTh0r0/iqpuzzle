@@ -551,11 +551,12 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
       this->size().height() < size2.height()) {
     this->showNormal();
     this->resize(size2);
-    m_pTextPaused->setX(
-          size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
-    m_pTextPaused->setY(
-          size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
   }
+  m_pTextPaused->setX(
+        size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
+  m_pTextPaused->setY(
+        size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+
   if (bFreestyle) {
     m_pGraphView->centerOn(100,70);
   }
