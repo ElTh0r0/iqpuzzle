@@ -64,6 +64,7 @@ class Settings : public QDialog {
 
  private:
   void readSettings();
+  QStringList searchTranslations();
 
   QWidget *m_pParent;
   Ui::SettingsDialog *m_pUi;

@@ -25,7 +25,7 @@
  */
 
 #include <QDebug>
-#include <QDir>
+#include <QDirIterator>
 #include <QMessageBox>
 
 #include "./settings.h"
@@ -65,16 +65,8 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
   QStringList sListGuiLanguages;
-  sListGuiLanguages << "auto" << "en";
-  QDir appDir(m_sSharePath + "/lang");
-  QFileInfoList fiListFiles = appDir.entryInfoList(
-                                QDir::NoDotAndDotDot | QDir::Files);
-  foreach (QFileInfo fi, fiListFiles) {
-    if ("qm" == fi.suffix() &&
-        fi.baseName().startsWith(qAppName().toLower() + "_")) {
-      sListGuiLanguages << fi.baseName().remove(qAppName().toLower() + "_");
-    }
-  }
+  sListGuiLanguages << "auto";
+  sListGuiLanguages << this->searchTranslations();
   m_pUi->cbGuiLanguage->addItems(sListGuiLanguages);
 
   connect(m_pUi->buttonBox, SIGNAL(accepted()),
@@ -230,6 +222,48 @@ void Settings::updateUiLang() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
+QStringList Settings::searchTranslations() {
+  QStringList sList;
+  QString sTmp;
+
+  // Translations build in resources
+  QDirIterator it(":", QStringList() << "*.qm",
+                  QDir::NoDotAndDotDot | QDir::Files);
+  while (it.hasNext()) {
+    it.next();
+    sTmp = it.fileName();
+    // qDebug() << sTmp;
+
+    if (sTmp.startsWith(qAppName().toLower() + "_") &&
+        sTmp.endsWith(".qm")) {
+      sList << sTmp.remove(qAppName().toLower() + "_").remove(".qm");
+    }
+  }
+
+  // Check for additional translation files in share folder
+  QDirIterator it2(m_sSharePath + "/lang", QStringList() << "*.qm",
+                   QDir::NoDotAndDotDot | QDir::Files);
+  while (it2.hasNext()) {
+    it2.next();
+    sTmp = it2.fileName();
+    // qDebug() << sTmp;
+
+    if (sTmp.startsWith(qAppName().toLower() + "_")) {
+      sTmp = sTmp.remove(qAppName().toLower() + "_") .remove(".qm");
+      if (!sList.contains(sTmp)) {
+        sList << sTmp;
+      }
+    }
+  }
+
+  sList << "en";
+  sList.sort();
+  return sList;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 QString Settings::getLanguage() {
   if ("auto" == m_sGuiLanguage) {
 #ifdef Q_OS_UNIX
@@ -239,7 +273,9 @@ QString Settings::getLanguage() {
     }
 #endif
     return QLocale::system().name();
-  } else if (!QFile(m_sSharePath + "/lang/" +
+  } else if (!QFile(":/" + qApp->applicationName().toLower() +
+                    "_" + m_sGuiLanguage + ".qm").exists() &&
+             !QFile(m_sSharePath + "/lang/" +
                     qApp->applicationName().toLower() +
                     "_" + m_sGuiLanguage + ".qm").exists()) {
     m_sGuiLanguage = "en";

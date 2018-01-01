@@ -389,11 +389,6 @@ void IQPuzzle::randomGame(const int nChoice) {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::generateFileLists() {
-  QDir boardsDir(m_sSharePath + "/boards");
-  QFileInfoList fiListFiles = boardsDir.entryInfoList(
-                                QDir::NoDotAndDotDot |
-                                QDir::Files |
-                                QDir::Dirs);
 #if defined _WIN32
   QSettings tmpScore(QSettings::IniFormat, QSettings::UserScope,
                      qApp->applicationName().toLower(), "Highscore");
@@ -407,42 +402,19 @@ void IQPuzzle::generateFileLists() {
   quint16 nEasy(m_pSettings->getEasy());
   quint16 nHard(m_pSettings->getHard());
 
-  foreach (QFileInfo fi, fiListFiles) {
-    if (fi.isDir() &&
-        !fi.fileName().startsWith("freestyle")) {  // Check only one subfolder
-      QDir boardsDir2(boardsDir.absolutePath() + "/" + fi.fileName());
-      QFileInfoList fiListFiles2 = boardsDir2.entryInfoList(
-                                     QDir::NoDotAndDotDot | QDir::Files);
-      foreach (QFileInfo fi2, fiListFiles2) {
-        if ("conf" == fi2.suffix()) {
-          sName = fi.fileName() + "/" + fi2.fileName();
-          QSettings tmpSet(m_sSharePath + "/boards/" + sName, QSettings::IniFormat);
-          nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
-          bSolved = tmpScore.childGroups().contains(fi2.baseName());
+  QDirIterator it(m_sSharePath + "/boards", QStringList() << "*.conf",
+                  QDir::NoDotAndDotDot | QDir::Files,
+                  QDirIterator::Subdirectories);
+  while (it.hasNext()) {
+    it.next();
+    if (!it.filePath().contains("freestyle")) {  // Filter freestyle boards
+      sName = it.filePath().remove(m_sSharePath + "/boards/");
+      // qDebug() << sName;
 
-          // qDebug() << fi.fileName() + "/" + fi2.baseName();
-          m_sListAll << sName;
-          if (!bSolved) m_sListAllUnsolved << sName;
-          if (nSolutions >= nEasy) {
-            m_sListEasy << sName;
-            if (!bSolved) m_sListEasyUnsolved << sName;
-          } else if ((nHard < nSolutions) &&  (nSolutions < nEasy)) {
-            m_sListMedium << sName;
-            if (!bSolved) m_sListMediumUnsolved << sName;
-          } else if ((0 < nSolutions) && (nSolutions <= nHard)) {
-            m_sListHard << sName;
-            if (!bSolved) m_sListHardUnsolved << sName;
-          }
-        }
-      }
-    } else if ("conf" == fi.suffix() &&
-               !fi.fileName().startsWith("freestyle")) {
-      sName = fi.fileName();
-      QSettings tmpSet(m_sSharePath + "/boards/" + sName, QSettings::IniFormat);
+      QSettings tmpSet(it.filePath(), QSettings::IniFormat);
       nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
-      bSolved = tmpScore.childGroups().contains(fi.baseName());
+      bSolved = tmpScore.childGroups().contains(it.fileName().remove(".conf"));
 
-      // qDebug() << fi.baseName();
       m_sListAll << sName;
       if (!bSolved) m_sListAllUnsolved << sName;
       if (nSolutions >= nEasy) {
@@ -624,9 +596,13 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
                              m_sSharePath + "/lang");
     }
 
-    this->switchTranslator(m_translator,
-                           qApp->applicationName().toLower() + "_" + sLang,
-                           m_sSharePath + "/lang");
+    if (!this->switchTranslator(
+          m_translator,
+          ":/" + qApp->applicationName().toLower() + "_" + sLang + ".qm")) {
+      this->switchTranslator(
+            m_translator, qApp->applicationName().toLower() + "_" + sLang,
+            m_sSharePath + "/lang");
+    }
   }
 }
 
@@ -639,7 +615,8 @@ bool IQPuzzle::switchTranslator(QTranslator &translator,
   if (translator.load(sFile, sPath)) {
     qApp->installTranslator(&translator);
   } else {
-    if (!sFile.endsWith("_en")) {  // EN is build in translation -> no file
+    if (!sFile.endsWith("_en") && !sFile.endsWith("_en.qm")) {
+      // EN is build in translation -> no file
       qWarning() << "Could not find translation" << sFile << "in" << sPath;
     }
     return false;

@@ -51,7 +51,6 @@ void LoggingHandler(QtMsgType type, const char *sMsg);
 #endif
 
 int main(int argc, char *argv[]) {
-  Q_INIT_RESOURCE(iqpuzzle_resources);
   QApplication app(argc, argv);
   app.setApplicationName(APP_NAME);
   app.setApplicationVersion(APP_VERSION);

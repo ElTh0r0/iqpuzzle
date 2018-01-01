@@ -89,7 +89,7 @@ class IQPuzzle : public QMainWindow {
 
  private:
   bool switchTranslator(QTranslator &translator, const QString &sFile,
-                        const QString &sPath);
+                        const QString &sPath = "");
   void setupMenu();
   void setGameTitle();
   void generateFileLists();

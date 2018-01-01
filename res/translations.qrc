@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="iqpuzzle_bg.qm">../lang/iqpuzzle_bg.qm</file>
+        <file alias="iqpuzzle_de.qm">../lang/iqpuzzle_de.qm</file>
+        <file alias="iqpuzzle_fr.qm">../lang/iqpuzzle_fr.qm</file>
+        <file alias="iqpuzzle_nl.qm">../lang/iqpuzzle_nl.qm</file>
+    </qresource>
+</RCC>

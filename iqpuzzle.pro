@@ -58,7 +58,8 @@ HEADERS      += iqpuzzle.h \
 FORMS        += iqpuzzle.ui \
                 settings.ui
 
-RESOURCES     = res/iqpuzzle_resources.qrc
+RESOURCES     = res/iqpuzzle_resources.qrc \
+                res/translations.qrc
 win32:RC_FILE = res/iqpuzzle_win.rc
 os2:RC_FILE   = res/iqpuzzle_os2.rc
 
@@ -80,9 +81,6 @@ unix: !macx {
     data.path      = $$PREFIX/share/iqpuzzle
     data.files    += data/boards
 
-    lang.path      = $$PREFIX/share/iqpuzzle/lang
-    lang.files    += lang/*.qm
-
     desktop.path   = $$PREFIX/share/applications
     desktop.files += data/iqpuzzle.desktop
 
@@ -98,7 +96,6 @@ unix: !macx {
 
     INSTALLS      += target \
                      data \
-                     lang \
                      desktop \
                      pixmap \
                      icons \
