@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -24,8 +24,8 @@
  * Class definition for board loading dialog.
  */
 
-#ifndef IQPUZZLE_BOARDDIALOG_H_
-#define IQPUZZLE_BOARDDIALOG_H_
+#ifndef BOARDDIALOG_H_
+#define BOARDDIALOG_H_
 
 #include <QFileDialog>
 #include <QLabel>
@@ -37,19 +37,19 @@
 class BoardDialog : public QFileDialog {
   Q_OBJECT
 
- public:
-  explicit BoardDialog(QWidget *pParent = 0,
-                       const QString &sCaption = QString(),
-                       const QString &sDirectory = QString(),
-                       const QString &sFilter = QString());
+  public:
+    explicit BoardDialog(QWidget *pParent = 0,
+                         const QString &sCaption = QString(),
+                         const QString &sDirectory = QString(),
+                         const QString &sFilter = QString());
 
- protected slots:
-  void OnCurrentChanged(const QString &sPath);
+  protected slots:
+    void OnCurrentChanged(const QString &sPath);
 
- private:
-  QLabel *m_pSolutions;
-  QLabel *m_pPreviewCaption;
-  QLabel *m_pPreview;
+  private:
+    QLabel *m_pSolutions;
+    QLabel *m_pPreviewCaption;
+    QLabel *m_pPreview;
 };
 
-#endif  // IQPUZZLE_BOARDDIALOG_H_
+#endif  // BOARDDIALOG_H_

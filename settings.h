@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -24,8 +24,8 @@
  * Class definition for settings.
  */
 
-#ifndef IQPUZZLE_SETTINGS_H_
-#define IQPUZZLE_SETTINGS_H_
+#ifndef SETTINGS_H_
+#define SETTINGS_H_
 
 #include <QDialog>
 #include <QSettings>
@@ -43,41 +43,41 @@ class SettingsDialog;
 class Settings : public QDialog {
   Q_OBJECT
 
- public:
-  explicit Settings(const QString &sSharePath, QWidget *pParent = 0);
-  virtual ~Settings();
+  public:
+    explicit Settings(const QString &sSharePath, QWidget *pParent = 0);
+    virtual ~Settings();
 
-  QList<quint8> getMouseControls() const;
-  quint8 getShift() const;
-  QString getLanguage();
+    QList<quint8> getMouseControls() const;
+    quint8 getShift() const;
+    QString getLanguage();
 
-  quint16 getEasy() const;
-  quint16 getHard() const;
+    quint16 getEasy() const;
+    quint16 getHard() const;
 
- signals:
-  void changeLang(const QString &sLang);
+  signals:
+    void changeLang(const QString &sLang);
 
- public slots:
-  void accept();
-  void reject();
-  void updateUiLang();
+  public slots:
+    void accept();
+    void reject();
+    void updateUiLang();
 
- private:
-  void readSettings();
-  QStringList searchTranslations();
+  private:
+    void readSettings();
+    QStringList searchTranslations();
 
-  QWidget *m_pParent;
-  Ui::SettingsDialog *m_pUi;
-  QSettings *m_pSettings;
+    QWidget *m_pParent;
+    Ui::SettingsDialog *m_pUi;
+    QSettings *m_pSettings;
 
-  QString m_sGuiLanguage;
-  const QString m_sSharePath;
-  const quint8 m_nSHIFT;
-  QStringList m_sListMouseButtons;
-  QList<quint8> m_listMouseButtons;
-  QList<quint8> m_listMouseControls;
-  quint16 m_nEasy;
-  quint16 m_nHard;
+    QString m_sGuiLanguage;
+    const QString m_sSharePath;
+    const quint8 m_nSHIFT;
+    QStringList m_sListMouseButtons;
+    QList<quint8> m_listMouseButtons;
+    QList<quint8> m_listMouseControls;
+    quint16 m_nEasy;
+    quint16 m_nHard;
 };
 
-#endif  // IQPUZZLE_SETTINGS_H_
+#endif  // SETTINGS_H_

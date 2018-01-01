@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -67,10 +67,10 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
 
   m_pHighscore = new Highscore();
   m_pSettings = new Settings(m_sSharePath, this);
-  connect (m_pSettings, SIGNAL(changeLang(QString)),
-           this, SLOT(loadLanguage(QString)));
-  connect (this, SIGNAL(updateUiLang()),
-           m_pSettings, SLOT(updateUiLang()));
+  connect(m_pSettings, SIGNAL(changeLang(QString)),
+          this, SLOT(loadLanguage(QString)));
+  connect(this, SIGNAL(updateUiLang()),
+          m_pSettings, SLOT(updateUiLang()));
   this->loadLanguage(m_pSettings->getLanguage());
   this->setupMenu();
 
@@ -457,9 +457,10 @@ void IQPuzzle::restartGame() {
 
 void IQPuzzle::loadGame(QString sSaveFile) {
   if (sSaveFile.isEmpty()) {
-    sSaveFile = QFileDialog::getOpenFileName(this, trUtf8("Load game"),
-                                             m_userDataDir.absolutePath(),
-                                             trUtf8("Save games") + "(*.iqsav)");
+    sSaveFile = QFileDialog::getOpenFileName(
+                  this, trUtf8("Load game"),
+                  m_userDataDir.absolutePath(),
+                  trUtf8("Save games") + "(*.iqsav)");
   }
 
   if (!sSaveFile.isEmpty()) {
@@ -483,9 +484,10 @@ void IQPuzzle::loadGame(QString sSaveFile) {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::saveGame() {
-  QString sFile = QFileDialog::getSaveFileName(this, trUtf8("Save game"),
-                                               m_userDataDir.absolutePath(),
-                                               trUtf8("Save games") + "(*.iqsav)");
+  QString sFile = QFileDialog::getSaveFileName(
+                    this, trUtf8("Save game"),
+                    m_userDataDir.absolutePath(),
+                    trUtf8("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
     m_sSavedMoves = QString::number(m_nMoves);
     m_sSavedTime = m_Time.toString("hh:mm:ss");
@@ -530,7 +532,7 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
         size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
 
   if (bFreestyle) {
-    m_pGraphView->centerOn(100,70);
+    m_pGraphView->centerOn(100, 70);
   }
 }
 
@@ -589,18 +591,18 @@ void IQPuzzle::solvedPuzzle() {
 void IQPuzzle::loadLanguage(const QString &sLang) {
   if (m_sCurrLang != sLang) {
     m_sCurrLang = sLang;
-    if (!this->switchTranslator(m_translatorQt, "qt_" + sLang,
+    if (!this->switchTranslator(&m_translatorQt, "qt_" + sLang,
                                 QLibraryInfo::location(
                                   QLibraryInfo::TranslationsPath))) {
-      this->switchTranslator(m_translatorQt, "qt_" + sLang,
+      this->switchTranslator(&m_translatorQt, "qt_" + sLang,
                              m_sSharePath + "/lang");
     }
 
     if (!this->switchTranslator(
-          m_translator,
+          &m_translator,
           ":/" + qApp->applicationName().toLower() + "_" + sLang + ".qm")) {
       this->switchTranslator(
-            m_translator, qApp->applicationName().toLower() + "_" + sLang,
+            &m_translator, qApp->applicationName().toLower() + "_" + sLang,
             m_sSharePath + "/lang");
     }
   }
@@ -609,11 +611,11 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool IQPuzzle::switchTranslator(QTranslator &translator,
+bool IQPuzzle::switchTranslator(QTranslator *translator,
                                 const QString &sFile, const QString &sPath) {
-  qApp->removeTranslator(&translator);
-  if (translator.load(sFile, sPath)) {
-    qApp->installTranslator(&translator);
+  qApp->removeTranslator(translator);
+  if (translator->load(sFile, sPath)) {
+    qApp->installTranslator(translator);
   } else {
     if (!sFile.endsWith("_en") && !sFile.endsWith("_en.qm")) {
       // EN is build in translation -> no file
@@ -643,35 +645,35 @@ void IQPuzzle::reportBug() const {
 // ----------------------------------------------------------------------------
 
 void IQPuzzle::showInfoBox() {
-  QMessageBox::about(this, trUtf8("About"),
-                     QString("<center>"
-                             "<big><b>%1 %2</b></big><br />"
-                             "%3<br />"
-                             "<small>%4</small><br /><br />"
-                             "%5<br />"
-                             "%6<br />"
-                             "<small>%7</small>"
-                             "</center><br />"
-                             "%8")
-                     .arg(qApp->applicationName())
-                     .arg(qApp->applicationVersion())
-                     .arg(APP_DESC)
-                     .arg(APP_COPY)
-                     .arg("URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
-                          "https://github.com/ElTh0r0/iqpuzzle</a>")
-                     .arg(trUtf8("License") +
-                          ": "
-                          "<a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-                          "GNU General Public License Version 3</a>")
-                     .arg(trUtf8("This application uses icons from "
-                                 "<a href=\"http://tango.freedesktop.org\">"
-                                 "Tango project</a>."))
-                     .arg("<i>" + trUtf8("Translations") +
-                          "</i><br />"
-                          "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
-                          "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
-                          "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
-                          "&nbsp;&nbsp;- German: ElThoro"));
+  QMessageBox::about(
+        this, trUtf8("About"),
+        QString("<center>"
+                "<big><b>%1 %2</b></big><br />"
+                "%3<br />"
+                "<small>%4</small><br /><br />"
+                "%5<br />"
+                "%6<br />"
+                "<small>%7</small>"
+                "</center><br />"
+                "%8")
+        .arg(qApp->applicationName())
+        .arg(qApp->applicationVersion())
+        .arg(APP_DESC)
+        .arg(APP_COPY)
+        .arg("URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
+             "https://github.com/ElTh0r0/iqpuzzle</a>")
+        .arg(trUtf8("License") +
+             ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
+             "GNU General Public License Version 3</a>")
+        .arg(trUtf8("This application uses icons from "
+                    "<a href=\"http://tango.freedesktop.org\">"
+                    "Tango project</a>."))
+        .arg("<i>" + trUtf8("Translations") +
+             "</i><br />"
+             "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+             "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
+             "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
+             "&nbsp;&nbsp;- German: ElThoro"));
 }
 
 // ---------------------------------------------------------------------------

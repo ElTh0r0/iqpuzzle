@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -24,8 +24,8 @@
  * Class definition for highscore.
  */
 
-#ifndef IQPUZZLE_HIGHSCORE_H_
-#define IQPUZZLE_HIGHSCORE_H_
+#ifndef HIGHSCORE_H_
+#define HIGHSCORE_H_
 
 #include <QObject>
 #include <QSettings>
@@ -38,22 +38,22 @@
 class Highscore : public QObject {
   Q_OBJECT
 
- public:
-  explicit Highscore(QWidget *pParent = 0);
+  public:
+    explicit Highscore(QWidget *pParent = 0);
 
- public slots:
-  void showHighscore(const QString &sBoard);
-  void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                      const QTime &tTime);
+  public slots:
+    void showHighscore(const QString &sBoard);
+    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
+                        const QTime &tTime);
 
- private:
-  QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
-  void insertHighscore(const QString &sBoard, const quint8 &nPosition,
-                       const quint32 &nMoves, const QTime &tTime);
+  private:
+    QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
+    void insertHighscore(const QString &sBoard, const quint8 &nPosition,
+                         const quint32 &nMoves, const QTime &tTime);
 
-  QWidget *m_pParent;
-  QSettings *m_pHighscore;
-  const quint8 m_nMAXPOS;
+    QWidget *m_pParent;
+    QSettings *m_pHighscore;
+    const quint8 m_nMAXPOS;
 };
 
-#endif  // IQPUZZLE_HIGHSCORE_H_
+#endif  // HIGHSCORE_H_

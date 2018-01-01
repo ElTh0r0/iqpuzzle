@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -369,7 +369,7 @@ void Block::rescaleBlock(const quint16 nNewScale) {
   m_nGrid = nNewScale;
   this->setPos(this->snapToGrid(tmpTopLeft));
 
-  // Increase Z value, otherwise board might be in foreground until block is moved
+  // Z value ++, otherwise board might be in foreground until block is moved
   this->setNewZValue(this->zValue() + 1);
 }
 

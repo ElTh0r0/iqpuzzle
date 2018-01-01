@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2017 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -24,8 +24,8 @@
  * Class definition for a board.
  */
 
-#ifndef IQPUZZLE_BOARD_H_
-#define IQPUZZLE_BOARD_H_
+#ifndef BOARD_H_
+#define BOARD_H_
 
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
@@ -43,50 +43,50 @@
 class Board : public QGraphicsScene {
   Q_OBJECT
 
- public:
-  Board(QGraphicsView *pGraphView, const QString &sBoardFile,
-        Settings *pSettings, const QString &sSavedGame = "");
+  public:
+    Board(QGraphicsView *pGraphView, const QString &sBoardFile,
+          Settings *pSettings, const QString &sSavedGame = "");
 
-  bool setupBoard();
-  bool setupBlocks();
-  void saveGame(const QString &sSaveFile, const QString &sTime,
-                const QString &sMoves);
+    bool setupBoard();
+    bool setupBlocks();
+    void saveGame(const QString &sSaveFile, const QString &sTime,
+                  const QString &sMoves);
 
- signals:
-  void setWindowSize(const QSize size, const bool bFreestyle);
-  void incrementMoves();
-  void solvedPuzzle();
+  signals:
+    void setWindowSize(const QSize size, const bool bFreestyle);
+    void incrementMoves();
+    void solvedPuzzle();
 
- public slots:
-  void zoomIn();
-  void zoomOut();
-  void checkPuzzleSolved();
+  public slots:
+    void zoomIn();
+    void zoomOut();
+    void checkPuzzleSolved();
 
- private:
-  void drawBoard();
-  void drawGrid();
-  bool createBlocks();
-  bool createBarriers();
-  QColor readColor(const QString sKey) const;
-  QPolygonF readPolygon(const QSettings *tmpSet, const QString sKey,
-                        const bool bScale = false);
-  bool checkOrthogonality(QPointF point) const;
-  QPointF readStartPosition(const QSettings *tmpSet,
-                            const QString sKey) const;
-  void doZoom();
+  private:
+    void drawBoard();
+    void drawGrid();
+    bool createBlocks();
+    bool createBarriers();
+    QColor readColor(const QString sKey) const;
+    QPolygonF readPolygon(const QSettings *tmpSet, const QString sKey,
+                          const bool bScale = false);
+    bool checkOrthogonality(QPointF point) const;
+    QPointF readStartPosition(const QSettings *tmpSet,
+                              const QString sKey) const;
+    void doZoom();
 
-  QGraphicsView *m_pGraphView;
-  QSettings *m_pBoardConf;
-  QSettings *m_pSavedConf;
-  QString m_sBoardFile;
-  Settings *m_pSettings;
-  bool m_bSavedGame;
-  QPolygonF m_BoardPoly;
-  QList<Block *> m_listBlocks;
-  unsigned char m_nNumOfBlocks;
-  quint16 m_nGridSize;
-  bool m_bNotAllPiecesNeeded;
-  bool m_bFreestyle;
+    QGraphicsView *m_pGraphView;
+    QSettings *m_pBoardConf;
+    QSettings *m_pSavedConf;
+    QString m_sBoardFile;
+    Settings *m_pSettings;
+    bool m_bSavedGame;
+    QPolygonF m_BoardPoly;
+    QList<Block *> m_listBlocks;
+    unsigned char m_nNumOfBlocks;
+    quint16 m_nGridSize;
+    bool m_bNotAllPiecesNeeded;
+    bool m_bFreestyle;
 };
 
-#endif  // IQPUZZLE_BOARD_H_
+#endif  // BOARD_H_
