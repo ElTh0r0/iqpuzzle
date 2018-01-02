@@ -45,11 +45,12 @@
       <string>R&amp;andom game</string>
      </property>
      <property name="icon">
-      <iconset theme="media-playlist-shuffle"/>
+      <iconset theme="media-playlist-shuffle">
+       <normaloff>.</normaloff>.</iconset>
      </property>
      <widget class="QMenu" name="menuAllAvailable">
       <property name="title">
-       <string>All available</string>
+       <string>&amp;All available</string>
       </property>
       <addaction name="actionAll"/>
       <addaction name="separator"/>
@@ -59,7 +60,7 @@
      </widget>
      <widget class="QMenu" name="menuAllUnsolved">
       <property name="title">
-       <string>All unsolved</string>
+       <string>All &amp;unsolved</string>
       </property>
       <addaction name="actionAllUnsolved"/>
       <addaction name="separator"/>
@@ -79,6 +80,7 @@
     <addaction name="separator"/>
     <addaction name="action_PauseGame"/>
     <addaction name="action_Highscore"/>
+    <addaction name="action_Statistics"/>
     <addaction name="separator"/>
     <addaction name="action_Quit"/>
    </widget>
@@ -91,7 +93,7 @@
    </widget>
    <widget class="QMenu" name="menu_Settings">
     <property name="title">
-     <string>&amp;Settings</string>
+     <string>Setti&amp;ngs</string>
     </property>
     <addaction name="action_ZoomIn"/>
     <addaction name="action_ZoomOut"/>
@@ -233,42 +235,47 @@
   </action>
   <action name="actionEasy">
    <property name="text">
-    <string>Easy</string>
+    <string>&amp;Easy</string>
    </property>
   </action>
   <action name="actionMedium">
    <property name="text">
-    <string>Medium</string>
+    <string>&amp;Medium</string>
    </property>
   </action>
   <action name="actionHard">
    <property name="text">
-    <string>Hard</string>
+    <string>&amp;Hard</string>
    </property>
   </action>
   <action name="actionAll">
    <property name="text">
-    <string>All</string>
+    <string>&amp;All</string>
    </property>
   </action>
   <action name="actionAllUnsolved">
    <property name="text">
-    <string>All</string>
+    <string>&amp;All</string>
    </property>
   </action>
   <action name="actionEasyUnsolved">
    <property name="text">
-    <string>Easy</string>
+    <string>&amp;Easy</string>
    </property>
   </action>
   <action name="actionMediumUnsolved">
    <property name="text">
-    <string>Medium</string>
+    <string>&amp;Medium</string>
    </property>
   </action>
   <action name="actionHardUnsolved">
    <property name="text">
-    <string>Hard</string>
+    <string>&amp;Hard</string>
+   </property>
+  </action>
+  <action name="action_Statistics">
+   <property name="text">
+    <string>Sta&amp;tistics</string>
    </property>
   </action>
  </widget>

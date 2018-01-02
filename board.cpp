@@ -157,22 +157,19 @@ bool Board::setupBlocks() {
 
 bool Board::createBlocks() {
   const unsigned char nMaxNumOfBlocks(250);
-  QPolygonF polygon;
-  QString sPrefix("");
-
   QSettings *tmpSet = m_pBoardConf;
   if (m_bSavedGame) {
     tmpSet = m_pSavedConf;
   }
 
   for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
-    sPrefix = "Block" + QString::number(i);
+    QString sPrefix = "Block" + QString::number(i);
     if (!tmpSet->contains(sPrefix + "/Polygon")) {
       break;
     }
     m_nNumOfBlocks++;
 
-    polygon = this->readPolygon(tmpSet, sPrefix + "/Polygon");
+    QPolygonF polygon = this->readPolygon(tmpSet, sPrefix + "/Polygon");
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
@@ -211,16 +208,14 @@ bool Board::createBlocks() {
 
 bool Board::createBarriers() {
   const unsigned char nMaxNumOfBlocks(250);
-  QPolygonF polygon;
-  QString sPrefix("");
 
   for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
-    sPrefix = "Barrier" + QString::number(i);
+    QString sPrefix = "Barrier" + QString::number(i);
     if (!m_pBoardConf->contains(sPrefix + "/Polygon")) {
       break;
     }
 
-    polygon = this->readPolygon(m_pBoardConf, sPrefix + "/Polygon");
+    QPolygonF polygon = this->readPolygon(m_pBoardConf, sPrefix + "/Polygon");
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
@@ -388,11 +383,10 @@ void Board::checkPuzzleSolved() {
   QPainterPath unitedBlocks;
   QPainterPath tempPath;
   QPainterPath tempPath2;
-  QPointF pos;
 
   foreach (Block *block, m_listBlocks) {
-    pos = QPointF(block->pos().x() / m_nGridSize,
-                  block->pos().y() / m_nGridSize);
+    QPointF pos = QPointF(block->pos().x() / m_nGridSize,
+                          block->pos().y() / m_nGridSize);
 
     // Check, if block is outside the board
     if (!m_bNotAllPiecesNeeded) {
@@ -485,10 +479,6 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
                      const QString &sMoves) {
   QSettings saveConf(sSaveFile, QSettings::IniFormat);
   QByteArray ba;
-  QString sPrefix("");
-  QPolygonF poly;
-  QString sPoly;
-  QPointF pos;
   QString sDebug("");
 
   saveConf.clear();
@@ -500,9 +490,9 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
   saveConf.setValue("NumOfMoves", ba.toBase64());
 
   for (int i = 0; i < m_nNumOfBlocks; i++) {
-    sPrefix = "Block" + QString::number(i + 1);
-    poly = m_listBlocks[i]->getPolygon();
-    sPoly.clear();
+    QString sPrefix = "Block" + QString::number(i + 1);
+    QPolygonF poly = m_listBlocks[i]->getPolygon();
+    QString sPoly("");
     foreach (QPointF point, poly) {
       sPoly += QString::number(point.x()) + "," +
                QString::number(point.y()) + " | ";
@@ -510,7 +500,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
     sPoly.remove(sPoly.length() - 3, sPoly.length());
 
     saveConf.setValue(sPrefix + "/Polygon", sPoly);
-    pos = m_listBlocks[i]->getPosition();
+    QPointF pos = m_listBlocks[i]->getPosition();
     saveConf.setValue(sPrefix + "/StartPos",
                       QString::number(pos.x() / m_nGridSize) + "," +
                       QString::number(pos.y() / m_nGridSize));

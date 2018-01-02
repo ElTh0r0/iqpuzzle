@@ -64,10 +64,7 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
-  QStringList sListGuiLanguages;
-  sListGuiLanguages << "auto";
-  sListGuiLanguages << this->searchTranslations();
-  m_pUi->cbGuiLanguage->addItems(sListGuiLanguages);
+  m_pUi->cbGuiLanguage->addItems(this->searchTranslations());
 
   connect(m_pUi->buttonBox, SIGNAL(accepted()),
           this, SLOT(accept()));
@@ -258,6 +255,7 @@ QStringList Settings::searchTranslations() {
 
   sList << "en";
   sList.sort();
+  sList.push_front("auto");
   return sList;
 }
 

@@ -84,6 +84,7 @@ class IQPuzzle : public QMainWindow {
     void updateTimer();
     void solvedPuzzle();
     void showHighscore();
+    void showStatistics();
     void reportBug() const;
     void showInfoBox();
 

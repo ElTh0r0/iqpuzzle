@@ -216,6 +216,10 @@ void IQPuzzle::setupMenu() {
   connect(this, SIGNAL(checkHighscore(QString, quint32, QTime)),
           m_pHighscore, SLOT(checkHighscore(QString, quint32, QTime)));
 
+  // Statistics
+  connect(m_pUi->action_Statistics, SIGNAL(triggered()),
+          this, SLOT(showStatistics()));
+
   // Exit game
   m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
   connect(m_pUi->action_Quit, SIGNAL(triggered()),
@@ -396,11 +400,8 @@ void IQPuzzle::generateFileLists() {
   QSettings tmpScore(QSettings::NativeFormat, QSettings::UserScope,
                      qApp->applicationName().toLower(), "Highscore");
 #endif
-  QString sName("");
-  bool bSolved(false);
-  quint32 nSolutions(0);
-  quint16 nEasy(m_pSettings->getEasy());
-  quint16 nHard(m_pSettings->getHard());
+  const quint16 nEasy(m_pSettings->getEasy());
+  const quint16 nHard(m_pSettings->getHard());
 
   QDirIterator it(m_sSharePath + "/boards", QStringList() << "*.conf",
                   QDir::NoDotAndDotDot | QDir::Files,
@@ -408,12 +409,13 @@ void IQPuzzle::generateFileLists() {
   while (it.hasNext()) {
     it.next();
     if (!it.filePath().contains("freestyle")) {  // Filter freestyle boards
-      sName = it.filePath().remove(m_sSharePath + "/boards/");
+      QString sName = it.filePath().remove(m_sSharePath + "/boards/");
       // qDebug() << sName;
 
       QSettings tmpSet(it.filePath(), QSettings::IniFormat);
-      nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
-      bSolved = tmpScore.childGroups().contains(it.fileName().remove(".conf"));
+      quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+      bool bSolved = tmpScore.childGroups().contains(
+                       it.fileName().remove(".conf"));
 
       m_sListAll << sName;
       if (!bSolved) m_sListAllUnsolved << sName;
@@ -434,6 +436,7 @@ void IQPuzzle::generateFileLists() {
                   &m_sListHard << &m_sListAllUnsolved << &m_sListEasyUnsolved <<
                   &m_sListMediumUnsolved << &m_sListHardUnsolved;
 
+  /*
   qDebug() << "Threshold easy:" << nEasy << " Threshold hard:" << nHard;
   qDebug() << "All:" << m_sListAll.size() <<
               "- unsolved:" << m_sListAllUnsolved.size();
@@ -443,6 +446,7 @@ void IQPuzzle::generateFileLists() {
               "- unsolved:" << m_sListMediumUnsolved.size();
   qDebug() << "Hard:" << m_sListHard.size() <<
               "- unsolved:" << m_sListHardUnsolved.size();
+  */
 }
 
 // ---------------------------------------------------------------------------
@@ -632,6 +636,62 @@ bool IQPuzzle::switchTranslator(QTranslator *translator,
 void IQPuzzle::showHighscore() {
   QFileInfo fi(m_sBoardFile);
   emit showHighscore(fi.baseName());
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+void IQPuzzle::showStatistics() {
+  QDialog dialog(this);
+  dialog.setWindowTitle(trUtf8("Statistics"));
+  dialog.setWindowFlags(dialog.window()->windowFlags()
+                        & ~Qt::WindowContextHelpButtonHint);
+
+  QGridLayout* layout = new QGridLayout(&dialog);
+  layout->setMargin(10);
+  layout->setSpacing(8);
+
+  layout->addWidget(new QLabel("<b>" + trUtf8("Total") + "</b>", &dialog),
+                    0, 1, Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + trUtf8("Unsolved") + "</b>", &dialog),
+                    0, 2, Qt::AlignCenter);
+
+  layout->addWidget(new QLabel("<b>" + trUtf8("Easy") + "</b>", &dialog),
+                    1, 0, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListEasy.size()), &dialog),
+                    1, 1, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListEasyUnsolved.size()),
+                               &dialog), 1, 2, Qt::AlignCenter);
+
+  layout->addWidget(new QLabel("<b>" + trUtf8("Medium") + "</b>", &dialog),
+                    2, 0, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListMedium.size()), &dialog),
+                    2, 1, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListMediumUnsolved.size()),
+                               &dialog), 2, 2, Qt::AlignCenter);
+
+  layout->addWidget(new QLabel("<b>" + trUtf8("Hard") + "</b>", &dialog),
+                    3, 0, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListHard.size()), &dialog),
+                    3, 1, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListHardUnsolved.size()),
+                               &dialog), 3, 2, Qt::AlignCenter);
+
+  layout->addWidget(new QLabel("<b>" + trUtf8("Total") + "</b> - " +
+                               trUtf8("including unknown difficulty") + ":",
+                               &dialog), 4, 0, 1, 3, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListAll.size()), &dialog),
+                    5, 1, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListAllUnsolved.size()),
+                               &dialog), 5, 2, Qt::AlignCenter);
+
+  QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
+                                                   Qt::Horizontal, &dialog);
+  connect(buttons, SIGNAL(rejected()),
+          &dialog, SLOT(reject()));
+  layout->addWidget(buttons, 6, 0, 1, 3, Qt::AlignCenter);
+
+  dialog.exec();
 }
 
 // ---------------------------------------------------------------------------
