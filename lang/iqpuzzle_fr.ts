@@ -146,7 +146,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Paramètres</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="115"/>
