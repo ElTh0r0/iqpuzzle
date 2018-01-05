@@ -1,0 +1,29 @@
+dist: trusty
+sudo: required
+
+git:
+  depth: 1
+
+language: cpp
+
+matrix:
+  include:
+    - os: osx
+      compiler: clang
+    - os: linux
+      compiler: gcc
+      
+install:
+  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo apt-get install -y qt5-default qttools5-dev-tools ; fi
+
+script:
+  - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+    curl -fsSL "https://github.com/ElTh0r0/iqpuzzle/raw/packaging/macOS/build_macOS.sh" > "build_macOS.sh" ;
+    chmod +x build_macOS.sh ;
+    REV_NAME=$(git rev-parse --short HEAD) ./build_macOS.sh ;
+    fi
+  - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+    curl -fsSL "https://github.com/ElTh0r0/iqpuzzle/raw/packaging/AppImage/build_AppImage.sh" > "build_AppImage.sh" ;
+    chmod +x build_AppImage.sh ;
+    ./build_AppImage.sh ;
+    fi

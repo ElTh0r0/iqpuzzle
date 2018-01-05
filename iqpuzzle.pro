@@ -68,6 +68,15 @@ TRANSLATIONS += lang/iqpuzzle_bg.ts \
                 lang/iqpuzzle_nl.ts \
                 lang/iqpuzzle_fr.ts
 
+macx {
+  ICON               = res/images/icon.icns
+  QMAKE_INFO_PLIST   = res/Info.plist
+
+  BOARDS_DATA.path   = Contents/Resources
+  BOARDS_DATA.files += data/boards
+  QMAKE_BUNDLE_DATA += BOARDS_DATA
+}
+
 unix: !macx {
     isEmpty(PREFIX) {
         PREFIX = /usr/local

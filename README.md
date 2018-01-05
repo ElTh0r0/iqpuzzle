@@ -9,7 +9,8 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle
 * Gentoo ebuild: https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild
 * Build for OS/2: http://www.ecsoft2.org/iqpuzzle
-* Build for Windows: https://github.com/ElTh0r0/iqpuzzle/releases
+* Build for Windows, macOS or AppImage:
+  * https://github.com/ElTh0r0/iqpuzzle/releases
 
 ## Create your own level
 Manual for creating own levels can be found in the wiki: https://github.com/ElTh0r0/iqpuzzle/wiki
