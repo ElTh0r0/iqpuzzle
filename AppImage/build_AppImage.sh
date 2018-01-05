@@ -20,7 +20,7 @@ cp ./res/images/iqpuzzle_64x64.png ./appdir/iqpuzzle.png
 find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
 
 echo "Uploading to:"
-curl --upload-file iQPuzzle-$VERSION-x86_64.AppImage https://transfer.sh/iqPuzzle-$VERSION-x86_64.AppImage
+curl --upload-file iQPuzzle-$VERSION-x86_64.AppImage https://transfer.sh/iQPuzzle-$VERSION-x86_64.AppImage
 echo ""
 
 echo "Done!"
