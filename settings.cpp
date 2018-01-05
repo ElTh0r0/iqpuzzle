@@ -229,7 +229,7 @@ QStringList Settings::searchTranslations() {
   while (it.hasNext()) {
     it.next();
     sTmp = it.fileName();
-    // qDebug() << sTmp;
+    qDebug() << sTmp;
 
     if (sTmp.startsWith(qAppName().toLower() + "_") &&
         sTmp.endsWith(".qm")) {
