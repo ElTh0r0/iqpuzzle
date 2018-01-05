@@ -226,15 +226,15 @@ QStringList Settings::searchTranslations() {
   // Translations build in resources
   QDirIterator it(":", QStringList() << "*.qm",
                   QDir::NoDotAndDotDot | QDir::Files);
-  qDebug() << qAppName().toLower() << qApp->applicationName().toLower();
   while (it.hasNext()) {
     it.next();
     sTmp = it.fileName();
-    qDebug() << sTmp;
+    //qDebug() << sTmp;
 
-    if (sTmp.startsWith(qAppName().toLower() + "_") &&
+    if (sTmp.startsWith(qApp->applicationName().toLower() + "_") &&
         sTmp.endsWith(".qm")) {
-      sList << sTmp.remove(qAppName().toLower() + "_").remove(".qm");
+      sList << sTmp.remove(
+                 qApp->applicationName().toLower() + "_").remove(".qm");
     }
   }
 
@@ -246,8 +246,9 @@ QStringList Settings::searchTranslations() {
     sTmp = it2.fileName();
     // qDebug() << sTmp;
 
-    if (sTmp.startsWith(qAppName().toLower() + "_")) {
-      sTmp = sTmp.remove(qAppName().toLower() + "_") .remove(".qm");
+    if (sTmp.startsWith(qApp->applicationName().toLower() + "_")) {
+      sTmp = sTmp.remove(
+               qApp->applicationName().toLower() + "_") .remove(".qm");
       if (!sList.contains(sTmp)) {
         sList << sTmp;
       }
