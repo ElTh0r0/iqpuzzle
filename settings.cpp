@@ -226,6 +226,7 @@ QStringList Settings::searchTranslations() {
   // Translations build in resources
   QDirIterator it(":", QStringList() << "*.qm",
                   QDir::NoDotAndDotDot | QDir::Files);
+  qDebug() << qAppName().toLower() << qApp->applicationName().toLower();
   while (it.hasNext()) {
     it.next();
     sTmp = it.fileName();
