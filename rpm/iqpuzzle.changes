@@ -1,5 +1,17 @@
 -------------------------------------------------------------------
-Sat Aug 12 17:46:00 UTC 2017 - elthoro@gmx.de 1.0.6
+Sun Jan 07 18:07:00 UTC 2018 - elthoro@gmx.de 1.1.0
+
+- Start random un-/solved easy/medium/hard game.
+- Added freestyle mode.
+- Added statistics.
+- Improved window resize.
+- Added many new boards.
+- Start game through cmd.
+- Updated French translation (thanks to kiarn).
+- Embedded translations into game resource.
+
+-------------------------------------------------------------------
+Sat Aug 12 17:46:00 UTC 2017 - elthoro@gmx.de 1.0.7
 
 - Added French translation (thanks to kiarn and mothsART).
 

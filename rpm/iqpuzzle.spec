@@ -1,7 +1,7 @@
 #
 # spec file for iQPuzzle
 #
-# Copyright (C) 2012-2017 Thorsten Roth
+# Copyright (C) 2012-2018 Thorsten Roth
 #
 # iQPuzzle is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.0.7
+Version:        1.1.0
 Release:        1
 License:        GPL-3.0+
 URL:            https://github.com/ElTh0r0/iqpuzzle
@@ -57,7 +57,7 @@ BuildRequires:  update-desktop-files
 
 %description
 iQPuzzle is a diverting and challenging puzzle. Pentominos are used
-as puzzle pieces and 195 different board shapes are available, which
+as puzzle pieces and 300 different board shapes are available, which
 have to be filled with them.
 
 %prep

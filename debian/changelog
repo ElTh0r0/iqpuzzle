@@ -1,3 +1,17 @@
+iqpuzzle (1.1.0-0ubuntu1) xenial; urgency=low
+
+  [ Thorsten Roth ]
+  * Start random un-/solved easy/medium/hard game.
+  * Added freestyle mode.
+  * Added statistics.
+  * Improved window resize.
+  * Added many new boards.
+  * Start game through cmd.
+  * Updated French translation (thanks to kiarn).
+  * Embedded translations into game resource.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 07 Jan 2018 18:07:00 +0200
+
 iqpuzzle (1.0.7-0ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]
