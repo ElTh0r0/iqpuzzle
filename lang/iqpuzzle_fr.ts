@@ -136,12 +136,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
         <source>&amp;All available</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tous ceux disponibles</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous ceux &amp;non résolus</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -224,45 +224,45 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="238"/>
         <location filename="../iqpuzzle.ui" line="263"/>
         <source>&amp;Easy</source>
-        <translation type="unfinished"></translation>
+        <translation>Facile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="243"/>
         <location filename="../iqpuzzle.ui" line="268"/>
         <source>&amp;Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Moyen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="248"/>
         <location filename="../iqpuzzle.ui" line="273"/>
         <source>&amp;Hard</source>
-        <translation type="unfinished"></translation>
+        <translation>Difficile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="253"/>
         <location filename="../iqpuzzle.ui" line="258"/>
         <source>&amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="278"/>
         <source>Sta&amp;tistics</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="659"/>
         <source>Easy</source>
-        <translation type="unfinished"></translation>
+        <translation>Facile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="666"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Moyen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="673"/>
         <source>Hard</source>
-        <translation type="unfinished"></translation>
+        <translation>Difficile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="45"/>
@@ -338,18 +338,18 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="135"/>
         <source>Games share path does not exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>Le dossier des parties n'existe pas !</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="385"/>
         <source>No boards available!</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun plateau disponible</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="467"/>
         <location filename="../iqpuzzle.cpp" line="494"/>
         <source>Save games</source>
-        <translation type="unfinished"></translation>
+        <translation>Sauvegarder les parties</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="569"/>
@@ -359,23 +359,23 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="646"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Statistiques</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="654"/>
         <location filename="../iqpuzzle.cpp" line="680"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="656"/>
         <source>Unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation>Non résolus</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>including unknown difficulty</source>
-        <translation type="unfinished"></translation>
+        <translation>incluant des difficultés inconnues</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="709"/>
