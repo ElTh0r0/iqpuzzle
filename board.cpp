@@ -327,7 +327,7 @@ bool Board::checkOrthogonality(QPointF point) const {
         listPoints.removeFirst();
         return true;
       }
-    } else if (listPoints.size() <= 2) {
+    } else {  // If size <= 2
       return true;
     }
   }
