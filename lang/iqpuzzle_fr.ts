@@ -247,7 +247,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="278"/>
         <source>Sta&amp;tistics</source>
-        <translation></translation>
+        <translation>Sta&amp;tistiques</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="659"/>
