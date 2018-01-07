@@ -224,25 +224,25 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="238"/>
         <location filename="../iqpuzzle.ui" line="263"/>
         <source>&amp;Easy</source>
-        <translation>Facile</translation>
+        <translation>&amp;Facile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="243"/>
         <location filename="../iqpuzzle.ui" line="268"/>
         <source>&amp;Medium</source>
-        <translation>Moyen</translation>
+        <translation>&amp;Moyen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="248"/>
         <location filename="../iqpuzzle.ui" line="273"/>
         <source>&amp;Hard</source>
-        <translation>Difficile</translation>
+        <translation>&amp;Difficile</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="253"/>
         <location filename="../iqpuzzle.ui" line="258"/>
         <source>&amp;All</source>
-        <translation>Tous</translation>
+        <translation>&amp;Tous</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="278"/>
@@ -338,12 +338,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="135"/>
         <source>Games share path does not exist!</source>
-        <translation>Le dossier des parties n'existe pas !</translation>
+        <translation>Le dossier des parties n&apos;existe pas!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="385"/>
         <source>No boards available!</source>
-        <translation>Aucun plateau disponible</translation>
+        <translation>Aucun plateau disponible!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="467"/>
