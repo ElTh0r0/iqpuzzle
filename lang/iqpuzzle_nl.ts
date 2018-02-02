@@ -19,48 +19,49 @@
         <location filename="../board.cpp" line="55"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
-        <translation>Spielfeld-Rastergröße ungültig. Reduziere Raster auf Defaultwert.</translation>
+        <translation>Rastergrootte van bord is ongeldig.
+Het raster is verkleind naar de standaard grootte.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="72"/>
         <source>Board polygon not valid.</source>
-        <translation>Spel Polygon niet geldig.</translation>
+        <translation>Polygoon is ongeldig.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <location filename="../board.cpp" line="228"/>
         <source>Polygon not valid:</source>
-        <translation>Polygon niet geldig:</translation>
+        <translation>Polygon is ongeldig:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="202"/>
         <source>Could not find valid blocks.</source>
-        <translation>Kan geen ongeldige blokken vinden.</translation>
+        <translation>Kan geen geldige blokken vinden.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="257"/>
         <source>No color defined - using fallback:</source>
-        <translation>Geen kleur gedefinieerd - gebruik terugval:</translation>
+        <translation>Geen kleur opgegeven - terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="265"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation>Verkeerde kleur gedefinieerd - gebruik terugval:</translation>
+        <translation>Onjuiste kleur opgegeven- terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="371"/>
         <source>Invalid start position - using fallback:</source>
-        <translation>Verkeerde begin positie - gebruik terugval:</translation>
+        <translation>Ongeldige startpositie - terugval wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="146"/>
         <source>Hint</source>
-        <translation>Tips</translation>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="147"/>
         <source>Not all pieces are needed for a solution!</source>
-        <translation>Niet alle stukken zijn nodig voor de oplossing!</translation>
+        <translation>Niet alle stukken zijn benodigd voor de oplossing!</translation>
     </message>
 </context>
 <context>
@@ -79,7 +80,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boarddialog.cpp" line="70"/>
         <source>Unknown</source>
-        <translation>Onbekent</translation>
+        <translation>Onbekend</translation>
     </message>
     <message>
         <location filename="../boarddialog.cpp" line="79"/>
@@ -93,7 +94,7 @@ Reduced grid to default.</source>
         <location filename="../highscore.cpp" line="58"/>
         <location filename="../highscore.cpp" line="155"/>
         <source>Highscore</source>
-        <translation>Hoogste score</translation>
+        <translation>Topscore</translation>
     </message>
     <message>
         <location filename="../highscore.cpp" line="66"/>
@@ -113,12 +114,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../highscore.cpp" line="72"/>
         <source>Moves</source>
-        <translation>Verplaats</translation>
+        <translation>Zetten</translation>
     </message>
     <message>
         <location filename="../highscore.cpp" line="156"/>
         <source>Please insert your name for a new highscore:</source>
-        <translation>Naam invullen voor nieuwe hoogste score:</translation>
+        <translation>Voer uw naam in om de nieuwe topscore vast te leggen:</translation>
     </message>
 </context>
 <context>
@@ -131,32 +132,32 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="89"/>
         <source>&amp;Help</source>
-        <translation>&amp;Help</translation>
+        <translation>&amp;Hulp</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
         <source>&amp;All available</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alle beschikbare</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle &amp;onopgeloste</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
         <source>Setti&amp;ngs</source>
-        <translation>&amp;Instellingen</translation>
+        <translation>Instelli&amp;ngen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="115"/>
         <source>Choose &amp;new game</source>
-        <translation>Kies &amp;nieuw Spel</translation>
+        <translation>&amp;Nieuw spel kiezen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="125"/>
         <source>&amp;Quit</source>
-        <translation>Sl&amp;uiten</translation>
+        <translation>Afsl&amp;uiten</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="135"/>
@@ -166,17 +167,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="145"/>
         <source>Zoom &amp;In</source>
-        <translation>Ver&amp;groten</translation>
+        <translation>&amp;Inzoomen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="155"/>
         <source>Zoom &amp;Out</source>
-        <translation>Ver&amp;kleinen</translation>
+        <translation>&amp;Uitzoomen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="168"/>
         <source>&amp;Restart game</source>
-        <translation>S&amp;pel herstarten</translation>
+        <translation>Spel he&amp;rstarten</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="181"/>
@@ -203,12 +204,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="213"/>
         <source>Pa&amp;use</source>
-        <translation>Pa&amp;uze</translation>
+        <translation>Pa&amp;uzeren</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="218"/>
         <source>&amp;Highscore</source>
-        <translation>&amp;Hoogste score</translation>
+        <translation>&amp;Topscore</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="228"/>
@@ -218,51 +219,51 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="233"/>
         <source>Report &amp;bug</source>
-        <translation>&amp;Rapporteer fouten</translation>
+        <translation>Fouten &amp;rapporteren</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="238"/>
         <location filename="../iqpuzzle.ui" line="263"/>
         <source>&amp;Easy</source>
-        <translation type="unfinished"></translation>
+        <translation>Makk&amp;elijk</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="243"/>
         <location filename="../iqpuzzle.ui" line="268"/>
         <source>&amp;Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Nor&amp;maal</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="248"/>
         <location filename="../iqpuzzle.ui" line="273"/>
         <source>&amp;Hard</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Moeilijk</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="253"/>
         <location filename="../iqpuzzle.ui" line="258"/>
         <source>&amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alles</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="278"/>
         <source>Sta&amp;tistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Sta&amp;tistieken</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="659"/>
         <source>Easy</source>
-        <translation type="unfinished"></translation>
+        <translation>Makkelijk</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="666"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Normaal</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="673"/>
         <source>Hard</source>
-        <translation type="unfinished"></translation>
+        <translation>Moeilijk</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="45"/>
@@ -272,7 +273,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="315"/>
         <source>Load board</source>
-        <translation>Spel laden</translation>
+        <translation>Bord laden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="108"/>
@@ -293,12 +294,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="300"/>
         <source>Unknown</source>
-        <translation>Onbekent</translation>
+        <translation>Onbekend</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="482"/>
         <source>Invalid saved puzzle.</source>
-        <translation>Ongeldig opgeslagen Puzzle.</translation>
+        <translation>Ongeldige opgeslagen puzzel.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="83"/>
@@ -323,12 +324,12 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="570"/>
         <location filename="../iqpuzzle.cpp" line="755"/>
         <source>Moves</source>
-        <translation>Verplaats</translation>
+        <translation>Zetten</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="317"/>
         <source>Board files</source>
-        <translation>Spel bestanden</translation>
+        <translation>Bordbestanden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="305"/>
@@ -338,44 +339,44 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="135"/>
         <source>Games share path does not exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>Het spelpad bestaat niet!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="385"/>
         <source>No boards available!</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen beschikbare borden!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="467"/>
         <location filename="../iqpuzzle.cpp" line="494"/>
         <source>Save games</source>
-        <translation type="unfinished"></translation>
+        <translation>Opgeslagen spellen</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="569"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle opgelost!</translation>
+        <translation>Puzzel opgelost!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="646"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Statistieken</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="654"/>
         <location filename="../iqpuzzle.cpp" line="680"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Totaal</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="656"/>
         <source>Unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation>Onopgelost</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>including unknown difficulty</source>
-        <translation type="unfinished"></translation>
+        <translation>inclusief onbekende moeilijkheidsgraad</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="709"/>
@@ -390,12 +391,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="728"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation>Iqpuzzle gebruikt icons van &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango project&lt;/a&gt;.</translation>
+        <translation>Deze applicatie gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="731"/>
         <source>Translations</source>
-        <translation>Vertaling</translation>
+        <translation>Vertalingen</translation>
     </message>
 </context>
 <context>
@@ -434,18 +435,18 @@ Reduced grid to default.</source>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="205"/>
         <source>Horizontal wheel</source>
-        <translation>Horizontale Muiswiel</translation>
+        <translation>Horizontaal schuiven</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="205"/>
         <source>Vertical wheel</source>
-        <translation>Vertikale Muiswiel</translation>
+        <translation>Verticaal schuiven</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="102"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation>Verander je instellingen. Dezelfde muisknop wordt gebruikt voor meerdere acties.</translation>
+        <translation>Deze muisknop wordt gebruikt voor meerdere acties; wijzig uw instellingen.</translation>
     </message>
 </context>
 <context>
@@ -453,12 +454,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settings.ui" line="20"/>
         <source>Preferences</source>
-        <translation>Instellingen</translation>
+        <translation>Voorkeuren</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="38"/>
         <source>Mouse controls</source>
-        <translation>Muis instellingen</translation>
+        <translation>Muisbediening</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="45"/>
@@ -478,7 +479,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settings.ui" line="82"/>
         <source>GUI language</source>
-        <translation>Gui Taal</translation>
+        <translation>Applicatietaal</translation>
     </message>
 </context>
 </TS>
