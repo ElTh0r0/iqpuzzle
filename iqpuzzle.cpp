@@ -731,7 +731,7 @@ void IQPuzzle::showInfoBox() {
         .arg("<i>" + trUtf8("Translations") +
              "</i><br />"
              "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
-             "&nbsp;&nbsp;- Dutch: Elbert Pol<br />"
+             "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
              "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
              "&nbsp;&nbsp;- German: ElThoro"));
 }
