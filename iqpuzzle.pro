@@ -103,10 +103,14 @@ unix: !macx {
     man.path       = $$PREFIX/share
     man.files     += man
 
+    meta.path      = $$PREFIX/share/metainfo
+    meta.files    += res/iqpuzzle.appdata.xml
+
     INSTALLS      += target \
                      data \
                      desktop \
                      pixmap \
                      icons \
-                     man
+                     man \
+                     meta
 }
