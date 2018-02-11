@@ -24,13 +24,13 @@
  * Complete board generation, block setup and check if puzzle is solved.
  */
 
+#include "./board.h"
+
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QDebug>
 #include <QFile>
 #include <QMessageBox>
-
-#include "./board.h"
 
 Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
              Settings *pSettings, const QString &sSavedGame)

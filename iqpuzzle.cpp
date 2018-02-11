@@ -24,6 +24,8 @@
  * Main application generation (gui, object creation etc.).
  */
 
+#include "./iqpuzzle.h"
+
 #include <QApplication>
 #include <QDialogButtonBox>
 #include <QFileDialog>
@@ -31,7 +33,6 @@
 #include <QLabel>
 #include <QMessageBox>
 
-#include "./iqpuzzle.h"
 #include "ui_iqpuzzle.h"
 
 IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,

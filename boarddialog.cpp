@@ -24,11 +24,11 @@
  * Extended file dialog for showing a board preview.
  */
 
+#include "./boarddialog.h"
+
 #include <QDebug>
 #include <QSettings>
 #include <QVBoxLayout>
-
-#include "./boarddialog.h"
 
 BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
                          const QString &sDirectory, const QString &sFilter)

@@ -24,9 +24,9 @@
  * Block handling (move, rotate, collision check, ...).
  */
 
-#include <QDebug>
-
 #include "./block.h"
+
+#include <QDebug>
 
 Block::Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
              quint16 nGrid, QList<Block *> *pListBlocks,

@@ -30,8 +30,6 @@
 #include <QDialog>
 #include <QSettings>
 
-#include "./settings.h"
-
 namespace Ui {
 class SettingsDialog;
 }

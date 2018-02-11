@@ -24,6 +24,8 @@
  * Generating, reading, showing highscore of a specific board.
  */
 
+#include "./highscore.h"
+
 #include <QApplication>
 #include <QDebug>
 #include <QDialog>
@@ -31,8 +33,6 @@
 #include <QGridLayout>
 #include <QInputDialog>
 #include <QLabel>
-
-#include "./highscore.h"
 
 Highscore::Highscore(QWidget *pParent)
   : m_pParent(pParent),
