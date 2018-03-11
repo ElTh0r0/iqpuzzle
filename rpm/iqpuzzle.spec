@@ -137,12 +137,16 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%if 0%{?suse_version}
+%dir %{_datadir}/metainfo
+%endif
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.*g
 %{_datadir}/pixmaps/%{name}_64x64.png
 %{_datadir}/pixmaps/%{name}.xpm
+%{_datadir}/metainfo/%{name}.appdata.xml
 %doc COPYING
 %{_mandir}/*/*
 
