@@ -1,17 +1,5 @@
 title: iQPuzzle
 description: A diverting I.Q. challenging pentomino puzzle
-show_downloads: true
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-dinky
-github:
-  zip_url: https://github.com/ElTh0r0/iqpuzzle/archive/v1.1.0.zip
-  tar_url: https://github.com/ElTh0r0/iqpuzzle/archive/v1.1.0.tar.gz
-  app_url: https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-x86_64.AppImage
-  win_url: https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-Windows.zip
-  mac_url: https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-macOS.zip
-  gen_url: https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild
-external:
-  ppa_url: https://launchpad.net/~elthoro/+archive/iqpuzzle
-  obs_url: http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle
-  os2_url: http://www.ecsoft2.org/iqpuzzle
-  mag_url: https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0
