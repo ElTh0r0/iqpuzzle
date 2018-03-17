@@ -3,7 +3,7 @@ layout: default
 ---
 
 [back](./)
-# [](#Create-your-own-level)Create your own level
+# [](#create-your-own-level)Create your own level
 Own puzzle levels can be created as a text file stored with **.conf** file extension. Afterwards they can be loaded via _"Game -> New game"_. As an example, the following parts belonging to level **pento_T.conf**:
 
 ```ini
@@ -53,7 +53,7 @@ Explanation of the different file sections:
 
 | Board |    |
 | --- | --- |
-| Polygon | Board definition as polygon (more information see below). The board has to be rectangular! |
+| Polygon | Board definition as polygon (more information see [below](#polygon)). The board has to be rectangular! |
 | Color | Background color of the board as hex value |
 | BorderColor | Border color of the board as hex value |
 | GridColor | Color of the board grid as hex value |
@@ -65,18 +65,18 @@ Puzzle pieces / barriers numbered from  1 to N:
 | Polygon | Shape of a puzzle piece/barrier as orthogonal polygon; e.g.: "0,0 \| 3,0 \| 3,1 \| 1,1 \| 1,3 \| 0,3 \| 0,0" |
 | Color | Color of piece/barrier as hex value |
 | BorderColor | Border color as hex value |
-| StartPos | Position "x, y" at game start (see below information about the coordinate system). Reference point is the top left corner of the piece. |
+| StartPos | Position "x, y" at game start (see below information about the [coordinate system](#coordinate-system)). Reference point is the top left corner of the piece. |
 
 | Comments |   |
 | --- | --- |
 | \#\# Comment | If needed, comments can be inserted with leading \#\# |
 
-### Coordinate system
+## [](#coordinate-system)Coordinate system
 The top left corner of the board defines the origin of the used coordinate system. Points are defined as "x, y" (x-axis horizontal to the right, y-axis vertical downward). It is allowed to use negative values as start positions for the pieces.
 
 ![Graticule](https://media-cdn.ubuntu-de.org/wiki/thumbnails/b/b5/b53e9caa9d43b1dda19d79f38df96c351abd7efdix100.png)
 
-### Polygon
+## [](#polygon)Polygon
 Board, pieces and barriers are defined as (orthogonal) polygons. The shape is defined by a list of all corners. One has to take care, that the polygon is "closed", which means the first and last corner have to be identical. The corners (coordinates) are separated by a vertical bar \| ("pipe", shortcut "AltGr + <") and the complete list is terminated by quotation marks. E.g. "0,0 \| 3,0 \| 3,1 \| 1,1 \| 1,3 \| 0,3 \| 0,0" can be seen on the picture below. 
 
 ![Example shape](https://media-cdn.ubuntu-de.org/wiki/thumbnails/f/fd/fde89b64c128973aa87d82f4caac30c514172eb3ix100.png)
