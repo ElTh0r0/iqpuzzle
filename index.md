@@ -23,7 +23,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
-## [](release-notes)Release notes
+## [](#release-notes)Release notes
 ###### v1.1.0 (18. Jan 2018)
 * Start random un-/solved easy/medium/hard game.
 * Added freestyle mode.
