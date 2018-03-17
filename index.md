@@ -8,7 +8,9 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![alt tag](https://cn.pling.com/img/f/a/d/d/7841359a95432f690d8c2bf7a5e9723770f7.png)
 
 # [](#downoads)Downloads
-* [Build for Windows, macOS or Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/latest)
+* [Build for Windows](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-macOS.zip)
+* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-x86_64.AppImage)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Arch, Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
