@@ -5,61 +5,61 @@
     <name>Board</name>
     <message>
         <location filename="../board.cpp" line="54"/>
-        <location filename="../board.cpp" line="71"/>
-        <location filename="../board.cpp" line="179"/>
-        <location filename="../board.cpp" line="201"/>
-        <location filename="../board.cpp" line="227"/>
-        <location filename="../board.cpp" line="256"/>
-        <location filename="../board.cpp" line="264"/>
-        <location filename="../board.cpp" line="370"/>
+        <location filename="../board.cpp" line="70"/>
+        <location filename="../board.cpp" line="173"/>
+        <location filename="../board.cpp" line="195"/>
+        <location filename="../board.cpp" line="218"/>
+        <location filename="../board.cpp" line="247"/>
+        <location filename="../board.cpp" line="255"/>
+        <location filename="../board.cpp" line="361"/>
         <source>Warning</source>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="55"/>
+        <location filename="../board.cpp" line="54"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>Rastergrootte van bord is ongeldig.
 Het raster is verkleind naar de standaard grootte.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="72"/>
+        <location filename="../board.cpp" line="70"/>
         <source>Board polygon not valid.</source>
         <translation>Polygoon is ongeldig.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
-        <location filename="../board.cpp" line="228"/>
+        <location filename="../board.cpp" line="174"/>
+        <location filename="../board.cpp" line="219"/>
         <source>Polygon not valid:</source>
         <translation>Polygon is ongeldig:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="202"/>
+        <location filename="../board.cpp" line="195"/>
         <source>Could not find valid blocks.</source>
         <translation>Kan geen geldige blokken vinden.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="257"/>
+        <location filename="../board.cpp" line="248"/>
         <source>No color defined - using fallback:</source>
         <translation>Geen kleur opgegeven - terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="265"/>
+        <location filename="../board.cpp" line="256"/>
         <source>Invalid color defined - using fallback:</source>
         <translation>Onjuiste kleur opgegeven- terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="371"/>
+        <location filename="../board.cpp" line="362"/>
         <source>Invalid start position - using fallback:</source>
         <translation>Ongeldige startpositie - terugval wordt gebruikt:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="146"/>
+        <location filename="../board.cpp" line="144"/>
         <source>Hint</source>
         <translation>Tip</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="147"/>
+        <location filename="../board.cpp" line="144"/>
         <source>Not all pieces are needed for a solution!</source>
         <translation>Niet alle stukken zijn benodigd voor de oplossing!</translation>
     </message>
@@ -186,7 +186,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="184"/>
-        <location filename="../iqpuzzle.cpp" line="492"/>
+        <location filename="../iqpuzzle.cpp" line="493"/>
         <source>Save game</source>
         <translation>Spel opslaan</translation>
     </message>
@@ -197,7 +197,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="197"/>
-        <location filename="../iqpuzzle.cpp" line="465"/>
+        <location filename="../iqpuzzle.cpp" line="466"/>
         <source>Load game</source>
         <translation>Spel laden</translation>
     </message>
@@ -251,17 +251,17 @@ Het raster is verkleind naar de standaard grootte.</translation>
         <translation>Sta&amp;tistieken</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="659"/>
+        <location filename="../iqpuzzle.cpp" line="658"/>
         <source>Easy</source>
         <translation>Makkelijk</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="666"/>
+        <location filename="../iqpuzzle.cpp" line="665"/>
         <source>Medium</source>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="673"/>
+        <location filename="../iqpuzzle.cpp" line="672"/>
         <source>Hard</source>
         <translation>Moeilijk</translation>
     </message>
@@ -271,130 +271,130 @@ Het raster is verkleind naar de standaard grootte.</translation>
         <translation>&amp;Willekeurig spel</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="315"/>
+        <location filename="../iqpuzzle.cpp" line="316"/>
         <source>Load board</source>
         <translation>Bord laden</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="108"/>
-        <location filename="../iqpuzzle.cpp" line="118"/>
-        <location filename="../iqpuzzle.cpp" line="259"/>
-        <location filename="../iqpuzzle.cpp" line="270"/>
-        <source>File not found</source>
-        <translation>Bestand niet gevonden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="109"/>
         <location filename="../iqpuzzle.cpp" line="119"/>
         <location filename="../iqpuzzle.cpp" line="260"/>
         <location filename="../iqpuzzle.cpp" line="271"/>
+        <source>File not found</source>
+        <translation>Bestand niet gevonden</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="110"/>
+        <location filename="../iqpuzzle.cpp" line="120"/>
+        <location filename="../iqpuzzle.cpp" line="261"/>
+        <location filename="../iqpuzzle.cpp" line="272"/>
         <source>The chosen file does not exist.</source>
         <translation>Het gekozen bestand bestaat niet.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="300"/>
+        <location filename="../iqpuzzle.cpp" line="301"/>
         <source>Unknown</source>
         <translation>Onbekend</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="482"/>
+        <location filename="../iqpuzzle.cpp" line="483"/>
         <source>Invalid saved puzzle.</source>
         <translation>Ongeldige opgeslagen puzzel.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="83"/>
-        <location filename="../iqpuzzle.cpp" line="751"/>
+        <location filename="../iqpuzzle.cpp" line="84"/>
+        <location filename="../iqpuzzle.cpp" line="750"/>
         <source>Game paused</source>
         <translation>Spel gepauzeerd</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="87"/>
-        <location filename="../iqpuzzle.cpp" line="279"/>
-        <location filename="../iqpuzzle.cpp" line="285"/>
-        <location filename="../iqpuzzle.cpp" line="558"/>
-        <location filename="../iqpuzzle.cpp" line="571"/>
+        <location filename="../iqpuzzle.cpp" line="88"/>
+        <location filename="../iqpuzzle.cpp" line="280"/>
+        <location filename="../iqpuzzle.cpp" line="286"/>
+        <location filename="../iqpuzzle.cpp" line="557"/>
+        <location filename="../iqpuzzle.cpp" line="570"/>
         <source>Time</source>
         <translation>Tijd</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="88"/>
-        <location filename="../iqpuzzle.cpp" line="276"/>
-        <location filename="../iqpuzzle.cpp" line="283"/>
+        <location filename="../iqpuzzle.cpp" line="89"/>
+        <location filename="../iqpuzzle.cpp" line="277"/>
+        <location filename="../iqpuzzle.cpp" line="284"/>
         <location filename="../iqpuzzle.cpp" line="549"/>
-        <location filename="../iqpuzzle.cpp" line="570"/>
-        <location filename="../iqpuzzle.cpp" line="755"/>
+        <location filename="../iqpuzzle.cpp" line="569"/>
+        <location filename="../iqpuzzle.cpp" line="754"/>
         <source>Moves</source>
         <translation>Zetten</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="317"/>
+        <location filename="../iqpuzzle.cpp" line="318"/>
         <source>Board files</source>
         <translation>Bordbestanden</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="305"/>
+        <location filename="../iqpuzzle.cpp" line="306"/>
         <source>Solutions</source>
         <translation>Oplossingen</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="135"/>
+        <location filename="../iqpuzzle.cpp" line="136"/>
         <source>Games share path does not exist!</source>
         <translation>Het spelpad bestaat niet!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="385"/>
+        <location filename="../iqpuzzle.cpp" line="386"/>
         <source>No boards available!</source>
         <translation>Geen beschikbare borden!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="467"/>
-        <location filename="../iqpuzzle.cpp" line="494"/>
+        <location filename="../iqpuzzle.cpp" line="468"/>
+        <location filename="../iqpuzzle.cpp" line="495"/>
         <source>Save games</source>
         <translation>Opgeslagen spellen</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="569"/>
+        <location filename="../iqpuzzle.cpp" line="568"/>
         <source>Puzzle solved!</source>
         <translation>Puzzel opgelost!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="646"/>
+        <location filename="../iqpuzzle.cpp" line="645"/>
         <source>Statistics</source>
         <translation>Statistieken</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="654"/>
-        <location filename="../iqpuzzle.cpp" line="680"/>
+        <location filename="../iqpuzzle.cpp" line="653"/>
+        <location filename="../iqpuzzle.cpp" line="679"/>
         <source>Total</source>
         <translation>Totaal</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="656"/>
+        <location filename="../iqpuzzle.cpp" line="655"/>
         <source>Unsolved</source>
         <translation>Onopgelost</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="681"/>
+        <location filename="../iqpuzzle.cpp" line="680"/>
         <source>including unknown difficulty</source>
         <translation>inclusief onbekende moeilijkheidsgraad</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="709"/>
+        <location filename="../iqpuzzle.cpp" line="708"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="725"/>
+        <location filename="../iqpuzzle.cpp" line="724"/>
         <source>License</source>
         <translation>Licentie</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="728"/>
+        <location filename="../iqpuzzle.cpp" line="727"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
         <translation>Deze applicatie gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="731"/>
+        <location filename="../iqpuzzle.cpp" line="730"/>
         <source>Translations</source>
         <translation>Vertalingen</translation>
     </message>
@@ -402,49 +402,49 @@ Het raster is verkleind naar de standaard grootte.</translation>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../settings.cpp" line="56"/>
-        <location filename="../settings.cpp" line="200"/>
+        <location filename="../settings.cpp" line="57"/>
+        <location filename="../settings.cpp" line="201"/>
         <source>Left</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="56"/>
-        <location filename="../settings.cpp" line="200"/>
+        <location filename="../settings.cpp" line="57"/>
+        <location filename="../settings.cpp" line="201"/>
         <source>Middle</source>
         <translation>Midden</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="56"/>
-        <location filename="../settings.cpp" line="200"/>
+        <location filename="../settings.cpp" line="57"/>
+        <location filename="../settings.cpp" line="201"/>
         <source>Right</source>
         <translation>Rechts</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="59"/>
-        <location filename="../settings.cpp" line="204"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="205"/>
         <source>First X</source>
         <translation>Eerste X</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="59"/>
-        <location filename="../settings.cpp" line="204"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="205"/>
         <source>Second X</source>
         <translation>Tweede X</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="60"/>
-        <location filename="../settings.cpp" line="205"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="206"/>
         <source>Horizontal wheel</source>
         <translation>Horizontaal schuiven</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="60"/>
-        <location filename="../settings.cpp" line="205"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="206"/>
         <source>Vertical wheel</source>
         <translation>Verticaal schuiven</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="102"/>
+        <location filename="../settings.cpp" line="103"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>Deze muisknop wordt gebruikt voor meerdere acties; wijzig uw instellingen.</translation>
     </message>

@@ -55,7 +55,7 @@ void Highscore::showHighscore(const QString &sBoard) {
   Qt::AlignmentFlag Align = Qt::AlignCenter;
   QStringList sListTemp;
   QDialog dialog(m_pParent);
-  dialog.setWindowTitle(trUtf8("Highscore") + " - " + sBoard);
+  dialog.setWindowTitle(tr("Highscore") + " - " + sBoard);
   dialog.setWindowFlags(dialog.window()->windowFlags()
                         & ~Qt::WindowContextHelpButtonHint);
 
@@ -63,13 +63,13 @@ void Highscore::showHighscore(const QString &sBoard) {
   layout->setMargin(10);
   layout->setSpacing(10);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Position") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Position") + "</b>", &dialog),
                     0, 0, Qt::AlignCenter | Qt::AlignVCenter);
-  layout->addWidget(new QLabel("<b>" + trUtf8("Name") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Name") + "</b>", &dialog),
                     0, 1, Qt::AlignLeft | Qt::AlignVCenter);
-  layout->addWidget(new QLabel("<b>" + trUtf8("Time") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Time") + "</b>", &dialog),
                     0, 2, Qt::AlignCenter | Qt::AlignVCenter);
-  layout->addWidget(new QLabel("<b>" + trUtf8("Moves") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Moves") + "</b>", &dialog),
                     0, 3, Qt::AlignCenter | Qt::AlignVCenter);
 
   for (int nRow = 1; nRow <= m_nMAXPOS; nRow++) {
@@ -152,8 +152,8 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
     }
 
     sName = QInputDialog::getText(
-              m_pParent, trUtf8("Highscore"),
-              trUtf8("Please insert your name for a new highscore:"),
+              m_pParent, tr("Highscore"),
+              tr("Please insert your name for a new highscore:"),
               QLineEdit::Normal, sName, &bOk);
     if (true != bOk || sName.isEmpty()) {
       sName = "Guy Incognito";

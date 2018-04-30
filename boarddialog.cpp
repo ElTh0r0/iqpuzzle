@@ -39,8 +39,8 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
   this->setViewMode(QFileDialog::List);
   QVBoxLayout *boxlayout = new QVBoxLayout();
 
-  m_pSolutions = new QLabel(trUtf8("Solutions") + ":", this);
-  m_pPreviewCaption = new QLabel(trUtf8("Preview") + ":", this);
+  m_pSolutions = new QLabel(tr("Solutions") + ":", this);
+  m_pPreviewCaption = new QLabel(tr("Preview") + ":", this);
   m_pPreview = new QLabel("", this);
   m_pPreview->setAlignment(Qt::AlignCenter);
   m_pPreview->setObjectName("labelPreview");
@@ -67,16 +67,16 @@ void BoardDialog::OnCurrentChanged(const QString &sPath) {
   quint32 nSolutions(tmpSet.value("PossibleSolutions", 0).toUInt());
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
-    sSolutions = trUtf8("Unknown");
+    sSolutions = tr("Unknown");
   }
-  m_pSolutions->setText(trUtf8("Solutions") + ": " + sSolutions);
+  m_pSolutions->setText(tr("Solutions") + ": " + sSolutions);
 
   QString sImage(sPath);
   sImage.replace(".conf", ".png");
   // qDebug() << "Preview image:" << sImage;
   QPixmap pixmap = QPixmap(sImage);
   if (pixmap.isNull()) {
-    m_pPreview->setText("\n" + trUtf8("No preview available"));
+    m_pPreview->setText("\n" + tr("No preview available"));
   } else {
     m_pPreview->resize(200, 200);
     m_pPreview->setPixmap(pixmap.scaled(m_pPreview->width(),

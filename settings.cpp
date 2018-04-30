@@ -54,11 +54,11 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
                               qApp->applicationName().toLower());
 #endif
 
-  m_sListMouseButtons << trUtf8("Left") << trUtf8("Middle") << trUtf8("Right");
+  m_sListMouseButtons << tr("Left") << tr("Middle") << tr("Right");
   m_listMouseButtons << Qt::LeftButton << Qt::MidButton << Qt::RightButton;
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
-  m_sListMouseButtons << trUtf8("First X") << trUtf8("Second X")
-                      << trUtf8("Vertical wheel") << trUtf8("Horizontal wheel");
+  m_sListMouseButtons << tr("First X") << tr("Second X")
+                      << tr("Vertical wheel") << tr("Horizontal wheel");
   m_listMouseButtons << Qt::XButton1 << Qt::XButton2
                      << (quint8(Qt::Vertical)|m_nSHIFT)
                      << (quint8(Qt::Horizontal)|m_nSHIFT);
@@ -100,8 +100,8 @@ void Settings::accept() {
       tmp_listMouseControls[0] == tmp_listMouseControls[2] ||
       tmp_listMouseControls[1] == tmp_listMouseControls[2]) {
     QMessageBox::warning(0, this->windowTitle(),
-                             trUtf8("Please change your settings. Same mouse "
-                                    "button is used for several actions."));
+                             tr("Please change your settings. Same mouse "
+                                "button is used for several actions."));
     return;
   } else {
     m_listMouseControls[0] = tmp_listMouseControls[0];
@@ -198,12 +198,12 @@ void Settings::updateUiLang() {
   m_pUi->retranslateUi(this);
 
   m_sListMouseButtons.clear();
-  m_sListMouseButtons << trUtf8("Left") << trUtf8("Middle") << trUtf8("Right");
+  m_sListMouseButtons << tr("Left") << tr("Middle") << tr("Right");
   m_pUi->cbMoveBlockMouse->clear();
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
 
-  m_sListMouseButtons << trUtf8("First X") << trUtf8("Second X")
-                      << trUtf8("Vertical wheel") << trUtf8("Horizontal wheel");
+  m_sListMouseButtons << tr("First X") << tr("Second X")
+                      << tr("Vertical wheel") << tr("Horizontal wheel");
   m_pUi->cbRotateBlockMouse->clear();
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->clear();

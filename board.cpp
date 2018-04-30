@@ -51,9 +51,8 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
   if (0 == m_nGridSize || m_nGridSize > 255) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
     m_nGridSize = 25;
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Board grid size not valid.\n"
-                                "Reduced grid to default."));
+    QMessageBox::warning(0, tr("Warning"), tr("Board grid size not valid.\n"
+                                              "Reduced grid to default."));
   }
 }
 
@@ -68,8 +67,7 @@ bool Board::setupBoard() {
   m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
   if (m_BoardPoly.isEmpty()) {
     qWarning() << "BOARD POLYGON IS EMPTY!";
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Board polygon not valid."));
+    QMessageBox::warning(0, tr("Warning"), tr("Board polygon not valid."));
     return false;
   }
 
@@ -143,8 +141,7 @@ bool Board::setupBlocks() {
                                                 false).toBool();
     if (m_bNotAllPiecesNeeded) {
       QMessageBox::information(
-            0, trUtf8("Hint"),
-            trUtf8("Not all pieces are needed for a solution!"));
+            0, tr("Hint"), tr("Not all pieces are needed for a solution!"));
     }
 
     m_pGraphView->setEnabled(true);
@@ -173,8 +170,8 @@ bool Board::createBlocks() {
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
-      QMessageBox::warning(0, trUtf8("Warning"),
-                           trUtf8("Polygon not valid:") + "\n" + sPrefix);
+      QMessageBox::warning(0, tr("Warning"),
+                           tr("Polygon not valid:") + "\n" + sPrefix);
       return false;
     }
 
@@ -195,8 +192,7 @@ bool Board::createBlocks() {
 
   if (0 == m_nNumOfBlocks) {
     qWarning() << "NO VALID BLOCKS FOUND.";
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Could not find valid blocks."));
+    QMessageBox::warning(0, tr("Warning"), tr("Could not find valid blocks."));
     return false;
   }
 
@@ -219,8 +215,8 @@ bool Board::createBarriers() {
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
-      QMessageBox::warning(0, trUtf8("Warning"),
-                           trUtf8("Polygon not valid:") + "\n" + sPrefix);
+      QMessageBox::warning(0, tr("Warning"),
+                           tr("Polygon not valid:") + "\n" + sPrefix);
       return false;
     }
 
@@ -248,16 +244,16 @@ QColor Board::readColor(const QString sKey) const {
   if (sValue.isEmpty()) {
     sValue = "#00FFFF";
     qWarning() << "Set fallback color for key" << sKey;
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("No color defined - using fallback:") +
+    QMessageBox::warning(0, tr("Warning"),
+                         tr("No color defined - using fallback:") +
                          "\n" + sKey);
   }
   color.setNamedColor(sValue);
   if (!color.isValid()) {
     color.setNamedColor("#FF00FF");
     qWarning() << "Found invalid color for key" << sKey;
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Invalid color defined - using fallback:") +
+    QMessageBox::warning(0, tr("Warning"),
+                         tr("Invalid color defined - using fallback:") +
                          "\n" + sKey);
   }
   return color;
@@ -362,8 +358,8 @@ QPointF Board::readStartPosition(const QSettings *tmpSet,
 
   if (!bOk1 || !bOk2) {
     qWarning() << "Found invalid start point for key" << sKey;
-    QMessageBox::warning(0, trUtf8("Warning"),
-                         trUtf8("Invalid start position - using fallback:") +
+    QMessageBox::warning(0, tr("Warning"),
+                         tr("Invalid start position - using fallback:") +
                          "\n" + sKey);
   }
   return point;

@@ -81,12 +81,12 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
   m_pScenePaused->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
   QFont font;
   font.setPixelSize(20);
-  m_pTextPaused = m_pScenePaused->addText(trUtf8("Game paused"), font);
+  m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
 
   m_pTimer = new QTimer(this);
   connect(m_pTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
-  m_pStatusLabelTime = new QLabel(trUtf8("Time") + ": 00:00:00");
-  m_pStatusLabelMoves = new QLabel(trUtf8("Moves") + ": 0");
+  m_pStatusLabelTime = new QLabel(tr("Time") + ": 00:00:00");
+  m_pStatusLabelMoves = new QLabel(tr("Moves") + ": 0");
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
   m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
 
@@ -106,8 +106,8 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
           break;
         } else {
           qWarning() << "Specified board not found:" << sBoard;
-          QMessageBox::warning(this, trUtf8("File not found"),
-                               trUtf8("The chosen file does not exist."));
+          QMessageBox::warning(this, tr("File not found"),
+                               tr("The chosen file does not exist."));
           break;
         }
       } else if (sBoard.endsWith(".iqsav", Qt::CaseInsensitive)) {
@@ -116,8 +116,8 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
           break;
         } else {
           qWarning() << "Specified save game not found:" << sBoard;
-          QMessageBox::warning(this, trUtf8("File not found"),
-                               trUtf8("The chosen file does not exist."));
+          QMessageBox::warning(this, tr("File not found"),
+                               tr("The chosen file does not exist."));
           break;
         }
       }
@@ -133,7 +133,7 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
       } else {
         qWarning() << "Games share path does not exist:" << m_sSharePath;
         QMessageBox::warning(this, qApp->applicationName(),
-                             trUtf8("Games share path does not exist!"));
+                             tr("Games share path does not exist!"));
       }
     }
     this->startNewGame(sStartBoard);
@@ -257,8 +257,8 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
 
   qDebug() << "Board:" << sBoardFile;
   if (!QFile::exists(sBoardFile)) {
-    QMessageBox::warning(this, trUtf8("File not found"),
-                         trUtf8("The chosen file does not exist."));
+    QMessageBox::warning(this, tr("File not found"),
+                         tr("The chosen file does not exist."));
     qWarning() << "Board file not found:" << sBoardFile;
     return;
   }
@@ -268,22 +268,22 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
   if (!sSavedGame.isEmpty()) {
     qDebug() << "Saved game:" << sSavedGame;
     if (!QFile::exists(sSavedGame)) {
-      QMessageBox::warning(this, trUtf8("File not found"),
-                           trUtf8("The chosen file does not exist."));
+      QMessageBox::warning(this, tr("File not found"),
+                           tr("The chosen file does not exist."));
       qWarning() << "Saved game not found:" << sSavedGame;
       return;
     }
     m_nMoves = QString(sMoves).toUInt();
-    m_pStatusLabelMoves->setText(trUtf8("Moves") + ": "
-                                 + QString::number(m_nMoves));
+    m_pStatusLabelMoves->setText(tr("Moves") + ": " +
+                                 QString::number(m_nMoves));
     m_Time = m_Time.fromString(sTime, "hh:mm:ss");
-    m_pStatusLabelTime->setText(trUtf8("Time") + ": " + sTime);
+    m_pStatusLabelTime->setText(tr("Time") + ": " + sTime);
     m_sSavedGame = sSavedGame;
   } else {
     m_nMoves = 0;
-    m_pStatusLabelMoves->setText(trUtf8("Moves") + ": 0");
+    m_pStatusLabelMoves->setText(tr("Moves") + ": 0");
     m_Time = m_Time.fromString("00:00:00", "hh:mm:ss");
-    m_pStatusLabelTime->setText(trUtf8("Time") + ": 00:00:00");
+    m_pStatusLabelTime->setText(tr("Time") + ": 00:00:00");
   }
 
   this->setGameTitle();
@@ -298,12 +298,12 @@ void IQPuzzle::setGameTitle() {
   quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
-    sSolutions = trUtf8("Unknown");
+    sSolutions = tr("Unknown");
   }
 
   this->setWindowTitle(qApp->applicationName() + " - " +
                        QFileInfo(m_sBoardFile).baseName() + " ("
-                       + trUtf8("Solutions") + ": " + sSolutions + ")");
+                       + tr("Solutions") + ": " + sSolutions + ")");
 }
 
 // ---------------------------------------------------------------------------
@@ -313,9 +313,9 @@ QString IQPuzzle::chooseBoard() {
   if (NULL != m_pBoardDialog) {
     delete m_pBoardDialog;
   }
-  m_pBoardDialog = new BoardDialog(this, trUtf8("Load board"),
+  m_pBoardDialog = new BoardDialog(this, tr("Load board"),
                                    m_sSharePath + "/boards",
-                                   trUtf8("Board files") + " (*.conf)");
+                                   tr("Board files") + " (*.conf)");
 
   if (m_pBoardDialog->exec()) {
     QStringList sListFiles;
@@ -383,7 +383,7 @@ void IQPuzzle::randomGame(const int nChoice) {
     } else {
       qWarning() << "Game file list is emtpy!";
       QMessageBox::warning(this, qApp->applicationName(),
-                           trUtf8("No boards available!"));
+                           tr("No boards available!"));
     }
   } else {
     qWarning() << "Invalid random choice:" << nChoice;
@@ -463,9 +463,9 @@ void IQPuzzle::restartGame() {
 void IQPuzzle::loadGame(QString sSaveFile) {
   if (sSaveFile.isEmpty()) {
     sSaveFile = QFileDialog::getOpenFileName(
-                  this, trUtf8("Load game"),
+                  this, tr("Load game"),
                   m_userDataDir.absolutePath(),
-                  trUtf8("Save games") + "(*.iqsav)");
+                  tr("Save games") + "(*.iqsav)");
   }
 
   if (!sSaveFile.isEmpty()) {
@@ -480,7 +480,7 @@ void IQPuzzle::loadGame(QString sSaveFile) {
       this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
     } else {
       QMessageBox::warning(this, qApp->applicationName(),
-                           trUtf8("Invalid saved puzzle."));
+                           tr("Invalid saved puzzle."));
     }
   }
 }
@@ -490,9 +490,9 @@ void IQPuzzle::loadGame(QString sSaveFile) {
 
 void IQPuzzle::saveGame() {
   QString sFile = QFileDialog::getSaveFileName(
-                    this, trUtf8("Save game"),
+                    this, tr("Save game"),
                     m_userDataDir.absolutePath(),
-                    trUtf8("Save games") + "(*.iqsav)");
+                    tr("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
     m_sSavedMoves = QString::number(m_nMoves);
     m_sSavedTime = m_Time.toString("hh:mm:ss");
@@ -546,8 +546,7 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
 
 void IQPuzzle::incrementMoves() {
   m_nMoves++;
-  m_pStatusLabelMoves->setText(
-        trUtf8("Moves") + ": " + QString::number(m_nMoves));
+  m_pStatusLabelMoves->setText(tr("Moves") + ": " + QString::number(m_nMoves));
 }
 
 // ---------------------------------------------------------------------------
@@ -555,8 +554,7 @@ void IQPuzzle::incrementMoves() {
 
 void IQPuzzle::updateTimer() {
   m_Time = m_Time.addSecs(1);
-  m_pStatusLabelTime->setText(
-        trUtf8("Time") + ": " + m_Time.toString("hh:mm:ss"));
+  m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString("hh:mm:ss"));
 }
 
 // ---------------------------------------------------------------------------
@@ -567,9 +565,9 @@ void IQPuzzle::solvedPuzzle() {
   m_pTimer->stop();
   m_bSolved = true;
   QMessageBox::information(this, qApp->applicationName(),
-                           trUtf8("Puzzle solved!") + "\n\n" +
-                           trUtf8("Moves") + ": " + QString::number(m_nMoves)
-                           + "\n" + trUtf8("Time") + ": "
+                           tr("Puzzle solved!") + "\n\n" +
+                           tr("Moves") + ": " + QString::number(m_nMoves)
+                           + "\n" + tr("Time") + ": "
                            + m_Time.toString("hh:mm:ss"));
   m_pUi->action_PauseGame->setEnabled(false);
   m_pUi->action_PauseGame->setChecked(false);
@@ -644,7 +642,7 @@ void IQPuzzle::showHighscore() {
 
 void IQPuzzle::showStatistics() {
   QDialog dialog(this);
-  dialog.setWindowTitle(trUtf8("Statistics"));
+  dialog.setWindowTitle(tr("Statistics"));
   dialog.setWindowFlags(dialog.window()->windowFlags()
                         & ~Qt::WindowContextHelpButtonHint);
 
@@ -652,34 +650,34 @@ void IQPuzzle::showStatistics() {
   layout->setMargin(10);
   layout->setSpacing(8);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Total") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Total") + "</b>", &dialog),
                     0, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel("<b>" + trUtf8("Unsolved") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Unsolved") + "</b>", &dialog),
                     0, 2, Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Easy") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Easy") + "</b>", &dialog),
                     1, 0, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListEasy.size()), &dialog),
                     1, 1, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListEasyUnsolved.size()),
                                &dialog), 1, 2, Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Medium") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Medium") + "</b>", &dialog),
                     2, 0, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListMedium.size()), &dialog),
                     2, 1, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListMediumUnsolved.size()),
                                &dialog), 2, 2, Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Hard") + "</b>", &dialog),
+  layout->addWidget(new QLabel("<b>" + tr("Hard") + "</b>", &dialog),
                     3, 0, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListHard.size()), &dialog),
                     3, 1, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListHardUnsolved.size()),
                                &dialog), 3, 2, Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + trUtf8("Total") + "</b> - " +
-                               trUtf8("including unknown difficulty") + ":",
+  layout->addWidget(new QLabel("<b>" + tr("Total") + "</b> - " +
+                               tr("including unknown difficulty") + ":",
                                &dialog), 4, 0, 1, 3, Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListAll.size()), &dialog),
                     5, 1, Qt::AlignCenter);
@@ -707,7 +705,7 @@ void IQPuzzle::reportBug() const {
 
 void IQPuzzle::showInfoBox() {
   QMessageBox::about(
-        this, trUtf8("About"),
+        this, tr("About"),
         QString("<center>"
                 "<big><b>%1 %2</b></big><br />"
                 "%3<br />"
@@ -723,13 +721,13 @@ void IQPuzzle::showInfoBox() {
         .arg(APP_COPY)
         .arg("URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
              "https://github.com/ElTh0r0/iqpuzzle</a>")
-        .arg(trUtf8("License") +
+        .arg(tr("License") +
              ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
              "GNU General Public License Version 3</a>")
-        .arg(trUtf8("This application uses icons from "
-                    "<a href=\"http://tango.freedesktop.org\">"
-                    "Tango project</a>."))
-        .arg("<i>" + trUtf8("Translations") +
+        .arg(tr("This application uses icons from "
+                "<a href=\"http://tango.freedesktop.org\">"
+                "Tango project</a>."))
+        .arg("<i>" + tr("Translations") +
              "</i><br />"
              "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
              "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
@@ -749,11 +747,11 @@ void IQPuzzle::changeEvent(QEvent *pEvent) {
       m_pScenePaused->removeItem(m_pTextPaused);
       QFont font;
       font.setPixelSize(20);
-      m_pTextPaused = m_pScenePaused->addText(trUtf8("Game paused"), font);
+      m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
       this->setMinWindowSize();
 
       m_pStatusLabelMoves->setText(
-            trUtf8("Moves") + ": " + QString::number(m_nMoves));
+            tr("Moves") + ": " + QString::number(m_nMoves));
       emit updateUiLang();
     }
   }
@@ -767,9 +765,9 @@ void IQPuzzle::changeEvent(QEvent *pEvent) {
 void IQPuzzle::closeEvent(QCloseEvent *pEvent) {
   pEvent->accept();
   /*
-  int nRet = QMessageBox::question(this, trUtf8("Quit") + " - " +
+  int nRet = QMessageBox::question(this, tr("Quit") + " - " +
                                    qApp->applicationName(),
-                                   trUtf8("Do you really want to quit?"),
+                                   tr("Do you really want to quit?"),
                                    QMessageBox::Yes | QMessageBox::No);
 
   if (QMessageBox::Yes == nRet) {
