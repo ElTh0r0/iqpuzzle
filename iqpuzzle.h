@@ -51,7 +51,7 @@ class IQPuzzle : public QMainWindow {
   Q_OBJECT
 
   public:
-    explicit IQPuzzle(const QDir userDataDir, const QDir &sharePath,
+    explicit IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                       QWidget *pParent = 0);
     ~IQPuzzle();
 

@@ -67,12 +67,12 @@ class Board : public QGraphicsScene {
     void drawGrid();
     bool createBlocks();
     bool createBarriers();
-    QColor readColor(const QString sKey) const;
-    QPolygonF readPolygon(const QSettings *tmpSet, const QString sKey,
+    QColor readColor(const QString &sKey) const;
+    QPolygonF readPolygon(const QSettings *tmpSet, const QString &sKey,
                           const bool bScale = false);
     bool checkOrthogonality(QPointF point) const;
     QPointF readStartPosition(const QSettings *tmpSet,
-                              const QString sKey) const;
+                              const QString &sKey) const;
     void doZoom();
 
     QGraphicsView *m_pGraphView;

@@ -104,8 +104,8 @@ void Highscore::showHighscore(const QString &sBoard) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Highscore::checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                               const QTime &tTime) {
+void Highscore::checkHighscore(const QString &sBoard, const quint32 nMoves,
+                               const QTime tTime) {
   QStringList sListTemp;
   quint32 nScoreMoves(0);
   QTime tScoreTime(0, 0, 0);
@@ -139,8 +139,8 @@ void Highscore::checkHighscore(const QString &sBoard, const quint32 &nMoves,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Highscore::insertHighscore(const QString &sBoard, const quint8 &nPosition,
-                                const quint32 &nMoves, const QTime &tTime) {
+void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
+                                const quint32 nMoves, const QTime tTime) {
   if (nPosition <= m_nMAXPOS) {
     QStringList sListEntries;
     QByteArray ba;

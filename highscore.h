@@ -43,13 +43,13 @@ class Highscore : public QObject {
 
   public slots:
     void showHighscore(const QString &sBoard);
-    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                        const QTime &tTime);
+    void checkHighscore(const QString &sBoard, const quint32 nMoves,
+                        const QTime tTime);
 
   private:
     QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
-    void insertHighscore(const QString &sBoard, const quint8 &nPosition,
-                         const quint32 &nMoves, const QTime &tTime);
+    void insertHighscore(const QString &sBoard, const quint8 nPosition,
+                         const quint32 nMoves, const QTime tTime);
 
     QWidget *m_pParent;
     QSettings *m_pHighscore;

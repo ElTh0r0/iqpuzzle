@@ -72,7 +72,7 @@ class Block : public QGraphicsObject {
 
   private:
     void moveBlockGrid(const QPointF pos);
-    bool checkCollision(const QPainterPath thisPath);
+    bool checkCollision(const QPainterPath &thisPath);
     void checkBlockIntersection();
     QPointF snapToGrid(const QPointF point) const;
     void resetBrushStyle() const;

@@ -35,7 +35,7 @@
 
 #include "ui_iqpuzzle.h"
 
-IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
+IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                    QWidget *pParent)
   : QMainWindow(pParent),
     m_pUi(new Ui::IQPuzzle),
@@ -78,7 +78,7 @@ IQPuzzle::IQPuzzle(const QDir userDataDir, const QDir &sharePath,
   m_pGraphView = new QGraphicsView(this);
   this->setCentralWidget(m_pGraphView);
   m_pScenePaused = new QGraphicsScene(this);
-  m_pScenePaused->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
+  m_pScenePaused->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
   QFont font;
   font.setPixelSize(20);
   m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
@@ -715,19 +715,19 @@ void IQPuzzle::showInfoBox() {
                 "<small>%7</small>"
                 "</center><br />"
                 "%8")
-        .arg(qApp->applicationName())
-        .arg(qApp->applicationVersion())
-        .arg(APP_DESC)
-        .arg(APP_COPY)
-        .arg("URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
-             "https://github.com/ElTh0r0/iqpuzzle</a>")
-        .arg(tr("License") +
+        .arg(qApp->applicationName(),
+             qApp->applicationVersion(),
+             APP_DESC,
+             APP_COPY,
+             "URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
+             "https://github.com/ElTh0r0/iqpuzzle</a>",
+             tr("License") +
              ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-             "GNU General Public License Version 3</a>")
-        .arg(tr("This application uses icons from "
+             "GNU General Public License Version 3</a>",
+             tr("This application uses icons from "
                 "<a href=\"http://tango.freedesktop.org\">"
-                "Tango project</a>."))
-        .arg("<i>" + tr("Translations") +
+                "Tango project</a>."),
+             "<i>" + tr("Translations") +
              "</i><br />"
              "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
              "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"

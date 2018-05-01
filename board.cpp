@@ -38,7 +38,7 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
     m_sBoardFile(sBoardFile),
     m_pSettings(pSettings),
     m_bSavedGame(false) {
-  this->setBackgroundBrush(QBrush(QColor("#EEEEEE")));
+  this->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
 
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
   if (!sSavedGame.isEmpty()) {
@@ -237,9 +237,9 @@ bool Board::createBarriers() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QColor Board::readColor(const QString sKey) const {
+QColor Board::readColor(const QString &sKey) const {
   QString sValue = m_pBoardConf->value(sKey, "").toString();
-  QColor color("#FF00FF");
+  QColor color(255, 0, 255);
 
   if (sValue.isEmpty()) {
     sValue = "#00FFFF";
@@ -250,7 +250,7 @@ QColor Board::readColor(const QString sKey) const {
   }
   color.setNamedColor(sValue);
   if (!color.isValid()) {
-    color.setNamedColor("#FF00FF");
+    color = QColor(255, 0, 255);
     qWarning() << "Found invalid color for key" << sKey;
     QMessageBox::warning(0, tr("Warning"),
                          tr("Invalid color defined - using fallback:") +
@@ -262,7 +262,7 @@ QColor Board::readColor(const QString sKey) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString sKey,
+QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
                              const bool bScale) {
   QStringList sList;
   QStringList sListPoint;
@@ -336,7 +336,7 @@ bool Board::checkOrthogonality(QPointF point) const {
 // ---------------------------------------------------------------------------
 
 QPointF Board::readStartPosition(const QSettings *tmpSet,
-                                 const QString sKey) const {
+                                 const QString &sKey) const {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();

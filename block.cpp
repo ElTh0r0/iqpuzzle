@@ -299,7 +299,7 @@ void Block::setBrushStyle(Qt::BrushStyle style) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Block::checkCollision(const QPainterPath thisPath) {
+bool Block::checkCollision(const QPainterPath &thisPath) {
   QPainterPath collidingPath;
   QPainterPath intersectedPath;
   foreach (Block *block, *m_pListBlocks) {
