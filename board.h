@@ -45,12 +45,14 @@ class Board : public QGraphicsScene {
 
   public:
     Board(QGraphicsView *pGraphView, const QString &sBoardFile,
-          Settings *pSettings, const QString &sSavedGame = "");
+          Settings *pSettings, const quint16 nGridSize = 0,
+          const QString &sSavedGame = "");
 
     bool setupBoard();
     bool setupBlocks();
     void saveGame(const QString &sSaveFile, const QString &sTime,
                   const QString &sMoves);
+    quint16 getGridSize() const;
 
   signals:
     void setWindowSize(const QSize size, const bool bFreestyle);

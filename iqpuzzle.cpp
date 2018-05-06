@@ -332,10 +332,18 @@ QString IQPuzzle::chooseBoard() {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::createBoard() {
+  static QString sPreviousBoard("");
+  quint16 nGridSize(0);
+
   if (NULL != m_pBoard) {
+    if (sPreviousBoard == m_sBoardFile) {
+      nGridSize = m_pBoard->getGridSize();
+    }
     delete m_pBoard;
   }
-  m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings, m_sSavedGame);
+  m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings,
+                       nGridSize, m_sSavedGame);
+  sPreviousBoard = m_sBoardFile;
   connect(m_pBoard, SIGNAL(setWindowSize(const QSize, const bool)),
           this, SLOT(setMinWindowSize(const QSize, const bool)));
   connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
@@ -526,18 +534,21 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
     size2 = size;
   }
 
-  if (this->size().width() < size2.width() ||
-      this->size().height() < size2.height()) {
-    this->showNormal();
-    this->resize(size2);
-  }
-  m_pTextPaused->setX(
-        size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
-  m_pTextPaused->setY(
-        size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+  if (!this->windowState().testFlag(Qt::WindowMaximized) &&
+      !this->windowState().testFlag(Qt::WindowFullScreen)) {
+    if (this->size().width() < size2.width() ||
+        this->size().height() < size2.height()) {
+      this->showNormal();
+      this->resize(size2);
+    }
+    m_pTextPaused->setX(
+          size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
+    m_pTextPaused->setY(
+          size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
 
-  if (bFreestyle) {
-    m_pGraphView->centerOn(100, 70);
+    if (bFreestyle) {
+      m_pGraphView->centerOn(100, 70);
+    }
   }
 }
 

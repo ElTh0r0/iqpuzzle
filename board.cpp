@@ -33,11 +33,13 @@
 #include <QMessageBox>
 
 Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
-             Settings *pSettings, const QString &sSavedGame)
+             Settings *pSettings, const quint16 nGridSize,
+             const QString &sSavedGame)
   : m_pGraphView(pGraphView),
     m_sBoardFile(sBoardFile),
     m_pSettings(pSettings),
-    m_bSavedGame(false) {
+    m_bSavedGame(false),
+    m_nGridSize(nGridSize) {
   this->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
 
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
@@ -47,7 +49,9 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
   m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
   this->setBackgroundBrush(QBrush(this->readColor("BGColor")));
-  m_nGridSize = m_pBoardConf->value("GridSize", 0).toUInt();
+  if (0 == m_nGridSize) {
+    m_nGridSize = m_pBoardConf->value("GridSize", 0).toUInt();
+  }
   if (0 == m_nGridSize || m_nGridSize > 255) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
     m_nGridSize = 25;
@@ -466,6 +470,13 @@ void Board::doZoom() {
   foreach (Block *pB, m_listBlocks) {
     pB->rescaleBlock(m_nGridSize);
   }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+quint16 Board::getGridSize() const {
+  return m_nGridSize;
 }
 
 // ---------------------------------------------------------------------------
