@@ -1,7 +1,7 @@
 Format: 1.0
 Source: iqpuzzle
 Binary: iqpuzzle
-Version: 1.1.0-0
+Version: 1.1.1-0
 Maintainer: Thorsten Roth <elthoro@gmx.de>
 Architecture: any
 Build-Depends: debhelper (>= 9), libqt4-dev, qt4-qmake, libqtgui4, pkg-config, dpkg-dev (>= 1.16.1.1)

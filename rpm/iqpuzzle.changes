@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 06 17:03:00 UTC 2018 - elthoro@gmx.de 1.1.1
+
+- Updated Dutch translation (thanks to Vistaus).
+- Added freestyle board.
+- Fix: Keep zoom level while board restart.
+- Some code improvements.
+
+-------------------------------------------------------------------
 Sun Jan 07 18:07:00 UTC 2018 - elthoro@gmx.de 1.1.0
 
 - Start random un-/solved easy/medium/hard game.

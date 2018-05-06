@@ -1,3 +1,13 @@
+iqpuzzle (1.1.1-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Updated Dutch translation (thanks to Vistaus).
+  * Added freestyle board.
+  * Fix: Keep zoom level while board restart.
+  * Some code improvements.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 06 May 2018 17:03:00 +0200
+
 iqpuzzle (1.1.0-0ubuntu1) xenial; urgency=low
 
   [ Thorsten Roth ]
