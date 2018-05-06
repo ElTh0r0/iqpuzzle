@@ -730,8 +730,8 @@ void IQPuzzle::showInfoBox() {
              qApp->applicationVersion(),
              APP_DESC,
              APP_COPY,
-             "URL: <a href=\"https://github.com/ElTh0r0/iqpuzzle\">"
-             "https://github.com/ElTh0r0/iqpuzzle</a>",
+             "URL: <a href=\"https://elth0r0.github.io/iqpuzzle/\">"
+             "https://elth0r0.github.io/iqpuzzle/</a>",
              tr("License") +
              ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
              "GNU General Public License Version 3</a>",

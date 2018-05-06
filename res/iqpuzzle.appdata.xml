@@ -16,7 +16,7 @@
 ​
 ​  <launchable type="desktop-id">iqpuzzle.desktop</launchable>
 ​
-​  <url type="homepage">https://github.com/ElTh0r0/iqpuzzle</url>
+​  <url type="homepage">https://elth0r0.github.io/iqpuzzle/</url>
 ​
 ​  <provides>
 ​    <binary>iqpuzzle</binary>
