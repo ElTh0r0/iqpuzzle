@@ -10,10 +10,10 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 # [](#downoads)Downloads
-###### Latest release v1.1.0 (18. Jan 2018)
-* [Build for Windows](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-Windows.zip)
-* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-macOS.zip)
-* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.0/iQPuzzle-1.1.0-x86_64.AppImage)
+###### Latest release v1.1.1 (06. May 2018)
+* [Build for Windows](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-macOS.zip)
+* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-x86_64.AppImage)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Arch, Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
@@ -23,6 +23,12 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
 ## [](#release-notes)Release notes
+###### v1.1.1 (06. May 2018)
+* Updated Dutch translation (thanks to Vistaus).
+* Added freestyle board.
+* Fix: Keep zoom level while board restart.
+* Some code improvements.
+
 ###### v1.1.0 (18. Jan 2018)
 * Start random un-/solved easy/medium/hard game.
 * Added freestyle mode.
