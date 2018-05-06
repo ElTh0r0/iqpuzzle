@@ -6,5 +6,5 @@ Maintainer: Thorsten Roth <elthoro@gmx.de>
 Architecture: any
 Build-Depends: debhelper (>= 9), libqt4-dev, qt4-qmake, libqtgui4, pkg-config, dpkg-dev (>= 1.16.1.1)
 Files:
- f844bc0f4426e931b48241dc3e14b252 576039 iqpuzzle-1.1.0.tar.gz
- 96f596217db4ed123d6f361cdf5f5852 2758 debian.tar.gz
+ 061b3aadbff51e693a82cc618a0c5643 579772 iqpuzzle-1.1.0.tar.gz
+ 4053921edc277c578df5f139ecedd82b 2832 debian.tar.gz

@@ -8,7 +8,7 @@ url='https://github.com/ElTh0r0/iqpuzzle/'
 license=('GPL3')
 depends=('qt5-base')
 source=("$pkgname-$pkgver.tar.gz")
-md5sums=('f844bc0f4426e931b48241dc3e14b252')
+md5sums=('061b3aadbff51e693a82cc618a0c5643')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
