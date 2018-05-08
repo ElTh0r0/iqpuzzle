@@ -246,8 +246,8 @@ void IQPuzzle::setupMenu() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void IQPuzzle::startNewGame(QString sBoardFile, const QString sSavedGame,
-                            const QString sTime, const QString sMoves) {
+void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
+                            const QString &sTime, const QString &sMoves) {
   if (sBoardFile.isEmpty()) {
     sBoardFile = this->chooseBoard();
     if (sBoardFile.isEmpty()) {
@@ -383,10 +383,10 @@ void IQPuzzle::randomGame(const int nChoice) {
 
   if (nChoice > 0 && nChoice <= m_sListFiles.size()) {
     if (!m_sListFiles[nChoice-1]->isEmpty()) {
-      int nRand = qrand() % m_sListFiles[nChoice-1]->size();
-      if (nRand >= 0 && nRand < m_sListFiles[nChoice-1]->size()) {
+      int nRand = qrand() % m_sListFiles.at(nChoice-1)->size();
+      if (nRand >= 0 && nRand < m_sListFiles.at(nChoice-1)->size()) {
         this->startNewGame(m_sSharePath + "/boards/" +
-                           m_sListFiles[nChoice-1]->at(nRand));
+                           m_sListFiles.at(nChoice-1)->at(nRand));
       }
     } else {
       qWarning() << "Game file list is emtpy!";

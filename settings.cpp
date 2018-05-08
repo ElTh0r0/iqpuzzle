@@ -164,11 +164,11 @@ void Settings::readSettings() {
   m_listMouseControls[2] = m_pSettings->value("FlipBlock",
                                               Qt::RightButton).toUInt();
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[0]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
   m_pUi->cbRotateBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[1]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
   m_pUi->cbFlipBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[2]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
   m_pSettings->endGroup();
 }
 
@@ -210,11 +210,11 @@ void Settings::updateUiLang() {
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[0]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
   m_pUi->cbRotateBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[1]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
   m_pUi->cbFlipBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls[2]));
+        m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
 }
 
 // ----------------------------------------------------------------------------

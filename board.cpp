@@ -498,7 +498,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
 
   for (int i = 0; i < m_nNumOfBlocks; i++) {
     QString sPrefix = "Block" + QString::number(i + 1);
-    QPolygonF poly = m_listBlocks[i]->getPolygon();
+    QPolygonF poly = m_listBlocks.at(i)->getPolygon();
     QString sPoly("");
     foreach (QPointF point, poly) {
       sPoly += QString::number(point.x()) + "," +
@@ -507,7 +507,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
     sPoly.remove(sPoly.length() - 3, sPoly.length());
 
     saveConf.setValue(sPrefix + "/Polygon", sPoly);
-    QPointF pos = m_listBlocks[i]->getPosition();
+    QPointF pos = m_listBlocks.at(i)->getPosition();
     saveConf.setValue(sPrefix + "/StartPos",
                       QString::number(pos.x() / m_nGridSize) + "," +
                       QString::number(pos.y() / m_nGridSize));

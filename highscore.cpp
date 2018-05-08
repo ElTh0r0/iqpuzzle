@@ -34,9 +34,10 @@
 #include <QInputDialog>
 #include <QLabel>
 
-Highscore::Highscore(QWidget *pParent)
+Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
   : m_pParent(pParent),
     m_nMAXPOS(3) {
+  Q_UNUSED(pParentObj);
 #if defined _WIN32
   m_pHighscore = new QSettings(QSettings::IniFormat, QSettings::UserScope,
                                qApp->applicationName().toLower(),
@@ -143,6 +144,7 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
                                 const quint32 nMoves, const QTime tTime) {
   if (nPosition <= m_nMAXPOS) {
     QStringList sListEntries;
+    sListEntries.reserve(m_nMAXPOS + 1);
     QByteArray ba;
     bool bOk(false);
     QString sName("");

@@ -67,13 +67,13 @@ class IQPuzzle : public QMainWindow {
   signals:
     void updateUiLang();
     void showHighscore(const QString &sBoard);
-    void checkHighscore(const QString &sBoard, const quint32 &nMoves,
-                        const QTime &tTime);
+    void checkHighscore(const QString &sBoard, const quint32 nMoves,
+                        const QTime tTime);
 
   private slots:
     void loadLanguage(const QString &sLang);
-    void startNewGame(QString sBoardFile = "", const QString sSavedGame = "",
-                      const QString sTime = "", const QString sMoves = "");
+    void startNewGame(QString sBoardFile = "", const QString &sSavedGame = "",
+                      const QString &sTime = "", const QString &sMoves = "");
     QString chooseBoard();
     void createBoard();
     void randomGame(const int nChoice);
