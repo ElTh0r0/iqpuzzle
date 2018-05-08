@@ -309,7 +309,7 @@ QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
 // ---------------------------------------------------------------------------
 
 bool Board::checkOrthogonality(QPointF point) const {
-  static QList<QPointF> listPoints;
+  static QVector<QPointF> listPoints;
   static quint16 nCnt;
 
   if (QPointF(-99999, -99999) == point) {  // Reset
