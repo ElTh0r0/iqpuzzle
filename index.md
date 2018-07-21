@@ -11,7 +11,8 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 
 # [](#downoads)Downloads
 ###### Latest release v1.1.1 (06. May 2018)
-* [Build for Windows](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows.zip)
+* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows_Installer.exe)
+* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows.zip)
 * [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-macOS.zip)
 * [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-x86_64.AppImage)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
@@ -19,7 +20,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
-* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-ReactOS.zip)
+* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-ReactOS_Installer.exe)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
