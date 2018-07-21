@@ -9,7 +9,7 @@
   !include "FileFunc.nsh"
   
   Name "${APPNAME}"
-  OutFile "${APPNAME}_${VERSION}.exe"
+  OutFile "${APPNAME}_Installer.exe"
   InstallDir "$PROGRAMFILES\${APPNAME}"
   !define MUI_ICON "iqpuzzle.ico"
   RequestExecutionLevel admin
@@ -21,7 +21,6 @@
   VIAddVersionKey FileVersion "${VERSION}"
   VIAddVersionKey ProductVersion "${VERSION}"
   VIAddVersionKey InternalName "${APPNAME}"
-  VIAddVersionKey OriginalFilename "${APPNAME}_${VERSION}.exe"
   BrandingText "${APPNAME} - ${VERSION}"
   
   Var StartMenuFolder
