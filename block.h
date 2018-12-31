@@ -41,7 +41,7 @@
 class Block : public QGraphicsObject {
   Q_OBJECT
 
-  public:
+ public:
     Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
           quint16 nGrid, QList<Block *> *pListBlocks, Settings *pSettings,
           QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
@@ -59,18 +59,18 @@ class Block : public QGraphicsObject {
     quint16 getIndex() const;
     enum { Type = UserType + 1 };
 
-  signals:
+ signals:
     void incrementMoves();
     void checkPuzzleSolved();
 
-  protected:
+ protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
     void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
     int type() const;
 
-  private:
+ private:
     void moveBlockGrid(const QPointF pos);
     bool checkCollision(const QPainterPath &thisPath);
     void checkBlockIntersection();

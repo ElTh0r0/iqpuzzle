@@ -43,7 +43,7 @@
 class Board : public QGraphicsScene {
   Q_OBJECT
 
-  public:
+ public:
     Board(QGraphicsView *pGraphView, const QString &sBoardFile,
           Settings *pSettings, const quint16 nGridSize = 0,
           const QString &sSavedGame = "");
@@ -54,17 +54,17 @@ class Board : public QGraphicsScene {
                   const QString &sMoves);
     quint16 getGridSize() const;
 
-  signals:
+ signals:
     void setWindowSize(const QSize size, const bool bFreestyle);
     void incrementMoves();
     void solvedPuzzle();
 
-  public slots:
+ public slots:
     void zoomIn();
     void zoomOut();
     void checkPuzzleSolved();
 
-  private:
+ private:
     void drawBoard();
     void drawGrid();
     bool createBlocks();

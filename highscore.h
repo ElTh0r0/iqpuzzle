@@ -38,15 +38,15 @@
 class Highscore : public QObject {
   Q_OBJECT
 
-  public:
+ public:
     explicit Highscore(QWidget *pParent = 0, QObject *pParentObj = 0);
 
-  public slots:
+ public slots:
     void showHighscore(const QString &sBoard);
     void checkHighscore(const QString &sBoard, const quint32 nMoves,
                         const QTime tTime);
 
-  private:
+ private:
     QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
     void insertHighscore(const QString &sBoard, const quint8 nPosition,
                          const quint32 nMoves, const QTime tTime);

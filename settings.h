@@ -41,7 +41,7 @@ class SettingsDialog;
 class Settings : public QDialog {
   Q_OBJECT
 
-  public:
+ public:
     explicit Settings(const QString &sSharePath, QWidget *pParent = 0);
     virtual ~Settings();
 
@@ -52,15 +52,15 @@ class Settings : public QDialog {
     quint16 getEasy() const;
     quint16 getHard() const;
 
-  signals:
+ signals:
     void changeLang(const QString &sLang);
 
-  public slots:
+ public slots:
     void accept();
     void reject();
     void updateUiLang();
 
-  private:
+ private:
     void readSettings();
     QStringList searchTranslations();
 

@@ -37,16 +37,16 @@
 class BoardDialog : public QFileDialog {
   Q_OBJECT
 
-  public:
+ public:
     explicit BoardDialog(QWidget *pParent = 0,
                          const QString &sCaption = QString(),
                          const QString &sDirectory = QString(),
                          const QString &sFilter = QString());
 
-  protected slots:
+ protected slots:
     void OnCurrentChanged(const QString &sPath);
 
-  private:
+ private:
     QLabel *m_pSolutions;
     QLabel *m_pPreviewCaption;
     QLabel *m_pPreview;

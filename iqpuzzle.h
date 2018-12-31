@@ -50,27 +50,27 @@ class IQPuzzle;
 class IQPuzzle : public QMainWindow {
   Q_OBJECT
 
-  public:
+ public:
     explicit IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                       QWidget *pParent = 0);
     ~IQPuzzle();
 
-  protected:
+ protected:
     void changeEvent(QEvent *pEvent);
     void closeEvent(QCloseEvent *pEvent);
 
-  public slots:
+ public slots:
     void setMinWindowSize(const QSize size = QSize(),
                           const bool bFreestyle = false);
     void incrementMoves();
 
-  signals:
+ signals:
     void updateUiLang();
     void showHighscore(const QString &sBoard);
     void checkHighscore(const QString &sBoard, const quint32 nMoves,
                         const QTime tTime);
 
-  private slots:
+ private slots:
     void loadLanguage(const QString &sLang);
     void startNewGame(QString sBoardFile = "", const QString &sSavedGame = "",
                       const QString &sTime = "", const QString &sMoves = "");
@@ -88,7 +88,7 @@ class IQPuzzle : public QMainWindow {
     void reportBug() const;
     void showInfoBox();
 
-  private:
+ private:
     bool switchTranslator(QTranslator *translator, const QString &sFile,
                           const QString &sPath = "");
     void setupMenu();
