@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -51,7 +51,7 @@ Block::Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
   } else {
     // qDebug() << "Creating BARRIER" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;
-    this->setAcceptedMouseButtons(0);
+    this->setAcceptedMouseButtons(Qt::NoButton);
     this->setAcceptTouchEvents(false);
     this->setEnabled(false);
   }
@@ -83,8 +83,8 @@ QPainterPath Block::shape() const {
 void Block::paint(QPainter *painter,
                   const QStyleOptionGraphicsItem *option,
                   QWidget *widget) {
-  Q_UNUSED(option);
-  Q_UNUSED(widget);
+  Q_UNUSED(option)
+  Q_UNUSED(widget)
 
   m_borderPen.setWidth(1/m_nGrid);
 

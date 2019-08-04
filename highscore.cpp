@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -37,7 +37,7 @@
 Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
   : m_pParent(pParent),
     m_nMAXPOS(3) {
-  Q_UNUSED(pParentObj);
+  Q_UNUSED(pParentObj)
 #if defined _WIN32
   m_pHighscore = new QSettings(QSettings::IniFormat, QSettings::UserScope,
                                qApp->applicationName().toLower(),
@@ -111,7 +111,7 @@ void Highscore::checkHighscore(const QString &sBoard, const quint32 nMoves,
   quint32 nScoreMoves(0);
   QTime tScoreTime(0, 0, 0);
 
-  for (int i = 1; i <= m_nMAXPOS; i++) {
+  for (quint8 i = 1; i <= m_nMAXPOS; i++) {
     sListTemp = readHighscore(sBoard, "Position" + QString::number(i));
     if (3 != sListTemp.size()) {
       qWarning() << "Found invalid highscore:" << sListTemp;

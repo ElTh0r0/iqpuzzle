@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2018 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -170,7 +170,6 @@ void LoggingHandler(QtMsgType type, const char *sMsg) {
       out.flush();
       logfile.close();
       abort();
-      break;
     default:
       out << sTime << " OTHER INFO: " << sContext << "\n";
       out.flush();
