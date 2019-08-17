@@ -1,4 +1,4 @@
-iqpuzzle (1.1.2-0ubuntu1) bionic; urgency=low
+iqpuzzle (1.1.2-0ubuntu2) bionic; urgency=low
 
   [ Thorsten Roth ]
   * Official build for ReactOS and AUR.
