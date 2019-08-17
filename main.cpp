@@ -35,8 +35,8 @@
 
 #include "./iqpuzzle.h"
 
-QFile logfile;
-QTextStream out(&logfile);
+static QFile logfile;
+static QTextStream out(&logfile);
 
 void setupLogger(const QString &sDebugFilePath,
                  const QString &sAppName,
