@@ -2,7 +2,7 @@
 
   !define APPNAME "iQPuzzle"
   !define DESCRIPTION "A diverting I.Q. challenging pentomino puzzle"
-  !define VERSION "1.1.1.0" ;use always 4 digits w.x.y.z
+  !define VERSION "1.1.2.0" ;use always 4 digits w.x.y.z
   
   !include "LogicLib.nsh"
   !include "MUI2.nsh"

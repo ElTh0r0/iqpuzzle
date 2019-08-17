@@ -1,3 +1,11 @@
+iqpuzzle (1.1.2-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Official build for ReactOS and AUR.
+  * Minor code improvements.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 17 Aug 2019 17:40:00 +0200
+
 iqpuzzle (1.1.1-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]

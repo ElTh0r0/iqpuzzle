@@ -1,7 +1,7 @@
 #
 # spec file for iQPuzzle
 #
-# Copyright (C) 2012-2018 Thorsten Roth
+# Copyright (C) 2012-2019 Thorsten Roth
 #
 # iQPuzzle is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.1.1
+Version:        1.1.2
 Release:        1
 License:        GPL-3.0+
 URL:            https://github.com/ElTh0r0/iqpuzzle
