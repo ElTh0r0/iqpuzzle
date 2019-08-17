@@ -49,8 +49,8 @@ class Settings : public QDialog {
     quint8 getShift() const;
     QString getLanguage();
 
-    quint16 getEasy() const;
-    quint16 getHard() const;
+    uint getEasy() const;
+    uint getHard() const;
 
  signals:
     void changeLang(const QString &sLang);
@@ -74,8 +74,8 @@ class Settings : public QDialog {
     QStringList m_sListMouseButtons;
     QList<quint8> m_listMouseButtons;
     QList<quint8> m_listMouseControls;
-    quint16 m_nEasy;
-    quint16 m_nHard;
+    uint m_nEasy;
+    uint m_nHard;
 };
 
 #endif  // SETTINGS_H_

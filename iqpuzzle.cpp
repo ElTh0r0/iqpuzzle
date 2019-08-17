@@ -92,7 +92,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
 
   // Seed random number generator
   QTime time = QTime::currentTime();
-  qsrand((uint)time.msec());
+  qsrand(static_cast<uint>(time.msec()));
   this->generateFileLists();
 
   // Choose board via command line

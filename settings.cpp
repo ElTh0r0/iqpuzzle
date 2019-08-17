@@ -183,11 +183,11 @@ QList<quint8> Settings::getMouseControls() const {
   return m_listMouseControls;
 }
 
-quint16 Settings::getEasy() const {
+uint Settings::getEasy() const {
   return m_nEasy;
 }
 
-quint16 Settings::getHard() const {
+uint Settings::getHard() const {
   return m_nHard;
 }
 

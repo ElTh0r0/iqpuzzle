@@ -115,7 +115,7 @@ void Block::paint(QPainter *painter,
 void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
   this->resetBrushStyle();
 
-  qint8 nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+  int nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 0:
@@ -169,7 +169,7 @@ void Block::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
-  qint8 nIndex(m_pSettings->getMouseControls().indexOf(
+  int nIndex(m_pSettings->getMouseControls().indexOf(
                  (quint8(p_Event->orientation()) | m_pSettings->getShift())));
   if (nIndex >= 0) {
     switch (nIndex) {
@@ -228,8 +228,8 @@ void Block::moveBlock(const bool bRelease) {
 
 void Block::rotateBlock(const int nDelta) {
   qint8 nAngle(0);
-  qint32 nTranslateX(0);
-  qint32 nTranslateY(0);
+  qreal nTranslateX(0);
+  qreal nTranslateY(0);
 
   if (nDelta < 0) {
     nAngle = 90;
@@ -346,7 +346,7 @@ void Block::moveBlockGrid(const QPointF pos) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Block::setNewZValue(const qint16 nZ) {
+void Block::setNewZValue(const double nZ) {
   if (nZ < 0) {
     if (this->zValue() > 1) {
       this->setZValue(this->zValue() - 1);

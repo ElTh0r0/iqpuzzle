@@ -50,7 +50,8 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
 
   this->setBackgroundBrush(QBrush(this->readColor("BGColor")));
   if (0 == m_nGridSize) {
-    m_nGridSize = m_pBoardConf->value("GridSize", 0).toUInt();
+    m_nGridSize = static_cast<quint16>(m_pBoardConf->value(
+                                         "GridSize", 0).toUInt());
   }
   if (0 == m_nGridSize || m_nGridSize > 255) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
@@ -89,8 +90,9 @@ bool Board::setupBoard() {
   }
 
   // Set main window size
-  const QSize WinSize(m_BoardPoly.boundingRect().width() * 2.5,
-                      m_BoardPoly.boundingRect().height() * 2.6);
+  const QSize WinSize(
+        static_cast<int>(m_BoardPoly.boundingRect().width() * 2.5),
+        static_cast<int>(m_BoardPoly.boundingRect().height() * 2.6));
   emit setWindowSize(WinSize, m_bFreestyle);
   return true;
 }
@@ -163,7 +165,7 @@ bool Board::createBlocks() {
     tmpSet = m_pSavedConf;
   }
 
-  for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
+  for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {
     QString sPrefix = "Block" + QString::number(i);
     if (!tmpSet->contains(sPrefix + "/Polygon")) {
       break;
@@ -209,7 +211,7 @@ bool Board::createBlocks() {
 bool Board::createBarriers() {
   const unsigned char nMaxNumOfBlocks(250);
 
-  for (unsigned int i = 1; i <= nMaxNumOfBlocks; i++) {
+  for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {
     QString sPrefix = "Barrier" + QString::number(i);
     if (!m_pBoardConf->contains(sPrefix + "/Polygon")) {
       break;
@@ -309,7 +311,7 @@ QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
 // ---------------------------------------------------------------------------
 
 bool Board::checkOrthogonality(QPointF point) const {
-  static QVector<QPointF> listPoints;
+  static QList<QPointF> listPoints;
   static quint16 nCnt;
 
   if (QPointF(-99999, -99999) == point) {  // Reset

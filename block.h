@@ -54,7 +54,7 @@ class Block : public QGraphicsObject {
     void setBrushStyle(Qt::BrushStyle style);
 
     QPolygonF getPolygon() const;
-    void setNewZValue(const qint16 nZ);
+    void setNewZValue(const double nZ);
     void rescaleBlock(const quint16 nNewScale);
     quint16 getIndex() const;
     enum { Type = UserType + 1 };
