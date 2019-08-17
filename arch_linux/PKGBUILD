@@ -2,21 +2,21 @@
 pkgname=iqpuzzle
 pkgver=1.1.1
 pkgrel=1
-pkgdesc='iQPuzzle is a diverting and challenging pentomino puzzle.'
-arch=('x86_64')
+pkgdesc='A diverting and challenging pentomino puzzle.'
+arch=('i686' 'x86_64')
 url='https://github.com/ElTh0r0/iqpuzzle/'
 license=('GPL3')
 depends=('qt5-base')
-source=("$pkgname-$pkgver.tar.gz")
-md5sums=('061b3aadbff51e693a82cc618a0c5643')
+source=("https://github.com/ElTh0r0/iqpuzzle/archive/v$pkgver.tar.gz")
+sha256sums=('6fb78b9d6889f114ed43266a33df649d23b88172b003f73d2f774057968b4483')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    qmake-qt5
+    cd "$pkgname-$pkgver"
+    qmake-qt5 PREFIX=/usr
     make
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    INSTALL_ROOT=$pkgdir make install
+    cd "$pkgname-$pkgver"
+    make INSTALL_ROOT="$pkgdir/" install
 }
