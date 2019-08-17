@@ -6,10 +6,12 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ## Installation
 * Ubuntu PPA:
   * https://launchpad.net/~elthoro/+archive/iqpuzzle
-* Builds for Arch, Cent OS, Debian, Fedora, openSUSE:
+* Builds Cent OS, Debian, Fedora, openSUSE:
   * http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle
 * Build for Mageia Cauldron:
   * https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0
+* Arch AUR:
+  * https://aur.archlinux.org/packages/iqpuzzle/
 * Gentoo ebuild:
   * https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild
 * Build for OS/2:
