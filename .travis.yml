@@ -1,7 +1,7 @@
 dist: xenial
-  addons:
-    snaps:
-      - ffsend
+addons:
+  snaps:
+    - ffsend
 sudo: required
 
 git:
