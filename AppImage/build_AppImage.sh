@@ -20,7 +20,6 @@ cp ./res/images/iqpuzzle_64x64.png ./appdir/iqpuzzle.png
 find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
 
 echo "Uploading..."
-sudo snap install ffsend
 ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
 ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
 ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
