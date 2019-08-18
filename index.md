@@ -10,21 +10,26 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 # [](#downoads)Downloads
-###### Latest release v1.1.1 (06. May 2018)
-* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows_Installer.exe)
-* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-Windows.zip)
-* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-macOS.zip)
-* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-x86_64.AppImage)
+###### Latest release v1.1.2 (18. Aug 2019)
+* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.2/iQPuzzle-1.1.2-Windows_Installer.exe)
+* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.2/iQPuzzle-1.1.2-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.2/iQPuzzle-1.1.2-macOS.zip)
+* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.2/iQPuzzle-1.1.2-x86_64.AppImage)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
-* [Builds for Arch, Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
+* [Builds for Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
+* [Arch AUR](https://aur.archlinux.org/packages/iqpuzzle/)
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
-* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.1/iQPuzzle-1.1.1-ReactOS_Installer.exe)
+* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.2/iQPuzzle-1.1.2-ReactOS_Installer.exe)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
 ## [](#release-notes)Release notes
+###### v1.1.2 (18. Aug 2019)
+* Official build for ReactOS and Arch AUR.
+* Minor code improvements.
+
 ###### v1.1.1 (06. May 2018)
 * Updated Dutch translation (thanks to Vistaus).
 * Added freestyle board.
