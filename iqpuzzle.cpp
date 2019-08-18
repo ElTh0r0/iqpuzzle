@@ -409,8 +409,8 @@ void IQPuzzle::generateFileLists() {
   QSettings tmpScore(QSettings::NativeFormat, QSettings::UserScope,
                      qApp->applicationName().toLower(), "Highscore");
 #endif
-  const quint16 nEasy(m_pSettings->getEasy());
-  const quint16 nHard(m_pSettings->getHard());
+  const uint nEasy(m_pSettings->getEasy());
+  const uint nHard(m_pSettings->getHard());
 
   QDirIterator it(m_sSharePath + "/boards", QStringList() << "*.conf",
                   QDir::NoDotAndDotDot | QDir::Files,
