@@ -1,4 +1,7 @@
-dist: trusty
+dist: xenial
+   addons:
+     snaps:
+       - ffsend
 sudo: required
 
 git:
