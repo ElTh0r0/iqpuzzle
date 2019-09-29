@@ -257,7 +257,7 @@ Griglia ridotta al valore predefinito.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
-        <location filename="../iqpuzzle.cpp" line="761"/>
+        <location filename="../iqpuzzle.cpp" line="762"/>
         <source>Game paused</source>
         <translation>Gioco in pausa</translation>
     </message>
@@ -276,7 +276,7 @@ Griglia ridotta al valore predefinito.</translation>
         <location filename="../iqpuzzle.cpp" line="284"/>
         <location filename="../iqpuzzle.cpp" line="560"/>
         <location filename="../iqpuzzle.cpp" line="580"/>
-        <location filename="../iqpuzzle.cpp" line="765"/>
+        <location filename="../iqpuzzle.cpp" line="766"/>
         <source>Moves</source>
         <translation>Mosse</translation>
     </message>
@@ -391,7 +391,7 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="738"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation>Questa applicazione usa icone del&lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;progetto Tango&lt;/a&gt;.</translation>
+        <translation>Questa applicazione usa icone del &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;progetto Tango&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="741"/>
