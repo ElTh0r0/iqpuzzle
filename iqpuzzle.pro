@@ -68,7 +68,8 @@ os2:RC_FILE   = res/iqpuzzle_os2.rc
 TRANSLATIONS += lang/iqpuzzle_bg.ts \
                 lang/iqpuzzle_de.ts \
                 lang/iqpuzzle_nl.ts \
-                lang/iqpuzzle_fr.ts
+                lang/iqpuzzle_fr.ts \
+                lang/iqpuzzle_it.ts
 
 macx {
   ICON               = res/images/icon.icns
