@@ -95,8 +95,7 @@ void Highscore::showHighscore(const QString &sBoard) {
 
   QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
                                                    Qt::Horizontal, &dialog);
-  connect(buttons, SIGNAL(rejected()),
-          &dialog, SLOT(reject()));
+  connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
   layout->addWidget(buttons, m_nMAXPOS + 1, 0, 1, 4, Qt::AlignCenter);
 
   dialog.exec();

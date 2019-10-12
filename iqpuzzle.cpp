@@ -68,10 +68,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
 
   m_pHighscore = new Highscore();
   m_pSettings = new Settings(m_sSharePath, this);
-  connect(m_pSettings, SIGNAL(changeLang(QString)),
-          this, SLOT(loadLanguage(QString)));
-  connect(this, SIGNAL(updateUiLang()),
-          m_pSettings, SLOT(updateUiLang()));
+  connect(m_pSettings, &Settings::changeLang, this, &IQPuzzle::loadLanguage);
+  connect(this, &IQPuzzle::updateUiLang, m_pSettings, &Settings::updateUiLang);
   this->loadLanguage(m_pSettings->getLanguage());
   this->setupMenu();
 
@@ -84,7 +82,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
 
   m_pTimer = new QTimer(this);
-  connect(m_pTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+  connect(m_pTimer, &QTimer::timeout, this, &IQPuzzle::updateTimer);
   m_pStatusLabelTime = new QLabel(tr("Time") + ": 00:00:00");
   m_pStatusLabelMoves = new QLabel(tr("Moves") + ": 0");
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
@@ -149,98 +147,87 @@ IQPuzzle::~IQPuzzle() {
 void IQPuzzle::setupMenu() {
   // New game
   m_pUi->action_NewGame->setShortcut(QKeySequence::New);
-  connect(m_pUi->action_NewGame, SIGNAL(triggered()),
-          this, SLOT(startNewGame()));
+  connect(m_pUi->action_NewGame, &QAction::triggered,
+          this, [this]() { startNewGame(); });
 
   // Random game
-  m_pSigMapRandom = new QSignalMapper(this);
   m_pUi->actionAll->setShortcut(Qt::CTRL + Qt::Key_1);
-  m_pSigMapRandom->setMapping(m_pUi->actionAll, 1);
-  connect(m_pUi->actionAll, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionAll, &QAction::triggered,
+          this, [this]() { randomGame(1); });
   m_pUi->actionEasy->setShortcut(Qt::CTRL + Qt::Key_2);
-  m_pSigMapRandom->setMapping(m_pUi->actionEasy, 2);
-  connect(m_pUi->actionEasy, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionEasy, &QAction::triggered,
+          this, [this]() { randomGame(2); });
   m_pUi->actionMedium->setShortcut(Qt::CTRL + Qt::Key_3);
-  m_pSigMapRandom->setMapping(m_pUi->actionMedium, 3);
-  connect(m_pUi->actionMedium, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionMedium, &QAction::triggered,
+          this, [this]() { randomGame(3); });
   m_pUi->actionHard->setShortcut(Qt::CTRL + Qt::Key_4);
-  m_pSigMapRandom->setMapping(m_pUi->actionHard, 4);
-  connect(m_pUi->actionHard, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionHard, &QAction::triggered,
+          this, [this]() { randomGame(4); });
   m_pUi->actionAllUnsolved->setShortcut(Qt::CTRL + Qt::Key_5);
-  m_pSigMapRandom->setMapping(m_pUi->actionAllUnsolved, 5);
-  connect(m_pUi->actionAllUnsolved, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionAllUnsolved, &QAction::triggered,
+          this, [this]() { randomGame(5); });
   m_pUi->actionEasyUnsolved->setShortcut(Qt::CTRL + Qt::Key_6);
-  m_pSigMapRandom->setMapping(m_pUi->actionEasyUnsolved, 6);
-  connect(m_pUi->actionEasyUnsolved, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionEasyUnsolved, &QAction::triggered,
+          this, [this]() { randomGame(6); });
   m_pUi->actionMediumUnsolved->setShortcut(Qt::CTRL + Qt::Key_7);
-  m_pSigMapRandom->setMapping(m_pUi->actionMediumUnsolved, 7);
-  connect(m_pUi->actionMediumUnsolved, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
+  connect(m_pUi->actionMediumUnsolved, &QAction::triggered,
+          this, [this]() { randomGame(7); });
   m_pUi->actionHardUnsolved->setShortcut(Qt::CTRL + Qt::Key_8);
-  m_pSigMapRandom->setMapping(m_pUi->actionHardUnsolved, 8);
-  connect(m_pUi->actionHardUnsolved, SIGNAL(triggered()),
-          m_pSigMapRandom, SLOT(map()));
-  connect(m_pSigMapRandom, SIGNAL(mapped(int)),
-          this, SLOT(randomGame(int)));
+  connect(m_pUi->actionHardUnsolved, &QAction::triggered,
+          this, [this]() { randomGame(8); });
 
   // Restart game
   m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
-  connect(m_pUi->action_RestartGame, SIGNAL(triggered()),
-          this, SLOT(restartGame()));
+  connect(m_pUi->action_RestartGame, &QAction::triggered,
+          this, &IQPuzzle::restartGame);
 
   // Load game
   m_pUi->action_LoadGame->setShortcut(QKeySequence::Open);
-  connect(m_pUi->action_LoadGame, SIGNAL(triggered()),
-          this, SLOT(loadGame()));
+  connect(m_pUi->action_LoadGame, &QAction::triggered,
+          this, [this]() { loadGame(); });
+
   // Save game
   m_pUi->action_SaveGame->setShortcut(QKeySequence::Save);
-  connect(m_pUi->action_SaveGame, SIGNAL(triggered()),
-          this, SLOT(saveGame()));
+  connect(m_pUi->action_SaveGame, &QAction::triggered,
+          this, &IQPuzzle::saveGame);
 
   // Pause
   m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
-  connect(m_pUi->action_PauseGame, SIGNAL(triggered(bool)),
-          this, SLOT(pauseGame(bool)));
+  connect(m_pUi->action_PauseGame, &QAction::triggered,
+          this, &IQPuzzle::pauseGame);
 
   // Highscore
   m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
-  connect(m_pUi->action_Highscore, SIGNAL(triggered()),
-          this, SLOT(showHighscore()));
-  connect(this, SIGNAL(showHighscore(QString)),
-          m_pHighscore, SLOT(showHighscore(QString)));
-  connect(this, SIGNAL(checkHighscore(QString, quint32, QTime)),
-          m_pHighscore, SLOT(checkHighscore(QString, quint32, QTime)));
+  connect(m_pUi->action_Highscore, &QAction::triggered, m_pHighscore, [this]() {
+    QFileInfo fi(m_sBoardFile);
+    m_pHighscore->showHighscore(fi.baseName());
+  });
+  connect(this, &IQPuzzle::checkHighscore,
+          m_pHighscore, &Highscore::checkHighscore);
 
   // Statistics
-  connect(m_pUi->action_Statistics, SIGNAL(triggered()),
-          this, SLOT(showStatistics()));
+  connect(m_pUi->action_Statistics, &QAction::triggered,
+          this, &IQPuzzle::showStatistics);
 
   // Exit game
   m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
-  connect(m_pUi->action_Quit, SIGNAL(triggered()),
-          this, SLOT(close()));
+  connect(m_pUi->action_Quit, &QAction::triggered, this, &IQPuzzle::close);
 
   // Zoom in/out
   m_pUi->action_ZoomIn->setShortcut(QKeySequence::ZoomIn);
   m_pUi->action_ZoomOut->setShortcut(QKeySequence::ZoomOut);
 
   // Settings
-  connect(m_pUi->action_Preferences, SIGNAL(triggered()),
-          m_pSettings, SLOT(show()));
+  connect(m_pUi->action_Preferences, &QAction::triggered,
+          m_pSettings, &Settings::show);
 
   // Report bug
-  connect(m_pUi->action_ReportBug, SIGNAL(triggered()),
-          this, SLOT(reportBug()));
+  connect(m_pUi->action_ReportBug, &QAction::triggered,
+          this, &IQPuzzle::reportBug);
 
   // About
-  connect(m_pUi->action_Info, SIGNAL(triggered()),
-          this, SLOT(showInfoBox()));
+  connect(m_pUi->action_Info, &QAction::triggered,
+          this, &IQPuzzle::showInfoBox);
 }
 
 // ---------------------------------------------------------------------------
@@ -344,16 +331,13 @@ void IQPuzzle::createBoard() {
   m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings,
                        nGridSize, m_sSavedGame);
   sPreviousBoard = m_sBoardFile;
-  connect(m_pBoard, SIGNAL(setWindowSize(const QSize, const bool)),
-          this, SLOT(setMinWindowSize(const QSize, const bool)));
-  connect(m_pUi->action_ZoomIn, SIGNAL(triggered()),
-          m_pBoard, SLOT(zoomIn()));
-  connect(m_pUi->action_ZoomOut, SIGNAL(triggered()),
-          m_pBoard, SLOT(zoomOut()));
-  connect(m_pBoard, SIGNAL(incrementMoves()),
-          this, SLOT(incrementMoves()));
-  connect(m_pBoard, SIGNAL(solvedPuzzle()),
-          this, SLOT(solvedPuzzle()));
+  connect(m_pBoard, &Board::setWindowSize, this, &IQPuzzle::setMinWindowSize);
+  connect(m_pUi->action_ZoomIn, &QAction::triggered,
+          m_pBoard, &Board::zoomIn);
+  connect(m_pUi->action_ZoomOut, &QAction::triggered,
+          m_pBoard, &Board::zoomOut);
+  connect(m_pBoard, &Board::incrementMoves, this, &IQPuzzle::incrementMoves);
+  connect(m_pBoard, &Board::solvedPuzzle, this, &IQPuzzle::solvedPuzzle);
 
   if (m_pBoard->setupBoard()) {
     bool bFreestyle = m_pBoard->setupBlocks();
@@ -640,14 +624,6 @@ bool IQPuzzle::switchTranslator(QTranslator *translator,
   return true;
 }
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void IQPuzzle::showHighscore() {
-  QFileInfo fi(m_sBoardFile);
-  emit showHighscore(fi.baseName());
-}
-
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
@@ -697,8 +673,7 @@ void IQPuzzle::showStatistics() {
 
   QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
                                                    Qt::Horizontal, &dialog);
-  connect(buttons, SIGNAL(rejected()),
-          &dialog, SLOT(reject()));
+  connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
   layout->addWidget(buttons, 6, 0, 1, 3, Qt::AlignCenter);
 
   dialog.exec();

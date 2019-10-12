@@ -55,8 +55,8 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
     layout->addLayout(boxlayout, 1, 3, 3, 1);
   }
 
-  connect(this, SIGNAL(currentChanged(const QString&)),
-          this, SLOT(OnCurrentChanged(const QString&)));
+  connect(this, &BoardDialog::currentChanged,
+          this, &BoardDialog::OnCurrentChanged);
 }
 
 // ---------------------------------------------------------------------------

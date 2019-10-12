@@ -66,7 +66,6 @@ class IQPuzzle : public QMainWindow {
 
  signals:
     void updateUiLang();
-    void showHighscore(const QString &sBoard);
     void checkHighscore(const QString &sBoard, const quint32 nMoves,
                         const QTime tTime);
 
@@ -83,7 +82,6 @@ class IQPuzzle : public QMainWindow {
     void pauseGame(const bool bPaused);
     void updateTimer();
     void solvedPuzzle();
-    void showHighscore();
     void showStatistics();
     void reportBug() const;
     void showInfoBox();
@@ -119,7 +117,6 @@ class IQPuzzle : public QMainWindow {
     Highscore *m_pHighscore;
     Settings *m_pSettings;
 
-    QSignalMapper *m_pSigMapRandom;
     QList<QStringList *> m_sListFiles;
     QStringList m_sListAll;
     QStringList m_sListAllUnsolved;

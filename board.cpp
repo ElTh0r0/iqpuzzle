@@ -191,10 +191,10 @@ bool Board::createBlocks() {
                           this->readStartPosition(
                             tmpSet, sPrefix + "/StartPos")));
     if (!m_bFreestyle) {
-      connect(m_listBlocks.last(), SIGNAL(checkPuzzleSolved()),
-              this, SLOT(checkPuzzleSolved()));
-      connect(m_listBlocks.last(), SIGNAL(incrementMoves()),
-              this, SIGNAL(incrementMoves()));
+      connect(m_listBlocks.last(), &Block::checkPuzzleSolved,
+              this, &Board::checkPuzzleSolved);
+      connect(m_listBlocks.last(), &Block::incrementMoves,
+              this, &Board::incrementMoves);
     }
   }
 
