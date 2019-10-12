@@ -471,18 +471,29 @@ void IQPuzzle::loadGame(QString sSaveFile) {
   if (!sSaveFile.isEmpty()) {
     QSettings tmpSet(sSaveFile, QSettings::IniFormat);
     QString sBoard(tmpSet.value(QStringLiteral("BoardFile"), "").toString());
-    if (!sBoard.isEmpty()) {
-      QByteArray ba(tmpSet.value(
-                      QStringLiteral("NumOfMoves"), "").toByteArray());
-      m_sSavedMoves = QByteArray::fromBase64(ba);
-      ba.clear();
-      ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
-      m_sSavedTime = QByteArray::fromBase64(ba);
-      this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
-    } else {
-      QMessageBox::warning(this, qApp->applicationName(),
-                           tr("Invalid saved puzzle."));
+    QString sBoardRel(tmpSet.value(
+                        QStringLiteral("BoardFileRelative"), "").toString());
+    if (sBoard.isEmpty() || !QFile::exists(sBoard)) {
+      if (!sBoardRel.isEmpty() &&
+          QFile::exists(qApp->applicationDirPath() + "/" + sBoardRel)) {
+        sBoard = qApp->applicationDirPath() + "/" + sBoardRel;
+      } else {
+        QMessageBox::warning(this, qApp->applicationName(),
+                             tr("Invalid saved puzzle."));
+        return;
+      }
     }
+
+    QByteArray ba(tmpSet.value(
+                    QStringLiteral("NumOfMoves"), "").toByteArray());
+    m_sSavedMoves = QByteArray::fromBase64(ba);
+    ba.clear();
+    ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
+    m_sSavedTime = QByteArray::fromBase64(ba);
+    this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
+  } else {
+    QMessageBox::warning(this, qApp->applicationName(),
+                         tr("Invalid saved puzzle."));
   }
 }
 

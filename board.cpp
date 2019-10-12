@@ -29,6 +29,7 @@
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
 #include <QFile>
 #include <QMessageBox>
 
@@ -497,8 +498,14 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
   QByteArray ba;
   QString sDebug;
 
+  // Save relative board folder, needed e.g. for AppImage
+  QDir dir(qApp->applicationDirPath());
+  QString sRelativeDir;
+  sRelativeDir = dir.relativeFilePath(m_sBoardFile);
+
   saveConf.clear();
   saveConf.setValue(QStringLiteral("BoardFile"), m_sBoardFile);
+  saveConf.setValue(QStringLiteral("BoardFileRelative"), sRelativeDir);
   ba.append(sTime);
   saveConf.setValue(QStringLiteral("ElapsedTime"), ba.toBase64());
   ba.clear();
