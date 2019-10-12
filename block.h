@@ -50,7 +50,7 @@ class Block : public QGraphicsObject {
     QPainterPath shape() const;
     QPointF getPosition() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = 0);
+               QWidget *widget = nullptr);
     void setBrushStyle(Qt::BrushStyle style);
 
     QPolygonF getPolygon() const;

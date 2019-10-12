@@ -42,7 +42,7 @@ class Settings : public QDialog {
   Q_OBJECT
 
  public:
-    explicit Settings(const QString &sSharePath, QWidget *pParent = 0);
+    explicit Settings(const QString &sSharePath, QWidget *pParent = nullptr);
     virtual ~Settings();
 
     QList<quint8> getMouseControls() const;

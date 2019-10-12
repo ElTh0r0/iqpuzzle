@@ -38,7 +38,7 @@ class BoardDialog : public QFileDialog {
   Q_OBJECT
 
  public:
-    explicit BoardDialog(QWidget *pParent = 0,
+    explicit BoardDialog(QWidget *pParent = nullptr,
                          const QString &sCaption = QString(),
                          const QString &sDirectory = QString(),
                          const QString &sFilter = QString());

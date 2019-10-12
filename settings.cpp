@@ -78,7 +78,7 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
 Settings::~Settings() {
   if (m_pUi) {
     delete m_pUi;
-    m_pUi = NULL;
+    m_pUi = nullptr;
   }
 }
 
@@ -99,7 +99,7 @@ void Settings::accept() {
   if (tmp_listMouseControls[0] == tmp_listMouseControls[1] ||
       tmp_listMouseControls[0] == tmp_listMouseControls[2] ||
       tmp_listMouseControls[1] == tmp_listMouseControls[2]) {
-    QMessageBox::warning(0, this->windowTitle(),
+    QMessageBox::warning(nullptr, this->windowTitle(),
                              tr("Please change your settings. Same mouse "
                                 "button is used for several actions."));
     return;

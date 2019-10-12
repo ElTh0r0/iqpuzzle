@@ -61,7 +61,7 @@ void Highscore::showHighscore(const QString &sBoard) {
                         & ~Qt::WindowContextHelpButtonHint);
 
   QGridLayout* layout = new QGridLayout(&dialog);
-  layout->setMargin(10);
+  layout->setContentsMargins(10, 10, 10, 10);
   layout->setSpacing(10);
 
   layout->addWidget(new QLabel("<b>" + tr("Position") + "</b>", &dialog),

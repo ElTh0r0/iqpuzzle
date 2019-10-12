@@ -40,8 +40,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   : QMainWindow(pParent),
     m_pUi(new Ui::IQPuzzle),
     m_sCurrLang(""),
-    m_pBoardDialog(NULL),
-    m_pBoard(NULL),
+    m_pBoardDialog(nullptr),
+    m_pBoard(nullptr),
     m_sSavedGame(""),
     m_userDataDir(userDataDir),
     m_sSharePath(sharePath.absolutePath()),
@@ -310,7 +310,7 @@ void IQPuzzle::setGameTitle() {
 // ---------------------------------------------------------------------------
 
 QString IQPuzzle::chooseBoard() {
-  if (NULL != m_pBoardDialog) {
+  if (nullptr != m_pBoardDialog) {
     delete m_pBoardDialog;
   }
   m_pBoardDialog = new BoardDialog(this, tr("Load board"),
@@ -335,7 +335,7 @@ void IQPuzzle::createBoard() {
   static QString sPreviousBoard("");
   quint16 nGridSize(0);
 
-  if (NULL != m_pBoard) {
+  if (nullptr != m_pBoard) {
     if (sPreviousBoard == m_sBoardFile) {
       nGridSize = m_pBoard->getGridSize();
     }
@@ -751,7 +751,7 @@ void IQPuzzle::showInfoBox() {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::changeEvent(QEvent *pEvent) {
-  if (0 != pEvent) {
+  if (nullptr != pEvent) {
     if (QEvent::LanguageChange == pEvent->type()) {
       m_pUi->retranslateUi(this);
       this->setGameTitle();
