@@ -111,16 +111,16 @@ void Settings::accept() {
 
   QString sOldGuiLang = m_sGuiLanguage;
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
-  m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
+  m_pSettings->setValue(QStringLiteral("GuiLanguage"), m_sGuiLanguage);
   if (sOldGuiLang != m_sGuiLanguage) {
     emit changeLang(this->getLanguage());
   }
 
-  m_pSettings->beginGroup("MouseControls");
-  m_pSettings->setValue("MoveBlock", m_listMouseControls[0]);
-  m_pSettings->setValue("RotateBlock", m_listMouseControls[1]);
-  m_pSettings->setValue("FlipBlock", m_listMouseControls[2]);
-  m_pSettings->remove("Enabled");
+  m_pSettings->beginGroup(QStringLiteral("MouseControls"));
+  m_pSettings->setValue(QStringLiteral("MoveBlock"), m_listMouseControls[0]);
+  m_pSettings->setValue(QStringLiteral("RotateBlock"), m_listMouseControls[1]);
+  m_pSettings->setValue(QStringLiteral("FlipBlock"), m_listMouseControls[2]);
+  m_pSettings->remove(QStringLiteral("Enabled"));
   m_pSettings->endGroup();
 
   QDialog::accept();
@@ -138,30 +138,31 @@ void Settings::reject() {
 // ----------------------------------------------------------------------------
 
 void Settings::readSettings() {
-  m_sGuiLanguage = m_pSettings->value("GuiLanguage", "auto").toString();
+  m_sGuiLanguage = m_pSettings->value(QStringLiteral("GuiLanguage"),
+                                      QStringLiteral("auto")).toString();
   if (-1 != m_pUi->cbGuiLanguage->findText(m_sGuiLanguage)) {
     m_pUi->cbGuiLanguage->setCurrentIndex(
           m_pUi->cbGuiLanguage->findText(m_sGuiLanguage));
   } else {
     m_pUi->cbGuiLanguage->setCurrentIndex(
-          m_pUi->cbGuiLanguage->findText("auto"));
+          m_pUi->cbGuiLanguage->findText(QStringLiteral("auto")));
   }
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
 
-  m_nEasy = m_pSettings->value("ThresholdEasy", 200).toUInt();
+  m_nEasy = m_pSettings->value(QStringLiteral("ThresholdEasy"), 200).toUInt();
   if (0 == m_nEasy) m_nEasy = 200;
-  m_nHard = m_pSettings->value("ThresholdHard", 10).toUInt();
+  m_nHard = m_pSettings->value(QStringLiteral("ThresholdHard"), 10).toUInt();
   if (0 == m_nHard) m_nHard = 10;
 
   m_listMouseControls.clear();
   m_listMouseControls << 0 << 0 << 0;
-  m_pSettings->beginGroup("MouseControls");
-  m_listMouseControls[0] = m_pSettings->value("MoveBlock",
+  m_pSettings->beginGroup(QStringLiteral("MouseControls"));
+  m_listMouseControls[0] = m_pSettings->value(QStringLiteral("MoveBlock"),
                                               Qt::LeftButton).toUInt();
-  m_listMouseControls[1] = m_pSettings->value("RotateBlock",
+  m_listMouseControls[1] = m_pSettings->value(QStringLiteral("RotateBlock"),
                                               (quint8(Qt::Vertical) |
                                                m_nSHIFT)).toUInt();
-  m_listMouseControls[2] = m_pSettings->value("FlipBlock",
+  m_listMouseControls[2] = m_pSettings->value(QStringLiteral("FlipBlock"),
                                               Qt::RightButton).toUInt();
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
         m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
@@ -225,7 +226,7 @@ QStringList Settings::searchTranslations() {
   QString sTmp;
 
   // Translations build in resources
-  QDirIterator it(":", QStringList() << "*.qm",
+  QDirIterator it(QStringLiteral(":"), QStringList() << QStringLiteral("*.qm"),
                   QDir::NoDotAndDotDot | QDir::Files);
   while (it.hasNext()) {
     it.next();
@@ -233,14 +234,16 @@ QStringList Settings::searchTranslations() {
     // qDebug() << sTmp;
 
     if (sTmp.startsWith(qApp->applicationName().toLower() + "_") &&
-        sTmp.endsWith(".qm")) {
+        sTmp.endsWith(QStringLiteral(".qm"))) {
       sList << sTmp.remove(
-                 qApp->applicationName().toLower() + "_").remove(".qm");
+                 qApp->applicationName().toLower() + "_").remove(
+                 QStringLiteral(".qm"));
     }
   }
 
   // Check for additional translation files in share folder
-  QDirIterator it2(m_sSharePath + "/lang", QStringList() << "*.qm",
+  QDirIterator it2(m_sSharePath + "/lang",
+                   QStringList() << QStringLiteral("*.qm"),
                    QDir::NoDotAndDotDot | QDir::Files);
   while (it2.hasNext()) {
     it2.next();
@@ -249,16 +252,17 @@ QStringList Settings::searchTranslations() {
 
     if (sTmp.startsWith(qApp->applicationName().toLower() + "_")) {
       sTmp = sTmp.remove(
-               qApp->applicationName().toLower() + "_") .remove(".qm");
+               qApp->applicationName().toLower() + "_") .remove(
+               QStringLiteral(".qm"));
       if (!sList.contains(sTmp)) {
         sList << sTmp;
       }
     }
   }
 
-  sList << "en";
+  sList << QStringLiteral("en");
   sList.sort();
-  sList.push_front("auto");
+  sList.push_front(QStringLiteral("auto"));
   return sList;
 }
 
@@ -279,8 +283,8 @@ QString Settings::getLanguage() {
              !QFile(m_sSharePath + "/lang/" +
                     qApp->applicationName().toLower() +
                     "_" + m_sGuiLanguage + ".qm").exists()) {
-    m_sGuiLanguage = "en";
-    m_pSettings->setValue("GuiLanguage", m_sGuiLanguage);
+    m_sGuiLanguage = QStringLiteral("en");
+    m_pSettings->setValue(QStringLiteral("GuiLanguage"), m_sGuiLanguage);
     return m_sGuiLanguage;
   }
   return m_sGuiLanguage;

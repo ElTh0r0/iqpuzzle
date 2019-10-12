@@ -39,15 +39,15 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                    QWidget *pParent)
   : QMainWindow(pParent),
     m_pUi(new Ui::IQPuzzle),
-    m_sCurrLang(""),
+    m_sCurrLang(QString()),
     m_pBoardDialog(nullptr),
     m_pBoard(nullptr),
-    m_sSavedGame(""),
+    m_sSavedGame(QString()),
     m_userDataDir(userDataDir),
     m_sSharePath(sharePath.absolutePath()),
     m_nMoves(0),
-    m_sSavedTime(""),
-    m_sSavedMoves(""),
+    m_sSavedTime(QString()),
+    m_sSavedMoves(QString()),
     m_Time(0, 0, 0),
     m_bSolved(false) {
   qDebug() << Q_FUNC_INFO;
@@ -98,7 +98,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   QString sLoadBoard("");
   if (qApp->arguments().size() > 1) {
     foreach (QString sBoard, qApp->arguments()) {
-      if (sBoard.endsWith(".conf", Qt::CaseInsensitive)) {
+      if (sBoard.endsWith(QStringLiteral(".conf"),
+                          Qt::CaseInsensitive)) {
         if (QFile::exists(sBoard)) {
           sStartBoard = sBoard;
           break;
@@ -108,7 +109,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                                tr("The chosen file does not exist."));
           break;
         }
-      } else if (sBoard.endsWith(".iqsav", Qt::CaseInsensitive)) {
+      } else if (sBoard.endsWith(QStringLiteral(".iqsav"),
+                                 Qt::CaseInsensitive)) {
         if (QFile::exists(sBoard)) {
           sLoadBoard = sBoard;
           break;
@@ -263,13 +265,14 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
     m_nMoves = QString(sMoves).toUInt();
     m_pStatusLabelMoves->setText(tr("Moves") + ": " +
                                  QString::number(m_nMoves));
-    m_Time = m_Time.fromString(sTime, "hh:mm:ss");
+    m_Time = m_Time.fromString(sTime, QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": " + sTime);
     m_sSavedGame = sSavedGame;
   } else {
     m_nMoves = 0;
     m_pStatusLabelMoves->setText(tr("Moves") + ": 0");
-    m_Time = m_Time.fromString("00:00:00", "hh:mm:ss");
+    m_Time = m_Time.fromString(QStringLiteral("00:00:00"),
+                               QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": 00:00:00");
   }
 
@@ -282,7 +285,8 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
 
 void IQPuzzle::setGameTitle() {
   QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
-  quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+  quint32 nSolutions = tmpSet.value(
+                         QStringLiteral("PossibleSolutions"), 0).toUInt();
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = tr("Unknown");
@@ -312,7 +316,7 @@ QString IQPuzzle::chooseBoard() {
     }
   }
 
-  return "";
+  return QString();
 }
 
 // ---------------------------------------------------------------------------
@@ -388,27 +392,31 @@ void IQPuzzle::randomGame(const int nChoice) {
 void IQPuzzle::generateFileLists() {
 #if defined _WIN32
   QSettings tmpScore(QSettings::IniFormat, QSettings::UserScope,
-                     qApp->applicationName().toLower(), "Highscore");
+                     qApp->applicationName().toLower(),
+                     QStringLiteral("Highscore"));
 #else
   QSettings tmpScore(QSettings::NativeFormat, QSettings::UserScope,
-                     qApp->applicationName().toLower(), "Highscore");
+                     qApp->applicationName().toLower(),
+                     QStringLiteral("Highscore"));
 #endif
   const uint nEasy(m_pSettings->getEasy());
   const uint nHard(m_pSettings->getHard());
 
-  QDirIterator it(m_sSharePath + "/boards", QStringList() << "*.conf",
+  QDirIterator it(m_sSharePath + "/boards",
+                  QStringList() << QStringLiteral("*.conf"),
                   QDir::NoDotAndDotDot | QDir::Files,
                   QDirIterator::Subdirectories);
   while (it.hasNext()) {
     it.next();
-    if (!it.filePath().contains("freestyle")) {  // Filter freestyle boards
+    if (!it.filePath().contains(QStringLiteral("freestyle"))) {  // Filter freestyle boards
       QString sName = it.filePath().remove(m_sSharePath + "/boards/");
       // qDebug() << sName;
 
       QSettings tmpSet(it.filePath(), QSettings::IniFormat);
-      quint32 nSolutions = tmpSet.value("PossibleSolutions", 0).toUInt();
+      quint32 nSolutions = tmpSet.value(
+                             QStringLiteral("PossibleSolutions"), 0).toUInt();
       bool bSolved = tmpScore.childGroups().contains(
-                       it.fileName().remove(".conf"));
+                       it.fileName().remove(QStringLiteral(".conf")));
 
       m_sListAll << sName;
       if (!bSolved) m_sListAllUnsolved << sName;
@@ -462,12 +470,13 @@ void IQPuzzle::loadGame(QString sSaveFile) {
 
   if (!sSaveFile.isEmpty()) {
     QSettings tmpSet(sSaveFile, QSettings::IniFormat);
-    QString sBoard(tmpSet.value("BoardFile", "").toString());
+    QString sBoard(tmpSet.value(QStringLiteral("BoardFile"), "").toString());
     if (!sBoard.isEmpty()) {
-      QByteArray ba(tmpSet.value("NumOfMoves", "").toByteArray());
+      QByteArray ba(tmpSet.value(
+                      QStringLiteral("NumOfMoves"), "").toByteArray());
       m_sSavedMoves = QByteArray::fromBase64(ba);
       ba.clear();
-      ba = tmpSet.value("ElapsedTime", "").toByteArray();
+      ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
       m_sSavedTime = QByteArray::fromBase64(ba);
       this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
     } else {
@@ -487,7 +496,7 @@ void IQPuzzle::saveGame() {
                     tr("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
     m_sSavedMoves = QString::number(m_nMoves);
-    m_sSavedTime = m_Time.toString("hh:mm:ss");
+    m_sSavedTime = m_Time.toString(QStringLiteral("hh:mm:ss"));
     m_pBoard->saveGame(sFile, m_sSavedTime, m_sSavedMoves);
   }
 }
@@ -549,7 +558,8 @@ void IQPuzzle::incrementMoves() {
 
 void IQPuzzle::updateTimer() {
   m_Time = m_Time.addSecs(1);
-  m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString("hh:mm:ss"));
+  m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString(
+                                QStringLiteral("hh:mm:ss")));
 }
 
 // ---------------------------------------------------------------------------
@@ -563,14 +573,14 @@ void IQPuzzle::solvedPuzzle() {
                            tr("Puzzle solved!") + "\n\n" +
                            tr("Moves") + ": " + QString::number(m_nMoves)
                            + "\n" + tr("Time") + ": "
-                           + m_Time.toString("hh:mm:ss"));
+                           + m_Time.toString(QStringLiteral("hh:mm:ss")));
   m_pUi->action_PauseGame->setEnabled(false);
   m_pUi->action_PauseGame->setChecked(false);
   m_pUi->action_SaveGame->setEnabled(false);
 
   // Save won game state for debugging
   m_pBoard->saveGame(m_userDataDir.absolutePath() + "/S0LV3D.debug",
-                     "55:55:55", "10000");
+                     QStringLiteral("55:55:55"), QStringLiteral("10000"));
   QFile::remove(m_userDataDir.absolutePath() + "/S0LV3D.debug");
   emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
 
@@ -615,7 +625,8 @@ bool IQPuzzle::switchTranslator(QTranslator *translator,
   if (translator->load(sFile, sPath)) {
     qApp->installTranslator(translator);
   } else {
-    if (!sFile.endsWith("_en") && !sFile.endsWith("_en.qm")) {
+    if (!sFile.endsWith(QStringLiteral("_en")) &&
+        !sFile.endsWith(QStringLiteral("_en.qm"))) {
       // EN is build in translation -> no file
       qWarning() << "Could not find translation" << sFile << "in" << sPath;
     }
@@ -634,7 +645,7 @@ void IQPuzzle::showStatistics() {
                         & ~Qt::WindowContextHelpButtonHint);
 
   QGridLayout* layout = new QGridLayout(&dialog);
-  layout->setMargin(10);
+  layout->setContentsMargins(10, 10, 10, 10);
   layout->setSpacing(8);
 
   layout->addWidget(new QLabel("<b>" + tr("Total") + "</b>", &dialog),
@@ -683,7 +694,8 @@ void IQPuzzle::showStatistics() {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::reportBug() const {
-  QDesktopServices::openUrl(QUrl("https://github.com/ElTh0r0/iqpuzzle/issues"));
+  QDesktopServices::openUrl(
+        QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
 }
 
 // ----------------------------------------------------------------------------

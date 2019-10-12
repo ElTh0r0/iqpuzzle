@@ -33,7 +33,7 @@
 BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
                          const QString &sDirectory, const QString &sFilter)
   : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
-  this->setObjectName("BoardFileDialog");
+  this->setObjectName(QStringLiteral("BoardFileDialog"));
   // Needed for Windows, otherwise native dialog crashes while adapting layout
   this->setOption(QFileDialog::DontUseNativeDialog, true);
   this->setViewMode(QFileDialog::List);
@@ -41,9 +41,9 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
 
   m_pSolutions = new QLabel(tr("Solutions") + ":", this);
   m_pPreviewCaption = new QLabel(tr("Preview") + ":", this);
-  m_pPreview = new QLabel("", this);
+  m_pPreview = new QLabel(QString(), this);
   m_pPreview->setAlignment(Qt::AlignCenter);
-  m_pPreview->setObjectName("labelPreview");
+  m_pPreview->setObjectName(QStringLiteral("labelPreview"));
   m_pPreview->resize(150, 150);
 
   boxlayout->addWidget(m_pSolutions);
@@ -64,7 +64,8 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
 
 void BoardDialog::OnCurrentChanged(const QString &sPath) {
   QSettings tmpSet(sPath, QSettings::IniFormat);
-  quint32 nSolutions(tmpSet.value("PossibleSolutions", 0).toUInt());
+  quint32 nSolutions(tmpSet.value(
+                       QStringLiteral("PossibleSolutions"), 0).toUInt());
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = tr("Unknown");
@@ -72,7 +73,7 @@ void BoardDialog::OnCurrentChanged(const QString &sPath) {
   m_pSolutions->setText(tr("Solutions") + ": " + sSolutions);
 
   QString sImage(sPath);
-  sImage.replace(".conf", ".png");
+  sImage.replace(QStringLiteral(".conf"), QStringLiteral(".png"));
   // qDebug() << "Preview image:" << sImage;
   QPixmap pixmap = QPixmap(sImage);
   if (pixmap.isNull()) {

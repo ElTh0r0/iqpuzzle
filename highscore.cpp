@@ -41,11 +41,11 @@ Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
 #if defined _WIN32
   m_pHighscore = new QSettings(QSettings::IniFormat, QSettings::UserScope,
                                qApp->applicationName().toLower(),
-                               "Highscore");
+                               QStringLiteral("Highscore"));
 #else
   m_pHighscore = new QSettings(QSettings::NativeFormat, QSettings::UserScope,
                                qApp->applicationName().toLower(),
-                               "Highscore");
+                               QStringLiteral("Highscore"));
 #endif
 }
 
@@ -117,7 +117,8 @@ void Highscore::checkHighscore(const QString &sBoard, const quint32 nMoves,
       continue;
     }
 
-    tScoreTime = tScoreTime.fromString(sListTemp[1], "hh:mm:ss");
+    tScoreTime = tScoreTime.fromString(
+                   sListTemp[1], QStringLiteral("hh:mm:ss"));
     nScoreMoves = sListTemp[2].toUInt();
     /*
     qDebug() << "Check #" << i << nMoves << "/" << tTime.toString("hh:mm:ss")
@@ -146,8 +147,7 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
     sListEntries.reserve(m_nMAXPOS + 1);
     QByteArray ba;
     bool bOk(false);
-    QString sName("");
-    sName = qgetenv("USER");  // Try to get user name in Linux
+    QString sName = qgetenv("USER");  // Try to get user name in Linux
     if (sName.isEmpty()) {
       sName = qgetenv("USERNAME");  // Try to get user name in Windows
     }
@@ -157,16 +157,16 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
               tr("Please insert your name for a new highscore:"),
               QLineEdit::Normal, sName, &bOk);
     if (true != bOk || sName.isEmpty()) {
-      sName = "Guy Incognito";
+      sName = QStringLiteral("Guy Incognito");
     }
-    sName.replace("|", " ");
+    sName.replace('|', ' ');
 
     for (int i = 1; i <= m_nMAXPOS; i++) {
       sListEntries << m_pHighscore->value(sBoard + "/Position"
                                           + QString::number(i),
                                           "fHw=").toString();
     }
-    ba.append(sName + "|" + tTime.toString("hh:mm:ss") + "|"
+    ba.append(sName + "|" + tTime.toString(QStringLiteral("hh:mm:ss")) + "|"
               + QString::number(nMoves));
     sListEntries.insert(nPosition - 1, ba.toBase64());
     for (int i = 0; i < m_nMAXPOS; i++) {
@@ -188,17 +188,19 @@ QStringList Highscore::readHighscore(const QString &sBoard,
   QByteArray ba(m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray());
   QString sTemp(QByteArray::fromBase64(ba));
 
-  sListTemp = sTemp.split("|");
+  sListTemp = sTemp.split('|');
 
   for (int j = 0; j < sListTemp.size(); j++) {
     if (sListTemp[j].trimmed().isEmpty()) {
-      sListTemp[j] = "-";
+      sListTemp[j] = '-';
     }
   }
   if (3 != sListTemp.size()) {
     qWarning() << "Found invalid highscore:" << sListTemp;
     sListTemp.clear();
-    sListTemp << "Cheater" << "99:99:99" << "999";
+    sListTemp << QStringLiteral("Cheater")
+              << QStringLiteral("99:99:99")
+              << QStringLiteral("999");
   }
 
   return sListTemp;

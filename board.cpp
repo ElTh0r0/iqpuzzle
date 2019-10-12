@@ -48,10 +48,11 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
   }
   m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
-  this->setBackgroundBrush(QBrush(this->readColor("BGColor")));
+  this->setBackgroundBrush(QBrush(this->readColor(QStringLiteral("BGColor"))));
   if (0 == m_nGridSize) {
-    m_nGridSize = static_cast<quint16>(m_pBoardConf->value(
-                                         "GridSize", 0).toUInt());
+    m_nGridSize = static_cast<quint16>(
+                    m_pBoardConf->value(
+                      QStringLiteral("GridSize"), 0).toUInt());
   }
   if (0 == m_nGridSize || m_nGridSize > 255) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
@@ -67,10 +68,12 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
 
 bool Board::setupBoard() {
   qDebug() << Q_FUNC_INFO;
-  m_bFreestyle = m_pBoardConf->value("Freestyle", false).toBool();
+  m_bFreestyle = m_pBoardConf->value(QStringLiteral("Freestyle"),
+                                     false).toBool();
 
   m_BoardPoly.clear();
-  m_BoardPoly = this->readPolygon(m_pBoardConf, "Board/Polygon", true);
+  m_BoardPoly = this->readPolygon(m_pBoardConf,
+                                  QStringLiteral("Board/Polygon"), true);
   if (m_BoardPoly.isEmpty()) {
     qWarning() << "BOARD POLYGON IS EMPTY!";
     QMessageBox::warning(nullptr, tr("Warning"),
@@ -103,8 +106,8 @@ bool Board::setupBoard() {
 // ---------------------------------------------------------------------------
 
 void Board::drawBoard() {
-  QPen pen(this->readColor("Board/BorderColor"));
-  QBrush brush(this->readColor("Board/Color"));
+  QPen pen(this->readColor(QStringLiteral("Board/BorderColor")));
+  QBrush brush(this->readColor(QStringLiteral("Board/Color")));
   this->addPolygon(m_BoardPoly, pen, brush);
   m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
 }
@@ -114,7 +117,7 @@ void Board::drawBoard() {
 
 void Board::drawGrid() {
   QLineF lineGrid;
-  QPen pen(this->readColor("Board/GridColor"));
+  QPen pen(this->readColor(QStringLiteral("Board/GridColor")));
 
   // Horizontal
   for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
@@ -145,8 +148,9 @@ bool Board::setupBlocks() {
       this->addItem(pB);
     }
 
-    m_bNotAllPiecesNeeded = m_pBoardConf->value("NotAllPiecesNeeded",
-                                                false).toBool();
+    m_bNotAllPiecesNeeded = m_pBoardConf->value(
+                              QStringLiteral("NotAllPiecesNeeded"),
+                              false).toBool();
     if (m_bNotAllPiecesNeeded) {
       QMessageBox::information(nullptr, tr("Hint"),
                                tr("Not all pieces are needed for a solution!"));
@@ -251,7 +255,7 @@ QColor Board::readColor(const QString &sKey) const {
   QColor color(255, 0, 255);
 
   if (sValue.isEmpty()) {
-    sValue = "#00FFFF";
+    sValue = QStringLiteral("#00FFFF");
     qWarning() << "Set fallback color for key" << sKey;
     QMessageBox::warning(nullptr, tr("Warning"),
                          tr("No color defined - using fallback:") +
@@ -283,10 +287,10 @@ QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
   }
 
   this->checkOrthogonality(QPointF(-99999, -99999));
-  sList << sValue.split("|");
+  sList << sValue.split('|');
   foreach (QString s, sList) {
     sListPoint.clear();
-    sListPoint << s.split(",");
+    sListPoint << s.split(',');
     if (2 == sListPoint.size()) {
       polygon << QPointF(sListPoint[0].trimmed().toShort() * nScale,
           sListPoint[1].trimmed().toShort() * nScale);
@@ -353,11 +357,11 @@ QPointF Board::readStartPosition(const QSettings *tmpSet,
   bool bOk2(true);
 
   if (sValue.count(',') != 1) {
-    sValue = "-1,-1";
+    sValue = QStringLiteral("-1,-1");
     bOk1 = false;
   }
 
-  sList << sValue.split(",");
+  sList << sValue.split(',');
   if (2 == sList.size() && bOk1) {
     point.setX(sList[0].trimmed().toInt(&bOk1, 10));
     point.setY(sList[1].trimmed().toInt(&bOk2, 10));
@@ -491,15 +495,15 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
                      const QString &sMoves) {
   QSettings saveConf(sSaveFile, QSettings::IniFormat);
   QByteArray ba;
-  QString sDebug("");
+  QString sDebug;
 
   saveConf.clear();
-  saveConf.setValue("BoardFile", m_sBoardFile);
+  saveConf.setValue(QStringLiteral("BoardFile"), m_sBoardFile);
   ba.append(sTime);
-  saveConf.setValue("ElapsedTime", ba.toBase64());
+  saveConf.setValue(QStringLiteral("ElapsedTime"), ba.toBase64());
   ba.clear();
   ba.append(sMoves);
-  saveConf.setValue("NumOfMoves", ba.toBase64());
+  saveConf.setValue(QStringLiteral("NumOfMoves"), ba.toBase64());
 
   for (int i = 0; i < m_nNumOfBlocks; i++) {
     QString sPrefix = "Block" + QString::number(i + 1);
@@ -517,15 +521,15 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
                       QString::number(pos.x() / m_nGridSize) + "," +
                       QString::number(pos.y() / m_nGridSize));
 
-    if (sSaveFile.endsWith("S0LV3D.debug")) {
-      sDebug += "[" + sPrefix + "]\n";
+    if (sSaveFile.endsWith(QStringLiteral("S0LV3D.debug"))) {
+      sDebug = "[" + sPrefix + "]\n";
       sDebug += "Polygon=\"" + sPoly + "\"\n";
       sDebug += "StartPos=\"" + QString::number(pos.x() / m_nGridSize) +
                 "," + QString::number(pos.y() / m_nGridSize) + "\"\n";
     }
   }
 
-  if (sSaveFile.endsWith("S0LV3D.debug")) {
+  if (sSaveFile.endsWith(QStringLiteral("S0LV3D.debug"))) {
     ba.clear();
     ba.append(sDebug);
     qDebug() << "SOLVED" << m_sBoardFile;
