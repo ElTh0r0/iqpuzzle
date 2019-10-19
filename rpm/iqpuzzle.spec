@@ -18,9 +18,8 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.1.3
+Version:        1.1.4
 Release:        1
-License:        GPL-3.0+
 URL:            https://github.com/ElTh0r0/iqpuzzle
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
@@ -28,31 +27,38 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
 # Fedora, RHEL, or CentOS
 #--------------------------------------------------------------------
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+License:        GPLv3+
 Group:          Amusements/Games
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{?fedora} >= 19
-BuildRequires:  qt5-qtbase-devel
-%else
-BuildRequires:  qt-devel >= 4.5
-%endif
 %endif
 #--------------------------------------------------------------------
 
 # openSUSE or SLE
 #--------------------------------------------------------------------
 %if 0%{?suse_version}
+License:        GPL-3.0+
 Group:          Amusements/Games/Board/Puzzle
+
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} >= 1310
-BuildRequires:  libqt5-qtbase-devel
-%else
-BuildRequires:  libqt4-devel >= 4.5
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+Requires(post): hicolor-icon-theme
+Requires(post): update-desktop-files
+Requires(postun): hicolor-icon-theme
+Requires(postun): update-desktop-files
 %endif
+#--------------------------------------------------------------------
+
+# All
+#--------------------------------------------------------------------
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5Widgets)
 #--------------------------------------------------------------------
 
 %description
@@ -71,33 +77,15 @@ have to be filled with them.
 cat > .qmake.cache <<EOF
 QMAKE_CXXFLAGS += %{optflags}
 EOF
-%if 0%{?fedora} >= 19
-%{qmake_qt5} PREFIX=%{_prefix}
-%else
-qmake-qt4 PREFIX=%{_prefix}
-%endif
-make %{?_smp_mflags}
+%qmake_qt5 PREFIX=%{_prefix}
+%make_build %{?_smp_mflags}
 
 %install
-make install INSTALL_ROOT=%{buildroot}
-desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
+%make_install INSTALL_ROOT=%{buildroot}
 
-%clean
-rm -rf %{buildroot}
-
-%post
-update-desktop-database &> /dev/null || :
-touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
-
-%postun
-update-desktop-database &> /dev/null || :
-if [ $1 -eq 0 ] ; then
-    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-fi
-
-%posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+%check
+desktop-file-validate %{buildroot}/%{_datadir}/%{name}.desktop || :
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/res/%{name}.appdata.xml || :
 %endif
 #--------------------------------------------------------------------
 
@@ -109,21 +97,14 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 cat > .qmake.cache <<EOF
 QMAKE_CXXFLAGS += %{optflags}
 EOF
-%if 0%{?suse_version} >= 1310
-qmake-qt5 PREFIX=%{_prefix}
-%else
-qmake PREFIX=%{_prefix}
-%endif
-make %{?_smp_mflags}
+%qmake5 PREFIX=%{_prefix}
+%make_jobs %{?_smp_mflags}
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+%qmake5_install
 %suse_update_desktop_file %{name}
 
-%clean
-rm -rf %{buildroot}
-
-%if 0%{?suse_version} >= 1140
+%if 0%{?suse_version} < 1330
 %post
 %desktop_database_post
 %icon_theme_cache_post
@@ -139,11 +120,12 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %if 0%{?suse_version}
 %dir %{_datadir}/metainfo
+%{_datadir}/icons/hicolor/
 %endif
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/*/%{name}.*g
+%{_datadir}/icons/hicolor/*/apps/%{name}.*g
 %{_datadir}/pixmaps/%{name}_64x64.png
 %{_datadir}/pixmaps/%{name}.xpm
 %{_datadir}/metainfo/%{name}.appdata.xml
