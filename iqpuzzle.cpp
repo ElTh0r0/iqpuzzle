@@ -408,7 +408,8 @@ void IQPuzzle::generateFileLists() {
                   QDirIterator::Subdirectories);
   while (it.hasNext()) {
     it.next();
-    if (!it.filePath().contains(QStringLiteral("freestyle"))) {  // Filter freestyle boards
+    // Filter freestyle boards
+    if (!it.filePath().contains(QStringLiteral("freestyle"))) {
       QString sName = it.filePath().remove(m_sSharePath + "/boards/");
       // qDebug() << sName;
 

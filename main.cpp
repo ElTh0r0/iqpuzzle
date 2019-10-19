@@ -51,19 +51,22 @@ int main(int argc, char *argv[]) {
   app.setApplicationName(APP_NAME);
   app.setApplicationVersion(APP_VERSION);
 
-  if (app.arguments().contains(QStringLiteral("-v")) ||
-      app.arguments().contains(QStringLiteral("--version"))) {
-    qDebug() << app.arguments().at(0) << "\t" <<
-                app.applicationVersion() << "\n";
-    exit(0);
-  }
+  QCommandLineParser cmdparser;
+  cmdparser.setApplicationDescription(APP_DESC);
+  cmdparser.addHelpOption();
+  cmdparser.addVersionOption();
+  QCommandLineOption enableDebug("debug", "Enable debug mode");
+  cmdparser.addOption(enableDebug);
+  cmdparser.addPositionalArgument("file", "Board file to be opened (*.conf) "
+                                  "or savegame (*.iqsav)");
+  cmdparser.process(app);
 
   // Default share data path (Windows and debugging)
   QString sSharePath = app.applicationDirPath();
   // Standard installation path (Linux)
   QDir tmpDir(app.applicationDirPath() + "/../share/"
               + app.applicationName().toLower());
-  if (!app.arguments().contains(QStringLiteral("--debug")) && tmpDir.exists()) {
+  if (!cmdparser.isSet(enableDebug) && tmpDir.exists()) {
     sSharePath = app.applicationDirPath() + "/../share/"
                  + app.applicationName().toLower();
   }
