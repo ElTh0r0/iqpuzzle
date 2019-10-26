@@ -492,9 +492,6 @@ void IQPuzzle::loadGame(QString sSaveFile) {
     ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
     m_sSavedTime = QByteArray::fromBase64(ba);
     this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
-  } else {
-    QMessageBox::warning(this, qApp->applicationName(),
-                         tr("Invalid saved puzzle."));
   }
 }
 
@@ -507,6 +504,9 @@ void IQPuzzle::saveGame() {
                     m_userDataDir.absolutePath(),
                     tr("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
+    if (!sFile.endsWith(".iqsav", Qt::CaseInsensitive)) {
+      sFile += ".iqsav";
+    }
     m_sSavedMoves = QString::number(m_nMoves);
     m_sSavedTime = m_Time.toString(QStringLiteral("hh:mm:ss"));
     m_pBoard->saveGame(sFile, m_sSavedTime, m_sSavedMoves);
