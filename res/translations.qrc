@@ -4,6 +4,7 @@
         <file alias="iqpuzzle_de.qm">../lang/iqpuzzle_de.qm</file>
         <file alias="iqpuzzle_fr.qm">../lang/iqpuzzle_fr.qm</file>
         <file alias="iqpuzzle_it.qm">../lang/iqpuzzle_it.qm</file>
+        <file alias="iqpuzzle_ko.qm">../lang/iqpuzzle_ko.qm</file>
         <file alias="iqpuzzle_nl.qm">../lang/iqpuzzle_nl.qm</file>
     </qresource>
 </RCC>

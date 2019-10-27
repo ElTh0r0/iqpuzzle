@@ -743,7 +743,8 @@ void IQPuzzle::showInfoBox() {
              "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
              "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
              "&nbsp;&nbsp;- German: ElThoro<br />"
-             "&nbsp;&nbsp;- Italian: davi92"));
+             "&nbsp;&nbsp;- Italian: davi92<br />"
+             "&nbsp;&nbsp;- Korean: hyuna1127"));
 }
 
 // ---------------------------------------------------------------------------
