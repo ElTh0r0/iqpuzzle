@@ -51,10 +51,12 @@ echo "Packaging zip archive..."
 7z a ${APP}_${REV_NAME}_macOS.zip "${APP}_${REV_NAME}.dmg" "README.md" "COPYING"
 
 echo "Uploading..."
-HOMEBREW_NO_AUTO_UPDATE=1 brew install ffsend
-ffsend upload ${APP}_${REV_NAME}_macOS.zip
-ffsend upload ${APP}_${REV_NAME}_macOS.zip
-ffsend upload ${APP}_${REV_NAME}_macOS.zip
+LATEST_TAG="$(curl -sI "https://github.com/timvisee/ffsend/releases/latest" | grep -Po 'tag\/\K(v\S+)')"
+curl -o ffsend https://github.com/timvisee/ffsend/releases/download/${LATEST_TAG}/ffsend-${LATEST_TAG}-macos
+chmod a+x ./ffsend
+./ffsend upload ${APP}_${REV_NAME}_macOS.zip
+./ffsend upload ${APP}_${REV_NAME}_macOS.zip
+./ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ##curl --upload-file ${APP}_${REV_NAME}_macOS.zip https://transfer.sh/${APP}_${REV_NAME}_macOS.zip
 echo ""
 
