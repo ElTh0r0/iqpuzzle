@@ -3,6 +3,7 @@
 set -o errexit -o nounset
 
 APP='iQPuzzle'
+FFSEND_VERSION='v0.2.54'
 
 # Hold on to current directory
 project_dir=$(pwd)
@@ -50,9 +51,9 @@ cp "${project_dir}/COPYING" "${project_dir}/build/COPYING"
 echo "Packaging zip archive..."
 7z a ${APP}_${REV_NAME}_macOS.zip "${APP}_${REV_NAME}.dmg" "README.md" "COPYING"
 
+echo "Downloading ffsend..."
+curl -o ffsend https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos
 echo "Uploading..."
-LATEST_TAG="$(curl -sI "https://github.com/timvisee/ffsend/releases/latest" | grep -Po 'tag\/\K(v\S+)')"
-curl -o ffsend https://github.com/timvisee/ffsend/releases/download/${LATEST_TAG}/ffsend-${LATEST_TAG}-macos
 chmod a+x ./ffsend
 ./ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ./ffsend upload ${APP}_${REV_NAME}_macOS.zip
