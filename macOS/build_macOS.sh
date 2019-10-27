@@ -54,10 +54,10 @@ echo "Packaging zip archive..."
 echo "Downloading ffsend..."
 curl -o ffsend https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos
 echo "Uploading..."
-chmod a+x ./ffsend
-./ffsend upload ${APP}_${REV_NAME}_macOS.zip
-./ffsend upload ${APP}_${REV_NAME}_macOS.zip
-./ffsend upload ${APP}_${REV_NAME}_macOS.zip
+chmod +x ffsend
+ffsend upload ${APP}_${REV_NAME}_macOS.zip
+ffsend upload ${APP}_${REV_NAME}_macOS.zip
+ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ##curl --upload-file ${APP}_${REV_NAME}_macOS.zip https://transfer.sh/${APP}_${REV_NAME}_macOS.zip
 echo ""
 
