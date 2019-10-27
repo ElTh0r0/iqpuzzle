@@ -52,8 +52,8 @@ echo "Packaging zip archive..."
 7z a ${APP}_${REV_NAME}_macOS.zip "${APP}_${REV_NAME}.dmg" "README.md" "COPYING"
 
 echo "Downloading ffsend..."
-curl -o ffsend https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos
-chmod +x ffsend
+curl -L https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos > ffsend
+chmod +x ./ffsend
 echo "Uploading..."
 ./ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ./ffsend upload ${APP}_${REV_NAME}_macOS.zip
