@@ -1,3 +1,11 @@
+iqpuzzle (1.1.5-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Added Korean translation (thanks to hyuna1127)
+  * Add save game file extension automatically.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 27 Oct 2019 16:33:00 +0200
+
 iqpuzzle (1.1.4-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]

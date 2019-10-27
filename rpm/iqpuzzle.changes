@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 27 16:33:00 UTC 2019 - elthoro@gmx.de 1.1.5
+
+- Added Korean translation (thanks to hyuna1127)
+- Add save game file extension automatically.
+
+-------------------------------------------------------------------
 Sat Oct 19 15:24:00 UTC 2019 - elthoro@gmx.de 1.1.4
 
 - Save/load relative board path (needed for AppImage)

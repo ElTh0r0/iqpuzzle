@@ -14,12 +14,9 @@ sw_vers
 #echo "Updating platform..."
 #brew update
 
-# Install p7zip for packaging
-brew install p7zip
-
-# Install Qt
-echo "Installing Qt..."
-brew install qt
+# Install p7zip for packaging and Qt
+echo "Installing p7zip and Qt..."
+HOMEBREW_NO_AUTO_UPDATE=1 brew install p7zip qt
 
 # Add Qt binaries to path
 PATH=/usr/local/opt/qt/bin/:${PATH}
