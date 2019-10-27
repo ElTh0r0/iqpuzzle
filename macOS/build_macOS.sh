@@ -14,9 +14,9 @@ sw_vers
 #echo "Updating platform..."
 #brew update
 
-# Install p7zip for packaging and Qt
-echo "Installing p7zip and Qt..."
-HOMEBREW_NO_AUTO_UPDATE=1 brew install p7zip qt
+# Install p7zip for packaging, ffsend and Qt
+echo "Installing p7zip, ffsend and Qt..."
+HOMEBREW_NO_AUTO_UPDATE=1 brew install p7zip ffsend qt
 
 # Add Qt binaries to path
 PATH=/usr/local/opt/qt/bin/:${PATH}
@@ -51,7 +51,6 @@ echo "Packaging zip archive..."
 7z a ${APP}_${REV_NAME}_macOS.zip "${APP}_${REV_NAME}.dmg" "README.md" "COPYING"
 
 echo "Uploading..."
-brew install ffsend
 ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ffsend upload ${APP}_${REV_NAME}_macOS.zip
 ffsend upload ${APP}_${REV_NAME}_macOS.zip
