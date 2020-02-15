@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -97,29 +97,27 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   QString sStartBoard("");
   QString sLoadBoard("");
   if (qApp->arguments().size() > 1) {
-    foreach (QString sBoard, qApp->arguments()) {
+    for (auto &sBoard : qApp->arguments()) {
       if (sBoard.endsWith(QStringLiteral(".conf"),
                           Qt::CaseInsensitive)) {
         if (QFile::exists(sBoard)) {
           sStartBoard = sBoard;
           break;
-        } else {
-          qWarning() << "Specified board not found:" << sBoard;
-          QMessageBox::warning(this, tr("File not found"),
-                               tr("The chosen file does not exist."));
-          break;
         }
-      } else if (sBoard.endsWith(QStringLiteral(".iqsav"),
-                                 Qt::CaseInsensitive)) {
+        qWarning() << "Specified board not found:" << sBoard;
+        QMessageBox::warning(this, tr("File not found"),
+                             tr("The chosen file does not exist."));
+        break;
+      }
+      if (sBoard.endsWith(QStringLiteral(".iqsav"), Qt::CaseInsensitive)) {
         if (QFile::exists(sBoard)) {
           sLoadBoard = sBoard;
           break;
-        } else {
-          qWarning() << "Specified save game not found:" << sBoard;
-          QMessageBox::warning(this, tr("File not found"),
-                               tr("The chosen file does not exist."));
-          break;
         }
+        qWarning() << "Specified save game not found:" << sBoard;
+        QMessageBox::warning(this, tr("File not found"),
+                             tr("The chosen file does not exist."));
+        break;
       }
     }
   }
@@ -140,8 +138,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   }
 }
 
-IQPuzzle::~IQPuzzle() {
-}
+IQPuzzle::~IQPuzzle() = default;
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -300,10 +297,8 @@ void IQPuzzle::setGameTitle() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QString IQPuzzle::chooseBoard() {
-  if (nullptr != m_pBoardDialog) {
-    delete m_pBoardDialog;
-  }
+auto IQPuzzle::chooseBoard() -> QString {
+  delete m_pBoardDialog;
   m_pBoardDialog = new BoardDialog(this, tr("Load board"),
                                    m_sSharePath + "/boards",
                                    tr("Board files") + " (*.conf)");
@@ -311,7 +306,7 @@ QString IQPuzzle::chooseBoard() {
   if (m_pBoardDialog->exec()) {
     QStringList sListFiles;
     sListFiles = m_pBoardDialog->selectedFiles();
-    if (sListFiles.size() >= 1) {
+    if (!sListFiles.isEmpty()) {
       return sListFiles.first();
     }
   }
@@ -631,8 +626,9 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool IQPuzzle::switchTranslator(QTranslator *translator,
-                                const QString &sFile, const QString &sPath) {
+auto IQPuzzle::switchTranslator(QTranslator *translator,
+                                const QString &sFile,
+                                const QString &sPath) -> bool {
   qApp->removeTranslator(translator);
   if (translator->load(sFile, sPath)) {
     qApp->installTranslator(translator);
@@ -656,7 +652,7 @@ void IQPuzzle::showStatistics() {
   dialog.setWindowFlags(dialog.window()->windowFlags()
                         & ~Qt::WindowContextHelpButtonHint);
 
-  QGridLayout* layout = new QGridLayout(&dialog);
+  auto *layout = new QGridLayout(&dialog);
   layout->setContentsMargins(10, 10, 10, 10);
   layout->setSpacing(8);
 
@@ -694,7 +690,7 @@ void IQPuzzle::showStatistics() {
   layout->addWidget(new QLabel(QString::number(m_sListAllUnsolved.size()),
                                &dialog), 5, 2, Qt::AlignCenter);
 
-  QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
+  auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close,
                                                    Qt::Horizontal, &dialog);
   connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
   layout->addWidget(buttons, 6, 0, 1, 3, Qt::AlignCenter);
@@ -705,7 +701,7 @@ void IQPuzzle::showStatistics() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void IQPuzzle::reportBug() const {
+void IQPuzzle::reportBug() {
   QDesktopServices::openUrl(
         QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
 }

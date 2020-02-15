@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -60,7 +60,7 @@ void Highscore::showHighscore(const QString &sBoard) {
   dialog.setWindowFlags(dialog.window()->windowFlags()
                         & ~Qt::WindowContextHelpButtonHint);
 
-  QGridLayout* layout = new QGridLayout(&dialog);
+  auto *layout = new QGridLayout(&dialog);
   layout->setContentsMargins(10, 10, 10, 10);
   layout->setSpacing(10);
 
@@ -93,8 +93,8 @@ void Highscore::showHighscore(const QString &sBoard) {
     }
   }
 
-  QDialogButtonBox* buttons = new QDialogButtonBox(QDialogButtonBox::Close,
-                                                   Qt::Horizontal, &dialog);
+  auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close,
+                                       Qt::Horizontal, &dialog);
   connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
   layout->addWidget(buttons, m_nMAXPOS + 1, 0, 1, 4, Qt::AlignCenter);
 
@@ -128,7 +128,8 @@ void Highscore::checkHighscore(const QString &sBoard, const quint32 nMoves,
     if (nMoves < nScoreMoves || 0 == nScoreMoves) {
       this->insertHighscore(sBoard, i, nMoves, tTime);
       break;
-    } else if (nMoves == nScoreMoves) {
+    }
+    if (nMoves == nScoreMoves) {
       if (tTime < tScoreTime) {
         this->insertHighscore(sBoard, i, nMoves, tTime);
         break;
@@ -156,7 +157,7 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
               m_pParent, tr("Highscore"),
               tr("Please insert your name for a new highscore:"),
               QLineEdit::Normal, sName, &bOk);
-    if (true != bOk || sName.isEmpty()) {
+    if (!bOk || sName.isEmpty()) {
       sName = QStringLiteral("Guy Incognito");
     }
     sName.replace('|', ' ');
@@ -182,8 +183,8 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QStringList Highscore::readHighscore(const QString &sBoard,
-                                     const QString &sKey) const {
+auto Highscore::readHighscore(const QString &sBoard,
+                              const QString &sKey) const -> QStringList {
   QStringList sListTemp;
   QByteArray ba(m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray());
   QString sTemp(QByteArray::fromBase64(ba));

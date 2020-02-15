@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -46,17 +46,17 @@ class Block : public QGraphicsObject {
           quint16 nGrid, QList<Block *> *pListBlocks, Settings *pSettings,
           QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
 
-    QRectF boundingRect() const;
-    QPainterPath shape() const;
-    QPointF getPosition() const;
+    auto boundingRect() const -> QRectF;
+    auto shape() const -> QPainterPath;
+    auto getPosition() const -> QPointF;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = nullptr);
     void setBrushStyle(Qt::BrushStyle style);
 
-    QPolygonF getPolygon() const;
+    auto getPolygon() const -> QPolygonF;
     void setNewZValue(const double nZ);
     void rescaleBlock(const quint16 nNewScale);
-    quint16 getIndex() const;
+    auto getIndex() const -> quint16;
     enum { Type = UserType + 1 };
 
  signals:
@@ -68,13 +68,13 @@ class Block : public QGraphicsObject {
     void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
     void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
-    int type() const;
+    auto type() const -> int;
 
  private:
     void moveBlockGrid(const QPointF pos);
-    bool checkCollision(const QPainterPath &thisPath);
+    auto checkCollision(const QPainterPath &thisPath) -> bool;
     void checkBlockIntersection();
-    QPointF snapToGrid(const QPointF point) const;
+    auto snapToGrid(const QPointF point) const -> QPointF;
     void resetBrushStyle() const;
 
     void moveBlock(const bool bRelease = false);

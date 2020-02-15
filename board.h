@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -48,11 +48,11 @@ class Board : public QGraphicsScene {
           Settings *pSettings, const quint16 nGridSize = 0,
           const QString &sSavedGame = "");
 
-    bool setupBoard();
-    bool setupBlocks();
+    auto setupBoard() -> bool;
+    auto setupBlocks() -> bool;
     void saveGame(const QString &sSaveFile, const QString &sTime,
                   const QString &sMoves);
-    quint16 getGridSize() const;
+    auto getGridSize() const -> quint16;
 
  signals:
     void setWindowSize(const QSize size, const bool bFreestyle);
@@ -67,14 +67,14 @@ class Board : public QGraphicsScene {
  private:
     void drawBoard();
     void drawGrid();
-    bool createBlocks();
-    bool createBarriers();
-    QColor readColor(const QString &sKey) const;
+    auto createBlocks() -> bool;
+    auto createBarriers() -> bool;
+    auto readColor(const QString &sKey) const -> QColor;
     QPolygonF readPolygon(const QSettings *tmpSet, const QString &sKey,
                           const bool bScale = false);
-    bool checkOrthogonality(QPointF point) const;
-    QPointF readStartPosition(const QSettings *tmpSet,
-                              const QString &sKey) const;
+    static auto checkOrthogonality(QPointF point) -> bool;
+    static auto readStartPosition(const QSettings *tmpSet,
+                                  const QString &sKey) -> QPointF;
     void doZoom();
 
     QGraphicsView *m_pGraphView;
@@ -85,10 +85,13 @@ class Board : public QGraphicsScene {
     bool m_bSavedGame;
     QPolygonF m_BoardPoly;
     QList<Block *> m_listBlocks;
-    unsigned char m_nNumOfBlocks;
+    unsigned char m_nNumOfBlocks{};
     quint16 m_nGridSize;
-    bool m_bNotAllPiecesNeeded;
-    bool m_bFreestyle;
+    bool m_bNotAllPiecesNeeded{};
+    bool m_bFreestyle{};
+
+    static const quint8 ZOOMGRID = 5;
+    static const quint8 MAXGRID = 255;
 };
 
 #endif  // BOARD_H_

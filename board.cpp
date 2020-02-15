@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -55,7 +55,7 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
                     m_pBoardConf->value(
                       QStringLiteral("GridSize"), 0).toUInt());
   }
-  if (0 == m_nGridSize || m_nGridSize > 255) {
+  if (0 == m_nGridSize || m_nGridSize > Board::MAXGRID) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
     m_nGridSize = 25;
     QMessageBox::warning(nullptr, tr("Warning"),
@@ -67,7 +67,7 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Board::setupBoard() {
+auto Board::setupBoard() -> bool {
   qDebug() << Q_FUNC_INFO;
   m_bFreestyle = m_pBoardConf->value(QStringLiteral("Freestyle"),
                                      false).toBool();
@@ -137,7 +137,7 @@ void Board::drawGrid() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Board::setupBlocks() {
+auto Board::setupBlocks() -> bool {
   qDebug() << Q_FUNC_INFO;
   m_nNumOfBlocks = 0;
   m_listBlocks.clear();
@@ -145,8 +145,8 @@ bool Board::setupBlocks() {
   if (this->createBlocks() &&
       this->createBarriers()) {
     // Add blocks to board
-    foreach (Block *pB, m_listBlocks) {
-      this->addItem(pB);
+    for (auto &block : m_listBlocks) {
+      this->addItem(block);
     }
 
     m_bNotAllPiecesNeeded = m_pBoardConf->value(
@@ -165,7 +165,7 @@ bool Board::setupBlocks() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Board::createBlocks() {
+auto Board::createBlocks() -> bool {
   const unsigned char nMaxNumOfBlocks(250);
   QSettings *tmpSet = m_pBoardConf;
   if (m_bSavedGame) {
@@ -216,7 +216,7 @@ bool Board::createBlocks() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Board::createBarriers() {
+auto Board::createBarriers() -> bool {
   const unsigned char nMaxNumOfBlocks(250);
 
   for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {
@@ -251,7 +251,7 @@ bool Board::createBarriers() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QColor Board::readColor(const QString &sKey) const {
+auto Board::readColor(const QString &sKey) const -> QColor {
   QString sValue = m_pBoardConf->value(sKey, "").toString();
   QColor color(255, 0, 255);
 
@@ -276,8 +276,8 @@ QColor Board::readColor(const QString &sKey) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
-                             const bool bScale) {
+auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
+                        const bool bScale) -> QPolygonF {
   QStringList sList;
   QStringList sListPoint;
   QPolygonF polygon;
@@ -287,16 +287,16 @@ QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
     nScale = m_nGridSize;
   }
 
-  this->checkOrthogonality(QPointF(-99999, -99999));
+  Board::checkOrthogonality(QPointF(-99999, -99999));
   sList << sValue.split('|');
-  foreach (QString s, sList) {
+  for (auto &s : sList) {
     sListPoint.clear();
     sListPoint << s.split(',');
     if (2 == sListPoint.size()) {
       polygon << QPointF(sListPoint[0].trimmed().toShort() * nScale,
           sListPoint[1].trimmed().toShort() * nScale);
 
-      if (!this->checkOrthogonality(polygon.last())) {
+      if (!Board::checkOrthogonality(polygon.last())) {
         qWarning() << "Polygon not orthogonal" << sKey;
         polygon.clear();
         break;
@@ -318,7 +318,7 @@ QPolygonF Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Board::checkOrthogonality(QPointF point) const {
+auto Board::checkOrthogonality(QPointF point) -> bool {
   static QList<QPointF> listPoints;
   static quint16 nCnt;
 
@@ -326,20 +326,19 @@ bool Board::checkOrthogonality(QPointF point) const {
     listPoints.clear();
     nCnt = 0;
     return true;
-  } else {
-    nCnt++;
-    listPoints.push_back(point);
-    if (listPoints.size() > 2) {
-      if ((listPoints[0].x() == listPoints[1].x() &&
-          listPoints[1].y() == listPoints[2].y()) ||
-          (listPoints[0].y() == listPoints[1].y() &&
-           listPoints[1].x() == listPoints[2].x())) {
-        listPoints.removeFirst();
-        return true;
-      }
-    } else {  // If size <= 2
+  }
+  nCnt++;
+  listPoints.push_back(point);
+  if (listPoints.size() > 2) {
+    if ((listPoints[0].x() == listPoints[1].x() &&
+         listPoints[1].y() == listPoints[2].y()) ||
+        (listPoints[0].y() == listPoints[1].y() &&
+         listPoints[1].x() == listPoints[2].x())) {
+      listPoints.removeFirst();
       return true;
     }
+  } else {  // If size <= 2
+    return true;
   }
 
   qWarning() << "Wrong point #" << nCnt;
@@ -349,8 +348,8 @@ bool Board::checkOrthogonality(QPointF point) const {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF Board::readStartPosition(const QSettings *tmpSet,
-                                 const QString &sKey) const {
+auto Board::readStartPosition(const QSettings *tmpSet,
+                              const QString &sKey) -> QPointF {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();
@@ -394,7 +393,7 @@ void Board::checkPuzzleSolved() {
   QPainterPath tempPath;
   QPainterPath tempPath2;
 
-  foreach (Block *block, m_listBlocks) {
+  for (auto &block : m_listBlocks) {
     QPointF pos = QPointF(block->pos().x() / m_nGridSize,
                           block->pos().y() / m_nGridSize);
 
@@ -440,19 +439,19 @@ void Board::checkPuzzleSolved() {
 // ---------------------------------------------------------------------------
 
 void Board::zoomIn() {
-  if (m_nGridSize <= 250) {
-    m_nGridSize += 5;
+  if (m_nGridSize <= (Board::MAXGRID - Board::ZOOMGRID)) {
+    m_nGridSize += Board::ZOOMGRID;
   } else {
-    m_nGridSize = 255;
+    m_nGridSize = Board::MAXGRID;
   }
   this->doZoom();
 }
 
 void Board::zoomOut() {
-  if (m_nGridSize > 9) {
-    m_nGridSize -= 5;
+  if (m_nGridSize >= (2 * Board::ZOOMGRID)) {
+    m_nGridSize -= Board::ZOOMGRID;
   } else {
-    m_nGridSize = 5;
+    m_nGridSize = Board::ZOOMGRID;
   }
   this->doZoom();
 }
@@ -467,7 +466,7 @@ void Board::doZoom() {
   QList<QGraphicsItem *> objList = this->items();
 
   // Remove objects from scene which are no blocks
-  foreach (QGraphicsItem *gi, objList) {
+  for (auto &gi : objList) {
     if (gi->type() != Block::Type) {
       this->removeItem(gi);
     }
@@ -477,15 +476,15 @@ void Board::doZoom() {
   this->setupBoard();
 
   // Rescale blocks
-  foreach (Block *pB, m_listBlocks) {
-    pB->rescaleBlock(m_nGridSize);
+  for (auto &block : m_listBlocks) {
+    block->rescaleBlock(m_nGridSize);
   }
 }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-quint16 Board::getGridSize() const {
+auto Board::getGridSize() const -> quint16 {
   return m_nGridSize;
 }
 
@@ -516,7 +515,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
     QString sPrefix = "Block" + QString::number(i + 1);
     QPolygonF poly = m_listBlocks.at(i)->getPolygon();
     QString sPoly("");
-    foreach (QPointF point, poly) {
+    for (auto &point : poly) {
       sPoly += QString::number(point.x()) + "," +
                QString::number(point.y()) + " | ";
     }

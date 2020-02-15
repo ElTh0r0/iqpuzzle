@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -37,7 +37,7 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
   // Needed for Windows, otherwise native dialog crashes while adapting layout
   this->setOption(QFileDialog::DontUseNativeDialog, true);
   this->setViewMode(QFileDialog::List);
-  QVBoxLayout *boxlayout = new QVBoxLayout();
+  auto *boxlayout = new QVBoxLayout();
 
   m_pSolutions = new QLabel(tr("Solutions") + ":", this);
   m_pPreviewCaption = new QLabel(tr("Preview") + ":", this);
@@ -51,7 +51,7 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
   boxlayout->addWidget(m_pPreview);
   boxlayout->addStretch();
   {
-    QGridLayout *layout = reinterpret_cast<QGridLayout*>(this->layout());
+    auto *layout = reinterpret_cast<QGridLayout*>(this->layout());
     layout->addLayout(boxlayout, 1, 3, 3, 1);
   }
 

@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -48,7 +48,8 @@ class Highscore : public QObject {
                         const QTime tTime);
 
  private:
-    QStringList readHighscore(const QString &sBoard, const QString &sKey) const;
+    auto readHighscore(const QString &sBoard,
+                       const QString &sKey) const -> QStringList;
     void insertHighscore(const QString &sBoard, const quint8 nPosition,
                          const quint32 nMoves, const QTime tTime);
 

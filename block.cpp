@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -67,11 +67,11 @@ Block::Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QRectF Block::boundingRect() const {
+auto Block::boundingRect() const -> QRectF {
   return m_PolyShape.boundingRect();
 }
 
-QPainterPath Block::shape() const {
+auto Block::shape() const -> QPainterPath {
   QPainterPath path;
   path.addPolygon(m_PolyShape);
   return path;
@@ -85,11 +85,12 @@ void Block::paint(QPainter *painter,
                   QWidget *widget) {
   Q_UNUSED(option)
   Q_UNUSED(widget)
+  static const qreal OPACITY = 0.4;
 
   m_borderPen.setWidth(1/m_nGrid);
 
   if (m_bActive) {  // Barries are ignored (not enabled)
-    painter->setOpacity(0.4);
+    painter->setOpacity(OPACITY);
   } else {
     painter->setOpacity(1);
   }
@@ -195,8 +196,8 @@ void Block::moveBlock(const bool bRelease) {
     m_bActive = true;
 
     // Bring current block to foreground and update Z values
-    for (int i = 0; i < m_pListBlocks->size(); i++) {
-      (*m_pListBlocks)[i]->setNewZValue(-1);
+    for (auto &pBlock : *m_pListBlocks) {
+      pBlock->setNewZValue(-1);
     }
     this->setZValue(m_pListBlocks->size() + 2);
 
@@ -227,16 +228,17 @@ void Block::moveBlock(const bool bRelease) {
 // ---------------------------------------------------------------------------
 
 void Block::rotateBlock(const int nDelta) {
+  static const quint8 RIGHTANGLE = 90;
   qint8 nAngle(0);
   qreal nTranslateX(0);
   qreal nTranslateY(0);
 
   if (nDelta < 0) {
-    nAngle = 90;
+    nAngle = RIGHTANGLE;
     nTranslateX = this->boundingRect().height();
     nTranslateY = 0;
   } else {
-    nAngle = -90;
+    nAngle = -RIGHTANGLE;
     nTranslateX = 0;
     nTranslateY = this->boundingRect().width();
   }
@@ -276,8 +278,8 @@ void Block::checkBlockIntersection() {
   if (this->checkCollision(thisPath)) {
     m_bgBrush.setTexture(m_CollTexture);
     m_bgBrush.setStyle(Qt::TexturePattern);
-    for (int i = 0; i < m_pListBlocks->size(); i++) {
-      (*m_pListBlocks)[i]->setNewZValue(-1);
+    for (auto &pBlock : *m_pListBlocks) {
+      pBlock->setNewZValue(-1);
     }
     this->setZValue(m_pListBlocks->size() + 2);
   }
@@ -287,8 +289,8 @@ void Block::checkBlockIntersection() {
 // ---------------------------------------------------------------------------
 
 void Block::resetBrushStyle() const {
-  foreach (Block *block, *m_pListBlocks) {
-    block->setBrushStyle(Qt::SolidPattern);
+  for (auto &pBlock : *m_pListBlocks) {
+    pBlock->setBrushStyle(Qt::SolidPattern);
   }
 }
 
@@ -299,15 +301,15 @@ void Block::setBrushStyle(Qt::BrushStyle style) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-bool Block::checkCollision(const QPainterPath &thisPath) {
+auto Block::checkCollision(const QPainterPath &thisPath) -> bool {
   QPainterPath collidingPath;
   QPainterPath intersectedPath;
-  foreach (Block *block, *m_pListBlocks) {
-    if (block->getIndex() != m_nID
-        && this->collidesWithItem(block)) {
-      collidingPath = block->shape();
-      collidingPath.translate(QPointF(block->pos().x() / m_nGrid,
-                                      block->pos().y() / m_nGrid));
+  for (auto &pBlock : *m_pListBlocks) {
+    if (pBlock->getIndex() != m_nID
+        && this->collidesWithItem(pBlock)) {
+      collidingPath = pBlock->shape();
+      collidingPath.translate(QPointF(pBlock->pos().x() / m_nGrid,
+                                      pBlock->pos().y() / m_nGrid));
       intersectedPath = thisPath.intersected(collidingPath);
 
       // Path has to be simplified
@@ -331,7 +333,7 @@ bool Block::checkCollision(const QPainterPath &thisPath) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-QPointF Block::snapToGrid(const QPointF point) const {
+auto Block::snapToGrid(const QPointF point) const -> QPointF {
   return QPointF(qRound(point.x() / m_nGrid) * m_nGrid,   // x
                  qRound(point.y() / m_nGrid) * m_nGrid);  // y
 }
@@ -376,19 +378,19 @@ void Block::rescaleBlock(const quint16 nNewScale) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-int Block::type() const {
+auto Block::type() const -> int {
   // Enable the use of qgraphicsitem_cast with this item
   return Type;
 }
 
-quint16 Block::getIndex() const {
+auto Block::getIndex() const -> quint16 {
   return m_nID;
 }
 
-QPointF Block::getPosition() const {
+auto Block::getPosition() const -> QPointF {
   return this->pos();
 }
 
-QPolygonF Block::getPolygon() const {
+auto Block::getPolygon() const -> QPolygonF{
   return this->m_PolyShape;
 }

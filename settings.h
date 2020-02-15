@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -45,12 +45,12 @@ class Settings : public QDialog {
     explicit Settings(const QString &sSharePath, QWidget *pParent = nullptr);
     virtual ~Settings();
 
-    QList<quint8> getMouseControls() const;
-    quint8 getShift() const;
-    QString getLanguage();
+    auto getMouseControls() const -> QList<quint8>;
+    auto getShift() const -> quint8;
+    auto getLanguage() -> QString;
 
-    uint getEasy() const;
-    uint getHard() const;
+    auto getEasy() const -> uint;
+    auto getHard() const -> uint;
 
  signals:
     void changeLang(const QString &sLang);
@@ -64,7 +64,7 @@ class Settings : public QDialog {
     void readSettings();
     QStringList searchTranslations();
 
-    QWidget *m_pParent;
+    QWidget *m_pParent{};
     Ui::SettingsDialog *m_pUi;
     QSettings *m_pSettings;
 
@@ -74,8 +74,8 @@ class Settings : public QDialog {
     QStringList m_sListMouseButtons;
     QList<quint8> m_listMouseButtons;
     QList<quint8> m_listMouseControls;
-    uint m_nEasy;
-    uint m_nHard;
+    uint m_nEasy{};
+    uint m_nHard{};
 };
 
 #endif  // SETTINGS_H_

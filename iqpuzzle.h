@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -73,8 +73,6 @@ class IQPuzzle : public QMainWindow {
     void loadLanguage(const QString &sLang);
     void startNewGame(QString sBoardFile = "", const QString &sSavedGame = "",
                       const QString &sTime = "", const QString &sMoves = "");
-    QString chooseBoard();
-    void createBoard();
     void randomGame(const int nChoice);
     void restartGame();
     void loadGame(QString sSaveFile = "");
@@ -83,12 +81,15 @@ class IQPuzzle : public QMainWindow {
     void updateTimer();
     void solvedPuzzle();
     void showStatistics();
-    void reportBug() const;
+    static void reportBug();
     void showInfoBox();
 
  private:
-    bool switchTranslator(QTranslator *translator, const QString &sFile,
-                          const QString &sPath = "");
+    void createBoard();
+    auto chooseBoard() -> QString;
+    static auto switchTranslator(QTranslator *translator,
+                                 const QString &sFile,
+                                 const QString &sPath = "") -> bool;
     void setupMenu();
     void setGameTitle();
     void generateFileLists();

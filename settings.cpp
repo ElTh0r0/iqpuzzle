@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2019 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
  *
  * This file is part of iQPuzzle.
  *
@@ -103,11 +103,10 @@ void Settings::accept() {
                              tr("Please change your settings. Same mouse "
                                 "button is used for several actions."));
     return;
-  } else {
-    m_listMouseControls[0] = tmp_listMouseControls[0];
-    m_listMouseControls[1] = tmp_listMouseControls[1];
-    m_listMouseControls[2] = tmp_listMouseControls[2];
   }
+  m_listMouseControls[0] = tmp_listMouseControls[0];
+  m_listMouseControls[1] = tmp_listMouseControls[1];
+  m_listMouseControls[2] = tmp_listMouseControls[2];
 
   QString sOldGuiLang = m_sGuiLanguage;
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
@@ -176,19 +175,19 @@ void Settings::readSettings() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-quint8 Settings::getShift() const {
+auto Settings::getShift() const -> quint8 {
   return m_nSHIFT;
 }
 
-QList<quint8> Settings::getMouseControls() const {
+auto Settings::getMouseControls() const -> QList<quint8> {
   return m_listMouseControls;
 }
 
-uint Settings::getEasy() const {
+auto Settings::getEasy() const -> uint {
   return m_nEasy;
 }
 
-uint Settings::getHard() const {
+auto Settings::getHard() const -> uint {
   return m_nHard;
 }
 
@@ -221,7 +220,7 @@ void Settings::updateUiLang() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-QStringList Settings::searchTranslations() {
+auto Settings::searchTranslations() -> QStringList {
   QStringList sList;
   QString sTmp;
 
@@ -269,7 +268,7 @@ QStringList Settings::searchTranslations() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-QString Settings::getLanguage() {
+auto Settings::getLanguage() -> QString {
   if ("auto" == m_sGuiLanguage) {
 #ifdef Q_OS_UNIX
     QByteArray lang = qgetenv("LANG");
@@ -278,11 +277,12 @@ QString Settings::getLanguage() {
     }
 #endif
     return QLocale::system().name();
-  } else if (!QFile(":/" + qApp->applicationName().toLower() +
-                    "_" + m_sGuiLanguage + ".qm").exists() &&
-             !QFile(m_sSharePath + "/lang/" +
-                    qApp->applicationName().toLower() +
-                    "_" + m_sGuiLanguage + ".qm").exists()) {
+  }
+  if (!QFile(":/" + qApp->applicationName().toLower() +
+             "_" + m_sGuiLanguage + ".qm").exists() &&
+      !QFile(m_sSharePath + "/lang/" +
+             qApp->applicationName().toLower() +
+             "_" + m_sGuiLanguage + ".qm").exists()) {
     m_sGuiLanguage = QStringLiteral("en");
     m_pSettings->setValue(QStringLiteral("GuiLanguage"), m_sGuiLanguage);
     return m_sGuiLanguage;
