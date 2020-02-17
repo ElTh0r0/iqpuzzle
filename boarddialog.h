@@ -50,6 +50,7 @@ class BoardDialog : public QFileDialog {
     QLabel *m_pSolutions;
     QLabel *m_pPreviewCaption;
     QLabel *m_pPreview;
+    const QSize previewsize;
 };
 
 #endif  // BOARDDIALOG_H_

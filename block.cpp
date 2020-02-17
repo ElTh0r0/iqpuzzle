@@ -171,7 +171,7 @@ void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
   int nIndex(m_pSettings->getMouseControls().indexOf(
-                 (quint8(p_Event->orientation()) | m_pSettings->getShift())));
+                 (quint8(p_Event->orientation()) | Settings::nSHIFT)));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 1:

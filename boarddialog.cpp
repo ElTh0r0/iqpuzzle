@@ -32,7 +32,8 @@
 
 BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
                          const QString &sDirectory, const QString &sFilter)
-  : QFileDialog(pParent, sCaption, sDirectory, sFilter) {
+  : QFileDialog(pParent, sCaption, sDirectory, sFilter),
+    previewsize(200, 200) {
   this->setObjectName(QStringLiteral("BoardFileDialog"));
   // Needed for Windows, otherwise native dialog crashes while adapting layout
   this->setOption(QFileDialog::DontUseNativeDialog, true);
@@ -44,7 +45,8 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
   m_pPreview = new QLabel(QString(), this);
   m_pPreview->setAlignment(Qt::AlignCenter);
   m_pPreview->setObjectName(QStringLiteral("labelPreview"));
-  m_pPreview->resize(150, 150);
+  m_pPreview->resize(previewsize);
+  m_pPreview->setText("\n" + tr("No preview available"));
 
   boxlayout->addWidget(m_pSolutions);
   boxlayout->addWidget(m_pPreviewCaption);
@@ -79,7 +81,7 @@ void BoardDialog::OnCurrentChanged(const QString &sPath) {
   if (pixmap.isNull()) {
     m_pPreview->setText("\n" + tr("No preview available"));
   } else {
-    m_pPreview->resize(200, 200);
+    m_pPreview->resize(previewsize);
     m_pPreview->setPixmap(pixmap.scaled(m_pPreview->width(),
                                         m_pPreview->height(),
                                         Qt::KeepAspectRatio,

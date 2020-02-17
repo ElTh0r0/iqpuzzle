@@ -45,8 +45,8 @@ class Settings : public QDialog {
     explicit Settings(const QString &sSharePath, QWidget *pParent = nullptr);
     virtual ~Settings();
 
-    auto getMouseControls() const -> QList<quint8>;
-    auto getShift() const -> quint8;
+    static const quint8 nSHIFT = 0xF0;
+    auto getMouseControls() const -> QList<uint>;
     auto getLanguage() -> QString;
 
     auto getEasy() const -> uint;
@@ -70,10 +70,9 @@ class Settings : public QDialog {
 
     QString m_sGuiLanguage;
     const QString m_sSharePath;
-    const quint8 m_nSHIFT;
     QStringList m_sListMouseButtons;
-    QList<quint8> m_listMouseButtons;
-    QList<quint8> m_listMouseControls;
+    QList<uint> m_listMouseButtons;
+    QList<uint> m_listMouseControls;
     uint m_nEasy{};
     uint m_nHard{};
 };

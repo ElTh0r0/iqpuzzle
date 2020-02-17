@@ -34,8 +34,7 @@
 
 Settings::Settings(const QString &sSharePath, QWidget *pParent)
   : QDialog(pParent),
-    m_sSharePath(sSharePath),
-    m_nSHIFT(0xF0) {
+    m_sSharePath(sSharePath) {
   qDebug() << Q_FUNC_INFO;
 
   m_pUi = new Ui::SettingsDialog();
@@ -60,8 +59,8 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
   m_sListMouseButtons << tr("First X") << tr("Second X")
                       << tr("Vertical wheel") << tr("Horizontal wheel");
   m_listMouseButtons << Qt::XButton1 << Qt::XButton2
-                     << (quint8(Qt::Vertical)|m_nSHIFT)
-                     << (quint8(Qt::Horizontal)|m_nSHIFT);
+                     << (quint8(Qt::Vertical)|nSHIFT)
+                     << (quint8(Qt::Horizontal)|nSHIFT);
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
@@ -88,7 +87,7 @@ Settings::~Settings() {
 void Settings::accept() {
   qDebug() << Q_FUNC_INFO;
 
-  QList<quint8> tmp_listMouseControls;
+  QList<uint> tmp_listMouseControls;
   tmp_listMouseControls << m_listMouseButtons[
                            m_pUi->cbMoveBlockMouse->currentIndex()];
   tmp_listMouseControls << m_listMouseButtons[
@@ -160,7 +159,7 @@ void Settings::readSettings() {
                                               Qt::LeftButton).toUInt();
   m_listMouseControls[1] = m_pSettings->value(QStringLiteral("RotateBlock"),
                                               (quint8(Qt::Vertical) |
-                                               m_nSHIFT)).toUInt();
+                                               nSHIFT)).toUInt();
   m_listMouseControls[2] = m_pSettings->value(QStringLiteral("FlipBlock"),
                                               Qt::RightButton).toUInt();
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
@@ -175,11 +174,7 @@ void Settings::readSettings() {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-auto Settings::getShift() const -> quint8 {
-  return m_nSHIFT;
-}
-
-auto Settings::getMouseControls() const -> QList<quint8> {
+auto Settings::getMouseControls() const -> QList<uint> {
   return m_listMouseControls;
 }
 
