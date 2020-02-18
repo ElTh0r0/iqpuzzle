@@ -22,6 +22,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
 * [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.1.5/iQPuzzle-1.1.5-ReactOS_Installer.exe)
+* [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
