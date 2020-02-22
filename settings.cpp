@@ -69,7 +69,10 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
   connect(m_pUi->buttonBox, &QDialogButtonBox::accepted,
           this, &Settings::accept);
   connect(m_pUi->buttonBox, &QDialogButtonBox::rejected,
-          this, &Settings::reject);
+          this, [this]() {
+    this->readSettings();
+    QDialog::reject();
+  });
 
   this->readSettings();
 }
@@ -122,14 +125,6 @@ void Settings::accept() {
   m_pSettings->endGroup();
 
   QDialog::accept();
-}
-
-// ----------------------------------------------------------------------------
-// ----------------------------------------------------------------------------
-
-void Settings::reject() {
-  this->readSettings();
-  QDialog::reject();
 }
 
 // ----------------------------------------------------------------------------

@@ -82,7 +82,11 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
 
   m_pTimer = new QTimer(this);
-  connect(m_pTimer, &QTimer::timeout, this, &IQPuzzle::updateTimer);
+  connect(m_pTimer, &QTimer::timeout, this, [this]() {
+    m_Time = m_Time.addSecs(1);
+    m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString(
+                                  QStringLiteral("hh:mm:ss")));
+  });
   m_pStatusLabelTime = new QLabel(tr("Time") + ": 00:00:00");
   m_pStatusLabelMoves = new QLabel(tr("Moves") + ": 0");
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
@@ -222,7 +226,10 @@ void IQPuzzle::setupMenu() {
 
   // Report bug
   connect(m_pUi->action_ReportBug, &QAction::triggered,
-          this, &IQPuzzle::reportBug);
+          this, []() {
+    QDesktopServices::openUrl(
+          QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
+  });
 
   // About
   connect(m_pUi->action_Info, &QAction::triggered,
@@ -335,7 +342,10 @@ void IQPuzzle::createBoard() {
           m_pBoard, &Board::zoomIn);
   connect(m_pUi->action_ZoomOut, &QAction::triggered,
           m_pBoard, &Board::zoomOut);
-  connect(m_pBoard, &Board::incrementMoves, this, &IQPuzzle::incrementMoves);
+  connect(m_pBoard, &Board::incrementMoves, this, [this]() {
+    m_nMoves++;
+    m_pStatusLabelMoves->setText(tr("Moves") + ": " + QString::number(m_nMoves));
+  });
   connect(m_pBoard, &Board::solvedPuzzle, this, &IQPuzzle::solvedPuzzle);
 
   if (m_pBoard->setupBoard()) {
@@ -555,23 +565,6 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void IQPuzzle::incrementMoves() {
-  m_nMoves++;
-  m_pStatusLabelMoves->setText(tr("Moves") + ": " + QString::number(m_nMoves));
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void IQPuzzle::updateTimer() {
-  m_Time = m_Time.addSecs(1);
-  m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString(
-                                QStringLiteral("hh:mm:ss")));
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
 void IQPuzzle::solvedPuzzle() {
   QFileInfo fi(m_sBoardFile);
   m_pTimer->stop();
@@ -698,14 +691,6 @@ void IQPuzzle::showStatistics() {
   dialog.exec();
 }
 
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void IQPuzzle::reportBug() {
-  QDesktopServices::openUrl(
-        QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
-}
-
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
@@ -764,24 +749,4 @@ void IQPuzzle::changeEvent(QEvent *pEvent) {
     }
   }
   QMainWindow::changeEvent(pEvent);
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-// Close event (File -> Close or X)
-void IQPuzzle::closeEvent(QCloseEvent *pEvent) {
-  pEvent->accept();
-  /*
-  int nRet = QMessageBox::question(this, tr("Quit") + " - " +
-                                   qApp->applicationName(),
-                                   tr("Do you really want to quit?"),
-                                   QMessageBox::Yes | QMessageBox::No);
-
-  if (QMessageBox::Yes == nRet) {
-    pEvent->accept();
-  } else {
-    pEvent->ignore();
-  }
-  */
 }

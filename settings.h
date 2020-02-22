@@ -57,7 +57,6 @@ class Settings : public QDialog {
 
  public slots:
     void accept();
-    void reject();
     void updateUiLang();
 
  private:

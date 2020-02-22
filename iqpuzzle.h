@@ -57,12 +57,10 @@ class IQPuzzle : public QMainWindow {
 
  protected:
     void changeEvent(QEvent *pEvent);
-    void closeEvent(QCloseEvent *pEvent);
 
  public slots:
     void setMinWindowSize(const QSize size = QSize(),
                           const bool bFreestyle = false);
-    void incrementMoves();
 
  signals:
     void updateUiLang();
@@ -78,10 +76,8 @@ class IQPuzzle : public QMainWindow {
     void loadGame(QString sSaveFile = "");
     void saveGame();
     void pauseGame(const bool bPaused);
-    void updateTimer();
     void solvedPuzzle();
     void showStatistics();
-    static void reportBug();
     void showInfoBox();
 
  private:
