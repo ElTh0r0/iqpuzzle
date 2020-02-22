@@ -28,8 +28,8 @@
 
 #include <QDebug>
 
-Block::Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-             quint16 nGrid, QList<Block *> *pListBlocks,
+Block::Block(const quint16 nID, const QPolygonF &shape, const QBrush &bgcolor,
+             const QPen &border, quint16 nGrid, QList<Block *> *pListBlocks,
              Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
   : m_nID(nID),
     m_PolyShape(shape),

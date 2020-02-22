@@ -42,9 +42,10 @@ class Block : public QGraphicsObject {
   Q_OBJECT
 
  public:
-    Block(const quint16 nID, QPolygonF shape, QBrush bgcolor, QPen border,
-          quint16 nGrid, QList<Block *> *pListBlocks, Settings *pSettings,
-          QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false);
+    Block(const quint16 nID, const QPolygonF &shape, const QBrush &bgcolor,
+          const QPen &border, quint16 nGrid, QList<Block *> *pListBlocks,
+          Settings *pSettings, QPointF posTopLeft = QPoint(0, 0),
+          const bool bBarrier = false);
 
     auto boundingRect() const -> QRectF;
     auto shape() const -> QPainterPath;

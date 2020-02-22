@@ -117,7 +117,7 @@ void Highscore::checkHighscore(const QString &sBoard, const quint32 nMoves,
       continue;
     }
 
-    tScoreTime = tScoreTime.fromString(
+    tScoreTime = QTime::fromString(
                    sListTemp[1], QStringLiteral("hh:mm:ss"));
     nScoreMoves = sListTemp[2].toUInt();
     /*

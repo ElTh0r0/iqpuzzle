@@ -193,7 +193,7 @@ auto Board::createBlocks() -> bool {
                           i, polygon, this->readColor(sPrefix + "/Color"),
                           this->readColor(sPrefix + "/BorderColor"),
                           m_nGridSize, &m_listBlocks, m_pSettings,
-                          this->readStartPosition(
+                          Board::readStartPosition(
                             tmpSet, sPrefix + "/StartPos")));
     if (!m_bFreestyle) {
       connect(m_listBlocks.last(), &Block::checkPuzzleSolved,
@@ -240,8 +240,8 @@ auto Board::createBarriers() -> bool {
                           this->readColor(sPrefix + "/Color"),
                           this->readColor(sPrefix + "/BorderColor"),
                           m_nGridSize, &m_listBlocks, m_pSettings,
-                          this->readStartPosition(m_pBoardConf,
-                                                  sPrefix + "/StartPos"),
+                          Board::readStartPosition(m_pBoardConf,
+                                                   sPrefix + "/StartPos"),
                           true));
   }
 

@@ -262,13 +262,13 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
     m_nMoves = QString(sMoves).toUInt();
     m_pStatusLabelMoves->setText(tr("Moves") + ": " +
                                  QString::number(m_nMoves));
-    m_Time = m_Time.fromString(sTime, QStringLiteral("hh:mm:ss"));
+    m_Time = QTime::fromString(sTime, QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": " + sTime);
     m_sSavedGame = sSavedGame;
   } else {
     m_nMoves = 0;
     m_pStatusLabelMoves->setText(tr("Moves") + ": 0");
-    m_Time = m_Time.fromString(QStringLiteral("00:00:00"),
+    m_Time = QTime::fromString(QStringLiteral("00:00:00"),
                                QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": 00:00:00");
   }
@@ -606,17 +606,17 @@ void IQPuzzle::solvedPuzzle() {
 void IQPuzzle::loadLanguage(const QString &sLang) {
   if (m_sCurrLang != sLang) {
     m_sCurrLang = sLang;
-    if (!this->switchTranslator(&m_translatorQt, "qt_" + sLang,
-                                QLibraryInfo::location(
-                                  QLibraryInfo::TranslationsPath))) {
-      this->switchTranslator(&m_translatorQt, "qt_" + sLang,
-                             m_sSharePath + "/lang");
+    if (!IQPuzzle::switchTranslator(&m_translatorQt, "qt_" + sLang,
+                                    QLibraryInfo::location(
+                                      QLibraryInfo::TranslationsPath))) {
+      IQPuzzle::switchTranslator(&m_translatorQt, "qt_" + sLang,
+                                 m_sSharePath + "/lang");
     }
 
-    if (!this->switchTranslator(
+    if (!IQPuzzle::switchTranslator(
           &m_translator,
           ":/" + qApp->applicationName().toLower() + "_" + sLang + ".qm")) {
-      this->switchTranslator(
+      IQPuzzle::switchTranslator(
             &m_translator, qApp->applicationName().toLower() + "_" + sLang,
             m_sSharePath + "/lang");
     }
