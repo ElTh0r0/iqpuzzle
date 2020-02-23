@@ -33,11 +33,13 @@
 #include <QFile>
 #include <QMessageBox>
 
-Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
+#include <utility>
+
+Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
              Settings *pSettings, const quint16 nGridSize,
              const QString &sSavedGame)
   : m_pGraphView(pGraphView),
-    m_sBoardFile(sBoardFile),
+    m_sBoardFile(std::move(sBoardFile)),
     m_pSettings(pSettings),
     m_bSavedGame(false),
     m_nGridSize(nGridSize) {
@@ -57,7 +59,7 @@ Board::Board(QGraphicsView *pGraphView, const QString &sBoardFile,
   }
   if (0 == m_nGridSize || m_nGridSize > Board::MAXGRID) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
-    m_nGridSize = 25;
+    m_nGridSize = Board::DEFAULTGRID;
     QMessageBox::warning(nullptr, tr("Warning"),
                          tr("Board grid size not valid.\n"
                             "Reduced grid to default."));
@@ -460,7 +462,7 @@ void Board::zoomOut() {
 // ---------------------------------------------------------------------------
 
 void Board::doZoom() {
-  qDebug() << Q_FUNC_INFO << "Grid: " << m_nGridSize;
+  qDebug() << "Zoom - new grid: " << m_nGridSize;
 
   // Get all QGraphicItems in scene
   QList<QGraphicsItem *> objList = this->items();

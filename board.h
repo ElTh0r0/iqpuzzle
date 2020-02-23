@@ -44,7 +44,7 @@ class Board : public QGraphicsScene {
   Q_OBJECT
 
  public:
-    Board(QGraphicsView *pGraphView, const QString &sBoardFile,
+    Board(QGraphicsView *pGraphView, QString sBoardFile,
           Settings *pSettings, const quint16 nGridSize = 0,
           const QString &sSavedGame = "");
 
@@ -91,6 +91,7 @@ class Board : public QGraphicsScene {
     bool m_bFreestyle{};
 
     static const quint8 ZOOMGRID = 5;
+    static const quint8 DEFAULTGRID = 25;
     static const quint8 MAXGRID = 255;
 };
 

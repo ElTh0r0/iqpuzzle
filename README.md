@@ -4,22 +4,14 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![alt tag](https://cn.pling.com/img/f/a/d/d/7841359a95432f690d8c2bf7a5e9723770f7.png)
 
 ## Installation
-* Ubuntu PPA:
-  * https://launchpad.net/~elthoro/+archive/iqpuzzle
-* Builds Cent OS, Debian, Fedora, openSUSE:
-  * http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle
-* Build for Mageia Cauldron:
-  * https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0
-* Arch AUR:
-  * https://aur.archlinux.org/packages/iqpuzzle/
-* Gentoo ebuild:
-  * https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild
-* Build for OS/2:
-  * http://www.ecsoft2.org/iqpuzzle
-* Build for Windows, macOS (untested), ReactOS or AppImage:
-  * https://github.com/ElTh0r0/iqpuzzle/releases
-* FreeBSD / DPorts:
-  * https://www.freshports.org/games/iqpuzzle / https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle
+* [Build for Windows, macOS (untested), ReactOS or AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/latest)
+* [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
+* [Builds for Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
+* [Arch AUR](https://aur.archlinux.org/packages/iqpuzzle/)
+* [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
+* [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
+* [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
+* [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 ## Create your own level
 Manual for creating own levels can be found in the wiki: https://github.com/ElTh0r0/iqpuzzle/wiki

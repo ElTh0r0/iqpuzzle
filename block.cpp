@@ -27,14 +27,15 @@
 #include "./block.h"
 
 #include <QDebug>
+#include <utility>
 
-Block::Block(const quint16 nID, const QPolygonF &shape, const QBrush &bgcolor,
-             const QPen &border, quint16 nGrid, QList<Block *> *pListBlocks,
+Block::Block(const quint16 nID, QPolygonF &shape, const QBrush &bgcolor,
+             QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
              Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
   : m_nID(nID),
-    m_PolyShape(shape),
+    m_PolyShape(std::move(shape)),
     m_bgBrush(bgcolor),
-    m_borderPen(border),
+    m_borderPen(std::move(border)),
     m_nGrid(nGrid),
     m_pListBlocks(pListBlocks),
     m_pSettings(pSettings),

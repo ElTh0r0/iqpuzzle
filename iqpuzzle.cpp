@@ -256,7 +256,6 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
     return;
   }
   m_sBoardFile = sBoardFile;
-  m_sSavedGame = "";
 
   if (!sSavedGame.isEmpty()) {
     qDebug() << "Saved game:" << sSavedGame;
@@ -278,6 +277,7 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
     m_Time = QTime::fromString(QStringLiteral("00:00:00"),
                                QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": 00:00:00");
+    m_sSavedGame = "";
   }
 
   this->setGameTitle();
@@ -328,12 +328,11 @@ void IQPuzzle::createBoard() {
   static QString sPreviousBoard("");
   quint16 nGridSize(0);
 
-  if (nullptr != m_pBoard) {
-    if (sPreviousBoard == m_sBoardFile) {
-      nGridSize = m_pBoard->getGridSize();
-    }
-    delete m_pBoard;
+  if (sPreviousBoard == m_sBoardFile) {
+    nGridSize = m_pBoard->getGridSize();
   }
+  delete m_pBoard;
+
   m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings,
                        nGridSize, m_sSavedGame);
   sPreviousBoard = m_sBoardFile;

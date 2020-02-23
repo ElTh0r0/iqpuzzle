@@ -42,7 +42,7 @@ class Settings : public QDialog {
   Q_OBJECT
 
  public:
-    explicit Settings(const QString &sSharePath, QWidget *pParent = nullptr);
+    explicit Settings(QString sSharePath, QWidget *pParent = nullptr);
     virtual ~Settings();
 
     static const quint8 nSHIFT = 0xF0;

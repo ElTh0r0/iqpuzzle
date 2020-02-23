@@ -30,11 +30,13 @@
 #include <QDirIterator>
 #include <QMessageBox>
 
+#include <utility>
+
 #include "ui_settings.h"
 
-Settings::Settings(const QString &sSharePath, QWidget *pParent)
+Settings::Settings(QString sSharePath, QWidget *pParent)
   : QDialog(pParent),
-    m_sSharePath(sSharePath) {
+    m_sSharePath(std::move(sSharePath)) {
   qDebug() << Q_FUNC_INFO;
 
   m_pUi = new Ui::SettingsDialog();
@@ -78,10 +80,8 @@ Settings::Settings(const QString &sSharePath, QWidget *pParent)
 }
 
 Settings::~Settings() {
-  if (m_pUi) {
-    delete m_pUi;
-    m_pUi = nullptr;
-  }
+  delete m_pUi;
+  m_pUi = nullptr;
 }
 
 // ----------------------------------------------------------------------------
