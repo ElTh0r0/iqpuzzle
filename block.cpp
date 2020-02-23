@@ -29,7 +29,7 @@
 #include <QDebug>
 #include <utility>
 
-Block::Block(const quint16 nID, QPolygonF &shape, const QBrush &bgcolor,
+Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
              Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
   : m_nID(nID),

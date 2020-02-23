@@ -42,7 +42,7 @@ class Block : public QGraphicsObject {
   Q_OBJECT
 
  public:
-    Block(const quint16 nID, QPolygonF &shape, const QBrush &bgcolor,
+    Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
           QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
           Settings *pSettings, QPointF posTopLeft = QPoint(0, 0),
           const bool bBarrier = false);
