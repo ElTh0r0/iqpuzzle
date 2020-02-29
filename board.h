@@ -64,6 +64,9 @@ class Board : public QGraphicsScene {
     void zoomOut();
     void checkPuzzleSolved();
 
+ private slots:
+    void useSystemBackground(const bool bUseSysColor);
+
  private:
     void drawBoard();
     void drawGrid();

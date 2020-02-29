@@ -71,17 +71,22 @@ Settings::Settings(QString sSharePath, QWidget *pParent)
   connect(m_pUi->buttonBox, &QDialogButtonBox::accepted,
           this, &Settings::accept);
   connect(m_pUi->buttonBox, &QDialogButtonBox::rejected,
-          this, [this]() {
-    this->readSettings();
-    QDialog::reject();
-  });
-
+          this, &QDialog::reject);
   this->readSettings();
 }
 
 Settings::~Settings() {
   delete m_pUi;
   m_pUi = nullptr;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+void Settings::showEvent(QShowEvent *pEvent) {
+  m_pUi->tabWidget->setCurrentIndex(0);
+  this->readSettings();
+  QDialog::showEvent(pEvent);
 }
 
 // ----------------------------------------------------------------------------
@@ -117,6 +122,14 @@ void Settings::accept() {
     emit changeLang(this->getLanguage());
   }
 
+  bool bOldUseSysColor = m_bUseSystemBackground;
+  m_bUseSystemBackground = m_pUi->checkSystemBackground->isChecked();
+  m_pSettings->setValue(QStringLiteral("UseSystemBackground"),
+                        m_bUseSystemBackground);
+  if (bOldUseSysColor != m_bUseSystemBackground) {
+    emit useSystemBackgroundColor(m_bUseSystemBackground);
+  }
+
   m_pSettings->beginGroup(QStringLiteral("MouseControls"));
   m_pSettings->setValue(QStringLiteral("MoveBlock"), m_listMouseControls[0]);
   m_pSettings->setValue(QStringLiteral("RotateBlock"), m_listMouseControls[1]);
@@ -141,6 +154,11 @@ void Settings::readSettings() {
           m_pUi->cbGuiLanguage->findText(QStringLiteral("auto")));
   }
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
+
+  m_bUseSystemBackground = m_pSettings->value(
+                             QStringLiteral("UseSystemBackground"),
+                             false).toBool();
+  m_pUi->checkSystemBackground->setChecked(m_bUseSystemBackground);
 
   m_nEasy = m_pSettings->value(QStringLiteral("ThresholdEasy"), 200).toUInt();
   if (0 == m_nEasy) m_nEasy = 200;
@@ -278,4 +296,11 @@ auto Settings::getLanguage() -> QString {
     return m_sGuiLanguage;
   }
   return m_sGuiLanguage;
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+auto Settings::getUseSystemBackground() -> bool {
+  return m_bUseSystemBackground;
 }

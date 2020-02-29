@@ -53,7 +53,7 @@ Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
 // ---------------------------------------------------------------------------
 
 void Highscore::showHighscore(const QString &sBoard) {
-  Qt::AlignmentFlag Align = Qt::AlignCenter;
+  Qt::AlignmentFlag Align;
   QStringList sListTemp;
   QDialog dialog(m_pParent);
   dialog.setWindowTitle(tr("Highscore") + " - " + sBoard);

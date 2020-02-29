@@ -343,7 +343,8 @@ void IQPuzzle::createBoard() {
           m_pBoard, &Board::zoomOut);
   connect(m_pBoard, &Board::incrementMoves, this, [this]() {
     m_nMoves++;
-    m_pStatusLabelMoves->setText(tr("Moves") + ": " + QString::number(m_nMoves));
+    m_pStatusLabelMoves->setText(tr("Moves") + ": " +
+                                 QString::number(m_nMoves));
   });
   connect(m_pBoard, &Board::solvedPuzzle, this, &IQPuzzle::solvedPuzzle);
 

@@ -26,6 +26,7 @@
 
 #include "./board.h"
 
+#include <QApplication>
 #include <QByteArray>
 #include <QCoreApplication>
 #include <QDebug>
@@ -43,15 +44,17 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
     m_pSettings(pSettings),
     m_bSavedGame(false),
     m_nGridSize(nGridSize) {
-  this->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
-
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
   if (!sSavedGame.isEmpty()) {
     m_bSavedGame = true;
   }
   m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
-  this->setBackgroundBrush(QBrush(this->readColor(QStringLiteral("BGColor"))));
+  if (!m_pSettings->getUseSystemBackground()) {
+    this->setBackgroundBrush(
+          QBrush(this->readColor(QStringLiteral("BGColor"))));
+  }
+
   if (0 == m_nGridSize) {
     m_nGridSize = static_cast<quint16>(
                     m_pBoardConf->value(
@@ -64,6 +67,9 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
                          tr("Board grid size not valid.\n"
                             "Reduced grid to default."));
   }
+
+  connect(m_pSettings, &Settings::useSystemBackgroundColor,
+          this, &Board::useSystemBackground);
 }
 
 // ---------------------------------------------------------------------------
@@ -480,6 +486,19 @@ void Board::doZoom() {
   // Rescale blocks
   for (auto &block : m_listBlocks) {
     block->rescaleBlock(m_nGridSize);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+auto Board::useSystemBackground(const bool bUseSysColor) -> void {
+  if (!bUseSysColor) {
+    this->setBackgroundBrush(
+          QBrush(this->readColor(QStringLiteral("BGColor"))));
+  } else {
+    this->setBackgroundBrush(
+          QBrush(QApplication::palette().color(QPalette::Window)));
   }
 }
 

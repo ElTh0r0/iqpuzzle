@@ -48,16 +48,21 @@ class Settings : public QDialog {
     static const quint8 nSHIFT = 0xF0;
     auto getMouseControls() const -> QList<uint>;
     auto getLanguage() -> QString;
+    auto getUseSystemBackground() -> bool;
 
     auto getEasy() const -> uint;
     auto getHard() const -> uint;
 
  signals:
     void changeLang(const QString &sLang);
+    void useSystemBackgroundColor(const bool bUseSysColor);
 
  public slots:
     void accept();
     void updateUiLang();
+
+ protected:
+    void showEvent(QShowEvent *pEvent);
 
  private:
     void readSettings();
@@ -72,6 +77,7 @@ class Settings : public QDialog {
     QStringList m_sListMouseButtons;
     QList<uint> m_listMouseButtons;
     QList<uint> m_listMouseControls;
+    bool m_bUseSystemBackground{};
     uint m_nEasy{};
     uint m_nHard{};
 };

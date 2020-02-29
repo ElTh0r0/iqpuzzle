@@ -392,6 +392,6 @@ auto Block::getPosition() const -> QPointF {
   return this->pos();
 }
 
-auto Block::getPolygon() const -> QPolygonF{
+auto Block::getPolygon() const -> QPolygonF {
   return this->m_PolyShape;
 }

@@ -4,61 +4,61 @@
 <context>
     <name>Board</name>
     <message>
-        <location filename="../board.cpp" line="61"/>
-        <location filename="../board.cpp" line="80"/>
-        <location filename="../board.cpp" line="186"/>
-        <location filename="../board.cpp" line="208"/>
-        <location filename="../board.cpp" line="232"/>
-        <location filename="../board.cpp" line="261"/>
+        <location filename="../board.cpp" line="66"/>
+        <location filename="../board.cpp" line="88"/>
+        <location filename="../board.cpp" line="194"/>
+        <location filename="../board.cpp" line="216"/>
+        <location filename="../board.cpp" line="240"/>
         <location filename="../board.cpp" line="269"/>
-        <location filename="../board.cpp" line="375"/>
+        <location filename="../board.cpp" line="277"/>
+        <location filename="../board.cpp" line="382"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="62"/>
+        <location filename="../board.cpp" line="67"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>Grille de plateau invalide. Taille de grille réduite à la valeur par défaut.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="81"/>
+        <location filename="../board.cpp" line="89"/>
         <source>Board polygon not valid.</source>
         <translation>Plateau polygonal invalide.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="187"/>
-        <location filename="../board.cpp" line="233"/>
+        <location filename="../board.cpp" line="195"/>
+        <location filename="../board.cpp" line="241"/>
         <source>Polygon not valid:</source>
         <translation>Polygone invalide:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="209"/>
+        <location filename="../board.cpp" line="217"/>
         <source>Could not find valid blocks.</source>
         <translation>Impossible de trouver un bloc valable.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="262"/>
+        <location filename="../board.cpp" line="270"/>
         <source>No color defined - using fallback:</source>
         <translation>Aucune couleur définie - Utilisation du mode fallback:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="270"/>
+        <location filename="../board.cpp" line="278"/>
         <source>Invalid color defined - using fallback:</source>
         <translation>La couleur définie est invalide - Utilisation du mode fallback:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="376"/>
+        <location filename="../board.cpp" line="383"/>
         <source>Invalid start position - using fallback:</source>
         <translation>Position de départ invalide - Utilisation du mode fallback:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="156"/>
+        <location filename="../board.cpp" line="164"/>
         <source>Hint</source>
         <translation>Indication</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="157"/>
+        <location filename="../board.cpp" line="165"/>
         <source>Not all pieces are needed for a solution!</source>
         <translation>Toutes les pièces ne sont pas nécessaires pour une solution!</translation>
     </message>
@@ -66,23 +66,24 @@ Reduced grid to default.</source>
 <context>
     <name>BoardDialog</name>
     <message>
-        <location filename="../boarddialog.cpp" line="42"/>
-        <location filename="../boarddialog.cpp" line="73"/>
+        <location filename="../boarddialog.cpp" line="43"/>
+        <location filename="../boarddialog.cpp" line="75"/>
         <source>Solutions</source>
         <translation>Solutions</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="43"/>
+        <location filename="../boarddialog.cpp" line="44"/>
         <source>Preview</source>
         <translation>Aperçu</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="71"/>
+        <location filename="../boarddialog.cpp" line="73"/>
         <source>Unknown</source>
         <translation>Inconnu</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="80"/>
+        <location filename="../boarddialog.cpp" line="49"/>
+        <location filename="../boarddialog.cpp" line="82"/>
         <source>No preview available</source>
         <translation>Pas d&apos;aperçu disponible</translation>
     </message>
@@ -91,7 +92,7 @@ Reduced grid to default.</source>
     <name>Highscore</name>
     <message>
         <location filename="../highscore.cpp" line="59"/>
-        <location filename="../highscore.cpp" line="156"/>
+        <location filename="../highscore.cpp" line="157"/>
         <source>Highscore</source>
         <translation>Meilleurs scores</translation>
     </message>
@@ -116,7 +117,7 @@ Reduced grid to default.</source>
         <translation>Coups</translation>
     </message>
     <message>
-        <location filename="../highscore.cpp" line="157"/>
+        <location filename="../highscore.cpp" line="158"/>
         <source>Please insert your name for a new highscore:</source>
         <translation>Indiquez votre nom pour les meilleurs scores:</translation>
     </message>
@@ -185,7 +186,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="184"/>
-        <location filename="../iqpuzzle.cpp" line="503"/>
+        <location filename="../iqpuzzle.cpp" line="508"/>
         <source>Save game</source>
         <translation>Sauvegarder la partie</translation>
     </message>
@@ -196,7 +197,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="197"/>
-        <location filename="../iqpuzzle.cpp" line="467"/>
+        <location filename="../iqpuzzle.cpp" line="472"/>
         <source>Load game</source>
         <translation>Ouvrir une partie</translation>
     </message>
@@ -250,17 +251,17 @@ Reduced grid to default.</source>
         <translation>Sta&amp;tistiques</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="668"/>
+        <location filename="../iqpuzzle.cpp" line="657"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="675"/>
+        <location filename="../iqpuzzle.cpp" line="664"/>
         <source>Medium</source>
         <translation>Moyen</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="682"/>
+        <location filename="../iqpuzzle.cpp" line="671"/>
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
@@ -270,130 +271,130 @@ Reduced grid to default.</source>
         <translation>P&amp;artie aléatoire</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="307"/>
+        <location filename="../iqpuzzle.cpp" line="309"/>
         <source>Load board</source>
         <translation>Charger une partie</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="108"/>
-        <location filename="../iqpuzzle.cpp" line="119"/>
-        <location filename="../iqpuzzle.cpp" line="249"/>
-        <location filename="../iqpuzzle.cpp" line="260"/>
+        <location filename="../iqpuzzle.cpp" line="112"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="253"/>
+        <location filename="../iqpuzzle.cpp" line="263"/>
         <source>File not found</source>
         <translation>Fichier non trouvé</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="109"/>
-        <location filename="../iqpuzzle.cpp" line="120"/>
-        <location filename="../iqpuzzle.cpp" line="250"/>
-        <location filename="../iqpuzzle.cpp" line="261"/>
+        <location filename="../iqpuzzle.cpp" line="113"/>
+        <location filename="../iqpuzzle.cpp" line="123"/>
+        <location filename="../iqpuzzle.cpp" line="254"/>
+        <location filename="../iqpuzzle.cpp" line="264"/>
         <source>The chosen file does not exist.</source>
         <translation>Le fichier sélectionné n&apos;existe pas.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="292"/>
+        <location filename="../iqpuzzle.cpp" line="296"/>
         <source>Unknown</source>
         <translation>Inconnu</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="483"/>
+        <location filename="../iqpuzzle.cpp" line="488"/>
         <source>Invalid saved puzzle.</source>
         <translation>Puzzle enregistré invalide.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="82"/>
-        <location filename="../iqpuzzle.cpp" line="762"/>
+        <location filename="../iqpuzzle.cpp" line="743"/>
         <source>Game paused</source>
         <translation>Partie en pause</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="86"/>
-        <location filename="../iqpuzzle.cpp" line="269"/>
-        <location filename="../iqpuzzle.cpp" line="276"/>
-        <location filename="../iqpuzzle.cpp" line="573"/>
-        <location filename="../iqpuzzle.cpp" line="587"/>
+        <location filename="../iqpuzzle.cpp" line="87"/>
+        <location filename="../iqpuzzle.cpp" line="90"/>
+        <location filename="../iqpuzzle.cpp" line="272"/>
+        <location filename="../iqpuzzle.cpp" line="279"/>
+        <location filename="../iqpuzzle.cpp" line="575"/>
         <source>Time</source>
         <translation>Temps</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="87"/>
-        <location filename="../iqpuzzle.cpp" line="266"/>
-        <location filename="../iqpuzzle.cpp" line="273"/>
-        <location filename="../iqpuzzle.cpp" line="565"/>
-        <location filename="../iqpuzzle.cpp" line="586"/>
-        <location filename="../iqpuzzle.cpp" line="766"/>
+        <location filename="../iqpuzzle.cpp" line="91"/>
+        <location filename="../iqpuzzle.cpp" line="269"/>
+        <location filename="../iqpuzzle.cpp" line="276"/>
+        <location filename="../iqpuzzle.cpp" line="346"/>
+        <location filename="../iqpuzzle.cpp" line="574"/>
+        <location filename="../iqpuzzle.cpp" line="747"/>
         <source>Moves</source>
         <translation>Coups</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="309"/>
+        <location filename="../iqpuzzle.cpp" line="311"/>
         <source>Board files</source>
         <translation>Plateaux</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="297"/>
+        <location filename="../iqpuzzle.cpp" line="301"/>
         <source>Solutions</source>
         <translation>Solutions</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="136"/>
+        <location filename="../iqpuzzle.cpp" line="138"/>
         <source>Games share path does not exist!</source>
         <translation>Le dossier des parties n&apos;existe pas!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="382"/>
+        <location filename="../iqpuzzle.cpp" line="387"/>
         <source>No boards available!</source>
         <translation>Aucun plateau disponible!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="469"/>
-        <location filename="../iqpuzzle.cpp" line="505"/>
+        <location filename="../iqpuzzle.cpp" line="474"/>
+        <location filename="../iqpuzzle.cpp" line="510"/>
         <source>Save games</source>
         <translation>Sauvegarder les parties</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="585"/>
+        <location filename="../iqpuzzle.cpp" line="573"/>
         <source>Puzzle solved!</source>
         <translation>Puzzle résolu!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="655"/>
+        <location filename="../iqpuzzle.cpp" line="644"/>
         <source>Statistics</source>
         <translation>Statistiques</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="663"/>
-        <location filename="../iqpuzzle.cpp" line="689"/>
+        <location filename="../iqpuzzle.cpp" line="652"/>
+        <location filename="../iqpuzzle.cpp" line="678"/>
         <source>Total</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="665"/>
+        <location filename="../iqpuzzle.cpp" line="654"/>
         <source>Unsolved</source>
         <translation>Non résolus</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="690"/>
+        <location filename="../iqpuzzle.cpp" line="679"/>
         <source>including unknown difficulty</source>
         <translation>incluant des difficultés inconnues</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="718"/>
+        <location filename="../iqpuzzle.cpp" line="699"/>
         <source>About</source>
         <translation>A propos</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="734"/>
+        <location filename="../iqpuzzle.cpp" line="715"/>
         <source>License</source>
         <translation>Licence</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="737"/>
+        <location filename="../iqpuzzle.cpp" line="718"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
         <translation>Ce logiciel utilise des icônes de &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango Projekt&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="740"/>
+        <location filename="../iqpuzzle.cpp" line="721"/>
         <source>Translations</source>
         <translation>Traductions</translation>
     </message>
@@ -401,49 +402,49 @@ Reduced grid to default.</source>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../settings.cpp" line="57"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="58"/>
+        <location filename="../settings.cpp" line="209"/>
         <source>Left</source>
         <translation>Gauche</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="57"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="58"/>
+        <location filename="../settings.cpp" line="209"/>
         <source>Middle</source>
         <translation>Milieu</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="57"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="58"/>
+        <location filename="../settings.cpp" line="209"/>
         <source>Right</source>
         <translation>Droite</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="60"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="213"/>
         <source>First X</source>
         <translation>First X</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="60"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="213"/>
         <source>Second X</source>
         <translation>Second X</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="61"/>
-        <location filename="../settings.cpp" line="207"/>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Horizontal wheel</source>
         <translation>Molette horizontale</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="61"/>
-        <location filename="../settings.cpp" line="207"/>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Vertical wheel</source>
         <translation>Molette verticale</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="103"/>
+        <location filename="../settings.cpp" line="110"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>Merci de changer les paramètres. Le même bouton est utilisé pour plusieurs actions.</translation>
     </message>
@@ -456,29 +457,39 @@ Reduced grid to default.</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="38"/>
+        <location filename="../settings.ui" line="43"/>
         <source>Mouse controls</source>
         <translation>Contrôle avec la souris</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="45"/>
+        <location filename="../settings.ui" line="52"/>
         <source>Move block</source>
         <translation>Bouger un bloc</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="55"/>
+        <location filename="../settings.ui" line="62"/>
         <source>Rotate block</source>
         <translation>Tourner un bloc</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="65"/>
+        <location filename="../settings.ui" line="72"/>
         <source>Flip block</source>
         <translation>Inverser un bloc</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="82"/>
+        <location filename="../settings.ui" line="83"/>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="92"/>
         <source>GUI language</source>
         <translation>Langue de l&apos;interface</translation>
+    </message>
+    <message>
+        <location filename="../settings.ui" line="109"/>
+        <source>Use system background color</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

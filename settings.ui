@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>365</width>
-    <height>232</height>
+    <height>208</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,74 +19,102 @@
   <property name="windowTitle">
    <string>Preferences</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res/iqpuzzle_resources.qrc">
+    <normaloff>:/images/hicolor/64x64/apps/iqpuzzle.png</normaloff>:/images/hicolor/64x64/apps/iqpuzzle.png</iconset>
+  </property>
   <property name="locale">
    <locale language="English" country="UnitedKingdom"/>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <property name="fieldGrowthPolicy">
-    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-   </property>
-   <item row="0" column="1">
-    <widget class="QLabel" name="lblControls">
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <property name="text">
-      <string>Mouse controls</string>
-     </property>
+     <widget class="QWidget" name="tab_3">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Mouse controls</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblMoveBlock">
+         <property name="text">
+          <string>Move block</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cbMoveBlockMouse"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lblRotateBlock">
+         <property name="text">
+          <string>Rotate block</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cbRotateBlockMouse"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lblFlipBlock">
+         <property name="text">
+          <string>Flip block</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="cbFlipBlockMouse"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Appearance</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_2">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lblGuiLang">
+         <property name="text">
+          <string>GUI language</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cbGuiLanguage"/>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkSystemBackground">
+         <property name="text">
+          <string>Use system background color</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="lblMoveBlock">
-     <property name="text">
-      <string>Move block</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="cbMoveBlockMouse"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="lblRotateBlock">
-     <property name="text">
-      <string>Rotate block</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QComboBox" name="cbRotateBlockMouse"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="lblFlipBlock">
-     <property name="text">
-      <string>Flip block</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QComboBox" name="cbFlipBlockMouse"/>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="Line" name="line_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="lblGuiLang">
-     <property name="text">
-      <string>GUI language</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QComboBox" name="cbGuiLanguage"/>
-   </item>
-   <item row="6" column="1">
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -98,6 +126,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="res/iqpuzzle_resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
