@@ -84,7 +84,6 @@ Settings::~Settings() {
 // ----------------------------------------------------------------------------
 
 void Settings::showEvent(QShowEvent *pEvent) {
-  m_pUi->tabWidget->setCurrentIndex(0);
   this->readSettings();
   QDialog::showEvent(pEvent);
 }
