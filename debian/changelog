@@ -1,12 +1,12 @@
 iqpuzzle (1.2.0-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
-  * 20 new boards.
+  * 21 new boards.
   * Option to use system window background color as board background.
   * Fix restarting a saved game.
   * Some Clang-Tidy and Clazy code improvements.
 
- -- Thorsten Roth <elthoro@gmx.de>  Sun, 01 Mar 2020 19:28:00 +0200
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 15 Mar 2020 16:23:00 +0200
 
 iqpuzzle (1.1.5-0ubuntu1) bionic; urgency=low
 

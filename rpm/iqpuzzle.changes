@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
-Sun Mar 01 19:28:00 UTC 2020 - elthoro@gmx.de 1.2.0
+Sun Mar 15 19:23:00 UTC 2020 - elthoro@gmx.de 1.2.0
 
-- 20 new boards.
+- 21 new boards.
 - Option to use system window background color as board background.
 - Fix restarting a saved game.
 - Some Clang-Tidy and Clazy code improvements.
