@@ -403,48 +403,48 @@ Reduced grid to default.</source>
     <name>Settings</name>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="209"/>
+        <location filename="../settings.cpp" line="208"/>
         <source>Left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="209"/>
+        <location filename="../settings.cpp" line="208"/>
         <source>Middle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="209"/>
+        <location filename="../settings.cpp" line="208"/>
         <source>Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
-        <location filename="../settings.cpp" line="213"/>
+        <location filename="../settings.cpp" line="212"/>
         <source>First X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
-        <location filename="../settings.cpp" line="213"/>
+        <location filename="../settings.cpp" line="212"/>
         <source>Second X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
-        <location filename="../settings.cpp" line="214"/>
+        <location filename="../settings.cpp" line="213"/>
         <source>Horizontal wheel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
-        <location filename="../settings.cpp" line="214"/>
+        <location filename="../settings.cpp" line="213"/>
         <source>Vertical wheel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="110"/>
+        <location filename="../settings.cpp" line="109"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>Моля, променете настройките си. Същият бутон на мишката се използва за няколко действия.</translation>
     </message>
@@ -457,37 +457,32 @@ Reduced grid to default.</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="43"/>
+        <location filename="../settings.ui" line="42"/>
         <source>Mouse controls</source>
         <translation>Управление на мишката</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="52"/>
+        <location filename="../settings.ui" line="49"/>
         <source>Move block</source>
         <translation>Преместване на блок</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="62"/>
+        <location filename="../settings.ui" line="59"/>
         <source>Rotate block</source>
         <translation>Завъртане на блок</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="72"/>
+        <location filename="../settings.ui" line="69"/>
         <source>Flip block</source>
         <translation>Огледално завъртане на блок</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="83"/>
-        <source>Appearance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settings.ui" line="92"/>
+        <location filename="../settings.ui" line="86"/>
         <source>GUI language</source>
         <translation>Език</translation>
     </message>
     <message>
-        <location filename="../settings.ui" line="109"/>
+        <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
         <translation type="unfinished"></translation>
     </message>
