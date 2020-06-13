@@ -379,8 +379,8 @@ void IQPuzzle::randomGame(const int nChoice) {
     if (!m_sListFiles[nChoice-1]->isEmpty()) {
       int nRand;
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
-    nRand = QRandomGenerator::global()->bounded(
-              m_sListFiles.at(nChoice-1)->size());
+      nRand = QRandomGenerator::global()->bounded(
+                m_sListFiles.at(nChoice-1)->size());
 #else
       qsrand(static_cast<uint>(QTime::currentTime().msec()));  // Seed
       nRand = qrand() % m_sListFiles.at(nChoice-1)->size();
