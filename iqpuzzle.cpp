@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth
  *
  * This file is part of iQPuzzle.
  *
@@ -32,6 +32,10 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QMessageBox>
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+#include <QRandomGenerator>
+#endif
 
 #include "ui_iqpuzzle.h"
 
@@ -92,9 +96,6 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
   m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
 
-  // Seed random number generator
-  QTime time = QTime::currentTime();
-  qsrand(static_cast<uint>(time.msec()));
   this->generateFileLists();
 
   // Choose board via command line
@@ -376,7 +377,15 @@ void IQPuzzle::randomGame(const int nChoice) {
 
   if (nChoice > 0 && nChoice <= m_sListFiles.size()) {
     if (!m_sListFiles[nChoice-1]->isEmpty()) {
-      int nRand = qrand() % m_sListFiles.at(nChoice-1)->size();
+      int nRand;
+#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+    nRand = QRandomGenerator::global()->bounded(
+              m_sListFiles.at(nChoice-1)->size());
+#else
+      qsrand(static_cast<uint>(QTime::currentTime().msec()));  // Seed
+      nRand = qrand() % m_sListFiles.at(nChoice-1)->size();
+#endif
+
       if (nRand >= 0 && nRand < m_sListFiles.at(nChoice-1)->size()) {
         this->startNewGame(m_sSharePath + "/boards/" +
                            m_sListFiles.at(nChoice-1)->at(nRand));

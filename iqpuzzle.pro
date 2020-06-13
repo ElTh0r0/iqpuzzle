@@ -22,7 +22,7 @@ unix: !macx {
        TARGET = iQPuzzle
 }
 
-VERSION       = 1.2.0
+VERSION       = 1.2.1
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2020 Thorsten Roth"
@@ -43,7 +43,7 @@ CONFIG       += c++11
 CONFIG(debug, debug|release) {
   CONFIG     += warn_on
   DEFINES    += QT_DEPRECATED_WARNINGS
-  DEFINES    += QT_DISABLE_DEPRECATED_BEFORE=0x051400
+  DEFINES    += QT_DISABLE_DEPRECATED_BEFORE=0x051500
 }
 
 SOURCES      += main.cpp\

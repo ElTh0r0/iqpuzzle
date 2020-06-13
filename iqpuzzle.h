@@ -3,7 +3,7 @@
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2020 Thorsten Roth <elthoro@gmx.de>
+ * Copyright (C) 2012-2020 Thorsten Roth
  *
  * This file is part of iQPuzzle.
  *
