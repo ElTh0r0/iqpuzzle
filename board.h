@@ -46,7 +46,7 @@ class Board : public QGraphicsScene {
  public:
     Board(QGraphicsView *pGraphView, QString sBoardFile,
           Settings *pSettings, const quint16 nGridSize = 0,
-          const QString &sSavedGame = "");
+          const QString &sSavedGame = QLatin1String(""));
 
     auto setupBoard() -> bool;
     auto setupBlocks() -> bool;

@@ -535,7 +535,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
   for (int i = 0; i < m_nNumOfBlocks; i++) {
     QString sPrefix = "Block" + QString::number(i + 1);
     QPolygonF poly = m_listBlocks.at(i)->getPolygon();
-    QString sPoly("");
+    QString sPoly(QLatin1String(""));
     for (auto &point : poly) {
       sPoly += QString::number(point.x()) + "," +
                QString::number(point.y()) + " | ";

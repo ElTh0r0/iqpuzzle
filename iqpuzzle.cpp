@@ -60,14 +60,21 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   this->setWindowTitle(qApp->applicationName());
   {
     QIcon fallback(":/images/hicolor/256x256/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/128x128/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/96x96/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/64x64/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/48x48/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/32x32/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/24x24/apps/iqpuzzle.png");
-    fallback.addFile(":/images/hicolor/16x16/apps/iqpuzzle.png");
-    this->setWindowIcon(QIcon::fromTheme("iqpuzzle", fallback));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/128x128/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/96x96/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/64x64/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/48x48/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/32x32/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/24x24/apps/iqpuzzle.png"));
+    fallback.addFile(
+          QStringLiteral(":/images/hicolor/16x16/apps/iqpuzzle.png"));
+    this->setWindowIcon(QIcon::fromTheme(QStringLiteral("iqpuzzle"), fallback));
   }
 
   m_pHighscore = new Highscore();
@@ -99,8 +106,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   this->generateFileLists();
 
   // Choose board via command line
-  QString sStartBoard("");
-  QString sLoadBoard("");
+  QString sStartBoard(QLatin1String(""));
+  QString sLoadBoard(QLatin1String(""));
   if (qApp->arguments().size() > 1) {
     for (auto &sBoard : qApp->arguments()) {
       if (sBoard.endsWith(QStringLiteral(".conf"),
@@ -278,7 +285,7 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
     m_Time = QTime::fromString(QStringLiteral("00:00:00"),
                                QStringLiteral("hh:mm:ss"));
     m_pStatusLabelTime->setText(tr("Time") + ": 00:00:00");
-    m_sSavedGame = "";
+    m_sSavedGame = QLatin1String("");
   }
 
   this->setGameTitle();
@@ -326,7 +333,7 @@ auto IQPuzzle::chooseBoard() -> QString {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::createBoard() {
-  static QString sPreviousBoard("");
+  static QString sPreviousBoard(QLatin1String(""));
   quint16 nGridSize(0);
 
   if (sPreviousBoard == m_sBoardFile) {
@@ -518,8 +525,8 @@ void IQPuzzle::saveGame() {
                     m_userDataDir.absolutePath(),
                     tr("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
-    if (!sFile.endsWith(".iqsav", Qt::CaseInsensitive)) {
-      sFile += ".iqsav";
+    if (!sFile.endsWith(QLatin1String(".iqsav"), Qt::CaseInsensitive)) {
+      sFile += QLatin1String(".iqsav");
     }
     m_sSavedMoves = QString::number(m_nMoves);
     m_sSavedTime = m_Time.toString(QStringLiteral("hh:mm:ss"));

@@ -69,11 +69,13 @@ class IQPuzzle : public QMainWindow {
 
  private slots:
     void loadLanguage(const QString &sLang);
-    void startNewGame(QString sBoardFile = "", const QString &sSavedGame = "",
-                      const QString &sTime = "", const QString &sMoves = "");
+    void startNewGame(QString sBoardFile = QLatin1String(""),
+                      const QString &sSavedGame = QLatin1String(""),
+                      const QString &sTime = QLatin1String(""),
+                      const QString &sMoves = QLatin1String(""));
     void randomGame(const int nChoice);
     void restartGame();
-    void loadGame(QString sSaveFile = "");
+    void loadGame(QString sSaveFile = QLatin1String(""));
     void saveGame();
     void pauseGame(const bool bPaused);
     void solvedPuzzle();
@@ -83,9 +85,10 @@ class IQPuzzle : public QMainWindow {
  private:
     void createBoard();
     auto chooseBoard() -> QString;
-    static auto switchTranslator(QTranslator *translator,
-                                 const QString &sFile,
-                                 const QString &sPath = "") -> bool;
+    static auto switchTranslator(
+        QTranslator *translator,
+        const QString &sFile,
+        const QString &sPath = QLatin1String("")) -> bool;
     void setupMenu();
     void setGameTitle();
     void generateFileLists();

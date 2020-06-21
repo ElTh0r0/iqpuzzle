@@ -48,17 +48,20 @@ void LoggingHandler(QtMsgType type,
 
 auto main(int argc, char *argv[]) -> int {
   QApplication app(argc, argv);
-  app.setApplicationName(APP_NAME);
-  app.setApplicationVersion(APP_VERSION);
+  app.setApplicationName(QStringLiteral(APP_NAME));
+  app.setApplicationVersion(QStringLiteral(APP_VERSION));
 
   QCommandLineParser cmdparser;
-  cmdparser.setApplicationDescription(APP_DESC);
+  cmdparser.setApplicationDescription(QStringLiteral(APP_DESC));
   cmdparser.addHelpOption();
   cmdparser.addVersionOption();
-  QCommandLineOption enableDebug("debug", "Enable debug mode");
+  QCommandLineOption enableDebug(QStringLiteral("debug"),
+                                 QStringLiteral("Enable debug mode"));
   cmdparser.addOption(enableDebug);
-  cmdparser.addPositionalArgument("file", "Board file to be opened (*.conf) "
-                                  "or savegame (*.iqsav)");
+  cmdparser.addPositionalArgument(QStringLiteral("file"),
+                                  QStringLiteral("Board file to be opened "
+                                                 "(*.conf) or savegame "
+                                                 "(*.iqsav)"));
   cmdparser.process(app);
 
   // Default share data path (Windows and debugging)
