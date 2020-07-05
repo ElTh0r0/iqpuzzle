@@ -34,8 +34,6 @@
 #include <QMessageBox>
 #include <QSettings>
 
-#include <utility>
-
 #include "./block.h"
 #include "./settings.h"
 

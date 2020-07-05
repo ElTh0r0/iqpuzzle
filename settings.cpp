@@ -31,8 +31,6 @@
 #include <QMessageBox>
 #include <QSettings>
 
-#include <utility>
-
 #include "ui_settings.h"
 
 Settings::Settings(QString sSharePath, QWidget *pParent)

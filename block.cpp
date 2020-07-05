@@ -30,7 +30,6 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneWheelEvent>
 #include <QPainter>
-#include <utility>
 
 #include "./settings.h"
 
