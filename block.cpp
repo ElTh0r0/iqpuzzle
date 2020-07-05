@@ -27,7 +27,12 @@
 #include "./block.h"
 
 #include <QDebug>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneWheelEvent>
+#include <QPainter>
 #include <utility>
+
+#include "./settings.h"
 
 Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,

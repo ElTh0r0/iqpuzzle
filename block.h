@@ -28,11 +28,14 @@
 #define BLOCK_H_
 
 #include <QGraphicsObject>
-#include <QGraphicsSceneMouseEvent>
-#include <QGraphicsSceneWheelEvent>
-#include <QPainter>
+#include <QBrush>
+#include <QPen>
 
-#include "./settings.h"
+class QGraphicsSceneMouseEvent;
+class QGraphicsSceneWheelEvent;
+class QPainter;
+
+class Settings;
 
 /**
  * \class Block

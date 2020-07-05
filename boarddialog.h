@@ -28,7 +28,8 @@
 #define BOARDDIALOG_H_
 
 #include <QFileDialog>
-#include <QLabel>
+
+class QLabel;
 
 /**
  * \class BoardDialog

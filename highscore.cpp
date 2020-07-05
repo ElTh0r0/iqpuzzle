@@ -33,6 +33,7 @@
 #include <QGridLayout>
 #include <QInputDialog>
 #include <QLabel>
+#include <QSettings>
 
 Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
   : m_pParent(pParent),

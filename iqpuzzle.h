@@ -27,17 +27,21 @@
 #ifndef IQPUZZLE_H_
 #define IQPUZZLE_H_
 
-#include <QtCore>
-#include <QGraphicsTextItem>
-#include <QGraphicsView>
-#include <QtGui>
-#include <QTimer>
+#include <QDir>
 #include <QMainWindow>
+#include <QTime>
+#include <QTranslator>
 
-#include "./board.h"
-#include "./boarddialog.h"
-#include "./highscore.h"
-#include "./settings.h"
+class QLabel;
+class QGraphicsScene;
+class QGraphicsTextItem;
+class QGraphicsView;
+class QTimer;
+
+class Board;
+class BoardDialog;
+class Highscore;
+class Settings;
 
 namespace Ui {
 class IQPuzzle;

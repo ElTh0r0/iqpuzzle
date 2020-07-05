@@ -28,22 +28,26 @@
 
 #include <QApplication>
 #include <QByteArray>
-#include <QCoreApplication>
 #include <QDebug>
 #include <QDir>
-#include <QFile>
+#include <QGraphicsView>
 #include <QMessageBox>
+#include <QSettings>
 
 #include <utility>
 
+#include "./block.h"
+#include "./settings.h"
+
 Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
              Settings *pSettings, const quint16 nGridSize,
-             const QString &sSavedGame)
+             const QString &sSavedGame, QObject *pParentObj)
   : m_pGraphView(pGraphView),
     m_sBoardFile(std::move(sBoardFile)),
     m_pSettings(pSettings),
     m_bSavedGame(false),
     m_nGridSize(nGridSize) {
+  Q_UNUSED(pParentObj)
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
   if (!sSavedGame.isEmpty()) {
     m_bSavedGame = true;

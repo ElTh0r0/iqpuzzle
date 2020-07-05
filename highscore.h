@@ -28,8 +28,9 @@
 #define HIGHSCORE_H_
 
 #include <QObject>
-#include <QSettings>
 #include <QTime>
+
+class QSettings;
 
 /**
  * \class Highscore

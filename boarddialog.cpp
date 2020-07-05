@@ -27,6 +27,7 @@
 #include "./boarddialog.h"
 
 #include <QDebug>
+#include <QLabel>
 #include <QSettings>
 #include <QVBoxLayout>
 

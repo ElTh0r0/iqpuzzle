@@ -31,6 +31,9 @@
  */
 
 #include <QApplication>
+#include <QCommandLineParser>
+#include <QDebug>
+#include <QStandardPaths>
 #include <QTextStream>
 
 #include "./iqpuzzle.h"

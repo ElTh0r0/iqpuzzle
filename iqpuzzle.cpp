@@ -27,16 +27,28 @@
 #include "./iqpuzzle.h"
 
 #include <QApplication>
+#include <QDebug>
+#include <QDesktopServices>
+#include <QDirIterator>
 #include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QGraphicsTextItem>
+#include <QGraphicsView>
 #include <QGridLayout>
 #include <QLabel>
+#include <QLibraryInfo>
 #include <QMessageBox>
+#include <QTimer>
+#include <QSettings>
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QRandomGenerator>
 #endif
 
+#include "./board.h"
+#include "./boarddialog.h"
+#include "./highscore.h"
+#include "./settings.h"
 #include "ui_iqpuzzle.h"
 
 IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,

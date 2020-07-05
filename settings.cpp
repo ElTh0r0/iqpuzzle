@@ -29,6 +29,7 @@
 #include <QDebug>
 #include <QDirIterator>
 #include <QMessageBox>
+#include <QSettings>
 
 #include <utility>
 

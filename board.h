@@ -28,13 +28,12 @@
 #define BOARD_H_
 
 #include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
-#include <QGraphicsSceneWheelEvent>
-#include <QGraphicsView>
 #include <QPolygonF>
-#include <QSettings>
 
-#include "./block.h"
+class QSettings;
+
+class Block;
+class Settings;
 
 /**
  * \class Board
@@ -46,7 +45,8 @@ class Board : public QGraphicsScene {
  public:
     Board(QGraphicsView *pGraphView, QString sBoardFile,
           Settings *pSettings, const quint16 nGridSize = 0,
-          const QString &sSavedGame = QLatin1String(""));
+          const QString &sSavedGame = QLatin1String(""),
+          QObject *pParentObj = nullptr);
 
     auto setupBoard() -> bool;
     auto setupBlocks() -> bool;
