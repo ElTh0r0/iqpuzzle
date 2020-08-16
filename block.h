@@ -50,11 +50,11 @@ class Block : public QGraphicsObject {
           Settings *pSettings, QPointF posTopLeft = QPoint(0, 0),
           const bool bBarrier = false);
 
-    auto boundingRect() const -> QRectF;
-    auto shape() const -> QPainterPath;
-    auto getPosition() const -> QPointF;
+    auto boundingRect() const -> QRectF override;
+    auto shape() const -> QPainterPath override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = nullptr);
+               QWidget *widget = nullptr) override;
+    auto getPosition() const -> QPointF;
     void setBrushStyle(Qt::BrushStyle style);
 
     auto getPolygon() const -> QPolygonF;
@@ -68,11 +68,11 @@ class Block : public QGraphicsObject {
     void checkPuzzleSolved();
 
  protected:
-    void mousePressEvent(QGraphicsSceneMouseEvent *p_Event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event);
-    void wheelEvent(QGraphicsSceneWheelEvent *p_Event);
-    auto type() const -> int;
+    void mousePressEvent(QGraphicsSceneMouseEvent *p_Event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) override;
+    void wheelEvent(QGraphicsSceneWheelEvent *p_Event) override;
+    auto type() const -> int override;
 
  private:
     void moveBlockGrid(const QPointF pos);

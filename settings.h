@@ -59,11 +59,11 @@ class Settings : public QDialog {
     void useSystemBackgroundColor(const bool bUseSysColor);
 
  public slots:
-    void accept();
+    void accept() override;
     void updateUiLang();
 
  protected:
-    void showEvent(QShowEvent *pEvent);
+    void showEvent(QShowEvent *pEvent) override;
 
  private:
     void readSettings();
