@@ -1,7 +1,7 @@
-# iQPuzzle [![Build status](https://ci.appveyor.com/api/projects/status/wn8nxv8qt26j1eyh/branch/master?svg=true)](https://ci.appveyor.com/project/ElTh0r0/iqpuzzle/branch/master) [![Build Status](https://travis-ci.org/ElTh0r0/iqpuzzle.svg?branch=master)](https://travis-ci.org/ElTh0r0/iqpuzzle)
+# iQPuzzle [![Build status](https://ci.appveyor.com/api/projects/status/wn8nxv8qt26j1eyh/branch/master?svg=true)](https://ci.appveyor.com/project/ElTh0r0/iqpuzzle/branch/master) [![Build Status](https://travis-ci.com/ElTh0r0/iqpuzzle.svg?branch=master)](https://travis-ci.com/ElTh0r0/iqpuzzle)
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and more than 300 different board shapes are available, which have to be filled with them.
 
-![alt tag](https://cn.pling.com/img/f/a/d/d/7841359a95432f690d8c2bf7a5e9723770f7.png)
+![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
 ## Installation
 * [Build for Windows, macOS (untested), ReactOS or AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/latest)

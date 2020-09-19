@@ -1,21 +1,19 @@
-dist: xenial
-addons:
-  snaps:
-    - ffsend
-sudo: required
-
 git:
   depth: 1
 
 language: cpp
 
-matrix:
+jobs:
   include:
     - os: osx
       compiler: clang
     - os: linux
+      dist: xenial
       compiler: gcc
-      
+      addons:
+        snaps:
+          - ffsend
+
 install:
   - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then sudo apt-get install -y qt5-default qttools5-dev-tools ; fi
 
