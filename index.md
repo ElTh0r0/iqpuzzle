@@ -4,7 +4,7 @@ layout: default
 # [](#iqpuzzle)iQPuzzle
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and more than 300 different board shapes are available, which have to be filled with them.
 
-![alt tag](https://cn.pling.com/img/f/a/d/d/7841359a95432f690d8c2bf7a5e9723770f7.png)
+![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
 # [](#createlevel)Create your own level
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
