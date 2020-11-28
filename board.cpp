@@ -528,10 +528,10 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
   saveConf.clear();
   saveConf.setValue(QStringLiteral("BoardFile"), m_sBoardFile);
   saveConf.setValue(QStringLiteral("BoardFileRelative"), sRelativeDir);
-  ba.append(sTime);
+  ba.append(sTime.toLatin1());
   saveConf.setValue(QStringLiteral("ElapsedTime"), ba.toBase64());
   ba.clear();
-  ba.append(sMoves);
+  ba.append(sMoves.toLatin1());
   saveConf.setValue(QStringLiteral("NumOfMoves"), ba.toBase64());
 
   for (int i = 0; i < m_nNumOfBlocks; i++) {
@@ -551,7 +551,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
                       QString::number(pos.y() / m_nGridSize));
 
     if (sSaveFile.endsWith(QStringLiteral("S0LV3D.debug"))) {
-      sDebug = "[" + sPrefix + "]\n";
+      sDebug += "[" + sPrefix + "]\n";
       sDebug += "Polygon=\"" + sPoly + "\"\n";
       sDebug += "StartPos=\"" + QString::number(pos.x() / m_nGridSize) +
                 "," + QString::number(pos.y() / m_nGridSize) + "\"\n";
@@ -560,7 +560,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
 
   if (sSaveFile.endsWith(QStringLiteral("S0LV3D.debug"))) {
     ba.clear();
-    ba.append(sDebug);
+    ba.append(sDebug.toUtf8());
     qDebug() << "SOLVED" << m_sBoardFile;
     qDebug() << ba.toBase64();
   }

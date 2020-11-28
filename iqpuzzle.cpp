@@ -278,7 +278,7 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
   m_sBoardFile = sBoardFile;
 
   if (!sSavedGame.isEmpty()) {
-    qDebug() << "Saved game:" << sSavedGame;
+    qDebug() << "Load saved game:" << sSavedGame;
     if (!QFile::exists(sSavedGame)) {
       QMessageBox::warning(this, tr("File not found"),
                            tr("The chosen file does not exist."));
@@ -615,10 +615,18 @@ void IQPuzzle::solvedPuzzle() {
   // Update "unsolved lists" for random games
   QString sBoard(m_sBoardFile);
   sBoard = sBoard.remove(m_sSharePath + "/boards/");
-  m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));
-  m_sListEasyUnsolved.removeAt(m_sListEasyUnsolved.indexOf(sBoard));
-  m_sListMediumUnsolved.removeAt(m_sListMediumUnsolved.indexOf(sBoard));
-  m_sListHardUnsolved.removeAt(m_sListHardUnsolved.indexOf(sBoard));
+  if (m_sListAllUnsolved.indexOf(sBoard) >= 0) {
+    m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));
+  }
+  if (m_sListEasyUnsolved.indexOf(sBoard) >= 0) {
+    m_sListEasyUnsolved.removeAt(m_sListEasyUnsolved.indexOf(sBoard));
+  }
+  if (m_sListMediumUnsolved.indexOf(sBoard) >= 0) {
+    m_sListMediumUnsolved.removeAt(m_sListMediumUnsolved.indexOf(sBoard));
+  }
+  if (m_sListHardUnsolved.indexOf(sBoard) >= 0) {
+    m_sListHardUnsolved.removeAt(m_sListHardUnsolved.indexOf(sBoard));
+  }
 }
 
 // ----------------------------------------------------------------------------

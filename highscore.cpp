@@ -168,8 +168,8 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
                                           + QString::number(i),
                                           "fHw=").toString();
     }
-    ba.append(sName + "|" + tTime.toString(QStringLiteral("hh:mm:ss")) + "|"
-              + QString::number(nMoves));
+    ba.append(QString(sName + "|" + tTime.toString(QStringLiteral("hh:mm:ss")) +
+                      "|" + QString::number(nMoves)).toUtf8());
     sListEntries.insert(nPosition - 1, ba.toBase64());
     for (int i = 0; i < m_nMAXPOS; i++) {
       m_pHighscore->setValue(sBoard + "/Position"
