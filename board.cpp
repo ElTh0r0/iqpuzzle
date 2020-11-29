@@ -290,7 +290,6 @@ auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
                         const bool bScale) -> QPolygonF {
   QStringList sList;
   QStringList sListPoint;
-  QPolygonF polygon;
   QString sValue(tmpSet->value(sKey, "").toString());
   quint16 nScale(1);
   if (bScale) {
@@ -299,6 +298,8 @@ auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
 
   Board::checkOrthogonality(QPointF(-99999, -99999));
   sList << sValue.split('|');
+  QPolygonF polygon;
+  polygon.reserve(sList.size());
   for (auto &s : sList) {
     sListPoint.clear();
     sListPoint << s.split(',');
@@ -329,7 +330,7 @@ auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
 // ---------------------------------------------------------------------------
 
 auto Board::checkOrthogonality(QPointF point) -> bool {
-  static QList<QPointF> listPoints;
+  static QVector<QPointF> listPoints;
   static quint16 nCnt;
 
   if (QPointF(-99999, -99999) == point) {  // Reset
@@ -499,8 +500,7 @@ auto Board::useSystemBackground(const bool bUseSysColor) -> void {
     this->setBackgroundBrush(
           QBrush(this->readColor(QStringLiteral("BGColor"))));
   } else {
-    this->setBackgroundBrush(
-          QBrush(QApplication::palette().color(QPalette::Window)));
+    this->setBackgroundBrush(Qt::NoBrush);
   }
 }
 

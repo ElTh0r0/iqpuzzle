@@ -279,7 +279,7 @@ auto Settings::getLanguage() -> QString {
 #ifdef Q_OS_UNIX
     QByteArray lang = qgetenv("LANG");
     if (!lang.isEmpty()) {
-      return QLocale(lang).name();
+      return QLocale(QString::fromLatin1(lang)).name();
     }
 #endif
     return QLocale::system().name();

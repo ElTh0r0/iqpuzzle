@@ -71,7 +71,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pUi->setupUi(this);
   this->setWindowTitle(qApp->applicationName());
   {
-    QIcon fallback(":/images/hicolor/256x256/apps/iqpuzzle.png");
+    QIcon fallback(
+          QStringLiteral(":/images/hicolor/256x256/apps/iqpuzzle.png"));
     fallback.addFile(
           QStringLiteral(":/images/hicolor/128x128/apps/iqpuzzle.png"));
     fallback.addFile(
@@ -99,7 +100,6 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pGraphView = new QGraphicsView(this);
   this->setCentralWidget(m_pGraphView);
   m_pScenePaused = new QGraphicsScene(this);
-  m_pScenePaused->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
   QFont font;
   font.setPixelSize(20);
   m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
@@ -520,10 +520,10 @@ void IQPuzzle::loadGame(QString sSaveFile) {
 
     QByteArray ba(tmpSet.value(
                     QStringLiteral("NumOfMoves"), "").toByteArray());
-    m_sSavedMoves = QByteArray::fromBase64(ba);
+    m_sSavedMoves = QString::fromLatin1(QByteArray::fromBase64(ba));
     ba.clear();
     ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
-    m_sSavedTime = QByteArray::fromBase64(ba);
+    m_sSavedTime = QString::fromLatin1(QByteArray::fromBase64(ba));
     this->startNewGame(sBoard, sSaveFile, m_sSavedTime, m_sSavedMoves);
   }
 }
@@ -554,6 +554,15 @@ void IQPuzzle::pauseGame(const bool bPaused) {
     if (bPaused) {
       m_pTimer->stop();
       m_pGraphView->setEnabled(false);
+      if (m_pSettings->getUseSystemBackground()) {
+        m_pScenePaused->setBackgroundBrush(Qt::NoBrush);
+        m_pTextPaused->setDefaultTextColor(
+              QApplication::palette().color(QPalette::WindowText));
+      }
+      else {
+        m_pScenePaused->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
+        m_pTextPaused->setDefaultTextColor(QColor(0, 0, 0));
+      }
       m_pGraphView->setScene(m_pScenePaused);
     } else {
       m_pTimer->start();
@@ -733,7 +742,7 @@ void IQPuzzle::showStatistics() {
 void IQPuzzle::showInfoBox() {
   QMessageBox::about(
         this, tr("About"),
-        QString("<center>"
+        QString::fromLatin1("<center>"
                 "<big><b>%1 %2</b></big><br />"
                 "%3<br />"
                 "<small>%4</small><br /><br />"

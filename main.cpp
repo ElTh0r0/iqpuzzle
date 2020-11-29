@@ -136,9 +136,9 @@ void LoggingHandler(QtMsgType type,
                     const QMessageLogContext &context,
                     const QString &sMsg) {
   QString sContext = sMsg + " (" +
-                     QString(context.file) + ":" +
+                     QString::fromLatin1(context.file) + ":" +
                      QString::number(context.line) + ", " +
-                     QString(context.function) + ")";
+                     QString::fromLatin1(context.function) + ")";
 
   QString sTime(QTime::currentTime().toString());
 

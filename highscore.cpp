@@ -149,9 +149,11 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
     sListEntries.reserve(m_nMAXPOS + 1);
     QByteArray ba;
     bool bOk(false);
-    QString sName = qgetenv("USER");  // Try to get user name in Linux
+    // Try to get user name in Linux
+    QString sName = QString::fromLatin1(qgetenv("USER"));
     if (sName.isEmpty()) {
-      sName = qgetenv("USERNAME");  // Try to get user name in Windows
+      // Try to get user name in Windows
+      sName = QString::fromLatin1(qgetenv("USERNAME"));
     }
 
     sName = QInputDialog::getText(
@@ -170,7 +172,7 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
     }
     ba.append(QString(sName + "|" + tTime.toString(QStringLiteral("hh:mm:ss")) +
                       "|" + QString::number(nMoves)).toUtf8());
-    sListEntries.insert(nPosition - 1, ba.toBase64());
+    sListEntries.insert(nPosition - 1, QString::fromLatin1(ba.toBase64()));
     for (int i = 0; i < m_nMAXPOS; i++) {
       m_pHighscore->setValue(sBoard + "/Position"
                              + QString::number(i + 1),
@@ -188,7 +190,7 @@ auto Highscore::readHighscore(const QString &sBoard,
                               const QString &sKey) const -> QStringList {
   QStringList sListTemp;
   QByteArray ba(m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray());
-  QString sTemp(QByteArray::fromBase64(ba));
+  QString sTemp(QString::fromLatin1(QByteArray::fromBase64(ba)));
 
   sListTemp = sTemp.split('|');
 
