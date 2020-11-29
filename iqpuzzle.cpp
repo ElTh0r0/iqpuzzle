@@ -558,8 +558,7 @@ void IQPuzzle::pauseGame(const bool bPaused) {
         m_pScenePaused->setBackgroundBrush(Qt::NoBrush);
         m_pTextPaused->setDefaultTextColor(
               QApplication::palette().color(QPalette::WindowText));
-      }
-      else {
+      } else {
         m_pScenePaused->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
         m_pTextPaused->setDefaultTextColor(QColor(0, 0, 0));
       }

@@ -34,7 +34,7 @@
 BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
                          const QString &sDirectory, const QString &sFilter)
   : QFileDialog(pParent, sCaption, sDirectory, sFilter),
-    previewsize(200, 200) {
+    previewsize(250, 250) {
   this->setObjectName(QStringLiteral("BoardFileDialog"));
   // Needed for Windows, otherwise native dialog crashes while adapting layout
   this->setOption(QFileDialog::DontUseNativeDialog, true);
