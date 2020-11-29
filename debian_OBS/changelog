@@ -1,3 +1,13 @@
+iqpuzzle (1.2.1-0) unstable; urgency=low
+
+  [ Thorsten Roth ]
+  * Fix crash during unsolved boards list update
+  * Fix background color on pause screen if system BG color is used
+  * Fixes for Qt 5.15
+  * Some Clazy code improvements.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 29 Nov 2020 16:28:00 +0200
+
 iqpuzzle (1.2.0-0) unstable; urgency=low
 
   [ Thorsten Roth ]

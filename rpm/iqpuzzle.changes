@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 29 18:08:00 UTC 2020 - elthoro@gmx.de 1.2.1
+
+- Fix crash during unsolved boards list update
+- Fix background color on pause screen if system BG color is used
+- Fixes for Qt 5.15
+- Some Clazy code improvements.
+
+-------------------------------------------------------------------
 Sun Mar 15 19:23:00 UTC 2020 - elthoro@gmx.de 1.2.0
 
 - 21 new boards.
