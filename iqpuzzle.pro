@@ -1,5 +1,5 @@
 #  This file is part of iQPuzzle.
-#  Copyright (C) 2012-2020 Thorsten Roth
+#  Copyright (C) 2012-2021 Thorsten Roth
 #
 #  iQPuzzle is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -22,10 +22,10 @@ unix: !macx {
        TARGET = iQPuzzle
 }
 
-VERSION       = 1.2.1
+VERSION       = 1.2.2
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
-QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2020 Thorsten Roth"
+QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2021 Thorsten Roth"
 
 DEFINES      += APP_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\" \
                 APP_VERSION=\"\\\"$$VERSION\\\"\" \
@@ -43,7 +43,7 @@ CONFIG       += c++11
 CONFIG(debug, debug|release) {
   CONFIG     += warn_on
   DEFINES    += QT_DEPRECATED_WARNINGS
-  DEFINES    += QT_DISABLE_DEPRECATED_BEFORE=0x051500
+  DEFINES    += QT_DISABLE_DEPRECATED_BEFORE=0x060000
 }
 
 SOURCES      += main.cpp\
