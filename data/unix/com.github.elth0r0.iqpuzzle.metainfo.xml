@@ -31,6 +31,7 @@
   <update_contact>elthoro@gmx.de</update_contact>
   
   <provides>
+    <id>com.github.elth0r0.iqpuzzle.desktop</id>
     <binary>iqpuzzle</binary>
   </provides>
   
