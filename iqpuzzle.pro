@@ -14,71 +14,74 @@
 #  You should have received a copy of the GNU General Public License
 #  along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
 
-TEMPLATE      = app
+TEMPLATE       = app
 
 unix: !macx {
-       TARGET = iqpuzzle
+       TARGET  = iqpuzzle
 } else {
-       TARGET = iQPuzzle
+       TARGET  = iQPuzzle
 }
 
-VERSION       = 1.2.2
+win32:VERSION  = 1.2.2.0
+else:VERSION   = 1.2.2
+
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-2021 Thorsten Roth"
 
-DEFINES      += APP_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\" \
-                APP_VERSION=\"\\\"$$VERSION\\\"\" \
-                APP_DESC=\"\\\"$$QMAKE_TARGET_DESCRIPTION\\\"\" \
-                APP_COPY=\"\\\"$$QMAKE_TARGET_COPYRIGHT\\\"\"
+DEFINES       += APP_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\" \
+                 APP_VERSION=\"\\\"$$VERSION\\\"\" \
+                 APP_DESC=\"\\\"$$QMAKE_TARGET_DESCRIPTION\\\"\" \
+                 APP_COPY=\"\\\"$$QMAKE_TARGET_COPYRIGHT\\\"\"
 
-MOC_DIR       = ./.moc
-OBJECTS_DIR   = ./.objs
-UI_DIR        = ./.ui
-RCC_DIR       = ./.rcc
+MOC_DIR        = ./.moc
+OBJECTS_DIR    = ./.objs
+UI_DIR         = ./.ui
+RCC_DIR        = ./.rcc
 
-QT           += core gui widgets
-CONFIG       += c++11
+QT            += core gui widgets
+CONFIG        += c++11
 
 CONFIG(debug, debug|release) {
-  CONFIG     += warn_on
-  DEFINES    += QT_DEPRECATED_WARNINGS
-  DEFINES    += QT_DISABLE_DEPRECATED_BEFORE=0x060000
+  CONFIG      += warn_on
+  DEFINES     += QT_DEPRECATED_WARNINGS
+  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060000
 }
 
-SOURCES      += main.cpp\
-                iqpuzzle.cpp \
-                board.cpp \
-                block.cpp \
-                boarddialog.cpp \
-                highscore.cpp \
-                settings.cpp
+SOURCES       += main.cpp\
+                 iqpuzzle.cpp \
+                 board.cpp \
+                 block.cpp \
+                 boarddialog.cpp \
+                 highscore.cpp \
+                 settings.cpp
 
-HEADERS      += iqpuzzle.h \
-                board.h \
-                block.h \
-                boarddialog.h \
-                highscore.h \
-                settings.h
+HEADERS       += iqpuzzle.h \
+                 board.h \
+                 block.h \
+                 boarddialog.h \
+                 highscore.h \
+                 settings.h
 
-FORMS        += iqpuzzle.ui \
-                settings.ui
+FORMS         += iqpuzzle.ui \
+                 settings.ui
 
-RESOURCES     = res/iqpuzzle_resources.qrc \
-                res/translations.qrc
-win32:RC_FILE = res/iqpuzzle_win.rc
-os2:RC_FILE   = res/iqpuzzle_os2.rc
+RESOURCES      = data/data.qrc \
+                 lang/translations.qrc
 
-TRANSLATIONS += lang/iqpuzzle_bg.ts \
-                lang/iqpuzzle_de.ts \
-                lang/iqpuzzle_nl.ts \
-                lang/iqpuzzle_fr.ts \
-                lang/iqpuzzle_it.ts \
-                lang/iqpuzzle_ko.ts
+TRANSLATIONS  += lang/iqpuzzle_bg.ts \
+                 lang/iqpuzzle_de.ts \
+                 lang/iqpuzzle_nl.ts \
+                 lang/iqpuzzle_fr.ts \
+                 lang/iqpuzzle_it.ts \
+                 lang/iqpuzzle_ko.ts
+
+win32:RC_ICONS = icons/iqpuzzle.ico
+os2:RC_ICONS   = icons/iqpuzzle_os2.ico
 
 macx {
-  ICON               = res/images/icon.icns
-  QMAKE_INFO_PLIST   = res/Info.plist
+  ICON               = icons/icon.icns
+  QMAKE_INFO_PLIST   = data/mac/Info.plist
 
   BOARDS_DATA.path   = Contents/Resources
   BOARDS_DATA.files += data/boards
@@ -99,25 +102,20 @@ unix: !macx {
     data.files    += data/boards
 
     desktop.path   = $$PREFIX/share/applications
-    desktop.files += data/iqpuzzle.desktop
-
-    pixmap.path    = $$PREFIX/share/pixmaps
-    pixmap.files  += res/images/iqpuzzle_64x64.png \
-                     res/images/iqpuzzle.xpm
+    desktop.files += data/unix/com.github.elth0r0.iqpuzzle.desktop
 
     icons.path     = $$PREFIX/share/icons
-    icons.files   += res/images/hicolor
+    icons.files   += icons/hicolor
 
     man.path       = $$PREFIX/share
     man.files     += man
 
     meta.path      = $$PREFIX/share/metainfo
-    meta.files    += res/iqpuzzle.appdata.xml
+    meta.files    += data/unix/com.github.elth0r0.iqpuzzle.metainfo.xml
 
     INSTALLS      += target \
                      data \
                      desktop \
-                     pixmap \
                      icons \
                      man \
                      meta

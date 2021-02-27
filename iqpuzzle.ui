@@ -20,8 +20,8 @@
    <string notr="true">iQPuzzle</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res/iqpuzzle_resources.qrc">
-    <normaloff>:/images/iqpuzzle_64x64.png</normaloff>:/images/iqpuzzle_64x64.png</iconset>
+   <iconset resource="data/data.qrc">
+    <normaloff>:/iqpuzzle.png</normaloff>:/iqpuzzle.png</iconset>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedKingdom"/>
@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>30</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">
@@ -108,7 +108,7 @@
   <action name="action_NewGame">
    <property name="icon">
     <iconset theme="document-new">
-     <normalon>:/images/menu/document-new.png</normalon>
+     <normalon>:/menu/document-new.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -118,7 +118,7 @@
   <action name="action_Quit">
    <property name="icon">
     <iconset theme="application-exit">
-     <normalon>:/images/menu/system-log-out.png</normalon>
+     <normalon>:/menu/system-log-out.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -128,7 +128,7 @@
   <action name="action_Info">
    <property name="icon">
     <iconset theme="help-about">
-     <normalon>:/images/menu/help-browser.png</normalon>
+     <normalon>:/menu/help-browser.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -138,7 +138,7 @@
   <action name="action_ZoomIn">
    <property name="icon">
     <iconset theme="zoom-in">
-     <normalon>:/images/menu/list-add.png</normalon>
+     <normalon>:/menu/list-add.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -148,7 +148,7 @@
   <action name="action_ZoomOut">
    <property name="icon">
     <iconset theme="zoom-out">
-     <normalon>:/images/menu/list-remove.png</normalon>
+     <normalon>:/menu/list-remove.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -161,7 +161,7 @@
    </property>
    <property name="icon">
     <iconset theme="view-refresh">
-     <normalon>:/images/menu/view-refresh.png</normalon>
+     <normalon>:/menu/view-refresh.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -174,7 +174,7 @@
    </property>
    <property name="icon">
     <iconset theme="document-save">
-     <normalon>:/images/menu/document-save.png</normalon>
+     <normalon>:/menu/document-save.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -187,7 +187,7 @@
   <action name="action_LoadGame">
    <property name="icon">
     <iconset theme="document-open">
-     <normalon>:/images/menu/document-open.png</normalon>
+     <normalon>:/menu/document-open.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -206,7 +206,7 @@
    </property>
    <property name="icon">
     <iconset theme="media-playback-pause">
-     <normalon>:/images/menu/media-playback-pause.png</normalon>
+     <normalon>:/menu/media-playback-pause.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -221,7 +221,7 @@
   <action name="action_Preferences">
    <property name="icon">
     <iconset theme="preferences-system">
-     <normalon>:/images/menu/preferences-system.png</normalon>
+     <normalon>:/menu/preferences-system.png</normalon>
     </iconset>
    </property>
    <property name="text">
@@ -281,7 +281,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="res/iqpuzzle_resources.qrc"/>
+  <include location="data/data.qrc"/>
  </resources>
  <connections/>
 </ui>

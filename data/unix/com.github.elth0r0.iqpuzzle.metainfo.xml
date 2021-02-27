@@ -1,0 +1,63 @@
+<!-- Copyright 2021 Thorsten Roth -->
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.elth0r0.iqpuzzle.desktop</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>iQPuzzle</name>
+  <name xml:lang="de">iQPuzzle</name>
+  <summary>A diverting I.Q. challenging pentomino puzzle</summary>
+  <summary xml:lang="de">Ein kurzweiliges und anspruchsvolles Pentomino Puzzle</summary>
+  
+  <description>
+    <p>iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and many different board shapes are available, which have to be filled with them.</p>
+  </description>
+  <description xml:lang="de">
+    <p>iQPuzzle ist ein kurzweiliges und anspruchsvolles Pentomino Puzzle. Pentominos werden als Puzzleteile verwendet und viele verschiedene Spielfeldformen sind verfügbar, die mit diesen ausgefüllt werden müssen.</p>
+  </description>
+  
+  <screenshots>
+    <screenshot type="default">
+      <image>https://user-images.githubusercontent.com/26674558/109397420-bfeb5d00-7936-11eb-9b8b-cc6dfd17f2cc.png</image>
+    </screenshot>
+  </screenshots>
+  
+  <launchable type="desktop-id">com.github.elth0r0.iqpuzzle.desktop</launchable>
+  
+  <url type="homepage">https://elth0r0.github.io/iqpuzzle/</url>
+  <url type="bugtracker">https://github.com/ElTh0r0/iqpuzzle/issues</url>
+  
+  <developer_name>Thorsten Roth</developer_name>
+  <update_contact>elthoro@gmx.de</update_contact>
+  
+  <provides>
+    <binary>iqpuzzle</binary>
+  </provides>
+  
+  <content_rating type="oars-1.0" />
+  
+  <releases>
+    <release version="1.2.1" date="2020-11-29">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Fix crash during unsolved boards list update</li>
+          <li>Fix background color on pause screen if system background color is used</li>
+          <li>Fixes for Qt 5.15</li>
+          <li>Some Clazy code improvements</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.0" date="2020-03-15">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>21 new boards</li>
+          <li>Option to use system window background color as board background</li>
+          <li>Fix restarting a saved game</li>
+          <li>Some Clang-Tidy and Clazy code improvements</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="iqpuzzle.png">../icons/hicolor/64x64/apps/iqpuzzle.png</file>
+        <file>collision_texture.png</file>
+        <file>menu/document-new.png</file>
+        <file>menu/document-open.png</file>
+        <file>menu/document-save.png</file>
+        <file>menu/help-browser.png</file>
+        <file>menu/list-add.png</file>
+        <file>menu/list-remove.png</file>
+        <file>menu/media-playback-pause.png</file>
+        <file>menu/preferences-system.png</file>
+        <file>menu/system-log-out.png</file>
+        <file>menu/view-refresh.png</file>
+    </qresource>
+</RCC>

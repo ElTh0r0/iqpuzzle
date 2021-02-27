@@ -69,27 +69,6 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   qDebug() << Q_FUNC_INFO;
 
   m_pUi->setupUi(this);
-  this->setWindowTitle(qApp->applicationName());
-  {
-    QIcon fallback(
-          QStringLiteral(":/images/hicolor/256x256/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/128x128/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/96x96/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/64x64/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/48x48/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/32x32/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/24x24/apps/iqpuzzle.png"));
-    fallback.addFile(
-          QStringLiteral(":/images/hicolor/16x16/apps/iqpuzzle.png"));
-    this->setWindowIcon(QIcon::fromTheme(QStringLiteral("iqpuzzle"), fallback));
-  }
-
   m_pHighscore = new Highscore();
   m_pSettings = new Settings(m_sSharePath, this);
   connect(m_pSettings, &Settings::changeLang, this, &IQPuzzle::loadLanguage);
@@ -316,8 +295,7 @@ void IQPuzzle::setGameTitle() {
     sSolutions = tr("Unknown");
   }
 
-  this->setWindowTitle(qApp->applicationName() + " - " +
-                       QFileInfo(m_sBoardFile).baseName() + " ("
+  this->setWindowTitle(QFileInfo(m_sBoardFile).baseName() + " ("
                        + tr("Solutions") + ": " + sSolutions + ")");
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>365</width>
-    <height>232</height>
+    <height>235</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,8 +20,8 @@
    <string>Preferences</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res/iqpuzzle_resources.qrc">
-    <normaloff>:/images/hicolor/64x64/apps/iqpuzzle.png</normaloff>:/images/hicolor/64x64/apps/iqpuzzle.png</iconset>
+   <iconset resource="data/data.qrc">
+    <normaloff>:/iqpuzzle.png</normaloff>:/iqpuzzle.png</iconset>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedKingdom"/>
@@ -110,7 +110,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="res/iqpuzzle_resources.qrc"/>
+  <include location="data/data.qrc"/>
  </resources>
  <connections/>
 </ui>
