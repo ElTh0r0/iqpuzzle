@@ -52,7 +52,7 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
     // qDebug() << "Creating BLOCK" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;
     this->setFlag(ItemIsMovable);
-    m_CollTexture.load(QStringLiteral(":/images/collision_texture.png"));
+    m_CollTexture.load(QStringLiteral(":/collision_texture.png"));
   } else {
     // qDebug() << "Creating BARRIER" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;

@@ -21,7 +21,7 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
- * Main function, start application, loading translation.
+ * Main function, start application.
  */
 
 /** \mainpage

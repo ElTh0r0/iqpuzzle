@@ -60,5 +60,131 @@
         </ul>
       </description>
     </release>
+    <release version="1.1.5" date="2019-11-02">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Added Korean translation (thanks to hyuna1127)</li>
+          <li>Fix: Add save game file extension automatically</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.4" date="2019-10-19">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Fix for AppImage: Save/load relative board path</li>
+          <li>Dropped support for Qt4</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.3" date="2019-09-29">
+      <description>
+        <p>Added Italian translation, thanks to davi92!</p>
+      </description>
+    </release>
+    <release version="1.1.2" date="2019-08-18">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Official build for ReactOS and Arch AUR</li>
+          <li>Minor code improvements</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.1" date="2018-05-06">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Updated Dutch translation (thanks to Vistaus)</li>
+          <li>Added freestyle board</li>
+          <li>Fix: Keep zoom level while board restart</li>
+          <li>Some code improvements</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.0" date="2018-01-14">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Start random un-/solved easy/medium/hard game</li>
+          <li>Added freestyle mode</li>
+          <li>Added statistics</li>
+          <li>Improved window resize</li>
+          <li>Added many new boards</li>
+          <li>Start game through cmd</li>
+          <li>Updated French translation (thanks to kiarn)</li>
+          <li>Embedded translations into game resource</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.7" date="2017-08-12">
+      <description>
+        <p>Added French translation, thanks to kiarn and mothsART!</p>
+      </description>
+    </release>
+    <release version="1.0.6" date="2017-05-06">
+      <description>
+        <p>Updated Dutch translation, thanks to Elbert!</p>
+      </description>
+    </release>
+    <release version="1.0.5" date="2017-05-03">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Moved project to GitHub (exchanged URLs)</li>
+          <li>Compiled with Qt 5.8 for Windows</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.4" date="2017-01-03">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Fixed invalid board polygons</li>
+          <li>Added fall-back menu icons</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.3" date="2017-01-02">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Added Dutch translation (thanks to Elbert)</li>
+          <li>Fixed: Starting board from command line</li>
+          <li>Fixed: Bring blocks to foreground during rescale</li>
+          <li>Improved board file validation</li>
+          <li>Change gui language without restarting the game</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.2" date="2016-11-06">
+      <description>
+        <p>Lintian packaging fixes.</p>
+      </description>
+    </release>
+    <release version="1.0.1" date="2016-11-05">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Added resources for OS/2; thanks to Gianfilippo!</li>
+          <li>Improved settings dialog (check for using mouse button multiple times)</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.0" date="2016-10-23">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Start random game</li>
+          <li>Guess user name for highscore</li>
+          <li>Many new boards</li>
+          <li>Install into /usr/bin instead of /usr/games</li>
+          <li>Simple collision check after rotation/flip</li>
+          <li>Removed fixed window size</li>
+          <li>Bug fix: Disable save when game solved. MSVC compiler issue</li>
+        </ul>
+      </description>
+    </release>
   </releases>
 </component>
