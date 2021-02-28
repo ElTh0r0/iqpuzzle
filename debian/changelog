@@ -1,3 +1,10 @@
+iqpuzzle (1.2.2-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Packaging fixes.
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 28 Feb 2021 17:39:00 +0200
+
 iqpuzzle (1.2.1-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]

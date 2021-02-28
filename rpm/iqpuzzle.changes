@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Feb 28 17:39:00 UTC 2021 - elthoro@gmx.de 1.2.2
+
+- Packaging fixes.
+
+-------------------------------------------------------------------
 Sun Nov 29 18:08:00 UTC 2020 - elthoro@gmx.de 1.2.1
 
 - Fix crash during unsolved boards list update

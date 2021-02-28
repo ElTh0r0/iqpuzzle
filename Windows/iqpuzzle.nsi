@@ -2,7 +2,11 @@
 
   !define APPNAME "iQPuzzle"
   !define DESCRIPTION "A diverting I.Q. challenging pentomino puzzle"
-  !define VERSION "1.2.1.0" ;use always 4 digits w.x.y.z
+  !define VERSIONMAJOR 1
+  !define VERSIONMINOR 2
+  !define VERSIONPATCH 2
+  !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}.0"
+  !define ABOUTURL "https://elth0r0.github.io/iqpuzzle/"
   
   !include "LogicLib.nsh"
   !include "MUI2.nsh"
@@ -58,18 +62,29 @@ Section
   
   !insertmacro MUI_STARTMENU_WRITE_END
 
-  ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
-  IntFmt $0 "0x%08X" $0
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
-                     "EstimatedSize" "$0"
+  WriteRegStr HKLM "Software\${APPNAME}" "" "$INSTDIR"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
                    "DisplayName" "${APPNAME}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
                    "Publisher" "Thorsten Roth"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
-                   "DisplayVersion" "${VERSION}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
                    "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                   "URLInfoAbout" "$\"${ABOUTURL}$\""
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                   "DisplayVersion" "${VERSION}"
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                     "VersionMajor" ${VERSIONMAJOR}
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                     "VersionMinor" ${VERSIONMINOR}
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                     "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                     "NoRepair" 1
+  ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+  IntFmt $0 "0x%08X" $0
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
+                     "EstimatedSize" "$0"
   
 SectionEnd
  
@@ -87,6 +102,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\$StartMenuFolder\${APPNAME}.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
 
+  DeleteRegKey HKLM "Software\${APPNAME}"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
   
 SectionEnd

@@ -15,8 +15,7 @@ unset QTDIR ; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
 export VERSION=$(git rev-parse --short HEAD)  # linuxdeployqt uses this for naming the file
 
 echo "Creating AppImage..."
-cp ./res/images/iqpuzzle_64x64.png ./appdir/iqpuzzle.png
-./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage -bundle-non-qt-libs
+./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage -bundle-non-qt-libs -extra-plugins=iconengines,platformthemes/libqgtk3.so
 find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
 
 echo "Uploading..."
