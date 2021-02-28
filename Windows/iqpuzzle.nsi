@@ -72,7 +72,7 @@ Section
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
                    "URLInfoAbout" "$\"${ABOUTURL}$\""
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
-                   "DisplayVersion" "${VERSION}"
+                   "DisplayVersion" "${APPVERSION}"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
                      "VersionMajor" ${VERSIONMAJOR}
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" \
