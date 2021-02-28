@@ -18,14 +18,14 @@
   !define MUI_ICON "iqpuzzle.ico"
   RequestExecutionLevel admin
 
-  VIProductVersion ${VERSION}
+  VIProductVersion ${APPVERSION}
   VIAddVersionKey ProductName "${APPNAME}"
   VIAddVersionKey LegalCopyright "Thorsten Roth"
   VIAddVersionKey FileDescription "${DESCRIPTION}"
-  VIAddVersionKey FileVersion "${VERSION}"
-  VIAddVersionKey ProductVersion "${VERSION}"
+  VIAddVersionKey FileVersion "${APPVERSION}"
+  VIAddVersionKey ProductVersion "${APPVERSION}"
   VIAddVersionKey InternalName "${APPNAME}"
-  BrandingText "${APPNAME} - ${VERSION}"
+  BrandingText "${APPNAME} - ${APPVERSION}"
   
   Var StartMenuFolder
   !define MUI_ABORTWARNING
