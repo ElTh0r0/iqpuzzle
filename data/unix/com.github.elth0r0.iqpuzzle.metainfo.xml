@@ -35,6 +35,11 @@
   <content_rating type="oars-1.0" />
   
   <releases>
+    <release version="1.2.2" date="2021-03-06">
+      <description>
+        <p>Packaging fixes</p>
+      </description>
+    </release>
     <release version="1.2.1" date="2020-11-29">
       <description>
         <p>Main changes:</p>
