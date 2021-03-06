@@ -1,6 +1,7 @@
 iqpuzzle (1.2.2-0) unstable; urgency=low
 
   [ Thorsten Roth ]
+  * Fix for oddities barrier color if system background color is used.
   * Packaging fixes.
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 06 Mar 2021 15:50:00 +0200

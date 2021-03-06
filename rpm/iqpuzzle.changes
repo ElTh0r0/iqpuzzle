@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
 Sat Mar 06 15:50:00 UTC 2021 - elthoro@gmx.de 1.2.2
 
+- Fix for oddities barrier color if system BG color is used.
 - Packaging fixes.
 
 -------------------------------------------------------------------
