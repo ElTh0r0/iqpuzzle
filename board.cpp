@@ -117,8 +117,19 @@ auto Board::setupBoard() -> bool {
 // ---------------------------------------------------------------------------
 
 void Board::drawBoard() {
-  QPen pen(this->readColor(QStringLiteral("Board/BorderColor")));
   QBrush brush(this->readColor(QStringLiteral("Board/Color")));
+  QPen pen(this->readColor(QStringLiteral("Board/BorderColor")));
+  if (m_pSettings->getUseSystemBackground()) {
+    if (m_pBoardConf->contains(QStringLiteral("Barrier1/Color"))) {
+      QColor cBG(this->readColor(QStringLiteral("BGColor")));
+      if (cBG == this->readColor(QStringLiteral("Barrier1/Color")) &&
+          cBG == this->readColor(QStringLiteral("Barrier1/BorderColor")) &&
+          cBG == this->readColor(QStringLiteral("Board/BorderColor"))) {
+        pen = QApplication::palette().color(QPalette::Base);
+      }
+    }
+  }
+
   this->addPolygon(m_BoardPoly, pen, brush);
   m_pGraphView->setSceneRect(m_BoardPoly.boundingRect());
 }
@@ -129,6 +140,16 @@ void Board::drawBoard() {
 void Board::drawGrid() {
   QLineF lineGrid;
   QPen pen(this->readColor(QStringLiteral("Board/GridColor")));
+  if (m_pSettings->getUseSystemBackground()) {
+    if (m_pBoardConf->contains(QStringLiteral("Barrier1/Color"))) {
+      QColor cBG(this->readColor(QStringLiteral("BGColor")));
+      if (cBG == this->readColor(QStringLiteral("Barrier1/Color")) &&
+          cBG == this->readColor(QStringLiteral("Barrier1/BorderColor")) &&
+          cBG == this->readColor(QStringLiteral("Board/GridColor"))) {
+        pen = QApplication::palette().color(QPalette::Base);
+      }
+    }
+  }
 
   // Horizontal
   for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
@@ -228,6 +249,8 @@ auto Board::createBlocks() -> bool {
 
 auto Board::createBarriers() -> bool {
   const unsigned char nMaxNumOfBlocks(250);
+  bool bIsBoardBG;
+  QColor cBG(this->readColor(QStringLiteral("BGColor")));
 
   for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {
     QString sPrefix = "Barrier" + QString::number(i);
@@ -244,11 +267,14 @@ auto Board::createBarriers() -> bool {
       return false;
     }
 
+    bIsBoardBG = (cBG == this->readColor(sPrefix + "/Color") &&
+                  cBG == this->readColor(sPrefix + "/BorderColor"));
+
     // Create new barrier
     m_listBlocks.append(new Block(
                           m_nNumOfBlocks + i, polygon,
-                          this->readColor(sPrefix + "/Color"),
-                          this->readColor(sPrefix + "/BorderColor"),
+                          this->readColor(sPrefix + "/Color", bIsBoardBG),
+                          this->readColor(sPrefix + "/BorderColor", bIsBoardBG),
                           m_nGridSize, &m_listBlocks, m_pSettings,
                           Board::readStartPosition(m_pBoardConf,
                                                    sPrefix + "/StartPos"),
@@ -261,7 +287,12 @@ auto Board::createBarriers() -> bool {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::readColor(const QString &sKey) const -> QColor {
+auto Board::readColor(const QString &sKey,
+                      const bool bColorIsBoardBG) const -> QColor {
+  if (bColorIsBoardBG && m_pSettings->getUseSystemBackground()) {
+    return QApplication::palette().color(QPalette::Base);
+  }
+
   QString sValue = m_pBoardConf->value(sKey, "").toString();
   QColor color(255, 0, 255);
 

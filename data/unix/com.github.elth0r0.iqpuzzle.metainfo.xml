@@ -37,7 +37,11 @@
   <releases>
     <release version="1.2.2" date="2021-03-06">
       <description>
-        <p>Packaging fixes</p>
+        <p>Main changes:</p>
+        <ul>
+          <li>Fix for oddities barrier color if system background color is used</li>
+          <li>Packaging fixes</li>
+        </ul>
       </description>
     </release>
     <release version="1.2.1" date="2020-11-29">

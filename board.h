@@ -72,7 +72,8 @@ class Board : public QGraphicsScene {
     void drawGrid();
     auto createBlocks() -> bool;
     auto createBarriers() -> bool;
-    auto readColor(const QString &sKey) const -> QColor;
+    auto readColor(const QString &sKey,
+                   const bool bColorIsBoardBG = false) const -> QColor;
     QPolygonF readPolygon(const QSettings *tmpSet, const QString &sKey,
                           const bool bScale = false);
     static auto checkOrthogonality(QPointF point) -> bool;
