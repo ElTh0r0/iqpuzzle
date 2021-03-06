@@ -11,22 +11,26 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 
 # [](#downoads)Downloads
 ###### Latest release v1.2.1 (29. Nov 2020)
-* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.1/iQPuzzle-1.2.1-Windows_Installer.exe)
-* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.1/iQPuzzle-1.2.1-Windows.zip)
-* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.1/iQPuzzle-1.2.1-macOS.zip)
-* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.1/iQPuzzle-1.2.1-x86_64.AppImage)
+* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-Windows_Installer.exe)
+* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-macOS.zip)
+* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-x86_64.AppImage)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
 * [Arch AUR](https://aur.archlinux.org/packages/iqpuzzle/)
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
-* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.1/iQPuzzle-1.2.1-ReactOS_Installer.exe)
+* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-ReactOS_Installer.exe)
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
 ## [](#release-notes)Release notes
+###### v1.2.2 (06. Mar 2021)
+* Fix for oddities barrier color if system background color is used
+* Packaging fixes
+
 ###### v1.2.1 (29. Nov 2020)
 * Fix crash during unsolved boards list update
 * Fix background color on pause screen if system background color is used
