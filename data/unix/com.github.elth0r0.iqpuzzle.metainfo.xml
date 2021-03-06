@@ -1,5 +1,5 @@
-<!-- Copyright 2021 Thorsten Roth -->
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 Thorsten Roth -->
 <component type="desktop-application">
   <id>com.github.elth0r0.iqpuzzle.desktop</id>
   <metadata_license>FSFAP</metadata_license>
@@ -11,9 +11,7 @@
   
   <description>
     <p>iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and many different board shapes are available, which have to be filled with them.</p>
-  </description>
-  <description xml:lang="de">
-    <p>iQPuzzle ist ein kurzweiliges und anspruchsvolles Pentomino Puzzle. Pentominos werden als Puzzleteile verwendet und viele verschiedene Spielfeldformen sind verfügbar, die mit diesen ausgefüllt werden müssen.</p>
+    <p xml:lang="de">iQPuzzle ist ein kurzweiliges und anspruchsvolles Pentomino Puzzle. Pentominos werden als Puzzleteile verwendet und viele verschiedene Spielfeldformen sind verfügbar, die mit diesen ausgefüllt werden müssen.</p>
   </description>
   
   <screenshots>
@@ -31,7 +29,6 @@
   <update_contact>elthoro@gmx.de</update_contact>
   
   <provides>
-    <id>com.github.elth0r0.iqpuzzle.desktop</id>
     <binary>iqpuzzle</binary>
   </provides>
   
