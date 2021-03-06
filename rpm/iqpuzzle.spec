@@ -84,8 +84,8 @@ EOF
 %make_install INSTALL_ROOT=%{buildroot}
 
 %check
-desktop-file-validate %{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
-appstream-util validate-relax --nonet %{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml || :
+desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
+appstream-util validate-relax --nonet %{buildroot}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml || :
 %endif
 #--------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ EOF
 
 %install
 %qmake5_install
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file com.github.elth0r0.iqpuzzle
 
 %if 0%{?suse_version} < 1330
 %post
