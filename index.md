@@ -15,6 +15,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 * [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-Windows.zip)
 * [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-macOS.zip)
 * [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.2/iQPuzzle-1.2.2-x86_64.AppImage)
+* [Flatpak](https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
 * [Arch AUR](https://aur.archlinux.org/packages/iqpuzzle/)
