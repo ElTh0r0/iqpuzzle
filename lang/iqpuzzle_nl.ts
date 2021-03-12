@@ -19,19 +19,19 @@
         <location filename="../board.cpp" line="67"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
-        <translation>Rastergrootte van bord is ongeldig.
-Het raster is verkleind naar de standaard grootte.</translation>
+        <translation>De roostergrootte van dit bord is ongeldig.
+Het is verkleind naar de standaardgrootte.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="89"/>
         <source>Board polygon not valid.</source>
-        <translation>Polygoon is ongeldig.</translation>
+        <translation>Het polygoon is ongeldig.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="195"/>
         <location filename="../board.cpp" line="241"/>
         <source>Polygon not valid:</source>
-        <translation>Polygon is ongeldig:</translation>
+        <translation>Het polygoon is ongeldig:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="217"/>
@@ -41,17 +41,17 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../board.cpp" line="270"/>
         <source>No color defined - using fallback:</source>
-        <translation>Geen kleur opgegeven - terugvalkleur wordt gebruikt:</translation>
+        <translation>Geen kleur opgegeven - de terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="278"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation>Onjuiste kleur opgegeven- terugvalkleur wordt gebruikt:</translation>
+        <translation>Onjuiste kleur opgegeven - de terugvalkleur wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="383"/>
         <source>Invalid start position - using fallback:</source>
-        <translation>Ongeldige startpositie - terugval wordt gebruikt:</translation>
+        <translation>Ongeldige startpositie - de terugvalpositie wordt gebruikt:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="164"/>
@@ -61,7 +61,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../board.cpp" line="165"/>
         <source>Not all pieces are needed for a solution!</source>
-        <translation>Niet alle stukken zijn benodigd voor de oplossing!</translation>
+        <translation>Niet alle stukken zijn benodigd om de puzzel op te lossen!</translation>
     </message>
 </context>
 <context>
@@ -115,12 +115,12 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../highscore.cpp" line="73"/>
         <source>Moves</source>
-        <translation>Zetten</translation>
+        <translation>Aantal zetten</translation>
     </message>
     <message>
         <location filename="../highscore.cpp" line="158"/>
         <source>Please insert your name for a new highscore:</source>
-        <translation>Voer uw naam in om de nieuwe topscore vast te leggen:</translation>
+        <translation>Voer uw naam in om de nieuwe topscore te noteren:</translation>
     </message>
 </context>
 <context>
@@ -210,7 +210,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="218"/>
         <source>&amp;Highscore</source>
-        <translation>&amp;Topscore</translation>
+        <translation>&amp;Topscores</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="228"/>
@@ -220,7 +220,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="233"/>
         <source>Report &amp;bug</source>
-        <translation>Fouten &amp;rapporteren</translation>
+        <translation>Bugs &amp;melden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="238"/>
@@ -232,7 +232,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
         <location filename="../iqpuzzle.ui" line="243"/>
         <location filename="../iqpuzzle.ui" line="268"/>
         <source>&amp;Medium</source>
-        <translation>Nor&amp;maal</translation>
+        <translation>Ge&amp;middeld</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="248"/>
@@ -259,7 +259,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="673"/>
         <source>Medium</source>
-        <translation>Normaal</translation>
+        <translation>Gemiddeld</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="680"/>
@@ -306,7 +306,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
         <location filename="../iqpuzzle.cpp" line="86"/>
         <location filename="../iqpuzzle.cpp" line="752"/>
         <source>Game paused</source>
-        <translation>Spel gepauzeerd</translation>
+        <translation>Het spel is onderbroken</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="91"/>
@@ -325,7 +325,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
         <location filename="../iqpuzzle.cpp" line="583"/>
         <location filename="../iqpuzzle.cpp" line="756"/>
         <source>Moves</source>
-        <translation>Zetten</translation>
+        <translation>Aantal zetten</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="312"/>
@@ -345,7 +345,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="396"/>
         <source>No boards available!</source>
-        <translation>Geen beschikbare borden!</translation>
+        <translation>Er zijn geen borden beschikbaar!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="483"/>
@@ -356,7 +356,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="582"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzel opgelost!</translation>
+        <translation>De puzzel is opgelost!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="653"/>
@@ -392,7 +392,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="727"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation>Deze applicatie gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
+        <translation>Dit programma gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="730"/>
@@ -455,7 +455,7 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../settings.ui" line="20"/>
         <source>Preferences</source>
-        <translation>Voorkeuren</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="42"/>
@@ -480,12 +480,12 @@ Het raster is verkleind naar de standaard grootte.</translation>
     <message>
         <location filename="../settings.ui" line="86"/>
         <source>GUI language</source>
-        <translation>Applicatietaal</translation>
+        <translation>Programmataal</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Achtergrondkleur van systeemthema gebruiken</translation>
     </message>
 </context>
 </TS>
