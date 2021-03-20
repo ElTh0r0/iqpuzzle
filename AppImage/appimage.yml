@@ -1,0 +1,18 @@
+app: iQPuzzle
+
+build:
+  packages:
+    - linuxdeployqt
+    - pkgconfig(Qt5Gui)
+    - pkgconfig(Qt5Widgets)
+
+script:
+  - cd $BUILD_SOURCE_DIR
+  - tar zxvf iqpuzzle-*.tar.gz
+  - cd iqpuzzle-*
+  - qmake-qt5 CONFIG+=release PREFIX=/usr
+  - make
+  - make INSTALL_ROOT=$BUILD_APPDIR install
+  - cd $BUILD_APPDIR
+  - unset QTDIR; unset QT_PLUGIN_PATH; unset LD_LIBRARY_PATH
+  - linuxdeployqt $BUILD_APPDIR/usr/share/applications/*.desktop -bundle-non-qt-libs -no-strip
