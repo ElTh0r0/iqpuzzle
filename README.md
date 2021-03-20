@@ -4,7 +4,8 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
 ## Installation
-* [Build for Windows, macOS (untested), ReactOS or AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/latest)
+* [Build for Windows, macOS (untested) or ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/latest)
+* [AppImage](https://download.opensuse.org/repositories/home:/ElThoro/AppImage/iQPuzzle-latest-x86_64.AppImage)
 * [Flatpak](https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Cent OS, Debian, Fedora, openSUSE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
