@@ -252,17 +252,17 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Sta&amp;tistieken</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="679"/>
+        <location filename="../iqpuzzle.cpp" line="684"/>
         <source>Easy</source>
         <translation>Makkelijk</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="686"/>
+        <location filename="../iqpuzzle.cpp" line="691"/>
         <source>Medium</source>
         <translation>Gemiddeld</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="693"/>
+        <location filename="../iqpuzzle.cpp" line="698"/>
         <source>Hard</source>
         <translation>Moeilijk</translation>
     </message>
@@ -304,7 +304,7 @@ Het is verkleind naar de standaardgrootte.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
-        <location filename="../iqpuzzle.cpp" line="765"/>
+        <location filename="../iqpuzzle.cpp" line="770"/>
         <source>Game paused</source>
         <translation>Het spel is onderbroken</translation>
     </message>
@@ -323,7 +323,7 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../iqpuzzle.cpp" line="275"/>
         <location filename="../iqpuzzle.cpp" line="344"/>
         <location filename="../iqpuzzle.cpp" line="588"/>
-        <location filename="../iqpuzzle.cpp" line="769"/>
+        <location filename="../iqpuzzle.cpp" line="774"/>
         <source>Moves</source>
         <translation>Aantal zetten</translation>
     </message>
@@ -359,43 +359,43 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>De puzzel is opgelost!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="666"/>
+        <location filename="../iqpuzzle.cpp" line="671"/>
         <source>Statistics</source>
         <translation>Statistieken</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="674"/>
-        <location filename="../iqpuzzle.cpp" line="700"/>
+        <location filename="../iqpuzzle.cpp" line="679"/>
+        <location filename="../iqpuzzle.cpp" line="705"/>
         <source>Total</source>
         <translation>Totaal</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="676"/>
+        <location filename="../iqpuzzle.cpp" line="681"/>
         <source>Unsolved</source>
         <translation>Onopgelost</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="701"/>
+        <location filename="../iqpuzzle.cpp" line="706"/>
         <source>including unknown difficulty</source>
         <translation>inclusief onbekende moeilijkheidsgraad</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="721"/>
+        <location filename="../iqpuzzle.cpp" line="726"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="737"/>
+        <location filename="../iqpuzzle.cpp" line="742"/>
         <source>License</source>
         <translation>Licentie</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="740"/>
+        <location filename="../iqpuzzle.cpp" line="745"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
         <translation>Dit programma gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="743"/>
+        <location filename="../iqpuzzle.cpp" line="748"/>
         <source>Translations</source>
         <translation>Vertalingen</translation>
     </message>

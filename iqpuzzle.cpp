@@ -153,28 +153,28 @@ void IQPuzzle::setupMenu() {
           this, [this]() { startNewGame(); });
 
   // Random game
-  m_pUi->actionAll->setShortcut(Qt::CTRL + Qt::Key_1);
+  m_pUi->actionAll->setShortcut(Qt::CTRL | Qt::Key_1);
   connect(m_pUi->actionAll, &QAction::triggered,
           this, [this]() { randomGame(1); });
-  m_pUi->actionEasy->setShortcut(Qt::CTRL + Qt::Key_2);
+  m_pUi->actionEasy->setShortcut(Qt::CTRL | Qt::Key_2);
   connect(m_pUi->actionEasy, &QAction::triggered,
           this, [this]() { randomGame(2); });
-  m_pUi->actionMedium->setShortcut(Qt::CTRL + Qt::Key_3);
+  m_pUi->actionMedium->setShortcut(Qt::CTRL | Qt::Key_3);
   connect(m_pUi->actionMedium, &QAction::triggered,
           this, [this]() { randomGame(3); });
-  m_pUi->actionHard->setShortcut(Qt::CTRL + Qt::Key_4);
+  m_pUi->actionHard->setShortcut(Qt::CTRL | Qt::Key_4);
   connect(m_pUi->actionHard, &QAction::triggered,
           this, [this]() { randomGame(4); });
-  m_pUi->actionAllUnsolved->setShortcut(Qt::CTRL + Qt::Key_5);
+  m_pUi->actionAllUnsolved->setShortcut(Qt::CTRL | Qt::Key_5);
   connect(m_pUi->actionAllUnsolved, &QAction::triggered,
           this, [this]() { randomGame(5); });
-  m_pUi->actionEasyUnsolved->setShortcut(Qt::CTRL + Qt::Key_6);
+  m_pUi->actionEasyUnsolved->setShortcut(Qt::CTRL | Qt::Key_6);
   connect(m_pUi->actionEasyUnsolved, &QAction::triggered,
           this, [this]() { randomGame(6); });
-  m_pUi->actionMediumUnsolved->setShortcut(Qt::CTRL + Qt::Key_7);
+  m_pUi->actionMediumUnsolved->setShortcut(Qt::CTRL | Qt::Key_7);
   connect(m_pUi->actionMediumUnsolved, &QAction::triggered,
           this, [this]() { randomGame(7); });
-  m_pUi->actionHardUnsolved->setShortcut(Qt::CTRL + Qt::Key_8);
+  m_pUi->actionHardUnsolved->setShortcut(Qt::CTRL | Qt::Key_8);
   connect(m_pUi->actionHardUnsolved, &QAction::triggered,
           this, [this]() { randomGame(8); });
 
@@ -199,7 +199,7 @@ void IQPuzzle::setupMenu() {
           this, &IQPuzzle::pauseGame);
 
   // Highscore
-  m_pUi->action_Highscore->setShortcut(Qt::CTRL + Qt::Key_H);
+  m_pUi->action_Highscore->setShortcut(Qt::CTRL | Qt::Key_H);
   connect(m_pUi->action_Highscore, &QAction::triggered, m_pHighscore, [this]() {
     QFileInfo fi(m_sBoardFile);
     m_pHighscore->showHighscore(fi.baseName());
@@ -622,7 +622,11 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
   if (m_sCurrLang != sLang) {
     m_sCurrLang = sLang;
     if (!IQPuzzle::switchTranslator(&m_translatorQt, "qt_" + sLang,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                                    QLibraryInfo::path(
+#else
                                     QLibraryInfo::location(
+#endif
                                       QLibraryInfo::TranslationsPath))) {
       IQPuzzle::switchTranslator(&m_translatorQt, "qt_" + sLang,
                                  m_sSharePath + "/lang");
@@ -636,6 +640,7 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
             m_sSharePath + "/lang");
     }
   }
+  m_pUi->retranslateUi(this);
 }
 
 // ---------------------------------------------------------------------------

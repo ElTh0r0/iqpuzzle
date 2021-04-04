@@ -35,6 +35,11 @@
   <content_rating type="oars-1.0" />
   
   <releases>
+    <release version="1.2.4" date="2021-04-04">
+      <description>
+        <p>Add support for Qt 6.</p>
+      </description>
+    </release>
     <release version="1.2.3" date="2021-03-20">
       <description>
         <p>Updated Dutch translation - thanks to Vistaus!</p>
