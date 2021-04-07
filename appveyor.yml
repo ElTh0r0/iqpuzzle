@@ -2,9 +2,14 @@ version: '1.2.4-{build}'
 
 environment:
   matrix:
-    - BUILD: mingw32 
+    - BUILD: mingw32
       QTDIR: C:\Qt\5.15\mingw81_32
       MINGW_DIR: C:\Qt\Tools\mingw810_32
+      PRO_MAKE: mingw32-make
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    - BUILD: mingw64_Qt6
+      QTDIR: C:\Qt\6.0\mingw81_64
+      MINGW_DIR: C:\Qt\Tools\mingw810_64
       PRO_MAKE: mingw32-make
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - BUILD: msvc2019_64
@@ -12,7 +17,7 @@ environment:
       PRO_MAKE: nmake
       DEPLOYQT_FLAG: --release
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-    - BUILD: mingw32_reactos 
+    - BUILD: mingw32_reactos
       QTDIR: C:\Qt\5.6\mingw49_32
       MINGW_DIR: C:\Qt\Tools\mingw492_32
       PRO_MAKE: mingw32-make
