@@ -8,8 +8,9 @@ on:
     branches: [master]
 
 jobs:
-  AppImage_Ubuntu18-04:
-    runs-on: ubuntu-18.04
+  AppImage_Ubuntu16-04:
+    name: AppImage Ubuntu 16.04
+    runs-on: ubuntu-16.04
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -46,3 +47,53 @@ jobs:
     - name: Upload AppImage
       run: |
        ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
+       ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
+
+  macOS_laetst:
+    name: macOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+          
+    - name: Install Dependencies
+      run: |
+       brew install p7zip qt
+       PATH=/usr/local/opt/qt/bin/:${PATH}
+        
+    - name: Download ffsend
+      run: |
+       FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
+       curl -L https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos > ffsend
+       chmod +x ./ffsend
+
+    - name: Compile
+      run: |
+       mkdir build
+       cd build
+       qmake ../iqpuzzle.pro CONFIG+=release
+       make
+       
+    - name: Cleanup build dir
+      run: |
+       rm -rf .moc
+       rm -rf .obj
+       rm -rf .qrc
+
+    - name: Create dmg archive
+      run: |
+       VERSION=$(git rev-parse --short HEAD) 
+       macdeployqt "iQPuzzle.app" -dmg
+       mv "iQPuzzle.dmg" "iQPuzzle_${VERSION}.dmg"
+
+    - name: Create zip archive
+      run: |
+       cp "../README.md" "./README.md"
+       cp "../COPYING" "./COPYING"
+       7z a iQPuzzle_${REV_NAME}_macOS.zip "iQPuzzle_${REV_NAME}.dmg" "README.md" "COPYING"
+       
+    - name: Upload macOS zip
+      run: |
+       mv "../ffsend" "./ffsend"
+       ./ffsend upload iQPuzzle_${REV_NAME}_macOS.zip
+       ./ffsend upload iQPuzzle_${REV_NAME}_macOS.zip
