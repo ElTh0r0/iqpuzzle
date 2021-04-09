@@ -26,7 +26,7 @@ jobs:
         
     - name: Download ffsend
       run: |
-       FFSEND_VERSION=curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#'
+       FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
        wget -c -nv "https://github.com/timvisee/ffsend/releases/download/$FFSEND_VERSION/ffsend-$FFSEND_VERSION-linux-x64-static"
        mv ./ffsend-* ./ffsend
        chmod a+x ./ffsend
