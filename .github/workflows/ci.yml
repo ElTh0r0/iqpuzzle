@@ -72,15 +72,13 @@ jobs:
        cd build
        qmake ../iqpuzzle.pro CONFIG+=release
        make
-       
-    - name: Cleanup build dir
-      run: |
        rm -rf .moc
        rm -rf .obj
        rm -rf .qrc
 
     - name: Create dmg archive and zip
       run: |
+       cd build
        VERSION=$(git rev-parse --short HEAD) 
        macdeployqt "iQPuzzle.app" -dmg
        mv "iQPuzzle.dmg" "iQPuzzle_${VERSION}.dmg"
@@ -90,5 +88,6 @@ jobs:
        
     - name: Upload macOS zip
       run: |
+       cd build
        mv "../ffsend" "./ffsend"
        ./ffsend upload iQPuzzle_*_macOS.zip
