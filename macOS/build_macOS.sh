@@ -3,7 +3,10 @@
 set -o errexit -o nounset
 
 APP='iQPuzzle'
-FFSEND_VERSION='v0.2.70'
+
+#FFSEND_VERSION='v0.2.71'
+# Get latest ffsend version number
+FFSEND_VERSION=curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#'
 
 # Hold on to current directory
 project_dir=$(pwd)
