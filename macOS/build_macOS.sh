@@ -3,7 +3,7 @@
 set -o errexit -o nounset
 
 APP='iQPuzzle'
-FFSEND_VERSION='v0.2.68'
+FFSEND_VERSION='v0.2.70'
 
 # Hold on to current directory
 project_dir=$(pwd)
