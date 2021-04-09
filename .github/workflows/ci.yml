@@ -1,0 +1,48 @@
+name: "CI"
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [master]
+
+jobs:
+  AppImage_Ubuntu18.04:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+          
+    - name: Install Dependencies
+      run: sudo apt update && sudo apt install qt5-default qt5-qmake qttools5-dev-tools
+
+    - name: Download linuxdeployqt
+      run: |
+       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+       unset QTDIR ; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
+       export VERSION=$(git rev-parse --short HEAD)  # linuxdeployqt uses this for naming the file
+        
+    - name: Download ffsend
+      run: |
+       FFSEND_VERSION=curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#'
+       wget -c -nv "https://github.com/timvisee/ffsend/releases/download/$FFSEND_VERSION/ffsend-$FFSEND_VERSION-linux-x64-static"
+       mv ./ffsend-* ./ffsend
+       chmod a+x ./ffsend
+
+    - name: Compile
+      run: |
+       qmake CONFIG+=release PREFIX=/usr
+       make -j$(nproc)
+       make INSTALL_ROOT=appdir -j$(nproc) install
+       find appdir
+
+    - name: Create AppImage
+      run: |
+       ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage -bundle-non-qt-libs -extra-plugins=iconengines,platformthemes/libqgtk3.so
+       find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
+
+    - name: Upload AppImage
+      run: |
+       ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
