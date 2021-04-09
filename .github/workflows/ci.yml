@@ -46,8 +46,8 @@ jobs:
 
     - name: Upload AppImage
       run: |
-       ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
-       ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
+       ./ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
+       ./ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
 
   macOS_laetst:
     name: macOS
