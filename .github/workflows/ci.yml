@@ -46,8 +46,8 @@ jobs:
 
     - name: Upload AppImage
       run: |
-       ./ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
-       ./ffsend upload iQPuzzle-$VERSION-x86_64.AppImage
+       ./ffsend upload iQPuzzle-*-x86_64.AppImage
+       ./ffsend upload iQPuzzle-*-x86_64.AppImage
 
   macOS_laetst:
     name: macOS
@@ -80,20 +80,17 @@ jobs:
        rm -rf .obj
        rm -rf .qrc
 
-    - name: Create dmg archive
+    - name: Create dmg archive and zip
       run: |
        VERSION=$(git rev-parse --short HEAD) 
        macdeployqt "iQPuzzle.app" -dmg
        mv "iQPuzzle.dmg" "iQPuzzle_${VERSION}.dmg"
-
-    - name: Create zip archive
-      run: |
        cp "../README.md" "./README.md"
        cp "../COPYING" "./COPYING"
-       7z a iQPuzzle_${REV_NAME}_macOS.zip "iQPuzzle_${REV_NAME}.dmg" "README.md" "COPYING"
+       7z a iQPuzzle_${VERSION}_macOS.zip "iQPuzzle_${VERSION}.dmg" "README.md" "COPYING"
        
     - name: Upload macOS zip
       run: |
        mv "../ffsend" "./ffsend"
-       ./ffsend upload iQPuzzle_${REV_NAME}_macOS.zip
-       ./ffsend upload iQPuzzle_${REV_NAME}_macOS.zip
+       ./ffsend upload iQPuzzle_${VERSION}_macOS.zip
+       ./ffsend upload iQPuzzle_${VERSION}_macOS.zip
