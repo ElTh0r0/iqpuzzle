@@ -58,7 +58,8 @@ class Block : public QGraphicsObject {
     void setBrushStyle(Qt::BrushStyle style);
 
     auto getPolygon() const -> QPolygonF;
-    void setNewZValue(const double nZ);
+    auto isBarrier() const -> bool;
+    void bringToForeground();
     void rescaleBlock(const quint16 nNewScale);
     auto getIndex() const -> quint16;
     enum { Type = UserType + 1 };
@@ -86,6 +87,9 @@ class Block : public QGraphicsObject {
     void flipBlock();
 
     const quint16 m_nID;
+    const quint16 m_nZBlock;
+    const quint8 m_nZBarrier;
+    const bool m_bBarrier;
     QPolygonF m_PolyShape;
     QBrush m_bgBrush;
     QPen m_borderPen;

@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-          
+
     - name: Install Dependencies
       run: sudo apt update && sudo apt install qt5-default qt5-qmake qttools5-dev-tools
 
@@ -24,7 +24,7 @@ jobs:
        chmod a+x linuxdeployqt-continuous-x86_64.AppImage
        unset QTDIR ; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
        export VERSION=$(git rev-parse --short HEAD)  # linuxdeployqt uses this for naming the file
-        
+
     - name: Download ffsend
       run: |
        FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
@@ -54,12 +54,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-          
+
     - name: Install Dependencies
       run: |
        brew install p7zip qt
        PATH=/usr/local/opt/qt/bin/:${PATH}
-        
+
     - name: Download ffsend
       run: |
        FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
@@ -85,7 +85,7 @@ jobs:
        cp "../README.md" "./README.md"
        cp "../COPYING" "./COPYING"
        7z a iQPuzzle_${VERSION}_macOS.zip "iQPuzzle_${VERSION}.dmg" "README.md" "COPYING"
-       
+
     - name: Upload macOS zip
       run: |
        cd build

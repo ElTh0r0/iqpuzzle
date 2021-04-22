@@ -37,6 +37,9 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
              Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
   : m_nID(nID),
+    m_nZBlock(1000),
+    m_nZBarrier(1),
+    m_bBarrier(bBarrier),
     m_PolyShape(std::move(shape)),
     m_bgBrush(bgcolor),
     m_borderPen(std::move(border)),
@@ -48,17 +51,19 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
     qWarning() << "Shape" << m_nID << "is not closed";
   }
 
-  if (!bBarrier) {
+  if (!m_bBarrier) {
     // qDebug() << "Creating BLOCK" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;
     this->setFlag(ItemIsMovable);
     m_CollTexture.load(QStringLiteral(":/collision_texture.png"));
+    this->setZValue(m_nZBlock);
   } else {
     // qDebug() << "Creating BARRIER" << m_nID <<
     //             "\tPosition:" << posTopLeft * m_nGrid;
     this->setAcceptedMouseButtons(Qt::NoButton);
     this->setAcceptTouchEvents(false);
     this->setEnabled(false);
+    this->setZValue(m_nZBarrier);
   }
 
   m_pTransform = new QTransform();
@@ -199,13 +204,7 @@ void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
 void Block::moveBlock(const bool bRelease) {
   if (!bRelease) {
     m_bActive = true;
-
-    // Bring current block to foreground and update Z values
-    for (auto &pBlock : *m_pListBlocks) {
-      pBlock->setNewZValue(-1);
-    }
-    this->setZValue(m_pListBlocks->size() + 2);
-
+    this->bringToForeground();
     m_posBlockSelected = this->pos();  // Save last position
   } else {
     m_bActive = false;
@@ -283,10 +282,7 @@ void Block::checkBlockIntersection() {
   if (this->checkCollision(thisPath)) {
     m_bgBrush.setTexture(m_CollTexture);
     m_bgBrush.setStyle(Qt::TexturePattern);
-    for (auto &pBlock : *m_pListBlocks) {
-      pBlock->setNewZValue(-1);
-    }
-    this->setZValue(m_pListBlocks->size() + 2);
+    this->bringToForeground();
   }
 }
 
@@ -353,15 +349,19 @@ void Block::moveBlockGrid(const QPointF pos) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Block::setNewZValue(const double nZ) {
-  if (nZ < 0) {
-    if (this->zValue() > 1) {
-      this->setZValue(this->zValue() - 1);
-    } else {
-      this->setZValue(1);
+void Block::bringToForeground() {
+  if (!m_bBarrier) {
+    for (auto &pBlock : *m_pListBlocks) {
+      if(pBlock->isBarrier()) {
+        pBlock->setZValue(m_nZBarrier);
+      } else {
+        if (pBlock->getIndex() == m_nID) {
+          this->setZValue(m_nZBlock + 1);
+        } else {
+          pBlock->setZValue(m_nZBlock);
+        }
+      }
     }
-  } else {
-    this->setZValue(nZ);
   }
 }
 
@@ -377,7 +377,7 @@ void Block::rescaleBlock(const quint16 nNewScale) {
   this->setPos(this->snapToGrid(tmpTopLeft));
 
   // Z value ++, otherwise board might be in foreground until block is moved
-  this->setNewZValue(this->zValue() + 1);
+  this->setZValue(this->zValue() + 1);
 }
 
 // ---------------------------------------------------------------------------
@@ -390,6 +390,10 @@ auto Block::type() const -> int {
 
 auto Block::getIndex() const -> quint16 {
   return m_nID;
+}
+
+auto Block::isBarrier() const -> bool {
+  return m_bBarrier;
 }
 
 auto Block::getPosition() const -> QPointF {
