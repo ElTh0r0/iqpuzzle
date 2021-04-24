@@ -352,7 +352,7 @@ void Block::moveBlockGrid(const QPointF pos) {
 void Block::bringToForeground() {
   if (!m_bBarrier) {
     for (auto &pBlock : *m_pListBlocks) {
-      if(pBlock->isBarrier()) {
+      if (pBlock->isBarrier()) {
         pBlock->setZValue(m_nZBarrier);
       } else {
         if (pBlock->getIndex() == m_nID) {
