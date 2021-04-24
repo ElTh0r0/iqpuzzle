@@ -35,9 +35,13 @@
   <content_rating type="oars-1.0" />
   
   <releases>
-    <release version="1.2.4" date="2021-04-04">
+    <release version="1.2.4" date="2021-04-24">
       <description>
-        <p>Add support for Qt 6.</p>
+        <p>Main changes:</p>
+        <ul>
+          <li>Add support for Qt 6</li>
+          <li>Fix disappearing block borders</li>
+        </ul>
       </description>
     </release>
     <release version="1.2.3" date="2021-03-20">
