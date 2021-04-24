@@ -485,7 +485,7 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa il colore di sfondo del sistema</translation>
     </message>
 </context>
 </TS>
