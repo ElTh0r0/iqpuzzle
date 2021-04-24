@@ -1,4 +1,4 @@
-iqpuzzle (1.2.4-0ubuntu2) bionic; urgency=low
+iqpuzzle (1.2.4-1ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
   * Add support for Qt 6
