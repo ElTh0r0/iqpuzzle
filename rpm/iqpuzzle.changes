@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 24 14:18:00 UTC 2021 - elthoro@gmx.de 1.2.4
+
+- Add support for Qt 6
+- Fix disappearing block borders
+
+-------------------------------------------------------------------
 Sat Mar 20 15:09:00 UTC 2021 - elthoro@gmx.de 1.2.3
 
 - Updated Dutch translation (thanks to Vistaus).

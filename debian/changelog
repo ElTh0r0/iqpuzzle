@@ -1,3 +1,11 @@
+iqpuzzle (1.2.4-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Add support for Qt 6
+  * Fix disappearing block borders
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 24 Apr 2021 14:18:00 +0200
+
 iqpuzzle (1.2.3-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
