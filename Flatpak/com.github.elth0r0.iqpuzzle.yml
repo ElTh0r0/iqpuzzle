@@ -19,5 +19,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/ElTh0r0/iqpuzzle.git
-        tag: v1.2.3
-        commit: 1dca1eab1cd542e43b62b6be23c22193780ea8cc
+        tag: v1.2.4
+        commit: a776d4387974cf82a4df7e825d43cc5832ef9eff
