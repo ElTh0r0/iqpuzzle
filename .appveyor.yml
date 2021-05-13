@@ -43,7 +43,8 @@ after_build:
   - copy release\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
   - windeployqt %DEPLOYQT_FLAGS% --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
   - copy COPYING iQPuzzle\
-  - copy README.md iQPuzzle\
+  - curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
+  - copy ReadMe.txt iQPuzzle\
   - xcopy /i /e /s data\boards\* iQPuzzle\boards\
   - 7z a iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows_%BUILD%.zip .\iQPuzzle\
   - curl -fsSL -o iqpuzzle.nsi https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.nsi
