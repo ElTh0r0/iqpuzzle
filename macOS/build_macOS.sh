@@ -27,6 +27,7 @@ PATH=/usr/local/opt/qt/bin/:${PATH}
 
 # Build app
 echo "Building..."
+lrelease iqpuzzle.pro
 cd ${project_dir}
 mkdir build
 cd build
@@ -49,7 +50,6 @@ mv "${APP}.dmg" "${APP}_${REV_NAME}.dmg"
 
 # Copy other project files
 curl -fsSL "https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt" > "ReadMe.txt"
-cp "ReadMe.txt" "${project_dir}/build/ReadMe.txt"
 cp "${project_dir}/COPYING" "${project_dir}/build/COPYING"
 
 echo "Packaging zip archive..."
