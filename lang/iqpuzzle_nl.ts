@@ -392,7 +392,7 @@ Het is verkleind naar de standaardgrootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="745"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
-        <translation>Dit programma gebruikt pictogrammen van het &lt;a href=\&quot;http://tango.freedesktop.org\&quot;&gt;Tango-project&lt;/a&gt;.</translation>
+        <translation>Dit programma gebruikt pictogrammen van het &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango-project&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="748"/>

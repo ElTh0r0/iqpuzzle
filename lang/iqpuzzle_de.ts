@@ -19,7 +19,8 @@
         <location filename="../board.cpp" line="69"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
-        <translation>Spielfeld-Rastergröße ungültig. Reduziere Raster auf Defaultwert.</translation>
+        <translation>Spielfeld-Rastergröße ungültig.
+Reduziere Raster auf Defaultwert.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
