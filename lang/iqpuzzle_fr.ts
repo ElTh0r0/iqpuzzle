@@ -19,7 +19,8 @@
         <location filename="../board.cpp" line="69"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
-        <translation>Grille de plateau invalide. Taille de grille réduite à la valeur par défaut.</translation>
+        <translation>Grille de plateau invalide.
+Taille de grille réduite à la valeur par défaut.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
