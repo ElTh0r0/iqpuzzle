@@ -21,6 +21,11 @@ Translations
  - Italian: davi92, albanobattistella
  - Korean: hyuna1127
 
+New translations and corrections are highly welcome! You can either fork the
+source code from GitHub, make your changes and create a pull request or you
+can participate on Weblate:
+https://hosted.weblate.org/projects/iqpuzzle/iqpuzzle_translations/
+
 
 Icons
 -----
