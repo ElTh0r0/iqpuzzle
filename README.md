@@ -15,5 +15,8 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
+## Help translating
+New translations and corrections are highly welcome! You can either fork the source code from GitHub, make your changes and create a pull request or you can participate on Weblate: https://hosted.weblate.org/projects/iqpuzzle/iqpuzzle_translations/
+
 ## Create your own level
 Manual for creating own levels can be found in the wiki: https://github.com/ElTh0r0/iqpuzzle/wiki
