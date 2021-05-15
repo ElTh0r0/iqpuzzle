@@ -27,6 +27,11 @@ Reduced grid to default.</source>
         <translation>Полигонът на дъската не е валиден.</translation>
     </message>
     <message>
+        <location filename="../board.cpp" line="188"/>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Не всички блокове са нужни за решението.</translation>
+    </message>
+    <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
@@ -56,11 +61,6 @@ Reduced grid to default.</source>
         <location filename="../board.cpp" line="187"/>
         <source>Hint</source>
         <translation>Помощ</translation>
-    </message>
-    <message>
-        <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Не всички блокове са нужни за решението!</translation>
     </message>
 </context>
 <context>

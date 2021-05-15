@@ -28,6 +28,11 @@ Taille de grille réduite à la valeur par défaut.</translation>
         <translation>Plateau polygonal invalide.</translation>
     </message>
     <message>
+        <location filename="../board.cpp" line="188"/>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Toutes les pièces ne sont pas nécessaires pour une solution.</translation>
+    </message>
+    <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
@@ -57,11 +62,6 @@ Taille de grille réduite à la valeur par défaut.</translation>
         <location filename="../board.cpp" line="187"/>
         <source>Hint</source>
         <translation>Indication</translation>
-    </message>
-    <message>
-        <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Toutes les pièces ne sont pas nécessaires pour une solution!</translation>
     </message>
 </context>
 <context>

@@ -28,6 +28,11 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Het polygoon is ongeldig.</translation>
     </message>
     <message>
+        <location filename="../board.cpp" line="188"/>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Niet alle stukken zijn benodigd om de puzzel op te lossen.</translation>
+    </message>
+    <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
@@ -57,11 +62,6 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../board.cpp" line="187"/>
         <source>Hint</source>
         <translation>Tip</translation>
-    </message>
-    <message>
-        <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Niet alle stukken zijn benodigd om de puzzel op te lossen!</translation>
     </message>
 </context>
 <context>

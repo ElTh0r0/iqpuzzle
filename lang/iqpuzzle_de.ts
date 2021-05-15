@@ -28,6 +28,11 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>Spielfeld-Polygon nicht gültig.</translation>
     </message>
     <message>
+        <location filename="../board.cpp" line="188"/>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Nicht alle Teile werden für eine Lösung benötigt.</translation>
+    </message>
+    <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
@@ -57,11 +62,6 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../board.cpp" line="187"/>
         <source>Hint</source>
         <translation>Hinweis</translation>
-    </message>
-    <message>
-        <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Nicht alle Teile werden für eine Lösung benötigt!</translation>
     </message>
 </context>
 <context>

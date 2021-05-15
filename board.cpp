@@ -185,7 +185,7 @@ auto Board::setupBlocks() -> bool {
                               false).toBool();
     if (m_bNotAllPiecesNeeded) {
       QMessageBox::information(nullptr, tr("Hint"),
-                               tr("Not all pieces are needed for a solution!"));
+                               tr("Not all pieces are needed for a solution."));
     }
 
     m_pGraphView->setEnabled(true);

@@ -34,8 +34,8 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>정답에 모든 조각들이 필요한 것은 아닙니다!</translation>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>정답에 모든 조각들이 필요한 것은 아닙니다.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="218"/>

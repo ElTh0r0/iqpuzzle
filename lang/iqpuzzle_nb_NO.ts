@@ -28,6 +28,11 @@ Det ble tilbakestilt.</translation>
         <translation>Brettpolygonet er ikke gyldig.</translation>
     </message>
     <message>
+        <location filename="../board.cpp" line="188"/>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Alle bitene er ikke nødvendige i løsningen.</translation>
+    </message>
+    <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
@@ -57,11 +62,6 @@ Det ble tilbakestilt.</translation>
         <location filename="../board.cpp" line="187"/>
         <source>Hint</source>
         <translation>Hint</translation>
-    </message>
-    <message>
-        <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Alle bitene er ikke nødvendige i løsningen!</translation>
     </message>
 </context>
 <context>
@@ -148,7 +148,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
         <source>Setti&amp;ngs</source>
-        <translation>%Innstillinger</translation>
+        <translation>&amp;Innstillinger</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="115"/>

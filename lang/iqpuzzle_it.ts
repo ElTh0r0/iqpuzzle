@@ -34,8 +34,8 @@ Griglia ridotta al valore predefinito.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
-        <source>Not all pieces are needed for a solution!</source>
-        <translation>Non tutti i pezzi sono necessari per una soluzione!</translation>
+        <source>Not all pieces are needed for a solution.</source>
+        <translation>Non tutti i pezzi sono necessari per una soluzione.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="218"/>
