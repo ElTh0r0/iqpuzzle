@@ -25,13 +25,13 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
-        <translation type="unfinished">Brettpolygonet er ikke gyldig.</translation>
+        <translation>Brettpolygonet er ikke gyldig.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
-        <translation type="unfinished">Ugyldig polygon.</translation>
+        <translation>Ugyldig polygon:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="240"/>
@@ -41,17 +41,17 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../board.cpp" line="303"/>
         <source>No color defined - using fallback:</source>
-        <translation type="unfinished">Ingen farge definert. Bruker forvalget:</translation>
+        <translation>Ingen farge definert - bruker forvalget:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="311"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation type="unfinished">Ugyldig farge definert. Bruker forvalget:</translation>
+        <translation>Ugyldig farge definert - bruker forvalget:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="417"/>
         <source>Invalid start position - using fallback:</source>
-        <translation type="unfinished">Ugyldig startposisjon. Bruker forvalget:</translation>
+        <translation>Ugyldig startposisjon - bruker forvalget:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
@@ -61,7 +61,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Not all pieces are needed for a solution!</source>
-        <translation type="unfinished">Alle bitene er ikke nødvendige i løsningen.</translation>
+        <translation>Alle bitene er ikke nødvendige i løsningen!</translation>
     </message>
 </context>
 <context>
@@ -300,7 +300,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="494"/>
         <source>Invalid saved puzzle.</source>
-        <translation type="unfinished">Ugyldig lagret puslespill.</translation>
+        <translation>Ugyldig lagret puslespill.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
@@ -340,12 +340,12 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="137"/>
         <source>Games share path does not exist!</source>
-        <translation type="unfinished">Spilldelingsstien finnes ikke.</translation>
+        <translation>Spilldelingsstien finnes ikke!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
         <source>No boards available!</source>
-        <translation type="unfinished">Ingen tilgjengelige brett.</translation>
+        <translation>Ingen tilgjengelige brett!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="480"/>
@@ -356,7 +356,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="587"/>
         <source>Puzzle solved!</source>
-        <translation type="unfinished">Løst.</translation>
+        <translation>Løst!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="671"/>
@@ -372,7 +372,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>Unsolved</source>
-        <translation type="unfinished">Uløst</translation>
+        <translation>Uløst</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="706"/>
@@ -436,13 +436,13 @@ Det ble tilbakestilt.</translation>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished">Vannrett hjul</translation>
+        <translation>Vannrett hjul</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished">Loddrett hjul</translation>
+        <translation>Loddrett hjul</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="108"/>
