@@ -6,10 +6,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 
 ![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
-# [](#createlevel)Create your own level
-Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
-
-# [](#downoads)Downloads
+## [](#downoads)Downloads
 ###### Latest release v1.2.4 (24. Apr 2021)
 * [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.4/iQPuzzle-1.2.4-Windows_Installer.exe)
 * [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.4/iQPuzzle-1.2.4-Windows.zip)
@@ -26,6 +23,12 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
+
+## [](#translations)Translations
+New translations and corrections are highly welcome! You can either fork the source code [from GitHub](https://github.com/ElTh0r0/iqpuzzle), make your changes and create a pull request or you can participate [on Weblate](https://hosted.weblate.org/projects/iqpuzzle/iqpuzzle_translations).
+
+## [](#createlevel)Create your own level
+Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 ## [](#release-notes)Release notes
 ###### v1.2.4 (24. Apr 2021)
