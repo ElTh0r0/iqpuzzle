@@ -46,7 +46,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="303"/>
         <source>No color defined - using fallback:</source>
-        <translation>Aucune couleur définie - Utilisation du mode fallback:</translation>
+        <translation>Aucune couleur définie - utilisation de la solution de secours&#xa0;:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="311"/>
@@ -163,7 +163,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="135"/>
         <source>&amp;About</source>
-        <translation>&amp;A propos</translation>
+        <translation>&amp;À propos</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="145"/>
@@ -220,7 +220,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="233"/>
         <source>Report &amp;bug</source>
-        <translation>Signaler un &amp;bug</translation>
+        <translation>Signaler une &amp;erreur</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="238"/>
@@ -340,12 +340,12 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="137"/>
         <source>Games share path does not exist!</source>
-        <translation>Le dossier des parties n&apos;existe pas!</translation>
+        <translation>Le dossier des parties n&apos;existe pas&#xa0;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
         <source>No boards available!</source>
-        <translation>Aucun plateau disponible!</translation>
+        <translation>Aucun plateau disponible&#xa0;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="480"/>
@@ -356,7 +356,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="587"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle résolu!</translation>
+        <translation>Puzzle résolu&#xa0;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="671"/>
@@ -382,7 +382,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="726"/>
         <source>About</source>
-        <translation>A propos</translation>
+        <translation>À propos</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="742"/>
@@ -485,7 +485,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser la couleur d&apos;arrière-plan du système</translation>
     </message>
 </context>
 </TS>
