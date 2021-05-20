@@ -480,7 +480,7 @@ Reduziere Raster auf Defaultwert.</translation>
     <message>
         <location filename="../settings.ui" line="86"/>
         <source>GUI language</source>
-        <translation>Gui Sprache</translation>
+        <translation>GUI-Sprache</translation>
     </message>
     <message>
         <location filename="../settings.ui" line="106"/>

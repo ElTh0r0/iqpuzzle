@@ -225,7 +225,7 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="233"/>
         <source>Report &amp;bug</source>
-        <translation>Segnala &amp;bug</translation>
+        <translation>Segnala un &amp;errore</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="238"/>
