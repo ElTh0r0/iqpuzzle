@@ -753,7 +753,8 @@ void IQPuzzle::showInfoBox() {
              "&nbsp;&nbsp;- German: ElThoro<br />"
              "&nbsp;&nbsp;- Italian: davi92, albanobattistella<br />"
              "&nbsp;&nbsp;- Korean: hyuna1127<br />"
-             "&nbsp;&nbsp;- Norwegian: Allan Nordhøy"));
+             "&nbsp;&nbsp;- Norwegian: Allan Nordhøy<br />"
+             "&nbsp;&nbsp;- Misc. corrections: J. Lavoie"));
 }
 
 // ---------------------------------------------------------------------------
