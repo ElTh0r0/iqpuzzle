@@ -258,7 +258,7 @@ Griglia ridotta al valore predefinito.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
-        <location filename="../iqpuzzle.cpp" line="770"/>
+        <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Game paused</source>
         <translation>Gioco in pausa</translation>
     </message>
@@ -277,7 +277,7 @@ Griglia ridotta al valore predefinito.</translation>
         <location filename="../iqpuzzle.cpp" line="275"/>
         <location filename="../iqpuzzle.cpp" line="344"/>
         <location filename="../iqpuzzle.cpp" line="588"/>
-        <location filename="../iqpuzzle.cpp" line="774"/>
+        <location filename="../iqpuzzle.cpp" line="776"/>
         <source>Moves</source>
         <translation>Mosse</translation>
     </message>

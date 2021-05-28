@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>iqpuzzle_bg.qm</file>
         <file>iqpuzzle_de.qm</file>
+        <file>iqpuzzle_en.qm</file>
         <file>iqpuzzle_fr.qm</file>
         <file>iqpuzzle_it.qm</file>
         <file>iqpuzzle_ko.qm</file>

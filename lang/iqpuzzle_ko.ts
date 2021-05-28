@@ -258,7 +258,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
-        <location filename="../iqpuzzle.cpp" line="770"/>
+        <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Game paused</source>
         <translation>게임 중지</translation>
     </message>
@@ -277,7 +277,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="275"/>
         <location filename="../iqpuzzle.cpp" line="344"/>
         <location filename="../iqpuzzle.cpp" line="588"/>
-        <location filename="../iqpuzzle.cpp" line="774"/>
+        <location filename="../iqpuzzle.cpp" line="776"/>
         <source>Moves</source>
         <translation>이동 횟수</translation>
     </message>

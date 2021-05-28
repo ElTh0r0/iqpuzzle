@@ -653,11 +653,7 @@ auto IQPuzzle::switchTranslator(QTranslator *translator,
   if (translator->load(sFile, sPath)) {
     qApp->installTranslator(translator);
   } else {
-    if (!sFile.endsWith(QStringLiteral("_en")) &&
-        !sFile.endsWith(QStringLiteral("_en.qm"))) {
-      // EN is build in translation -> no file
-      qWarning() << "Could not find translation" << sFile << "in" << sPath;
-    }
+    qWarning() << "Could not find translation" << sFile << "in" << sPath;
     return false;
   }
   return true;

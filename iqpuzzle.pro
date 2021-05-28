@@ -71,6 +71,7 @@ RESOURCES      = data/data.qrc \
 
 TRANSLATIONS  += lang/iqpuzzle_bg.ts \
                  lang/iqpuzzle_de.ts \
+                 lang/iqpuzzle_en.ts \
                  lang/iqpuzzle_fr.ts \
                  lang/iqpuzzle_it.ts \
                  lang/iqpuzzle_ko.ts \
