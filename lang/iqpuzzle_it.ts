@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
 <context>
     <name>Board</name>
     <message>
@@ -78,15 +76,15 @@ Griglia ridotta al valore predefinito.</translation>
         <translation>Anteprima</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="74"/>
-        <source>Unknown</source>
-        <translation>Sconosciuto</translation>
-    </message>
-    <message>
         <location filename="../boarddialog.cpp" line="50"/>
         <location filename="../boarddialog.cpp" line="83"/>
         <source>No preview available</source>
         <translation>Nessuna anteprima disponibile</translation>
+    </message>
+    <message>
+        <location filename="../boarddialog.cpp" line="74"/>
+        <source>Unknown</source>
+        <translation>Sconosciuto</translation>
     </message>
 </context>
 <context>
