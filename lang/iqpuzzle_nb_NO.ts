@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb_NO">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nb_NO" version="2.1">
 <context>
     <name>Board</name>
     <message>
@@ -26,6 +24,11 @@ Det ble tilbakestilt.</translation>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
         <translation>Brettpolygonet er ikke gyldig.</translation>
+    </message>
+    <message>
+        <location filename="../board.cpp" line="187"/>
+        <source>Hint</source>
+        <translation>Hint</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
@@ -58,11 +61,6 @@ Det ble tilbakestilt.</translation>
         <source>Invalid start position - using fallback:</source>
         <translation>Ugyldig startposisjon - bruker forvalget:</translation>
     </message>
-    <message>
-        <location filename="../board.cpp" line="187"/>
-        <source>Hint</source>
-        <translation>Hint</translation>
-    </message>
 </context>
 <context>
     <name>BoardDialog</name>
@@ -78,15 +76,15 @@ Det ble tilbakestilt.</translation>
         <translation>Forhåndsvisning</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="74"/>
-        <source>Unknown</source>
-        <translation>Ukjent</translation>
-    </message>
-    <message>
         <location filename="../boarddialog.cpp" line="50"/>
         <location filename="../boarddialog.cpp" line="83"/>
         <source>No preview available</source>
         <translation>Ingen forhåndsvisning tilgjengelig</translation>
+    </message>
+    <message>
+        <location filename="../boarddialog.cpp" line="74"/>
+        <source>Unknown</source>
+        <translation>Ukjent</translation>
     </message>
 </context>
 <context>
@@ -131,9 +129,9 @@ Det ble tilbakestilt.</translation>
         <translation>&amp;Spill</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="89"/>
-        <source>&amp;Help</source>
-        <translation>&amp;Hjelp</translation>
+        <location filename="../iqpuzzle.ui" line="45"/>
+        <source>R&amp;andom game</source>
+        <translation>&amp;Tilfeldig spill</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
@@ -144,6 +142,11 @@ Det ble tilbakestilt.</translation>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
         <translation>alle &amp;uløste</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.ui" line="89"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Hjelp</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -252,57 +255,6 @@ Det ble tilbakestilt.</translation>
         <translation>Sta&amp;tistikk</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="684"/>
-        <source>Easy</source>
-        <translation>Lett</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="691"/>
-        <source>Medium</source>
-        <translation>Middels</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="698"/>
-        <source>Hard</source>
-        <translation>Vanskelig</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.ui" line="45"/>
-        <source>R&amp;andom game</source>
-        <translation>&amp;Tilfeldig spill</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="307"/>
-        <source>Load board</source>
-        <translation>Last inn brett</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="111"/>
-        <location filename="../iqpuzzle.cpp" line="121"/>
-        <location filename="../iqpuzzle.cpp" line="252"/>
-        <location filename="../iqpuzzle.cpp" line="262"/>
-        <source>File not found</source>
-        <translation>Kunne ikke finne filen</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="112"/>
-        <location filename="../iqpuzzle.cpp" line="122"/>
-        <location filename="../iqpuzzle.cpp" line="253"/>
-        <location filename="../iqpuzzle.cpp" line="263"/>
-        <source>The chosen file does not exist.</source>
-        <translation>Valgt fil finnes ikke.</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="295"/>
-        <source>Unknown</source>
-        <translation>Ukjent</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="494"/>
-        <source>Invalid saved puzzle.</source>
-        <translation>Ugyldig lagret puslespill.</translation>
-    </message>
-    <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
         <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Game paused</source>
@@ -328,9 +280,30 @@ Det ble tilbakestilt.</translation>
         <translation>Trekk</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="309"/>
-        <source>Board files</source>
-        <translation>Brettfiler</translation>
+        <location filename="../iqpuzzle.cpp" line="111"/>
+        <location filename="../iqpuzzle.cpp" line="121"/>
+        <location filename="../iqpuzzle.cpp" line="252"/>
+        <location filename="../iqpuzzle.cpp" line="262"/>
+        <source>File not found</source>
+        <translation>Kunne ikke finne filen</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="112"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="253"/>
+        <location filename="../iqpuzzle.cpp" line="263"/>
+        <source>The chosen file does not exist.</source>
+        <translation>Valgt fil finnes ikke.</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="137"/>
+        <source>Games share path does not exist!</source>
+        <translation>Spilldelingsstien finnes ikke!</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="295"/>
+        <source>Unknown</source>
+        <translation>Ukjent</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="299"/>
@@ -338,9 +311,14 @@ Det ble tilbakestilt.</translation>
         <translation>Løsninger</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="137"/>
-        <source>Games share path does not exist!</source>
-        <translation>Spilldelingsstien finnes ikke!</translation>
+        <location filename="../iqpuzzle.cpp" line="307"/>
+        <source>Load board</source>
+        <translation>Last inn brett</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="309"/>
+        <source>Board files</source>
+        <translation>Brettfiler</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
@@ -352,6 +330,11 @@ Det ble tilbakestilt.</translation>
         <location filename="../iqpuzzle.cpp" line="516"/>
         <source>Save games</source>
         <translation>Lagre spill</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="494"/>
+        <source>Invalid saved puzzle.</source>
+        <translation>Ugyldig lagret puslespill.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="587"/>
@@ -373,6 +356,21 @@ Det ble tilbakestilt.</translation>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>Unsolved</source>
         <translation>Uløst</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="684"/>
+        <source>Easy</source>
+        <translation>Lett</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="691"/>
+        <source>Medium</source>
+        <translation>Middels</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="698"/>
+        <source>Hard</source>
+        <translation>Vanskelig</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="706"/>
@@ -435,14 +433,14 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Horizontal wheel</source>
-        <translation>Vannrett hjul</translation>
+        <source>Vertical wheel</source>
+        <translation>Loddrett hjul</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Vertical wheel</source>
-        <translation>Loddrett hjul</translation>
+        <source>Horizontal wheel</source>
+        <translation>Vannrett hjul</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="108"/>
