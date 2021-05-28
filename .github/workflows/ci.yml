@@ -8,15 +8,17 @@ on:
     branches: [master]
 
 jobs:
-  AppImage_Ubuntu16-04:
-    name: AppImage Ubuntu 16.04
-    runs-on: ubuntu-16.04
+  AppImage_Ubuntu18-04:
+    name: AppImage Ubuntu 18.04
+    runs-on: ubuntu-18.04
+    env:
+      QT_SELECT: qt5
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Install Dependencies
-      run: sudo apt update && sudo apt install qt5-default qt5-qmake qttools5-dev-tools
+      run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools
 
     - name: Download linuxdeployqt
       run: |
