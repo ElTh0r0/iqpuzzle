@@ -20,11 +20,12 @@ Translations
  - German: ElThoro
  - Italian: davi92, albanobattistella
  - Korean: hyuna1127
+ - Norwegian: Allan Nordhoy
+ - Misc. corrections: J. Lavoie
 
 New translations and corrections are highly welcome! You can either fork the
 source code from GitHub, make your changes and create a pull request or you
-can participate on Weblate:
-https://hosted.weblate.org/projects/iqpuzzle/iqpuzzle_translations/
+can participate on Transifex: https://www.transifex.com/elth0r0/iqpuzzle/
 
 
 Icons
