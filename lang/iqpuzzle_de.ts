@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>Board</name>
     <message>
@@ -26,6 +24,11 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
         <translation>Spielfeld-Polygon nicht gültig.</translation>
+    </message>
+    <message>
+        <location filename="../board.cpp" line="187"/>
+        <source>Hint</source>
+        <translation>Hinweis</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
@@ -58,11 +61,6 @@ Reduziere Raster auf Defaultwert.</translation>
         <source>Invalid start position - using fallback:</source>
         <translation>Keine Startposition - verwende Fallback:</translation>
     </message>
-    <message>
-        <location filename="../board.cpp" line="187"/>
-        <source>Hint</source>
-        <translation>Hinweis</translation>
-    </message>
 </context>
 <context>
     <name>BoardDialog</name>
@@ -78,15 +76,15 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>Vorschau</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="74"/>
-        <source>Unknown</source>
-        <translation>Unbekannt</translation>
-    </message>
-    <message>
         <location filename="../boarddialog.cpp" line="50"/>
         <location filename="../boarddialog.cpp" line="83"/>
         <source>No preview available</source>
         <translation>Keine Vorschau verfügbar</translation>
+    </message>
+    <message>
+        <location filename="../boarddialog.cpp" line="74"/>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
     </message>
 </context>
 <context>
@@ -131,9 +129,9 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>&amp;Spiel</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="89"/>
-        <source>&amp;Help</source>
-        <translation>&amp;Hilfe</translation>
+        <location filename="../iqpuzzle.ui" line="45"/>
+        <source>R&amp;andom game</source>
+        <translation>&amp;Zufälliges Spiel</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
@@ -144,6 +142,11 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
         <translation>Alle &amp;ungelösten</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.ui" line="89"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Hilfe</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -252,57 +255,6 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>Sta&amp;tistik</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="684"/>
-        <source>Easy</source>
-        <translation>Einfach</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="691"/>
-        <source>Medium</source>
-        <translation>Mittel</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="698"/>
-        <source>Hard</source>
-        <translation>Schwierig</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.ui" line="45"/>
-        <source>R&amp;andom game</source>
-        <translation>&amp;Zufälliges Spiel</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="307"/>
-        <source>Load board</source>
-        <translation>Spielfeld laden</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="111"/>
-        <location filename="../iqpuzzle.cpp" line="121"/>
-        <location filename="../iqpuzzle.cpp" line="252"/>
-        <location filename="../iqpuzzle.cpp" line="262"/>
-        <source>File not found</source>
-        <translation>Datei nicht gefunden</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="112"/>
-        <location filename="../iqpuzzle.cpp" line="122"/>
-        <location filename="../iqpuzzle.cpp" line="253"/>
-        <location filename="../iqpuzzle.cpp" line="263"/>
-        <source>The chosen file does not exist.</source>
-        <translation>Die ausgewählte Datei existiert nicht.</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="295"/>
-        <source>Unknown</source>
-        <translation>Unbekannt</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="494"/>
-        <source>Invalid saved puzzle.</source>
-        <translation>Ungültiges gespeichertes Puzzle.</translation>
-    </message>
-    <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
         <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Game paused</source>
@@ -328,9 +280,30 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>Züge</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="309"/>
-        <source>Board files</source>
-        <translation>Spielfelder</translation>
+        <location filename="../iqpuzzle.cpp" line="111"/>
+        <location filename="../iqpuzzle.cpp" line="121"/>
+        <location filename="../iqpuzzle.cpp" line="252"/>
+        <location filename="../iqpuzzle.cpp" line="262"/>
+        <source>File not found</source>
+        <translation>Datei nicht gefunden</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="112"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="253"/>
+        <location filename="../iqpuzzle.cpp" line="263"/>
+        <source>The chosen file does not exist.</source>
+        <translation>Die ausgewählte Datei existiert nicht.</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="137"/>
+        <source>Games share path does not exist!</source>
+        <translation>Spieldatenverzeichnis existiert nicht!</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="295"/>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="299"/>
@@ -338,9 +311,14 @@ Reduziere Raster auf Defaultwert.</translation>
         <translation>Lösungen</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="137"/>
-        <source>Games share path does not exist!</source>
-        <translation>Spieldatenverzeichnis existiert nicht!</translation>
+        <location filename="../iqpuzzle.cpp" line="307"/>
+        <source>Load board</source>
+        <translation>Spielfeld laden</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="309"/>
+        <source>Board files</source>
+        <translation>Spielfelder</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
@@ -352,6 +330,11 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../iqpuzzle.cpp" line="516"/>
         <source>Save games</source>
         <translation>Speicherdatei</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="494"/>
+        <source>Invalid saved puzzle.</source>
+        <translation>Ungültiges gespeichertes Puzzle.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="587"/>
@@ -373,6 +356,21 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>Unsolved</source>
         <translation>Ungelöst</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="684"/>
+        <source>Easy</source>
+        <translation>Einfach</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="691"/>
+        <source>Medium</source>
+        <translation>Mittel</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="698"/>
+        <source>Hard</source>
+        <translation>Schwierig</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="706"/>
@@ -435,14 +433,14 @@ Reduziere Raster auf Defaultwert.</translation>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Horizontal wheel</source>
-        <translation>Horizontales Mausrad</translation>
+        <source>Vertical wheel</source>
+        <translation>Vertikales Mausrad</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Vertical wheel</source>
-        <translation>Vertikales Mausrad</translation>
+        <source>Horizontal wheel</source>
+        <translation>Horizontales Mausrad</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="108"/>
