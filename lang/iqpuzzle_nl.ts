@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>Board</name>
     <message>
@@ -26,6 +24,11 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
         <translation>Het polygoon is ongeldig.</translation>
+    </message>
+    <message>
+        <location filename="../board.cpp" line="187"/>
+        <source>Hint</source>
+        <translation>Tip</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
@@ -58,11 +61,6 @@ Het is verkleind naar de standaardgrootte.</translation>
         <source>Invalid start position - using fallback:</source>
         <translation>Ongeldige startpositie - de terugvalpositie wordt gebruikt:</translation>
     </message>
-    <message>
-        <location filename="../board.cpp" line="187"/>
-        <source>Hint</source>
-        <translation>Tip</translation>
-    </message>
 </context>
 <context>
     <name>BoardDialog</name>
@@ -78,15 +76,15 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Voorbeeld</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="74"/>
-        <source>Unknown</source>
-        <translation>Onbekend</translation>
-    </message>
-    <message>
         <location filename="../boarddialog.cpp" line="50"/>
         <location filename="../boarddialog.cpp" line="83"/>
         <source>No preview available</source>
         <translation>Geen voorbeeld beschikbaar</translation>
+    </message>
+    <message>
+        <location filename="../boarddialog.cpp" line="74"/>
+        <source>Unknown</source>
+        <translation>Onbekend</translation>
     </message>
 </context>
 <context>
@@ -131,9 +129,9 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>&amp;Spel</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="89"/>
-        <source>&amp;Help</source>
-        <translation>&amp;Hulp</translation>
+        <location filename="../iqpuzzle.ui" line="45"/>
+        <source>R&amp;andom game</source>
+        <translation>&amp;Willekeurig spel</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
@@ -144,6 +142,11 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
         <translation>Alle &amp;onopgeloste</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.ui" line="89"/>
+        <source>&amp;Help</source>
+        <translation>&amp;Hulp</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -252,57 +255,6 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Sta&amp;tistieken</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="684"/>
-        <source>Easy</source>
-        <translation>Makkelijk</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="691"/>
-        <source>Medium</source>
-        <translation>Gemiddeld</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="698"/>
-        <source>Hard</source>
-        <translation>Moeilijk</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.ui" line="45"/>
-        <source>R&amp;andom game</source>
-        <translation>&amp;Willekeurig spel</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="307"/>
-        <source>Load board</source>
-        <translation>Bord laden</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="111"/>
-        <location filename="../iqpuzzle.cpp" line="121"/>
-        <location filename="../iqpuzzle.cpp" line="252"/>
-        <location filename="../iqpuzzle.cpp" line="262"/>
-        <source>File not found</source>
-        <translation>Bestand niet gevonden</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="112"/>
-        <location filename="../iqpuzzle.cpp" line="122"/>
-        <location filename="../iqpuzzle.cpp" line="253"/>
-        <location filename="../iqpuzzle.cpp" line="263"/>
-        <source>The chosen file does not exist.</source>
-        <translation>Het gekozen bestand bestaat niet.</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="295"/>
-        <source>Unknown</source>
-        <translation>Onbekend</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="494"/>
-        <source>Invalid saved puzzle.</source>
-        <translation>Ongeldige opgeslagen puzzel.</translation>
-    </message>
-    <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
         <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Game paused</source>
@@ -328,9 +280,30 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Aantal zetten</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="309"/>
-        <source>Board files</source>
-        <translation>Bordbestanden</translation>
+        <location filename="../iqpuzzle.cpp" line="111"/>
+        <location filename="../iqpuzzle.cpp" line="121"/>
+        <location filename="../iqpuzzle.cpp" line="252"/>
+        <location filename="../iqpuzzle.cpp" line="262"/>
+        <source>File not found</source>
+        <translation>Bestand niet gevonden</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="112"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="253"/>
+        <location filename="../iqpuzzle.cpp" line="263"/>
+        <source>The chosen file does not exist.</source>
+        <translation>Het gekozen bestand bestaat niet.</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="137"/>
+        <source>Games share path does not exist!</source>
+        <translation>Het spelpad bestaat niet!</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="295"/>
+        <source>Unknown</source>
+        <translation>Onbekend</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="299"/>
@@ -338,9 +311,14 @@ Het is verkleind naar de standaardgrootte.</translation>
         <translation>Oplossingen</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="137"/>
-        <source>Games share path does not exist!</source>
-        <translation>Het spelpad bestaat niet!</translation>
+        <location filename="../iqpuzzle.cpp" line="307"/>
+        <source>Load board</source>
+        <translation>Bord laden</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="309"/>
+        <source>Board files</source>
+        <translation>Bordbestanden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
@@ -352,6 +330,11 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../iqpuzzle.cpp" line="516"/>
         <source>Save games</source>
         <translation>Opgeslagen spellen</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="494"/>
+        <source>Invalid saved puzzle.</source>
+        <translation>Ongeldige opgeslagen puzzel.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="587"/>
@@ -373,6 +356,21 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../iqpuzzle.cpp" line="681"/>
         <source>Unsolved</source>
         <translation>Onopgelost</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="684"/>
+        <source>Easy</source>
+        <translation>Makkelijk</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="691"/>
+        <source>Medium</source>
+        <translation>Gemiddeld</translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.cpp" line="698"/>
+        <source>Hard</source>
+        <translation>Moeilijk</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="706"/>
@@ -435,14 +433,14 @@ Het is verkleind naar de standaardgrootte.</translation>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Horizontal wheel</source>
-        <translation>Horizontaal schuiven</translation>
+        <source>Vertical wheel</source>
+        <translation>Verticaal schuiven</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
-        <source>Vertical wheel</source>
-        <translation>Verticaal schuiven</translation>
+        <source>Horizontal wheel</source>
+        <translation>Horizontaal schuiven</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="108"/>
