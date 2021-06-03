@@ -3,6 +3,7 @@
 set -o errexit -o nounset
 
 echo "Building..."
+lrelease iqpuzzle.pro
 qmake CONFIG+=release PREFIX=/usr
 make -j$(nproc)
 make INSTALL_ROOT=appdir -j$(nproc) install

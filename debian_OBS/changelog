@@ -1,3 +1,11 @@
+iqpuzzle (1.2.5-0) unstable; urgency=low
+
+  [ Thorsten Roth ]
+  * Add Norwegian translation (thanks to Allan Nordhoy)
+  * Update Italian translation (thanks to albanobattistella)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Thu, 03 Jun 2021 14:21:00 +0200
+
 iqpuzzle (1.2.4-0) unstable; urgency=low
 
   [ Thorsten Roth ]

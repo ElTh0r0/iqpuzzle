@@ -10,6 +10,7 @@ script:
   - cd $BUILD_SOURCE_DIR
   - tar zxvf iqpuzzle-*.tar.gz
   - cd iqpuzzle-*
+  - lrelease iqpuzzle.pro
   - qmake-qt5 CONFIG+=release PREFIX=/usr
   - make
   - make INSTALL_ROOT=$BUILD_APPDIR install

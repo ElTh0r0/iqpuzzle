@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 03 14:21:00 UTC 2021 - elthoro@gmx.de 1.2.5
+
+- Add Norwegian translation (thanks to Allan Nordhoy)
+- Update Italian translation (thanks to albanobattistella)
+
+-------------------------------------------------------------------
 Sat Apr 24 14:18:00 UTC 2021 - elthoro@gmx.de 1.2.4
 
 - Add support for Qt 6
