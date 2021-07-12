@@ -71,7 +71,6 @@ make %{?_smp_mflags}
 %install
 make install INSTALL_ROOT=%{buildroot}
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
-appstream-util validate-relax --nonet %{buildroot}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml || :
 
 %clean
 rm -rf %{buildroot}
