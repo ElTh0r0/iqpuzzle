@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="it">
 <context>
     <name>Board</name>
     <message>
@@ -11,7 +13,7 @@
         <location filename="../board.cpp" line="310"/>
         <location filename="../board.cpp" line="416"/>
         <source>Warning</source>
-        <translation>Avvertimento</translation>
+        <translation>Avviso</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="69"/>
@@ -256,7 +258,7 @@ Griglia ridotta al valore predefinito.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="84"/>
-        <location filename="../iqpuzzle.cpp" line="772"/>
+        <location filename="../iqpuzzle.cpp" line="768"/>
         <source>Game paused</source>
         <translation>Gioco in pausa</translation>
     </message>
@@ -275,7 +277,7 @@ Griglia ridotta al valore predefinito.</translation>
         <location filename="../iqpuzzle.cpp" line="275"/>
         <location filename="../iqpuzzle.cpp" line="344"/>
         <location filename="../iqpuzzle.cpp" line="588"/>
-        <location filename="../iqpuzzle.cpp" line="776"/>
+        <location filename="../iqpuzzle.cpp" line="772"/>
         <source>Moves</source>
         <translation>Mosse</translation>
     </message>
@@ -342,58 +344,58 @@ Griglia ridotta al valore predefinito.</translation>
         <translation>Puzzle risolto!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="671"/>
+        <location filename="../iqpuzzle.cpp" line="667"/>
         <source>Statistics</source>
         <translation>Statistiche</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="679"/>
-        <location filename="../iqpuzzle.cpp" line="705"/>
+        <location filename="../iqpuzzle.cpp" line="675"/>
+        <location filename="../iqpuzzle.cpp" line="701"/>
         <source>Total</source>
         <translation>Totale</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="681"/>
+        <location filename="../iqpuzzle.cpp" line="677"/>
         <source>Unsolved</source>
         <translation>Irrisolti</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="684"/>
+        <location filename="../iqpuzzle.cpp" line="680"/>
         <source>Easy</source>
         <translation>Facile</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="691"/>
+        <location filename="../iqpuzzle.cpp" line="687"/>
         <source>Medium</source>
         <translation>Medio</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="698"/>
+        <location filename="../iqpuzzle.cpp" line="694"/>
         <source>Hard</source>
         <translation>Difficile</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="706"/>
+        <location filename="../iqpuzzle.cpp" line="702"/>
         <source>including unknown difficulty</source>
         <translation>includi difficoltà sconosciute</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="726"/>
+        <location filename="../iqpuzzle.cpp" line="722"/>
         <source>About</source>
         <translation>Riguardo a</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="742"/>
+        <location filename="../iqpuzzle.cpp" line="738"/>
         <source>License</source>
         <translation>Licenza</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="745"/>
+        <location filename="../iqpuzzle.cpp" line="741"/>
         <source>This application uses icons from &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;Tango project&lt;/a&gt;.</source>
         <translation>Questa applicazione usa icone del &lt;a href=&quot;http://tango.freedesktop.org&quot;&gt;progetto Tango&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="748"/>
+        <location filename="../iqpuzzle.cpp" line="744"/>
         <source>Translations</source>
         <translation>Traduzioni</translation>
     </message>
