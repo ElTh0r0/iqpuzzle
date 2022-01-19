@@ -249,7 +249,6 @@ auto Board::createBlocks() -> bool {
 
 auto Board::createBarriers() -> bool {
   const unsigned char nMaxNumOfBlocks(250);
-  bool bIsBoardBG;
   QColor cBG(this->readColor(QStringLiteral("BGColor")));
 
   for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {
@@ -267,8 +266,8 @@ auto Board::createBarriers() -> bool {
       return false;
     }
 
-    bIsBoardBG = (cBG == this->readColor(sPrefix + "/Color") &&
-                  cBG == this->readColor(sPrefix + "/BorderColor"));
+    bool bIsBoardBG = (cBG == this->readColor(sPrefix + "/Color") &&
+                       cBG == this->readColor(sPrefix + "/BorderColor"));
 
     // Create new barrier
     m_listBlocks.append(new Block(

@@ -48,7 +48,7 @@ class Block : public QGraphicsObject {
     Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
           QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
           Settings *pSettings, QPointF posTopLeft = QPoint(0, 0),
-          const bool bBarrier = false);
+          const bool bBarrier = false, QObject *pParentObj = nullptr);
 
     auto boundingRect() const -> QRectF override;
     auto shape() const -> QPainterPath override;

@@ -35,7 +35,8 @@
 
 Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
-             Settings *pSettings, QPointF posTopLeft, const bool bBarrier)
+             Settings *pSettings, QPointF posTopLeft, const bool bBarrier,
+             QObject *pParentObj)
   : m_nID(nID),
     m_nZBlock(1000),
     m_nZBarrier(1),
@@ -47,6 +48,7 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
     m_pListBlocks(pListBlocks),
     m_pSettings(pSettings),
     m_bActive(false) {
+  Q_UNUSED(pParentObj)
   if (!m_PolyShape.isClosed()) {
     qWarning() << "Shape" << m_nID << "is not closed";
   }
@@ -181,7 +183,7 @@ void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
   int nIndex(m_pSettings->getMouseControls().indexOf(
-                 (quint8(p_Event->orientation()) | Settings::nSHIFT)));
+               (quint32(p_Event->orientation()) | Settings::nSHIFT)));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 1:
