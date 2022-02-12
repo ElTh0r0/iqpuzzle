@@ -1,3 +1,11 @@
+iqpuzzle (1.2.6-0) unstable; urgency=low
+
+  [ Thorsten Roth ]
+  * Add Chinese translation (thanks to liulitchi)
+  * Add Italian man page and fix for translation (thanks to davi92)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 12 Feb 2022 16:40:00 +0200
+ 
 iqpuzzle (1.2.5-0) unstable; urgency=low
 
   [ Thorsten Roth ]
