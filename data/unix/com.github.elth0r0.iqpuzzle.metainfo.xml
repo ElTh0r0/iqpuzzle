@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Thorsten Roth -->
+<!-- Copyright 2022 Thorsten Roth -->
 <component type="desktop-application">
   <id>com.github.elth0r0.iqpuzzle.desktop</id>
   <metadata_license>FSFAP</metadata_license>
@@ -35,6 +35,15 @@
   <content_rating type="oars-1.0" />
   
   <releases>
+    <release version="1.2.6" date="2022-02-12">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Add Chinese translation - thanks to liulitchi!</li>
+          <li>Add Italian man page and fix for translation - thanks to davi92!</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.5" date="2021-06-03">
       <description>
         <p>Main changes:</p>

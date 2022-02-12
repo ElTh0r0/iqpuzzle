@@ -1,9 +1,9 @@
 /**
- * \file CIQPuzzle.cpp
+ * \file iqpuzzle.cpp
  *
  * \section LICENSE
  *
- * Copyright (C) 2012-2021 Thorsten Roth
+ * Copyright (C) 2012-2022 Thorsten Roth
  *
  * This file is part of iQPuzzle.
  *
@@ -744,6 +744,7 @@ void IQPuzzle::showInfoBox() {
              "<i>" + tr("Translations") +
              "</i><br />"
              "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+             "&nbsp;&nbsp;- Chinese: liulitchi<br />"
              "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
              "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
              "&nbsp;&nbsp;- German: ElThoro<br />"

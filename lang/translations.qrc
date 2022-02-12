@@ -8,5 +8,6 @@
         <file>iqpuzzle_ko.qm</file>
         <file>iqpuzzle_nb_NO.qm</file>
         <file>iqpuzzle_nl.qm</file>
+        <file>iqpuzzle_zh_CN.qm</file>
     </qresource>
 </RCC>
