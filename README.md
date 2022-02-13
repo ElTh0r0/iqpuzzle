@@ -1,4 +1,4 @@
-# iQPuzzle [![Build status](https://ci.appveyor.com/api/projects/status/wn8nxv8qt26j1eyh/branch/master?svg=true)](https://ci.appveyor.com/project/ElTh0r0/iqpuzzle/branch/master) [![Build Status](https://travis-ci.com/ElTh0r0/iqpuzzle.svg?branch=master)](https://travis-ci.com/ElTh0r0/iqpuzzle) ![CI Workflow](https://github.com/ElTh0r0/iqpuzzle/actions/workflows/ci.yml/badge.svg)
+# iQPuzzle [![Build status](https://ci.appveyor.com/api/projects/status/wn8nxv8qt26j1eyh/branch/master?svg=true)](https://ci.appveyor.com/project/ElTh0r0/iqpuzzle/branch/master) ![CI Workflow](https://github.com/ElTh0r0/iqpuzzle/actions/workflows/ci.yml/badge.svg)
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and more than 300 different board shapes are available, which have to be filled with them.
 
 ![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
@@ -17,6 +17,8 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 
 ## Help translating
 New translations and corrections are highly welcome! You can either fork the source code from GitHub, make your changes and create a pull request or you can participate on Transifex: https://www.transifex.com/elth0r0/iqpuzzle/
+
+Additionally see [this page](https://github.com/ElTh0r0/iqpuzzle/issues/10) at GitHub.
 
 ## Create your own level
 Manual for creating own levels can be found in the wiki: https://github.com/ElTh0r0/iqpuzzle/wiki
