@@ -32,7 +32,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 
 ## [](#release-notes)Release notes
 ###### v1.2.6 (12. Feb 2022)
-* dd Chinese translation (thanks to liulitchi)
+* Add Chinese translation (thanks to liulitchi)
 * Add Italian man page and fix for translation (thanks to davi92)
 
 ###### v1.2.5 (03. Jun 2021)
