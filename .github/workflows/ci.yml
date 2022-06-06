@@ -29,7 +29,7 @@ jobs:
 
     - name: Download ffsend
       run: |
-       FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
+       FFSEND_VERSION=$(curl --silent https://api.github.com/repos/timvisee/ffsend/releases/latest | sed -Ene '/^ *"tag_name": *"(v.+)",$/s//\1/p')
        wget -c -nv "https://github.com/timvisee/ffsend/releases/download/$FFSEND_VERSION/ffsend-$FFSEND_VERSION-linux-x64-static"
        mv ./ffsend-* ./ffsend
        chmod a+x ./ffsend
@@ -64,7 +64,7 @@ jobs:
 
     - name: Download ffsend
       run: |
-       FFSEND_VERSION=$(curl --silent "https://github.com/timvisee/ffsend/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')
+       FFSEND_VERSION=$(curl --silent https://api.github.com/repos/timvisee/ffsend/releases/latest | sed -Ene '/^ *"tag_name": *"(v.+)",$/s//\1/p')
        curl -L https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos > ffsend
        chmod +x ./ffsend
 
