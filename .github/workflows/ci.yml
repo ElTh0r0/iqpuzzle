@@ -85,5 +85,4 @@ jobs:
     - name: Upload macOS zip
       run: |
        cd build
-       mv "../ffsend" "./ffsend"
-       ./ffsend upload iQPuzzle_*_macOS.zip
+       ffsend upload iQPuzzle_*_macOS.zip
