@@ -59,14 +59,8 @@ jobs:
 
     - name: Install Dependencies
       run: |
-       brew install p7zip qt
+       brew install p7zip qt ffsend
        PATH=/usr/local/opt/qt/bin/:${PATH}
-
-    - name: Download ffsend
-      run: |
-       FFSEND_VERSION=$(curl --silent https://api.github.com/repos/timvisee/ffsend/releases/latest | sed -Ene '/^ *"tag_name": *"(v.+)",$/s//\1/p')
-       curl -L https://github.com/timvisee/ffsend/releases/download/${FFSEND_VERSION}/ffsend-${FFSEND_VERSION}-macos > ffsend
-       chmod +x ./ffsend
 
     - name: Compile
       run: |
