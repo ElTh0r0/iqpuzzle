@@ -21,7 +21,7 @@
  * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
- * Main application generation (gui, object creation etc.).
+ * Main application generation (GUI, object creation etc.).
  */
 
 #include "./iqpuzzle.h"
@@ -388,7 +388,7 @@ void IQPuzzle::randomGame(const int nChoice) {
                            m_sListFiles.at(nChoice-1)->at(nRand));
       }
     } else {
-      qWarning() << "Game file list is emtpy!";
+      qWarning() << "Game file list is empty!";
       QMessageBox::warning(this, qApp->applicationName(),
                            tr("No boards available!"));
     }

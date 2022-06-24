@@ -457,7 +457,7 @@ void Board::checkPuzzleSolved() {
       tempPath = tempPath.subtracted(boardPath);
       // Intersection
       if (!tempPath.isEmpty() &&
-      // Block touches board outline, but completly outside
+      // Block touches board outline, but completely outside
           tempPath != tempPath2) {
         return;
       }

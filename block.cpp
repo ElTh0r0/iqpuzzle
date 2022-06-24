@@ -101,7 +101,7 @@ void Block::paint(QPainter *painter,
 
   m_borderPen.setWidth(1/m_nGrid);
 
-  if (m_bActive) {  // Barries are ignored (not enabled)
+  if (m_bActive) {  // Barriers are ignored (not enabled)
     painter->setOpacity(OPACITY);
   } else {
     painter->setOpacity(1);
