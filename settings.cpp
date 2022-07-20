@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Settings dialog.
@@ -34,14 +34,12 @@
 #include "ui_settings.h"
 
 Settings::Settings(QString sSharePath, QWidget *pParent)
-  : QDialog(pParent),
-    m_sSharePath(std::move(sSharePath)) {
+    : QDialog(pParent), m_sSharePath(std::move(sSharePath)) {
   qDebug() << Q_FUNC_INFO;
 
   m_pUi = new Ui::SettingsDialog();
   m_pUi->setupUi(this);
-  this->setWindowFlags(this->windowFlags()
-                       & ~Qt::WindowContextHelpButtonHint);
+  this->setWindowFlags(this->windowFlags() & ~Qt::WindowContextHelpButtonHint);
   this->setModal(true);
 
 #if defined _WIN32
@@ -57,20 +55,20 @@ Settings::Settings(QString sSharePath, QWidget *pParent)
   m_sListMouseButtons << tr("Left") << tr("Middle") << tr("Right");
   m_listMouseButtons << Qt::LeftButton << Qt::MiddleButton << Qt::RightButton;
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
-  m_sListMouseButtons << tr("First X") << tr("Second X")
-                      << tr("Vertical wheel") << tr("Horizontal wheel");
+  m_sListMouseButtons << tr("First X") << tr("Second X") << tr("Vertical wheel")
+                      << tr("Horizontal wheel");
   m_listMouseButtons << Qt::XButton1 << Qt::XButton2
-                     << (quint8(Qt::Vertical)|nSHIFT)
-                     << (quint8(Qt::Horizontal)|nSHIFT);
+                     << (quint8(Qt::Vertical) | nSHIFT)
+                     << (quint8(Qt::Horizontal) | nSHIFT);
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
   m_pUi->cbGuiLanguage->addItems(this->searchTranslations());
 
-  connect(m_pUi->buttonBox, &QDialogButtonBox::accepted,
-          this, &Settings::accept);
-  connect(m_pUi->buttonBox, &QDialogButtonBox::rejected,
-          this, &QDialog::reject);
+  connect(m_pUi->buttonBox, &QDialogButtonBox::accepted, this,
+          &Settings::accept);
+  connect(m_pUi->buttonBox, &QDialogButtonBox::rejected, this,
+          &QDialog::reject);
   this->readSettings();
 }
 
@@ -94,19 +92,19 @@ void Settings::accept() {
   qDebug() << Q_FUNC_INFO;
 
   QList<uint> tmp_listMouseControls;
-  tmp_listMouseControls << m_listMouseButtons[
-                           m_pUi->cbMoveBlockMouse->currentIndex()];
-  tmp_listMouseControls << m_listMouseButtons[
-                           m_pUi->cbRotateBlockMouse->currentIndex()];
-  tmp_listMouseControls << m_listMouseButtons[
-                           m_pUi->cbFlipBlockMouse->currentIndex()];
+  tmp_listMouseControls
+      << m_listMouseButtons[m_pUi->cbMoveBlockMouse->currentIndex()];
+  tmp_listMouseControls
+      << m_listMouseButtons[m_pUi->cbRotateBlockMouse->currentIndex()];
+  tmp_listMouseControls
+      << m_listMouseButtons[m_pUi->cbFlipBlockMouse->currentIndex()];
 
   if (tmp_listMouseControls[0] == tmp_listMouseControls[1] ||
       tmp_listMouseControls[0] == tmp_listMouseControls[2] ||
       tmp_listMouseControls[1] == tmp_listMouseControls[2]) {
     QMessageBox::warning(nullptr, this->windowTitle(),
-                             tr("Please change your settings. Same mouse "
-                                "button is used for several actions."));
+                         tr("Please change your settings. Same mouse "
+                            "button is used for several actions."));
     return;
   }
   m_listMouseControls[0] = tmp_listMouseControls[0];
@@ -142,20 +140,20 @@ void Settings::accept() {
 // ----------------------------------------------------------------------------
 
 void Settings::readSettings() {
-  m_sGuiLanguage = m_pSettings->value(QStringLiteral("GuiLanguage"),
-                                      QStringLiteral("auto")).toString();
+  m_sGuiLanguage =
+      m_pSettings->value(QStringLiteral("GuiLanguage"), QStringLiteral("auto"))
+          .toString();
   if (-1 != m_pUi->cbGuiLanguage->findText(m_sGuiLanguage)) {
     m_pUi->cbGuiLanguage->setCurrentIndex(
-          m_pUi->cbGuiLanguage->findText(m_sGuiLanguage));
+        m_pUi->cbGuiLanguage->findText(m_sGuiLanguage));
   } else {
     m_pUi->cbGuiLanguage->setCurrentIndex(
-          m_pUi->cbGuiLanguage->findText(QStringLiteral("auto")));
+        m_pUi->cbGuiLanguage->findText(QStringLiteral("auto")));
   }
   m_sGuiLanguage = m_pUi->cbGuiLanguage->currentText();
 
-  m_bUseSystemBackground = m_pSettings->value(
-                             QStringLiteral("UseSystemBackground"),
-                             false).toBool();
+  m_bUseSystemBackground =
+      m_pSettings->value(QStringLiteral("UseSystemBackground"), false).toBool();
   m_pUi->checkSystemBackground->setChecked(m_bUseSystemBackground);
 
   m_nEasy = m_pSettings->value(QStringLiteral("ThresholdEasy"), 200).toUInt();
@@ -166,19 +164,20 @@ void Settings::readSettings() {
   m_listMouseControls.clear();
   m_listMouseControls << 0 << 0 << 0;
   m_pSettings->beginGroup(QStringLiteral("MouseControls"));
-  m_listMouseControls[0] = m_pSettings->value(QStringLiteral("MoveBlock"),
-                                              Qt::LeftButton).toUInt();
-  m_listMouseControls[1] = m_pSettings->value(QStringLiteral("RotateBlock"),
-                                              (quint8(Qt::Vertical) |
-                                               nSHIFT)).toUInt();
-  m_listMouseControls[2] = m_pSettings->value(QStringLiteral("FlipBlock"),
-                                              Qt::RightButton).toUInt();
+  m_listMouseControls[0] =
+      m_pSettings->value(QStringLiteral("MoveBlock"), Qt::LeftButton).toUInt();
+  m_listMouseControls[1] = m_pSettings
+                               ->value(QStringLiteral("RotateBlock"),
+                                       (quint8(Qt::Vertical) | nSHIFT))
+                               .toUInt();
+  m_listMouseControls[2] =
+      m_pSettings->value(QStringLiteral("FlipBlock"), Qt::RightButton).toUInt();
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
   m_pUi->cbRotateBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
   m_pUi->cbFlipBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
   m_pSettings->endGroup();
 }
 
@@ -189,13 +188,9 @@ auto Settings::getMouseControls() const -> QList<uint> {
   return m_listMouseControls;
 }
 
-auto Settings::getEasy() const -> uint {
-  return m_nEasy;
-}
+auto Settings::getEasy() const -> uint { return m_nEasy; }
 
-auto Settings::getHard() const -> uint {
-  return m_nHard;
-}
+auto Settings::getHard() const -> uint { return m_nHard; }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -208,19 +203,19 @@ void Settings::updateUiLang() {
   m_pUi->cbMoveBlockMouse->clear();
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
 
-  m_sListMouseButtons << tr("First X") << tr("Second X")
-                      << tr("Vertical wheel") << tr("Horizontal wheel");
+  m_sListMouseButtons << tr("First X") << tr("Second X") << tr("Vertical wheel")
+                      << tr("Horizontal wheel");
   m_pUi->cbRotateBlockMouse->clear();
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->clear();
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
   m_pUi->cbMoveBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(0)));
   m_pUi->cbRotateBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(1)));
   m_pUi->cbFlipBlockMouse->setCurrentIndex(
-        m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
+      m_listMouseButtons.indexOf(m_listMouseControls.at(2)));
 }
 
 // ----------------------------------------------------------------------------
@@ -240,9 +235,8 @@ auto Settings::searchTranslations() -> QStringList {
 
     if (sTmp.startsWith(qApp->applicationName().toLower() + "_") &&
         sTmp.endsWith(QStringLiteral(".qm"))) {
-      sList << sTmp.remove(
-                 qApp->applicationName().toLower() + "_").remove(
-                 QStringLiteral(".qm"));
+      sList << sTmp.remove(qApp->applicationName().toLower() + "_")
+                   .remove(QStringLiteral(".qm"));
     }
   }
 
@@ -256,9 +250,8 @@ auto Settings::searchTranslations() -> QStringList {
     // qDebug() << sTmp;
 
     if (sTmp.startsWith(qApp->applicationName().toLower() + "_")) {
-      sTmp = sTmp.remove(
-               qApp->applicationName().toLower() + "_") .remove(
-               QStringLiteral(".qm"));
+      sTmp = sTmp.remove(qApp->applicationName().toLower() + "_")
+                 .remove(QStringLiteral(".qm"));
       if (!sList.contains(sTmp)) {
         sList << sTmp;
       }
@@ -283,11 +276,12 @@ auto Settings::getLanguage() -> QString {
 #endif
     return QLocale::system().name();
   }
-  if (!QFile(":/" + qApp->applicationName().toLower() +
-             "_" + m_sGuiLanguage + ".qm").exists() &&
-      !QFile(m_sSharePath + "/lang/" +
-             qApp->applicationName().toLower() +
-             "_" + m_sGuiLanguage + ".qm").exists()) {
+  if (!QFile(":/" + qApp->applicationName().toLower() + "_" + m_sGuiLanguage +
+             ".qm")
+           .exists() &&
+      !QFile(m_sSharePath + "/lang/" + qApp->applicationName().toLower() + "_" +
+             m_sGuiLanguage + ".qm")
+           .exists()) {
     m_sGuiLanguage = QStringLiteral("en");
     m_pSettings->setValue(QStringLiteral("GuiLanguage"), m_sGuiLanguage);
     return m_sGuiLanguage;

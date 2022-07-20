@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Block handling (move, rotate, collision check, ...).
@@ -37,17 +37,17 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
              Settings *pSettings, QPointF posTopLeft, const bool bBarrier,
              QObject *pParentObj)
-  : m_nID(nID),
-    m_nZBlock(1000),
-    m_nZBarrier(1),
-    m_bBarrier(bBarrier),
-    m_PolyShape(std::move(shape)),
-    m_bgBrush(bgcolor),
-    m_borderPen(std::move(border)),
-    m_nGrid(nGrid),
-    m_pListBlocks(pListBlocks),
-    m_pSettings(pSettings),
-    m_bActive(false) {
+    : m_nID(nID),
+      m_nZBlock(1000),
+      m_nZBarrier(1),
+      m_bBarrier(bBarrier),
+      m_PolyShape(std::move(shape)),
+      m_bgBrush(bgcolor),
+      m_borderPen(std::move(border)),
+      m_nGrid(nGrid),
+      m_pListBlocks(pListBlocks),
+      m_pSettings(pSettings),
+      m_bActive(false) {
   Q_UNUSED(pParentObj)
   if (!m_PolyShape.isClosed()) {
     qWarning() << "Shape" << m_nID << "is not closed";
@@ -92,14 +92,13 @@ auto Block::shape() const -> QPainterPath {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Block::paint(QPainter *painter,
-                  const QStyleOptionGraphicsItem *option,
+void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                   QWidget *widget) {
   Q_UNUSED(option)
   Q_UNUSED(widget)
   static const qreal OPACITY = 0.4;
 
-  m_borderPen.setWidth(1/m_nGrid);
+  m_borderPen.setWidth(1 / m_nGrid);
 
   if (m_bActive) {  // Barriers are ignored (not enabled)
     painter->setOpacity(OPACITY);
@@ -183,7 +182,7 @@ void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
   int nIndex(m_pSettings->getMouseControls().indexOf(
-               (quint32(p_Event->orientation()) | Settings::nSHIFT)));
+      (quint32(p_Event->orientation()) | Settings::nSHIFT)));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 1:
@@ -215,8 +214,8 @@ void Block::moveBlock(const bool bRelease) {
     this->setPos(this->snapToGrid(this->pos()));
 
     QPainterPath thisPath = this->shape();
-    thisPath.translate(QPointF(this->pos().x() / m_nGrid,
-                               this->pos().y() / m_nGrid));
+    thisPath.translate(
+        QPointF(this->pos().x() / m_nGrid, this->pos().y() / m_nGrid));
 
     emit incrementMoves();
     if (this->checkCollision(thisPath)) {
@@ -252,7 +251,7 @@ void Block::rotateBlock(const int nDelta) {
   // qDebug() << "Before rot.:" << m_nID << nAngle << "\n" << m_PolyShape;
   m_pTransform->reset();
   m_pTransform->rotate(nAngle);
-  m_PolyShape = m_pTransform->map(m_PolyShape);  // Rotate
+  m_PolyShape = m_pTransform->map(m_PolyShape);     // Rotate
   m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
   // qDebug() << "After rot.:" << m_PolyShape;
 
@@ -266,7 +265,7 @@ void Block::flipBlock() {
   this->prepareGeometryChange();
   // qDebug() << "Before flip" << m_nID << "-" << m_PolyShape;
   QTransform transform = QTransform::fromScale(-1, 1);
-  m_PolyShape = transform.map(m_PolyShape);  // Flip
+  m_PolyShape = transform.map(m_PolyShape);                // Flip
   m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
   // qDebug() << "After flip:" << m_PolyShape;
 
@@ -278,8 +277,8 @@ void Block::flipBlock() {
 
 void Block::checkBlockIntersection() {
   QPainterPath thisPath = this->shape();
-  thisPath.translate(QPointF(this->pos().x() / m_nGrid,
-                             this->pos().y() / m_nGrid));
+  thisPath.translate(
+      QPointF(this->pos().x() / m_nGrid, this->pos().y() / m_nGrid));
 
   if (this->checkCollision(thisPath)) {
     m_bgBrush.setTexture(m_CollTexture);
@@ -297,9 +296,7 @@ void Block::resetBrushStyle() const {
   }
 }
 
-void Block::setBrushStyle(Qt::BrushStyle style) {
-  m_bgBrush.setStyle(style);
-}
+void Block::setBrushStyle(Qt::BrushStyle style) { m_bgBrush.setStyle(style); }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -308,11 +305,10 @@ auto Block::checkCollision(const QPainterPath &thisPath) -> bool {
   QPainterPath collidingPath;
   QPainterPath intersectedPath;
   for (auto &pBlock : *m_pListBlocks) {
-    if (pBlock->getIndex() != m_nID
-        && this->collidesWithItem(pBlock)) {
+    if (pBlock->getIndex() != m_nID && this->collidesWithItem(pBlock)) {
       collidingPath = pBlock->shape();
-      collidingPath.translate(QPointF(pBlock->pos().x() / m_nGrid,
-                                      pBlock->pos().y() / m_nGrid));
+      collidingPath.translate(
+          QPointF(pBlock->pos().x() / m_nGrid, pBlock->pos().y() / m_nGrid));
       intersectedPath = thisPath.intersected(collidingPath);
 
       // Path has to be simplified
@@ -344,9 +340,7 @@ auto Block::snapToGrid(const QPointF point) const -> QPointF {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Block::moveBlockGrid(const QPointF pos) {
-  this->setPos(pos * m_nGrid);
-}
+void Block::moveBlockGrid(const QPointF pos) { this->setPos(pos * m_nGrid); }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -390,18 +384,10 @@ auto Block::type() const -> int {
   return Type;
 }
 
-auto Block::getIndex() const -> quint16 {
-  return m_nID;
-}
+auto Block::getIndex() const -> quint16 { return m_nID; }
 
-auto Block::isBarrier() const -> bool {
-  return m_bBarrier;
-}
+auto Block::isBarrier() const -> bool { return m_bBarrier; }
 
-auto Block::getPosition() const -> QPointF {
-  return this->pos();
-}
+auto Block::getPosition() const -> QPointF { return this->pos(); }
 
-auto Block::getPolygon() const -> QPolygonF {
-  return this->m_PolyShape;
-}
+auto Block::getPolygon() const -> QPolygonF { return this->m_PolyShape; }

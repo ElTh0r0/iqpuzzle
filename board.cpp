@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Complete board generation, block setup and check if puzzle is solved.
@@ -37,14 +37,14 @@
 #include "./block.h"
 #include "./settings.h"
 
-Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
-             Settings *pSettings, const quint16 nGridSize,
-             const QString &sSavedGame, QObject *pParentObj)
-  : m_pGraphView(pGraphView),
-    m_sBoardFile(std::move(sBoardFile)),
-    m_pSettings(pSettings),
-    m_bSavedGame(false),
-    m_nGridSize(nGridSize) {
+Board::Board(QGraphicsView *pGraphView, QString sBoardFile, Settings *pSettings,
+             const quint16 nGridSize, const QString &sSavedGame,
+             QObject *pParentObj)
+    : m_pGraphView(pGraphView),
+      m_sBoardFile(std::move(sBoardFile)),
+      m_pSettings(pSettings),
+      m_bSavedGame(false),
+      m_nGridSize(nGridSize) {
   Q_UNUSED(pParentObj)
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
   if (!sSavedGame.isEmpty()) {
@@ -54,13 +54,12 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
 
   if (!m_pSettings->getUseSystemBackground()) {
     this->setBackgroundBrush(
-          QBrush(this->readColor(QStringLiteral("BGColor"))));
+        QBrush(this->readColor(QStringLiteral("BGColor"))));
   }
 
   if (0 == m_nGridSize) {
     m_nGridSize = static_cast<quint16>(
-                    m_pBoardConf->value(
-                      QStringLiteral("GridSize"), 0).toUInt());
+        m_pBoardConf->value(QStringLiteral("GridSize"), 0).toUInt());
   }
   if (0 == m_nGridSize || m_nGridSize > Board::MAXGRID) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
@@ -70,8 +69,8 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
                             "Reduced grid to default."));
   }
 
-  connect(m_pSettings, &Settings::useSystemBackgroundColor,
-          this, &Board::useSystemBackground);
+  connect(m_pSettings, &Settings::useSystemBackgroundColor, this,
+          &Board::useSystemBackground);
 }
 
 // ---------------------------------------------------------------------------
@@ -79,12 +78,12 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile,
 
 auto Board::setupBoard() -> bool {
   qDebug() << Q_FUNC_INFO;
-  m_bFreestyle = m_pBoardConf->value(QStringLiteral("Freestyle"),
-                                     false).toBool();
+  m_bFreestyle =
+      m_pBoardConf->value(QStringLiteral("Freestyle"), false).toBool();
 
   m_BoardPoly.clear();
-  m_BoardPoly = this->readPolygon(m_pBoardConf,
-                                  QStringLiteral("Board/Polygon"), true);
+  m_BoardPoly =
+      this->readPolygon(m_pBoardConf, QStringLiteral("Board/Polygon"), true);
   if (m_BoardPoly.isEmpty()) {
     qWarning() << "BOARD POLYGON IS EMPTY!";
     QMessageBox::warning(nullptr, tr("Warning"),
@@ -107,8 +106,8 @@ auto Board::setupBoard() -> bool {
 
   // Set main window size
   const QSize WinSize(
-        static_cast<int>(m_BoardPoly.boundingRect().width() * 2.5),
-        static_cast<int>(m_BoardPoly.boundingRect().height() * 2.6));
+      static_cast<int>(m_BoardPoly.boundingRect().width() * 2.5),
+      static_cast<int>(m_BoardPoly.boundingRect().height() * 2.6));
   emit setWindowSize(WinSize, m_bFreestyle);
   return true;
 }
@@ -152,15 +151,15 @@ void Board::drawGrid() {
   }
 
   // Horizontal
-  for (int i = 1; i < m_BoardPoly.boundingRect().height()/m_nGridSize; i++) {
-    lineGrid.setLine(1, i*m_nGridSize,
-                     m_BoardPoly.boundingRect().width()-1, i*m_nGridSize);
+  for (int i = 1; i < m_BoardPoly.boundingRect().height() / m_nGridSize; i++) {
+    lineGrid.setLine(1, i * m_nGridSize, m_BoardPoly.boundingRect().width() - 1,
+                     i * m_nGridSize);
     this->addLine(lineGrid, pen);
   }
   // Vertical
-  for (int i = 1; i < m_BoardPoly.boundingRect().width()/m_nGridSize; i++) {
-    lineGrid.setLine(i*m_nGridSize, 1, i*m_nGridSize,
-                     m_BoardPoly.boundingRect().height()-1);
+  for (int i = 1; i < m_BoardPoly.boundingRect().width() / m_nGridSize; i++) {
+    lineGrid.setLine(i * m_nGridSize, 1, i * m_nGridSize,
+                     m_BoardPoly.boundingRect().height() - 1);
     this->addLine(lineGrid, pen);
   }
 }
@@ -173,16 +172,15 @@ auto Board::setupBlocks() -> bool {
   m_nNumOfBlocks = 0;
   m_listBlocks.clear();
 
-  if (this->createBlocks() &&
-      this->createBarriers()) {
+  if (this->createBlocks() && this->createBarriers()) {
     // Add blocks to board
     for (auto &block : m_listBlocks) {
       this->addItem(block);
     }
 
-    m_bNotAllPiecesNeeded = m_pBoardConf->value(
-                              QStringLiteral("NotAllPiecesNeeded"),
-                              false).toBool();
+    m_bNotAllPiecesNeeded =
+        m_pBoardConf->value(QStringLiteral("NotAllPiecesNeeded"), false)
+            .toBool();
     if (m_bNotAllPiecesNeeded) {
       QMessageBox::information(nullptr, tr("Hint"),
                                tr("Not all pieces are needed for a solution."));
@@ -221,16 +219,14 @@ auto Board::createBlocks() -> bool {
 
     // Create new block
     m_listBlocks.append(new Block(
-                          i, polygon, this->readColor(sPrefix + "/Color"),
-                          this->readColor(sPrefix + "/BorderColor"),
-                          m_nGridSize, &m_listBlocks, m_pSettings,
-                          Board::readStartPosition(
-                            tmpSet, sPrefix + "/StartPos")));
+        i, polygon, this->readColor(sPrefix + "/Color"),
+        this->readColor(sPrefix + "/BorderColor"), m_nGridSize, &m_listBlocks,
+        m_pSettings, Board::readStartPosition(tmpSet, sPrefix + "/StartPos")));
     if (!m_bFreestyle) {
-      connect(m_listBlocks.last(), &Block::checkPuzzleSolved,
-              this, &Board::checkPuzzleSolved);
-      connect(m_listBlocks.last(), &Block::incrementMoves,
-              this, &Board::incrementMoves);
+      connect(m_listBlocks.last(), &Block::checkPuzzleSolved, this,
+              &Board::checkPuzzleSolved);
+      connect(m_listBlocks.last(), &Block::incrementMoves, this,
+              &Board::incrementMoves);
     }
   }
 
@@ -271,13 +267,11 @@ auto Board::createBarriers() -> bool {
 
     // Create new barrier
     m_listBlocks.append(new Block(
-                          m_nNumOfBlocks + i, polygon,
-                          this->readColor(sPrefix + "/Color", bIsBoardBG),
-                          this->readColor(sPrefix + "/BorderColor", bIsBoardBG),
-                          m_nGridSize, &m_listBlocks, m_pSettings,
-                          Board::readStartPosition(m_pBoardConf,
-                                                   sPrefix + "/StartPos"),
-                          true));
+        m_nNumOfBlocks + i, polygon,
+        this->readColor(sPrefix + "/Color", bIsBoardBG),
+        this->readColor(sPrefix + "/BorderColor", bIsBoardBG), m_nGridSize,
+        &m_listBlocks, m_pSettings,
+        Board::readStartPosition(m_pBoardConf, sPrefix + "/StartPos"), true));
   }
 
   return true;
@@ -286,8 +280,8 @@ auto Board::createBarriers() -> bool {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::readColor(const QString &sKey,
-                      const bool bColorIsBoardBG) const -> QColor {
+auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
+    -> QColor {
   if (bColorIsBoardBG && m_pSettings->getUseSystemBackground()) {
     return QApplication::palette().color(QPalette::Base);
   }
@@ -298,17 +292,17 @@ auto Board::readColor(const QString &sKey,
   if (sValue.isEmpty()) {
     sValue = QStringLiteral("#00FFFF");
     qWarning() << "Set fallback color for key" << sKey;
-    QMessageBox::warning(nullptr, tr("Warning"),
-                         tr("No color defined - using fallback:") +
-                         "\n" + sKey);
+    QMessageBox::warning(
+        nullptr, tr("Warning"),
+        tr("No color defined - using fallback:") + "\n" + sKey);
   }
   color.setNamedColor(sValue);
   if (!color.isValid()) {
     color = QColor(255, 0, 255);
     qWarning() << "Found invalid color for key" << sKey;
-    QMessageBox::warning(nullptr, tr("Warning"),
-                         tr("Invalid color defined - using fallback:") +
-                         "\n" + sKey);
+    QMessageBox::warning(
+        nullptr, tr("Warning"),
+        tr("Invalid color defined - using fallback:") + "\n" + sKey);
   }
   return color;
 }
@@ -335,7 +329,7 @@ auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
     sListPoint << s.split(',');
     if (2 == sListPoint.size()) {
       polygon << QPointF(sListPoint[0].trimmed().toShort() * nScale,
-          sListPoint[1].trimmed().toShort() * nScale);
+                         sListPoint[1].trimmed().toShort() * nScale);
 
       if (!Board::checkOrthogonality(polygon.last())) {
         qWarning() << "Polygon not orthogonal" << sKey;
@@ -389,8 +383,8 @@ auto Board::checkOrthogonality(QPointF point) -> bool {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::readStartPosition(const QSettings *tmpSet,
-                              const QString &sKey) -> QPointF {
+auto Board::readStartPosition(const QSettings *tmpSet, const QString &sKey)
+    -> QPointF {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();
@@ -412,9 +406,9 @@ auto Board::readStartPosition(const QSettings *tmpSet,
 
   if (!bOk1 || !bOk2) {
     qWarning() << "Found invalid start point for key" << sKey;
-    QMessageBox::warning(nullptr, tr("Warning"),
-                         tr("Invalid start position - using fallback:") +
-                         "\n" + sKey);
+    QMessageBox::warning(
+        nullptr, tr("Warning"),
+        tr("Invalid start position - using fallback:") + "\n" + sKey);
   }
   return point;
 }
@@ -435,8 +429,8 @@ void Board::checkPuzzleSolved() {
   QPainterPath tempPath2;
 
   for (auto &block : m_listBlocks) {
-    QPointF pos = QPointF(block->pos().x() / m_nGridSize,
-                          block->pos().y() / m_nGridSize);
+    QPointF pos =
+        QPointF(block->pos().x() / m_nGridSize, block->pos().y() / m_nGridSize);
 
     // Check, if block is outside the board
     if (!m_bNotAllPiecesNeeded) {
@@ -457,7 +451,7 @@ void Board::checkPuzzleSolved() {
       tempPath = tempPath.subtracted(boardPath);
       // Intersection
       if (!tempPath.isEmpty() &&
-      // Block touches board outline, but completely outside
+          // Block touches board outline, but completely outside
           tempPath != tempPath2) {
         return;
       }
@@ -528,7 +522,7 @@ void Board::doZoom() {
 auto Board::useSystemBackground(const bool bUseSysColor) -> void {
   if (!bUseSysColor) {
     this->setBackgroundBrush(
-          QBrush(this->readColor(QStringLiteral("BGColor"))));
+        QBrush(this->readColor(QStringLiteral("BGColor"))));
   } else {
     this->setBackgroundBrush(Qt::NoBrush);
   }
@@ -537,9 +531,7 @@ auto Board::useSystemBackground(const bool bUseSysColor) -> void {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::getGridSize() const -> quint16 {
-  return m_nGridSize;
-}
+auto Board::getGridSize() const -> quint16 { return m_nGridSize; }
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
@@ -569,8 +561,8 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
     QPolygonF poly = m_listBlocks.at(i)->getPolygon();
     QString sPoly(QLatin1String(""));
     for (auto &point : poly) {
-      sPoly += QString::number(point.x()) + "," +
-               QString::number(point.y()) + " | ";
+      sPoly +=
+          QString::number(point.x()) + "," + QString::number(point.y()) + " | ";
     }
     sPoly.remove(sPoly.length() - 3, sPoly.length());
 
@@ -578,13 +570,13 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
     QPointF pos = m_listBlocks.at(i)->getPosition();
     saveConf.setValue(sPrefix + "/StartPos",
                       QString::number(pos.x() / m_nGridSize) + "," +
-                      QString::number(pos.y() / m_nGridSize));
+                          QString::number(pos.y() / m_nGridSize));
 
     if (sSaveFile.endsWith(QStringLiteral("S0LV3D.debug"))) {
       sDebug += "[" + sPrefix + "]\n";
       sDebug += "Polygon=\"" + sPoly + "\"\n";
-      sDebug += "StartPos=\"" + QString::number(pos.x() / m_nGridSize) +
-                "," + QString::number(pos.y() / m_nGridSize) + "\"\n";
+      sDebug += "StartPos=\"" + QString::number(pos.x() / m_nGridSize) + "," +
+                QString::number(pos.y() / m_nGridSize) + "\"\n";
     }
   }
 

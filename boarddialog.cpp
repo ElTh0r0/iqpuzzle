@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Extended file dialog for showing a board preview.
@@ -33,8 +33,8 @@
 
 BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
                          const QString &sDirectory, const QString &sFilter)
-  : QFileDialog(pParent, sCaption, sDirectory, sFilter),
-    previewsize(250, 250) {
+    : QFileDialog(pParent, sCaption, sDirectory, sFilter),
+      previewsize(250, 250) {
   this->setObjectName(QStringLiteral("BoardFileDialog"));
   // Needed for Windows, otherwise native dialog crashes while adapting layout
   this->setOption(QFileDialog::DontUseNativeDialog, true);
@@ -54,12 +54,12 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
   boxlayout->addWidget(m_pPreview);
   boxlayout->addStretch();
   {
-    auto *layout = reinterpret_cast<QGridLayout*>(this->layout());
+    auto *layout = reinterpret_cast<QGridLayout *>(this->layout());
     layout->addLayout(boxlayout, 1, 3, 3, 1);
   }
 
-  connect(this, &BoardDialog::currentChanged,
-          this, &BoardDialog::OnCurrentChanged);
+  connect(this, &BoardDialog::currentChanged, this,
+          &BoardDialog::OnCurrentChanged);
 }
 
 // ---------------------------------------------------------------------------
@@ -67,8 +67,8 @@ BoardDialog::BoardDialog(QWidget *pParent, const QString &sCaption,
 
 void BoardDialog::OnCurrentChanged(const QString &sPath) {
   QSettings tmpSet(sPath, QSettings::IniFormat);
-  quint32 nSolutions(tmpSet.value(
-                       QStringLiteral("PossibleSolutions"), 0).toUInt());
+  quint32 nSolutions(
+      tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt());
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = tr("Unknown");
@@ -83,9 +83,8 @@ void BoardDialog::OnCurrentChanged(const QString &sPath) {
     m_pPreview->setText("\n" + tr("No preview available"));
   } else {
     m_pPreview->resize(previewsize);
-    m_pPreview->setPixmap(pixmap.scaled(m_pPreview->width(),
-                                        m_pPreview->height(),
-                                        Qt::KeepAspectRatio,
-                                        Qt::SmoothTransformation));
+    m_pPreview->setPixmap(
+        pixmap.scaled(m_pPreview->width(), m_pPreview->height(),
+                      Qt::KeepAspectRatio, Qt::SmoothTransformation));
   }
 }

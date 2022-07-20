@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Class definition for board loading dialog.
@@ -39,19 +39,19 @@ class BoardDialog : public QFileDialog {
   Q_OBJECT
 
  public:
-    explicit BoardDialog(QWidget *pParent = nullptr,
-                         const QString &sCaption = QString(),
-                         const QString &sDirectory = QString(),
-                         const QString &sFilter = QString());
+  explicit BoardDialog(QWidget *pParent = nullptr,
+                       const QString &sCaption = QString(),
+                       const QString &sDirectory = QString(),
+                       const QString &sFilter = QString());
 
  protected slots:
-    void OnCurrentChanged(const QString &sPath);
+  void OnCurrentChanged(const QString &sPath);
 
  private:
-    QLabel *m_pSolutions;
-    QLabel *m_pPreviewCaption;
-    QLabel *m_pPreview;
-    const QSize previewsize;
+  QLabel *m_pSolutions;
+  QLabel *m_pPreviewCaption;
+  QLabel *m_pPreview;
+  const QSize previewsize;
 };
 
 #endif  // BOARDDIALOG_H_

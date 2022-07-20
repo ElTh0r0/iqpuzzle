@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Main application generation (GUI, object creation etc.).
@@ -29,8 +29,8 @@
 #include <QApplication>
 #include <QDebug>
 #include <QDesktopServices>
-#include <QDirIterator>
 #include <QDialogButtonBox>
+#include <QDirIterator>
 #include <QFileDialog>
 #include <QGraphicsTextItem>
 #include <QGraphicsView>
@@ -38,8 +38,8 @@
 #include <QLabel>
 #include <QLibraryInfo>
 #include <QMessageBox>
-#include <QTimer>
 #include <QSettings>
+#include <QTimer>
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QRandomGenerator>
@@ -53,19 +53,19 @@
 
 IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
                    QWidget *pParent)
-  : QMainWindow(pParent),
-    m_pUi(new Ui::IQPuzzle),
-    m_sCurrLang(QString()),
-    m_pBoardDialog(nullptr),
-    m_pBoard(nullptr),
-    m_sSavedGame(QString()),
-    m_userDataDir(userDataDir),
-    m_sSharePath(sharePath.absolutePath()),
-    m_nMoves(0),
-    m_sSavedTime(QString()),
-    m_sSavedMoves(QString()),
-    m_Time(0, 0, 0),
-    m_bSolved(false) {
+    : QMainWindow(pParent),
+      m_pUi(new Ui::IQPuzzle),
+      m_sCurrLang(QString()),
+      m_pBoardDialog(nullptr),
+      m_pBoard(nullptr),
+      m_sSavedGame(QString()),
+      m_userDataDir(userDataDir),
+      m_sSharePath(sharePath.absolutePath()),
+      m_nMoves(0),
+      m_sSavedTime(QString()),
+      m_sSavedMoves(QString()),
+      m_Time(0, 0, 0),
+      m_bSolved(false) {
   qDebug() << Q_FUNC_INFO;
 
   m_pUi->setupUi(this);
@@ -86,8 +86,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pTimer = new QTimer(this);
   connect(m_pTimer, &QTimer::timeout, this, [this]() {
     m_Time = m_Time.addSecs(1);
-    m_pStatusLabelTime->setText(tr("Time") + ": " + m_Time.toString(
-                                  QStringLiteral("hh:mm:ss")));
+    m_pStatusLabelTime->setText(tr("Time") + ": " +
+                                m_Time.toString(QStringLiteral("hh:mm:ss")));
   });
   m_pStatusLabelTime = new QLabel(tr("Time") + ": 00:00:00");
   m_pStatusLabelMoves = new QLabel(tr("Moves") + ": 0");
@@ -101,8 +101,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   QString sLoadBoard(QLatin1String(""));
   if (qApp->arguments().size() > 1) {
     for (auto &sBoard : qApp->arguments()) {
-      if (sBoard.endsWith(QStringLiteral(".conf"),
-                          Qt::CaseInsensitive)) {
+      if (sBoard.endsWith(QStringLiteral(".conf"), Qt::CaseInsensitive)) {
         if (QFile::exists(sBoard)) {
           sStartBoard = sBoard;
           break;
@@ -126,7 +125,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   }
 
   if (!sLoadBoard.isEmpty()) {
-      this->loadGame(sLoadBoard);
+    this->loadGame(sLoadBoard);
   } else {
     if (sStartBoard.isEmpty()) {  // Start rectangle_001 as default
       if (QFile::exists(m_sSharePath + "/boards/rectangles")) {
@@ -149,54 +148,54 @@ IQPuzzle::~IQPuzzle() = default;
 void IQPuzzle::setupMenu() {
   // New game
   m_pUi->action_NewGame->setShortcut(QKeySequence::New);
-  connect(m_pUi->action_NewGame, &QAction::triggered,
-          this, [this]() { startNewGame(); });
+  connect(m_pUi->action_NewGame, &QAction::triggered, this,
+          [this]() { startNewGame(); });
 
   // Random game
   m_pUi->actionAll->setShortcut(Qt::CTRL | Qt::Key_1);
-  connect(m_pUi->actionAll, &QAction::triggered,
-          this, [this]() { randomGame(1); });
+  connect(m_pUi->actionAll, &QAction::triggered, this,
+          [this]() { randomGame(1); });
   m_pUi->actionEasy->setShortcut(Qt::CTRL | Qt::Key_2);
-  connect(m_pUi->actionEasy, &QAction::triggered,
-          this, [this]() { randomGame(2); });
+  connect(m_pUi->actionEasy, &QAction::triggered, this,
+          [this]() { randomGame(2); });
   m_pUi->actionMedium->setShortcut(Qt::CTRL | Qt::Key_3);
-  connect(m_pUi->actionMedium, &QAction::triggered,
-          this, [this]() { randomGame(3); });
+  connect(m_pUi->actionMedium, &QAction::triggered, this,
+          [this]() { randomGame(3); });
   m_pUi->actionHard->setShortcut(Qt::CTRL | Qt::Key_4);
-  connect(m_pUi->actionHard, &QAction::triggered,
-          this, [this]() { randomGame(4); });
+  connect(m_pUi->actionHard, &QAction::triggered, this,
+          [this]() { randomGame(4); });
   m_pUi->actionAllUnsolved->setShortcut(Qt::CTRL | Qt::Key_5);
-  connect(m_pUi->actionAllUnsolved, &QAction::triggered,
-          this, [this]() { randomGame(5); });
+  connect(m_pUi->actionAllUnsolved, &QAction::triggered, this,
+          [this]() { randomGame(5); });
   m_pUi->actionEasyUnsolved->setShortcut(Qt::CTRL | Qt::Key_6);
-  connect(m_pUi->actionEasyUnsolved, &QAction::triggered,
-          this, [this]() { randomGame(6); });
+  connect(m_pUi->actionEasyUnsolved, &QAction::triggered, this,
+          [this]() { randomGame(6); });
   m_pUi->actionMediumUnsolved->setShortcut(Qt::CTRL | Qt::Key_7);
-  connect(m_pUi->actionMediumUnsolved, &QAction::triggered,
-          this, [this]() { randomGame(7); });
+  connect(m_pUi->actionMediumUnsolved, &QAction::triggered, this,
+          [this]() { randomGame(7); });
   m_pUi->actionHardUnsolved->setShortcut(Qt::CTRL | Qt::Key_8);
-  connect(m_pUi->actionHardUnsolved, &QAction::triggered,
-          this, [this]() { randomGame(8); });
+  connect(m_pUi->actionHardUnsolved, &QAction::triggered, this,
+          [this]() { randomGame(8); });
 
   // Restart game
   m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
-  connect(m_pUi->action_RestartGame, &QAction::triggered,
-          this, &IQPuzzle::restartGame);
+  connect(m_pUi->action_RestartGame, &QAction::triggered, this,
+          &IQPuzzle::restartGame);
 
   // Load game
   m_pUi->action_LoadGame->setShortcut(QKeySequence::Open);
-  connect(m_pUi->action_LoadGame, &QAction::triggered,
-          this, [this]() { loadGame(); });
+  connect(m_pUi->action_LoadGame, &QAction::triggered, this,
+          [this]() { loadGame(); });
 
   // Save game
   m_pUi->action_SaveGame->setShortcut(QKeySequence::Save);
-  connect(m_pUi->action_SaveGame, &QAction::triggered,
-          this, &IQPuzzle::saveGame);
+  connect(m_pUi->action_SaveGame, &QAction::triggered, this,
+          &IQPuzzle::saveGame);
 
   // Pause
   m_pUi->action_PauseGame->setShortcut(Qt::Key_P);
-  connect(m_pUi->action_PauseGame, &QAction::triggered,
-          this, &IQPuzzle::pauseGame);
+  connect(m_pUi->action_PauseGame, &QAction::triggered, this,
+          &IQPuzzle::pauseGame);
 
   // Highscore
   m_pUi->action_Highscore->setShortcut(Qt::CTRL | Qt::Key_H);
@@ -204,12 +203,12 @@ void IQPuzzle::setupMenu() {
     QFileInfo fi(m_sBoardFile);
     m_pHighscore->showHighscore(fi.baseName());
   });
-  connect(this, &IQPuzzle::checkHighscore,
-          m_pHighscore, &Highscore::checkHighscore);
+  connect(this, &IQPuzzle::checkHighscore, m_pHighscore,
+          &Highscore::checkHighscore);
 
   // Statistics
-  connect(m_pUi->action_Statistics, &QAction::triggered,
-          this, &IQPuzzle::showStatistics);
+  connect(m_pUi->action_Statistics, &QAction::triggered, this,
+          &IQPuzzle::showStatistics);
 
   // Exit game
   m_pUi->action_Quit->setShortcut(QKeySequence::Quit);
@@ -220,19 +219,18 @@ void IQPuzzle::setupMenu() {
   m_pUi->action_ZoomOut->setShortcut(QKeySequence::ZoomOut);
 
   // Settings
-  connect(m_pUi->action_Preferences, &QAction::triggered,
-          m_pSettings, &Settings::show);
+  connect(m_pUi->action_Preferences, &QAction::triggered, m_pSettings,
+          &Settings::show);
 
   // Report bug
-  connect(m_pUi->action_ReportBug, &QAction::triggered,
-          this, []() {
+  connect(m_pUi->action_ReportBug, &QAction::triggered, this, []() {
     QDesktopServices::openUrl(
-          QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
+        QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
   });
 
   // About
-  connect(m_pUi->action_Info, &QAction::triggered,
-          this, &IQPuzzle::showInfoBox);
+  connect(m_pUi->action_Info, &QAction::triggered, this,
+          &IQPuzzle::showInfoBox);
 }
 
 // ---------------------------------------------------------------------------
@@ -288,15 +286,15 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
 
 void IQPuzzle::setGameTitle() {
   QSettings tmpSet(m_sBoardFile, QSettings::IniFormat);
-  quint32 nSolutions = tmpSet.value(
-                         QStringLiteral("PossibleSolutions"), 0).toUInt();
+  quint32 nSolutions =
+      tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt();
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = tr("Unknown");
   }
 
-  this->setWindowTitle(QFileInfo(m_sBoardFile).baseName() + " ("
-                       + tr("Solutions") + ": " + sSolutions + ")");
+  this->setWindowTitle(QFileInfo(m_sBoardFile).baseName() + " (" +
+                       tr("Solutions") + ": " + sSolutions + ")");
 }
 
 // ---------------------------------------------------------------------------
@@ -304,9 +302,9 @@ void IQPuzzle::setGameTitle() {
 
 auto IQPuzzle::chooseBoard() -> QString {
   delete m_pBoardDialog;
-  m_pBoardDialog = new BoardDialog(this, tr("Load board"),
-                                   m_sSharePath + "/boards",
-                                   tr("Board files") + " (*.conf)");
+  m_pBoardDialog =
+      new BoardDialog(this, tr("Load board"), m_sSharePath + "/boards",
+                      tr("Board files") + " (*.conf)");
 
   if (m_pBoardDialog->exec()) {
     QStringList sListFiles;
@@ -331,14 +329,13 @@ void IQPuzzle::createBoard() {
   }
   delete m_pBoard;
 
-  m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings,
-                       nGridSize, m_sSavedGame);
+  m_pBoard = new Board(m_pGraphView, m_sBoardFile, m_pSettings, nGridSize,
+                       m_sSavedGame);
   sPreviousBoard = m_sBoardFile;
   connect(m_pBoard, &Board::setWindowSize, this, &IQPuzzle::setMinWindowSize);
-  connect(m_pUi->action_ZoomIn, &QAction::triggered,
-          m_pBoard, &Board::zoomIn);
-  connect(m_pUi->action_ZoomOut, &QAction::triggered,
-          m_pBoard, &Board::zoomOut);
+  connect(m_pUi->action_ZoomIn, &QAction::triggered, m_pBoard, &Board::zoomIn);
+  connect(m_pUi->action_ZoomOut, &QAction::triggered, m_pBoard,
+          &Board::zoomOut);
   connect(m_pBoard, &Board::incrementMoves, this, [this]() {
     m_nMoves++;
     m_pStatusLabelMoves->setText(tr("Moves") + ": " +
@@ -373,19 +370,19 @@ void IQPuzzle::randomGame(const int nChoice) {
   qDebug() << "Random game:" << nChoice;
 
   if (nChoice > 0 && nChoice <= m_sListFiles.size()) {
-    if (!m_sListFiles[nChoice-1]->isEmpty()) {
+    if (!m_sListFiles[nChoice - 1]->isEmpty()) {
       int nRand;
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
       nRand = QRandomGenerator::global()->bounded(
-                m_sListFiles.at(nChoice-1)->size());
+          m_sListFiles.at(nChoice - 1)->size());
 #else
       qsrand(static_cast<uint>(QTime::currentTime().msec()));  // Seed
-      nRand = qrand() % m_sListFiles.at(nChoice-1)->size();
+      nRand = qrand() % m_sListFiles.at(nChoice - 1)->size();
 #endif
 
-      if (nRand >= 0 && nRand < m_sListFiles.at(nChoice-1)->size()) {
+      if (nRand >= 0 && nRand < m_sListFiles.at(nChoice - 1)->size()) {
         this->startNewGame(m_sSharePath + "/boards/" +
-                           m_sListFiles.at(nChoice-1)->at(nRand));
+                           m_sListFiles.at(nChoice - 1)->at(nRand));
       }
     } else {
       qWarning() << "Game file list is empty!";
@@ -413,10 +410,9 @@ void IQPuzzle::generateFileLists() {
   const uint nEasy(m_pSettings->getEasy());
   const uint nHard(m_pSettings->getHard());
 
-  QDirIterator it(m_sSharePath + "/boards",
-                  QStringList() << QStringLiteral("*.conf"),
-                  QDir::NoDotAndDotDot | QDir::Files,
-                  QDirIterator::Subdirectories);
+  QDirIterator it(
+      m_sSharePath + "/boards", QStringList() << QStringLiteral("*.conf"),
+      QDir::NoDotAndDotDot | QDir::Files, QDirIterator::Subdirectories);
   while (it.hasNext()) {
     it.next();
     // Filter freestyle boards
@@ -425,17 +421,17 @@ void IQPuzzle::generateFileLists() {
       // qDebug() << sName;
 
       QSettings tmpSet(it.filePath(), QSettings::IniFormat);
-      quint32 nSolutions = tmpSet.value(
-                             QStringLiteral("PossibleSolutions"), 0).toUInt();
+      quint32 nSolutions =
+          tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt();
       bool bSolved = tmpScore.childGroups().contains(
-                       it.fileName().remove(QStringLiteral(".conf")));
+          it.fileName().remove(QStringLiteral(".conf")));
 
       m_sListAll << sName;
       if (!bSolved) m_sListAllUnsolved << sName;
       if (nSolutions >= nEasy) {
         m_sListEasy << sName;
         if (!bSolved) m_sListEasyUnsolved << sName;
-      } else if ((nHard < nSolutions) &&  (nSolutions < nEasy)) {
+      } else if ((nHard < nSolutions) && (nSolutions < nEasy)) {
         m_sListMedium << sName;
         if (!bSolved) m_sListMediumUnsolved << sName;
       } else if ((0 < nSolutions) && (nSolutions <= nHard)) {
@@ -445,9 +441,9 @@ void IQPuzzle::generateFileLists() {
     }
   }
 
-  m_sListFiles << &m_sListAll << &m_sListEasy << &m_sListMedium <<
-                  &m_sListHard << &m_sListAllUnsolved << &m_sListEasyUnsolved <<
-                  &m_sListMediumUnsolved << &m_sListHardUnsolved;
+  m_sListFiles << &m_sListAll << &m_sListEasy << &m_sListMedium << &m_sListHard
+               << &m_sListAllUnsolved << &m_sListEasyUnsolved
+               << &m_sListMediumUnsolved << &m_sListHardUnsolved;
 
   /*
   qDebug() << "Threshold easy:" << nEasy << " Threshold hard:" << nHard;
@@ -474,17 +470,16 @@ void IQPuzzle::restartGame() {
 
 void IQPuzzle::loadGame(QString sSaveFile) {
   if (sSaveFile.isEmpty()) {
-    sSaveFile = QFileDialog::getOpenFileName(
-                  this, tr("Load game"),
-                  m_userDataDir.absolutePath(),
-                  tr("Save games") + "(*.iqsav)");
+    sSaveFile = QFileDialog::getOpenFileName(this, tr("Load game"),
+                                             m_userDataDir.absolutePath(),
+                                             tr("Save games") + "(*.iqsav)");
   }
 
   if (!sSaveFile.isEmpty()) {
     QSettings tmpSet(sSaveFile, QSettings::IniFormat);
     QString sBoard(tmpSet.value(QStringLiteral("BoardFile"), "").toString());
-    QString sBoardRel(tmpSet.value(
-                        QStringLiteral("BoardFileRelative"), "").toString());
+    QString sBoardRel(
+        tmpSet.value(QStringLiteral("BoardFileRelative"), "").toString());
     if (sBoard.isEmpty() || !QFile::exists(sBoard)) {
       if (!sBoardRel.isEmpty() &&
           QFile::exists(qApp->applicationDirPath() + "/" + sBoardRel)) {
@@ -496,8 +491,7 @@ void IQPuzzle::loadGame(QString sSaveFile) {
       }
     }
 
-    QByteArray ba(tmpSet.value(
-                    QStringLiteral("NumOfMoves"), "").toByteArray());
+    QByteArray ba(tmpSet.value(QStringLiteral("NumOfMoves"), "").toByteArray());
     m_sSavedMoves = QString::fromLatin1(QByteArray::fromBase64(ba));
     ba.clear();
     ba = tmpSet.value(QStringLiteral("ElapsedTime"), "").toByteArray();
@@ -510,10 +504,9 @@ void IQPuzzle::loadGame(QString sSaveFile) {
 // ---------------------------------------------------------------------------
 
 void IQPuzzle::saveGame() {
-  QString sFile = QFileDialog::getSaveFileName(
-                    this, tr("Save game"),
-                    m_userDataDir.absolutePath(),
-                    tr("Save games") + "(*.iqsav)");
+  QString sFile = QFileDialog::getSaveFileName(this, tr("Save game"),
+                                               m_userDataDir.absolutePath(),
+                                               tr("Save games") + "(*.iqsav)");
   if (!sFile.isEmpty()) {
     if (!sFile.endsWith(QLatin1String(".iqsav"), Qt::CaseInsensitive)) {
       sFile += QLatin1String(".iqsav");
@@ -535,7 +528,7 @@ void IQPuzzle::pauseGame(const bool bPaused) {
       if (m_pSettings->getUseSystemBackground()) {
         m_pScenePaused->setBackgroundBrush(Qt::NoBrush);
         m_pTextPaused->setDefaultTextColor(
-              QApplication::palette().color(QPalette::WindowText));
+            QApplication::palette().color(QPalette::WindowText));
       } else {
         m_pScenePaused->setBackgroundBrush(QBrush(QColor(238, 238, 238)));
         m_pTextPaused->setDefaultTextColor(QColor(0, 0, 0));
@@ -565,10 +558,10 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
       this->showNormal();
       this->resize(size2);
     }
-    m_pTextPaused->setX(
-          size2.width()/2.5/2 - m_pTextPaused->boundingRect().width()/2);
-    m_pTextPaused->setY(
-          size2.height()/2.6/2 - m_pTextPaused->boundingRect().height()/2);
+    m_pTextPaused->setX(size2.width() / 2.5 / 2 -
+                        m_pTextPaused->boundingRect().width() / 2);
+    m_pTextPaused->setY(size2.height() / 2.6 / 2 -
+                        m_pTextPaused->boundingRect().height() / 2);
 
     if (bFreestyle) {
       m_pGraphView->centerOn(100, 70);
@@ -584,10 +577,10 @@ void IQPuzzle::solvedPuzzle() {
   m_pTimer->stop();
   m_bSolved = true;
   QMessageBox::information(this, qApp->applicationName(),
-                           tr("Puzzle solved!") + "\n\n" +
-                           tr("Moves") + ": " + QString::number(m_nMoves)
-                           + "\n" + tr("Time") + ": "
-                           + m_Time.toString(QStringLiteral("hh:mm:ss")));
+                           tr("Puzzle solved!") + "\n\n" + tr("Moves") + ": " +
+                               QString::number(m_nMoves) + "\n" + tr("Time") +
+                               ": " +
+                               m_Time.toString(QStringLiteral("hh:mm:ss")));
   m_pUi->action_PauseGame->setEnabled(false);
   m_pUi->action_PauseGame->setChecked(false);
   m_pUi->action_SaveGame->setEnabled(false);
@@ -627,17 +620,17 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
 #else
                                     QLibraryInfo::location(
 #endif
-                                      QLibraryInfo::TranslationsPath))) {
+                                        QLibraryInfo::TranslationsPath))) {
       IQPuzzle::switchTranslator(&m_translatorQt, "qt_" + sLang,
                                  m_sSharePath + "/lang");
     }
 
     if (!IQPuzzle::switchTranslator(
-          &m_translator,
-          ":/" + qApp->applicationName().toLower() + "_" + sLang + ".qm")) {
+            &m_translator,
+            ":/" + qApp->applicationName().toLower() + "_" + sLang + ".qm")) {
       IQPuzzle::switchTranslator(
-            &m_translator, qApp->applicationName().toLower() + "_" + sLang,
-            m_sSharePath + "/lang");
+          &m_translator, qApp->applicationName().toLower() + "_" + sLang,
+          m_sSharePath + "/lang");
     }
   }
   m_pUi->retranslateUi(this);
@@ -646,8 +639,7 @@ void IQPuzzle::loadLanguage(const QString &sLang) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto IQPuzzle::switchTranslator(QTranslator *translator,
-                                const QString &sFile,
+auto IQPuzzle::switchTranslator(QTranslator *translator, const QString &sFile,
                                 const QString &sPath) -> bool {
   qApp->removeTranslator(translator);
   if (translator->load(sFile, sPath)) {
@@ -665,49 +657,54 @@ auto IQPuzzle::switchTranslator(QTranslator *translator,
 void IQPuzzle::showStatistics() {
   QDialog dialog(this);
   dialog.setWindowTitle(tr("Statistics"));
-  dialog.setWindowFlags(dialog.window()->windowFlags()
-                        & ~Qt::WindowContextHelpButtonHint);
+  dialog.setWindowFlags(dialog.window()->windowFlags() &
+                        ~Qt::WindowContextHelpButtonHint);
 
   auto *layout = new QGridLayout(&dialog);
   layout->setContentsMargins(10, 10, 10, 10);
   layout->setSpacing(8);
 
-  layout->addWidget(new QLabel("<b>" + tr("Total") + "</b>", &dialog),
-                    0, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel("<b>" + tr("Unsolved") + "</b>", &dialog),
-                    0, 2, Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + tr("Total") + "</b>", &dialog), 0, 1,
+                    Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + tr("Unsolved") + "</b>", &dialog), 0, 2,
+                    Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + tr("Easy") + "</b>", &dialog),
-                    1, 0, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListEasy.size()), &dialog),
-                    1, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListEasyUnsolved.size()),
-                               &dialog), 1, 2, Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + tr("Easy") + "</b>", &dialog), 1, 0,
+                    Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListEasy.size()), &dialog), 1,
+                    1, Qt::AlignCenter);
+  layout->addWidget(
+      new QLabel(QString::number(m_sListEasyUnsolved.size()), &dialog), 1, 2,
+      Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + tr("Medium") + "</b>", &dialog),
-                    2, 0, Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + tr("Medium") + "</b>", &dialog), 2, 0,
+                    Qt::AlignCenter);
   layout->addWidget(new QLabel(QString::number(m_sListMedium.size()), &dialog),
                     2, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListMediumUnsolved.size()),
-                               &dialog), 2, 2, Qt::AlignCenter);
+  layout->addWidget(
+      new QLabel(QString::number(m_sListMediumUnsolved.size()), &dialog), 2, 2,
+      Qt::AlignCenter);
 
-  layout->addWidget(new QLabel("<b>" + tr("Hard") + "</b>", &dialog),
-                    3, 0, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListHard.size()), &dialog),
-                    3, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListHardUnsolved.size()),
-                               &dialog), 3, 2, Qt::AlignCenter);
+  layout->addWidget(new QLabel("<b>" + tr("Hard") + "</b>", &dialog), 3, 0,
+                    Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListHard.size()), &dialog), 3,
+                    1, Qt::AlignCenter);
+  layout->addWidget(
+      new QLabel(QString::number(m_sListHardUnsolved.size()), &dialog), 3, 2,
+      Qt::AlignCenter);
 
   layout->addWidget(new QLabel("<b>" + tr("Total") + "</b> - " +
-                               tr("including unknown difficulty") + ":",
-                               &dialog), 4, 0, 1, 3, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListAll.size()), &dialog),
-                    5, 1, Qt::AlignCenter);
-  layout->addWidget(new QLabel(QString::number(m_sListAllUnsolved.size()),
-                               &dialog), 5, 2, Qt::AlignCenter);
+                                   tr("including unknown difficulty") + ":",
+                               &dialog),
+                    4, 0, 1, 3, Qt::AlignCenter);
+  layout->addWidget(new QLabel(QString::number(m_sListAll.size()), &dialog), 5,
+                    1, Qt::AlignCenter);
+  layout->addWidget(
+      new QLabel(QString::number(m_sListAllUnsolved.size()), &dialog), 5, 2,
+      Qt::AlignCenter);
 
-  auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close,
-                                                   Qt::Horizontal, &dialog);
+  auto *buttons =
+      new QDialogButtonBox(QDialogButtonBox::Close, Qt::Horizontal, &dialog);
   connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
   layout->addWidget(buttons, 6, 0, 1, 3, Qt::AlignCenter);
 
@@ -719,39 +716,37 @@ void IQPuzzle::showStatistics() {
 
 void IQPuzzle::showInfoBox() {
   QMessageBox::about(
-        this, tr("About"),
-        QString::fromLatin1("<center>"
-                "<big><b>%1 %2</b></big><br />"
-                "%3<br />"
-                "<small>%4</small><br /><br />"
-                "%5<br />"
-                "%6<br />"
-                "<small>%7</small>"
-                "</center><br />"
-                "%8")
-        .arg(qApp->applicationName(),
-             qApp->applicationVersion(),
-             APP_DESC,
-             APP_COPY,
-             "URL: <a href=\"https://elth0r0.github.io/iqpuzzle/\">"
-             "https://elth0r0.github.io/iqpuzzle/</a>",
-             tr("License") +
-             ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
-             "GNU General Public License Version 3</a>",
-             tr("This application uses icons from "
-                "<a href=\"http://tango.freedesktop.org\">"
-                "Tango project</a>."),
-             "<i>" + tr("Translations") +
-             "</i><br />"
-             "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
-             "&nbsp;&nbsp;- Chinese: liulitchi<br />"
-             "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
-             "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
-             "&nbsp;&nbsp;- German: ElThoro<br />"
-             "&nbsp;&nbsp;- Italian: davi92, albanobattistella<br />"
-             "&nbsp;&nbsp;- Korean: hyuna1127<br />"
-             "&nbsp;&nbsp;- Norwegian: Allan Nordhøy<br />"
-             "&nbsp;&nbsp;- Misc. corrections: J. Lavoie"));
+      this, tr("About"),
+      QString::fromLatin1("<center>"
+                          "<big><b>%1 %2</b></big><br />"
+                          "%3<br />"
+                          "<small>%4</small><br /><br />"
+                          "%5<br />"
+                          "%6<br />"
+                          "<small>%7</small>"
+                          "</center><br />"
+                          "%8")
+          .arg(qApp->applicationName(), qApp->applicationVersion(), APP_DESC,
+               APP_COPY,
+               "URL: <a href=\"https://elth0r0.github.io/iqpuzzle/\">"
+               "https://elth0r0.github.io/iqpuzzle/</a>",
+               tr("License") +
+                   ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
+                   "GNU General Public License Version 3</a>",
+               tr("This application uses icons from "
+                  "<a href=\"http://tango.freedesktop.org\">"
+                  "Tango project</a>."),
+               "<i>" + tr("Translations") +
+                   "</i><br />"
+                   "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
+                   "&nbsp;&nbsp;- Chinese: liulitchi<br />"
+                   "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
+                   "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
+                   "&nbsp;&nbsp;- German: ElThoro<br />"
+                   "&nbsp;&nbsp;- Italian: davi92, albanobattistella<br />"
+                   "&nbsp;&nbsp;- Korean: hyuna1127<br />"
+                   "&nbsp;&nbsp;- Norwegian: Allan Nordhøy<br />"
+                   "&nbsp;&nbsp;- Misc. corrections: J. Lavoie"));
 }
 
 // ---------------------------------------------------------------------------
@@ -769,8 +764,8 @@ void IQPuzzle::changeEvent(QEvent *pEvent) {
       m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
       this->setMinWindowSize();
 
-      m_pStatusLabelMoves->setText(
-            tr("Moves") + ": " + QString::number(m_nMoves));
+      m_pStatusLabelMoves->setText(tr("Moves") + ": " +
+                                   QString::number(m_nMoves));
       emit updateUiLang();
     }
   }

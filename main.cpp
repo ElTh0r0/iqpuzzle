@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Main function, start application.
@@ -41,12 +41,10 @@
 static QFile logfile;
 static QTextStream out(&logfile);
 
-void setupLogger(const QString &sDebugFilePath,
-                 const QString &sAppName,
+void setupLogger(const QString &sDebugFilePath, const QString &sAppName,
                  const QString &sVersion);
 
-void LoggingHandler(QtMsgType type,
-                    const QMessageLogContext &context,
+void LoggingHandler(QtMsgType type, const QMessageLogContext &context,
                     const QString &sMsg);
 
 auto main(int argc, char *argv[]) -> int {
@@ -78,18 +76,18 @@ auto main(int argc, char *argv[]) -> int {
   // Default share data path (Windows and debugging)
   QString sSharePath = app.applicationDirPath();
   // Standard installation path (Linux)
-  QDir tmpDir(app.applicationDirPath() + "/../share/"
-              + app.applicationName().toLower());
+  QDir tmpDir(app.applicationDirPath() + "/../share/" +
+              app.applicationName().toLower());
   if (!cmdparser.isSet(enableDebug) && tmpDir.exists()) {
-    sSharePath = app.applicationDirPath() + "/../share/"
-                 + app.applicationName().toLower();
+    sSharePath = app.applicationDirPath() + "/../share/" +
+                 app.applicationName().toLower();
   }
 #if defined(Q_OS_OSX)
   sSharePath = app.applicationDirPath() + "/../Resources/";
 #endif
 
-  QStringList sListPaths = QStandardPaths::standardLocations(
-                             QStandardPaths::AppLocalDataLocation);
+  QStringList sListPaths =
+      QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation);
   if (sListPaths.isEmpty()) {
     qCritical() << "Error while getting data standard path.";
     sListPaths << app.applicationDirPath();
@@ -116,8 +114,7 @@ auto main(int argc, char *argv[]) -> int {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void setupLogger(const QString &sDebugFilePath,
-                 const QString &sAppName,
+void setupLogger(const QString &sDebugFilePath, const QString &sAppName,
                  const QString &sVersion) {
   // Remove old debug file
   if (QFile(sDebugFilePath).exists()) {
@@ -134,17 +131,15 @@ void setupLogger(const QString &sDebugFilePath,
 
   qDebug() << sAppName << sVersion;
   qDebug() << "Compiled with Qt" << QT_VERSION_STR;
-  qDebug() << "Qt runtime" <<  qVersion();
+  qDebug() << "Qt runtime" << qVersion();
 }
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-void LoggingHandler(QtMsgType type,
-                    const QMessageLogContext &context,
+void LoggingHandler(QtMsgType type, const QMessageLogContext &context,
                     const QString &sMsg) {
-  QString sContext = sMsg + " (" +
-                     QString::fromLatin1(context.file) + ":" +
+  QString sContext = sMsg + " (" + QString::fromLatin1(context.file) + ":" +
                      QString::number(context.line) + ", " +
                      QString::fromLatin1(context.function) + ")";
 

@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Class definition for highscore.
@@ -40,23 +40,22 @@ class Highscore : public QObject {
   Q_OBJECT
 
  public:
-    explicit Highscore(QWidget *pParent = nullptr,
-                       QObject *pParentObj = nullptr);
+  explicit Highscore(QWidget *pParent = nullptr, QObject *pParentObj = nullptr);
 
  public slots:
-    void showHighscore(const QString &sBoard);
-    void checkHighscore(const QString &sBoard, const quint32 nMoves,
-                        const QTime tTime);
+  void showHighscore(const QString &sBoard);
+  void checkHighscore(const QString &sBoard, const quint32 nMoves,
+                      const QTime tTime);
 
  private:
-    auto readHighscore(const QString &sBoard,
-                       const QString &sKey) const -> QStringList;
-    void insertHighscore(const QString &sBoard, const quint8 nPosition,
-                         const quint32 nMoves, const QTime tTime);
+  auto readHighscore(const QString &sBoard, const QString &sKey) const
+      -> QStringList;
+  void insertHighscore(const QString &sBoard, const quint8 nPosition,
+                       const quint32 nMoves, const QTime tTime);
 
-    QWidget *m_pParent;
-    QSettings *m_pHighscore;
-    const quint8 m_nMAXPOS;
+  QWidget *m_pParent;
+  QSettings *m_pHighscore;
+  const quint8 m_nMAXPOS;
 };
 
 #endif  // HIGHSCORE_H_

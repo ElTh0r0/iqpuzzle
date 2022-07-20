@@ -18,7 +18,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+ * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
  *
  * \section DESCRIPTION
  * Class definition for settings.
@@ -43,44 +43,44 @@ class Settings : public QDialog {
   Q_OBJECT
 
  public:
-    explicit Settings(QString sSharePath, QWidget *pParent = nullptr);
-    virtual ~Settings();
+  explicit Settings(QString sSharePath, QWidget *pParent = nullptr);
+  virtual ~Settings();
 
-    static const quint8 nSHIFT = 0xF0;
-    auto getMouseControls() const -> QList<uint>;
-    auto getLanguage() -> QString;
-    auto getUseSystemBackground() -> bool;
+  static const quint8 nSHIFT = 0xF0;
+  auto getMouseControls() const -> QList<uint>;
+  auto getLanguage() -> QString;
+  auto getUseSystemBackground() -> bool;
 
-    auto getEasy() const -> uint;
-    auto getHard() const -> uint;
+  auto getEasy() const -> uint;
+  auto getHard() const -> uint;
 
  signals:
-    void changeLang(const QString &sLang);
-    void useSystemBackgroundColor(const bool bUseSysColor);
+  void changeLang(const QString &sLang);
+  void useSystemBackgroundColor(const bool bUseSysColor);
 
  public slots:
-    void accept() override;
-    void updateUiLang();
+  void accept() override;
+  void updateUiLang();
 
  protected:
-    void showEvent(QShowEvent *pEvent) override;
+  void showEvent(QShowEvent *pEvent) override;
 
  private:
-    void readSettings();
-    QStringList searchTranslations();
+  void readSettings();
+  QStringList searchTranslations();
 
-    QWidget *m_pParent{};
-    Ui::SettingsDialog *m_pUi;
-    QSettings *m_pSettings;
+  QWidget *m_pParent{};
+  Ui::SettingsDialog *m_pUi;
+  QSettings *m_pSettings;
 
-    QString m_sGuiLanguage;
-    const QString m_sSharePath;
-    QStringList m_sListMouseButtons;
-    QList<uint> m_listMouseButtons;
-    QList<uint> m_listMouseControls;
-    bool m_bUseSystemBackground{};
-    uint m_nEasy{};
-    uint m_nHard{};
+  QString m_sGuiLanguage;
+  const QString m_sSharePath;
+  QStringList m_sListMouseButtons;
+  QList<uint> m_listMouseButtons;
+  QList<uint> m_listMouseControls;
+  bool m_bUseSystemBackground{};
+  uint m_nEasy{};
+  uint m_nHard{};
 };
 
 #endif  // SETTINGS_H_
