@@ -7,7 +7,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
 ## [](#downoads)Downloads
-###### Latest release v1.2.6 (12. Feb 2021)
+###### Latest release v1.2.6 (12. Feb 2022)
 * [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-Windows_Installer.exe)
 * [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-Windows.zip)
 * [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-macOS.zip)
