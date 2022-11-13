@@ -17,13 +17,13 @@
         <location filename="../board.cpp" line="69"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
-        <translation>面板网格不可用。
+        <translation>面板不可用。
 将减为默认值。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
-        <translation>无效的多连方数。</translation>
+        <translation>面板不可用。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
@@ -33,7 +33,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Not all pieces are needed for a solution.</source>
-        <translation>每局完成后，多连方可能会有剩余。</translation>
+        <translation>每局完成后，多连方可能有剩余。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="218"/>
@@ -44,22 +44,22 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="240"/>
         <source>Could not find valid blocks.</source>
-        <translation>找不到可用的面板。</translation>
+        <translation>找不到可用的连方。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="303"/>
         <source>No color defined - using fallback:</source>
-        <translation>未定义颜色 - 使用原来的配置：</translation>
+        <translation>未定义颜色 - 将使用原有的配置：</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="311"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation>定义的颜色无效 - 使用原来的配置：</translation>
+        <translation>定义的颜色无效 - 将使用原有的配置：</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="417"/>
         <source>Invalid start position - using fallback:</source>
-        <translation>起始位置无效 - 使用原来的配置：</translation>
+        <translation>起始位置无效 - 将使用原有的配置：</translation>
     </message>
 </context>
 <context>
@@ -181,7 +181,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="168"/>
         <source>&amp;Restart game</source>
-        <translation>游戏重置 (R)</translation>
+        <translation>重置游戏(R)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="181"/>
@@ -308,7 +308,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="299"/>
         <source>Solutions</source>
-        <translation>解决方案</translation>
+        <translation>谜题</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="307"/>
@@ -323,7 +323,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="393"/>
         <source>No boards available!</source>
-        <translation>无可用的连方！</translation>
+        <translation>无可用的面板！</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="480"/>
@@ -344,7 +344,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="671"/>
         <source>Statistics</source>
-        <translation>数据</translation>
+        <translation>统计数据</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="679"/>
@@ -422,30 +422,30 @@ Reduced grid to default.</source>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="211"/>
         <source>First X</source>
-        <translation>First X</translation>
+        <translation>第一个 X 键</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="211"/>
         <source>Second X</source>
-        <translation>Second X</translation>
+        <translation>第二个 X 键</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
         <source>Vertical wheel</source>
-        <translation>垂直轮</translation>
+        <translation>垂直滚轮</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="212"/>
         <source>Horizontal wheel</source>
-        <translation>水平轮</translation>
+        <translation>水平滚轮</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="108"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation>请修改游戏设置。鼠标按钮操作有冲突。</translation>
+        <translation>请修改游戏设置，鼠标按钮操作有冲突。</translation>
     </message>
 </context>
 <context>
