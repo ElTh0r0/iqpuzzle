@@ -146,7 +146,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="89"/>
         <source>&amp;Help</source>
-        <translation>_Βοήθεια</translation>
+        <translation>Βοήθεια</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -161,12 +161,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="125"/>
         <source>&amp;Quit</source>
-        <translation>_Έξοδος</translation>
+        <translation>Έξοδος</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="135"/>
         <source>&amp;About</source>
-        <translation>_Περί</translation>
+        <translation>Περί</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="145"/>
@@ -181,7 +181,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="168"/>
         <source>&amp;Restart game</source>
-        <translation>_Συνέχιση</translation>
+        <translation>Συνέχιση</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="181"/>
@@ -213,7 +213,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="218"/>
         <source>&amp;Highscore</source>
-        <translation>_Βαθμολογία</translation>
+        <translation>Βαθμολογία</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="228"/>
@@ -229,19 +229,19 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="238"/>
         <location filename="../iqpuzzle.ui" line="263"/>
         <source>&amp;Easy</source>
-        <translation>Εύκο_λο</translation>
+        <translation>Εύκολο</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="243"/>
         <location filename="../iqpuzzle.ui" line="268"/>
         <source>&amp;Medium</source>
-        <translation>_Μεσαίο</translation>
+        <translation>Μεσαίο</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="248"/>
         <location filename="../iqpuzzle.ui" line="273"/>
         <source>&amp;Hard</source>
-        <translation>_Δύσκολο</translation>
+        <translation>Δύσκολο</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="253"/>
