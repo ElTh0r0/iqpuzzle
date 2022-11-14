@@ -54,7 +54,6 @@ Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
 
 void Highscore::showHighscore(const QString &sBoard) {
   Qt::AlignmentFlag Align;
-  QStringList sListTemp;
   QDialog dialog(m_pParent);
   dialog.setWindowTitle(tr("Highscore") + " - " + sBoard);
   dialog.setWindowFlags(dialog.window()->windowFlags() &
@@ -77,7 +76,8 @@ void Highscore::showHighscore(const QString &sBoard) {
     layout->addWidget(new QLabel("#" + QString::number(nRow), &dialog), nRow, 0,
                       Qt::AlignCenter | Qt::AlignVCenter);
 
-    sListTemp = this->readHighscore(sBoard, "Position" + QString::number(nRow));
+    QStringList sListTemp =
+        this->readHighscore(sBoard, "Position" + QString::number(nRow));
 
     for (int nCol = 0; nCol < sListTemp.size(); nCol++) {
       if (nCol > 2) {

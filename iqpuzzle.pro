@@ -22,8 +22,8 @@ unix: !macx {
        TARGET  = iQPuzzle
 }
 
-win32:VERSION  = 1.2.6.0
-else:VERSION   = 1.2.6
+win32:VERSION  = 1.2.7.0
+else:VERSION   = 1.2.7
 
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
@@ -40,12 +40,11 @@ UI_DIR         = ./.ui
 RCC_DIR        = ./.rcc
 
 QT            += core gui widgets
-CONFIG        += c++11
+CONFIG        += c++17
 
 CONFIG(debug, debug|release) {
   CONFIG      += warn_on
-  DEFINES     += QT_DEPRECATED_WARNINGS
-  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060000
+  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060400
 }
 
 SOURCES       += main.cpp\

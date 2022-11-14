@@ -15,7 +15,7 @@ jobs:
       QT_SELECT: qt5
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install Dependencies
       run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools
@@ -55,7 +55,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install Dependencies
       run: |

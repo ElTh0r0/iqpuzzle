@@ -35,6 +35,14 @@
   <content_rating type="oars-1.0" />
   
   <releases>
+    <release version="1.2.7" date="2022-11-14">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Add Greek translation - thanks to liulitchi!</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.6" date="2022-02-12">
       <description>
         <p>Main changes:</p>
