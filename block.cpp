@@ -127,8 +127,8 @@ void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
   this->resetBrushStyle();
 
-  if (int nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
-      nIndex >= 0) {
+  int nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+  if (nIndex >= 0) {
     switch (nIndex) {
       case 0:
         m_posMouseSelected = p_Event->pos();
@@ -181,9 +181,9 @@ void Block::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
-  if (int nIndex(m_pSettings->getMouseControls().indexOf(
-          (quint32(p_Event->orientation()) | Settings::nSHIFT)));
-      nIndex >= 0) {
+  int nIndex(m_pSettings->getMouseControls().indexOf(
+      (quint32(p_Event->orientation()) | Settings::nSHIFT)));
+  if (nIndex >= 0) {
     switch (nIndex) {
       case 1:
         this->rotateBlock(p_Event->delta());

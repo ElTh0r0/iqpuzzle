@@ -40,7 +40,8 @@ UI_DIR         = ./.ui
 RCC_DIR        = ./.rcc
 
 QT            += core gui widgets
-CONFIG        += c++17
+CONFIG        += c++11
+DEFINES       += QT_NO_FOREACH
 
 CONFIG(debug, debug|release) {
   CONFIG      += warn_on
