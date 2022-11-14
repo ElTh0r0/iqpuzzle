@@ -19,6 +19,7 @@ Translations
  - Dutch: Vistaus, Elbert Pol
  - French: kiarn, mothsART
  - German: ElThoro
+ - Greek: liulitchi
  - Italian: davi92, albanobattistella
  - Korean: hyuna1127
  - Norwegian: Allan Nordhoy

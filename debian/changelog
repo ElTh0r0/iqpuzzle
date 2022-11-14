@@ -1,3 +1,10 @@
+iqpuzzle (1.2.7-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Add Greek translation (thanks to liulitchi)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Mon, 14 Nov 2022 19:55:00 +0200
+
 iqpuzzle (1.2.6-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
