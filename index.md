@@ -7,10 +7,10 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
 
 ## [](#downoads)Downloads
-###### Latest release v1.2.6 (12. Feb 2022)
-* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-Windows_Installer.exe)
-* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-Windows.zip)
-* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-macOS.zip)
+###### Latest release v1.2.7 (14. Nov 2022)
+* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.7/iQPuzzle-1.2.7-Windows_Installer.exe)
+* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.7/iQPuzzle-1.2.7-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.7/iQPuzzle-1.2.7-macOS.zip)
 * [Linux AppImage](https://download.opensuse.org/repositories/home:/ElThoro/AppImage/iQPuzzle-latest-x86_64.AppImage)
 * [Flatpak](https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
@@ -19,7 +19,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 * [Build for Mageia Cauldron](https://madb.mageia.org/package/show/name/iqpuzzle/release/cauldron/application/0)
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
-* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.6/iQPuzzle-1.2.6-ReactOS_Installer.exe)
+* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.2.7/iQPuzzle-1.2.7-ReactOS_Installer.exe)
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
@@ -31,6 +31,9 @@ New translations and corrections are highly welcome! You can either fork the sou
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 ## [](#release-notes)Release notes
+###### v1.2.7 (14. Nov 2022)
+* Add Greek translation (thanks to liulitchi)
+
 ###### v1.2.6 (12. Feb 2022)
 * Add Chinese translation (thanks to liulitchi)
 * Add Italian man page and fix for translation (thanks to davi92)
