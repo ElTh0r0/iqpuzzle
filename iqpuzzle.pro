@@ -78,7 +78,8 @@ TRANSLATIONS  += lang/iqpuzzle_bg.ts \
                  lang/iqpuzzle_ko.ts \
                  lang/iqpuzzle_nb_NO.ts \
                  lang/iqpuzzle_nl.ts \
-                 lang/iqpuzzle_zh_CN.ts
+                 lang/iqpuzzle_zh_CN.ts \
+                 lang/iqpuzzle_zh_TW.ts
 
 win32:RC_ICONS = icons/iqpuzzle.ico
 os2:RC_ICONS   = icons/iqpuzzle_os2.ico

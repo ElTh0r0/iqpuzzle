@@ -739,7 +739,7 @@ void IQPuzzle::showInfoBox() {
                "<i>" + tr("Translations") +
                    "</i><br />"
                    "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
-                   "&nbsp;&nbsp;- Chinese: liulitchi<br />"
+                   "&nbsp;&nbsp;- Chinese (zh_CN & zh_TW): liulitchi<br />"
                    "&nbsp;&nbsp;- Dutch: Vistaus, Elbert Pol<br />"
                    "&nbsp;&nbsp;- French: kiarn, mothsART<br />"
                    "&nbsp;&nbsp;- German: ElThoro<br />"
