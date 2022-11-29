@@ -15,7 +15,7 @@ Translations
 ------------
 
  - Bulgarian: bogo1966
- - Chinese: liulitchi
+ - Chinese (zh_CN & zh_TW): liulitchi
  - Dutch: Vistaus, Elbert Pol
  - French: kiarn, mothsART
  - German: ElThoro
