@@ -1,3 +1,10 @@
+iqpuzzle (1.2.8-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Add Chinese zh_TW translation (thanks to liulitchi)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 10 Dec 2022 10:50:00 +0200
+
 iqpuzzle (1.2.7-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
@@ -8,7 +15,7 @@ iqpuzzle (1.2.7-0ubuntu1) bionic; urgency=low
 iqpuzzle (1.2.6-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]
-  * Add Chinese translation (thanks to liulitchi)
+  * Add Chinese zh_CN translation (thanks to liulitchi)
   * Add Italian man page and fix for translation (thanks to davi92)
 
  -- Thorsten Roth <elthoro@gmx.de>  Sat, 12 Feb 2022 16:40:00 +0200

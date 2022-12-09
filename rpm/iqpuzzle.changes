@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Dec 10 10:50:00 UTC 2022 - elthoro@gmx.de 1.2.8
+
+- Add Chinese zh_TW translation (thanks to liulitchi)
+
+-------------------------------------------------------------------
 Mon Nov 14 19:55:00 UTC 2022 - elthoro@gmx.de 1.2.7
 
 - Add Greek translation (thanks to liulitchi)
@@ -6,7 +11,7 @@ Mon Nov 14 19:55:00 UTC 2022 - elthoro@gmx.de 1.2.7
 -------------------------------------------------------------------
 Sat Feb 12 16:40:00 UTC 2022 - elthoro@gmx.de 1.2.6
 
-- Add Chinese translation (thanks to liulitchi)
+- Add Chinese zh_CN translation (thanks to liulitchi)
 - Add Italian man page and fix for translation (thanks to davi92)
 
 -------------------------------------------------------------------

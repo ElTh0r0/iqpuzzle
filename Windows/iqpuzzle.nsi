@@ -4,7 +4,7 @@
   !define DESCRIPTION "A diverting I.Q. challenging pentomino puzzle"
   !define VERSIONMAJOR 1
   !define VERSIONMINOR 2
-  !define VERSIONPATCH 7
+  !define VERSIONPATCH 8
   !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}.0"
   !define ABOUTURL "https://elth0r0.github.io/iqpuzzle/"
 
