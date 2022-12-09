@@ -38,7 +38,7 @@ jobs:
         # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
     - name: Install Dependencies
-      run: sudo apt update && sudo apt install qt5-default qt5-qmake qttools5-dev-tools
+      run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
