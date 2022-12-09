@@ -35,6 +35,14 @@
   <content_rating type="oars-1.0" />
   
   <releases>
+    <release version="1.2.8" date="2022-12-10">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Add Chinese (zh_TW) translation - thanks to liulitchi!</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.7" date="2022-11-14">
       <description>
         <p>Main changes:</p>
@@ -47,7 +55,7 @@
       <description>
         <p>Main changes:</p>
         <ul>
-          <li>Add Chinese translation - thanks to liulitchi!</li>
+          <li>Add Chinese (zh_CN) translation - thanks to liulitchi!</li>
           <li>Add Italian man page and fix for translation - thanks to davi92!</li>
         </ul>
       </description>
