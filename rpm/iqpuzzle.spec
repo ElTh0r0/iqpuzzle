@@ -1,7 +1,7 @@
 #
 # spec file for iQPuzzle
 #
-# Copyright (C) 2012-2022 Thorsten Roth
+# Copyright (C) 2012-present Thorsten Roth
 #
 # iQPuzzle is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
