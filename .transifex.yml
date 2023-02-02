@@ -1,0 +1,8 @@
+filters:
+  - filter_type: file
+    # all supported i18n types: https://docs.transifex.com/formats
+    file_format: QT
+    source_language: en
+    source_file: lang/iqpuzzle_en.ts
+    # path expression to translation files, must contain <lang> placeholder
+    translation_files_expression: 'lang/iqpuzzle_<lang>.ts'
