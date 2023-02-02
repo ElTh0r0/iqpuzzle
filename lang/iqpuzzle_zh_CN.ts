@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_CN" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>Board</name>
     <message>
@@ -18,7 +18,7 @@
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>面板不可用。
-将减为默认值。</translation>
+將減為預設值。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
@@ -39,7 +39,7 @@ Reduced grid to default.</source>
         <location filename="../board.cpp" line="218"/>
         <location filename="../board.cpp" line="266"/>
         <source>Polygon not valid:</source>
-        <translation>无效的多连方：</translation>
+        <translation>無效的多連方：</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="240"/>
@@ -68,7 +68,7 @@ Reduced grid to default.</source>
         <location filename="../boarddialog.cpp" line="44"/>
         <location filename="../boarddialog.cpp" line="76"/>
         <source>Solutions</source>
-        <translation>解答</translation>
+        <translation>难题</translation>
     </message>
     <message>
         <location filename="../boarddialog.cpp" line="45"/>
@@ -113,7 +113,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../highscore.cpp" line="74"/>
         <source>Moves</source>
-        <translation>步数</translation>
+        <translation>步數</translation>
     </message>
     <message>
         <location filename="../highscore.cpp" line="161"/>
@@ -136,17 +136,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="53"/>
         <source>&amp;All available</source>
-        <translation>所有选项(A)</translation>
+        <translation>所有選項(A)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="63"/>
         <source>All &amp;unsolved</source>
-        <translation>全部未解决的谜题(u)</translation>
+        <translation>全部未解決的謎題(u)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="89"/>
         <source>&amp;Help</source>
-        <translation>帮助(H)</translation>
+        <translation>説明(H)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="96"/>
@@ -192,7 +192,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="184"/>
         <location filename="../iqpuzzle.cpp" line="514"/>
         <source>Save game</source>
-        <translation>保存游戏</translation>
+        <translation>保存遊戲</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="194"/>
@@ -267,7 +267,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="278"/>
         <location filename="../iqpuzzle.cpp" line="589"/>
         <source>Time</source>
-        <translation>耗时</translation>
+        <translation>耗時</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="93"/>
@@ -293,12 +293,12 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="253"/>
         <location filename="../iqpuzzle.cpp" line="263"/>
         <source>The chosen file does not exist.</source>
-        <translation>文件不存在。</translation>
+        <translation>檔不存在。</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="137"/>
         <source>Games share path does not exist!</source>
-        <translation>不存在游戏分享路径。</translation>
+        <translation>遊戲分享路徑不存在。</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="295"/>
