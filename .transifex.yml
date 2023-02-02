@@ -1,4 +1,5 @@
-filters:
+git:
+  filters:
   - filter_type: file
     # all supported i18n types: https://docs.transifex.com/formats
     file_format: QT
