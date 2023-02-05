@@ -79,6 +79,7 @@ TRANSLATIONS  += lang/iqpuzzle_bg.ts \
                  lang/iqpuzzle_nb_NO.ts \
                  lang/iqpuzzle_nl.ts \
                  lang/iqpuzzle_pt.ts \
+                 lang/iqpuzzle_pt_BR.ts \
                  lang/iqpuzzle_zh_CN.ts \
                  lang/iqpuzzle_zh_TW.ts
 
