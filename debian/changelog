@@ -1,3 +1,10 @@
+iqpuzzle (1.2.9-0ubuntu1) bionic; urgency=low
+
+  [ Thorsten Roth ]
+  * Add Portuguese pt and pt_BR translation (thanks to UchidoF)
+
+ -- Thorsten Roth <elthoro@gmx.de>  Thu, 09 Feb 2023 17:42:00 +0200
+ 
 iqpuzzle (1.2.8-0ubuntu1) bionic; urgency=low
 
   [ Thorsten Roth ]

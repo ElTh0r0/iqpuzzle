@@ -23,6 +23,7 @@ Translations
  - Italian: davi92, albanobattistella
  - Korean: hyuna1127
  - Norwegian: Allan Nordhoy
+ - Portuguese (pt & pt_BR): UchidoF
  - Misc. corrections: J. Lavoie
 
 New translations and corrections are highly welcome! You can either fork the
