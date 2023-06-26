@@ -12,7 +12,7 @@ environment:
       QTDIR: C:\Qt\6.5\mingw_64
       MINGW_DIR: C:\Qt\Tools\mingw1120_64
       PRO_MAKE: mingw32-make
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
     - BUILD: msvc2019_64
       QTDIR: C:\Qt\5.15\msvc2019_64
       PRO_MAKE: nmake
