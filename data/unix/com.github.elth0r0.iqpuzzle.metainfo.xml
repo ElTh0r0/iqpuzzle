@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021 Thorsten Roth -->
 <component type="desktop-application">
-  <id>com.github.elth0r0.iqpuzzle.desktop</id>
+  <id>com.github.elth0r0.iqpuzzle</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>iQPuzzle</name>
