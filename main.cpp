@@ -26,7 +26,7 @@
 
 /** \mainpage
  * \section Introduction
- * iQPuzzle is a diverting I.Q. challenging pentomino puzzle.<br />
+ * iQPuzzle is an IQ challenging pentomino puzzle.<br />
  * GitHub: https://github.com/ElTh0r0/iqpuzzle
  */
 

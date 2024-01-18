@@ -1,8 +1,20 @@
 [Desktop Entry]
 Type=Application
 Name=iQPuzzle
-GenericName=Pentomino Puzzle
-Comment=A diverting I.Q. challenging pentomino puzzle
+Name[de]=iQPuzzle
+Name[fr]=iQPuzzle
+Name[it]=iQPuzzle
+Name[nl]=iQPuzzle
+GenericName=Jigsaw Puzzle Game
+GenericName[de]=Puzzlespiel
+GenericName[fr]=Jeu de puzzle
+GenericName[it]=Gioco di puzzle
+GenericName[nl]=Legpuzzelspel
+Comment=IQ challenging pentomino puzzle
+Comment[de]=Anspruchsvolles Pentomino Puzzle
+Comment[fr]=Puzzle de pentomino exigeant
+Comment[it]=Impegnativo puzzle di pentomino
+Comment[nl]=Uitdagende pentomino puzzel
 Icon=com.github.elth0r0.iqpuzzle
 TryExec=iqpuzzle
 Exec=iqpuzzle %f

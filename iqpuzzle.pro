@@ -26,7 +26,7 @@ win32:VERSION  = 1.2.10.0
 else:VERSION   = 1.2.10
 
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
-QMAKE_TARGET_DESCRIPTION = "A diverting I.Q. challenging pentomino puzzle"
+QMAKE_TARGET_DESCRIPTION = "IQ challenging pentomino puzzle"
 QMAKE_TARGET_COPYRIGHT   = "(C) 2012-present Thorsten Roth"
 
 DEFINES       += APP_NAME=\"\\\"$$QMAKE_TARGET_PRODUCT\\\"\" \
@@ -45,7 +45,7 @@ DEFINES       += QT_NO_FOREACH
 
 CONFIG(debug, debug|release) {
   CONFIG      += warn_on
-  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060500
+  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060600
 }
 
 SOURCES       += main.cpp\

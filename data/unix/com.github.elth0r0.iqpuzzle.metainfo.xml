@@ -6,12 +6,18 @@
   <project_license>GPL-3.0-or-later</project_license>
   <name>iQPuzzle</name>
   <name xml:lang="de">iQPuzzle</name>
-  <summary>A diverting I.Q. challenging pentomino puzzle</summary>
-  <summary xml:lang="de">Ein kurzweiliges und anspruchsvolles Pentomino Puzzle</summary>
+  <name xml:lang="fr">iQPuzzle</name>
+  <name xml:lang="it">iQPuzzle</name>
+  <name xml:lang="nl">iQPuzzle</name>
+  <summary>Challenging pentomino puzzle</summary>
+  <summary xml:lang="de">Anspruchsvolles Pentomino Puzzle</summary>
+  <summary xml:lang="fr">Puzzle de pentomino exigeant</summary>
+  <summary xml:lang="it">Impegnativo puzzle di pentomino</summary>
+  <summary xml:lang="nl">Uitdagende pentomino puzzel</summary>
   
   <description>
-    <p>iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and many different board shapes are available, which have to be filled with them.</p>
-    <p xml:lang="de">iQPuzzle ist ein kurzweiliges und anspruchsvolles Pentomino Puzzle. Pentominos werden als Puzzleteile verwendet und viele verschiedene Spielfeldformen sind verfügbar, die mit diesen ausgefüllt werden müssen.</p>
+    <p>Pentominos are used as jigsaw pieces and there are many different board shapes to fill with them.</p>
+    <p xml:lang="de">Pentominos werden als Puzzleteile verwendet und es sind verschiedene Spielfeldformen verfügbar, die mit diesen ausgefüllt werden müssen.</p>
   </description>
   
   <screenshots>
@@ -24,6 +30,8 @@
   
   <url type="homepage">https://elth0r0.github.io/iqpuzzle/</url>
   <url type="bugtracker">https://github.com/ElTh0r0/iqpuzzle/issues</url>
+  <url type="vcs-browser">https://github.com/ElTh0r0/iqpuzzle</url>
+  <url type="translate">https://explore.transifex.com/elth0r0/iqpuzzle/</url>
   
   <developer_name>Thorsten Roth</developer_name>
   <update_contact>elthoro@gmx.de</update_contact>
@@ -34,12 +42,28 @@
   
   <content_rating type="oars-1.0" />
   
+  <languages>
+      <lang percentage="69">bg</lang>
+      <lang percentage="100">de</lang>
+      <lang percentage="100">en</lang>
+      <lang percentage="100">el_GR</lang>
+      <lang percentage="100">fr</lang>
+      <lang percentage="100">it</lang>
+      <lang percentage="99">ko</lang>
+      <lang percentage="100">nb_NO</lang>
+      <lang percentage="100">nl</lang>
+      <lang percentage="100">pt_BR</lang>
+      <lang percentage="100">zh_CN</lang>
+      <lang percentage="100">zh_TW</lang>
+  </languages>
+  
   <releases>
-    <release version="1.2.10" date="2023-06-26">
+    <release version="1.2.10" date="2024-01-18">
       <description>
         <p>Main changes:</p>
         <ul>
           <li>Add support for dark scheme on Windows with Qt 6.5</li>
+          <li>Linux packaging fixes: AppId, metainfo</li>
         </ul>
       </description>
     </release>

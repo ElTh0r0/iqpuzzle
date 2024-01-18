@@ -296,7 +296,12 @@ auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
         nullptr, tr("Warning"),
         tr("No color defined - using fallback:") + "\n" + sKey);
   }
+
+#if QT_VERSION < QT_VERSION_CHECK(6, 4, 0)
   color.setNamedColor(sValue);
+#else
+  color = QColor::fromString(sValue);
+#endif
   if (!color.isValid()) {
     color = QColor(255, 0, 255);
     qWarning() << "Found invalid color for key" << sKey;
