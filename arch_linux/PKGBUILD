@@ -2,7 +2,7 @@
 pkgname=iqpuzzle
 pkgver=1.2.9
 pkgrel=1
-pkgdesc='A diverting and challenging pentomino puzzle.'
+pkgdesc='IQ challenging pentomino puzzle.'
 arch=('i686' 'x86_64')
 url='https://github.com/ElTh0r0/iqpuzzle/'
 license=('GPL3')

@@ -50,9 +50,8 @@ BuildRequires:  update-desktop-files
 #--------------------------------------------------------------------
 
 %description
-iQPuzzle is a diverting and challenging puzzle. Pentominos are used
-as puzzle pieces and more than 300 different board shapes are available,
-which have to be filled with them.
+iQPuzzle is a diverting and challenging puzzle. Pentominos are used as
+jigsaw pieces and there are many different board shapes to fill with them.
 
 %prep
 %setup -q -n %{name}-%{version}

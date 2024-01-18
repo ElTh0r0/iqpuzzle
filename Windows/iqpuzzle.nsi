@@ -1,7 +1,7 @@
 ;iQPuzzle NSIS installer script
 
   !define APPNAME "iQPuzzle"
-  !define DESCRIPTION "A diverting I.Q. challenging pentomino puzzle"
+  !define DESCRIPTION "IQ challenging pentomino puzzle"
   !define VERSIONMAJOR 1
   !define VERSIONMINOR 2
   !define VERSIONPATCH 9
