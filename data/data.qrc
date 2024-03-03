@@ -2,15 +2,15 @@
     <qresource prefix="/">
         <file alias="iqpuzzle.png">../icons/hicolor/64x64/apps/com.github.elth0r0.iqpuzzle.png</file>
         <file>collision_texture.png</file>
-        <file>menu/document-new.png</file>
-        <file>menu/document-open.png</file>
-        <file>menu/document-save.png</file>
-        <file>menu/help-browser.png</file>
-        <file>menu/list-add.png</file>
-        <file>menu/list-remove.png</file>
-        <file>menu/media-playback-pause.png</file>
-        <file>menu/preferences-system.png</file>
-        <file>menu/system-log-out.png</file>
-        <file>menu/view-refresh.png</file>
+        <file>fallback-icons/application-exit.png</file>
+        <file>fallback-icons/document-new.png</file>
+        <file>fallback-icons/document-open.png</file>
+        <file>fallback-icons/document-save.png</file>
+        <file>fallback-icons/help-about.png</file>
+        <file>fallback-icons/media-playback-pause.png</file>
+        <file>fallback-icons/preferences-system.png</file>
+        <file>fallback-icons/view-refresh.png</file>
+        <file>fallback-icons/zoom-in.png</file>
+        <file>fallback-icons/zoom-out.png</file>
     </qresource>
 </RCC>
