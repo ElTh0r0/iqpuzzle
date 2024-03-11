@@ -72,21 +72,17 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   qDebug() << Q_FUNC_INFO;
   m_pUi->setupUi(this);
 
-  QString sIconTheme = QStringLiteral(":/fallback-icons/light");
+  QString sIconTheme = QStringLiteral("light");
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
   if (Qt::ColorScheme::Dark == QGuiApplication::styleHints()->colorScheme()) {
-    sIconTheme = QStringLiteral(":/fallback-icons/dark");
+    sIconTheme = QStringLiteral("dark");
   }
 #else
   if (this->window()->palette().window().color().lightnessF() < 0.5) {
-    sIconTheme = QStringLiteral(":/fallback-icons/dark");
+    sIconTheme = QStringLiteral("dark");
   }
 #endif
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-  QIcon::setFallbackSearchPaths(QIcon::fallbackSearchPaths() << sIconTheme);
-#else
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << sIconTheme);
-#endif
+  QIcon::setThemeName(sIconTheme);
 
   m_pHighscore = new Highscore();
   m_pSettings = new Settings(m_sSharePath, this);
