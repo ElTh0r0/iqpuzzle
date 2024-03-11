@@ -56,13 +56,6 @@ auto main(int argc, char *argv[]) -> int {
   app.setApplicationName(QStringLiteral(APP_NAME));
   app.setApplicationVersion(QStringLiteral(APP_VERSION));
   app.setApplicationDisplayName(QStringLiteral(APP_NAME));
-#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
-  QIcon::setFallbackSearchPaths(QIcon::fallbackSearchPaths()
-                                << QStringLiteral(":/fallback-icons"));
-#else
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths()
-                             << QStringLiteral(":/fallback-icons"));
-#endif
 #if !defined(Q_OS_WIN) && !defined(Q_OS_MAC)
   app.setWindowIcon(QIcon::fromTheme(QStringLiteral("iqpuzzle"),
                                      QIcon(QStringLiteral(":/iqpuzzle.png"))));

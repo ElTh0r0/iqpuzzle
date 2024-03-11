@@ -195,19 +195,25 @@
    </property>
   </action>
   <action name="action_Highscore">
+   <property name="icon">
+    <iconset theme="games-highscores"/>
+   </property>
    <property name="text">
     <string>&amp;Highscore</string>
    </property>
   </action>
   <action name="action_Preferences">
    <property name="icon">
-    <iconset theme="preferences-system"/>
+    <iconset theme="configure"/>
    </property>
    <property name="text">
     <string>&amp;Configure iQPuzzle...</string>
    </property>
   </action>
   <action name="action_ReportBug">
+   <property name="icon">
+    <iconset theme="tools-report-bug"/>
+   </property>
    <property name="text">
     <string>Report &amp;bug</string>
    </property>
@@ -253,6 +259,9 @@
    </property>
   </action>
   <action name="action_Statistics">
+   <property name="icon">
+    <iconset theme="view-statistics"/>
+   </property>
    <property name="text">
     <string>Sta&amp;tistics</string>
    </property>

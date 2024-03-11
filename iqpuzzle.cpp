@@ -44,6 +44,9 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QRandomGenerator>
 #endif
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+#include <QStyleHints>
+#endif
 
 #include "./board.h"
 #include "./boarddialog.h"
@@ -67,8 +70,24 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
       m_Time(0, 0, 0),
       m_bSolved(false) {
   qDebug() << Q_FUNC_INFO;
-
   m_pUi->setupUi(this);
+
+  QString sIconTheme = QStringLiteral(":/fallback-icons/light");
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+  if (Qt::ColorScheme::Dark == QGuiApplication::styleHints()->colorScheme()) {
+    sIconTheme = QStringLiteral(":/fallback-icons/dark");
+  }
+#else
+  if (this->window()->palette().window().color().lightnessF() < 0.5) {
+    sIconTheme = QStringLiteral(":/fallback-icons/dark");
+  }
+#endif
+#if QT_VERSION >= QT_VERSION_CHECK(5, 11, 0)
+  QIcon::setFallbackSearchPaths(QIcon::fallbackSearchPaths() << sIconTheme);
+#else
+  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << sIconTheme);
+#endif
+
   m_pHighscore = new Highscore();
   m_pSettings = new Settings(m_sSharePath, this);
   connect(m_pSettings, &Settings::changeLang, this, &IQPuzzle::loadLanguage);
@@ -733,9 +752,9 @@ void IQPuzzle::showInfoBox() {
                tr("License") +
                    ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
                    "GNU General Public License Version 3</a>",
-               tr("This application uses icons from "
-                  "<a href=\"http://tango.freedesktop.org\">"
-                  "Tango project</a>."),
+               tr("This application uses "
+                  "<a href=\"https://invent.kde.org/frameworks/breeze-icons\">"
+                  "Breeze icons from KDE</a>."),
                "<i>" + tr("Translations") +
                    "</i><br />"
                    "&nbsp;&nbsp;- Bulgarian: bogo1966<br />"
