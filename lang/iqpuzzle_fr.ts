@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
 <context>
     <name>Board</name>
     <message>
@@ -51,7 +49,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="297"/>
         <source>No color defined - using fallback:</source>
-        <translation>Aucune couleur définie - utilisation de la solution de secours&#xa0;:</translation>
+        <translation>Aucune couleur définie - utilisation de la solution de secours :</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="310"/>
@@ -300,7 +298,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="155"/>
         <source>Games share path does not exist!</source>
-        <translation>Le dossier des parties n&apos;existe pas&#xa0;!</translation>
+        <translation>Le dossier des parties n&apos;existe pas !</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="312"/>
@@ -325,7 +323,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="409"/>
         <source>No boards available!</source>
-        <translation>Aucun plateau disponible&#xa0;!</translation>
+        <translation>Aucun plateau disponible !</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="494"/>
@@ -341,7 +339,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="599"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle résolu&#xa0;!</translation>
+        <translation>Puzzle résolu !</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="678"/>
@@ -392,7 +390,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="755"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ce logiciel utilise des &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;icônes Breeze de KDE&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="758"/>
