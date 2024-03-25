@@ -46,13 +46,14 @@
       <lang percentage="68">bg</lang>
       <lang percentage="100">de</lang>
       <lang percentage="100">en</lang>
-      <lang percentage="99">el_GR</lang>
-      <lang percentage="99">fr</lang>
-      <lang percentage="99">it</lang>
+      <lang percentage="100">el_GR</lang>
+      <lang percentage="100">fr</lang>
+      <lang percentage="100">it</lang>
       <lang percentage="98">ko</lang>
-      <lang percentage="99">nb_NO</lang>
-      <lang percentage="99">nl</lang>
-      <lang percentage="99">pt_BR</lang>
+      <lang percentage="100">nb_NO</lang>
+      <lang percentage="100">nl</lang>
+      <lang percentage="100">pt</lang>
+      <lang percentage="100">pt_BR</lang>
       <lang percentage="99">zh_CN</lang>
       <lang percentage="99">zh_TW</lang>
   </languages>
@@ -64,6 +65,7 @@
         <ul>
           <li>Add support for dark scheme on Windows with Qt 6.5</li>
           <li>Bundle light/dark icons</li>
+          <li>Update application icon</li>
           <li>Linux packaging fixes: AppId, metainfo</li>
         </ul>
       </description>
