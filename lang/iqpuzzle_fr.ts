@@ -49,7 +49,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="297"/>
         <source>No color defined - using fallback:</source>
-        <translation>Aucune couleur définie - utilisation de la solution de secours :</translation>
+        <translation>Aucune couleur définie - utilisation de la solution de secours:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="310"/>
