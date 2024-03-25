@@ -339,7 +339,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="599"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle résolu !</translation>
+        <translation>Puzzle résolu!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="678"/>
