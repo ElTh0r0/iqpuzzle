@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
 <context>
     <name>Board</name>
     <message>
@@ -392,7 +390,7 @@ Grade reduzida para o tamanho padrão</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="755"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Essa aplicação usa &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze ícones de KDE&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="758"/>
