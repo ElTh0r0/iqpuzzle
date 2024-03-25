@@ -323,7 +323,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="409"/>
         <source>No boards available!</source>
-        <translation>Aucun plateau disponible !</translation>
+        <translation>Aucun plateau disponible!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="494"/>
