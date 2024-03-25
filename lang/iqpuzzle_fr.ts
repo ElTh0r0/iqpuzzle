@@ -298,7 +298,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="155"/>
         <source>Games share path does not exist!</source>
-        <translation>Le dossier des parties n&apos;existe pas !</translation>
+        <translation>Le dossier des parties n&apos;existe pas!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="312"/>
