@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="el_GR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
@@ -392,7 +390,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="755"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η εφαρμογή χρησιμοποιεί &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;εικονίδια Breeze από το KDE&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="758"/>
