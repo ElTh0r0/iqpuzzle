@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="el_GR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
@@ -95,22 +93,22 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">Άγνωστος</translation>
+        <translation>Άγνωστος</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόβλημα</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">Δε διατίθεται προεπισκόπηση</translation>
+        <translation>Δε διατίθεται προεπισκόπηση</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Reduced grid to default.</source>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">Φορτώνω σανίδα</translation>
+        <translation>Φορτώνω σανίδα</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">Φάκελοι με επιτραπέζιο παιχνίδι</translation>
+        <translation>Φάκελοι με επιτραπέζιο παιχνίδι</translation>
     </message>
 </context>
 <context>
