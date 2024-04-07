@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
 <context>
     <name>Board</name>
     <message>
@@ -95,22 +93,22 @@ Grade reduzida para o tamanho padrão.</translation>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolvido:</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">Desconhecido</translation>
+        <translation>Desconhecido</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished">Soluções</translation>
+        <translation>Soluções</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">Nenhuma pré-visualização disponível</translation>
+        <translation>Nenhuma pré-visualização disponível</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Grade reduzida para o tamanho padrão.</translation>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">Carregar tabuleiro</translation>
+        <translation>Carregar tabuleiro</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir seu próprio tabuleiro...</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">Arquivos de tabuleiro</translation>
+        <translation>Arquivos de tabuleiro</translation>
     </message>
 </context>
 <context>
