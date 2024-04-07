@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string notr="true">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -56,7 +56,7 @@
       <item row="2" column="0" colspan="2">
        <widget class="QLabel" name="lblPreviewImage">
         <property name="text">
-         <string>lblPreviewImage</string>
+         <string notr="true">lblPreviewImage</string>
         </property>
        </widget>
       </item>

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt_BR">
 <context>
     <name>Board</name>
     <message>
@@ -65,26 +67,69 @@ Grade reduzida para o tamanho padrão.</translation>
 <context>
     <name>BoardDialog</name>
     <message>
-        <location filename="../boarddialog.cpp" line="44"/>
-        <location filename="../boarddialog.cpp" line="76"/>
+        <location filename="../boarddialog.cpp" line="46"/>
+        <location filename="../boarddialog.cpp" line="78"/>
         <source>Solutions</source>
         <translation>Soluções</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="45"/>
+        <location filename="../boarddialog.cpp" line="47"/>
         <source>Preview</source>
         <translation>Pré-visualizar</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="50"/>
-        <location filename="../boarddialog.cpp" line="83"/>
+        <location filename="../boarddialog.cpp" line="52"/>
+        <location filename="../boarddialog.cpp" line="85"/>
         <source>No preview available</source>
         <translation>Nenhuma pré-visualização disponível</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="74"/>
+        <location filename="../boarddialog.cpp" line="76"/>
         <source>Unknown</source>
         <translation>Desconhecido</translation>
+    </message>
+</context>
+<context>
+    <name>BoardPreview</name>
+    <message>
+        <location filename="../boardpreview.cpp" line="45"/>
+        <location filename="../boardpreview.cpp" line="48"/>
+        <source>Solved:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boardpreview.cpp" line="69"/>
+        <source>Unknown</source>
+        <translation type="unfinished">Desconhecido</translation>
+    </message>
+    <message>
+        <location filename="../boardpreview.cpp" line="71"/>
+        <source>Solutions</source>
+        <translation type="unfinished">Soluções</translation>
+    </message>
+    <message>
+        <location filename="../boardpreview.cpp" line="82"/>
+        <source>No preview available</source>
+        <translation type="unfinished">Nenhuma pré-visualização disponível</translation>
+    </message>
+</context>
+<context>
+    <name>BoardSelection</name>
+    <message>
+        <location filename="../boardselection.ui" line="14"/>
+        <location filename="../boardselection.cpp" line="121"/>
+        <source>Load board</source>
+        <translation type="unfinished">Carregar tabuleiro</translation>
+    </message>
+    <message>
+        <location filename="../boardselection.ui" line="27"/>
+        <source>Open own board...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../boardselection.cpp" line="122"/>
+        <source>Board files</source>
+        <translation type="unfinished">Arquivos de tabuleiro</translation>
     </message>
 </context>
 <context>
@@ -190,7 +235,7 @@ Grade reduzida para o tamanho padrão.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="169"/>
-        <location filename="../iqpuzzle.cpp" line="526"/>
+        <location filename="../iqpuzzle.cpp" line="520"/>
         <source>Save game</source>
         <translation>Salvar jogo</translation>
     </message>
@@ -201,7 +246,7 @@ Grade reduzida para o tamanho padrão.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="180"/>
-        <location filename="../iqpuzzle.cpp" line="492"/>
+        <location filename="../iqpuzzle.cpp" line="486"/>
         <source>Load game</source>
         <translation>Carregar jogo</translation>
     </message>
@@ -255,145 +300,135 @@ Grade reduzida para o tamanho padrão.</translation>
         <translation>Esta&amp;tísticas</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="103"/>
-        <location filename="../iqpuzzle.cpp" line="785"/>
+        <location filename="../iqpuzzle.cpp" line="99"/>
+        <location filename="../iqpuzzle.cpp" line="782"/>
         <source>Game paused</source>
         <translation>Jogo pausado</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="108"/>
-        <location filename="../iqpuzzle.cpp" line="111"/>
-        <location filename="../iqpuzzle.cpp" line="288"/>
-        <location filename="../iqpuzzle.cpp" line="295"/>
-        <location filename="../iqpuzzle.cpp" line="600"/>
+        <location filename="../iqpuzzle.cpp" line="104"/>
+        <location filename="../iqpuzzle.cpp" line="107"/>
+        <location filename="../iqpuzzle.cpp" line="284"/>
+        <location filename="../iqpuzzle.cpp" line="291"/>
+        <location filename="../iqpuzzle.cpp" line="594"/>
         <source>Time</source>
         <translation>Tempo</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="112"/>
-        <location filename="../iqpuzzle.cpp" line="285"/>
-        <location filename="../iqpuzzle.cpp" line="292"/>
-        <location filename="../iqpuzzle.cpp" line="360"/>
-        <location filename="../iqpuzzle.cpp" line="599"/>
-        <location filename="../iqpuzzle.cpp" line="788"/>
+        <location filename="../iqpuzzle.cpp" line="108"/>
+        <location filename="../iqpuzzle.cpp" line="281"/>
+        <location filename="../iqpuzzle.cpp" line="288"/>
+        <location filename="../iqpuzzle.cpp" line="354"/>
+        <location filename="../iqpuzzle.cpp" line="593"/>
+        <location filename="../iqpuzzle.cpp" line="785"/>
         <source>Moves</source>
         <translation>Movimentos</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="129"/>
-        <location filename="../iqpuzzle.cpp" line="139"/>
-        <location filename="../iqpuzzle.cpp" line="269"/>
-        <location filename="../iqpuzzle.cpp" line="279"/>
+        <location filename="../iqpuzzle.cpp" line="125"/>
+        <location filename="../iqpuzzle.cpp" line="135"/>
+        <location filename="../iqpuzzle.cpp" line="265"/>
+        <location filename="../iqpuzzle.cpp" line="275"/>
         <source>File not found</source>
         <translation>Arquivo não encontrado</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="130"/>
-        <location filename="../iqpuzzle.cpp" line="140"/>
-        <location filename="../iqpuzzle.cpp" line="270"/>
-        <location filename="../iqpuzzle.cpp" line="280"/>
+        <location filename="../iqpuzzle.cpp" line="126"/>
+        <location filename="../iqpuzzle.cpp" line="136"/>
+        <location filename="../iqpuzzle.cpp" line="266"/>
+        <location filename="../iqpuzzle.cpp" line="276"/>
         <source>The chosen file does not exist.</source>
         <translation>O arquivo escolhido não existe.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="155"/>
+        <location filename="../iqpuzzle.cpp" line="151"/>
         <source>Games share path does not exist!</source>
         <translation>O caminho de compartilhamento do jogo não existe!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="312"/>
+        <location filename="../iqpuzzle.cpp" line="308"/>
         <source>Unknown</source>
         <translation>Desconhecido</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="316"/>
+        <location filename="../iqpuzzle.cpp" line="312"/>
         <source>Solutions</source>
         <translation>Soluções</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="325"/>
-        <source>Load board</source>
-        <translation>Carregar tabuleiro</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="326"/>
-        <source>Board files</source>
-        <translation>Arquivos de tabuleiro</translation>
-    </message>
-    <message>
-        <location filename="../iqpuzzle.cpp" line="409"/>
+        <location filename="../iqpuzzle.cpp" line="403"/>
         <source>No boards available!</source>
         <translation>Sem tabuleiros disponíveis!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="494"/>
-        <location filename="../iqpuzzle.cpp" line="528"/>
+        <location filename="../iqpuzzle.cpp" line="488"/>
+        <location filename="../iqpuzzle.cpp" line="522"/>
         <source>Save games</source>
         <translation>Salvar jogos</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="508"/>
+        <location filename="../iqpuzzle.cpp" line="502"/>
         <source>Invalid saved puzzle.</source>
         <translation>Puzzle salvo inválido.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="599"/>
+        <location filename="../iqpuzzle.cpp" line="593"/>
         <source>Puzzle solved!</source>
         <translation>Puzzle solucionado!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="678"/>
+        <location filename="../iqpuzzle.cpp" line="675"/>
         <source>Statistics</source>
         <translation>Estatísticas</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="686"/>
-        <location filename="../iqpuzzle.cpp" line="715"/>
+        <location filename="../iqpuzzle.cpp" line="683"/>
+        <location filename="../iqpuzzle.cpp" line="712"/>
         <source>Total</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="688"/>
+        <location filename="../iqpuzzle.cpp" line="685"/>
         <source>Unsolved</source>
         <translation>Não solucionado</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="691"/>
+        <location filename="../iqpuzzle.cpp" line="688"/>
         <source>Easy</source>
         <translation>Fácil</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="699"/>
+        <location filename="../iqpuzzle.cpp" line="696"/>
         <source>Medium</source>
         <translation>Médio</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="707"/>
+        <location filename="../iqpuzzle.cpp" line="704"/>
         <source>Hard</source>
         <translation>Difícil</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="716"/>
+        <location filename="../iqpuzzle.cpp" line="713"/>
         <source>including unknown difficulty</source>
         <translation>incluindo dificuldade desconhecida</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="738"/>
+        <location filename="../iqpuzzle.cpp" line="735"/>
         <source>About</source>
         <translation>Sobre</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="752"/>
+        <location filename="../iqpuzzle.cpp" line="749"/>
         <source>License</source>
         <translation>Licença</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="755"/>
+        <location filename="../iqpuzzle.cpp" line="752"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
         <translation>Essa aplicação usa &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze ícones de KDE&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="758"/>
+        <location filename="../iqpuzzle.cpp" line="755"/>
         <source>Translations</source>
         <translation>Traduções</translation>
     </message>
