@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
 <context>
     <name>Board</name>
     <message>
@@ -95,22 +93,22 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opgelost:</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">Onbekend</translation>
+        <translation>Onbekend</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished">Oplossingen</translation>
+        <translation>Oplossingen</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">Geen voorbeeld beschikbaar</translation>
+        <translation>Geen voorbeeld beschikbaar</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">Bord laden</translation>
+        <translation>Bord laden</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigen bord openen...</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">Bordbestanden</translation>
+        <translation>Bordbestanden</translation>
     </message>
 </context>
 <context>
