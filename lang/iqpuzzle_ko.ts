@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ko_KR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ko">
 <context>
     <name>Board</name>
     <message>
@@ -78,15 +76,15 @@ Reduced grid to default.</source>
         <translation>미리보기</translation>
     </message>
     <message>
-        <location filename="../boarddialog.cpp" line="76"/>
-        <source>Unknown</source>
-        <translation>알수없음</translation>
-    </message>
-    <message>
         <location filename="../boarddialog.cpp" line="52"/>
         <location filename="../boarddialog.cpp" line="85"/>
         <source>No preview available</source>
         <translation>미리보기 불가능</translation>
+    </message>
+    <message>
+        <location filename="../boarddialog.cpp" line="76"/>
+        <source>Unknown</source>
+        <translation>알수없음</translation>
     </message>
 </context>
 <context>
@@ -95,22 +93,22 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">알수없음</translation>
+        <translation>알수없음</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished">해결</translation>
+        <translation>해결</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">미리보기 불가능</translation>
+        <translation>미리보기 불가능</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Reduced grid to default.</source>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">보드 불러오기</translation>
+        <translation>보드 불러오기</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">보드 파일</translation>
+        <translation>보드 파일</translation>
     </message>
 </context>
 <context>
@@ -425,7 +423,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="752"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="755"/>
@@ -518,7 +516,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 </TS>
