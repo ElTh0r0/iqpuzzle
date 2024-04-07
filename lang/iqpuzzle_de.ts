@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
 <context>
     <name>Board</name>
     <message>
@@ -95,22 +93,22 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelöst:</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">Unbekannt</translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished">Lösungen</translation>
+        <translation>Lösungen</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">Keine Vorschau verfügbar</translation>
+        <translation>Keine Vorschau verfügbar</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Reduziere Raster auf Defaultwert.</translation>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">Spielfeld laden</translation>
+        <translation>Spielfeld laden</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenes Spielfeld öffnen...</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">Spielfelder</translation>
+        <translation>Spielfelder</translation>
     </message>
 </context>
 <context>
