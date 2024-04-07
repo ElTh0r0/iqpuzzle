@@ -22,8 +22,8 @@ unix: !macx {
        TARGET  = iQPuzzle
 }
 
-win32:VERSION  = 1.2.10.0
-else:VERSION   = 1.2.10
+win32:VERSION  = 1.3.0.0
+else:VERSION   = 1.3.0
 
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "IQ challenging pentomino puzzle"
@@ -53,6 +53,8 @@ SOURCES       += main.cpp\
                  board.cpp \
                  block.cpp \
                  boarddialog.cpp \
+                 boardpreview.cpp \
+                 boardselection.cpp \
                  highscore.cpp \
                  settings.cpp
 
@@ -60,10 +62,14 @@ HEADERS       += iqpuzzle.h \
                  board.h \
                  block.h \
                  boarddialog.h \
+                 boardpreview.h \
+                 boardselection.h \
                  highscore.h \
                  settings.h
 
 FORMS         += iqpuzzle.ui \
+                 boardpreview.ui \
+                 boardselection.ui \
                  settings.ui
 
 RESOURCES      = data/data.qrc \

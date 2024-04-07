@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file alias="iqpuzzle.png">../icons/hicolor/64x64/apps/com.github.elth0r0.iqpuzzle.png</file>
+        <file>icons/emblem-checked.png</file>
+        <file>icons/emblem-error.png</file>
         <file>collision_texture.png</file>
         <file>icons/dark/index.theme</file>
         <file>icons/dark/png/application-exit.png</file>

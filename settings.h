@@ -54,6 +54,9 @@ class Settings : public QDialog {
   auto getEasy() const -> uint;
   auto getHard() const -> uint;
 
+  auto getLastOpenedDir() -> QString;
+  void setLastOpenedDir(const QString &sLastOpenedDir);
+
  signals:
   void changeLang(const QString &sLang);
   void useSystemBackgroundColor(const bool bUseSysColor);
@@ -81,6 +84,7 @@ class Settings : public QDialog {
   bool m_bUseSystemBackground{};
   uint m_nEasy{};
   uint m_nHard{};
+  QString m_sLastOpenedDir;
 };
 
 #endif  // SETTINGS_H_

@@ -39,7 +39,7 @@ class QGraphicsView;
 class QTimer;
 
 class Board;
-class BoardDialog;
+class BoardSelection;
 class Highscore;
 class Settings;
 
@@ -102,7 +102,7 @@ class IQPuzzle : public QMainWindow {
   QString m_sCurrLang;
   QGraphicsView *m_pGraphView;
   QGraphicsScene *m_pScenePaused;
-  BoardDialog *m_pBoardDialog;
+  BoardSelection *m_pBoardSelection;
   Board *m_pBoard;
   QString m_sBoardFile;
   QString m_sSavedGame;

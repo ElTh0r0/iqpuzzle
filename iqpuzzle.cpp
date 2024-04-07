@@ -49,7 +49,7 @@
 #endif
 
 #include "./board.h"
-#include "./boarddialog.h"
+#include "./boardselection.h"
 #include "./highscore.h"
 #include "./settings.h"
 #include "ui_iqpuzzle.h"
@@ -59,7 +59,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
     : QMainWindow(pParent),
       m_pUi(new Ui::IQPuzzle),
       m_sCurrLang(QString()),
-      m_pBoardDialog(nullptr),
+      m_pBoardSelection(nullptr),
       m_pBoard(nullptr),
       m_sSavedGame(QString()),
       m_userDataDir(userDataDir),
@@ -316,17 +316,15 @@ void IQPuzzle::setGameTitle() {
 // ---------------------------------------------------------------------------
 
 auto IQPuzzle::chooseBoard() -> QString {
-  delete m_pBoardDialog;
-  m_pBoardDialog =
-      new BoardDialog(this, tr("Load board"), m_sSharePath + "/boards",
-                      tr("Board files") + " (*.conf)");
+  delete m_pBoardSelection;
+  m_pBoardSelection =
+      new BoardSelection(this, m_sSharePath + "/boards", m_sListAllUnsolved,
+                         m_pSettings->getLastOpenedDir());
 
-  if (m_pBoardDialog->exec()) {
-    QStringList sListFiles;
-    sListFiles = m_pBoardDialog->selectedFiles();
-    if (!sListFiles.isEmpty()) {
-      return sListFiles.first();
-    }
+  if (m_pBoardSelection->exec()) {
+    QString sFile(m_pBoardSelection->getSelectedFile());
+    m_pSettings->setLastOpenedDir(m_pBoardSelection->getLastOpenedDir());
+    return sFile;
   }
 
   return QString();
@@ -608,18 +606,21 @@ void IQPuzzle::solvedPuzzle() {
 
   // Update "unsolved lists" for random games
   QString sBoard(m_sBoardFile);
-  sBoard = sBoard.remove(m_sSharePath + "/boards/");
-  if (m_sListAllUnsolved.indexOf(sBoard) >= 0) {
-    m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));
-  }
-  if (m_sListEasyUnsolved.indexOf(sBoard) >= 0) {
-    m_sListEasyUnsolved.removeAt(m_sListEasyUnsolved.indexOf(sBoard));
-  }
-  if (m_sListMediumUnsolved.indexOf(sBoard) >= 0) {
-    m_sListMediumUnsolved.removeAt(m_sListMediumUnsolved.indexOf(sBoard));
-  }
-  if (m_sListHardUnsolved.indexOf(sBoard) >= 0) {
-    m_sListHardUnsolved.removeAt(m_sListHardUnsolved.indexOf(sBoard));
+  // Skip update, if board is from user / not from share folder
+  if (sBoard.contains(m_sSharePath + "/boards/", Qt::CaseInsensitive)) {
+    sBoard = sBoard.remove(m_sSharePath + "/boards/");
+    if (m_sListAllUnsolved.indexOf(sBoard) >= 0) {
+      m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));
+    }
+    if (m_sListEasyUnsolved.indexOf(sBoard) >= 0) {
+      m_sListEasyUnsolved.removeAt(m_sListEasyUnsolved.indexOf(sBoard));
+    }
+    if (m_sListMediumUnsolved.indexOf(sBoard) >= 0) {
+      m_sListMediumUnsolved.removeAt(m_sListMediumUnsolved.indexOf(sBoard));
+    }
+    if (m_sListHardUnsolved.indexOf(sBoard) >= 0) {
+      m_sListHardUnsolved.removeAt(m_sListHardUnsolved.indexOf(sBoard));
+    }
   }
 }
 

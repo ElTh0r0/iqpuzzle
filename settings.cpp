@@ -292,6 +292,22 @@ auto Settings::getLanguage() -> QString {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
+auto Settings::getLastOpenedDir() -> QString {
+  m_sLastOpenedDir =
+      m_pSettings
+          ->value(QStringLiteral("LastOpenedDir"), QString(QDir::homePath()))
+          .toString();
+  return m_sLastOpenedDir;
+}
+
+void Settings::setLastOpenedDir(const QString &sLastOpenedDir) {
+  m_sLastOpenedDir = sLastOpenedDir;
+  m_pSettings->setValue(QStringLiteral("LastOpenedDir"), m_sLastOpenedDir);
+}
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 auto Settings::getUseSystemBackground() -> bool {
   return m_bUseSystemBackground;
 }
