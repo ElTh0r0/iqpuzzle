@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb_NO">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb_NO">
 <context>
     <name>Board</name>
     <message>
@@ -95,22 +93,22 @@ Det ble tilbakestilt.</translation>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation>Løst:</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">Ukjent</translation>
+        <translation>Ukjent</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished">Løsninger</translation>
+        <translation>Løsninger</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">Ingen forhåndsvisning tilgjengelig</translation>
+        <translation>Ingen forhåndsvisning tilgjengelig</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Det ble tilbakestilt.</translation>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">Last inn brett</translation>
+        <translation>Last inn brett</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>Åpne eget styre...</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">Brettfiler</translation>
+        <translation>Brettfiler</translation>
     </message>
 </context>
 <context>
