@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>Board</name>
     <message>
@@ -20,7 +18,7 @@
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>面板不可用。
-將減為預設值。</translation>
+将减为默认值。</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="90"/>
@@ -41,7 +39,7 @@ Reduced grid to default.</source>
         <location filename="../board.cpp" line="216"/>
         <location filename="../board.cpp" line="261"/>
         <source>Polygon not valid:</source>
-        <translation>無效的多連方：</translation>
+        <translation>无效的多连方：</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="236"/>
@@ -70,7 +68,7 @@ Reduced grid to default.</source>
         <location filename="../boarddialog.cpp" line="46"/>
         <location filename="../boarddialog.cpp" line="78"/>
         <source>Solutions</source>
-        <translation>难题</translation>
+        <translation>解答</translation>
     </message>
     <message>
         <location filename="../boarddialog.cpp" line="47"/>
@@ -95,22 +93,22 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="69"/>
         <source>Unknown</source>
-        <translation type="unfinished">未知</translation>
+        <translation>未知</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
         <source>Solutions</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="82"/>
         <source>No preview available</source>
-        <translation type="unfinished">无可用预览</translation>
+        <translation>无可用预览</translation>
     </message>
 </context>
 <context>
@@ -119,17 +117,17 @@ Reduced grid to default.</source>
         <location filename="../boardselection.ui" line="14"/>
         <location filename="../boardselection.cpp" line="121"/>
         <source>Load board</source>
-        <translation type="unfinished">加载面板</translation>
+        <translation>加载面板</translation>
     </message>
     <message>
         <location filename="../boardselection.ui" line="27"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="122"/>
         <source>Board files</source>
-        <translation type="unfinished">面板文件</translation>
+        <translation>面板文件</translation>
     </message>
 </context>
 <context>
@@ -158,7 +156,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../highscore.cpp" line="72"/>
         <source>Moves</source>
-        <translation>步數</translation>
+        <translation>步数</translation>
     </message>
     <message>
         <location filename="../highscore.cpp" line="159"/>
@@ -181,17 +179,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="52"/>
         <source>&amp;All available</source>
-        <translation>所有選項(A)</translation>
+        <translation>所有选项(A)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="62"/>
         <source>All &amp;unsolved</source>
-        <translation>全部未解決的謎題(u)</translation>
+        <translation>全部未解决的谜题(u)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="88"/>
         <source>&amp;Help</source>
-        <translation>説明(H)</translation>
+        <translation>帮助(H)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="95"/>
@@ -237,7 +235,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="169"/>
         <location filename="../iqpuzzle.cpp" line="520"/>
         <source>Save game</source>
-        <translation>保存遊戲</translation>
+        <translation>保存游戏</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="177"/>
@@ -312,7 +310,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="291"/>
         <location filename="../iqpuzzle.cpp" line="594"/>
         <source>Time</source>
-        <translation>耗時</translation>
+        <translation>耗时</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="108"/>
@@ -338,12 +336,12 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="266"/>
         <location filename="../iqpuzzle.cpp" line="276"/>
         <source>The chosen file does not exist.</source>
-        <translation>檔不存在。</translation>
+        <translation>文件不存在。</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="151"/>
         <source>Games share path does not exist!</source>
-        <translation>遊戲分享路徑不存在。</translation>
+        <translation>不存在游戏分享路径。</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="308"/>
@@ -425,7 +423,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="752"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="755"/>
