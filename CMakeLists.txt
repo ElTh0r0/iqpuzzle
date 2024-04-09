@@ -22,6 +22,9 @@ project(iQPuzzle
 )
 set(PROJECT_COPYRIGHT "(C) 2012-present Thorsten Roth")
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 option(QT6 "Use Qt6" OFF)
 
 if (QT6)
@@ -56,22 +59,26 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-add_executable(iqpuzzle)
-
 if(OS2)
     set(app_icon_resource_os2 "${CMAKE_CURRENT_SOURCE_DIR}/data/os2.rc")
     qt_add_executable(iqpuzzle ${app_icon_resource_os2})
 elseif(WINDOWS)
     set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/data/win.rc")
     qt_add_executable(iqpuzzle ${app_icon_resource_windows})
+    set_target_properties(iqpuzzle PROPERTIES
+        OUTPUT_NAME iQPuzzle
+        WIN32_EXECUTABLE TRUE
+    )
 #elseif(MACOS)
 #    set(MACOSX_BUNDLE_ICON_FILE icon.icns)
 #    set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/icons/icon.icns")
 #    set_source_files_properties(${app_icon_macos} PROPERTIES
 #           MACOSX_PACKAGE_LOCATION "Resources")
 #
-#    # TO BE CHECKED how to bundle ressources
+#    # TODO: To be checked how to bundle ressources (boards)
 #    qt_add_executable(iqpuzzle MACOSX_BUNDLE ${app_icon_macos})
+else()
+    qt_add_executable(iqpuzzle)
 endif()
 
 target_compile_features(iqpuzzle PUBLIC cxx_std_11)
@@ -82,12 +89,9 @@ target_compile_definitions(iqpuzzle
         APP_COPY="${PROJECT_COPYRIGHT}"
         APP_DESC="${PROJECT_DESCRIPTION}"
         QT_NO_FOREACH
+        $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x060600>
 )
-target_compile_options(iqpuzzle
-    PRIVATE
-        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_DEPRECATED_WARNINGS QT_DISABLE_DEPRECATED_BEFORE=0x060600>
-        -fno-sized-deallocation
-)
+
 target_link_libraries(iqpuzzle PRIVATE
     ${QT_MAIN_VERSION}::Core
     ${QT_MAIN_VERSION}::Gui
