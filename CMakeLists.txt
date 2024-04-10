@@ -25,21 +25,8 @@ set(PROJECT_COPYRIGHT "(C) 2012-present Thorsten Roth")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(QT6 "Use Qt6" OFF)
-
-if (QT6)
-    set(QT_MAIN_VERSION Qt6)
-    set(QT_MINIMUM_VERSION 6.0)
-else()
-    set(QT_MAIN_VERSION Qt5)
-    set(QT_MINIMUM_VERSION 5.6)
-    if(NOT COMMAND qt_add_translation)
-        function(qt_add_translation _qm_files)
-            qt5_add_translation("${_qm_files}" ${ARGN})
-            set("${_qm_files}" "${${_qm_files}}" PARENT_SCOPE)
-        endfunction()
-    endif()
-endif()
+set(QT_MAIN_VERSION Qt6)
+set(QT_MINIMUM_VERSION 6.0)
 
 find_package(${QT_MAIN_VERSION} ${QT_MINIMUM_VERSION}
     REQUIRED Core Gui Widgets LinguistTools
