@@ -12,7 +12,7 @@
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU General Public License
-#  along with iQPuzzle.  If not, see <http://www.gnu.org/licenses/>.
+#  along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
 
 cmake_minimum_required(VERSION 3.16)
 project(iQPuzzle

@@ -59,7 +59,6 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
     : QMainWindow(pParent),
       m_pUi(new Ui::IQPuzzle),
       m_sCurrLang(QString()),
-      m_pBoardSelection(nullptr),
       m_pBoard(nullptr),
       m_sSavedGame(QString()),
       m_userDataDir(userDataDir),
@@ -90,6 +89,10 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   connect(this, &IQPuzzle::updateUiLang, m_pSettings, &Settings::updateUiLang);
   this->loadLanguage(m_pSettings->getLanguage());
   this->setupMenu();
+
+  m_pBoardSelection =
+      new BoardSelection(this, m_sSharePath + "/boards", m_sListAllUnsolved,
+                         m_pSettings->getLastOpenedDir());
 
   m_pGraphView = new QGraphicsView(this);
   this->setCentralWidget(m_pGraphView);
@@ -316,11 +319,6 @@ void IQPuzzle::setGameTitle() {
 // ---------------------------------------------------------------------------
 
 auto IQPuzzle::chooseBoard() -> QString {
-  delete m_pBoardSelection;
-  m_pBoardSelection =
-      new BoardSelection(this, m_sSharePath + "/boards", m_sListAllUnsolved,
-                         m_pSettings->getLastOpenedDir());
-
   if (m_pBoardSelection->exec()) {
     QString sFile(m_pBoardSelection->getSelectedFile());
     m_pSettings->setLastOpenedDir(m_pBoardSelection->getLastOpenedDir());
