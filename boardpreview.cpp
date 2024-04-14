@@ -64,11 +64,18 @@ void BoardPreview::setSolutions(QString const &sFilePath) {
   QSettings tmpSet(sFilePath, QSettings::IniFormat);
   quint32 nSolutions(
       tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt());
+  bool m_bFreestyle = tmpSet.value(QStringLiteral("Freestyle"), false).toBool();
+
   QString sSolutions(QString::number(nSolutions));
   if ("0" == sSolutions) {
     sSolutions = tr("Unknown");
   }
-  m_pUi->lblSolutions->setText(tr("Solutions") + ": " + sSolutions);
+  if (m_bFreestyle) {
+    m_pUi->lblSolutions->clear();
+    m_pUi->lblSolved->clear();
+  } else {
+    m_pUi->lblSolutions->setText(tr("Solutions") + ": " + sSolutions);
+  }
 }
 
 // ---------------------------------------------------------------------------

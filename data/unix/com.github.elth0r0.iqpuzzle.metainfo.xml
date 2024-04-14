@@ -67,6 +67,7 @@
           <li>Add support for dark scheme on Windows with Qt 6.5</li>
           <li>Bundle light/dark icons</li>
           <li>Update application icon</li>
+          <li>Add Cmake support</li>
           <li>Linux packaging fixes: AppId, metainfo</li>
         </ul>
       </description>
