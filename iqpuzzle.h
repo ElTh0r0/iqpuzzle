@@ -61,6 +61,7 @@ class IQPuzzle : public QMainWindow {
 
  protected:
   void changeEvent(QEvent *pEvent) override;
+  void resizeEvent(QResizeEvent *pEvent) override;
 
  public slots:
   void setMinWindowSize(const QSize size = QSize(),

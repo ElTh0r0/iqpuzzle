@@ -560,6 +560,7 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
   static QSize size2(100, 100);
   if (!size.isEmpty()) {
     size2 = size;
+    this->setMinimumSize(size2);
   }
 
   if (!this->windowState().testFlag(Qt::WindowMaximized) &&
@@ -578,6 +579,46 @@ void IQPuzzle::setMinWindowSize(const QSize size, const bool bFreestyle) {
       m_pGraphView->centerOn(100, 70);
     }
   }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void IQPuzzle::changeEvent(QEvent *pEvent) {
+  if (nullptr != pEvent) {
+    if (QEvent::LanguageChange == pEvent->type()) {
+      m_pUi->retranslateUi(this);
+      this->setGameTitle();
+
+      m_pScenePaused->removeItem(m_pTextPaused);
+      QFont font;
+      font.setPixelSize(20);
+      m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
+      this->setMinWindowSize();
+
+      m_pStatusLabelMoves->setText(tr("Moves") + ": " +
+                                   QString::number(m_nMoves));
+      emit updateUiLang();
+    }
+  }
+  QMainWindow::changeEvent(pEvent);
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void IQPuzzle::resizeEvent(QResizeEvent *pEvent) {
+  if (nullptr != pEvent) {
+    if (!this->windowState().testFlag(Qt::WindowMaximized) &&
+        !this->windowState().testFlag(Qt::WindowFullScreen)) {
+      if (pEvent->size().width() < this->minimumWidth() ||
+          pEvent->size().height() < this->minimumHeight()) {
+        this->showNormal();
+        this->resize(this->minimumSize());
+      }
+    }
+  }
+  QMainWindow::resizeEvent(pEvent);
 }
 
 // ---------------------------------------------------------------------------
@@ -763,27 +804,4 @@ void IQPuzzle::showInfoBox() {
                    "&nbsp;&nbsp;- Norwegian: Allan Nordhøy<br />"
                    "&nbsp;&nbsp;- Portuguese (pt & pt_BR): UchidoF<br />"
                    "&nbsp;&nbsp;- Misc. corrections: J. Lavoie"));
-}
-
-// ---------------------------------------------------------------------------
-// ---------------------------------------------------------------------------
-
-void IQPuzzle::changeEvent(QEvent *pEvent) {
-  if (nullptr != pEvent) {
-    if (QEvent::LanguageChange == pEvent->type()) {
-      m_pUi->retranslateUi(this);
-      this->setGameTitle();
-
-      m_pScenePaused->removeItem(m_pTextPaused);
-      QFont font;
-      font.setPixelSize(20);
-      m_pTextPaused = m_pScenePaused->addText(tr("Game paused"), font);
-      this->setMinWindowSize();
-
-      m_pStatusLabelMoves->setText(tr("Moves") + ": " +
-                                   QString::number(m_nMoves));
-      emit updateUiLang();
-    }
-  }
-  QMainWindow::changeEvent(pEvent);
 }
