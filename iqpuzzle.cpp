@@ -90,6 +90,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   this->loadLanguage(m_pSettings->getLanguage());
   this->setupMenu();
 
+  this->generateFileLists();  // Run before creating BoardSelection
   m_pBoardSelection =
       new BoardSelection(this, m_sSharePath + "/boards", m_sListAllUnsolved,
                          m_pSettings->getLastOpenedDir());
@@ -111,8 +112,6 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pStatusLabelMoves = new QLabel(tr("Moves") + ": 0");
   m_pUi->statusBar->addWidget(m_pStatusLabelTime);
   m_pUi->statusBar->addPermanentWidget(m_pStatusLabelMoves);
-
-  this->generateFileLists();
 
   // Choose board via command line
   QString sStartBoard(QLatin1String(""));
