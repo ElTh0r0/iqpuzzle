@@ -1,6 +1,15 @@
 #!/usr/bin/make -f
 #export DH_VERBOSE=1
 
+CFLAGS += $(CPPFLAGS)
+CXXFLAGS += $(CPPFLAGS)
+LDFLAGS += -Wl,-z,defs
+
+BUILDFLAGS = \
+	QMAKE_CFLAGS="$(CFLAGS)" \
+	QMAKE_CXXFLAGS="$(CXXFLAGS)" \
+	QMAKE_LFLAGS="$(LDFLAGS)"
+
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 export QT_SELECT = qt5
 
@@ -9,3 +18,9 @@ export QT_SELECT = qt5
 
 override_dh_auto_configure:
 	dh_auto_configure -- BINDIR=games
+
+override_dh_auto_build:
+	dh_auto_build -- QMAKE='qmake $(BUILDFLAGS)'
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz -z9
