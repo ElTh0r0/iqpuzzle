@@ -59,12 +59,12 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
 
   for (auto sSubfolder : sListSubfolders) {
     m_pListTabScrollArea << new QScrollArea(this);
-    m_pListTabScrollArea.constLast()->setWidgetResizable(true);
-    m_pListTabScrollArea.constLast()->setHorizontalScrollBarPolicy(
+    m_pListTabScrollArea.last()->setWidgetResizable(true);
+    m_pListTabScrollArea.last()->setHorizontalScrollBarPolicy(
         Qt::ScrollBarAlwaysOff);
     m_pListContent << new QWidget(this);
-    m_pListTabScrollArea.constLast()->setWidget(m_pListContent.constLast());
-    m_pListTabLayouts << new QGridLayout(m_pListContent.constLast());
+    m_pListTabScrollArea.last()->setWidget(m_pListContent.last());
+    m_pListTabLayouts << new QGridLayout(m_pListContent.last());
 
     QDir dir(m_sBoardsDir + "/" + sSubfolder);
     const QStringList boardfiles =
@@ -77,10 +77,9 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
       m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile,
                                         !m_sListAllUnsolved.contains(sFile),
                                         m_previewsize);
-      m_pListTabLayouts.constLast()->addWidget(m_pListBoards.constLast(), nRow,
-                                               nCol);
+      m_pListTabLayouts.last()->addWidget(m_pListBoards.last(), nRow, nCol);
 
-      connect(m_pListBoards.constLast(), &BoardPreview::selectBoard, this,
+      connect(m_pListBoards.last(), &BoardPreview::selectBoard, this,
               &BoardSelection::SelectBoard);
 
       nCol++;
@@ -92,7 +91,7 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
 
     sSubfolder[0] = sSubfolder[0].toUpper();
     sSubfolder = sSubfolder.replace('_', ' ');
-    m_pUi->tabWidget->addTab(m_pListTabScrollArea.constLast(), sSubfolder);
+    m_pUi->tabWidget->addTab(m_pListTabScrollArea.last(), sSubfolder);
   }
 
   connect(m_pUi->openOwnBoard, &QPushButton::clicked, this,
