@@ -24,6 +24,18 @@
     <screenshot type="default">
       <image>https://user-images.githubusercontent.com/26674558/109397420-bfeb5d00-7936-11eb-9b8b-cc6dfd17f2cc.png</image>
     </screenshot>
+    <screenshot>
+      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/184dc4c1-bc09-4671-af4a-fc1e87b9e1b2</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/d6c91e36-8d51-4eae-b369-b9808eaa4645</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/f4ff39c0-5f6d-4802-a937-2d8ca4bdcad2</image>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/b9c4897e-5f8a-4ead-9431-79803c26b263</image>
+    </screenshot>
   </screenshots>
   
   <launchable type="desktop-id">com.github.elth0r0.iqpuzzle.desktop</launchable>
@@ -33,7 +45,9 @@
   <url type="vcs-browser">https://github.com/ElTh0r0/iqpuzzle</url>
   <url type="translate">https://explore.transifex.com/elth0r0/iqpuzzle/</url>
   
-  <developer_name>Thorsten Roth</developer_name>
+  <developer id="com.github.elth0r0">
+    <name>Thorsten Roth</name>
+  </developer>
   <update_contact>elthoro@gmx.de</update_contact>
   
   <provides>
@@ -43,23 +57,23 @@
   <content_rating type="oars-1.0" />
   
   <languages>
-      <lang percentage="68">bg</lang>
-      <lang percentage="100">de</lang>
-      <lang percentage="100">en</lang>
-      <lang percentage="98">el_GR</lang>
-      <lang percentage="100">fr</lang>
-      <lang percentage="100">it</lang>
-      <lang percentage="96">ko</lang>
-      <lang percentage="100">nb_NO</lang>
-      <lang percentage="100">nl</lang>
-      <lang percentage="100">pt</lang>
-      <lang percentage="100">pt_BR</lang>
-      <lang percentage="96">zh_CN</lang>
-      <lang percentage="96">zh_TW</lang>
+    <lang percentage="68">bg</lang>
+    <lang percentage="100">de</lang>
+    <lang percentage="100">en</lang>
+    <lang percentage="98">el_GR</lang>
+    <lang percentage="100">fr</lang>
+    <lang percentage="100">it</lang>
+    <lang percentage="96">ko</lang>
+    <lang percentage="100">nb_NO</lang>
+    <lang percentage="100">nl</lang>
+    <lang percentage="100">pt</lang>
+    <lang percentage="100">pt_BR</lang>
+    <lang percentage="96">zh_CN</lang>
+    <lang percentage="96">zh_TW</lang>
   </languages>
   
   <releases>
-    <release version="1.3.0" date="2024-04-07">
+    <release version="1.3.0" date="2024-04-20">
       <description>
         <p>Main changes:</p>
         <ul>
