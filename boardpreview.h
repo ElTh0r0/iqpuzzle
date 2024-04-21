@@ -42,6 +42,9 @@ class BoardPreview : public QWidget {
                         const QSize previewsize, QWidget *pParent = nullptr);
   ~BoardPreview();
 
+  auto getName() -> const QString;
+  void updateSolved();
+
  signals:
   void selectBoard(const QString &sFileName);
 

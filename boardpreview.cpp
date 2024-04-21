@@ -104,3 +104,16 @@ void BoardPreview::mousePressEvent(QMouseEvent *p_Event) {
   }
   QWidget::mousePressEvent(p_Event);
 }
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+auto BoardPreview::getName() -> const QString {
+  QFileInfo fi(m_sFilePath);
+  return fi.baseName();
+}
+
+void BoardPreview::updateSolved() {
+  m_pUi->lblSolved->setText(tr("Solved:") +
+                            " <img src=\":/icons/emblem-checked.png\">");
+}

@@ -646,6 +646,7 @@ void IQPuzzle::solvedPuzzle() {
   QString sBoard(m_sBoardFile);
   // Skip update, if board is from user / not from share folder
   if (sBoard.contains(m_sSharePath + "/boards/", Qt::CaseInsensitive)) {
+    m_pBoardSelection->updateSolved(sBoard);
     sBoard = sBoard.remove(m_sSharePath + "/boards/");
     if (m_sListAllUnsolved.indexOf(sBoard) >= 0) {
       m_sListAllUnsolved.removeAt(m_sListAllUnsolved.indexOf(sBoard));

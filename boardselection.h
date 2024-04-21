@@ -53,6 +53,7 @@ class BoardSelection : public QDialog {
 
   auto getSelectedFile() -> const QString;
   auto getLastOpenedDir() -> const QString;
+  void updateSolved(const QString &sBoard);
 
  private slots:
   void SelectBoard(const QString &sFileName);

@@ -142,3 +142,13 @@ auto BoardSelection::getSelectedFile() -> const QString {
 auto BoardSelection::getLastOpenedDir() -> const QString {
   return m_sLastOpenedDir;
 }
+
+void BoardSelection::updateSolved(const QString &sBoard) {
+  for (auto board : m_pListBoards) {
+    QFileInfo fi(sBoard);
+    if (fi.baseName() == board->getName()) {
+      board->updateSolved();
+      break;
+    }
+  }
+}
