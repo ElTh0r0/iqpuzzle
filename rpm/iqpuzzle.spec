@@ -122,8 +122,6 @@ rm -rf %{buildroot}
 %{_datadir}/icons/hicolor/*/apps/com.github.elth0r0.iqpuzzle.*g
 %{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml
 %doc COPYING
-%{_mandir}/de/man6/iqpuzzle.6
-%{_mandir}/it/man6/iqpuzzle.6
-%{_mandir}/man6/iqpuzzle.6
+%{_mandir}/*/*
 
 %changelog
