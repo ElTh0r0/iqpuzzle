@@ -55,11 +55,11 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Install Dependencies
       run: |
-       brew install p7zip qt ffsend
+       brew install p7zip qt@5 ffsend
        PATH=/usr/local/opt/qt/bin/:${PATH}
 
     - name: Compile
