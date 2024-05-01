@@ -64,7 +64,7 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        version: '5.15.2'
+        version: '6.5.*'
         host: 'mac'
         target: 'desktop'
 
