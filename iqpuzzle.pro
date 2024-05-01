@@ -22,8 +22,8 @@ unix: !macx {
        TARGET  = iQPuzzle
 }
 
-win32:VERSION  = 1.3.0.0
-else:VERSION   = 1.3.0
+win32:VERSION  = 1.3.1.0
+else:VERSION   = 1.3.1
 
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "IQ challenging pentomino puzzle"
@@ -120,8 +120,11 @@ unix: !macx {
     icons.path     = $$PREFIX/share/icons
     icons.files   += icons/hicolor
 
-    man.path       = $$PREFIX/share
-    man.files     += man
+    man.path       = $$PREFIX/share/man
+    # Specify each subfolder - otherwise CMakeLists.txt will be installed
+    man.files     += man/man6
+    man.files     += man/de
+    man.files     += man/it
 
     meta.path      = $$PREFIX/share/metainfo
     meta.files    += data/unix/com.github.elth0r0.iqpuzzle.metainfo.xml

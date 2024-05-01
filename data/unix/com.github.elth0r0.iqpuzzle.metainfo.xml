@@ -73,6 +73,19 @@
   </languages>
   
   <releases>
+    <release version="1.3.1" date="2024-05-01">
+      <description>
+        <p>Version v1.3.0 was not released to all channels due to packaging issues. This release fixes that issue and ships all the main changes from v1.3.0 to all channels:</p>
+        <ul>
+          <li>Add extended board selection dialog</li>
+          <li>Add support for dark scheme on Windows with Qt 6.5</li>
+          <li>Bundle light/dark icons</li>
+          <li>Update application icon</li>
+          <li>Add Cmake support</li>
+          <li>Linux packaging fixes: AppId, metainfo</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.3.0" date="2024-04-21">
       <description>
         <p>Main changes:</p>
