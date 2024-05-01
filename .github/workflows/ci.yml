@@ -59,14 +59,20 @@ jobs:
 
     - name: Install Dependencies
       run: |
-       brew install p7zip qt@5 ffsend
-       PATH=/usr/local/opt/qt@5/bin/:${PATH}
+       brew install p7zip ffsend
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '5.15.2'
+        host: 'mac'
+        target: 'desktop'
 
     - name: Compile
       run: |
        mkdir build
        cd build
-       qmake5 ../iqpuzzle.pro CONFIG+=release
+       qmake ../iqpuzzle.pro CONFIG+=release
        make
        rm -rf .moc
        rm -rf .obj
