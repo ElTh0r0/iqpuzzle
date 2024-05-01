@@ -59,7 +59,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
-       brew install p7zip ffsend
+       brew install p7zip
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
@@ -91,4 +91,4 @@ jobs:
     - name: Upload macOS zip
       run: |
        cd build
-       ffsend upload iQPuzzle_*_macOS.zip
+       curl --upload-file ./iQPuzzle_*_macOS.zip https://transfer.adminforge.de/iQPuzzle_macOS.zip
