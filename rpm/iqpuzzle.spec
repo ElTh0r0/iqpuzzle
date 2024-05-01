@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.3.0
+Version:        1.3.1
 Release:        1
 License:        GPL-3.0+
 URL:            https://github.com/ElTh0r0/iqpuzzle
@@ -119,9 +119,11 @@ rm -rf %{buildroot}
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*g
+%{_datadir}/icons/hicolor/*/apps/com.github.elth0r0.iqpuzzle.*g
 %{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml
 %doc COPYING
-%{_mandir}/*/*
+%{_mandir}/de/man6/iqpuzzle.6
+%{_mandir}/it/man6/iqpuzzle.6
+%{_mandir}/man6/iqpuzzle.6
 
 %changelog
