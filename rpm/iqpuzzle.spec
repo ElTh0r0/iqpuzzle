@@ -71,9 +71,6 @@ make %{?_smp_mflags}
 make install INSTALL_ROOT=%{buildroot}
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
 
-%clean
-rm -rf %{buildroot}
-
 %post
 update-desktop-database &> /dev/null || :
 
@@ -96,9 +93,6 @@ make %{?_smp_mflags}
 %install
 make INSTALL_ROOT=%{buildroot} install
 %suse_update_desktop_file com.github.elth0r0.iqpuzzle
-
-%clean
-rm -rf %{buildroot}
 
 %if 0%{?suse_version} >= 1140
 %post
