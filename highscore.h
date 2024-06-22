@@ -40,7 +40,7 @@ class Highscore : public QObject {
   Q_OBJECT
 
  public:
-  explicit Highscore(QWidget *pParent = nullptr, QObject *pParentObj = nullptr);
+  explicit Highscore(QWidget *pParent, QObject *pParentObj = nullptr);
 
  public slots:
   void showHighscore(const QString &sBoard);

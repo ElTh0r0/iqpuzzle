@@ -83,7 +83,7 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
 #endif
   QIcon::setThemeName(sIconTheme);
 
-  m_pHighscore = new Highscore();
+  m_pHighscore = new Highscore(this);
   m_pSettings = new Settings(m_sSharePath, this);
   connect(m_pSettings, &Settings::changeLang, this, &IQPuzzle::loadLanguage);
   connect(this, &IQPuzzle::updateUiLang, m_pSettings, &Settings::updateUiLang);
