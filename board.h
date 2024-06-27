@@ -43,8 +43,8 @@ class Board : public QGraphicsScene {
   Q_OBJECT
 
  public:
-  Board(QGraphicsView *pGraphView, QString sBoardFile, Settings *pSettings,
-        const quint16 nGridSize = 0,
+  Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
+        Settings *pSettings, const quint16 nGridSize = 0,
         const QString &sSavedGame = QLatin1String(""),
         QObject *pParentObj = nullptr);
 
@@ -77,10 +77,11 @@ class Board : public QGraphicsScene {
   QPolygonF readPolygon(const QSettings *tmpSet, const QString &sKey,
                         const bool bScale = false);
   static auto checkOrthogonality(QPointF point) -> bool;
-  static auto readStartPosition(const QSettings *tmpSet, const QString &sKey)
-      -> QPointF;
+  static auto readStartPosition(const QSettings *tmpSet, const QString &sKey,
+                                QWidget *pParent) -> QPointF;
   void doZoom();
 
+  QWidget *m_pParent;
   QGraphicsView *m_pGraphView;
   QSettings *m_pBoardConf;
   QSettings *m_pSavedConf;

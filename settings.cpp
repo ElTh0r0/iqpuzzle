@@ -33,8 +33,10 @@
 
 #include "ui_settings.h"
 
-Settings::Settings(QString sSharePath, QWidget *pParent)
-    : QDialog(pParent), m_sSharePath(std::move(sSharePath)) {
+Settings::Settings(QWidget *pParent, QString sSharePath)
+    : QDialog(pParent),
+      m_pParent(pParent),
+      m_sSharePath(std::move(sSharePath)) {
   qDebug() << Q_FUNC_INFO;
 
   m_pUi = new Ui::SettingsDialog();
@@ -102,7 +104,7 @@ void Settings::accept() {
   if (tmp_listMouseControls[0] == tmp_listMouseControls[1] ||
       tmp_listMouseControls[0] == tmp_listMouseControls[2] ||
       tmp_listMouseControls[1] == tmp_listMouseControls[2]) {
-    QMessageBox::warning(nullptr, this->windowTitle(),
+    QMessageBox::warning(m_pParent, this->windowTitle(),
                          tr("Please change your settings. Same mouse "
                             "button is used for several actions."));
     return;

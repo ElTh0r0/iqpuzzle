@@ -43,7 +43,7 @@ class Settings : public QDialog {
   Q_OBJECT
 
  public:
-  explicit Settings(QString sSharePath, QWidget *pParent = nullptr);
+  explicit Settings(QWidget *pParent, QString sSharePath);
   virtual ~Settings();
 
   static const quint8 nSHIFT = 0xF0;
@@ -72,7 +72,7 @@ class Settings : public QDialog {
   void readSettings();
   QStringList searchTranslations();
 
-  QWidget *m_pParent{};
+  QWidget *m_pParent;
   Ui::SettingsDialog *m_pUi;
   QSettings *m_pSettings;
 

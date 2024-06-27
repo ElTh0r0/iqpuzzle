@@ -68,7 +68,7 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
 
     QDir dir(m_sBoardsDir + "/" + sSubfolder);
     const QStringList boardfiles =
-        dir.entryList(QStringList() << QLatin1String("*.conf"),
+        dir.entryList(QStringList() << QStringLiteral("*.conf"),
                       QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
     int nCol = 0;
     int nRow = 0;

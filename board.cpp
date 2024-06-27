@@ -37,10 +37,11 @@
 #include "./block.h"
 #include "./settings.h"
 
-Board::Board(QGraphicsView *pGraphView, QString sBoardFile, Settings *pSettings,
-             const quint16 nGridSize, const QString &sSavedGame,
-             QObject *pParentObj)
-    : m_pGraphView(pGraphView),
+Board::Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
+             Settings *pSettings, const quint16 nGridSize,
+             const QString &sSavedGame, QObject *pParentObj)
+    : m_pParent(pParent),
+      m_pGraphView(pGraphView),
       m_sBoardFile(std::move(sBoardFile)),
       m_pSettings(pSettings),
       m_bSavedGame(false),
@@ -64,7 +65,7 @@ Board::Board(QGraphicsView *pGraphView, QString sBoardFile, Settings *pSettings,
   if (0 == m_nGridSize || m_nGridSize > Board::MAXGRID) {
     qWarning() << "INVALID GRID SIZE:" << m_nGridSize;
     m_nGridSize = Board::DEFAULTGRID;
-    QMessageBox::warning(nullptr, tr("Warning"),
+    QMessageBox::warning(m_pParent, tr("Warning"),
                          tr("Board grid size not valid.\n"
                             "Reduced grid to default."));
   }
@@ -86,7 +87,7 @@ auto Board::setupBoard() -> bool {
       this->readPolygon(m_pBoardConf, QStringLiteral("Board/Polygon"), true);
   if (m_BoardPoly.isEmpty()) {
     qWarning() << "BOARD POLYGON IS EMPTY!";
-    QMessageBox::warning(nullptr, tr("Warning"),
+    QMessageBox::warning(m_pParent, tr("Warning"),
                          tr("Board polygon not valid."));
     return false;
   }
@@ -182,7 +183,7 @@ auto Board::setupBlocks() -> bool {
         m_pBoardConf->value(QStringLiteral("NotAllPiecesNeeded"), false)
             .toBool();
     if (m_bNotAllPiecesNeeded) {
-      QMessageBox::information(nullptr, tr("Hint"),
+      QMessageBox::information(m_pParent, tr("Hint"),
                                tr("Not all pieces are needed for a solution."));
     }
 
@@ -212,7 +213,7 @@ auto Board::createBlocks() -> bool {
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BLOCK" << i;
-      QMessageBox::warning(nullptr, tr("Warning"),
+      QMessageBox::warning(m_pParent, tr("Warning"),
                            tr("Polygon not valid:") + "\n" + sPrefix);
       return false;
     }
@@ -221,7 +222,8 @@ auto Board::createBlocks() -> bool {
     m_listBlocks.append(new Block(
         i, polygon, this->readColor(sPrefix + "/Color"),
         this->readColor(sPrefix + "/BorderColor"), m_nGridSize, &m_listBlocks,
-        m_pSettings, Board::readStartPosition(tmpSet, sPrefix + "/StartPos")));
+        m_pSettings,
+        Board::readStartPosition(tmpSet, sPrefix + "/StartPos", m_pParent)));
     if (!m_bFreestyle) {
       connect(m_listBlocks.last(), &Block::checkPuzzleSolved, this,
               &Board::checkPuzzleSolved);
@@ -232,7 +234,7 @@ auto Board::createBlocks() -> bool {
 
   if (0 == m_nNumOfBlocks) {
     qWarning() << "NO VALID BLOCKS FOUND.";
-    QMessageBox::warning(nullptr, tr("Warning"),
+    QMessageBox::warning(m_pParent, tr("Warning"),
                          tr("Could not find valid blocks."));
     return false;
   }
@@ -257,7 +259,7 @@ auto Board::createBarriers() -> bool {
     if (polygon.isEmpty()) {
       this->clear();  // Clear all objects
       qWarning() << "POLYGON IS EMPTY FOR BARRIER" << i;
-      QMessageBox::warning(nullptr, tr("Warning"),
+      QMessageBox::warning(m_pParent, tr("Warning"),
                            tr("Polygon not valid:") + "\n" + sPrefix);
       return false;
     }
@@ -266,12 +268,14 @@ auto Board::createBarriers() -> bool {
                        cBG == this->readColor(sPrefix + "/BorderColor"));
 
     // Create new barrier
-    m_listBlocks.append(new Block(
-        m_nNumOfBlocks + i, polygon,
-        this->readColor(sPrefix + "/Color", bIsBoardBG),
-        this->readColor(sPrefix + "/BorderColor", bIsBoardBG), m_nGridSize,
-        &m_listBlocks, m_pSettings,
-        Board::readStartPosition(m_pBoardConf, sPrefix + "/StartPos"), true));
+    m_listBlocks.append(
+        new Block(m_nNumOfBlocks + i, polygon,
+                  this->readColor(sPrefix + "/Color", bIsBoardBG),
+                  this->readColor(sPrefix + "/BorderColor", bIsBoardBG),
+                  m_nGridSize, &m_listBlocks, m_pSettings,
+                  Board::readStartPosition(m_pBoardConf, sPrefix + "/StartPos",
+                                           m_pParent),
+                  true));
   }
 
   return true;
@@ -293,7 +297,7 @@ auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
     sValue = QStringLiteral("#00FFFF");
     qWarning() << "Set fallback color for key" << sKey;
     QMessageBox::warning(
-        nullptr, tr("Warning"),
+        m_pParent, tr("Warning"),
         tr("No color defined - using fallback:") + "\n" + sKey);
   }
 
@@ -306,7 +310,7 @@ auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
     color = QColor(255, 0, 255);
     qWarning() << "Found invalid color for key" << sKey;
     QMessageBox::warning(
-        nullptr, tr("Warning"),
+        m_pParent, tr("Warning"),
         tr("Invalid color defined - using fallback:") + "\n" + sKey);
   }
   return color;
@@ -388,8 +392,8 @@ auto Board::checkOrthogonality(QPointF point) -> bool {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::readStartPosition(const QSettings *tmpSet, const QString &sKey)
-    -> QPointF {
+auto Board::readStartPosition(const QSettings *tmpSet, const QString &sKey,
+                              QWidget *pParent) -> QPointF {
   QStringList sList;
   QPointF point(1, -1);
   QString sValue = tmpSet->value(sKey, "").toString();
@@ -412,7 +416,7 @@ auto Board::readStartPosition(const QSettings *tmpSet, const QString &sKey)
   if (!bOk1 || !bOk2) {
     qWarning() << "Found invalid start point for key" << sKey;
     QMessageBox::warning(
-        nullptr, tr("Warning"),
+        pParent, tr("Warning"),
         tr("Invalid start position - using fallback:") + "\n" + sKey);
   }
   return point;
