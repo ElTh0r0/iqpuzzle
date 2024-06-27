@@ -516,7 +516,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation>Использовать цвет системного фона</translation>
+        <translation>Использовать системный цвет фона</translation>
     </message>
 </context>
 </TS>
