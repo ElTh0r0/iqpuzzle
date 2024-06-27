@@ -341,7 +341,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="151"/>
         <source>Games share path does not exist!</source>
-        <translation>Путь к файлу игры не существует.</translation>
+        <translation>Путь к файлу игры не существует!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="308"/>
