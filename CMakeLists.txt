@@ -16,7 +16,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 project(iQPuzzle
-    VERSION 1.3.1
+    VERSION 1.3.2
     DESCRIPTION "IQ challenging pentomino puzzle"
     LANGUAGES C CXX
 )
@@ -132,6 +132,7 @@ set(TRANSLATIONS
     lang/iqpuzzle_nl.ts
     lang/iqpuzzle_pt.ts
     lang/iqpuzzle_pt_BR.ts
+    lang/iqpuzzle_ru.ts
     lang/iqpuzzle_zh_CN.ts
     lang/iqpuzzle_zh_TW.ts
 )

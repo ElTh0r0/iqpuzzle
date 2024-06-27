@@ -22,8 +22,8 @@ unix: !macx {
        TARGET  = iQPuzzle
 }
 
-win32:VERSION  = 1.3.1.0
-else:VERSION   = 1.3.1
+win32:VERSION  = 1.3.2.0
+else:VERSION   = 1.3.2
 
 QMAKE_TARGET_PRODUCT     = "iQPuzzle"
 QMAKE_TARGET_DESCRIPTION = "IQ challenging pentomino puzzle"
@@ -86,6 +86,7 @@ TRANSLATIONS  += lang/iqpuzzle_bg.ts \
                  lang/iqpuzzle_nl.ts \
                  lang/iqpuzzle_pt.ts \
                  lang/iqpuzzle_pt_BR.ts \
+                 lang/iqpuzzle_ru.ts \
                  lang/iqpuzzle_zh_CN.ts \
                  lang/iqpuzzle_zh_TW.ts
 
