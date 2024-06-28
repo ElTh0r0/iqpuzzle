@@ -255,7 +255,9 @@ void Block::rotateBlock(const int nDelta) {
   m_PolyShape.translate(nTranslateX, nTranslateY);  // Move back
   // qDebug() << "After rot.:" << m_PolyShape;
 
-  this->checkBlockIntersection();
+  if (!m_bActive) {
+    this->checkBlockIntersection();
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -269,7 +271,9 @@ void Block::flipBlock() {
   m_PolyShape.translate(this->boundingRect().width(), 0);  // Move back
   // qDebug() << "After flip:" << m_PolyShape;
 
-  this->checkBlockIntersection();
+  if (!m_bActive) {
+    this->checkBlockIntersection();
+  }
 }
 
 // ---------------------------------------------------------------------------
