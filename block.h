@@ -59,6 +59,7 @@ class Block : public QGraphicsObject {
 
   auto getPolygon() const -> QPolygonF;
   auto isBarrier() const -> bool;
+  auto isActive() const -> bool;
   void bringToForeground();
   void rescaleBlock(const quint16 nNewScale);
   auto getIndex() const -> quint16;
@@ -81,6 +82,7 @@ class Block : public QGraphicsObject {
   void checkBlockIntersection();
   auto snapToGrid(const QPointF point) const -> QPointF;
   void resetBrushStyle() const;
+  auto isAnyBlockActive() -> bool;
 
   void moveBlock(const bool bRelease = false);
   void rotateBlock(const int nDelta = -1);
