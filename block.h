@@ -104,6 +104,7 @@ class Block : public QGraphicsObject {
   QTransform *m_pTransform;
   QPointF m_posBlockSelected;
   QPointF m_posMouseSelected;
+  QPolygonF m_PolyShapeSelected;
   QGraphicsSimpleTextItem m_ItemNumberText;
 };
 

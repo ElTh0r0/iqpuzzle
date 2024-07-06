@@ -206,7 +206,8 @@ void Block::moveBlock(const bool bRelease) {
   if (!bRelease) {
     m_bActive = true;
     this->bringToForeground();
-    m_posBlockSelected = this->pos();  // Save last position
+    m_posBlockSelected = this->pos();   // Save last position
+    m_PolyShapeSelected = m_PolyShape;  // Save shape
   } else {
     m_bActive = false;
 
@@ -219,8 +220,8 @@ void Block::moveBlock(const bool bRelease) {
 
     emit incrementMoves();
     if (this->checkCollision(thisPath)) {
-      // Reset position
-      this->setPos(this->snapToGrid(m_posBlockSelected));
+      m_PolyShape = m_PolyShapeSelected;  // Reset shape (flip / rotation)
+      this->setPos(this->snapToGrid(m_posBlockSelected));  // Reset position
       this->checkBlockIntersection();
     } else {
       // Check if puzzle is solved
