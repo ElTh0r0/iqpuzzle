@@ -71,16 +71,27 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   qDebug() << Q_FUNC_INFO;
   m_pUi->setupUi(this);
 
-  QString sIconTheme = QStringLiteral("light");
+  QString sIconTheme;
 #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+  qDebug() << "Detected color scheme:"
+           << QGuiApplication::styleHints()->colorScheme();
   if (Qt::ColorScheme::Dark == QGuiApplication::styleHints()->colorScheme()) {
     sIconTheme = QStringLiteral("dark");
-  }
-#else
-  if (this->window()->palette().window().color().lightnessF() < 0.5) {
-    sIconTheme = QStringLiteral("dark");
+  } else if (Qt::ColorScheme::Light ==
+             QGuiApplication::styleHints()->colorScheme()) {
+    sIconTheme = QStringLiteral("light");
   }
 #endif
+  // If < Qt 6.5 or if Qt::ColorScheme::Unknown was returned
+  if (sIconTheme.isEmpty()) {
+    // If window is darker than text
+    if (this->window()->palette().window().color().lightnessF() <
+        this->window()->palette().windowText().color().lightnessF()) {
+      sIconTheme = QStringLiteral("dark");
+    } else {
+      sIconTheme = QStringLiteral("light");
+    }
+  }
   QIcon::setThemeName(sIconTheme);
 
   m_pHighscore = new Highscore(this);
