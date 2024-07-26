@@ -4,7 +4,7 @@ layout: default
 
 [back](./)
 # [](#create-your-own-level)Create your own level
-Own puzzle levels can be created as a text file stored with **.conf** file extension. Afterwards they can be loaded via _"Game -> New game"_. As an example, the following parts belonging to level **pento_T.conf**:
+Own puzzle levels can be created as a text file stored with **.conf** file extension. Afterwards they can be loaded via _"Game -> Choose new game -> Open own board..."_. As an example, the following parts belonging to level **pento_T.conf**:
 
 ```ini
 [General]
