@@ -4,7 +4,7 @@ layout: default
 # [](#iqpuzzle)iQPuzzle
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and more than 300 different board shapes are available, which have to be filled with them.
 
-![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
+![Screenshot](img/iqpuzzle.png)
 
 ## [](#downoads)Downloads
 ###### Latest release v1.3.1 (01. May 2024)

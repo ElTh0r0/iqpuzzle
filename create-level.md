@@ -74,11 +74,11 @@ Puzzle pieces / barriers numbered from  1 to N:
 ## [](#coordinate-system)Coordinate system
 The top left corner of the board defines the origin of the used coordinate system. Points are defined as "x, y" (x-axis horizontal to the right, y-axis vertical downward). It is allowed to use negative values as start positions for the pieces.
 
-![Graticule](https://media-cdn.ubuntu-de.org/wiki/thumbnails/b/b5/b53e9caa9d43b1dda19d79f38df96c351abd7efdix100.png)
+![Graticule](img/graticule.png)
 
 ## [](#polygon)Polygon
 Board, pieces and barriers are defined as (orthogonal) polygons. The shape is defined by a list of all corners. One has to take care, that the polygon is "closed", which means the first and last corner have to be identical. The corners (coordinates) are separated by a vertical bar \| ("pipe", shortcut "AltGr + <") and the complete list is terminated by quotation marks. E.g. "0,0 \| 3,0 \| 3,1 \| 1,1 \| 1,3 \| 0,3 \| 0,0" can be seen on the picture below. 
 
-![Example shape](https://media-cdn.ubuntu-de.org/wiki/thumbnails/f/fd/fde89b64c128973aa87d82f4caac30c514172eb3ix100.png)
+![Example shape](img/example_shape.png)
 
 [back](./)
