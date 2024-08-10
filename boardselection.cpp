@@ -72,6 +72,8 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
                       QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
     int nCol = 0;
     int nRow = 0;
+    quint16 nSolved = 0;
+    quint16 nSum = 0;
     for (const auto &board : boardfiles) {
       QString sFile(sSubfolder + "/" + board);
       m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile,
@@ -87,10 +89,16 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
         nCol = 0;
         nRow++;
       }
+
+      if (!m_sListAllUnsolved.contains(sFile)) {
+        nSolved++;
+      }
+      nSum++;
     }
 
     sSubfolder[0] = sSubfolder[0].toUpper();
-    sSubfolder = sSubfolder.replace('_', ' ');
+    sSubfolder = sSubfolder.replace('_', ' ') + " (" +
+                 QString::number(nSolved) + "/" + QString::number(nSum) + ")";
     m_pUi->tabWidget->addTab(m_pListTabScrollArea.last(), sSubfolder);
   }
 
