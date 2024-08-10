@@ -74,10 +74,11 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
     int nRow = 0;
     quint16 nSolved = 0;
     quint16 nSum = 0;
+    bool bSolved;
     for (const auto &board : boardfiles) {
       QString sFile(sSubfolder + "/" + board);
-      m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile,
-                                        !m_sListAllUnsolved.contains(sFile),
+      bSolved = !m_sListAllUnsolved.contains(sFile);
+      m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile, bSolved,
                                         m_previewsize);
       m_pListTabLayouts.last()->addWidget(m_pListBoards.last(), nRow, nCol);
 
@@ -90,15 +91,18 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
         nRow++;
       }
 
-      if (!m_sListAllUnsolved.contains(sFile)) {
+      if (bSolved) {
         nSolved++;
       }
       nSum++;
     }
 
     sSubfolder[0] = sSubfolder[0].toUpper();
-    sSubfolder = sSubfolder.replace('_', ' ') + " (" +
-                 QString::number(nSolved) + "/" + QString::number(nSum) + ")";
+    sSubfolder = sSubfolder.replace('_', ' ');
+    if (sSubfolder != QStringLiteral("Freestyle")) {
+      sSubfolder +=
+          " (" + QString::number(nSolved) + "/" + QString::number(nSum) + ")";
+    }
     m_pUi->tabWidget->addTab(m_pListTabScrollArea.last(), sSubfolder);
   }
 
