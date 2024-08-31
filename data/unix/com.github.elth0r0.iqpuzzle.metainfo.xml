@@ -74,11 +74,11 @@
   </languages>
   
   <releases>
-    <release version="1.4.0" date="2024-07-26">
+    <release version="1.4.0" date="2024-08-31">
       <description>
         <p>Main changes:</p>
         <ul>
-          <li>Add mini boards</li>
+          <li>Add more than 50 new boards</li>
           <li>Add Russian translation - thanks to cheelp!</li>
           <li>Some visual bug fixes</li>
         </ul>

@@ -24,8 +24,8 @@
  * Board preview widget.
  */
 
-#ifndef BOARDPREVIEW_H
-#define BOARDPREVIEW_H
+#ifndef BOARDPREVIEW_H_
+#define BOARDPREVIEW_H_
 
 #include <QMouseEvent>
 #include <QWidget>
@@ -59,4 +59,4 @@ class BoardPreview : public QWidget {
   QString m_sFilePath;
 };
 
-#endif  // BOARDPREVIEW_H
+#endif  // BOARDPREVIEW_H_
