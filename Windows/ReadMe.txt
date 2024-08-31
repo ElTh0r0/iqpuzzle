@@ -23,6 +23,7 @@ Translations
  - Korean: hyuna1127
  - Norwegian: Allan Nordhoy
  - Portuguese (pt & pt_BR): UchidoF
+ - Russian: cheelp
  - Misc. corrections: J. Lavoie
 
 New translations and corrections are highly welcome! You can either fork the
@@ -33,4 +34,4 @@ can participate on Transifex: https://www.transifex.com/elth0r0/iqpuzzle/
 Icons
 -----
 
-iQPuzzle uses icons from Tango Desktop Project: http://tango.freedesktop.org
+iQPuzzle uses Breeze icons from KDE: https://invent.kde.org/frameworks/breeze-icons
