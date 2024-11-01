@@ -76,7 +76,7 @@ target_compile_definitions(iqpuzzle
         APP_COPY="${PROJECT_COPYRIGHT}"
         APP_DESC="${PROJECT_DESCRIPTION}"
         QT_NO_FOREACH
-        $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x060700>
+        $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x060800>
 )
 
 target_link_libraries(iqpuzzle PRIVATE
