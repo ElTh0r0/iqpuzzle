@@ -185,8 +185,8 @@ void Highscore::insertHighscore(const QString &sBoard, const quint8 nPosition,
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Highscore::readHighscore(const QString &sBoard, const QString &sKey) const
-    -> QStringList {
+auto Highscore::readHighscore(const QString &sBoard,
+                              const QString &sKey) const -> QStringList {
   QStringList sListTemp;
   QByteArray ba(m_pHighscore->value(sBoard + "/" + sKey, "fHw=").toByteArray());
   QString sTemp(QString::fromLatin1(QByteArray::fromBase64(ba)));

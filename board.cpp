@@ -284,8 +284,8 @@ auto Board::createBarriers() -> bool {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
-    -> QColor {
+auto Board::readColor(const QString &sKey,
+                      const bool bColorIsBoardBG) const -> QColor {
   if (bColorIsBoardBG && m_pSettings->getUseSystemBackground()) {
     return QApplication::palette().color(QPalette::Base);
   }

@@ -48,8 +48,8 @@ class Highscore : public QObject {
                       const QTime tTime);
 
  private:
-  auto readHighscore(const QString &sBoard, const QString &sKey) const
-      -> QStringList;
+  auto readHighscore(const QString &sBoard,
+                     const QString &sKey) const -> QStringList;
   void insertHighscore(const QString &sBoard, const quint8 nPosition,
                        const quint32 nMoves, const QTime tTime);
 
