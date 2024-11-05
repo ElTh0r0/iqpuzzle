@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb_NO">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb_NO">
 <context>
     <name>Board</name>
     <message>
@@ -375,7 +373,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Puzzle solved!</source>
-        <translation>Løst</translation>
+        <translation>Løst!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="725"/>
@@ -490,25 +488,25 @@ Det ble tilbakestilt.</translation>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="216"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="217"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
         <location filename="../settings.cpp" line="218"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="63"/>
         <location filename="../settings.cpp" line="219"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="114"/>
