@@ -1,5 +1,8 @@
 version: '1.4.1-{build}'
 
+skip_commits:
+  author: /transifex/
+
 environment:
   matrix:
     - BUILD: mingw32
