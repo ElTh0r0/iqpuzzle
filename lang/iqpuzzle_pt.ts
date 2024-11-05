@@ -337,7 +337,7 @@ Grade reduzida para o tamanho padrão.</translation>
         <location filename="../iqpuzzle.cpp" line="279"/>
         <location filename="../iqpuzzle.cpp" line="289"/>
         <source>The chosen file does not exist.</source>
-        <translation>O arquivo escolhido não existe</translation>
+        <translation>O arquivo escolhido não existe.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="164"/>
