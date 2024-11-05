@@ -57,20 +57,20 @@
   <content_rating type="oars-1.0" />
   
   <languages>
-    <lang percentage="68">bg</lang>
+    <lang percentage="65">bg</lang>
     <lang percentage="100">de</lang>
     <lang percentage="100">en</lang>
-    <lang percentage="98">el_GR</lang>
+    <lang percentage="94">el_GR</lang>
     <lang percentage="100">fr</lang>
     <lang percentage="100">it</lang>
-    <lang percentage="96">ko</lang>
+    <lang percentage="92">ko</lang>
     <lang percentage="100">nb_NO</lang>
     <lang percentage="100">nl</lang>
     <lang percentage="100">pt</lang>
-    <lang percentage="100">ru</lang>
     <lang percentage="100">pt_BR</lang>
-    <lang percentage="96">zh_CN</lang>
-    <lang percentage="96">zh_TW</lang>
+    <lang percentage="96">ru</lang>
+    <lang percentage="92">zh_CN</lang>
+    <lang percentage="92">zh_TW</lang>
   </languages>
   
   <releases>
