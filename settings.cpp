@@ -56,16 +56,18 @@ Settings::Settings(QWidget *pParent, QString sSharePath)
   m_listMouseButtons << Qt::LeftButton << Qt::MiddleButton << Qt::RightButton;
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
   m_sListMouseButtons << tr("First X") << tr("Second X") << tr("Vertical wheel")
-                      << tr("Horizontal wheel");
+                      << tr("Horizontal wheel")
+                      << tr("Left") + " + " + tr("Shift")
+                      << tr("Left") + " + " + tr("Ctrl")
+                      << tr("Left") + " + " + tr("Alt")
+                      << tr("Left") + " + " + tr("Meta");
   m_listMouseButtons << Qt::XButton1 << Qt::XButton2
                      << (quint8(Qt::Vertical) | nSHIFT)
-                     << (quint8(Qt::Horizontal) | nSHIFT);
-  m_sListMouseButtons << tr("Left + Shift") << tr("Left + Ctrl")
-                      << tr("Left + Alt") << tr("Left + Meta");
-  m_listMouseButtons << ((unsigned) Qt::LeftButton | Qt::ShiftModifier)
-                     << ((unsigned) Qt::LeftButton | Qt::ControlModifier)
-                     << ((unsigned) Qt::LeftButton | Qt::AltModifier)
-                     << ((unsigned) Qt::LeftButton | Qt::MetaModifier);
+                     << (quint8(Qt::Horizontal) | nSHIFT)
+                     << ((quint32)Qt::LeftButton | Qt::ShiftModifier)
+                     << ((quint32)Qt::LeftButton | Qt::ControlModifier)
+                     << ((quint32)Qt::LeftButton | Qt::AltModifier)
+                     << ((quint32)Qt::LeftButton | Qt::MetaModifier);
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 
@@ -210,7 +212,11 @@ void Settings::updateUiLang() {
   m_pUi->cbMoveBlockMouse->addItems(m_sListMouseButtons);
 
   m_sListMouseButtons << tr("First X") << tr("Second X") << tr("Vertical wheel")
-                      << tr("Horizontal wheel");
+                      << tr("Horizontal wheel")
+                      << tr("Left") + " + " + tr("Shift")
+                      << tr("Left") + " + " + tr("Ctrl")
+                      << tr("Left") + " + " + tr("Alt")
+                      << tr("Left") + " + " + tr("Meta");
   m_pUi->cbRotateBlockMouse->clear();
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->clear();

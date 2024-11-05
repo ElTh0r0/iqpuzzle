@@ -90,7 +90,7 @@ class Board : public QGraphicsScene {
   bool m_bSavedGame;
   QPolygonF m_BoardPoly;
   QList<Block *> m_listBlocks;
-  unsigned char m_nNumOfBlocks{};
+  quint8 m_nNumOfBlocks{};
   quint16 m_nGridSize;
   bool m_bNotAllPiecesNeeded{};
   bool m_bFreestyle{};

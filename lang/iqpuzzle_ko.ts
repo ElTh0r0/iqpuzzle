@@ -1,63 +1,65 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ko">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ko">
 <context>
     <name>Board</name>
     <message>
-        <location filename="../board.cpp" line="67"/>
-        <location filename="../board.cpp" line="89"/>
-        <location filename="../board.cpp" line="215"/>
-        <location filename="../board.cpp" line="235"/>
-        <location filename="../board.cpp" line="260"/>
-        <location filename="../board.cpp" line="296"/>
-        <location filename="../board.cpp" line="309"/>
-        <location filename="../board.cpp" line="415"/>
+        <location filename="../board.cpp" line="68"/>
+        <location filename="../board.cpp" line="90"/>
+        <location filename="../board.cpp" line="216"/>
+        <location filename="../board.cpp" line="237"/>
+        <location filename="../board.cpp" line="262"/>
+        <location filename="../board.cpp" line="300"/>
+        <location filename="../board.cpp" line="313"/>
+        <location filename="../board.cpp" line="419"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="68"/>
+        <location filename="../board.cpp" line="69"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>현재 보드판의 크기는 사용할 수 없습니다.
 기본 값으로 줄여주세요.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="90"/>
+        <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
         <translation>사용할 수 없는 크기의 다각형입니다.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="185"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Hint</source>
         <translation>힌트</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="186"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Not all pieces are needed for a solution.</source>
         <translation>정답에 모든 조각들이 필요한 것은 아닙니다.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="216"/>
-        <location filename="../board.cpp" line="261"/>
+        <location filename="../board.cpp" line="217"/>
+        <location filename="../board.cpp" line="263"/>
         <source>Polygon not valid:</source>
         <translation>사용할 수 없는 다각형:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="236"/>
+        <location filename="../board.cpp" line="238"/>
         <source>Could not find valid blocks.</source>
         <translation>사용할 수 있는 블록이 없습니다.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="297"/>
+        <location filename="../board.cpp" line="301"/>
         <source>No color defined - using fallback:</source>
         <translation>정의된 색상 없음 - fallback 사용:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="310"/>
+        <location filename="../board.cpp" line="314"/>
         <source>Invalid color defined - using fallback:</source>
         <translation>색상 정의 불가 - fallback 사용:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="416"/>
+        <location filename="../board.cpp" line="420"/>
         <source>Invalid start position - using fallback:</source>
         <translation>허용되지 않은 시작 위치 - fallback 사용:</translation>
     </message>
@@ -92,21 +94,22 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
+        <location filename="../boardpreview.cpp" line="117"/>
         <source>Solved:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="69"/>
+        <location filename="../boardpreview.cpp" line="71"/>
         <source>Unknown</source>
         <translation>알수없음</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="71"/>
+        <location filename="../boardpreview.cpp" line="77"/>
         <source>Solutions</source>
         <translation>해결</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="82"/>
+        <location filename="../boardpreview.cpp" line="89"/>
         <source>No preview available</source>
         <translation>미리보기 불가능</translation>
     </message>
@@ -114,18 +117,18 @@ Reduced grid to default.</source>
 <context>
     <name>BoardSelection</name>
     <message>
-        <location filename="../boardselection.ui" line="14"/>
-        <location filename="../boardselection.cpp" line="121"/>
+        <location filename="../boardselection.ui" line="20"/>
+        <location filename="../boardselection.cpp" line="132"/>
         <source>Load board</source>
         <translation>보드 불러오기</translation>
     </message>
     <message>
-        <location filename="../boardselection.ui" line="27"/>
+        <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boardselection.cpp" line="122"/>
+        <location filename="../boardselection.cpp" line="133"/>
         <source>Board files</source>
         <translation>보드 파일</translation>
     </message>
@@ -233,7 +236,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="169"/>
-        <location filename="../iqpuzzle.cpp" line="520"/>
+        <location filename="../iqpuzzle.cpp" line="528"/>
         <source>Save game</source>
         <translation>게임 저장</translation>
     </message>
@@ -244,7 +247,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="180"/>
-        <location filename="../iqpuzzle.cpp" line="486"/>
+        <location filename="../iqpuzzle.cpp" line="494"/>
         <source>Load game</source>
         <translation>게임 불러오기</translation>
     </message>
@@ -298,135 +301,135 @@ Reduced grid to default.</source>
         <translation>통&amp;계</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="99"/>
-        <location filename="../iqpuzzle.cpp" line="782"/>
+        <location filename="../iqpuzzle.cpp" line="114"/>
+        <location filename="../iqpuzzle.cpp" line="606"/>
         <source>Game paused</source>
         <translation>게임 중지</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="104"/>
-        <location filename="../iqpuzzle.cpp" line="107"/>
-        <location filename="../iqpuzzle.cpp" line="284"/>
-        <location filename="../iqpuzzle.cpp" line="291"/>
-        <location filename="../iqpuzzle.cpp" line="594"/>
+        <location filename="../iqpuzzle.cpp" line="119"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="297"/>
+        <location filename="../iqpuzzle.cpp" line="304"/>
+        <location filename="../iqpuzzle.cpp" line="643"/>
         <source>Time</source>
         <translation>시간</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="108"/>
-        <location filename="../iqpuzzle.cpp" line="281"/>
-        <location filename="../iqpuzzle.cpp" line="288"/>
-        <location filename="../iqpuzzle.cpp" line="354"/>
-        <location filename="../iqpuzzle.cpp" line="593"/>
-        <location filename="../iqpuzzle.cpp" line="785"/>
+        <location filename="../iqpuzzle.cpp" line="123"/>
+        <location filename="../iqpuzzle.cpp" line="294"/>
+        <location filename="../iqpuzzle.cpp" line="301"/>
+        <location filename="../iqpuzzle.cpp" line="362"/>
+        <location filename="../iqpuzzle.cpp" line="609"/>
+        <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Moves</source>
         <translation>이동 횟수</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="125"/>
-        <location filename="../iqpuzzle.cpp" line="135"/>
-        <location filename="../iqpuzzle.cpp" line="265"/>
-        <location filename="../iqpuzzle.cpp" line="275"/>
+        <location filename="../iqpuzzle.cpp" line="138"/>
+        <location filename="../iqpuzzle.cpp" line="148"/>
+        <location filename="../iqpuzzle.cpp" line="278"/>
+        <location filename="../iqpuzzle.cpp" line="288"/>
         <source>File not found</source>
         <translation>파일을 찾을 수 없음</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="126"/>
-        <location filename="../iqpuzzle.cpp" line="136"/>
-        <location filename="../iqpuzzle.cpp" line="266"/>
-        <location filename="../iqpuzzle.cpp" line="276"/>
+        <location filename="../iqpuzzle.cpp" line="139"/>
+        <location filename="../iqpuzzle.cpp" line="149"/>
+        <location filename="../iqpuzzle.cpp" line="279"/>
+        <location filename="../iqpuzzle.cpp" line="289"/>
         <source>The chosen file does not exist.</source>
         <translation>선택한 파일이 존재하지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="151"/>
+        <location filename="../iqpuzzle.cpp" line="164"/>
         <source>Games share path does not exist!</source>
         <translation>게임의 공유 경로가 존재하지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="308"/>
+        <location filename="../iqpuzzle.cpp" line="321"/>
         <source>Unknown</source>
         <translation>알수없음</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="312"/>
+        <location filename="../iqpuzzle.cpp" line="325"/>
         <source>Solutions</source>
         <translation>해결</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="403"/>
+        <location filename="../iqpuzzle.cpp" line="411"/>
         <source>No boards available!</source>
         <translation>사용가능한 보드 없음!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="488"/>
-        <location filename="../iqpuzzle.cpp" line="522"/>
+        <location filename="../iqpuzzle.cpp" line="496"/>
+        <location filename="../iqpuzzle.cpp" line="530"/>
         <source>Save games</source>
         <translation>게임 저장</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="502"/>
+        <location filename="../iqpuzzle.cpp" line="510"/>
         <source>Invalid saved puzzle.</source>
         <translation>저장 가능한 퍼즐이 없습니다.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="593"/>
+        <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Puzzle solved!</source>
         <translation>퍼즐을 풀었습니다!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="675"/>
+        <location filename="../iqpuzzle.cpp" line="725"/>
         <source>Statistics</source>
         <translation>통계</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="683"/>
-        <location filename="../iqpuzzle.cpp" line="712"/>
+        <location filename="../iqpuzzle.cpp" line="733"/>
+        <location filename="../iqpuzzle.cpp" line="762"/>
         <source>Total</source>
         <translation>총합</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="685"/>
+        <location filename="../iqpuzzle.cpp" line="735"/>
         <source>Unsolved</source>
         <translation>미해결</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="688"/>
+        <location filename="../iqpuzzle.cpp" line="738"/>
         <source>Easy</source>
         <translation>쉬움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="696"/>
+        <location filename="../iqpuzzle.cpp" line="746"/>
         <source>Medium</source>
         <translation>중간</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="704"/>
+        <location filename="../iqpuzzle.cpp" line="754"/>
         <source>Hard</source>
         <translation>어려움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="713"/>
+        <location filename="../iqpuzzle.cpp" line="763"/>
         <source>including unknown difficulty</source>
         <translation>알수 없는 난이도 포함</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="735"/>
+        <location filename="../iqpuzzle.cpp" line="785"/>
         <source>About</source>
         <translation>상세 정보</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="749"/>
+        <location filename="../iqpuzzle.cpp" line="799"/>
         <source>License</source>
         <translation>라이선스</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="752"/>
+        <location filename="../iqpuzzle.cpp" line="802"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="755"/>
+        <location filename="../iqpuzzle.cpp" line="805"/>
         <source>Translations</source>
         <translation>번역</translation>
     </message>
@@ -435,48 +438,80 @@ Reduced grid to default.</source>
     <name>Settings</name>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="63"/>
+        <location filename="../settings.cpp" line="210"/>
+        <location filename="../settings.cpp" line="216"/>
+        <location filename="../settings.cpp" line="217"/>
+        <location filename="../settings.cpp" line="218"/>
+        <location filename="../settings.cpp" line="219"/>
         <source>Left</source>
         <translation>왼쪽</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="210"/>
         <source>Middle</source>
         <translation>중간</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="210"/>
         <source>Right</source>
         <translation>오른쪽</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>First X</source>
         <translation>첫번째 X</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Second X</source>
         <translation>두번째 X</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Vertical wheel</source>
         <translation>수직 핸들</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="59"/>
-        <location filename="../settings.cpp" line="207"/>
+        <location filename="../settings.cpp" line="215"/>
         <source>Horizontal wheel</source>
         <translation>수평 핸들</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="106"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="216"/>
+        <source>Shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="217"/>
+        <source>Ctrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="218"/>
+        <source>Alt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="63"/>
+        <location filename="../settings.cpp" line="219"/>
+        <source>Meta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="114"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>설정을 변경해 주세요. 여러 작업에 동일한 마우스 버튼이 사용됩니다.</translation>
     </message>
@@ -516,7 +551,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settings.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

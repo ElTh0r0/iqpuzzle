@@ -196,7 +196,7 @@ auto Board::setupBlocks() -> bool {
 // ---------------------------------------------------------------------------
 
 auto Board::createBlocks() -> bool {
-  const unsigned char nMaxNumOfBlocks(250);
+  const quint8 nMaxNumOfBlocks(250);
   QSettings *tmpSet = m_pBoardConf;
   if (m_bSavedGame) {
     tmpSet = m_pSavedConf;
@@ -246,7 +246,7 @@ auto Board::createBlocks() -> bool {
 // ---------------------------------------------------------------------------
 
 auto Board::createBarriers() -> bool {
-  const unsigned char nMaxNumOfBlocks(250);
+  const quint8 nMaxNumOfBlocks(250);
   QColor cBG(this->readColor(QStringLiteral("BGColor")));
 
   for (quint16 i = 1; i <= nMaxNumOfBlocks; i++) {

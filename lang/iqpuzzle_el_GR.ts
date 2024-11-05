@@ -1,63 +1,65 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
-        <location filename="../board.cpp" line="67"/>
-        <location filename="../board.cpp" line="89"/>
-        <location filename="../board.cpp" line="215"/>
-        <location filename="../board.cpp" line="235"/>
-        <location filename="../board.cpp" line="260"/>
-        <location filename="../board.cpp" line="296"/>
-        <location filename="../board.cpp" line="309"/>
-        <location filename="../board.cpp" line="415"/>
+        <location filename="../board.cpp" line="68"/>
+        <location filename="../board.cpp" line="90"/>
+        <location filename="../board.cpp" line="216"/>
+        <location filename="../board.cpp" line="237"/>
+        <location filename="../board.cpp" line="262"/>
+        <location filename="../board.cpp" line="300"/>
+        <location filename="../board.cpp" line="313"/>
+        <location filename="../board.cpp" line="419"/>
         <source>Warning</source>
         <translation>Συναγερμός</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="68"/>
+        <location filename="../board.cpp" line="69"/>
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>Το μέγεθος του δικτύου του συμβουλίου δεν είναι έγκυρο.
 Μειωμένο πλέγμα σε αθέτηση.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="90"/>
+        <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
         <translation>Το Συμβούλιο πολυγώνου δεν είναι έγκυρο.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="185"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Hint</source>
         <translation>Υπονοούμενο</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="186"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Not all pieces are needed for a solution.</source>
         <translation>Δεν χρειάζονται όλα τα κομμάτια για μια λύση.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="216"/>
-        <location filename="../board.cpp" line="261"/>
+        <location filename="../board.cpp" line="217"/>
+        <location filename="../board.cpp" line="263"/>
         <source>Polygon not valid:</source>
         <translation>Πολυγωνικό μη έγκυρο:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="236"/>
+        <location filename="../board.cpp" line="238"/>
         <source>Could not find valid blocks.</source>
         <translation>Αδύνατη η εύρεση έγκυρων τετραγώνων.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="297"/>
+        <location filename="../board.cpp" line="301"/>
         <source>No color defined - using fallback:</source>
         <translation>Δεν έχει καθοριστεί χρώμα - χρησιμοποιώντας εφεδρικά στοιχεία:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="310"/>
+        <location filename="../board.cpp" line="314"/>
         <source>Invalid color defined - using fallback:</source>
         <translation>Μη έγκυρο χρώμα που ορίζεται - με τη χρήση εφεδρικού χρώματος:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="416"/>
+        <location filename="../board.cpp" line="420"/>
         <source>Invalid start position - using fallback:</source>
         <translation>Μη έγκυρη θέση εκκίνησης - χρησιμοποιώντας εφεδρικά στοιχεία:</translation>
     </message>
@@ -92,21 +94,22 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
+        <location filename="../boardpreview.cpp" line="117"/>
         <source>Solved:</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="69"/>
+        <location filename="../boardpreview.cpp" line="71"/>
         <source>Unknown</source>
         <translation>Άγνωστος</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="71"/>
+        <location filename="../boardpreview.cpp" line="77"/>
         <source>Solutions</source>
         <translation>Πρόβλημα</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="82"/>
+        <location filename="../boardpreview.cpp" line="89"/>
         <source>No preview available</source>
         <translation>Δε διατίθεται προεπισκόπηση</translation>
     </message>
@@ -114,18 +117,18 @@ Reduced grid to default.</source>
 <context>
     <name>BoardSelection</name>
     <message>
-        <location filename="../boardselection.ui" line="14"/>
-        <location filename="../boardselection.cpp" line="121"/>
+        <location filename="../boardselection.ui" line="20"/>
+        <location filename="../boardselection.cpp" line="132"/>
         <source>Load board</source>
         <translation>Φορτώνω σανίδα</translation>
     </message>
     <message>
-        <location filename="../boardselection.ui" line="27"/>
+        <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boardselection.cpp" line="122"/>
+        <location filename="../boardselection.cpp" line="133"/>
         <source>Board files</source>
         <translation>Φάκελοι με επιτραπέζιο παιχνίδι</translation>
     </message>
@@ -233,7 +236,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="169"/>
-        <location filename="../iqpuzzle.cpp" line="520"/>
+        <location filename="../iqpuzzle.cpp" line="528"/>
         <source>Save game</source>
         <translation>Αποθήκευση παιχνιδιού</translation>
     </message>
@@ -244,7 +247,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="180"/>
-        <location filename="../iqpuzzle.cpp" line="486"/>
+        <location filename="../iqpuzzle.cpp" line="494"/>
         <source>Load game</source>
         <translation>Φόρτωση παιχνιδιού</translation>
     </message>
@@ -298,135 +301,135 @@ Reduced grid to default.</source>
         <translation>Στατιστικά</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="99"/>
-        <location filename="../iqpuzzle.cpp" line="782"/>
+        <location filename="../iqpuzzle.cpp" line="114"/>
+        <location filename="../iqpuzzle.cpp" line="606"/>
         <source>Game paused</source>
         <translation>Σε παύση</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="104"/>
-        <location filename="../iqpuzzle.cpp" line="107"/>
-        <location filename="../iqpuzzle.cpp" line="284"/>
-        <location filename="../iqpuzzle.cpp" line="291"/>
-        <location filename="../iqpuzzle.cpp" line="594"/>
+        <location filename="../iqpuzzle.cpp" line="119"/>
+        <location filename="../iqpuzzle.cpp" line="122"/>
+        <location filename="../iqpuzzle.cpp" line="297"/>
+        <location filename="../iqpuzzle.cpp" line="304"/>
+        <location filename="../iqpuzzle.cpp" line="643"/>
         <source>Time</source>
         <translation>Χρόνος</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="108"/>
-        <location filename="../iqpuzzle.cpp" line="281"/>
-        <location filename="../iqpuzzle.cpp" line="288"/>
-        <location filename="../iqpuzzle.cpp" line="354"/>
-        <location filename="../iqpuzzle.cpp" line="593"/>
-        <location filename="../iqpuzzle.cpp" line="785"/>
+        <location filename="../iqpuzzle.cpp" line="123"/>
+        <location filename="../iqpuzzle.cpp" line="294"/>
+        <location filename="../iqpuzzle.cpp" line="301"/>
+        <location filename="../iqpuzzle.cpp" line="362"/>
+        <location filename="../iqpuzzle.cpp" line="609"/>
+        <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Moves</source>
         <translation>Κινήσεις</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="125"/>
-        <location filename="../iqpuzzle.cpp" line="135"/>
-        <location filename="../iqpuzzle.cpp" line="265"/>
-        <location filename="../iqpuzzle.cpp" line="275"/>
+        <location filename="../iqpuzzle.cpp" line="138"/>
+        <location filename="../iqpuzzle.cpp" line="148"/>
+        <location filename="../iqpuzzle.cpp" line="278"/>
+        <location filename="../iqpuzzle.cpp" line="288"/>
         <source>File not found</source>
         <translation>Το αρχείο δεν βρέθηκε</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="126"/>
-        <location filename="../iqpuzzle.cpp" line="136"/>
-        <location filename="../iqpuzzle.cpp" line="266"/>
-        <location filename="../iqpuzzle.cpp" line="276"/>
+        <location filename="../iqpuzzle.cpp" line="139"/>
+        <location filename="../iqpuzzle.cpp" line="149"/>
+        <location filename="../iqpuzzle.cpp" line="279"/>
+        <location filename="../iqpuzzle.cpp" line="289"/>
         <source>The chosen file does not exist.</source>
         <translation>Ο επιλεγμένος φάκελος δεν υπάρχει</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="151"/>
+        <location filename="../iqpuzzle.cpp" line="164"/>
         <source>Games share path does not exist!</source>
         <translation>Τα παιχνίδια δεν υπάρχουν!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="308"/>
+        <location filename="../iqpuzzle.cpp" line="321"/>
         <source>Unknown</source>
         <translation>Άγνωστος</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="312"/>
+        <location filename="../iqpuzzle.cpp" line="325"/>
         <source>Solutions</source>
         <translation>Πρόβλημα</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="403"/>
+        <location filename="../iqpuzzle.cpp" line="411"/>
         <source>No boards available!</source>
         <translation>Δεν υπάρχουν σανίδες!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="488"/>
-        <location filename="../iqpuzzle.cpp" line="522"/>
+        <location filename="../iqpuzzle.cpp" line="496"/>
+        <location filename="../iqpuzzle.cpp" line="530"/>
         <source>Save games</source>
         <translation>Αποθήκευση παιχνιδιού</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="502"/>
+        <location filename="../iqpuzzle.cpp" line="510"/>
         <source>Invalid saved puzzle.</source>
         <translation>Άκυρα στημένο παζλ.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="593"/>
+        <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Puzzle solved!</source>
         <translation>Ολοκληρώσατε το πρόβλημα!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="675"/>
+        <location filename="../iqpuzzle.cpp" line="725"/>
         <source>Statistics</source>
         <translation>Στατιστική</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="683"/>
-        <location filename="../iqpuzzle.cpp" line="712"/>
+        <location filename="../iqpuzzle.cpp" line="733"/>
+        <location filename="../iqpuzzle.cpp" line="762"/>
         <source>Total</source>
         <translation>Άθροισμα</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="685"/>
+        <location filename="../iqpuzzle.cpp" line="735"/>
         <source>Unsolved</source>
         <translation>Ανεξιχνίαστος</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="688"/>
+        <location filename="../iqpuzzle.cpp" line="738"/>
         <source>Easy</source>
         <translation>Εύκολο</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="696"/>
+        <location filename="../iqpuzzle.cpp" line="746"/>
         <source>Medium</source>
         <translation>Μεσαίο</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="704"/>
+        <location filename="../iqpuzzle.cpp" line="754"/>
         <source>Hard</source>
         <translation>Δύσκολο</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="713"/>
+        <location filename="../iqpuzzle.cpp" line="763"/>
         <source>including unknown difficulty</source>
         <translation>άγνωστη δυσκολία</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="735"/>
+        <location filename="../iqpuzzle.cpp" line="785"/>
         <source>About</source>
         <translation>Περί</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="749"/>
+        <location filename="../iqpuzzle.cpp" line="799"/>
         <source>License</source>
         <translation>Άδεια</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="752"/>
+        <location filename="../iqpuzzle.cpp" line="802"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
         <translation>Αυτή η εφαρμογή χρησιμοποιεί &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;εικονίδια Breeze από το KDE&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="755"/>
+        <location filename="../iqpuzzle.cpp" line="805"/>
         <source>Translations</source>
         <translation>Μεταφράσεις</translation>
     </message>
@@ -435,48 +438,80 @@ Reduced grid to default.</source>
     <name>Settings</name>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="63"/>
+        <location filename="../settings.cpp" line="210"/>
+        <location filename="../settings.cpp" line="216"/>
+        <location filename="../settings.cpp" line="217"/>
+        <location filename="../settings.cpp" line="218"/>
+        <location filename="../settings.cpp" line="219"/>
         <source>Left</source>
         <translation>Αριστερά</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="210"/>
         <source>Middle</source>
         <translation>Μέση</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="55"/>
-        <location filename="../settings.cpp" line="202"/>
+        <location filename="../settings.cpp" line="210"/>
         <source>Right</source>
         <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>First X</source>
         <translation>Πρωτο Χ</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Second X</source>
         <translation>Δεύτερο Χ</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="58"/>
-        <location filename="../settings.cpp" line="206"/>
+        <location filename="../settings.cpp" line="214"/>
         <source>Vertical wheel</source>
         <translation>Κάθετου τροχού</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="59"/>
-        <location filename="../settings.cpp" line="207"/>
+        <location filename="../settings.cpp" line="215"/>
         <source>Horizontal wheel</source>
         <translation>Οριζόντιο τιμόνι</translation>
     </message>
     <message>
-        <location filename="../settings.cpp" line="106"/>
+        <location filename="../settings.cpp" line="60"/>
+        <location filename="../settings.cpp" line="216"/>
+        <source>Shift</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="61"/>
+        <location filename="../settings.cpp" line="217"/>
+        <source>Ctrl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="62"/>
+        <location filename="../settings.cpp" line="218"/>
+        <source>Alt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="63"/>
+        <location filename="../settings.cpp" line="219"/>
+        <source>Meta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings.cpp" line="114"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
         <translation>Παρακαλώ αλλάξτε τις ρυθμίσεις σας. Το ίδιο κουμπί ποντικιού χρησιμοποιείται για αρκετές ενέργειες.</translation>
     </message>
