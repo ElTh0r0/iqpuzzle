@@ -74,6 +74,14 @@
   </languages>
   
   <releases>
+    <release version="1.4.1" date="2024-11-05">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Enabled modifier keys on the first mouse button - thanks to spillner!</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.0" date="2024-08-31">
       <description>
         <p>Main changes:</p>

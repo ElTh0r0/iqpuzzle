@@ -1,8 +1,8 @@
 IDI_ICON1   ICON    DISCARDABLE    "../icons/iqpuzzle.ico"
 
 1 VERSIONINFO
-    FILEVERSION    1,4,0,0
-    PRODUCTVERSION 1,4,0,0
+    FILEVERSION    1,4,1,0
+    PRODUCTVERSION 1,4,1,0
 {
     BLOCK "StringFileInfo"
     {
@@ -13,8 +13,8 @@ IDI_ICON1   ICON    DISCARDABLE    "../icons/iqpuzzle.ico"
             VALUE "LegalCopyright",     "(c) 2012-present Thorsten Roth\0"
             VALUE "OriginalFilename",   "iQPuzzle.exe\0"
             VALUE "ProductName",        "iQPuzzle\0"
-            VALUE "ProductVersion",     "1.4.0.0\0"
-            VALUE "FileVersion",        "1.4.0.0\0"
+            VALUE "ProductVersion",     "1.4.1.0\0"
+            VALUE "FileVersion",        "1.4.1.0\0"
         }
     }
     BLOCK "VarFileInfo"
