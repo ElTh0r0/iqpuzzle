@@ -23,7 +23,7 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
-        <translation>Polígono do tabuleiro não válido</translation>
+        <translation>Polígono do tabuleiro não válido.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
