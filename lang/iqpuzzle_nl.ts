@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
 <context>
     <name>Board</name>
     <message>
@@ -426,7 +424,7 @@ Het is verkleind naar de standaardgrootte.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="802"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation>Dit programma gebruikt &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze-pictogrammen van KDE&lt;/a&gt;. </translation>
+        <translation>Dit programma gebruikt &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze-pictogrammen van KDE&lt;/a&gt;.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="805"/>
@@ -490,25 +488,25 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="216"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="217"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
         <location filename="../settings.cpp" line="218"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="63"/>
         <location filename="../settings.cpp" line="219"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="114"/>
