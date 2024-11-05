@@ -18,7 +18,7 @@
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>Tamanho da grade do tabuleiro não é valido. 
-Grade reduzida para o tamanho padrão</translation>
+Grade reduzida para o tamanho padrão.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
