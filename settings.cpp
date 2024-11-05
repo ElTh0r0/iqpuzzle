@@ -60,6 +60,12 @@ Settings::Settings(QWidget *pParent, QString sSharePath)
   m_listMouseButtons << Qt::XButton1 << Qt::XButton2
                      << (quint8(Qt::Vertical) | nSHIFT)
                      << (quint8(Qt::Horizontal) | nSHIFT);
+  m_sListMouseButtons << tr("Left + Shift") << tr("Left + Ctrl")
+                      << tr("Left + Alt") << tr("Left + Meta");
+  m_listMouseButtons << ((unsigned) Qt::LeftButton | Qt::ShiftModifier)
+                     << ((unsigned) Qt::LeftButton | Qt::ControlModifier)
+                     << ((unsigned) Qt::LeftButton | Qt::AltModifier)
+                     << ((unsigned) Qt::LeftButton | Qt::MetaModifier);
   m_pUi->cbRotateBlockMouse->addItems(m_sListMouseButtons);
   m_pUi->cbFlipBlockMouse->addItems(m_sListMouseButtons);
 

@@ -125,9 +125,15 @@ void Block::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 // ---------------------------------------------------------------------------
 
 void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
+  unsigned button = 0;
   this->resetBrushStyle();
 
-  int nIndex(m_pSettings->getMouseControls().indexOf(p_Event->button()));
+  if (p_Event)
+      button = p_Event->button();
+  if (button == Qt::LeftButton)
+      button |= p_Event->modifiers();
+
+  int nIndex(m_pSettings->getMouseControls().indexOf(button));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 0:
