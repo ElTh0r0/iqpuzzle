@@ -44,7 +44,7 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../board.cpp" line="238"/>
         <source>Could not find valid blocks.</source>
-        <translation>Não foi possível achar blocos válidos</translation>
+        <translation>Não foi possível achar blocos válidos.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="301"/>
