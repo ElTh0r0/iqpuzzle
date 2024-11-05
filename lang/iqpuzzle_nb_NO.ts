@@ -373,7 +373,7 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="642"/>
         <source>Puzzle solved!</source>
-        <translation>Løst</translation>
+        <translation>Løst!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="725"/>
