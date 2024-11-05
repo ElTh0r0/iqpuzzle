@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
 <context>
     <name>Board</name>
     <message>
@@ -20,12 +18,12 @@
         <source>Board grid size not valid.
 Reduced grid to default.</source>
         <translation>Tamanho da grade do tabuleiro não é valido. 
-Grade reduzida para o tamanho padrão</translation>
+Grade reduzida para o tamanho padrão.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="91"/>
         <source>Board polygon not valid.</source>
-        <translation>Polígono do tabuleiro não válido</translation>
+        <translation>Polígono do tabuleiro não válido.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
@@ -46,7 +44,7 @@ Grade reduzida para o tamanho padrão</translation>
     <message>
         <location filename="../board.cpp" line="238"/>
         <source>Could not find valid blocks.</source>
-        <translation>Não foi possível achar blocos válidos</translation>
+        <translation>Não foi possível achar blocos válidos.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="301"/>
@@ -339,7 +337,7 @@ Grade reduzida para o tamanho padrão</translation>
         <location filename="../iqpuzzle.cpp" line="279"/>
         <location filename="../iqpuzzle.cpp" line="289"/>
         <source>The chosen file does not exist.</source>
-        <translation>O arquivo escolhido não existe</translation>
+        <translation>O arquivo escolhido não existe.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="164"/>
@@ -490,25 +488,25 @@ Grade reduzida para o tamanho padrão</translation>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="216"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="217"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
         <location filename="../settings.cpp" line="218"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="63"/>
         <location filename="../settings.cpp" line="219"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="114"/>
