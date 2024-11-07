@@ -197,7 +197,7 @@ auto Board::setupBlocks() -> bool {
 
 auto Board::createBlocks() -> bool {
   const quint8 nMaxNumOfBlocks(250);
-  QSettings *tmpSet = m_pBoardConf;
+  const QSettings *tmpSet = m_pBoardConf;
   if (m_bSavedGame) {
     tmpSet = m_pSavedConf;
   }
@@ -321,7 +321,6 @@ auto Board::readColor(const QString &sKey,
 
 auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
                         const bool bScale) -> QPolygonF {
-  QStringList sList;
   QStringList sListPoint;
   QString sValue(tmpSet->value(sKey, "").toString());
   quint16 nScale(1);
@@ -330,10 +329,10 @@ auto Board::readPolygon(const QSettings *tmpSet, const QString &sKey,
   }
 
   Board::checkOrthogonality(QPointF(-99999, -99999));
-  sList << sValue.split('|');
+  const QStringList sList(sValue.split('|'));
   QPolygonF polygon;
   polygon.reserve(sList.size());
-  for (auto &s : sList) {
+  for (const auto &s : sList) {
     sListPoint.clear();
     sListPoint << s.split(',');
     if (2 == sListPoint.size()) {

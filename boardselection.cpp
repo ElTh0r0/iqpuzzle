@@ -74,10 +74,9 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
     int nRow = 0;
     quint16 nSolved = 0;
     quint16 nSum = 0;
-    bool bSolved;
     for (const auto &board : boardfiles) {
       QString sFile(sSubfolder + "/" + board);
-      bSolved = !m_sListAllUnsolved.contains(sFile);
+      bool bSolved = !m_sListAllUnsolved.contains(sFile);
       m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile, bSolved,
                                         m_previewsize);
       m_pListTabLayouts.last()->addWidget(m_pListBoards.last(), nRow, nCol);

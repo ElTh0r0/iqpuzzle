@@ -82,7 +82,7 @@ class Block : public QGraphicsObject {
   void checkBlockIntersection();
   auto snapToGrid(const QPointF point) const -> QPointF;
   void resetBrushStyle() const;
-  auto isAnyBlockActive() -> bool;
+  auto isAnyBlockActive(const QList<Block *> *listBlocks) -> bool;
 
   void moveBlock(const bool bRelease = false);
   void rotateBlock(const int nDelta = -1);
