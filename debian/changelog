@@ -1,3 +1,10 @@
+iqpuzzle (1.4.1-0ubuntu1) jammy; urgency=low
+
+  [ Thorsten Roth ]
+  * Enabled modifier keys on the first mouse button - thanks to spillner!
+
+ -- Thorsten Roth <elthoro@gmx.de>  Fri, 08 Nov 2024 05:22:00 +0200
+
 iqpuzzle (1.4.0-0ubuntu1) jammy; urgency=low
 
   [ Thorsten Roth ]
