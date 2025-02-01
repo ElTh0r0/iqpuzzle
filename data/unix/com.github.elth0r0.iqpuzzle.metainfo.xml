@@ -69,11 +69,19 @@
     <lang percentage="100">pt</lang>
     <lang percentage="100">pt_BR</lang>
     <lang percentage="96">ru</lang>
-    <lang percentage="92">zh_CN</lang>
-    <lang percentage="92">zh_TW</lang>
+    <lang percentage="100">zh_CN</lang>
+    <lang percentage="100">zh_TW</lang>
   </languages>
   
   <releases>
+    <release version="1.4.2" date="2025-02-08">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Update Chinese (zh_CN, zh_TW) translation - thanks to liulitchi!</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.1" date="2024-11-08">
       <description>
         <p>Main changes:</p>
