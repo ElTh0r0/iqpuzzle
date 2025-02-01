@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_TW">
 <context>
     <name>Board</name>
     <message>
@@ -96,7 +94,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="48"/>
         <location filename="../boardpreview.cpp" line="117"/>
         <source>Solved:</source>
-        <translation type="unfinished"></translation>
+        <translation>已解决：</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="71"/>
@@ -106,7 +104,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardpreview.cpp" line="77"/>
         <source>Solutions</source>
-        <translation type="unfinished"></translation>
+        <translation>解决方案</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="89"/>
@@ -125,7 +123,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>打开个人面板……</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="133"/>
@@ -426,7 +424,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="802"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>该程序使用&lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;KDE桌面的Breeze图标&lt;/a&gt;。</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="805"/>
@@ -490,25 +488,25 @@ Reduced grid to default.</source>
         <location filename="../settings.cpp" line="60"/>
         <location filename="../settings.cpp" line="216"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="61"/>
         <location filename="../settings.cpp" line="217"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="62"/>
         <location filename="../settings.cpp" line="218"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="63"/>
         <location filename="../settings.cpp" line="219"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settings.cpp" line="114"/>
