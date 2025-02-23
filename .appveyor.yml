@@ -44,6 +44,7 @@ after_build:
   - xcopy /i /e /s data\boards\* iQPuzzle\boards\
   - 7z a iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows_%BUILD%.zip .\iQPuzzle\
   - curl -fsSL -o iqpuzzle.nsi https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.nsi
+  - curl -fsSL -o removeprevious.nsh https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/removeprevious.nsh
   - curl -fsSL -o iqpuzzle.ico https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.ico
   - makensis iqpuzzle.nsi
   - ren iQPuzzle_Installer.exe iQPuzzle-%APPVEYOR_BUILD_VERSION%-Windows_%BUILD%.exe
