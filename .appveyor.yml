@@ -5,32 +5,25 @@ skip_commits:
 
 environment:
   matrix:
-    - BUILD: mingw32
-      QTDIR: C:\Qt\5.15\mingw81_32
-      MINGW_DIR: C:\Qt\Tools\mingw810_32
-      PRO_MAKE: mingw32-make
-      DEPLOYQT_FLAGS: --no-angle
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
     - BUILD: mingw64_Qt6
-      QTDIR: C:\Qt\6.5\mingw_64
-      MINGW_DIR: C:\Qt\Tools\mingw1120_64
+      QTDIR: C:\Qt\6.8\mingw_64
+      MINGW_DIR: C:\Qt\Tools\mingw1310_64
       PRO_MAKE: mingw32-make
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
-    - BUILD: msvc2019_64
-      QTDIR: C:\Qt\5.15\msvc2019_64
+    - BUILD: msvc2022_64
+      QTDIR: C:\Qt\6.8\msvc2022_64
       PRO_MAKE: nmake
-      DEPLOYQT_FLAGS: --release --no-angle
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
     - BUILD: mingw32_reactos
       QTDIR: C:\Qt\5.6\mingw49_32
       MINGW_DIR: C:\Qt\Tools\mingw492_32
       PRO_MAKE: mingw32-make
-      DEPLOYQT_FLAGS: --release --no-angle
+      DEPLOYQT_FLAGS: --no-angle
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   - set PATH=%QTDIR%\bin;%MINGW_DIR%\bin;%PATH%
-  - if %BUILD%==msvc2019_64 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
+  - if %BUILD%==msvc2022_64 call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 
 configuration: Release
 
@@ -44,7 +37,7 @@ build_script:
 after_build:
   - mkdir iQPuzzle\boards
   - copy release\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
-  - windeployqt %DEPLOYQT_FLAGS% --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
+  - windeployqt --release --no-translations --no-opengl-sw --no-network %DEPLOYQT_FLAGS% iQPuzzle\iQPuzzle.exe
   - copy COPYING iQPuzzle\
   - curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
   - copy ReadMe.txt iQPuzzle\
