@@ -23,7 +23,7 @@ environment:
 
 install:
   - set PATH=%QTDIR%\bin;%MINGW_DIR%\bin;%PATH%
-  - if %BUILD%==msvc2022_64 call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
+  - if %BUILD%==msvc2022_64 call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" amd64
 
 configuration: Release
 
