@@ -42,11 +42,11 @@ BoardPreview::BoardPreview(const QString &sFilePath, const bool bSolved,
   m_pUi->lbl_BoardName->setText(sFile);
 
   if (bSolved) {
-    m_pUi->lblSolved->setText(tr("Solved:") +
-                              " <img src=\":/icons/emblem-checked.png\">");
+    m_pUi->lblSolved->setText(tr("Solved") +
+                              ": <img src=\":/icons/emblem-checked.png\">");
   } else {
-    m_pUi->lblSolved->setText(tr("Solved:") +
-                              " <img src=\":/icons/emblem-error.png\">");
+    m_pUi->lblSolved->setText(tr("Solved") +
+                              ": <img src=\":/icons/emblem-error.png\">");
   }
   this->setSolutions(m_sFilePath);
   this->setPreview(m_sFilePath, previewsize);
@@ -62,12 +62,11 @@ BoardPreview::~BoardPreview() { delete m_pUi; }
 
 void BoardPreview::setSolutions(QString const &sFilePath) {
   QSettings tmpSet(sFilePath, QSettings::IniFormat);
-  quint32 nSolutions(
-      tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt());
+  m_nSolutions = tmpSet.value(QStringLiteral("PossibleSolutions"), 0).toUInt();
   bool bFreestyle = tmpSet.value(QStringLiteral("Freestyle"), false).toBool();
 
-  QString sSolutions(QString::number(nSolutions));
-  if ("0" == sSolutions) {
+  QString sSolutions(QString::number(m_nSolutions));
+  if (0 == m_nSolutions) {
     sSolutions = tr("Unknown");
   }
   if (bFreestyle) {
@@ -114,6 +113,24 @@ auto BoardPreview::getName() -> const QString {
 }
 
 void BoardPreview::updateSolved() {
-  m_pUi->lblSolved->setText(tr("Solved:") +
-                            " <img src=\":/icons/emblem-checked.png\">");
+  m_pUi->lblSolved->setText(tr("Solved") +
+                            ": <img src=\":/icons/emblem-checked.png\">");
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void BoardPreview::updateUiLang() {
+  if (!m_pUi->lblSolved->text().isEmpty()) {
+    QString sSolutions(QString::number(m_nSolutions));
+    if (0 == m_nSolutions) {
+      sSolutions = tr("Unknown");
+    }
+    m_pUi->lblSolutions->setText(tr("Solutions") + ": " + sSolutions);
+
+    QString sTmp(m_pUi->lblSolved->text());
+    sTmp.replace(0, sTmp.indexOf(':'), tr("Solved"));
+    m_pUi->lblSolved->setText(sTmp);
+  }
+  m_pUi->retranslateUi(this);
 }

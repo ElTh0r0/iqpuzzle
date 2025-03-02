@@ -45,6 +45,9 @@ class BoardPreview : public QWidget {
   auto getName() -> const QString;
   void updateSolved();
 
+ public slots:
+  void updateUiLang();
+
  signals:
   void selectBoard(const QString &sFileName);
 
@@ -57,6 +60,7 @@ class BoardPreview : public QWidget {
 
   Ui::BoardPreview *m_pUi;
   QString m_sFilePath;
+  quint32 m_nSolutions;
 };
 
 #endif  // BOARDPREVIEW_H_

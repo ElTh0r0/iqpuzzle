@@ -82,7 +82,9 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
       m_pListTabLayouts.last()->addWidget(m_pListBoards.last(), nRow, nCol);
 
       connect(m_pListBoards.last(), &BoardPreview::selectBoard, this,
-              &BoardSelection::SelectBoard);
+              &BoardSelection::selectBoard);
+      connect(this, &BoardSelection::updatedUiLang, m_pListBoards.last(),
+              &BoardPreview::updateUiLang);
 
       nCol++;
       if (0 == nCol % m_nColumns) {
@@ -106,7 +108,7 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
   }
 
   connect(m_pUi->openOwnBoard, &QPushButton::clicked, this,
-          &BoardSelection::SelectOwnBoard);
+          &BoardSelection::selectOwnBoard);
 }
 
 BoardSelection::~BoardSelection() {
@@ -117,7 +119,7 @@ BoardSelection::~BoardSelection() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void BoardSelection::SelectBoard(const QString &sFileName) {
+void BoardSelection::selectBoard(const QString &sFileName) {
   m_sSelectedFile = sFileName;
   this->accept();
 }
@@ -125,7 +127,7 @@ void BoardSelection::SelectBoard(const QString &sFileName) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void BoardSelection::SelectOwnBoard() {
+void BoardSelection::selectOwnBoard() {
   m_sSelectedFile.clear();
   delete m_pBoardDialog;
   m_pBoardDialog = new BoardDialog(this, tr("Load board"), m_sLastOpenedDir,
@@ -191,4 +193,12 @@ void BoardSelection::updateSolved(const QString &sBoard) {
     }
     nTab++;
   }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+void BoardSelection::updateUiLang() {
+  m_pUi->retranslateUi(this);
+  emit updatedUiLang();
 }

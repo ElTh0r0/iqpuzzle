@@ -105,6 +105,8 @@ IQPuzzle::IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
   m_pBoardSelection =
       new BoardSelection(this, m_sSharePath + "/boards", m_sListAllUnsolved,
                          m_pSettings->getLastOpenedDir());
+  connect(this, &IQPuzzle::updateUiLang, m_pBoardSelection,
+          &BoardSelection::updateUiLang);
 
   m_pGraphView = new QGraphicsView(this);
   this->setCentralWidget(m_pGraphView);

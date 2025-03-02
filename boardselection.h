@@ -55,9 +55,15 @@ class BoardSelection : public QDialog {
   auto getLastOpenedDir() -> const QString;
   void updateSolved(const QString &sBoard);
 
+ public slots:
+  void updateUiLang();
+
  private slots:
-  void SelectBoard(const QString &sFileName);
-  void SelectOwnBoard();
+  void selectBoard(const QString &sFileName);
+  void selectOwnBoard();
+
+ signals:
+  void updatedUiLang();
 
  private:
   Ui::BoardSelection *m_pUi;
