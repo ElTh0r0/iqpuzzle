@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
 <context>
     <name>Board</name>
     <message>
@@ -9,7 +11,7 @@
         <location filename="../board.cpp" line="262"/>
         <location filename="../board.cpp" line="300"/>
         <location filename="../board.cpp" line="313"/>
-        <location filename="../board.cpp" line="419"/>
+        <location filename="../board.cpp" line="418"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -57,7 +59,7 @@ Reduced grid to default.</source>
         <translation>定义的颜色无效 - 将使用原有的配置：</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="420"/>
+        <location filename="../board.cpp" line="419"/>
         <source>Invalid start position - using fallback:</source>
         <translation>起始位置无效 - 将使用原有的配置：</translation>
     </message>
@@ -92,22 +94,25 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardpreview.cpp" line="45"/>
         <location filename="../boardpreview.cpp" line="48"/>
-        <location filename="../boardpreview.cpp" line="117"/>
-        <source>Solved:</source>
-        <translation>已解决：</translation>
+        <location filename="../boardpreview.cpp" line="116"/>
+        <location filename="../boardpreview.cpp" line="132"/>
+        <source>Solved</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="71"/>
+        <location filename="../boardpreview.cpp" line="70"/>
+        <location filename="../boardpreview.cpp" line="127"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="77"/>
+        <location filename="../boardpreview.cpp" line="76"/>
+        <location filename="../boardpreview.cpp" line="129"/>
         <source>Solutions</source>
         <translation>解决方案</translation>
     </message>
     <message>
-        <location filename="../boardpreview.cpp" line="89"/>
+        <location filename="../boardpreview.cpp" line="88"/>
         <source>No preview available</source>
         <translation>无可用预览</translation>
     </message>
@@ -116,7 +121,7 @@ Reduced grid to default.</source>
     <name>BoardSelection</name>
     <message>
         <location filename="../boardselection.ui" line="20"/>
-        <location filename="../boardselection.cpp" line="132"/>
+        <location filename="../boardselection.cpp" line="133"/>
         <source>Load board</source>
         <translation>加载面板</translation>
     </message>
@@ -126,7 +131,7 @@ Reduced grid to default.</source>
         <translation>打开个人面板……</translation>
     </message>
     <message>
-        <location filename="../boardselection.cpp" line="133"/>
+        <location filename="../boardselection.cpp" line="134"/>
         <source>Board files</source>
         <translation>面板文件</translation>
     </message>
@@ -234,7 +239,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="169"/>
-        <location filename="../iqpuzzle.cpp" line="528"/>
+        <location filename="../iqpuzzle.cpp" line="530"/>
         <source>Save game</source>
         <translation>保存游戏</translation>
     </message>
@@ -245,7 +250,7 @@ Reduced grid to default.</source>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="180"/>
-        <location filename="../iqpuzzle.cpp" line="494"/>
+        <location filename="../iqpuzzle.cpp" line="496"/>
         <source>Load game</source>
         <translation>加载游戏</translation>
     </message>
@@ -299,135 +304,135 @@ Reduced grid to default.</source>
         <translation>统计数据(t)</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="114"/>
-        <location filename="../iqpuzzle.cpp" line="606"/>
+        <location filename="../iqpuzzle.cpp" line="116"/>
+        <location filename="../iqpuzzle.cpp" line="608"/>
         <source>Game paused</source>
         <translation>游戏已暂停</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="119"/>
-        <location filename="../iqpuzzle.cpp" line="122"/>
-        <location filename="../iqpuzzle.cpp" line="297"/>
-        <location filename="../iqpuzzle.cpp" line="304"/>
-        <location filename="../iqpuzzle.cpp" line="643"/>
+        <location filename="../iqpuzzle.cpp" line="121"/>
+        <location filename="../iqpuzzle.cpp" line="124"/>
+        <location filename="../iqpuzzle.cpp" line="299"/>
+        <location filename="../iqpuzzle.cpp" line="306"/>
+        <location filename="../iqpuzzle.cpp" line="645"/>
         <source>Time</source>
         <translation>耗时</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="123"/>
-        <location filename="../iqpuzzle.cpp" line="294"/>
-        <location filename="../iqpuzzle.cpp" line="301"/>
-        <location filename="../iqpuzzle.cpp" line="362"/>
-        <location filename="../iqpuzzle.cpp" line="609"/>
-        <location filename="../iqpuzzle.cpp" line="642"/>
+        <location filename="../iqpuzzle.cpp" line="125"/>
+        <location filename="../iqpuzzle.cpp" line="296"/>
+        <location filename="../iqpuzzle.cpp" line="303"/>
+        <location filename="../iqpuzzle.cpp" line="364"/>
+        <location filename="../iqpuzzle.cpp" line="611"/>
+        <location filename="../iqpuzzle.cpp" line="644"/>
         <source>Moves</source>
         <translation>步数</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="138"/>
-        <location filename="../iqpuzzle.cpp" line="148"/>
-        <location filename="../iqpuzzle.cpp" line="278"/>
-        <location filename="../iqpuzzle.cpp" line="288"/>
+        <location filename="../iqpuzzle.cpp" line="140"/>
+        <location filename="../iqpuzzle.cpp" line="150"/>
+        <location filename="../iqpuzzle.cpp" line="280"/>
+        <location filename="../iqpuzzle.cpp" line="290"/>
         <source>File not found</source>
         <translation>未发现文件</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="139"/>
-        <location filename="../iqpuzzle.cpp" line="149"/>
-        <location filename="../iqpuzzle.cpp" line="279"/>
-        <location filename="../iqpuzzle.cpp" line="289"/>
+        <location filename="../iqpuzzle.cpp" line="141"/>
+        <location filename="../iqpuzzle.cpp" line="151"/>
+        <location filename="../iqpuzzle.cpp" line="281"/>
+        <location filename="../iqpuzzle.cpp" line="291"/>
         <source>The chosen file does not exist.</source>
         <translation>文件不存在。</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="164"/>
+        <location filename="../iqpuzzle.cpp" line="166"/>
         <source>Games share path does not exist!</source>
         <translation>不存在游戏分享路径。</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="321"/>
+        <location filename="../iqpuzzle.cpp" line="323"/>
         <source>Unknown</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="325"/>
+        <location filename="../iqpuzzle.cpp" line="327"/>
         <source>Solutions</source>
         <translation>谜题</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="411"/>
+        <location filename="../iqpuzzle.cpp" line="413"/>
         <source>No boards available!</source>
         <translation>无可用的面板！</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="496"/>
-        <location filename="../iqpuzzle.cpp" line="530"/>
+        <location filename="../iqpuzzle.cpp" line="498"/>
+        <location filename="../iqpuzzle.cpp" line="532"/>
         <source>Save games</source>
         <translation>保存游戏</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="510"/>
+        <location filename="../iqpuzzle.cpp" line="512"/>
         <source>Invalid saved puzzle.</source>
         <translation>无效的保存文件。</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="642"/>
+        <location filename="../iqpuzzle.cpp" line="644"/>
         <source>Puzzle solved!</source>
         <translation>完成解谜！</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="725"/>
+        <location filename="../iqpuzzle.cpp" line="727"/>
         <source>Statistics</source>
         <translation>统计数据</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="733"/>
-        <location filename="../iqpuzzle.cpp" line="762"/>
+        <location filename="../iqpuzzle.cpp" line="735"/>
+        <location filename="../iqpuzzle.cpp" line="764"/>
         <source>Total</source>
         <translation>总计</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="735"/>
+        <location filename="../iqpuzzle.cpp" line="737"/>
         <source>Unsolved</source>
         <translation>未解决</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="738"/>
+        <location filename="../iqpuzzle.cpp" line="740"/>
         <source>Easy</source>
         <translation>简单</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="746"/>
+        <location filename="../iqpuzzle.cpp" line="748"/>
         <source>Medium</source>
         <translation>中等</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="754"/>
+        <location filename="../iqpuzzle.cpp" line="756"/>
         <source>Hard</source>
         <translation>困难</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="763"/>
+        <location filename="../iqpuzzle.cpp" line="765"/>
         <source>including unknown difficulty</source>
         <translation>包含未知难度</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="785"/>
+        <location filename="../iqpuzzle.cpp" line="787"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="799"/>
+        <location filename="../iqpuzzle.cpp" line="801"/>
         <source>License</source>
         <translation>协议</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="802"/>
+        <location filename="../iqpuzzle.cpp" line="804"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
         <translation>该程序使用&lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;KDE桌面的Breeze图标&lt;/a&gt;。</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="805"/>
+        <location filename="../iqpuzzle.cpp" line="807"/>
         <source>Translations</source>
         <translation>翻译</translation>
     </message>
