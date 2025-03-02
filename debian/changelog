@@ -1,3 +1,10 @@
+iqpuzzle (1.4.2-0ubuntu1) jammy; urgency=low
+
+  [ Thorsten Roth ]
+  * Update Chinese (zh_CN, zh_TW) translation - thanks to liulitchi!
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sun, 02 Mar 2025 14:59:00 +0200
+
 iqpuzzle (1.4.1-0ubuntu1) jammy; urgency=low
 
   [ Thorsten Roth ]
