@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
 <context>
     <name>Board</name>
     <message>
@@ -97,7 +95,7 @@ Grade reduzida para o tamanho padrão.</translation>
         <location filename="../boardpreview.cpp" line="116"/>
         <location filename="../boardpreview.cpp" line="132"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolvido</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="70"/>
