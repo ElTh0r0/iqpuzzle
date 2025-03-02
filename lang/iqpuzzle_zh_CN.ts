@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>Board</name>
     <message>
@@ -97,7 +95,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="116"/>
         <location filename="../boardpreview.cpp" line="132"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation>已解决</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="70"/>
