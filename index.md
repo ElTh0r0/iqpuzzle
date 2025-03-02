@@ -7,11 +7,11 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 ![Screenshot](img/iqpuzzle.png)
 
 ## [](#downoads)Downloads
-###### Latest release v1.4.1 (13. Nov 2024)
-* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.1/iQPuzzle-1.4.1-Windows_Installer.exe)
-* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.1/iQPuzzle-1.4.1-Windows.zip)
-* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.1/iQPuzzle-1.4.1-macOS.zip)
-* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.1/iQPuzzle-1.4.1-x86_64.AppImage)
+###### Latest release v1.4.2 (02. Mar 2025)
+* [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.2/iQPuzzle-1.4.2-Windows_Installer.exe)
+* [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.2/iQPuzzle-1.4.2-Windows.zip)
+* [Build for macOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.2/iQPuzzle-1.4.2-macOS.zip)
+* [Linux AppImage](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.2/iQPuzzle-1.4.2-x86_64.AppImage)
 * [Flatpak](https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Cent OS, Debian, Fedora, openSUSE, SLE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
@@ -19,7 +19,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 * [Build for Mageia Cauldron](https://madb.mageialinux-online.org/show?distribution=cauldron&architecture=x86_64&graphical=0&rpm=iqpuzzle)
 * [Gentoo ebuild](https://github.com/ElTh0r0/iqpuzzle/tree/packaging/ebuild)
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
-* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.1/iQPuzzle-1.4.1-ReactOS_Installer.exe)
+* [Build for ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.4.2/iQPuzzle-1.4.2-ReactOS_Installer.exe)
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
@@ -31,6 +31,11 @@ New translations and corrections are highly welcome! You can either fork the sou
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 ## [](#release-notes)Release notes
+###### v1.4.2 (02. Mar 2025)
+* Update Chinese (zh_CN, zh_TW) translation (thanks to liulitchi)
+* Retranslate board selection dialog without application restart
+* Improve Windows installer: Add languages; remove previous files
+
 ###### v1.4.1 (13. Nov 2024)
 * Enabled modifier keys on the first mouse button (thanks to spillner)
 
