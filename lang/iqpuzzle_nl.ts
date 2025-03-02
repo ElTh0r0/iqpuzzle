@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl">
 <context>
     <name>Board</name>
     <message>
@@ -97,7 +95,7 @@ Het is verkleind naar de standaardgrootte.</translation>
         <location filename="../boardpreview.cpp" line="116"/>
         <location filename="../boardpreview.cpp" line="132"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation>Opgelost</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="70"/>
