@@ -90,7 +90,7 @@ TRANSLATIONS  += lang/iqpuzzle_bg.ts \
                  lang/iqpuzzle_zh_CN.ts \
                  lang/iqpuzzle_zh_TW.ts
 
-win32:RC_ICONS = icons/iqpuzzle.ico
+win32:RC_FILE  = data/win.rc
 os2:RC_ICONS   = icons/iqpuzzle_os2.ico
 
 macx {
