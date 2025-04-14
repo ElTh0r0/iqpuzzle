@@ -45,7 +45,7 @@ DEFINES       += QT_NO_FOREACH
 
 CONFIG(debug, debug|release) {
   CONFIG      += warn_on
-  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060800
+  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x060900
 }
 
 SOURCES       += main.cpp\
