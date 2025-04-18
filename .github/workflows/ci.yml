@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Dependencies
-      run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools
+      run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools libfuse2
 
     - name: Download linuxdeployqt
       run: |
