@@ -8,9 +8,9 @@ on:
     branches: [main]
 
 jobs:
-  AppImage_Ubuntu20-04:
-    name: AppImage Ubuntu 20.04
-    runs-on: ubuntu-20.04
+  AppImage_Ubuntu22-04:
+    name: AppImage Ubuntu 22.04
+    runs-on: ubuntu-22.04
     env:
       QT_SELECT: qt5
     steps:
@@ -62,9 +62,9 @@ jobs:
        brew install p7zip
 
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
+      uses: jurplel/install-qt-action@v4
       with:
-        version: '6.5.*'
+        version: '6.8.*'
         host: 'mac'
         target: 'desktop'
 
