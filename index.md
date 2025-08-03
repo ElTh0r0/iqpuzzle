@@ -25,7 +25,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
 ## [](#translations)Translations
-New translations and corrections are highly welcome! You can either fork the source code [from GitHub](https://github.com/ElTh0r0/iqpuzzle), make your changes and create a pull request or you can participate [on Transifex](https://www.transifex.com/elth0r0/iqpuzzle/).
+New translations and corrections are highly welcome! You can either fork the source code [from GitHub](https://github.com/ElTh0r0/iqpuzzle), make your changes and create a pull request or you can participate [on Transifex](https://explore.transifex.com/elth0r0/iqpuzzle/).
 
 ## [](#createlevel)Create your own level
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
