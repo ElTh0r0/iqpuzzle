@@ -1,28 +1,5 @@
-/**
- * \file highscore.h
- *
- * \section LICENSE
- *
- * Copyright (C) 2012-present Thorsten Roth
- *
- * This file is part of iQPuzzle.
- *
- * iQPuzzle is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * iQPuzzle is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with iQPuzzle.  If not, see <https://www.gnu.org/licenses/>.
- *
- * \section DESCRIPTION
- * Class definition for highscore.
- */
+// SPDX-FileCopyrightText: 2014-2025 Thorsten Roth
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #ifndef HIGHSCORE_H_
 #define HIGHSCORE_H_
@@ -32,10 +9,6 @@
 
 class QSettings;
 
-/**
- * \class Highscore
- * \brief Generating and showing highscore.
- */
 class Highscore : public QObject {
   Q_OBJECT
 
