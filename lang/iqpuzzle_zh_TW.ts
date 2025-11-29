@@ -514,7 +514,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation>垂直滚轮</translation>
+        <translation>垂直滾輪</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
