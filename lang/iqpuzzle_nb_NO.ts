@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb_NO">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb_NO">
 <context>
     <name>Board</name>
     <message>
@@ -486,72 +484,72 @@ Det ble tilbakestilt.</translation>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation type="unfinished">Venstre</translation>
+        <translation>Venstre</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation type="unfinished">Midten</translation>
+        <translation>Midten</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Right</source>
-        <translation type="unfinished">Høyre</translation>
+        <translation>Høyre</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation type="unfinished">Første X</translation>
+        <translation>Første X</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation type="unfinished">Andre X</translation>
+        <translation>Andre X</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished">Loddrett hjul</translation>
+        <translation>Loddrett hjul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished">Vannrett hjul</translation>
+        <translation>Vannrett hjul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished">Shift</translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished">Ctrl</translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished">Alt</translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished">Meta</translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished">Endre innstillingene dine. Samme museknapp er i bruk for flere handlinger.</translation>
+        <translation>Endre innstillingene dine. Samme museknapp er i bruk for flere handlinger.</translation>
     </message>
 </context>
 </TS>
