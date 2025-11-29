@@ -502,7 +502,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation>第一个 X 键</translation>
+        <translation>第一個 X 鍵</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
