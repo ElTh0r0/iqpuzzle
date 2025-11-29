@@ -520,7 +520,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation>水平滚轮</translation>
+        <translation>水平滾輪</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
