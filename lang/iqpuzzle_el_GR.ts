@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="el_GR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
@@ -70,7 +68,7 @@ Reduced grid to default.</source>
         <location filename="../boarddialog.cpp" line="23"/>
         <location filename="../boarddialog.cpp" line="55"/>
         <source>Solutions</source>
-        <translation>Διαλύματα </translation>
+        <translation>Διαλύματα</translation>
     </message>
     <message>
         <location filename="../boarddialog.cpp" line="24"/>
@@ -97,7 +95,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="93"/>
         <location filename="../boardpreview.cpp" line="109"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="47"/>
@@ -128,7 +126,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="110"/>
@@ -342,7 +340,7 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.cpp" line="261"/>
         <location filename="../iqpuzzle.cpp" line="271"/>
         <source>The chosen file does not exist.</source>
-        <translation>Ο επιλεγμένος φάκελος δεν υπάρχει</translation>
+        <translation>Ο επιλεγμένος φάκελος δεν υπάρχει.</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="146"/>
@@ -442,7 +440,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Preferences</source>
-        <translation>Προτιμήσεων </translation>
+        <translation>Προτιμήσεων</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
@@ -472,7 +470,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.ui" line="106"/>
         <source>Use system background color</source>
-        <translation>Χρώμα φόντου </translation>
+        <translation>Χρώμα φόντου</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
@@ -486,72 +484,72 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation type="unfinished">Αριστερά</translation>
+        <translation>Αριστερά</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation type="unfinished">Μέση</translation>
+        <translation>Μέση</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Right</source>
-        <translation type="unfinished">Δεξιά</translation>
+        <translation>Δεξιά</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation type="unfinished">Πρωτο Χ</translation>
+        <translation>Πρωτο Χ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation type="unfinished">Δεύτερο Χ</translation>
+        <translation>Δεύτερο Χ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished">Κάθετου τροχού</translation>
+        <translation>Κάθετου τροχού</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished">Οριζόντιο τιμόνι</translation>
+        <translation>Οριζόντιο τιμόνι</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished">Παρακαλώ αλλάξτε τις ρυθμίσεις σας. Το ίδιο κουμπί ποντικιού χρησιμοποιείται για αρκετές ενέργειες.</translation>
+        <translation>Παρακαλώ αλλάξτε τις ρυθμίσεις σας. Το ίδιο κουμπί ποντικιού χρησιμοποιείται για αρκετές ενέργειες.</translation>
     </message>
 </context>
 </TS>
