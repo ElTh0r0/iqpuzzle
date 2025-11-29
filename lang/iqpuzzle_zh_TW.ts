@@ -484,7 +484,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation>鼠标左键</translation>
+        <translation>滑鼠左鍵</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
