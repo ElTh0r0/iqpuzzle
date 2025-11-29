@@ -490,7 +490,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation>鼠标中键</translation>
+        <translation>滑鼠中鍵</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
