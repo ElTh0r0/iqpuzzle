@@ -18,7 +18,9 @@ class QTimer;
 class Board;
 class BoardSelection;
 class Highscore;
-class Settings;
+
+#include "./settings.h"
+#include "./settingsdialog.h"
 
 namespace Ui {
 class IQPuzzle;
@@ -28,8 +30,7 @@ class IQPuzzle : public QMainWindow {
   Q_OBJECT
 
  public:
-  explicit IQPuzzle(const QDir &userDataDir, const QDir &sharePath,
-                    QWidget *pParent = nullptr);
+  explicit IQPuzzle(const QDir &userDataDir, QWidget *pParent = nullptr);
   ~IQPuzzle();
 
  protected:
@@ -81,7 +82,6 @@ class IQPuzzle : public QMainWindow {
   QString m_sBoardFile;
   QString m_sSavedGame;
   const QDir m_userDataDir;
-  const QString m_sSharePath;
   QLabel *m_pStatusLabelTime;
   QLabel *m_pStatusLabelMoves;
   quint32 m_nMoves;
@@ -93,6 +93,7 @@ class IQPuzzle : public QMainWindow {
   bool m_bSolved;
   Highscore *m_pHighscore;
   Settings *m_pSettings;
+  SettingsDialog *m_pSettingsDialog;
 
   QList<QStringList *> m_sListFiles;
   QStringList m_sListAll;

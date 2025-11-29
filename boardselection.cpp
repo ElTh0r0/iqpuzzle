@@ -10,14 +10,12 @@
 #include "ui_boardselection.h"
 
 BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
-                               const QStringList &sListAllUnsolved,
-                               const QString &sLastOpenedDir)
+                               const QStringList &sListAllUnsolved)
     : QDialog(pParent),
       m_nColumns(3),
       m_previewsize(250, 250),
       m_sBoardsDir(sBoardsDir),
       m_sListAllUnsolved(sListAllUnsolved),
-      m_sLastOpenedDir(sLastOpenedDir),
       m_pBoardDialog(nullptr) {
   qDebug() << Q_FUNC_INFO;
 
@@ -107,7 +105,8 @@ void BoardSelection::selectBoard(const QString &sFileName) {
 void BoardSelection::selectOwnBoard() {
   m_sSelectedFile.clear();
   delete m_pBoardDialog;
-  m_pBoardDialog = new BoardDialog(this, tr("Load board"), m_sLastOpenedDir,
+  m_pBoardDialog = new BoardDialog(this, tr("Load board"),
+                                   Settings::instance()->getLastOpenedDir(),
                                    tr("Board files") + " (*.conf)");
 
   if (m_pBoardDialog->exec()) {
@@ -116,7 +115,7 @@ void BoardSelection::selectOwnBoard() {
     if (!sListFiles.isEmpty()) {
       m_sSelectedFile = sListFiles.first();
       QFileInfo fi(m_sSelectedFile);
-      m_sLastOpenedDir = fi.absolutePath();
+      Settings::instance()->setLastOpenedDir(fi.absolutePath());
       this->accept();
     }
   }
@@ -127,10 +126,6 @@ void BoardSelection::selectOwnBoard() {
 
 auto BoardSelection::getSelectedFile() -> const QString {
   return m_sSelectedFile;
-}
-
-auto BoardSelection::getLastOpenedDir() -> const QString {
-  return m_sLastOpenedDir;
 }
 
 void BoardSelection::updateSolved(const QString &sBoard) {

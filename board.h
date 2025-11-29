@@ -10,14 +10,13 @@
 class QSettings;
 
 class Block;
-class Settings;
 
 class Board : public QGraphicsScene {
   Q_OBJECT
 
  public:
   Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
-        Settings *pSettings, const quint16 nGridSize = 0,
+        const quint16 nGridSize = 0,
         const QString &sSavedGame = QLatin1String(""),
         QObject *pParentObj = nullptr);
 
@@ -38,7 +37,7 @@ class Board : public QGraphicsScene {
   void checkPuzzleSolved();
 
  private slots:
-  void useSystemBackground(const bool bUseSysColor);
+  void updateUseSystemBackground(const bool bUseSystemBackground);
 
  private:
   void drawBoard();
@@ -59,12 +58,12 @@ class Board : public QGraphicsScene {
   QSettings *m_pBoardConf;
   QSettings *m_pSavedConf;
   QString m_sBoardFile;
-  Settings *m_pSettings;
   bool m_bSavedGame;
   QPolygonF m_BoardPoly;
   QList<Block *> m_listBlocks;
   quint8 m_nNumOfBlocks{};
   quint16 m_nGridSize;
+  bool m_bUseSystemBackground;
   bool m_bNotAllPiecesNeeded{};
   bool m_bFreestyle{};
 

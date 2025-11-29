@@ -43,7 +43,8 @@ SOURCES       += main.cpp\
                  boardpreview.cpp \
                  boardselection.cpp \
                  highscore.cpp \
-                 settings.cpp
+                 settings.cpp \
+                 settingsdialog.cpp
 
 HEADERS       += iqpuzzle.h \
                  board.h \
@@ -52,12 +53,13 @@ HEADERS       += iqpuzzle.h \
                  boardpreview.h \
                  boardselection.h \
                  highscore.h \
-                 settings.h
+                 settings.h \
+                 settingsdialog.h
 
 FORMS         += iqpuzzle.ui \
                  boardpreview.ui \
                  boardselection.ui \
-                 settings.ui
+                 settingsdialog.ui
 
 RESOURCES      = data/data.qrc \
                  lang/translations.qrc

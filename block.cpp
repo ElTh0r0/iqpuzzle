@@ -12,8 +12,7 @@
 
 Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
              QPen border, quint16 nGrid, QList<Block *> *pListBlocks,
-             Settings *pSettings, QPointF posTopLeft, const bool bBarrier,
-             QObject *pParentObj)
+             QPointF posTopLeft, const bool bBarrier, QObject *pParentObj)
     : m_nID(nID),
       m_nZBlock(1000),
       m_nZBarrier(1),
@@ -23,7 +22,6 @@ Block::Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor,
       m_borderPen(std::move(border)),
       m_nGrid(nGrid),
       m_pListBlocks(pListBlocks),
-      m_pSettings(pSettings),
       m_bActive(false) {
   Q_UNUSED(pParentObj)
   if (!m_PolyShape.isClosed()) {
@@ -106,7 +104,7 @@ void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
   this->resetBrushStyle();
   if (button == Qt::LeftButton) button |= p_Event->modifiers();
 
-  int nIndex(m_pSettings->getMouseControls().indexOf(button));
+  int nIndex(Settings::instance()->getMouseControls().indexOf(button));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 0:
@@ -136,7 +134,8 @@ void Block::mousePressEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void Block::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
-  if (0 == m_pSettings->getMouseControls().indexOf(p_Event->buttons())) {
+  if (0 ==
+      Settings::instance()->getMouseControls().indexOf(p_Event->buttons())) {
     this->setPos(p_Event->scenePos() - m_posMouseSelected);
     update();
   }
@@ -146,7 +145,8 @@ void Block::mouseMoveEvent(QGraphicsSceneMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 
 void Block::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
-  if (0 == m_pSettings->getMouseControls().indexOf(p_Event->button())) {
+  if (0 ==
+      Settings::instance()->getMouseControls().indexOf(p_Event->button())) {
     this->moveBlock(true);
     update();
   }
@@ -160,8 +160,8 @@ void Block::mouseReleaseEvent(QGraphicsSceneMouseEvent *p_Event) {
 void Block::wheelEvent(QGraphicsSceneWheelEvent *p_Event) {
   this->resetBrushStyle();
 
-  int nIndex(m_pSettings->getMouseControls().indexOf(
-      (quint32(p_Event->orientation()) | Settings::nSHIFT)));
+  int nIndex(Settings::instance()->getMouseControls().indexOf(
+      (quint32(p_Event->orientation()) | Settings::SHIFT)));
   if (nIndex >= 0) {
     switch (nIndex) {
       case 1:

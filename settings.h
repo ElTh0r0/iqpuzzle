@@ -4,59 +4,40 @@
 #ifndef SETTINGS_H_
 #define SETTINGS_H_
 
-#include <QDialog>
+#include <QSettings>
 
-class QSettings;
-
-namespace Ui {
-class SettingsDialog;
-}
-
-class Settings : public QDialog {
+class Settings : public QObject {
   Q_OBJECT
 
  public:
-  explicit Settings(QWidget *pParent, QString sSharePath);
-  virtual ~Settings();
+  static Settings *instance();
+  auto getSharePath() const -> QString;
+  void setSharePath(const QString &sPath);
 
-  static const quint8 nSHIFT = 0xF0;
-  auto getMouseControls() const -> QList<uint>;
-  auto getLanguage() -> QString;
-  auto getUseSystemBackground() -> bool;
-
-  auto getEasy() const -> uint;
-  auto getHard() const -> uint;
-
+  auto getMouseControls() -> QList<uint>;
+  void setMouseControls(const QList<uint> mouseControls);
+  auto getGuiLanguage() -> QString;
+  void setGuiLanguage(const QString &sLanguage);
+  auto getUseSystemBackground() const -> bool;
+  void setUseSystemBackground(const bool bUseSystemBackground);
   auto getLastOpenedDir() -> QString;
   void setLastOpenedDir(const QString &sLastOpenedDir);
+  auto getThresholdEasy() const -> uint;
+  auto getThresholdHard() const -> uint;
+
+  static const quint8 SHIFT = 0xF0;
 
  signals:
-  void changeLang(const QString &sLang);
-  void useSystemBackgroundColor(const bool bUseSysColor);
-
- public slots:
-  void accept() override;
-  void updateUiLang();
-
- protected:
-  void showEvent(QShowEvent *pEvent) override;
+  void updateUseSystemBackgroundColor(const bool bUseSystemBackground);
+  void changeGuiLanguage(const QString &sLanguage);
 
  private:
-  void readSettings();
-  QStringList searchTranslations();
+  explicit Settings(QObject *pParent = nullptr);
+  QSettings m_settings;
+  QString m_sSharePath;
 
-  Ui::SettingsDialog *m_pUi;
-  QSettings *m_pSettings;
-
-  QString m_sGuiLanguage;
-  const QString m_sSharePath;
-  QStringList m_sListMouseButtons;
-  QList<uint> m_listMouseButtons;
-  QList<uint> m_listMouseControls;
-  bool m_bUseSystemBackground{};
-  uint m_nEasy{};
-  uint m_nHard{};
-  QString m_sLastOpenedDir;
+  static const uint THRESHOLD_EASY = 200;
+  static const uint THRESHOLD_HARD = 10;
 };
 
 #endif  // SETTINGS_H_

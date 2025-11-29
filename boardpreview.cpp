@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2024-2025 Thorsten Roth
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "boardpreview.h"
+#include "./boardpreview.h"
 
 #include <QFileInfo>
 #include <QSettings>

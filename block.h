@@ -12,14 +12,12 @@ class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
 class QPainter;
 
-class Settings;
-
 class Block : public QGraphicsObject {
   Q_OBJECT
 
  public:
   Block(const quint16 nID, QPolygonF shape, const QBrush &bgcolor, QPen border,
-        quint16 nGrid, QList<Block *> *pListBlocks, Settings *pSettings,
+        quint16 nGrid, QList<Block *> *pListBlocks,
         QPointF posTopLeft = QPoint(0, 0), const bool bBarrier = false,
         QObject *pParentObj = nullptr);
 
@@ -70,7 +68,6 @@ class Block : public QGraphicsObject {
   QPen m_borderPen;
   quint16 m_nGrid;
   QList<Block *> *m_pListBlocks;
-  Settings *m_pSettings;
   bool m_bActive;
   QPixmap m_CollTexture;
 

@@ -8,6 +8,7 @@
 #include <QTextStream>
 
 #include "./iqpuzzle.h"
+#include "./settings.h"
 
 static QFile logfile;
 static QTextStream out(&logfile);
@@ -60,6 +61,7 @@ auto main(int argc, char *argv[]) -> int {
 #if defined(Q_OS_MACOS)
   sSharePath = app.applicationDirPath() + "/../Resources/";
 #endif
+  Settings::instance()->setSharePath(sSharePath);
 
   QStringList sListPaths =
       QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation);
@@ -78,7 +80,7 @@ auto main(int argc, char *argv[]) -> int {
   setupLogger(userDataDir.absolutePath() + "/" + sDebugFile,
               app.applicationName(), app.applicationVersion());
 
-  IQPuzzle myIQPuzzle(userDataDir, sSharePath);
+  IQPuzzle myIQPuzzle(userDataDir);
   myIQPuzzle.show();
   int nRet = app.exec();
 

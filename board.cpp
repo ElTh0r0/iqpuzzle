@@ -15,14 +15,14 @@
 #include "./settings.h"
 
 Board::Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
-             Settings *pSettings, const quint16 nGridSize,
-             const QString &sSavedGame, QObject *pParentObj)
+             const quint16 nGridSize, const QString &sSavedGame,
+             QObject *pParentObj)
     : m_pParent(pParent),
       m_pGraphView(pGraphView),
       m_sBoardFile(std::move(sBoardFile)),
-      m_pSettings(pSettings),
       m_bSavedGame(false),
-      m_nGridSize(nGridSize) {
+      m_nGridSize(nGridSize),
+      m_bUseSystemBackground(Settings::instance()->getUseSystemBackground()) {
   Q_UNUSED(pParentObj)
   m_pBoardConf = new QSettings(m_sBoardFile, QSettings::IniFormat);
   if (!sSavedGame.isEmpty()) {
@@ -30,7 +30,9 @@ Board::Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
   }
   m_pSavedConf = new QSettings(sSavedGame, QSettings::IniFormat);
 
-  if (!m_pSettings->getUseSystemBackground()) {
+  connect(Settings::instance(), &Settings::updateUseSystemBackgroundColor, this,
+          &Board::updateUseSystemBackground);
+  if (!m_bUseSystemBackground) {
     this->setBackgroundBrush(
         QBrush(this->readColor(QStringLiteral("BGColor"))));
   }
@@ -46,9 +48,6 @@ Board::Board(QWidget *pParent, QGraphicsView *pGraphView, QString sBoardFile,
                          tr("Board grid size not valid.\n"
                             "Reduced grid to default."));
   }
-
-  connect(m_pSettings, &Settings::useSystemBackgroundColor, this,
-          &Board::useSystemBackground);
 }
 
 // ---------------------------------------------------------------------------
@@ -96,7 +95,7 @@ auto Board::setupBoard() -> bool {
 void Board::drawBoard() {
   QBrush brush(this->readColor(QStringLiteral("Board/Color")));
   QPen pen(this->readColor(QStringLiteral("Board/BorderColor")));
-  if (m_pSettings->getUseSystemBackground()) {
+  if (m_bUseSystemBackground) {
     if (m_pBoardConf->contains(QStringLiteral("Barrier1/Color"))) {
       QColor cBG(this->readColor(QStringLiteral("BGColor")));
       if (cBG == this->readColor(QStringLiteral("Barrier1/Color")) &&
@@ -117,7 +116,7 @@ void Board::drawBoard() {
 void Board::drawGrid() {
   QLineF lineGrid;
   QPen pen(this->readColor(QStringLiteral("Board/GridColor")));
-  if (m_pSettings->getUseSystemBackground()) {
+  if (m_bUseSystemBackground) {
     if (m_pBoardConf->contains(QStringLiteral("Barrier1/Color"))) {
       QColor cBG(this->readColor(QStringLiteral("BGColor")));
       if (cBG == this->readColor(QStringLiteral("Barrier1/Color")) &&
@@ -199,7 +198,6 @@ auto Board::createBlocks() -> bool {
     m_listBlocks.append(new Block(
         i, polygon, this->readColor(sPrefix + "/Color"),
         this->readColor(sPrefix + "/BorderColor"), m_nGridSize, &m_listBlocks,
-        m_pSettings,
         Board::readStartPosition(tmpSet, sPrefix + "/StartPos", m_pParent)));
     if (!m_bFreestyle) {
       connect(m_listBlocks.last(), &Block::checkPuzzleSolved, this,
@@ -249,7 +247,7 @@ auto Board::createBarriers() -> bool {
         new Block(m_nNumOfBlocks + i, polygon,
                   this->readColor(sPrefix + "/Color", bIsBoardBG),
                   this->readColor(sPrefix + "/BorderColor", bIsBoardBG),
-                  m_nGridSize, &m_listBlocks, m_pSettings,
+                  m_nGridSize, &m_listBlocks,
                   Board::readStartPosition(m_pBoardConf, sPrefix + "/StartPos",
                                            m_pParent),
                   true));
@@ -263,7 +261,7 @@ auto Board::createBarriers() -> bool {
 
 auto Board::readColor(const QString &sKey, const bool bColorIsBoardBG) const
     -> QColor {
-  if (bColorIsBoardBG && m_pSettings->getUseSystemBackground()) {
+  if (bColorIsBoardBG && m_bUseSystemBackground) {
     return QApplication::palette().color(QPalette::Base);
   }
 
@@ -504,12 +502,13 @@ void Board::doZoom() {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto Board::useSystemBackground(const bool bUseSysColor) -> void {
-  if (!bUseSysColor) {
+auto Board::updateUseSystemBackground(const bool bUseSystemBackground) -> void {
+  m_bUseSystemBackground = bUseSystemBackground;
+  if (m_bUseSystemBackground) {
+    this->setBackgroundBrush(Qt::NoBrush);
+  } else {
     this->setBackgroundBrush(
         QBrush(this->readColor(QStringLiteral("BGColor"))));
-  } else {
-    this->setBackgroundBrush(Qt::NoBrush);
   }
 }
 

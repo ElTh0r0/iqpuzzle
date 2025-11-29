@@ -10,6 +10,7 @@
 
 #include "./boarddialog.h"
 #include "./boardpreview.h"
+#include "./settings.h"
 
 namespace Ui {
 class BoardSelection;
@@ -20,13 +21,11 @@ class BoardSelection : public QDialog {
 
  public:
   explicit BoardSelection(QWidget *pParent, const QString &sBoardsDir,
-                          const QStringList &sListAllUnsolved,
-                          const QString &sLastOpenedDir);
+                          const QStringList &sListAllUnsolved);
 
   virtual ~BoardSelection();
 
   auto getSelectedFile() -> const QString;
-  auto getLastOpenedDir() -> const QString;
   void updateSolved(const QString &sBoard);
 
  public slots:
@@ -45,7 +44,6 @@ class BoardSelection : public QDialog {
   const QSize m_previewsize;
   const QString m_sBoardsDir;
   const QStringList m_sListAllUnsolved;
-  QString m_sLastOpenedDir;
   BoardDialog *m_pBoardDialog;
   QString m_sSelectedFile;
 

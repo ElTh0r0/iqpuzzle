@@ -86,6 +86,7 @@ set(HEADERS
     boardselection.h
     highscore.h
     settings.h
+    settingsdialog.h
 )
 
 set(SOURCES
@@ -98,13 +99,14 @@ set(SOURCES
     boardselection.cpp
     highscore.cpp
     settings.cpp
+    settingsdialog.cpp
 )
 
 set(FORMS
     iqpuzzle.ui
     boardpreview.ui
     boardselection.ui
-    settings.ui
+    settingsdialog.ui
 )
 
 set(RESOURCES
