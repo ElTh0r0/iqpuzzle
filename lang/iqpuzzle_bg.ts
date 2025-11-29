@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="bg">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="bg">
 <context>
     <name>Board</name>
     <message>
@@ -96,7 +94,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="93"/>
         <location filename="../boardpreview.cpp" line="109"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="47"/>
@@ -127,12 +125,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="110"/>
         <source>Board files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -184,12 +182,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="52"/>
         <source>&amp;All available</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="62"/>
         <source>All &amp;unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="88"/>
@@ -277,30 +275,30 @@ Reduced grid to default.</source>
         <location filename="../iqpuzzle.ui" line="223"/>
         <location filename="../iqpuzzle.ui" line="248"/>
         <source>&amp;Easy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="228"/>
         <location filename="../iqpuzzle.ui" line="253"/>
         <source>&amp;Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="233"/>
         <location filename="../iqpuzzle.ui" line="258"/>
         <source>&amp;Hard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="238"/>
         <location filename="../iqpuzzle.ui" line="243"/>
         <source>&amp;All</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="266"/>
         <source>Sta&amp;tistics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -346,7 +344,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="146"/>
         <source>Games share path does not exist!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="303"/>
@@ -361,13 +359,13 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="392"/>
         <source>No boards available!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="480"/>
         <location filename="../iqpuzzle.cpp" line="514"/>
         <source>Save games</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="494"/>
@@ -382,38 +380,38 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="710"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="718"/>
         <location filename="../iqpuzzle.cpp" line="747"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="720"/>
         <source>Unsolved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="723"/>
         <source>Easy</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="731"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="739"/>
         <source>Hard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="748"/>
         <source>including unknown difficulty</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="770"/>
@@ -428,7 +426,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="787"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="790"/>
@@ -471,7 +469,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
@@ -485,72 +483,72 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished">Моля, променете настройките си. Същият бутон на мишката се използва за няколко действия.</translation>
+        <translation>Моля, променете настройките си. Същият бутон на мишката се използва за няколко действия.</translation>
     </message>
 </context>
 </TS>
