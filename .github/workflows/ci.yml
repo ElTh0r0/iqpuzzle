@@ -15,7 +15,7 @@ jobs:
       QT_SELECT: qt5
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install Dependencies
       run: sudo apt update && sudo apt install qtbase5-dev qt5-qmake qttools5-dev-tools libfuse2
@@ -55,12 +55,13 @@ jobs:
     runs-on: macos-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v4
       with:
-        version: '6.8.*'
+        version: '6.10.*'
+        cache: 'true'
         host: 'mac'
         target: 'desktop'
 

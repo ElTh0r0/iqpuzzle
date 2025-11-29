@@ -8,12 +8,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: clang-format lint
       uses: DoozyX/clang-format-lint-action@v0.20
       with:
         source: '.'
         extensions: 'h,cpp'
-        clangFormatVersion: 19
+        clangFormatVersion: 20
         style: Google
