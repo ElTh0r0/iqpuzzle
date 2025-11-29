@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_CN">
 <context>
     <name>Board</name>
     <message>
@@ -486,72 +484,72 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation type="unfinished">鼠标左键</translation>
+        <translation>鼠标左键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation type="unfinished">鼠标中键</translation>
+        <translation>鼠标中键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Right</source>
-        <translation type="unfinished">鼠标右键</translation>
+        <translation>鼠标右键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation type="unfinished">第一个 X 键</translation>
+        <translation>第一个 X 键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation type="unfinished">第二个 X 键</translation>
+        <translation>第二个 X 键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished">垂直滚轮</translation>
+        <translation>垂直滚轮</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished">水平滚轮</translation>
+        <translation>水平滚轮</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished">Shift</translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished">Ctrl</translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished">Alt</translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished">Meta</translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished">请修改游戏设置，鼠标按钮操作有冲突。</translation>
+        <translation>请修改游戏设置，鼠标按钮操作有冲突。</translation>
     </message>
 </context>
 </TS>
