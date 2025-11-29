@@ -508,7 +508,7 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation>第二个 X 键</translation>
+        <translation>第二個 X 鍵</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
