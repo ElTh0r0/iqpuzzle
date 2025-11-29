@@ -549,7 +549,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation>请修改游戏设置，鼠标按钮操作有冲突。</translation>
+        <translation>請修改遊戲設置，滑鼠按鈕操作有衝突。</translation>
     </message>
 </context>
 </TS>
