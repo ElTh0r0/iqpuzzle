@@ -28,9 +28,9 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
   const QStringList sListSubfolders =
       boardsDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
 
-  m_pListTabScrollArea.reserve(sListSubfolders.length());
-  m_pListContent.reserve(sListSubfolders.length());
-  m_pListTabLayouts.reserve(sListSubfolders.length());
+  m_pListTabScrollArea.reserve(sListSubfolders.size());
+  m_pListContent.reserve(sListSubfolders.size());
+  m_pListTabLayouts.reserve(sListSubfolders.size());
 
   for (auto sSubfolder : sListSubfolders) {
     m_pListTabScrollArea << new QScrollArea(this);

@@ -548,7 +548,7 @@ void Board::saveGame(const QString &sSaveFile, const QString &sTime,
       sPoly +=
           QString::number(point.x()) + "," + QString::number(point.y()) + " | ";
     }
-    sPoly.remove(sPoly.length() - 3, sPoly.length());
+    sPoly.remove(sPoly.size() - 3, sPoly.size());
 
     saveConf.setValue(sPrefix + "/Polygon", sPoly);
     QPointF pos = m_listBlocks.at(i)->getPosition();
