@@ -42,6 +42,11 @@ jobs:
 #       mkdir iQPuzzle\boards
 #       copy build-cmake\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
 #       windeployqt --release --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
+#       del /S /F iQPuzzle\networkinformation
+#       rmdir iQPuzzle\networkinformation
+#       del /S /F iQPuzzle\tls
+#       rmdir iQPuzzle\tls
+#       del iQPuzzle\Qt6Network.dll
 #       copy COPYING iQPuzzle\
 #       curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
 #       copy ReadMe.txt iQPuzzle\
@@ -99,6 +104,11 @@ jobs:
        mkdir iQPuzzle\boards
        copy build-cmake\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
        windeployqt --release --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
+       del /S /F iQPuzzle\networkinformation
+       rmdir iQPuzzle\networkinformation
+       del /S /F iQPuzzle\tls
+       rmdir iQPuzzle\tls
+       del iQPuzzle\Qt6Network.dll
        copy COPYING iQPuzzle\
        curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
        copy ReadMe.txt iQPuzzle\
