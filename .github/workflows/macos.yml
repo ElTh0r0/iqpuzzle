@@ -1,0 +1,49 @@
+name: "macOS"
+
+# manual trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  macOS_laetst:
+    name: macOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.10.*'
+        cache: 'true'
+        host: 'mac'
+        target: 'desktop'
+
+    - name: Compile
+      run: |
+       mkdir build
+       cd build
+       qmake ../iqpuzzle.pro CONFIG+=release
+       make
+       rm -rf .moc
+       rm -rf .obj
+       rm -rf .qrc
+
+    - name: Create dmg archive and zip
+      run: |
+       cd build
+       VERSION=$(git rev-parse --short HEAD) 
+       macdeployqt "iQPuzzle.app" -dmg
+       mv "iQPuzzle.dmg" "iQPuzzle_${VERSION}.dmg"
+       cp "../README.md" "./README.md"
+       cp "../COPYING" "./COPYING"
+       7z a iQPuzzle_${VERSION}_macOS.zip "iQPuzzle_${VERSION}.dmg" "README.md" "COPYING"
+
+    - name: Upload AppImage
+      uses: actions/upload-artifact@v4
+      with:
+        name: iQPuzzle-macOS_Artefacts
+        path: iQPuzzle_*_macOS.zip
+        retention-days: 1
+        overwrite: true

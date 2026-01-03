@@ -1,0 +1,118 @@
+name: "Windows"
+
+# manual trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  Windows_msvc:
+    name: Win latest Qt 6 msvc
+    runs-on: windows-latest
+    env:
+      QT_VERSION: '6.10.1'
+      BUILD: 'msvc2022_64'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+    
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        cache: 'true'
+        cache-key-prefix: install-qt-action
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_msvc2022_64'
+    
+    - name: Compile
+      run: |
+       mkdir build-cmake
+       cmake -G "Visual Studio 17 2022" -S ${{github.workspace}} -B ${{github.workspace}}/build-cmake
+       cmake --build ${{github.workspace}}/build-cmake --config Release
+    
+#    - name: Create Package
+#      env:
+#        VCINSTALLDIR: 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC'
+#      shell: cmd
+#      run: |
+#       git rev-parse --short main > buildnr.txt
+#       set /p buildnr= < buildnr.txt
+#       del buildnr.txt
+#       mkdir iQPuzzle\boards
+#       copy build-cmake\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
+#       windeployqt --release --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
+#       copy COPYING iQPuzzle\
+#       curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
+#       copy ReadMe.txt iQPuzzle\
+#       xcopy /i /e /s data\boards\* iQPuzzle\boards\
+#       7z a -tzip -mx=7 iQPuzzle-%buildnr%-Windows_${{ env.BUILD }}.zip .\iQPuzzle\
+#       curl -fsSL -o iqpuzzle.nsi https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.nsi
+#       curl -fsSL -o removeprevious.nsh https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/removeprevious.nsh
+#       curl -fsSL -o iqpuzzle.ico https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.ico
+#       makensis iqpuzzle.nsi
+#       ren iQPuzzle_Installer.exe iQPuzzle-%buildnr%-Windows_${{ env.BUILD }}.exe
+#       
+#    - uses: actions/upload-artifact@v4
+#      with:
+#        name: iQPuzzle-Windows_Artefacts
+#        path: iQPuzzle-*.*
+#        retention-days: 2
+#        overwrite: true
+
+  Windows_mingw:
+    name: Win 2022 Qt 6 mingw
+    runs-on: windows-2022
+    env:
+      QT_VERSION: '6.10.1'
+      BUILD: 'mingw1310_64'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        cache: 'true'
+        cache-key-prefix: install-qt-action
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_mingw'
+        tools: 'tools_mingw1310'
+
+    - name: Add Qt MinGW to PATH
+      run: echo "${{ env.QT_ROOT_DIR }}/../Tools/${{ env.BUILD }}/bin" >> $GITHUB_PATH
+
+    - name: Compile
+      run: |
+       mkdir build-cmake
+       cmake -G "MinGW Makefiles" -S ${{github.workspace}} -B ${{github.workspace}}/build-cmake
+       cmake --build ${{github.workspace}}/build-cmake --config Release
+    
+    - name: Create Package
+      shell: cmd
+      run: |
+       git rev-parse --short main > buildnr.txt
+       set /p buildnr= < buildnr.txt
+       del buildnr.txt
+       mkdir iQPuzzle\boards
+       copy build-cmake\iQPuzzle.exe iQPuzzle\iQPuzzle.exe
+       windeployqt --release --no-translations --no-opengl-sw iQPuzzle\iQPuzzle.exe
+       copy COPYING iQPuzzle\
+       curl -fsSL -o ReadMe.txt https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/ReadMe.txt
+       copy ReadMe.txt iQPuzzle\
+       xcopy /i /e /s data\boards\* iQPuzzle\boards\
+       7z a -tzip -mx=7 iQPuzzle-%buildnr%-Windows_${{ env.BUILD }}.zip .\iQPuzzle\
+       curl -fsSL -o iqpuzzle.nsi https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.nsi
+       curl -fsSL -o removeprevious.nsh https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/removeprevious.nsh
+       curl -fsSL -o iqpuzzle.ico https://raw.githubusercontent.com/ElTh0r0/iqpuzzle/packaging/Windows/iqpuzzle.ico
+       makensis iqpuzzle.nsi
+       ren iQPuzzle_Installer.exe iQPuzzle-%buildnr%-Windows_${{ env.BUILD }}.exe
+       
+    - uses: actions/upload-artifact@v4
+      with:
+        name: iQPuzzle-Windows_Artefacts
+        path: iQPuzzle-*.*
+        retention-days: 2
+        overwrite: true
