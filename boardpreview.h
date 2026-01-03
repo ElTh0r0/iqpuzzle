@@ -15,11 +15,13 @@ class BoardPreview : public QWidget {
   Q_OBJECT
 
  public:
-  explicit BoardPreview(const QString &sFilePath, const bool bSolved,
-                        const QSize previewsize, QWidget *pParent = nullptr);
+  explicit BoardPreview(const QString &sFilePath, const QString &sCategory,
+                        const bool bSolved, const QSize previewsize,
+                        QWidget *pParent = nullptr);
   ~BoardPreview();
 
-  auto getName() -> const QString;
+  auto getCategory() -> const QString &;
+  auto isSolved() -> bool;
   void updateSolved();
 
  public slots:
@@ -37,7 +39,9 @@ class BoardPreview : public QWidget {
 
   Ui::BoardPreview *m_pUi;
   QString m_sFilePath;
+  QString m_sCategory;
   quint32 m_nSolutions;
+  bool m_bSolved;
 };
 
 #endif  // BOARDPREVIEW_H_

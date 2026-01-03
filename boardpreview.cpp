@@ -8,9 +8,14 @@
 
 #include "ui_boardpreview.h"
 
-BoardPreview::BoardPreview(const QString &sFilePath, const bool bSolved,
-                           const QSize previewsize, QWidget *pParent)
-    : QWidget(pParent), m_pUi(new Ui::BoardPreview), m_sFilePath(sFilePath) {
+BoardPreview::BoardPreview(const QString &sFilePath, const QString &sCategory,
+                           const bool bSolved, const QSize previewsize,
+                           QWidget *pParent)
+    : QWidget(pParent),
+      m_pUi(new Ui::BoardPreview),
+      m_sFilePath(sFilePath),
+      m_sCategory(sCategory),
+      m_bSolved(bSolved) {
   m_pUi->setupUi(this);
   QFileInfo fi(m_sFilePath);
   QString sFile(fi.baseName());
@@ -18,7 +23,7 @@ BoardPreview::BoardPreview(const QString &sFilePath, const bool bSolved,
   sFile.replace('_', ' ');
   m_pUi->lbl_BoardName->setText(sFile);
 
-  if (bSolved) {
+  if (m_bSolved) {
     m_pUi->lblSolved->setText(tr("Solved") +
                               ": <img src=\":/icons/emblem-checked.png\">");
   } else {
@@ -84,14 +89,16 @@ void BoardPreview::mousePressEvent(QMouseEvent *p_Event) {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-auto BoardPreview::getName() -> const QString {
-  QFileInfo fi(m_sFilePath);
-  return fi.baseName();
-}
+auto BoardPreview::getCategory() -> const QString & { return m_sCategory; }
+
+auto BoardPreview::isSolved() -> bool { return m_bSolved; }
 
 void BoardPreview::updateSolved() {
-  m_pUi->lblSolved->setText(tr("Solved") +
-                            ": <img src=\":/icons/emblem-checked.png\">");
+  if (!m_bSolved) {
+    m_bSolved = true;
+    m_pUi->lblSolved->setText(tr("Solved") +
+                              ": <img src=\":/icons/emblem-checked.png\">");
+  }
 }
 
 // ---------------------------------------------------------------------------

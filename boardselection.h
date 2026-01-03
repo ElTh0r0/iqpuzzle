@@ -10,7 +10,6 @@
 
 #include "./boarddialog.h"
 #include "./boardpreview.h"
-#include "./settings.h"
 
 namespace Ui {
 class BoardSelection;
@@ -50,7 +49,7 @@ class BoardSelection : public QDialog {
   QList<QScrollArea *> m_pListTabScrollArea;
   QList<QWidget *> m_pListContent;
   QList<QGridLayout *> m_pListTabLayouts;
-  QList<BoardPreview *> m_pListBoards;
+  QHash<QString, BoardPreview *> m_pListBoards;
 };
 
 #endif  // BOARDSELECTION_H_

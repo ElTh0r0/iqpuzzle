@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QSettings>
 
+#include "./settings.h"
 #include "ui_boardselection.h"
 
 BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
@@ -32,7 +33,8 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
   m_pListContent.reserve(sListSubfolders.size());
   m_pListTabLayouts.reserve(sListSubfolders.size());
 
-  for (auto sSubfolder : sListSubfolders) {
+  QString sCategory;
+  for (const auto &sSubfolder : sListSubfolders) {
     m_pListTabScrollArea << new QScrollArea(this);
     m_pListTabScrollArea.last()->setWidgetResizable(true);
     m_pListTabScrollArea.last()->setHorizontalScrollBarPolicy(
@@ -40,6 +42,10 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
     m_pListContent << new QWidget(this);
     m_pListTabScrollArea.last()->setWidget(m_pListContent.last());
     m_pListTabLayouts << new QGridLayout(m_pListContent.last());
+
+    sCategory = sSubfolder;
+    sCategory[0] = sCategory[0].toUpper();
+    sCategory = sCategory.replace('_', ' ');
 
     QDir dir(m_sBoardsDir + "/" + sSubfolder);
     const QStringList boardfiles =
@@ -52,13 +58,13 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
     for (const auto &board : boardfiles) {
       QString sFile(sSubfolder + "/" + board);
       bool bSolved = !m_sListAllUnsolved.contains(sFile);
-      m_pListBoards << new BoardPreview(m_sBoardsDir + "/" + sFile, bSolved,
-                                        m_previewsize);
-      m_pListTabLayouts.last()->addWidget(m_pListBoards.last(), nRow, nCol);
+      m_pListBoards[board] = new BoardPreview(
+          m_sBoardsDir + "/" + sFile, sCategory, bSolved, m_previewsize);
+      m_pListTabLayouts.last()->addWidget(m_pListBoards[board], nRow, nCol);
 
-      connect(m_pListBoards.last(), &BoardPreview::selectBoard, this,
+      connect(m_pListBoards[board], &BoardPreview::selectBoard, this,
               &BoardSelection::selectBoard);
-      connect(this, &BoardSelection::updatedUiLang, m_pListBoards.last(),
+      connect(this, &BoardSelection::updatedUiLang, m_pListBoards[board],
               &BoardPreview::updateUiLang);
 
       nCol++;
@@ -73,13 +79,11 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
       nSum++;
     }
 
-    sSubfolder[0] = sSubfolder[0].toUpper();
-    sSubfolder = sSubfolder.replace('_', ' ');
-    if (sSubfolder != QStringLiteral("Freestyle")) {
-      sSubfolder +=
+    if (sCategory != QStringLiteral("Freestyle")) {
+      sCategory +=
           " (" + QString::number(nSolved) + "/" + QString::number(nSum) + ")";
     }
-    m_pUi->tabWidget->addTab(m_pListTabScrollArea.last(), sSubfolder);
+    m_pUi->tabWidget->addTab(m_pListTabScrollArea.last(), sCategory);
   }
 
   connect(m_pUi->openOwnBoard, &QPushButton::clicked, this,
@@ -129,41 +133,31 @@ auto BoardSelection::getSelectedFile() -> const QString {
 }
 
 void BoardSelection::updateSolved(const QString &sBoard) {
-  QString sFileName;
-  for (auto board : m_pListBoards) {
-    QFileInfo fi(sBoard);
-    sFileName = fi.baseName();
-    if (sFileName == board->getName()) {
-      board->updateSolved();
-      break;
+  QFileInfo fi(sBoard);
+  QString sFileName(fi.fileName());
+  if (m_pListBoards.contains(sFileName)) {
+    if (!m_pListBoards[sFileName]->isSolved()) {
+      m_pListBoards[sFileName]->updateSolved();
+      QString sCategory = m_pListBoards[sFileName]->getCategory() + " (";
+      for (int i = 0; i < m_pUi->tabWidget->count(); ++i) {
+        if (m_pUi->tabWidget->tabText(i).startsWith(sCategory)) {
+          QString sTabName = m_pUi->tabWidget->tabText(i);
+          sTabName.remove(sCategory);
+          sTabName.remove(')');
+          QStringList sList = sTabName.split('/');
+          if (sList.size() >= 2) {
+            sList[0] = QString::number(sList[0].trimmed().toUInt() + 1);
+            sList[1] = sList[1].trimmed();
+            m_pUi->tabWidget->setTabText(
+                i, sCategory + sList[0] + "/" + sList[1] + ")");
+          }
+          break;
+        }
+      }
     }
-  }
-
-  QDir boardsDir(m_sBoardsDir);
-  const QStringList sListSubfolders =
-      boardsDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
-
-  sFileName += QStringLiteral(".conf");
-  quint8 nTab = 0;
-  for (const auto &sSubfolder : sListSubfolders) {
-    QDir dir(m_sBoardsDir + "/" + sSubfolder);
-    const QStringList boardfiles =
-        dir.entryList(QStringList() << QStringLiteral("*.conf"),
-                      QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
-
-    if (boardfiles.contains(sFileName)) {
-      QString sTabName = m_pUi->tabWidget->tabText(nTab);
-      quint8 i1 = sTabName.lastIndexOf('(') + 1;
-      quint8 i2 = sTabName.lastIndexOf('/');
-      QString sCurrent = sTabName.mid(i1, i2 - i1);
-      // Potentially there was & added automatically
-      sCurrent = sCurrent.remove('&');
-      uint nSolved = sCurrent.toUInt() + 1;
-      sTabName = sTabName.replace(i1, i2 - i1, QString::number(nSolved));
-      m_pUi->tabWidget->setTabText(nTab, sTabName);
-      break;
-    }
-    nTab++;
+  } else {
+    qWarning() << "BoardSelection::updateSolved was called with unknown board:"
+               << sFileName;
   }
 }
 
