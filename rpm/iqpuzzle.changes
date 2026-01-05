@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 05 15:20:00 UTC 2026 - elthoro@gmx.de 1.4.3
+
+- Fix invalid updated solved games counter
+- Update Flatpak KDE platform runtime to 6.10
+
+-------------------------------------------------------------------
 Sun Mar 02 14:59:00 UTC 2025 - elthoro@gmx.de 1.4.2
 
 - Update Chinese (zh_CN, zh_TW) translation - thanks to liulitchi!

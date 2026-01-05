@@ -18,35 +18,38 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.4.2
+Version:        1.4.3
 Release:        1
 License:        GPL-3.0+
 URL:            https://github.com/ElTh0r0/iqpuzzle
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
 
-# Fedora, RHEL, or CentOS
 #--------------------------------------------------------------------
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+# Fedora
+#--------------------------------------------------------------------
+%if 0%{?fedora}
 Group:          Amusements/Games
-
 BuildRequires:  desktop-file-utils
-BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  qt5-qtbase-devel
+BuildRequires:  libappstream-glib
+BuildRequires:  ninja-build
 %endif
 #--------------------------------------------------------------------
-
-# openSUSE or SLE
+# openSUSE
 #--------------------------------------------------------------------
 %if 0%{?suse_version}
 Group:          Amusements/Games/Board/Puzzle
-
+%endif
+#--------------------------------------------------------------------
+# All
+#--------------------------------------------------------------------
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  update-desktop-files
-%endif
+BuildRequires:  cmake
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6LinguistTools)
 #--------------------------------------------------------------------
 
 %description
@@ -54,53 +57,33 @@ iQPuzzle is a diverting and challenging puzzle. Pentominos are used as
 jigsaw pieces and there are many different board shapes to fill with them.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
-# Fedora, RHEL, or CentOS
 #--------------------------------------------------------------------
-%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+# Fedora
+#--------------------------------------------------------------------
+%if 0%{?fedora}
 %build
-# Create qmake cache file to add rpm optflags.
-cat > .qmake.cache <<EOF
-QMAKE_CXXFLAGS += %{optflags}
-EOF
-%qmake_qt5 PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%cmake_qt6
+%cmake_build
 
 %install
-make install INSTALL_ROOT=%{buildroot}
+%cmake_install
+
+%check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
-
-%post
-update-desktop-database &> /dev/null || :
-
-%postun
-update-desktop-database &> /dev/null || :
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml || :
 %endif
 #--------------------------------------------------------------------
-
-# openSUSE or SLE
+# openSUSE
 #--------------------------------------------------------------------
 %if 0%{?suse_version}
 %build
-# Create qmake cache file to add rpm optflags.
-cat > .qmake.cache <<EOF
-QMAKE_CXXFLAGS += %{optflags}
-EOF
-qmake-qt5 PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%cmake_qt6
+%{qt6_build}
 
 %install
-make INSTALL_ROOT=%{buildroot} install
-%suse_update_desktop_file com.github.elth0r0.iqpuzzle
-
-%if 0%{?suse_version} >= 1140
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
+%{qt6_install}
 %endif
 #--------------------------------------------------------------------
 

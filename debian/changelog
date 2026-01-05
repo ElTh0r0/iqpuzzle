@@ -1,3 +1,11 @@
+iqpuzzle (1.4.3-0ubuntu1) jammy; urgency=low
+
+  [ Thorsten Roth ]
+  * Fix invalid updated solved games counter
+  * Update Flatpak KDE platform runtime to 6.10
+
+ -- Thorsten Roth <elthoro@gmx.de>  Mon, 05 Jan 2026 15:20:00 +0200
+
 iqpuzzle (1.4.2-0ubuntu2) jammy; urgency=low
 
   [ Thorsten Roth ]

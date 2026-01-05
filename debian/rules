@@ -1,26 +1,17 @@
 #!/usr/bin/make -f
-#export DH_VERBOSE=1
-
-CFLAGS += $(CPPFLAGS)
-CXXFLAGS += $(CPPFLAGS)
-LDFLAGS += -Wl,-z,defs
-
-BUILDFLAGS = \
-	QMAKE_CFLAGS="$(CFLAGS)" \
-	QMAKE_CXXFLAGS="$(CXXFLAGS)" \
-	QMAKE_LFLAGS="$(LDFLAGS)"
-
-export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-export QT_SELECT = qt5
 
 %:
 	dh $@ --parallel
 
 override_dh_auto_configure:
-	qmake iqpuzzle.pro PREFIX=/usr BINDIR=games
+	dh_auto_configure -- \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS="$(CFLAGS)" \
+		-DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
+		-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS) -Wl,-z,defs"
 
 override_dh_auto_build:
-	dh_auto_build -- QMAKE='qmake $(BUILDFLAGS)'
+	dh_auto_build --buildsystem=cmake
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz -z9
