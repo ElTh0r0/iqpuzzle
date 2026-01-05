@@ -15,7 +15,7 @@ class Settings : public QObject {
   void setSharePath(const QString &sPath);
 
   auto getMouseControls() -> QList<uint>;
-  void setMouseControls(const QList<uint> mouseControls);
+  void setMouseControls(const QList<uint> &mouseControls);
   auto getGuiLanguage() -> QString;
   void setGuiLanguage(const QString &sLanguage);
   auto getUseSystemBackground() const -> bool;

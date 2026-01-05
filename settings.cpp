@@ -53,7 +53,7 @@ auto Settings::getMouseControls() -> QList<uint> {
   return listMouseControls;
 }
 
-void Settings::setMouseControls(const QList<uint> mouseControls) {
+void Settings::setMouseControls(const QList<uint> &mouseControls) {
   if (mouseControls.size() == 3) {
     m_settings.beginGroup(QStringLiteral("MouseControls"));
     m_settings.setValue(QStringLiteral("MoveBlock"), mouseControls[0]);
