@@ -10,6 +10,16 @@ jigsaw pieces and there are many different board shapes to fill with them.
 Create your own level: https://elth0r0.github.io/iqpuzzle/create-level
 
 
+Game controls
+-------------
+
+The game is controlled with the mouse. By default, the puzzle pieces are moved
+with the left mouse button using drag & drop, the mouse wheel can be used to
+rotate puzzle pieces, and the right mouse button can be used to flip them.
+
+The assigned mouse buttons can be changed via ‘Settings -> Configure iQPuzzle’.
+
+
 Translations
 ------------
 
