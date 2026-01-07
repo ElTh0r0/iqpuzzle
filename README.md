@@ -15,6 +15,11 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 * [Build for OS/2](http://www.ecsoft2.org/iqpuzzle)
 * [FreeBSD Ports](https://www.freshports.org/games/iqpuzzle) / [DPorts](https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle)
 
+## Game controls
+The game is controlled with the mouse. By default, the puzzle pieces are moved with the left mouse button using drag & drop, the mouse wheel can be used to rotate puzzle pieces, and the right mouse button can be used to flip them.
+
+The assigned mouse buttons can be changed via the **‘Settings -> Configure iQPuzzle’** menu.
+
 ## Help translating
 New translations and corrections are highly welcome! You can either fork the source code from GitHub, make your changes and create a pull request or you can participate on Transifex: https://explore.transifex.com/elth0r0/iqpuzzle/
 
