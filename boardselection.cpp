@@ -35,6 +35,11 @@ BoardSelection::BoardSelection(QWidget *pParent, const QString &sBoardsDir,
 
   QString sCategory;
   for (const auto &sSubfolder : sListSubfolders) {
+    // Skip calendar boards
+    if (sSubfolder.toLower() == QStringLiteral("calendar")) {
+      continue;
+    }
+
     m_pListTabScrollArea << new QScrollArea(this);
     m_pListTabScrollArea.last()->setWidgetResizable(true);
     m_pListTabScrollArea.last()->setHorizontalScrollBarPolicy(

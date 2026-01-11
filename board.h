@@ -42,6 +42,7 @@ class Board : public QGraphicsScene {
  private:
   void drawBoard();
   void drawGrid();
+  auto drawCalendar(bool bMonth = false) -> bool;
   auto createBlocks() -> bool;
   auto createBarriers() -> bool;
   auto readColor(const QString &sKey, const bool bColorIsBoardBG = false) const

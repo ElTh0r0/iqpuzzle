@@ -5,6 +5,7 @@
 
 #include <QApplication>
 #include <QByteArray>
+#include <QDate>
 #include <QDebug>
 #include <QDir>
 #include <QGraphicsView>
@@ -71,6 +72,15 @@ auto Board::setupBoard() -> bool {
   if (!m_bFreestyle) {
     this->drawBoard();
     this->drawGrid();
+    if (m_sBoardFile.endsWith(QStringLiteral("calendar/calendar_day.conf"),
+                              Qt::CaseInsensitive)) {
+      this->drawCalendar();
+    } else if (m_sBoardFile.endsWith(
+                   QStringLiteral("calendar/calendar_month_day.conf"),
+                   Qt::CaseInsensitive)) {
+      this->drawCalendar(true);
+    }
+
     m_pGraphView->setDragMode(QGraphicsView::NoDrag);
     m_pGraphView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
     m_pGraphView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -139,6 +149,92 @@ void Board::drawGrid() {
                      m_BoardPoly.boundingRect().height() - 1);
     this->addLine(lineGrid, pen);
   }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+auto Board::drawCalendar(bool bMonth) -> bool {
+  QDate currentdate(QDate::currentDate());
+  int nTodayDay = currentdate.day();
+  int nTodayMonth = currentdate.month();
+  qDebug() << "Drawing calendar - day:" << nTodayDay << "month:" << nTodayMonth;
+
+  if (nTodayDay == 0 || nTodayMonth == 0) {
+    qWarning() << "Date could not be fetched - day:" << nTodayDay
+               << "month:" << nTodayMonth;
+    QMessageBox::warning(m_pParent, tr("Warning"),
+                         tr("Calendar couldn't be created!"));
+    return false;
+  }
+
+  QFont font("Arial");
+  QColor cText(136, 138, 133);
+  QColor cHighlightText(164, 0, 0);
+  int nOffset = 0;
+
+  if (bMonth) {
+    nOffset = 2;
+    font.setPointSize(m_nGridSize / 3);
+    QStringList sListMonths;
+    sListMonths << tr("Jan") << tr("Feb") << tr("Mar") << tr("Apr") << tr("May")
+                << tr("Jun") << tr("Jul") << tr("Aug") << tr("Sep") << tr("Oct")
+                << tr("Nov") << tr("Dec");
+
+    int nMonth = 1;
+    for (int row = 0; row < 2; ++row) {
+      for (int col = 0; col < 6; ++col) {
+        QGraphicsTextItem *text =
+            this->addText(sListMonths.at(nMonth - 1), font);
+        if (nMonth == nTodayMonth) {
+          text->setDefaultTextColor(cHighlightText);
+        } else {
+          text->setDefaultTextColor(cText);
+        }
+
+        // Text size
+        QRectF br = text->boundingRect();
+        // Grid cell center
+        qreal cellCenterX = col * m_nGridSize + m_nGridSize / 2.0;
+        qreal cellCenterY = row * m_nGridSize + m_nGridSize / 2.0;
+        // Set top-left so that BoundingRect is centered
+        qreal x = cellCenterX - br.width() / 2.0;
+        qreal y = cellCenterY - br.height() / 2.0;
+        text->setPos(x, y);
+        nMonth++;
+      }
+    }
+  }
+
+  font.setPointSize(m_nGridSize / 2);
+  int nDay = 1;
+  for (int row = 0; row < 5; ++row) {
+    for (int col = 0; col < 7; ++col) {
+      if (row == 4 && col == 3) {
+        break;
+      }
+      QString sDay = QString::number(nDay).rightJustified(2, '0');
+      QGraphicsTextItem *text = this->addText(sDay, font);
+      if (nDay == nTodayDay) {
+        text->setDefaultTextColor(cHighlightText);
+      } else {
+        text->setDefaultTextColor(cText);
+      }
+
+      // Text size
+      QRectF br = text->boundingRect();
+      // Grid cell center
+      qreal cellCenterX = col * m_nGridSize + m_nGridSize / 2.0;
+      qreal cellCenterY = (row + nOffset) * m_nGridSize + m_nGridSize / 2.0;
+      // Set top-left so that BoundingRect is centered
+      qreal x = cellCenterX - br.width() / 2.0;
+      qreal y = cellCenterY - br.height() / 2.0;
+      text->setPos(x, y);
+      nDay++;
+    }
+  }
+
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -251,6 +347,43 @@ auto Board::createBarriers() -> bool {
                   Board::readStartPosition(m_pBoardConf, sPrefix + "/StartPos",
                                            m_pParent),
                   true));
+  }
+
+  // Create calendar date barrier
+  QPolygonF dateBarrier;
+  dateBarrier << QPointF(0, 0) << QPointF(1, 0) << QPointF(1, 1)
+              << QPointF(0, 1) << QPointF(0, 0);
+  QColor cBorder(0, 0, 0);
+  QColor cDate(252, 233, 79, 128);
+  QDate currentdate(QDate::currentDate());
+  int nTodayDay = currentdate.day();
+  int nTodayMonth = currentdate.month();
+  int nX = (nTodayDay - 1) % 7;  // 7 = number of columns
+  int nY = (nTodayDay - 1) / 7;
+  if (m_sBoardFile.endsWith(QStringLiteral("calendar/calendar_day.conf"),
+                            Qt::CaseInsensitive)) {
+    // Day
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
+                                  cBorder, m_nGridSize, &m_listBlocks,
+                                  QPointF(nX, nY), true));
+  } else if (m_sBoardFile.endsWith(
+                 QStringLiteral("calendar/calendar_month_day.conf"),
+                 Qt::CaseInsensitive)) {
+    // Day
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
+                                  cBorder, m_nGridSize, &m_listBlocks,
+                                  QPointF(nX, nY + 2), true));
+
+    // Month
+    nX = nTodayMonth - 1;
+    nY = 0;
+    if (nTodayMonth > 6) {
+      nX -= 6;
+      nY = 1;
+    }
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
+                                  cBorder, m_nGridSize, &m_listBlocks,
+                                  QPointF(nX, nY), true));
   }
 
   return true;

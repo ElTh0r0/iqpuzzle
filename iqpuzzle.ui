@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGame">
@@ -70,8 +70,19 @@
      <addaction name="menuAllAvailable"/>
      <addaction name="menuAllUnsolved"/>
     </widget>
+    <widget class="QMenu" name="menu_Calendar_challenge">
+     <property name="title">
+      <string>&amp;Calendar challenge</string>
+     </property>
+     <property name="icon">
+      <iconset theme="view-calendar"/>
+     </property>
+     <addaction name="actionDay"/>
+     <addaction name="actionMonth_and_Day"/>
+    </widget>
     <addaction name="action_NewGame"/>
     <addaction name="menuRandomGame"/>
+    <addaction name="menu_Calendar_challenge"/>
     <addaction name="action_RestartGame"/>
     <addaction name="separator"/>
     <addaction name="action_LoadGame"/>
@@ -264,6 +275,19 @@
    </property>
    <property name="text">
     <string>Sta&amp;tistics</string>
+   </property>
+  </action>
+  <action name="actionDay">
+   <property name="text">
+    <string>&amp;Day</string>
+   </property>
+  </action>
+  <action name="actionMonth_and_Day">
+   <property name="text">
+    <string>&amp;Month and Day</string>
+   </property>
+   <property name="toolTip">
+    <string>Month and Day</string>
    </property>
   </action>
  </widget>

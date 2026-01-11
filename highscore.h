@@ -16,7 +16,7 @@ class Highscore : public QObject {
   explicit Highscore(QWidget *pParent, QObject *pParentObj = nullptr);
 
  public slots:
-  void showHighscore(const QString &sBoard);
+  void showHighscore(QString sBoard);
   void checkHighscore(const QString &sBoard, const quint32 nMoves,
                       const QTime tTime);
 

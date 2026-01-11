@@ -187,6 +187,12 @@ void IQPuzzle::setupMenu() {
   connect(m_pUi->actionHardUnsolved, &QAction::triggered, this,
           [this]() { randomGame(8); });
 
+  // Calendar challenge
+  connect(m_pUi->actionDay, &QAction::triggered, this,
+          [this]() { startNewGame(QStringLiteral("calendar_day")); });
+  connect(m_pUi->actionMonth_and_Day, &QAction::triggered, this,
+          [this]() { startNewGame(QStringLiteral("calendar_month_day")); });
+
   // Restart game
   m_pUi->action_RestartGame->setShortcut(QKeySequence::Refresh);
   connect(m_pUi->action_RestartGame, &QAction::triggered, this,
@@ -256,6 +262,16 @@ void IQPuzzle::startNewGame(QString sBoardFile, const QString &sSavedGame,
   }
 
   qDebug() << "Board:" << sBoardFile;
+
+  // Calendar challenge
+  if (sBoardFile.toLower() == QStringLiteral("calendar_day")) {
+    sBoardFile = m_pSettings->getSharePath() +
+                 QStringLiteral("/boards/calendar/calendar_day.conf");
+  } else if (sBoardFile.toLower() == QStringLiteral("calendar_month_day")) {
+    sBoardFile = m_pSettings->getSharePath() +
+                 QStringLiteral("/boards/calendar/calendar_month_day.conf");
+  }
+
   if (!QFile::exists(sBoardFile)) {
     QMessageBox::warning(this, tr("File not found"),
                          tr("The chosen file does not exist."));
@@ -357,8 +373,18 @@ void IQPuzzle::createBoard() {
       m_pUi->action_Highscore->setEnabled(true);
     }
 
+    // Disable save for calendar challenge, as it should be solved the same day
+    if (m_sBoardFile.endsWith(QStringLiteral("calendar/calendar_day.conf"),
+                              Qt::CaseInsensitive) ||
+        m_sBoardFile.endsWith(
+            QStringLiteral("calendar/calendar_month_day.conf"),
+            Qt::CaseInsensitive)) {
+      m_pUi->action_SaveGame->setEnabled(false);
+    } else {
+      m_pUi->action_SaveGame->setEnabled(true);
+    }
+
     m_pUi->action_PauseGame->setChecked(false);
-    m_pUi->action_SaveGame->setEnabled(true);
     m_pUi->action_RestartGame->setEnabled(true);
     m_bSolved = false;
     m_pGraphView->setScene(m_pBoard);
@@ -416,8 +442,9 @@ void IQPuzzle::generateFileLists() {
                   QDirIterator::Subdirectories);
   while (it.hasNext()) {
     it.next();
-    // Filter freestyle boards
-    if (!it.filePath().contains(QStringLiteral("freestyle"))) {
+    // Filter freestyle and calendar boards
+    if (!it.filePath().contains(QStringLiteral("freestyle")) &&
+        !it.filePath().contains(QStringLiteral("calendar"))) {
       QString sName =
           it.filePath().remove(m_pSettings->getSharePath() + "/boards/");
       // qDebug() << sName;
@@ -635,10 +662,23 @@ void IQPuzzle::solvedPuzzle() {
   m_pBoard->saveGame(m_userDataDir.absolutePath() + "/S0LV3D.debug",
                      QStringLiteral("55:55:55"), QStringLiteral("10000"));
   QFile::remove(m_userDataDir.absolutePath() + "/S0LV3D.debug");
-  emit checkHighscore(fi.baseName(), m_nMoves, m_Time);
+  QString sBoard = fi.baseName();
+  // Calendar challenge
+  if (sBoard.toLower() == QStringLiteral("calendar_day")) {
+    QDate currentdate(QDate::currentDate());
+    int nTodayDay = currentdate.day();
+    sBoard += "_" + QString::number(nTodayDay).rightJustified(2, '0');
+  } else if (sBoard.toLower() == QStringLiteral("calendar_month_day")) {
+    QDate currentdate(QDate::currentDate());
+    int nTodayDay = currentdate.day();
+    int nTodayMonth = currentdate.month();
+    sBoard += "_" + QString::number(nTodayMonth).rightJustified(2, '0') + "_" +
+              QString::number(nTodayDay).rightJustified(2, '0');
+  }
+  emit checkHighscore(sBoard, m_nMoves, m_Time);
 
   // Update "unsolved lists" for random games
-  QString sBoard(m_sBoardFile);
+  sBoard = m_sBoardFile;
   // Skip update, if board is from user / not from share folder
   if (sBoard.contains(m_pSettings->getSharePath() + "/boards/",
                       Qt::CaseInsensitive)) {

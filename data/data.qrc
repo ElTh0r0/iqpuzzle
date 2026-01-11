@@ -15,6 +15,7 @@
         <file>icons/dark/png/media-playback-pause.png</file>
         <file>icons/dark/png/media-playlist-shuffle.png</file>
         <file>icons/dark/png/tools-report-bug.png</file>
+        <file>icons/dark/png/view-calendar.png</file>
         <file>icons/dark/png/view-refresh.png</file>
         <file>icons/dark/png/view-statistics.png</file>
         <file>icons/dark/png/zoom-in.png</file>
@@ -30,6 +31,7 @@
         <file>icons/light/png/media-playback-pause.png</file>
         <file>icons/light/png/media-playlist-shuffle.png</file>
         <file>icons/light/png/tools-report-bug.png</file>
+        <file>icons/light/png/view-calendar.png</file>
         <file>icons/light/png/view-refresh.png</file>
         <file>icons/light/png/view-statistics.png</file>
         <file>icons/light/png/zoom-in.png</file>

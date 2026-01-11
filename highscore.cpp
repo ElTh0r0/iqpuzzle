@@ -29,9 +29,23 @@ Highscore::Highscore(QWidget *pParent, QObject *pParentObj)
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-void Highscore::showHighscore(const QString &sBoard) {
+void Highscore::showHighscore(QString sBoard) {
   Qt::AlignmentFlag Align;
   QDialog dialog(m_pParent);
+
+  // Calendar challenge
+  if (sBoard.toLower() == QStringLiteral("calendar_day")) {
+    QDate currentdate(QDate::currentDate());
+    int nTodayDay = currentdate.day();
+    sBoard += "_" + QString::number(nTodayDay).rightJustified(2, '0');
+  } else if (sBoard.toLower() == QStringLiteral("calendar_month_day")) {
+    QDate currentdate(QDate::currentDate());
+    int nTodayDay = currentdate.day();
+    int nTodayMonth = currentdate.month();
+    sBoard += "_" + QString::number(nTodayMonth).rightJustified(2, '0') + "_" +
+              QString::number(nTodayDay).rightJustified(2, '0');
+  }
+
   dialog.setWindowTitle(tr("Highscore") + " - " + sBoard);
   dialog.setWindowFlags(dialog.window()->windowFlags() &
                         ~Qt::WindowContextHelpButtonHint);
