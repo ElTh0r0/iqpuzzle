@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
 <context>
     <name>Board</name>
     <message>
@@ -31,67 +29,67 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de créer le calendrier!</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Jan</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Fév</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mar</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Avr</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Mai</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Jun</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Jul</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>Aoû</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Sep</source>
-        <translation type="unfinished"></translation>
+        <translation>Sep</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Oct</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>Nov</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Déc</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="258"/>
@@ -261,7 +259,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Défi &amp;calendrier</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -377,17 +375,17 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="282"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Jour</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="287"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mois et jour</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Mois et jour</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
