@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="it">
 <context>
     <name>Board</name>
     <message>
@@ -31,67 +29,67 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile creare il calendario!</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Gen</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Feb</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Mar</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Apr</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Mag</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Gui</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Lug</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>Ago</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Sep</source>
-        <translation type="unfinished"></translation>
+        <translation>Set</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Ott</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>Nov</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Dic</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="258"/>
@@ -261,7 +259,7 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Sfida &amp;calendario</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -377,17 +375,17 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="282"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Giorno</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="287"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mese e giorno</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Mese e giorno</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -572,72 +570,72 @@ Griglia ridotta al valore predefinito.</translation>
         <location filename="../settingsdialog.cpp" line="131"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Left</source>
-        <translation type="unfinished">Sinistra</translation>
+        <translation>Sinistra</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Middle</source>
-        <translation type="unfinished">Centro</translation>
+        <translation>Centro</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
         <location filename="../settingsdialog.cpp" line="123"/>
         <source>Right</source>
-        <translation type="unfinished">Destra</translation>
+        <translation>Destra</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>First X</source>
-        <translation type="unfinished">Primo X</translation>
+        <translation>Primo X</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Second X</source>
-        <translation type="unfinished">Seconda X</translation>
+        <translation>Seconda X</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="23"/>
         <location filename="../settingsdialog.cpp" line="127"/>
         <source>Vertical wheel</source>
-        <translation type="unfinished">Ruota verticale</translation>
+        <translation>Ruota verticale</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="24"/>
         <location filename="../settingsdialog.cpp" line="128"/>
         <source>Horizontal wheel</source>
-        <translation type="unfinished">Ruota orizzontale</translation>
+        <translation>Ruota orizzontale</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished">Maiusc</translation>
+        <translation>Maiusc</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished">Ctrl</translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished">Alt</translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished">Meta</translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation type="unfinished">Per favore, modifica le tue impostazioni. Lo stesso pulsante del mouse viene utilizzato per diverse azioni.</translation>
+        <translation>Per favore, modifica le tue impostazioni. Lo stesso pulsante del mouse viene utilizzato per diverse azioni.</translation>
     </message>
 </context>
 </TS>
