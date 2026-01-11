@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="el_GR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
@@ -31,67 +29,67 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατή η δημιουργία του ημερολογίου!</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιαν</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation>Φεβ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation>Μαρ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation>Απρ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="180"/>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation>Μάι</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιούν</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation>Ιούλ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation>Αυγ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Sep</source>
-        <translation type="unfinished"></translation>
+        <translation>Σεπ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="181"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation>Οκτ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation>Νοέ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="182"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεκ</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="258"/>
@@ -163,7 +161,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="99"/>
         <location filename="../boardpreview.cpp" line="116"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλύθηκε</translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="52"/>
@@ -194,7 +192,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιξε δικό σου επιτραπέζιο...</translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="119"/>
@@ -261,7 +259,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρόκληση ημερολογίου</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -377,17 +375,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="282"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Ημέρα</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="287"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήνας και ημέρα</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Μήνας και ημέρα</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -614,25 +612,25 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
