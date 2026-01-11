@@ -60,17 +60,17 @@
     <lang percentage="65">bg</lang>
     <lang percentage="100">de</lang>
     <lang percentage="100">en</lang>
-    <lang percentage="94">el_GR</lang>
+    <lang percentage="100">el_GR</lang>
     <lang percentage="100">fr</lang>
     <lang percentage="100">it</lang>
-    <lang percentage="92">ko</lang>
+    <lang percentage="77">ko</lang>
     <lang percentage="100">nb_NO</lang>
     <lang percentage="100">nl</lang>
     <lang percentage="100">pt</lang>
     <lang percentage="100">pt_BR</lang>
-    <lang percentage="96">ru</lang>
-    <lang percentage="100">zh_CN</lang>
-    <lang percentage="100">zh_TW</lang>
+    <lang percentage="92">ru</lang>
+    <lang percentage="85">zh_CN</lang>
+    <lang percentage="85">zh_TW</lang>
   </languages>
   
   <releases>
