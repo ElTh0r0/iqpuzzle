@@ -169,11 +169,17 @@ auto Board::drawCalendar(bool bMonth) -> bool {
   }
 
   QFont font("Arial");
-  QColor cText(136, 138, 133);
-  QColor cHighlightText(164, 0, 0);
+  font.setStyleHint(QFont::SansSerif);
+  QColor cDayText(this->readColor(QStringLiteral("Day/TextColor")));
+  QColor cDayHighlightText(
+      this->readColor(QStringLiteral("Day/TextHighlightColor")));
   int nOffset = 0;
 
   if (bMonth) {
+    QColor cMonthText(this->readColor(QStringLiteral("Month/TextColor")));
+    QColor cMonthHighlightText(
+        this->readColor(QStringLiteral("Month/TextHighlightColor")));
+
     nOffset = 2;
     font.setPointSize(m_nGridSize / 3);
     QStringList sListMonths;
@@ -187,9 +193,9 @@ auto Board::drawCalendar(bool bMonth) -> bool {
         QGraphicsTextItem *text =
             this->addText(sListMonths.at(nMonth - 1), font);
         if (nMonth == nTodayMonth) {
-          text->setDefaultTextColor(cHighlightText);
+          text->setDefaultTextColor(cMonthHighlightText);
         } else {
-          text->setDefaultTextColor(cText);
+          text->setDefaultTextColor(cMonthText);
         }
 
         // Text size
@@ -216,9 +222,9 @@ auto Board::drawCalendar(bool bMonth) -> bool {
       QString sDay = QString::number(nDay).rightJustified(2, '0');
       QGraphicsTextItem *text = this->addText(sDay, font);
       if (nDay == nTodayDay) {
-        text->setDefaultTextColor(cHighlightText);
+        text->setDefaultTextColor(cDayHighlightText);
       } else {
-        text->setDefaultTextColor(cText);
+        text->setDefaultTextColor(cDayText);
       }
 
       // Text size
@@ -350,11 +356,6 @@ auto Board::createBarriers() -> bool {
   }
 
   // Create calendar date barrier
-  QPolygonF dateBarrier;
-  dateBarrier << QPointF(0, 0) << QPointF(1, 0) << QPointF(1, 1)
-              << QPointF(0, 1) << QPointF(0, 0);
-  QColor cBorder(0, 0, 0);
-  QColor cDate(252, 233, 79, 128);
   QDate currentdate(QDate::currentDate());
   int nTodayDay = currentdate.day();
   int nTodayMonth = currentdate.month();
@@ -363,15 +364,39 @@ auto Board::createBarriers() -> bool {
   if (m_sBoardFile.endsWith(QStringLiteral("calendar/calendar_day.conf"),
                             Qt::CaseInsensitive)) {
     // Day
-    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
-                                  cBorder, m_nGridSize, &m_listBlocks,
-                                  QPointF(nX, nY), true));
+    QPolygonF dateBarrier = this->readPolygon(m_pBoardConf, "Day/Polygon");
+    if (dateBarrier.isEmpty()) {
+      this->clear();  // Clear all objects
+      qWarning() << "POLYGON IS EMPTY FOR DAY BARRIER";
+      QMessageBox::warning(m_pParent, tr("Warning"),
+                           tr("Polygon not valid:") + "\nDay");
+      return false;
+    }
+
+    QColor cColor(this->readColor("Day/Color"));
+    cColor.setAlpha(128);
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cColor,
+                                  this->readColor("Day/BorderColor"),
+                                  m_nGridSize, &m_listBlocks, QPointF(nX, nY),
+                                  true));
   } else if (m_sBoardFile.endsWith(
                  QStringLiteral("calendar/calendar_month_day.conf"),
                  Qt::CaseInsensitive)) {
     // Day
-    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
-                                  cBorder, m_nGridSize, &m_listBlocks,
+    QPolygonF dateBarrier = this->readPolygon(m_pBoardConf, "Day/Polygon");
+    if (dateBarrier.isEmpty()) {
+      this->clear();  // Clear all objects
+      qWarning() << "POLYGON IS EMPTY FOR DAY BARRIER";
+      QMessageBox::warning(m_pParent, tr("Warning"),
+                           tr("Polygon not valid:") + "\nDay");
+      return false;
+    }
+
+    QColor cColor(this->readColor("Day/Color"));
+    cColor.setAlpha(128);
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cColor,
+                                  this->readColor("Day/BorderColor"),
+                                  m_nGridSize, &m_listBlocks,
                                   QPointF(nX, nY + 2), true));
 
     // Month
@@ -381,9 +406,21 @@ auto Board::createBarriers() -> bool {
       nX -= 6;
       nY = 1;
     }
-    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cDate,
-                                  cBorder, m_nGridSize, &m_listBlocks,
-                                  QPointF(nX, nY), true));
+    dateBarrier = this->readPolygon(m_pBoardConf, "Month/Polygon");
+    if (dateBarrier.isEmpty()) {
+      this->clear();  // Clear all objects
+      qWarning() << "POLYGON IS EMPTY FOR MONTH BARRIER";
+      QMessageBox::warning(m_pParent, tr("Warning"),
+                           tr("Polygon not valid:") + "\nMonth");
+      return false;
+    }
+
+    cColor = this->readColor("Month/Color");
+    cColor.setAlpha(128);
+    m_listBlocks.append(new Block(m_nNumOfBlocks + 1, dateBarrier, cColor,
+                                  this->readColor("Month/BorderColor"),
+                                  m_nGridSize, &m_listBlocks, QPointF(nX, nY),
+                                  true));
   }
 
   return true;
