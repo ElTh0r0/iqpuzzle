@@ -239,7 +239,11 @@ void IQPuzzle::setupMenu() {
           &SettingsDialog::show);
 
   // Report bug
-  connect(m_pUi->action_ReportBug, &QAction::triggered, this, []() {
+  connect(m_pUi->action_ReportBug_CB, &QAction::triggered, this, []() {
+    QDesktopServices::openUrl(
+        QUrl(QStringLiteral("https://codeberg.org/ElTh0r0/iqpuzzle/issues")));
+  });
+  connect(m_pUi->action_ReportBug_GH, &QAction::triggered, this, []() {
     QDesktopServices::openUrl(
         QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
   });

@@ -98,7 +98,8 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="action_ReportBug"/>
+    <addaction name="action_ReportBug_CB"/>
+    <addaction name="action_ReportBug_GH"/>
     <addaction name="action_Info"/>
    </widget>
    <widget class="QMenu" name="menu_Settings">
@@ -221,12 +222,12 @@
     <string>&amp;Configure iQPuzzle...</string>
    </property>
   </action>
-  <action name="action_ReportBug">
+  <action name="action_ReportBug_GH">
    <property name="icon">
     <iconset theme="tools-report-bug"/>
    </property>
    <property name="text">
-    <string>Report &amp;bug</string>
+    <string>Report &amp;bug (GitHub)</string>
    </property>
   </action>
   <action name="actionEasy">
@@ -288,6 +289,14 @@
    </property>
    <property name="toolTip">
     <string>Month and Day</string>
+   </property>
+  </action>
+  <action name="action_ReportBug_CB">
+   <property name="icon">
+    <iconset theme="tools-report-bug"/>
+   </property>
+   <property name="text">
+    <string>Report &amp;bug (Codeberg)</string>
    </property>
   </action>
  </widget>

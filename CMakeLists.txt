@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 project(iQPuzzle
-    VERSION 1.4.3
+    VERSION 1.5.0
     DESCRIPTION "IQ challenging pentomino puzzle"
     LANGUAGES C CXX
 )
