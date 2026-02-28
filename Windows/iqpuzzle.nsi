@@ -3,8 +3,8 @@
   !define APPNAME "iQPuzzle"
   !define DESCRIPTION "A challenging pentomino puzzle"
   !define VERSIONMAJOR 1
-  !define VERSIONMINOR 4
-  !define VERSIONPATCH 3
+  !define VERSIONMINOR 5
+  !define VERSIONPATCH 0
   !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}.0"
   !define ABOUTURL "https://elth0r0.github.io/iqpuzzle/"
 

@@ -1,3 +1,10 @@
+iqpuzzle (1.5.0-0) unstable; urgency=low
+
+  [ Thorsten Roth ]
+  * Add calendar challenge
+
+ -- Thorsten Roth <elthoro@gmx.de>  Sat, 28 Feb 2026 16:00:00 +0200
+
 iqpuzzle (1.4.3-0) unstable; urgency=low
 
   [ Thorsten Roth ]
