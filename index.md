@@ -37,7 +37,7 @@ Manual for creating own levels can be found [here](create-level). Feel free to c
 
 ## [](#release-notes)Release notes
 ###### v1.5.0 (28. Feb 2026)
-* Add calendar challenge
+* Add calendar challenge: A daily board challenge based on the current date.
 
 ###### v1.4.3 (05. Jan 2026)
 * Fix invalid updated solved games counter
