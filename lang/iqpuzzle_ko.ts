@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ko">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ko">
 <context>
     <name>Board</name>
     <message>
@@ -34,67 +32,67 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Sep</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="264"/>
@@ -169,7 +167,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="99"/>
         <location filename="../boardpreview.cpp" line="116"/>
         <source>Solved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="52"/>
@@ -200,7 +198,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="119"/>
@@ -267,7 +265,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -349,12 +347,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="230"/>
         <source>Report &amp;bug (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>버그 &amp;리포팅 (GitHub)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="299"/>
         <source>Report &amp;bug (Codeberg)</source>
-        <translation type="unfinished"></translation>
+        <translation>버그 &amp;리포팅 (Codeberg)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="235"/>
@@ -388,17 +386,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="283"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="288"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="291"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -526,7 +524,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.cpp" line="831"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="834"/>
@@ -569,7 +567,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
@@ -625,25 +623,25 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
