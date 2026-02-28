@@ -1,16 +1,21 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ko">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ko">
 <context>
     <name>Board</name>
     <message>
         <location filename="../board.cpp" line="48"/>
         <location filename="../board.cpp" line="67"/>
         <location filename="../board.cpp" line="166"/>
-        <location filename="../board.cpp" line="288"/>
-        <location filename="../board.cpp" line="308"/>
-        <location filename="../board.cpp" line="333"/>
-        <location filename="../board.cpp" line="408"/>
-        <location filename="../board.cpp" line="421"/>
-        <location filename="../board.cpp" line="526"/>
+        <location filename="../board.cpp" line="294"/>
+        <location filename="../board.cpp" line="314"/>
+        <location filename="../board.cpp" line="339"/>
+        <location filename="../board.cpp" line="371"/>
+        <location filename="../board.cpp" line="390"/>
+        <location filename="../board.cpp" line="413"/>
+        <location filename="../board.cpp" line="445"/>
+        <location filename="../board.cpp" line="458"/>
+        <location filename="../board.cpp" line="563"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
@@ -29,101 +34,104 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Jan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Feb</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Mar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
+        <location filename="../board.cpp" line="186"/>
         <source>Apr</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="180"/>
+        <location filename="../board.cpp" line="186"/>
         <source>May</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="181"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Jun</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="181"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Jul</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="181"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Aug</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="181"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Sep</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="181"/>
+        <location filename="../board.cpp" line="187"/>
         <source>Oct</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="182"/>
+        <location filename="../board.cpp" line="188"/>
         <source>Nov</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="182"/>
+        <location filename="../board.cpp" line="188"/>
         <source>Dec</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="258"/>
+        <location filename="../board.cpp" line="264"/>
         <source>Hint</source>
         <translation>힌트</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="259"/>
+        <location filename="../board.cpp" line="265"/>
         <source>Not all pieces are needed for a solution.</source>
         <translation>정답에 모든 조각들이 필요한 것은 아닙니다.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="289"/>
-        <location filename="../board.cpp" line="334"/>
+        <location filename="../board.cpp" line="295"/>
+        <location filename="../board.cpp" line="340"/>
+        <location filename="../board.cpp" line="372"/>
+        <location filename="../board.cpp" line="391"/>
+        <location filename="../board.cpp" line="414"/>
         <source>Polygon not valid:</source>
         <translation>사용할 수 없는 다각형:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="309"/>
+        <location filename="../board.cpp" line="315"/>
         <source>Could not find valid blocks.</source>
         <translation>사용할 수 있는 블록이 없습니다.</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="409"/>
+        <location filename="../board.cpp" line="446"/>
         <source>No color defined - using fallback:</source>
         <translation>정의된 색상 없음 - fallback 사용:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="422"/>
+        <location filename="../board.cpp" line="459"/>
         <source>Invalid color defined - using fallback:</source>
         <translation>색상 정의 불가 - fallback 사용:</translation>
     </message>
     <message>
-        <location filename="../board.cpp" line="527"/>
+        <location filename="../board.cpp" line="564"/>
         <source>Invalid start position - using fallback:</source>
         <translation>허용되지 않은 시작 위치 - fallback 사용:</translation>
     </message>
@@ -161,7 +169,7 @@ Reduced grid to default.</source>
         <location filename="../boardpreview.cpp" line="99"/>
         <location filename="../boardpreview.cpp" line="116"/>
         <source>Solved</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../boardpreview.cpp" line="52"/>
@@ -192,7 +200,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../boardselection.ui" line="33"/>
         <source>Open own board...</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../boardselection.cpp" line="119"/>
@@ -259,7 +267,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -267,164 +275,169 @@ Reduced grid to default.</source>
         <translation>&amp;도움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="106"/>
+        <location filename="../iqpuzzle.ui" line="107"/>
         <source>Setti&amp;ngs</source>
         <translation>셋&amp;팅</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="123"/>
+        <location filename="../iqpuzzle.ui" line="124"/>
         <source>Choose &amp;new game</source>
         <translation>선택 &amp;새로운 게임</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="131"/>
+        <location filename="../iqpuzzle.ui" line="132"/>
         <source>&amp;Quit</source>
         <translation>&amp;종료</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="139"/>
+        <location filename="../iqpuzzle.ui" line="140"/>
         <source>&amp;About</source>
         <translation>&amp;상세정보</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="147"/>
+        <location filename="../iqpuzzle.ui" line="148"/>
         <source>Zoom &amp;In</source>
         <translation>&amp;확대</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="155"/>
+        <location filename="../iqpuzzle.ui" line="156"/>
         <source>Zoom &amp;Out</source>
         <translation>&amp;축소</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="166"/>
+        <location filename="../iqpuzzle.ui" line="167"/>
         <source>&amp;Restart game</source>
         <translation>&amp;게임 재시작</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="177"/>
+        <location filename="../iqpuzzle.ui" line="178"/>
         <source>&amp;Save game</source>
         <translation>&amp;게임 저장</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="180"/>
-        <location filename="../iqpuzzle.cpp" line="539"/>
+        <location filename="../iqpuzzle.ui" line="181"/>
+        <location filename="../iqpuzzle.cpp" line="543"/>
         <source>Save game</source>
         <translation>게임 저장</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="188"/>
+        <location filename="../iqpuzzle.ui" line="189"/>
         <source>&amp;Load game</source>
         <translation>&amp;게임 불러오기</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="191"/>
-        <location filename="../iqpuzzle.cpp" line="505"/>
+        <location filename="../iqpuzzle.ui" line="192"/>
+        <location filename="../iqpuzzle.cpp" line="509"/>
         <source>Load game</source>
         <translation>게임 불러오기</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="205"/>
+        <location filename="../iqpuzzle.ui" line="206"/>
         <source>Pa&amp;use</source>
         <translation>중&amp;지</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="213"/>
+        <location filename="../iqpuzzle.ui" line="214"/>
         <source>&amp;Highscore</source>
         <translation>&amp;기록</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="221"/>
+        <location filename="../iqpuzzle.ui" line="222"/>
         <source>&amp;Configure iQPuzzle...</source>
         <translation>&amp;iQPuzzle에 관하여...</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="229"/>
-        <source>Report &amp;bug</source>
-        <translation>버그 &amp;리포팅</translation>
+        <location filename="../iqpuzzle.ui" line="230"/>
+        <source>Report &amp;bug (GitHub)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="234"/>
-        <location filename="../iqpuzzle.ui" line="259"/>
+        <location filename="../iqpuzzle.ui" line="299"/>
+        <source>Report &amp;bug (Codeberg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../iqpuzzle.ui" line="235"/>
+        <location filename="../iqpuzzle.ui" line="260"/>
         <source>&amp;Easy</source>
         <translation>&amp;쉬움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="239"/>
-        <location filename="../iqpuzzle.ui" line="264"/>
+        <location filename="../iqpuzzle.ui" line="240"/>
+        <location filename="../iqpuzzle.ui" line="265"/>
         <source>&amp;Medium</source>
         <translation>&amp;중간</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="244"/>
-        <location filename="../iqpuzzle.ui" line="269"/>
+        <location filename="../iqpuzzle.ui" line="245"/>
+        <location filename="../iqpuzzle.ui" line="270"/>
         <source>&amp;Hard</source>
         <translation>&amp;어려움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="249"/>
-        <location filename="../iqpuzzle.ui" line="254"/>
+        <location filename="../iqpuzzle.ui" line="250"/>
+        <location filename="../iqpuzzle.ui" line="255"/>
         <source>&amp;All</source>
         <translation>&amp;전체</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="277"/>
+        <location filename="../iqpuzzle.ui" line="278"/>
         <source>Sta&amp;tistics</source>
         <translation>통&amp;계</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="282"/>
+        <location filename="../iqpuzzle.ui" line="283"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="287"/>
+        <location filename="../iqpuzzle.ui" line="288"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.ui" line="290"/>
+        <location filename="../iqpuzzle.ui" line="291"/>
         <source>Month and Day</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
-        <location filename="../iqpuzzle.cpp" line="617"/>
+        <location filename="../iqpuzzle.cpp" line="621"/>
         <source>Game paused</source>
         <translation>게임 중지</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="99"/>
         <location filename="../iqpuzzle.cpp" line="102"/>
-        <location filename="../iqpuzzle.cpp" line="295"/>
-        <location filename="../iqpuzzle.cpp" line="302"/>
-        <location filename="../iqpuzzle.cpp" line="654"/>
+        <location filename="../iqpuzzle.cpp" line="299"/>
+        <location filename="../iqpuzzle.cpp" line="306"/>
+        <location filename="../iqpuzzle.cpp" line="658"/>
         <source>Time</source>
         <translation>시간</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="103"/>
-        <location filename="../iqpuzzle.cpp" line="292"/>
-        <location filename="../iqpuzzle.cpp" line="299"/>
-        <location filename="../iqpuzzle.cpp" line="359"/>
-        <location filename="../iqpuzzle.cpp" line="620"/>
-        <location filename="../iqpuzzle.cpp" line="653"/>
+        <location filename="../iqpuzzle.cpp" line="296"/>
+        <location filename="../iqpuzzle.cpp" line="303"/>
+        <location filename="../iqpuzzle.cpp" line="363"/>
+        <location filename="../iqpuzzle.cpp" line="624"/>
+        <location filename="../iqpuzzle.cpp" line="657"/>
         <source>Moves</source>
         <translation>이동 횟수</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="118"/>
         <location filename="../iqpuzzle.cpp" line="128"/>
-        <location filename="../iqpuzzle.cpp" line="276"/>
-        <location filename="../iqpuzzle.cpp" line="286"/>
+        <location filename="../iqpuzzle.cpp" line="280"/>
+        <location filename="../iqpuzzle.cpp" line="290"/>
         <source>File not found</source>
         <translation>파일을 찾을 수 없음</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="119"/>
         <location filename="../iqpuzzle.cpp" line="129"/>
-        <location filename="../iqpuzzle.cpp" line="277"/>
-        <location filename="../iqpuzzle.cpp" line="287"/>
+        <location filename="../iqpuzzle.cpp" line="281"/>
+        <location filename="../iqpuzzle.cpp" line="291"/>
         <source>The chosen file does not exist.</source>
         <translation>선택한 파일이 존재하지 않습니다.</translation>
     </message>
@@ -434,89 +447,89 @@ Reduced grid to default.</source>
         <translation>게임의 공유 경로가 존재하지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="319"/>
+        <location filename="../iqpuzzle.cpp" line="323"/>
         <source>Unknown</source>
         <translation>알수없음</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="323"/>
+        <location filename="../iqpuzzle.cpp" line="327"/>
         <source>Solutions</source>
         <translation>해결</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="418"/>
+        <location filename="../iqpuzzle.cpp" line="422"/>
         <source>No boards available!</source>
         <translation>사용가능한 보드 없음!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="507"/>
-        <location filename="../iqpuzzle.cpp" line="541"/>
+        <location filename="../iqpuzzle.cpp" line="511"/>
+        <location filename="../iqpuzzle.cpp" line="545"/>
         <source>Save games</source>
         <translation>게임 저장</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="521"/>
+        <location filename="../iqpuzzle.cpp" line="525"/>
         <source>Invalid saved puzzle.</source>
         <translation>저장 가능한 퍼즐이 없습니다.</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="653"/>
+        <location filename="../iqpuzzle.cpp" line="657"/>
         <source>Puzzle solved!</source>
         <translation>퍼즐을 풀었습니다!</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="750"/>
+        <location filename="../iqpuzzle.cpp" line="754"/>
         <source>Statistics</source>
         <translation>통계</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="758"/>
-        <location filename="../iqpuzzle.cpp" line="787"/>
+        <location filename="../iqpuzzle.cpp" line="762"/>
+        <location filename="../iqpuzzle.cpp" line="791"/>
         <source>Total</source>
         <translation>총합</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="760"/>
+        <location filename="../iqpuzzle.cpp" line="764"/>
         <source>Unsolved</source>
         <translation>미해결</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="763"/>
+        <location filename="../iqpuzzle.cpp" line="767"/>
         <source>Easy</source>
         <translation>쉬움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="771"/>
+        <location filename="../iqpuzzle.cpp" line="775"/>
         <source>Medium</source>
         <translation>중간</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="779"/>
+        <location filename="../iqpuzzle.cpp" line="783"/>
         <source>Hard</source>
         <translation>어려움</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="788"/>
+        <location filename="../iqpuzzle.cpp" line="792"/>
         <source>including unknown difficulty</source>
         <translation>알수 없는 난이도 포함</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="810"/>
+        <location filename="../iqpuzzle.cpp" line="814"/>
         <source>About</source>
         <translation>상세 정보</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="824"/>
+        <location filename="../iqpuzzle.cpp" line="828"/>
         <source>License</source>
         <translation>라이선스</translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="827"/>
+        <location filename="../iqpuzzle.cpp" line="831"/>
         <source>This application uses &lt;a href=&quot;https://invent.kde.org/frameworks/breeze-icons&quot;&gt;Breeze icons from KDE&lt;/a&gt;.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../iqpuzzle.cpp" line="830"/>
+        <location filename="../iqpuzzle.cpp" line="834"/>
         <source>Translations</source>
         <translation>번역</translation>
     </message>
@@ -556,7 +569,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../settingsdialog.ui" line="106"/>
         <source>Use system background color</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="20"/>
@@ -612,25 +625,25 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
