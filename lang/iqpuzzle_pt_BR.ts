@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt_BR">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
 <context>
     <name>Board</name>
     <message>
@@ -349,12 +347,12 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="230"/>
         <source>Report &amp;bug (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>Reportar &amp;bug (GitHub)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="299"/>
         <source>Report &amp;bug (Codeberg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Reportar &amp;bug (Codeberg)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="235"/>
