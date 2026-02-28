@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_TW">
 <context>
     <name>Board</name>
     <message>
@@ -34,67 +32,67 @@ Reduced grid to default.</source>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Jan</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Feb</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Mar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>Apr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
         <source>May</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Jun</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Jul</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Aug</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Sep</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="187"/>
         <source>Oct</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Nov</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="188"/>
         <source>Dec</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../board.cpp" line="264"/>
@@ -267,7 +265,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -349,12 +347,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="230"/>
         <source>Report &amp;bug (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>提交错误 (GitHub)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="299"/>
         <source>Report &amp;bug (Codeberg)</source>
-        <translation type="unfinished"></translation>
+        <translation>提交错误 (Codeberg)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="235"/>
@@ -388,17 +386,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="283"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="288"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="291"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
