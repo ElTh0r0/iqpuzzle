@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nb_NO">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb_NO">
 <context>
     <name>Board</name>
     <message>
@@ -349,12 +347,12 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="230"/>
         <source>Report &amp;bug (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>Innrapporter &amp;feil (GitHub)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="299"/>
         <source>Report &amp;bug (Codeberg)</source>
-        <translation type="unfinished"></translation>
+        <translation>Innrapporter f&amp;eil (Codeberg)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="235"/>
