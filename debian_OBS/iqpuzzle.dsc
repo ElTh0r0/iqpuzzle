@@ -1,10 +1,10 @@
 Format: 1.0
 Source: iqpuzzle
 Binary: iqpuzzle
-Version: 1.4.3-1
+Version: 1.5.0-1
 Maintainer: Thorsten Roth <elthoro@gmx.de>
 Architecture: any
 Build-Depends: debhelper (>= 9), cmake, qt6-base-dev, qt6-tools-dev, qt6-tools-dev-tools, qt6-l10n-tools, libgl-dev, pkg-config, dpkg-dev (>= 1.16.1.1)
 Files:
- 4d2ab4d8712bc0275b238fdf9ed39370 719765 iqpuzzle-1.4.3.tar.gz
- 8510570f2db5765510433b185805dc6c 4036 debian.tar.gz
+ 877ab938f39b5a2b666d0f73776092b4 748086 iqpuzzle-1.5.0.tar.gz
+ 80574c1f571de7b495130b0a65bec5b3 4072 debian.tar.gz
