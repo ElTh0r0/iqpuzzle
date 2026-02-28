@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
 <context>
     <name>Board</name>
     <message>
@@ -267,7 +265,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -349,12 +347,12 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="230"/>
         <source>Report &amp;bug (GitHub)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Сообщить об ошибке (GitHub)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="299"/>
         <source>Report &amp;bug (Codeberg)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Сообщить об ошибке (Codeberg)</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="235"/>
@@ -388,17 +386,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="283"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="288"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="291"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -625,25 +623,25 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
