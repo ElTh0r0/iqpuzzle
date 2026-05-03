@@ -116,7 +116,7 @@ jobs:
        makensis iqpuzzle.nsi
        ren iQPuzzle_Installer.exe iQPuzzle-%buildnr%-Windows_${{ env.BUILD }}.exe
        
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: iQPuzzle-Windows_Artefacts
         path: iQPuzzle-*.*
