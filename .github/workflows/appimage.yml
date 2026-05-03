@@ -47,7 +47,7 @@ jobs:
        find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
 
     - name: Upload AppImage
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: iQPuzzle-AppImage_Artefacts
         path: iQPuzzle-*-x86_64.AppImage

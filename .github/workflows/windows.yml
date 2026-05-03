@@ -9,7 +9,7 @@ jobs:
     name: Win latest Qt 6 msvc
     runs-on: windows-latest
     env:
-      QT_VERSION: '6.10.1'
+      QT_VERSION: '6.10.3'
       BUILD: 'msvc2022_64'
     steps:
     - name: Checkout repository
@@ -67,7 +67,7 @@ jobs:
     name: Win 2022 Qt 6 mingw
     runs-on: windows-2022
     env:
-      QT_VERSION: '6.10.1'
+      QT_VERSION: '6.10.3'
       BUILD: 'mingw1310_64'
     steps:
     - name: Checkout repository
