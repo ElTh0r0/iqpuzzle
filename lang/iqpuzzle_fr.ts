@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="fr">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr">
 <context>
     <name>Board</name>
     <message>
@@ -32,7 +34,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="167"/>
         <source>Calendar couldn&apos;t be created!</source>
-        <translation>Impossible de créer le calendrier!</translation>
+        <translation>Impossible de créer le calendrier&#x202f;!</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="186"/>
@@ -111,7 +113,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
         <location filename="../board.cpp" line="391"/>
         <location filename="../board.cpp" line="414"/>
         <source>Polygon not valid:</source>
-        <translation>Polygone invalide:</translation>
+        <translation>Polygone invalide&#xa0;:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="315"/>
@@ -121,17 +123,17 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../board.cpp" line="446"/>
         <source>No color defined - using fallback:</source>
-        <translation>Aucune couleur définie - utilisation de la solution de secours:</translation>
+        <translation>Aucune couleur définie - utilisation de la solution de secours&#xa0;:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="459"/>
         <source>Invalid color defined - using fallback:</source>
-        <translation>La couleur définie est invalide - Utilisation du mode fallback:</translation>
+        <translation>La couleur définie est invalide - Utilisation du mode fallback&#xa0;:</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="564"/>
         <source>Invalid start position - using fallback:</source>
-        <translation>Position de départ invalide - Utilisation du mode fallback:</translation>
+        <translation>Position de départ invalide - Utilisation du mode fallback&#xa0;:</translation>
     </message>
 </context>
 <context>
@@ -237,7 +239,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../highscore.cpp" line="150"/>
         <source>Please insert your name for a new highscore:</source>
-        <translation>Indiquez votre nom pour les meilleurs scores:</translation>
+        <translation>Indiquez votre nom pour les meilleurs scores&#xa0;:</translation>
     </message>
 </context>
 <context>
@@ -442,7 +444,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="146"/>
         <source>Games share path does not exist!</source>
-        <translation>Le dossier des parties n&apos;existe pas!</translation>
+        <translation>Le dossier des parties n&apos;existe pas&#x202f;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="323"/>
@@ -457,7 +459,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="422"/>
         <source>No boards available!</source>
-        <translation>Aucun plateau disponible!</translation>
+        <translation>Aucun plateau disponible&#x202f;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="511"/>
@@ -473,7 +475,7 @@ Taille de grille réduite à la valeur par défaut.</translation>
     <message>
         <location filename="../iqpuzzle.cpp" line="657"/>
         <source>Puzzle solved!</source>
-        <translation>Puzzle résolu!</translation>
+        <translation>Puzzle résolu&#x202f;!</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="754"/>
