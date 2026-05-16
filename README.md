@@ -1,7 +1,7 @@
 # iQPuzzle
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used as puzzle pieces and more than **360 different board shapes** are available, which have to be filled with them.
 
-![Screenshot](https://user-images.githubusercontent.com/26674558/93668022-33d13180-fa8a-11ea-9279-b8f4d8c5c217.png)
+![Screenshot](./data/screenshot.png)
 
 ## Installation
 * [Build for Windows, macOS (untested) or ReactOS](https://github.com/ElTh0r0/iqpuzzle/releases/latest)
@@ -21,7 +21,7 @@ The game is controlled with the mouse. By default, the puzzle pieces are moved w
 The assigned mouse buttons can be changed via the **‘Settings -> Configure iQPuzzle’** menu.
 
 ## Help translating
-New translations and corrections are highly welcome! You can either fork the source code from GitHub, make your changes and create a pull request or you can participate on Transifex: https://explore.transifex.com/elth0r0/iqpuzzle/
+New translations and corrections are highly welcome! You can either fork the source code, make your changes and create a pull request or you can participate on here: https://translate.codeberg.org/engage/iqpuzzle/
 
 Additionally see [this page](https://github.com/ElTh0r0/iqpuzzle/issues/10) at GitHub.
 
