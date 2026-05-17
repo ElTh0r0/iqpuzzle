@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="el_GR">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="el_GR">
 <context>
     <name>Board</name>
     <message>
@@ -255,7 +257,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="52"/>
         <source>&amp;All available</source>
-        <translation>Όλες οι διαθέσιμες </translation>
+        <translation>Όλες οι διαθέσιμες</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="62"/>

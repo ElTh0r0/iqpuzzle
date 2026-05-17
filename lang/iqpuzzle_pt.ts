@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="pt">
 <context>
     <name>Board</name>
     <message>
@@ -102,7 +104,7 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../board.cpp" line="265"/>
         <source>Not all pieces are needed for a solution.</source>
-        <translation>Nem todas as peças serão necessárias para a solução</translation>
+        <translation>Nem todas as peças serão necessárias para a solução.</translation>
     </message>
     <message>
         <location filename="../board.cpp" line="295"/>
@@ -646,7 +648,7 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
         <source>Please change your settings. Same mouse button is used for several actions.</source>
-        <translation>Por favor, altere suas configurações. O mesmo botão do mouse é usado para várias ações</translation>
+        <translation>Por favor, altere suas configurações. O mesmo botão do mouse é usado para várias ações.</translation>
     </message>
 </context>
 </TS>
