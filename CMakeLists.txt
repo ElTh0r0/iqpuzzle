@@ -133,6 +133,7 @@ set(TRANSLATIONS
     lang/iqpuzzle_pt.ts
     lang/iqpuzzle_pt_BR.ts
     lang/iqpuzzle_ru.ts
+    lang/iqpuzzle_uk.ts
     lang/iqpuzzle_zh_CN.ts
     lang/iqpuzzle_zh_TW.ts
 )
