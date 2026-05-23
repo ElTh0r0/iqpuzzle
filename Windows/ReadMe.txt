@@ -34,11 +34,12 @@ Translations
  - Norwegian: Allan Nordhoy
  - Portuguese (pt & pt_BR): UchidoF
  - Russian: cheelp
+ - Ukrainian: SomeTr
  - Misc. corrections: J. Lavoie
 
-New translations and corrections are highly welcome! You can either fork the
-source code from GitHub, make your changes and create a pull request or you
-can participate on Transifex: https://explore.transifex.com/elth0r0/iqpuzzle/
+New translations and corrections are highly welcome! You can either fork 
+the source code, make your changes and create a pull request or you can 
+participate here: https://translate.codeberg.org/engage/iqpuzzle/
 
 
 Icons
