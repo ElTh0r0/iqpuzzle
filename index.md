@@ -30,7 +30,7 @@ The game is controlled with the mouse. By default, the puzzle pieces are moved w
 The assigned mouse buttons can be changed via the **‘Settings -> Configure iQPuzzle’** menu.
 
 ## [](#translations)Translations
-New translations and corrections are highly welcome! You can either fork the source code, make your changes and create a pull request or you can participate here: https://translate.codeberg.org/engage/iqpuzzle/
+New translations and corrections are highly welcome! You can either fork the source code, make your changes and create a pull request or you can participate on [translate.codeberg.org](https://translate.codeberg.org/engage/iqpuzzle/).
 
 ## [](#create-your-own-level)Create your own level
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
