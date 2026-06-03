@@ -6,7 +6,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 
 ![Screenshot](img/iqpuzzle.png)
 
-## [](#downoads)Downloads
+## [](#downloads)Downloads
 ###### Latest release v1.5.0 (28. Feb 2026)
 * [Build for Windows - Installer](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-Windows_Installer.exe)
 * [Build for Windows - ZIP](https://github.com/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-Windows.zip)
@@ -24,15 +24,15 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. Pentominos are used a
 
 Note: The **macOS** release was created automatically on a build server and is untested due to missing hardware! If you are facing any trouble, [please create an issue](https://github.com/ElTh0r0/iqpuzzle/issues).
 
-## [](#gamecontrols)Game controls
+## [](#game-controls)Game controls
 The game is controlled with the mouse. By default, the puzzle pieces are moved with the left mouse button using drag & drop, the mouse wheel can be used to rotate puzzle pieces, and the right mouse button can be used to flip them.
 
 The assigned mouse buttons can be changed via the **‘Settings -> Configure iQPuzzle’** menu.
 
 ## [](#translations)Translations
-New translations and corrections are highly welcome! You can either fork the source code [from GitHub](https://github.com/ElTh0r0/iqpuzzle), make your changes and create a pull request or you can participate [on Transifex](https://explore.transifex.com/elth0r0/iqpuzzle/).
+New translations and corrections are highly welcome! You can either fork the source code, make your changes and create a pull request or you can participate here: https://translate.codeberg.org/engage/iqpuzzle/
 
-## [](#createlevel)Create your own level
+## [](#create-your-own-level)Create your own level
 Manual for creating own levels can be found [here](create-level). Feel free to create a pull request [on GitHub](https://github.com/ElTh0r0/iqpuzzle) and your level might be included in the next release!
 
 ## [](#release-notes)Release notes
