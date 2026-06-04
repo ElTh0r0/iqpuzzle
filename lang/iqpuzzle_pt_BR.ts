@@ -349,12 +349,12 @@ Grade reduzida para o tamanho padrão.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Report &amp;bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Reportar &amp;bug</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
         <source>Report bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Reportar bug</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="226"/>
