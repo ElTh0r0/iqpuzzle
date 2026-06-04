@@ -349,12 +349,12 @@ Griglia ridotta al valore predefinito.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Report &amp;bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnala un &amp;errore</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
         <source>Report bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnala un errore</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="226"/>
