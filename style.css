@@ -1,0 +1,62 @@
+nav[data-topnav] {
+  & .hstack {
+    gap: var(--space-6);
+  }
+}
+
+section {
+  margin-bottom: var(--space-8);
+}
+
+.container {
+  max-width: 1200px;
+}
+
+
+.center-pagination {
+  display: flex;
+  justify-content: center;
+}
+.nav-center {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Swap theme icons */
+html[data-theme="dark"] .icon-dark {
+  display: none;
+}
+html:not([data-theme="dark"]) .icon-light {
+  display: none;
+}
+
+@layer theme {
+  :root {
+    color-scheme: light dark;
+
+    --background: light-dark(#fff, #232323);
+    --foreground: light-dark(#09090b, #fafafa);
+    --card: light-dark(#f5f5f5, #18181b);
+    --card-foreground: light-dark(#09090b, #fafafa);
+    --primary: light-dark(#c30000, #C0392B);
+    --primary-foreground: light-dark(#fafafa, #18181b);
+    --secondary: light-dark(#f4f4f5, #27272a);
+    --secondary-foreground: light-dark(#574747, #fafafa);
+    --muted: light-dark(#f4f4f5, #27272a);
+    --muted-foreground: light-dark(#71717a, #a1a1aa);
+    --faint: light-dark(#fafafa, #1e1e21);
+    --faint-foreground: light-dark(#a1a1aa, #71717a);
+    --accent: light-dark(#f4f4f5, #27272a);
+    --danger: light-dark(#d32f2f, #f4807b);
+    --danger-foreground: light-dark(#fafafa, #18181b);
+    --success: light-dark(#008032, #6cc070);
+    --success-foreground: light-dark(#fafafa, #18181b);
+    --warning: light-dark(#a65b00, #f0a030);
+    --warning-foreground: #09090b;
+    --border: light-dark(#d4d4d8, #52525b);
+    --input: light-dark(#d4d4d8, #52525b);
+    --ring: light-dark(#574747, #d4d4d8);
+  }
+}

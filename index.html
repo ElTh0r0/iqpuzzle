@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iQPuzzle | A challenging pentomino puzzle</title>
+        <link rel="icon" href="img/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="stylesheet" href="./oat.min.css">
+        <script src="./oat.min.js" defer></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <nav data-topnav>
+            <div class="row">
+                <div class="col-4 branding">
+                    <a href="./"><img src="img/iqpuzzle_24.png" alt="icon">&nbsp;&nbsp;&nbsp;iQPuzzle</a>
+                </div>
+
+                <div class="col-8 justify-end hstack">
+                    <a href="./">Home</a>
+                    <a href="create-level.html">Level creation</a>
+                    <a href="https://codeberg.org/ElTh0r0/iqpuzzle">Codeberg</a>
+                    <button class="outline small" onclick="toggleTheme()">
+                        <svg
+                            class="icon-light"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            role="img"
+                            aria-label="Light mode"
+                        >
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+
+                        <svg
+                            class="icon-dark"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            role="img"
+                            aria-label="Dark mode"
+                        >
+                            <path
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                <section>
+                    <h1>iQPuzzle</h1>
+                    <p>
+                        iQPuzzle is a diverting I.Q. challenging pentomino
+                        puzzle. The puzzle pieces are pentominoes, and there
+                        are more than 360 different board shapes to fill with
+                        them.
+                    </p>
+                    <p><img src="img/iqpuzzle.png" alt="Screenshot"></p>
+
+                    <h2 id="downloads"><a href="#downloads"></a>Downloads</h2>
+                    <h6>Latest release v1.5.0 (28. Feb 2026)</h6>
+                    <ul>
+                        <li>
+                            <a
+                                href="https://codeberg.org/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-Windows_Installer.exe"
+                                >Build for Windows - Installer</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://codeberg.org/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-Windows.zip"
+                                >Build for Windows - ZIP</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://codeberg.org/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-macOS.zip"
+                                >Build for macOS</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://codeberg.org/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-x86_64.AppImage"
+                                >Linux AppImage</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle"
+                                >Flatpak</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://launchpad.net/~elthoro/+archive/iqpuzzle"
+                                >Ubuntu PPA</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="http://software.opensuse.org/download.html?project=home%3AElThoro&amp;package=iqpuzzle"
+                                >Builds for Debian, Fedora, openSUSE, SLE</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://aur.archlinux.org/packages/iqpuzzle/"
+                                >Arch AUR</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://madb.mageialinux-online.org/show?distribution=cauldron&amp;architecture=x86_64&amp;graphical=0&amp;rpm=iqpuzzle"
+                                >Build for Mageia Cauldron</a
+                            >
+                        </li>
+                        <li>
+                            <a href="http://www.ecsoft2.org/iqpuzzle"
+                                >Build for OS/2</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://codeberg.org/ElTh0r0/iqpuzzle/releases/download/v1.5.0/iQPuzzle-1.5.0-ReactOS_Installer.exe"
+                                >Build for ReactOS</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://www.freshports.org/games/iqpuzzle"
+                                >FreeBSD Ports</a
+                            >
+                            /
+                            <a
+                                href="https://github.com/DragonFlyBSD/DPorts/tree/master/games/iqpuzzle"
+                                >DPorts</a
+                            >
+                        </li>
+                    </ul>
+
+                    <p>
+                        Please note that the <strong>macOS</strong> release was
+                        created automatically on a build server and has not
+                        been tested due to missing hardware. If you encounter
+                        any problems,
+                        <a href="https://codeberg.org/ElTh0r0/iqpuzzle/issues"
+                            >please create an issue</a
+                        >.
+                    </p>
+
+                    <h2 id="game-controls">
+                        <a href="#gamecontrols"></a>Game controls
+                    </h2>
+                    <p>
+                        The game is controlled using the mouse. By default,
+                        puzzle pieces are moved using the left mouse button and
+                        drag-and-drop. The mouse wheel can be used to rotate
+                        pieces and the right mouse button can be used to flip
+                        them.
+                    </p>
+
+                    <p>
+                        These settings can be changed via the
+                        <em>'Settings &rarr; Configure iQPuzzle'</em>
+                        menu.
+                    </p>
+
+                    <h2 id="translations">
+                        <a href="#translations"></a>Translations
+                    </h2>
+                    <p>
+                        New translations and corrections are highly welcome! You
+                        can either fork the source code, make your changes and
+                        then create a pull request or you can participate on
+                        <a
+                            href="https://translate.codeberg.org/engage/iqpuzzle/"
+                            >translate.codeberg.org</a
+                        >.
+                    </p>
+
+                    <h2 id="createlevel">
+                        <a href="#createlevel"></a>Create your own level
+                    </h2>
+                    <p>
+                        You can find a manual for creating your own levels
+                        <a href="create-level.html">here</a>. Feel free to submit a
+                        pull request
+                        <a href="https://codeberg.org/ElTh0r0/iqpuzzle"
+                            >on Codeberg</a
+                        >
+                        and your level could be included in the next release!
+                    </p>
+                </section>
+
+                <h2 id="releases"><a href="#releases"></a>Release notes</h2>
+                <section id="release-notes">
+                    <article class="card">
+                        <header>
+                            <h3>v1.5.0 (28. Feb 2026)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Add calendar challenge: A daily board challenge
+                                based on the current date.
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.4.3 (05. Jan 2026)</h3>
+                        </header>
+                        <ul>
+                            <li>Fix invalid updated solved games counter</li>
+                            <li>Update Flatpak KDE platform runtime to 6.10</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.4.2 (02. Mar 2025)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Update Chinese (zh_CN, zh_TW) translation
+                                (thanks to liulitchi)
+                            </li>
+                            <li>
+                                Retranslate board selection dialog without
+                                application restart
+                            </li>
+                            <li>
+                                Improve Windows installer: Add languages; remove
+                                previous files
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.4.1 (13. Nov 2024)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Enabled modifier keys on the first mouse button
+                                (thanks to spillner)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.4.0 (31. Aug 2024)</h3>
+                        </header>
+                        <ul>
+                            <li>Add more than 50 new boards</li>
+                            <li>Add Russian translation (thanks to cheelp)</li>
+                            <li>Some visual bug fixes</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.3.1 (01. May 2024)</h3>
+                        </header>
+                        <ul>
+                            <li>Add extended board selection dialog</li>
+                            <li>Bundle light/dark icons</li>
+                            <li>Update application icon</li>
+                            <li>
+                                Add support for dark scheme on Windows with Qt
+                                6.5
+                            </li>
+                            <li>Add Cmake support</li>
+                            <li>Linux packaging fixes: AppId, metainfo</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.3.0 (21. Apr 2024)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Release was revoked due to packaging issues. Use
+                                v1.3.1 instead!
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.9 (09. Feb 2023)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Add Portuguese pt and pt_BR translation (thanks
+                                to UchidoF)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.8 (10. Dec 2022)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Add Chinese (zh_TW) translation (thanks to
+                                liulitchi)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.7 (14. Nov 2022)</h3>
+                        </header>
+                        <ul>
+                            <li>Add Greek translation (thanks to liulitchi)</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.6 (12. Feb 2022)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Add Chinese (zh_CN) translation (thanks to
+                                liulitchi)
+                            </li>
+                            <li>
+                                Add Italian man page and fix for translation
+                                (thanks to davi92)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.5 (03. Jun 2021)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Add Norwegian translation (thanks to Allan
+                                Nordhoy)
+                            </li>
+                            <li>
+                                Update Italian translation (thanks to
+                                albanobattistella)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.4 (24. Apr 2021)</h3>
+                        </header>
+                        <ul>
+                            <li>Add support for Qt6</li>
+                            <li>Fix disappearing block borders</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.3 (20. Mar 2021)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Updated Dutch translation (thanks to Vistaus)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.2 (06. Mar 2021)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Fix for oddities barrier color if system
+                                background color is used
+                            </li>
+                            <li>Packaging fixes</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.1 (29. Nov 2020)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Fix crash during unsolved boards list update
+                            </li>
+                            <li>
+                                Fix background color on pause screen if system
+                                background color is used
+                            </li>
+                            <li>Fixes for Qt 5.15</li>
+                            <li>Some Clazy code improvements.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.2.0 (15. Mar 2020)</h3>
+                        </header>
+                        <ul>
+                            <li>21 new boards</li>
+                            <li>
+                                Option to use system window background color as
+                                board background.
+                            </li>
+                            <li>Fix restarting a saved game.</li>
+                            <li>
+                                Some Clang-Tidy and Clazy code improvements.
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.1.5 (02. Nov 2019)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Added Korean translation (thanks to hyuna1127)
+                            </li>
+                            <li>Add save game file extension automatically</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.1.4 (19. Oct 2019)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Fix for AppImage: Save/load relative board path
+                            </li>
+                            <li>Dropped support for Qt4</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>1.1.3 (29. Sep 2019)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Added Italian translation (thanks to davi92)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.1.2 (18. Aug 2019)</h3>
+                        </header>
+                        <ul>
+                            <li>Official build for ReactOS and Arch AUR.</li>
+                            <li>Minor code improvements.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.1.1 (06. May 2018)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Updated Dutch translation (thanks to Vistaus).
+                            </li>
+                            <li>Added freestyle board.</li>
+                            <li>Fix: Keep zoom level while board restart.</li>
+                            <li>Some code improvements.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.1.0 (18. Jan 2018)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Start random un-/solved easy/medium/hard game.
+                            </li>
+                            <li>Added freestyle mode.</li>
+                            <li>Added statistics.</li>
+                            <li>Improved window resize.</li>
+                            <li>Added many new boards.</li>
+                            <li>Start game through cmd.</li>
+                            <li>
+                                Updated French translation (thanks to kiarn).
+                            </li>
+                            <li>Embedded translations into game resource.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.7 (12. Aug 2017)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Added French translation, thanks to kiarn and
+                                mothsART!
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.6 (06. May 2017)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Updated Dutch translation, thanks to Elbert!
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.5 (03. May 2017)</h3>
+                        </header>
+                        <ul>
+                            <li>Moved project to GitHub (exchanged URLs).</li>
+                            <li>Compiled with Qt 5.8 for Windows</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.4 (03. Jan 2017)</h3>
+                        </header>
+                        <ul>
+                            <li>Fixed invalid board polygons.</li>
+                            <li>Added fallback menu icons.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.3 (02. Jan 2017)</h3>
+                        </header>
+                        <ul>
+                            <li>Added Dutch translation (thanks to Elbert)</li>
+                            <li>Fixed: Starting board from command line.</li>
+                            <li>
+                                Fixed: Bring blocks to foreground during
+                                rescale.
+                            </li>
+                            <li>Improved board file validation.</li>
+                            <li>
+                                Change gui language without restarting the game.
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.2 (06. Nov 2016)</h3>
+                        </header>
+                        <ul>
+                            <li>Lintian packaging fixes.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.1 (05. Nov 2016)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Added resources for OS/2; thanks to Gianfilippo!
+                            </li>
+                            <li>
+                                Improved settings dialog (check for using button
+                                multiple times)
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v1.0.0 (23. Oct 2016)</h3>
+                        </header>
+                        <ul>
+                            <li>Start random game.</li>
+                            <li>Guess user name for highscore.</li>
+                            <li>Many new boards.</li>
+                            <li>Install into /usr/bin instead of /usr/games</li>
+                            <li>Simple collision check after rotation/flip.</li>
+                            <li>Removed fixed window size.</li>
+                            <li>
+                                Bugfix: Disable save when game solved. MSVC
+                                compiler issue.
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.9.0 (13. May 2015)</h3>
+                        </header>
+                        <ul>
+                            <li>
+                                Added settings dialog; mouse buttons; GUI
+                                language.
+                            </li>
+                            <li>
+                                Added Bulgarian translation (thanks to bogo1966)
+                            </li>
+                            <li>Bug fix: Highscore</li>
+                            <li>
+                                Bug fix: Wrongly solved, if piece intersects
+                                board and not all pcs needed.
+                            </li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.8.1 (30. Aug 2014)</h3>
+                        </header>
+                        <ul>
+                            <li>Fixed translations and XPM icon file.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.8.0 (29. Aug 2014)</h3>
+                        </header>
+                        <ul>
+                            <li>Added highscore.</li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.7.0 (27. Jul 2014)</h3>
+                        </header>
+                        <ul>
+                            <li>Added timer and moves counter.</li>
+                            <li>Lintian fixes.</li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.6.0 (12. Jul 2014)</h3>
+                        </header>
+                        <ul>
+                            <li>Added save/load game option.</li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>v0.5.0 (06. Jul 2014)</h3>
+                        </header>
+                        <ul>
+                            <li>Automatic check, if puzzle is solved.</li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>
+                                <span class="badge" data-variant="warning"
+                                    >alpha</span
+                                >
+                                v0.4.0 (06. Jun 2014)
+                            </h3>
+                        </header>
+                        <ul>
+                            <li>Added preview to load board dialog.</li>
+                            <li>Added new boards.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>
+                                <span class="badge" data-variant="warning"
+                                    >alpha</span
+                                >
+                                v0.3.0 (19. May 2014)
+                            </h3>
+                        </header>
+                        <ul>
+                            <li>Added gui translation.</li>
+                            <li>Corrected block position after flip/rotate.</li>
+                            <li>Corrected board path.</li>
+                            <li>
+                                Added new board and possibility for barriers.
+                            </li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>
+                                <span class="badge" data-variant="warning"
+                                    >alpha</span
+                                >
+                                v0.2.0 (18. May 2014)
+                            </h3>
+                        </header>
+                        <ul>
+                            <li>Load board via command line.</li>
+                            <li>Define color as hex.</li>
+                            <li>Added new board.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>
+                                <span class="badge" data-variant="warning"
+                                    >alpha</span
+                                >
+                                v0.1.0 (17. May 2014)
+                            </h3>
+                        </header>
+                        <ul>
+                            <li>Load board file dialog.</li>
+                            <li>Added CBoard class.</li>
+                            <li>Minor collsion check correction.</li>
+                        </ul>
+                    </article>
+                    <p></p>
+
+                    <article class="card">
+                        <header>
+                            <h3>
+                                <span class="badge" data-variant="warning"
+                                    >alpha</span
+                                >
+                                v0.0.1 (04. May 2014)
+                            </h3>
+                        </header>
+                        <ul>
+                            <li>Define board as polygon.</li>
+                            <li>Support for Qt 4 and Qt 5.</li>
+                            <li>
+                                Code reconstructions, rewritten collision
+                                detection.
+                            </li>
+                        </ul>
+                    </article>
+                </section>
+                <div class="center-pagination">
+                <nav class="nav-center" aria-label="Pagination">
+                    <menu class="buttons" id="pagination"></menu>
+                </nav>
+                </div>
+
+            </div>
+        </main>
+        <script>
+            function toggleTheme() {
+                var cs = document.documentElement.style.colorScheme;
+                var isDark =
+                    cs === "dark" ||
+                    (!cs && matchMedia("(prefers-color-scheme: dark)").matches);
+                var theme = isDark ? "light" : "dark";
+                document.documentElement.style.colorScheme = theme;
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+            }
+
+            const container = document.getElementById("release-notes");
+            const articles = Array.from(
+                container.querySelectorAll("article.card"),
+            );
+            const pagination = document.getElementById("pagination");
+
+            const perPage = 5;
+            let currentPage = 1;
+
+            const totalPages = Math.ceil(articles.length / perPage);
+
+            function renderArticles() {
+                const start = (currentPage - 1) * perPage;
+                const end = start + perPage;
+
+                articles.forEach((article, index) => {
+                    article.hidden = index < start || index >= end;
+                });
+            }
+
+            function renderPagination() {
+                pagination.innerHTML = "";
+
+                const addItem = (
+                    label,
+                    page,
+                    disabled = false,
+                    current = false,
+                ) => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+
+                    a.className = current
+                        ? "button small"
+                        : "button outline small";
+                    a.textContent = label;
+
+                    if (current) {
+                        a.setAttribute("aria-current", "page");
+                    } else if (!disabled) {
+                        a.href = "#release-notes";
+                        a.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            currentPage = page;
+                            renderArticles();
+                            renderPagination();
+
+                            const headline =
+                                document.getElementById("releases");
+                            if (headline) {
+                                headline.scrollIntoView({ behavior: "smooth" });
+                            }
+                        });
+                    } else {
+                        a.setAttribute("aria-disabled", "true");
+                    }
+
+                    li.appendChild(a);
+                    pagination.appendChild(li);
+                };
+
+                addItem(
+                    "← Previous",
+                    Math.max(1, currentPage - 1),
+                    currentPage === 1,
+                );
+
+                for (let page = 1; page <= totalPages; page++) {
+                    addItem(String(page), page, false, page === currentPage);
+                }
+
+                addItem(
+                    "Next →",
+                    Math.min(totalPages, currentPage + 1),
+                    currentPage === totalPages,
+                );
+            }
+
+            renderArticles();
+            renderPagination();
+        </script>
+    </body>
+</html>

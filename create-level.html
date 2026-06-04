@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iQPuzzle | A challenging pentomino puzzle</title>
+        <link
+            rel="icon"
+            href="img/favicon.ico"
+            type="image/vnd.microsoft.icon"
+        >
+        <link rel="stylesheet" href="./oat.min.css">
+        <script src="./oat.min.js" defer></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <nav data-topnav>
+            <div class="row">
+                <div class="col-4 branding">
+                    <a href="./"><img src="img/iqpuzzle_24.png" alt="icon">&nbsp;&nbsp;&nbsp;iQPuzzle</a
+                    >
+                </div>
+
+                <div class="col-8 justify-end hstack">
+                    <a href="./">Home</a>
+                    <a href="create-level.html">Level creation</a>
+                    <a href="https://codeberg.org/ElTh0r0/iqpuzzle">Codeberg</a>
+                    <button class="outline small" onclick="toggleTheme()">
+                        <svg
+                            class="icon-light"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            role="img"
+                            aria-label="Light mode"
+                        >
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+
+                        <svg
+                            class="icon-dark"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            role="img"
+                            aria-label="Dark mode"
+                        >
+                            <path
+                                d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <div class="container">
+                <section>
+                    <h1>Create your own level</h1>
+                    <p>
+                        Own puzzle levels can be created as a text file stored
+                        with <strong>.conf</strong> file extension. Afterwards
+                        they can be loaded via
+                        <em>'Game &rarr; Choose new game &rarr; Open own
+                        board…'
+                        </em>. Feel free to submit a pull
+                            request
+                        <a href="https://codeberg.org/ElTh0r0/iqpuzzle"
+                            >on Codeberg</a
+                        >
+                        and your level could be included in the next release!
+                    </p>
+                    <p>For example, the following parts belong to the
+                        <strong>pento_T.conf</strong> level:
+                    </p>
+                    <pre><code>[General]
+GridSize=25
+BGColor="#EEEEEE"
+PossibleSolutions=106
+NotAllPiecesNeeded=true
+Freestyle=false
+
+[Board]
+Polygon="0,0 | 9,0 | 9,9 | 0,9 | 0,0"
+Color="#FFFFFF"
+BorderColor="#2E3436"
+GridColor="#888A85"
+
+##  X X X X
+##  X
+[Block1]
+Polygon="0,0 | 4,0 | 4,1 | 1,1 | 1,2 | 0,2 | 0,0"
+Color="#3465A4"
+BorderColor="#000000"
+StartPos="-3,-5"
+
+[Block2]
+...
+
+[Barrier1]
+Polygon="0,0 | 3,0 | 3,6 | 0,6 | 0,0"
+Color="#000000"
+BorderColor="#000000"
+StartPos="0,3"
+
+[Barrier2]
+...</code></pre>
+
+                    <p>Explanation of the different sections of the file:</p>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>[General]</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GridSize</td>
+                                    <td>
+                                        Decimal scale factor (default:
+                                        <code>25</code>). This parameter defines
+                                        the size of a board field in pixels.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BGColor</td>
+                                    <td>
+                                        Background color around the board as hex
+                                        value (default: <code>"#EEEEEE"</code>)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>PossibleSolutions</td>
+                                    <td>
+                                        Optional, if known: Number of possible
+                                        solutions
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>NotAllPiecesNeeded</td>
+                                    <td>
+                                        Optional, <code>true</code> or
+                                        <code>false</code>, depending if all
+                                        pieces are needed for the solution or
+                                        not (default: <code>false</code>)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Freestyle</td>
+                                    <td>
+                                        Optional, <code>true</code> or
+                                        <code>false</code>. Dis-/enable free
+                                        puzzling mode - neither counting moves
+                                        nor checking if puzzle is solved
+                                        (default: <code>false</code>)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p></p>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>[Board]</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Polygon</td>
+                                    <td>
+                                        Board definition as polygon (more
+                                        information see
+                                        <a href="#polygon">below</a>). The board
+                                        has to be rectangular!
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Color</td>
+                                    <td>
+                                        Background color of the board as hex
+                                        value
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>BorderColor</td>
+                                    <td>
+                                        Border color of the board as hex value
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>GridColor</td>
+                                    <td>
+                                        Color of the board grid as hex value
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p></p>
+                    <p>Puzzle pieces / barriers numbered from 1 to N:</p>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>[BlockN] / [BarrierN]</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Polygon</td>
+                                    <td>
+                                        Shape of a puzzle piece/barrier as
+                                        orthogonal polygon; e.g.:
+                                        <code
+                                            >“0,0 | 3,0 | 3,1 | 1,1 | 1,3 | 0,3
+                                            | 0,0”</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Color</td>
+                                    <td>Color of piece/barrier as hex value</td>
+                                </tr>
+                                <tr>
+                                    <td>BorderColor</td>
+                                    <td>Border color as hex value</td>
+                                </tr>
+                                <tr>
+                                    <td>StartPos</td>
+                                    <td>
+                                        Position <code>“x, y”</code> at game
+                                        start (see below information about the
+                                        <a href="#coordinate-system"
+                                            >coordinate system</a
+                                        >). Reference point is the top left
+                                        corner of the piece.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p></p>
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Comments</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>## Comment</td>
+                                    <td>
+                                        If needed, comments can be inserted with
+                                        leading ##
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 id="coordinate-system">
+                        <a href="#coordinate-system"></a>Coordinate system
+                    </h2>
+                    <p>
+                        The top left corner of the board defines the origin of
+                        the coordinate system used. Points are defined as
+                        <code>“x, y”</code> (the x-axis is horizontal to the
+                        right and the y-axis is vertical downwards). Negative
+                        values can be used for the start positions of the
+                        pieces.
+                    </p>
+                    <p><img src="img/graticule.png" alt="Graticule"></p>
+
+                    <h2 id="polygon"><a href="#polygon"></a>Polygon</h2>
+                    <p>
+                        The board, pieces and barriers are all defined as
+                        (orthogonal) polygons. The shape is defined by a list
+                        of all the corners. Care must be taken to ensure that 
+                        the polygon is 'closed', meaning that the first and
+                        last corners must be identical. The coordinates are
+                        separated by a vertical bar | (the “pipe” character,
+                        accessible via the <code>Shift + \</code> key
+                        combination on an English keyboard), and the
+                        complete list is terminated by quotation marks. For
+                        example, the list
+                        <code>“0,0 | 3,0 | 3,1 | 1,1 | 1,3 | 0,3 | 0,0”</code>
+                        is shown in the picture below.
+                    </p>
+                    <p>
+                        <img src="img/example_shape.png" alt="Example shape">
+                    </p>
+                </section>
+            </div>
+        </main>
+        <script>
+            function toggleTheme() {
+                var cs = document.documentElement.style.colorScheme;
+                var isDark =
+                    cs === "dark" ||
+                    (!cs && matchMedia("(prefers-color-scheme: dark)").matches);
+                var theme = isDark ? "light" : "dark";
+                document.documentElement.style.colorScheme = theme;
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+            }
+        </script>
+    </body>
+</html>
