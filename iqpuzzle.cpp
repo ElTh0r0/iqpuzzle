@@ -243,10 +243,6 @@ void IQPuzzle::setupMenu() {
     QDesktopServices::openUrl(
         QUrl(QStringLiteral("https://codeberg.org/ElTh0r0/iqpuzzle/issues")));
   });
-  connect(m_pUi->action_ReportBug_GH, &QAction::triggered, this, []() {
-    QDesktopServices::openUrl(
-        QUrl(QStringLiteral("https://github.com/ElTh0r0/iqpuzzle/issues")));
-  });
 
   // About
   connect(m_pUi->action_Info, &QAction::triggered, this,
@@ -825,8 +821,8 @@ void IQPuzzle::showInfoBox() {
                           "%8")
           .arg(qApp->applicationName(), qApp->applicationVersion(), APP_DESC,
                APP_COPY,
-               "URL: <a href=\"https://elth0r0.github.io/iqpuzzle/\">"
-               "https://elth0r0.github.io/iqpuzzle/</a>",
+               "URL: <a href=\"https://elth0r0.codeberg.page/iqpuzzle/\">"
+               "https://elth0r0.codeberg.page/iqpuzzle/</a>",
                tr("License") +
                    ": <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">"
                    "GNU General Public License Version 3</a>",
