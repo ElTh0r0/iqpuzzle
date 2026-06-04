@@ -349,12 +349,12 @@ Det ble tilbakestilt.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Report &amp;bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Innrapporter &amp;feil</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
         <source>Report bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Innrapporter feil</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="226"/>
