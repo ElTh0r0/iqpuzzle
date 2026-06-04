@@ -349,12 +349,12 @@ Reduziere Raster auf Defaultwert.</translation>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Report &amp;bug</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fehler melden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
         <source>Report bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler melden</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="226"/>
