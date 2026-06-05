@@ -2,6 +2,13 @@
 <!-- Copyright 2021 Thorsten Roth -->
 <component type="desktop-application">
   <id>page.codeberg.elth0r0.iqpuzzle</id>
+  <replaces>
+    <id>com.github.elth0r0.iqpuzzle</id>
+  </replaces>
+  <provides>
+    <binary>iqpuzzle</binary>
+    <id>com.github.elth0r0.iqpuzzle</id>
+  </provides>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>iQPuzzle</name>
@@ -23,18 +30,23 @@
   <screenshots>
     <screenshot type="default">
       <image>https://elth0r0.codeberg.page/iqpuzzle/img/01_iqpuzzle.png</image>
+      <caption>iQPuzzle</caption>
     </screenshot>
     <screenshot>
       <image>https://elth0r0.codeberg.page/iqpuzzle/img/02_board_sample.png</image>
+      <caption>Board sample</caption>
     </screenshot>
     <screenshot>
       <image>https://elth0r0.codeberg.page/iqpuzzle/img/03_board_sample.png</image>
+      <caption>Board sample</caption>
     </screenshot>
     <screenshot>
       <image>https://elth0r0.codeberg.page/iqpuzzle/img/04_board_sample.png</image>
+      <caption>Board sample</caption>
     </screenshot>
     <screenshot>
       <image>https://elth0r0.codeberg.page/iqpuzzle/img/05_board_selection.png</image>
+      <caption>Board selection</caption>
     </screenshot>
   </screenshots>
   
@@ -49,10 +61,6 @@
     <name>Thorsten Roth</name>
   </developer>
   <update_contact>elthoro@gmx.de</update_contact>
-  
-  <provides>
-    <binary>iqpuzzle</binary>
-  </provides>
   
   <content_rating type="oars-1.0" />
   
@@ -75,6 +83,15 @@
   </languages>
   
   <releases>
+    <release version="1.5.1" date="2026-06-05">
+      <description>
+        <p>Main changes:</p>
+        <ul>
+          <li>Add Ukrainian translation - thanks to SomeTr!</li>
+          <li>Move project to Codeberg</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.5.0" date="2026-02-28">
       <description>
         <p>Main changes:</p>
