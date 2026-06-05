@@ -1,23 +1,24 @@
-iQPuzzle - https://elth0r0.github.io/iqpuzzle/
+iQPuzzle - https://elth0r0.codeberg.page/iqpuzzle/
 
 
 About
 -----
 
-iQPuzzle is a diverting and challenging puzzle. Pentominos are used as
-jigsaw pieces and there are many different board shapes to fill with them.
+iQPuzzle is a diverting I.Q. challenging pentomino puzzle. The puzzle pieces
+are pentominoes, and there are more than 360 different board shapes to fill
+with them.
 
-Create your own level: https://elth0r0.github.io/iqpuzzle/create-level
+Create your own level: https://elth0r0.codeberg.page/iqpuzzle/create-level.html
 
 
 Game controls
 -------------
 
-The game is controlled with the mouse. By default, the puzzle pieces are moved
-with the left mouse button using drag & drop, the mouse wheel can be used to
-rotate puzzle pieces, and the right mouse button can be used to flip them.
+The game is controlled using the mouse. By default, puzzle pieces are moved
+using the left mouse button and drag-and-drop. The mouse wheel can be used to
+rotate pieces and the right mouse button can be used to flip them.
 
-The assigned mouse buttons can be changed via ‘Settings -> Configure iQPuzzle’.
+These settings can be changed via the ‘Settings -> Configure iQPuzzle’ menu.
 
 
 Translations
@@ -37,8 +38,8 @@ Translations
  - Ukrainian: SomeTr
  - Misc. corrections: J. Lavoie
 
-New translations and corrections are highly welcome! You can either fork 
-the source code, make your changes and create a pull request or you can 
+New translations and corrections are highly welcome! You can either fork the
+source code, make your changes and then create a pull request or you can
 participate here: https://translate.codeberg.org/engage/iqpuzzle/
 
 

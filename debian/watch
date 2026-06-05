@@ -1,2 +1,2 @@
 version=3
-https://github.com/ElTh0r0/iqpuzzle/releases /ElTh0r0/iqpuzzle/archive/v(.+)\.tar\.gz
+https://codeberg.org/ElTh0r0/iqpuzzle/releases /ElTh0r0/iqpuzzle/archive/v(.+)\.tar\.gz

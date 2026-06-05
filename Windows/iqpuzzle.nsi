@@ -6,7 +6,7 @@
   !define VERSIONMINOR 5
   !define VERSIONPATCH 0
   !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}.0"
-  !define ABOUTURL "https://elth0r0.github.io/iqpuzzle/"
+  !define ABOUTURL "https://elth0r0.codeberg.page/iqpuzzle/"
 
   !include "LogicLib.nsh"
   !include "MUI2.nsh"

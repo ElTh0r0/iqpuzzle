@@ -13,9 +13,9 @@ Build-Depends:
    pkg-config,
    dpkg-dev (>= 1.16.1.1)
 Standards-Version: 4.1.4
-Homepage: https://github.com/ElTh0r0/iqpuzzle
-Vcs-Git: https://github.com/ElTh0r0/iqpuzzle.git
-Vcs-Browser: https://github.com/ElTh0r0/iqpuzzle-packaging/tree/packaging
+Homepage: https://codeberg.org/ElTh0r0/iqpuzzle
+Vcs-Git: https://codeberg.org/ElTh0r0/iqpuzzle.git
+Vcs-Browser: https://codeberg.org/ElTh0r0/iqpuzzle/src/branch/packaging
 
 Package: iqpuzzle
 Architecture: any
@@ -23,5 +23,5 @@ Depends:
    ${shlibs:Depends},
    ${misc:Depends}
 Description: Challenging pentomino puzzle
- iQPuzzle is a diverting and challenging puzzle. Pentominos are used as jigsaw
- pieces and there are many different board shapes to fill with them.
+ iQPuzzle is a diverting and challenging puzzle. The puzzle pieces are
+ pentominoes, and there are many different board shapes to fill with them.

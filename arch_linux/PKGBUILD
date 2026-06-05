@@ -4,11 +4,11 @@ pkgver=1.5.0
 pkgrel=1
 pkgdesc='IQ challenging pentomino puzzle.'
 arch=('i686' 'x86_64')
-url='https://github.com/ElTh0r0/iqpuzzle/'
+url='https://codeberg.org/ElTh0r0/iqpuzzle/'
 license=('GPL-3.0-or-later')
 makedepends=('cmake' 'qt6-tools')
 depends=('qt6-base' 'hicolor-icon-theme')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ElTh0r0/$pkgname/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/ElTh0r0/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('84dbce31b6d9059ddc7990994da1b407209bbcb34af3797142e770ec0312e16f')
 
 build() {

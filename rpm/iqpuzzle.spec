@@ -21,7 +21,7 @@ Summary:        Challenging pentomino puzzle
 Version:        1.5.0
 Release:        1
 License:        GPL-3.0+
-URL:            https://github.com/ElTh0r0/iqpuzzle
+URL:            https://codeberg.org/ElTh0r0/iqpuzzle
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
 
@@ -53,8 +53,8 @@ BuildRequires:  cmake(Qt6LinguistTools)
 #--------------------------------------------------------------------
 
 %description
-iQPuzzle is a diverting and challenging puzzle. Pentominos are used as
-jigsaw pieces and there are many different board shapes to fill with them.
+iQPuzzle is a diverting and challenging puzzle. The puzzle pieces are 
+pentominoes, and there are many different board shapes to fill with them.
 
 %prep
 %autosetup -p1
@@ -71,8 +71,8 @@ jigsaw pieces and there are many different board shapes to fill with them.
 %cmake_install
 
 %check
-desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop || :
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml || :
+desktop-file-validate %{buildroot}/%{_datadir}/applications/page.codeberg.elth0r0.iqpuzzle.desktop || :
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/page.codeberg.elth0r0.iqpuzzle.metainfo.xml || :
 %endif
 #--------------------------------------------------------------------
 # openSUSE
@@ -95,9 +95,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/com.githu
 %endif
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/applications/com.github.elth0r0.iqpuzzle.desktop
-%{_datadir}/icons/hicolor/*/apps/com.github.elth0r0.iqpuzzle.*g
-%{_datadir}/metainfo/com.github.elth0r0.iqpuzzle.metainfo.xml
+%{_datadir}/applications/page.codeberg.elth0r0.iqpuzzle.desktop
+%{_datadir}/icons/hicolor/*/apps/page.codeberg.elth0r0.iqpuzzle.*g
+%{_datadir}/metainfo/page.codeberg.elth0r0.iqpuzzle.metainfo.xml
 %doc COPYING
 %{_mandir}/*/*
 
