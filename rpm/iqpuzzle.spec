@@ -22,7 +22,7 @@ Version:        1.5.1
 Release:        1
 License:        GPL-3.0+
 URL:            https://codeberg.org/ElTh0r0/iqpuzzle
-Source:         %{name}-%{version}.tar.gz
+Source:         %{name}-v%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-build
 
 #--------------------------------------------------------------------
@@ -57,7 +57,7 @@ iQPuzzle is a diverting and challenging puzzle. The puzzle pieces are
 pentominoes, and there are many different board shapes to fill with them.
 
 %prep
-%autosetup -p1
+%autosetup -n %{name} -p1
 
 #--------------------------------------------------------------------
 # Fedora
