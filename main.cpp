@@ -32,7 +32,7 @@ auto main(int argc, char *argv[]) -> int {
   app.setWindowIcon(QIcon::fromTheme(QStringLiteral("iqpuzzle"),
                                      QIcon(QStringLiteral(":/iqpuzzle.png"))));
 #if QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
-  app.setDesktopFileName(QStringLiteral("com.github.elth0r0.iqpuzzle"));
+  app.setDesktopFileName(QStringLiteral("page.codeberg.elth0r0.iqpuzzle"));
 #endif
 #endif
 

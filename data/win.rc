@@ -8,7 +8,7 @@ IDI_ICON1   ICON    DISCARDABLE    "../icons/iqpuzzle.ico"
     {
         BLOCK "000004B0"
         {
-            VALUE "CompanyName",        "com.github.elth0r0.iqpuzzle\0"
+            VALUE "CompanyName",        "page.codeberg.elth0r0.iqpuzzle\0"
             VALUE "FileDescription",    "IQ challenging pentomino puzzle\0"
             VALUE "LegalCopyright",     "(c) 2012-present Thorsten Roth\0"
             VALUE "OriginalFilename",   "iQPuzzle.exe\0"

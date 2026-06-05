@@ -105,7 +105,7 @@ unix: !macx {
     data.files    += data/boards
 
     desktop.path   = $$PREFIX/share/applications
-    desktop.files += data/unix/com.github.elth0r0.iqpuzzle.desktop
+    desktop.files += data/unix/page.codeberg.elth0r0.iqpuzzle.desktop
 
     icons.path     = $$PREFIX/share/icons
     icons.files   += icons/hicolor
@@ -117,7 +117,7 @@ unix: !macx {
     man.files     += man/it
 
     meta.path      = $$PREFIX/share/metainfo
-    meta.files    += data/unix/com.github.elth0r0.iqpuzzle.metainfo.xml
+    meta.files    += data/unix/page.codeberg.elth0r0.iqpuzzle.metainfo.metainfo.xml
 
     INSTALLS      += target \
                      data \
