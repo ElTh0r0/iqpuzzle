@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2021 Thorsten Roth -->
 <component type="desktop-application">
-  <id>com.github.elth0r0.iqpuzzle</id>
+  <id>page.codeberg.elth0r0.iqpuzzle</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>iQPuzzle</name>
@@ -22,30 +22,30 @@
   
   <screenshots>
     <screenshot type="default">
-      <image>https://user-images.githubusercontent.com/26674558/109397420-bfeb5d00-7936-11eb-9b8b-cc6dfd17f2cc.png</image>
+      <image>https://elth0r0.codeberg.page/iqpuzzle/img/01_iqpuzzle.png</image>
     </screenshot>
     <screenshot>
-      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/184dc4c1-bc09-4671-af4a-fc1e87b9e1b2</image>
+      <image>https://elth0r0.codeberg.page/iqpuzzle/img/02_board_sample.png</image>
     </screenshot>
     <screenshot>
-      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/d6c91e36-8d51-4eae-b369-b9808eaa4645</image>
+      <image>https://elth0r0.codeberg.page/iqpuzzle/img/03_board_sample.png</image>
     </screenshot>
     <screenshot>
-      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/f4ff39c0-5f6d-4802-a937-2d8ca4bdcad2</image>
+      <image>https://elth0r0.codeberg.page/iqpuzzle/img/04_board_sample.png</image>
     </screenshot>
     <screenshot>
-      <image>https://github.com/ElTh0r0/iqpuzzle/assets/26674558/b9c4897e-5f8a-4ead-9431-79803c26b263</image>
+      <image>https://elth0r0.codeberg.page/iqpuzzle/img/05_board_selection.png</image>
     </screenshot>
   </screenshots>
   
-  <launchable type="desktop-id">com.github.elth0r0.iqpuzzle.desktop</launchable>
+  <launchable type="desktop-id">page.codeberg.elth0r0.iqpuzzle.desktop</launchable>
   
-  <url type="homepage">https://elth0r0.github.io/iqpuzzle/</url>
-  <url type="bugtracker">https://github.com/ElTh0r0/iqpuzzle/issues</url>
-  <url type="vcs-browser">https://github.com/ElTh0r0/iqpuzzle</url>
-  <url type="translate">https://explore.transifex.com/elth0r0/iqpuzzle/</url>
+  <url type="homepage">https://elth0r0.codeberg.page/iqpuzzle/</url>
+  <url type="bugtracker">https://codeberg.org/ElTh0r0/iqpuzzle/issues</url>
+  <url type="vcs-browser">https://codeberg.org/ElTh0r0/iqpuzzle</url>
+  <url type="translate">https://translate.codeberg.org/engage/iqpuzzle/</url>
   
-  <developer id="com.github.elth0r0">
+  <developer id="page.codeberg.elth0r0">
     <name>Thorsten Roth</name>
   </developer>
   <update_contact>elthoro@gmx.de</update_contact>
@@ -57,7 +57,7 @@
   <content_rating type="oars-1.0" />
   
   <languages>
-    <lang percentage="65">bg</lang>
+    <lang percentage="66">bg</lang>
     <lang percentage="100">de</lang>
     <lang percentage="100">en</lang>
     <lang percentage="100">el_GR</lang>
@@ -69,8 +69,9 @@
     <lang percentage="100">pt</lang>
     <lang percentage="100">pt_BR</lang>
     <lang percentage="92">ru</lang>
-    <lang percentage="85">zh_CN</lang>
-    <lang percentage="85">zh_TW</lang>
+    <lang percentage="100">uk</lang>
+    <lang percentage="84">zh_CN</lang>
+    <lang percentage="84">zh_TW</lang>
   </languages>
   
   <releases>

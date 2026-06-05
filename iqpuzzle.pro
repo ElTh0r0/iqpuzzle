@@ -117,7 +117,7 @@ unix: !macx {
     man.files     += man/it
 
     meta.path      = $$PREFIX/share/metainfo
-    meta.files    += data/unix/page.codeberg.elth0r0.iqpuzzle.metainfo.metainfo.xml
+    meta.files    += data/unix/page.codeberg.elth0r0.iqpuzzle.metainfo.xml
 
     INSTALLS      += target \
                      data \
