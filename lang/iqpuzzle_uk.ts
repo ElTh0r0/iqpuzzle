@@ -354,7 +354,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
         <source>Report bug</source>
-        <translation>Report bug</translation>
+        <translation>Повідомити про помилку</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="226"/>
