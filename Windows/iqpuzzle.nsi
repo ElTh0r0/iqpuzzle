@@ -4,7 +4,7 @@
   !define DESCRIPTION "A challenging pentomino puzzle"
   !define VERSIONMAJOR 1
   !define VERSIONMINOR 5
-  !define VERSIONPATCH 0
+  !define VERSIONPATCH 1
   !define APPVERSION "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONPATCH}.0"
   !define ABOUTURL "https://elth0r0.codeberg.page/iqpuzzle/"
 

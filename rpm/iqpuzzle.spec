@@ -18,7 +18,7 @@
 
 Name:           iqpuzzle
 Summary:        Challenging pentomino puzzle
-Version:        1.5.0
+Version:        1.5.1
 Release:        1
 License:        GPL-3.0+
 URL:            https://codeberg.org/ElTh0r0/iqpuzzle
