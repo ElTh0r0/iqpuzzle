@@ -1,4 +1,6 @@
 # iQPuzzle
+Repository: https://codeberg.org/ElTh0r0/iqpuzzle
+
 iQPuzzle is a diverting I.Q. challenging pentomino puzzle. The puzzle pieces are pentominoes, and there are more than 360 different board shapes to fill with them.
 
 ![Screenshot](./data/screenshot.png)
