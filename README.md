@@ -8,7 +8,7 @@ iQPuzzle is a diverting I.Q. challenging pentomino puzzle. The puzzle pieces are
 ## Installation
 * [Build for Windows, macOS (untested) or ReactOS](https://codeberg.org/ElTh0r0/iqpuzzle/releases/latest)
 * [AppImage](https://codeberg.org/ElTh0r0/iqpuzzle/releases/latest)
-* [Flatpak](https://flathub.org/apps/details/com.github.elth0r0.iqpuzzle)
+* [Flatpak](https://flathub.org/apps/details/page.codeberg.elth0r0.iqpuzzle)
 * [Ubuntu PPA](https://launchpad.net/~elthoro/+archive/iqpuzzle)
 * [Builds for Debian, Fedora, openSUSE, SLE](http://software.opensuse.org/download.html?project=home%3AElThoro&package=iqpuzzle)
 * [Arch AUR](https://aur.archlinux.org/packages/iqpuzzle/)
