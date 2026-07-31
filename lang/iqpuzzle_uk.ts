@@ -349,7 +349,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="290"/>
         <source>Report &amp;bug</source>
-        <translation>Report &amp;bug</translation>
+        <translation>По&amp;відомити про помилку</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="293"/>
