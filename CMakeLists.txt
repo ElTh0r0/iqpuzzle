@@ -63,8 +63,27 @@ target_compile_definitions(iqpuzzle
         APP_COPY="${PROJECT_COPYRIGHT}"
         APP_DESC="${PROJECT_DESCRIPTION}"
         QT_NO_FOREACH
-        $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x061100>
 )
+
+# Macro added with Qt 6.5
+if(${Qt6Core_VERSION} VERSION_GREATER_EQUAL "6.5.0")
+    target_compile_definitions(iqpuzzle
+        PRIVATE
+            $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_UP_TO=0x060b00>
+    )
+else() # Macro deprecated with Qt 6.5
+    target_compile_definitions(iqpuzzle
+        PRIVATE
+            $<$<CONFIG:DEBUG>:QT_DISABLE_DEPRECATED_BEFORE=0x060b00>
+    )
+endif()
+# Macro added with Qt 6.8
+if(${Qt6Core_VERSION} VERSION_GREATER_EQUAL "6.8.0")
+    target_compile_definitions(iqpuzzle
+        PRIVATE
+            $<$<CONFIG:DEBUG>:QT_ENABLE_STRICT_MODE_UP_TO=0x060b00>
+    )
+endif()
 
 if(MSVC)
     target_compile_options(iqpuzzle

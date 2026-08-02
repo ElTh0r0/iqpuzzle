@@ -32,7 +32,20 @@ DEFINES       += QT_NO_FOREACH
 
 CONFIG(debug, debug|release) {
   CONFIG      += warn_on
-  DEFINES     += QT_DISABLE_DEPRECATED_BEFORE=0x061100
+
+  # Macro deprecated with Qt 6.5
+  !greaterThan(QT_MAJOR_VERSION, 5)|!greaterThan(QT_MINOR_VERSION, 4): {
+    DEFINES   += QT_DISABLE_DEPRECATED_BEFORE=0x060b00
+  }
+  # Macro added with Qt 6.5
+  greaterThan(QT_MAJOR_VERSION, 5): greaterThan(QT_MINOR_VERSION, 4): {
+    DEFINES   += QT_DISABLE_DEPRECATED_UP_TO=0x060b00
+  }
+
+  # Macro added with Qt 6.8
+  greaterThan(QT_MAJOR_VERSION, 5): greaterThan(QT_MINOR_VERSION, 7): {
+    DEFINES   += QT_ENABLE_STRICT_MODE_UP_TO=0x060b00
+  }
 }
 
 SOURCES       += main.cpp\
