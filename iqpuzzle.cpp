@@ -841,7 +841,7 @@ void IQPuzzle::showInfoBox() {
                    "&nbsp;&nbsp;- Korean: hyuna1127<br />"
                    "&nbsp;&nbsp;- Norwegian: Allan Nordhøy<br />"
                    "&nbsp;&nbsp;- Portuguese (pt & pt_BR): UchidoF<br />"
-                   "&nbsp;&nbsp;- Russian: cheelp<br />"
+                   "&nbsp;&nbsp;- Russian: cheelp, Xapitonov<br />"
                    "&nbsp;&nbsp;- Ukrainian: SomeTr<br />"
                    "&nbsp;&nbsp;- Misc. corrections: J. Lavoie"));
 }
