@@ -267,7 +267,7 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="75"/>
         <source>&amp;Calendar challenge</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Календарная задача</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="99"/>
@@ -388,17 +388,17 @@ Reduced grid to default.</source>
     <message>
         <location filename="../iqpuzzle.ui" line="274"/>
         <source>&amp;Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;День</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="279"/>
         <source>&amp;Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Месяц и день</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.ui" line="282"/>
         <source>Month and Day</source>
-        <translation type="unfinished"></translation>
+        <translation>Месяц и день</translation>
     </message>
     <message>
         <location filename="../iqpuzzle.cpp" line="94"/>
@@ -625,25 +625,25 @@ Reduced grid to default.</source>
         <location filename="../settingsdialog.cpp" line="25"/>
         <location filename="../settingsdialog.cpp" line="129"/>
         <source>Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="26"/>
         <location filename="../settingsdialog.cpp" line="130"/>
         <source>Ctrl</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="27"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Alt</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="28"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Meta</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="77"/>
