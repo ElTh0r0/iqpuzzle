@@ -34,7 +34,7 @@ Translations
  - Korean: hyuna1127
  - Norwegian: Allan Nordhoy
  - Portuguese (pt & pt_BR): UchidoF
- - Russian: cheelp
+ - Russian: cheelp, Xapitonov
  - Ukrainian: SomeTr
  - Misc. corrections: J. Lavoie
 
